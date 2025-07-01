@@ -1,0 +1,45 @@
+{
+  "name": "@canboat/ts-pgns",
+  "version": "1.0.0",
+  "description": "TypeScript Canboat PGN Definitions",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "mocha 'test/**/*.[jt]s'",
+    "changelog": "github-changes -o canboat -r pgns -a --only-pulls --use-commit-body --data=pulls  --tag-name=v$npm_package_version",
+    "release": "git tag -d v$npm_package_version; npm run changelog && git add CHANGELOG.md && git commit -m 'chore: update changelog' && git tag v$npm_package_version && git push --tags && git push",
+    "build": "tsc -b",
+    "watch": "tsc --watch",
+    "prepublishOnly": "npm run build",
+    "prettier": "prettier --write .",
+    "lint-fix": "eslint --fix",
+    "lint": "eslint",
+    "format": "npm run prettier && npm run lint",
+    "generate:enums": "node dist/generator.js --enums > src/enums.ts",
+    "generate:pgns": "node dist/generator.js --pgns > src/pgns.ts",
+    "generate": "npm run generate:enums && npm run generate:pgns"
+  },
+  "author": "Scott Bender <scott@scottbender.net>",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/canboat/ts-pgns.git"
+  },
+  "dependencies": {
+    "camelcase": "^8.0.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.6",
+    "@types/minimist": "^1.2.5",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^24.0.4",
+    "eslint": "^9.30.0",
+    "eslint-config-prettier": "^10.1.5",
+    "minimist": "^1.2.8",
+    "mocha": "^11.7.1",
+    "prettier": "^3.6.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.35.0"
+  }
+}

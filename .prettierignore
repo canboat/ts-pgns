@@ -1,0 +1,4 @@
+*.guard.ts
+public
+*.json
+src/pgns.ts

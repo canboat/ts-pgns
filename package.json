@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "mocha 'test/**/*.[jt]s'",
+    "test": "mocha",
     "changelog": "github-changes -o canboat -r pgns -a --only-pulls --use-commit-body --data=pulls  --tag-name=v$npm_package_version",
     "release": "git tag -d v$npm_package_version; npm run changelog && git add CHANGELOG.md && git commit -m 'chore: update changelog' && git tag v$npm_package_version && git push --tags && git push",
     "build": "tsc -b",
@@ -38,7 +38,7 @@
     "minimist": "^1.2.8",
     "mocha": "^11.7.1",
     "prettier": "^3.6.2",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.20.3",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.35.0"
   }

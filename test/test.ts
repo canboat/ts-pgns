@@ -1,5 +1,5 @@
 //import chai, { expect } from 'chai'
-import { assert } from "chai";
+import { assert } from 'chai'
 
 //chai.should()
 
@@ -12,5 +12,3 @@ describe('pgn definition tests', () => {
     done()
   })
 })
-
-

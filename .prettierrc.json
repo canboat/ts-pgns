@@ -4,7 +4,7 @@
   "trailingComma": "none",
   "overrides": [
     {
-      "files": "src/pgns.ts",
+      "files": "src/enums.ts",
       "options": {
         "trailingComma": "es5"
       }

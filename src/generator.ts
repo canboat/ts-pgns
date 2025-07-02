@@ -26,7 +26,7 @@ const argv = minimist(process.argv.slice(2), {
   alias: { h: 'help' }
 })
 
-const filtered: Definition[] = getAllPGNs() 
+const filtered: Definition[] = getAllPGNs()
 
 function enumName(name: string) {
   return fixIdentifier(camelCase(name, { pascalCase: true }), '_')

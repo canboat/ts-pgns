@@ -189,6 +189,45 @@ if (argv.pgns) {
     */
   })
 
+  function getFieldString(field: Field) {
+    let type = 'number'
+    let required =
+      field.PartOfPrimaryKey == true || field.BitLength === 1 ? '' : '?'
+
+    switch (field.FieldType) {
+      case 'RESERVED':
+      case 'SPARE':
+        required = '?'
+        break
+
+      case 'LOOKUP':
+        if (field.LookupEnumeration) {
+          type = `enums.${enumName(field.LookupEnumeration)}|number`
+        } else {
+          //FIXME! error
+        }
+        break
+
+      case 'INDIRECT_LOOKUP':
+        if (field.LookupIndirectEnumeration) {
+          type = `enums.${enumName(field.LookupIndirectEnumeration)}|number`
+        }
+        break
+
+      case 'BITLOOKUP':
+        if (field.LookupBitEnumeration) {
+          type = `enums.${enumName(field.LookupBitEnumeration)}[]`
+        }
+        break
+
+      default:
+        type = `N2K_${camelCase(field.FieldType, { pascalCase: true })}`
+        break
+    }
+
+    return `${fixIdentifier(field.Id, '_')}${required}: ${type}`
+  }
+
   function outputPGN(pgn: Definition, isMulti: boolean) {
     console.log('/*')
     console.log(`  PGN: ${pgn.PGN}`)
@@ -221,41 +260,24 @@ if (argv.pgns) {
     }
 
     console.log(`export interface ${typeName}Fields extends PGNFields {`)
-    pgn.Fields.forEach((field: Field) => {
-      let type = 'number'
-      switch (field.FieldType) {
-        case 'LOOKUP':
-          if (field.LookupEnumeration) {
-            type = `enums.${enumName(field.LookupEnumeration)}|number`
-          } else {
-            //FIXME! error
-          }
-          break
-
-        case 'INDIRECT_LOOKUP':
-          if (field.LookupIndirectEnumeration) {
-            type = `enums.${enumName(field.LookupIndirectEnumeration)}|number`
-          }
-          break
-
-        case 'BITLOOKUP':
-          if (field.LookupBitEnumeration) {
-            type = `enums.${enumName(field.LookupBitEnumeration)}[]`
-          }
-          break
-
-        default:
-          type = `N2K_${camelCase(field.FieldType, { pascalCase: true })}`
-          break
+    pgn.Fields.forEach((field: Field, idx: number) => {
+      if (
+        pgn.RepeatingFieldSet1StartField !== undefined &&
+          idx + 1 >= pgn.RepeatingFieldSet1StartField &&
+          idx + 1 <
+          pgn.RepeatingFieldSet1StartField + pgn.RepeatingFieldSet1Size!
+      ) {
+        return
       }
-
-      const required =
-        field.PartOfPrimaryKey == true || field.BitLength === 1 ? '' : '?'
-
-      console.log(`  ${fixIdentifier(field.Id, '_')}${required}: ${type}`)
+      console.log(`  ${getFieldString(field)}`)
     })
     if (pgn.RepeatingFieldSet1Size !== undefined) {
-      console.log(`  list: any[]`)
+      console.log(`  list: {`)
+      for (let i = 0; i < pgn.RepeatingFieldSet1Size; i++) {
+        const field = pgn.Fields[i + pgn.RepeatingFieldSet1StartField! - 1]
+        console.log(`    ${getFieldString(field)}`)
+      }
+      console.log('  }[]')
     }
     if (pgn.RepeatingFieldSet2Size !== undefined) {
       console.log(`  list2: any[]`)

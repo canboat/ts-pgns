@@ -44,7 +44,7 @@ export interface PGN {
 export interface PGN_59392Fields extends PGNFields {
   control?: enums.IsoControl|number
   groupFunction?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   pgn?: N2K_Pgn
 }
 
@@ -107,7 +107,7 @@ export interface PGN_60416_CtsFields extends PGNFields {
   groupFunctionCode?: enums.IsoCommand|number
   maxPackets?: N2K_Number
   nextSid?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   pgn?: N2K_Pgn
 }
 
@@ -125,7 +125,7 @@ export interface PGN_60416_EomFields extends PGNFields {
   groupFunctionCode?: enums.IsoCommand|number
   totalMessageSize?: N2K_Number
   totalNumberOfFramesReceived?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   pgn?: N2K_Pgn
 }
 
@@ -143,7 +143,7 @@ export interface PGN_60416_BamFields extends PGNFields {
   groupFunctionCode?: enums.IsoCommand|number
   messageSize?: N2K_Number
   packets?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   pgn?: N2K_Pgn
 }
 
@@ -160,7 +160,7 @@ export interface PGN_60416_Bam extends PGN {
 export interface PGN_60416_AbortFields extends PGNFields {
   groupFunctionCode?: enums.IsoCommand|number
   reason?: N2K_Binary
-  reserved?: N2K_Reserved
+  reserved?: number
   pgn?: N2K_Pgn
 }
 
@@ -179,7 +179,7 @@ export interface PGN_60928Fields extends PGNFields {
   deviceInstanceLower?: N2K_Number
   deviceInstanceUpper?: N2K_Number
   deviceFunction?: enums.DeviceFunction|number
-  spare: N2K_Spare
+  spare?: number
   deviceClass?: enums.DeviceClass|number
   systemInstance?: N2K_Number
   industryGroup?: enums.IndustryCode|number
@@ -199,13 +199,13 @@ export interface PGN_60928 extends PGN {
 */
 export interface PGN_61184_Raymarine_WirelessKeypadLightControlFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: N2K_Number
   variant?: N2K_Number
   wirelessSetting?: N2K_Number
   wiredSetting?: N2K_Number
-  reserved8?: N2K_Reserved
+  reserved8?: number
 }
 
 export interface PGN_61184_Raymarine_WirelessKeypadLightControl extends PGN {
@@ -220,12 +220,12 @@ export interface PGN_61184_Raymarine_WirelessKeypadLightControl extends PGN {
 */
 export interface PGN_61184_RaymarineFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   PID: N2K_Number
   variant?: N2K_Number
   beepControl?: N2K_Number
-  reserved7?: N2K_Reserved
+  reserved7?: number
 }
 
 export interface PGN_61184_Raymarine extends PGN {
@@ -240,7 +240,7 @@ export interface PGN_61184_Raymarine extends PGN {
 */
 export interface PGN_61184_VictronEnergyFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   registerId?: N2K_Number
   payload?: N2K_Number
@@ -258,7 +258,7 @@ export interface PGN_65001Fields extends PGNFields {
   lineLineAcRmsVoltage?: N2K_Number
   lineNeutralAcRmsVoltage?: N2K_Number
   acFrequency?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65001 extends PGN {
@@ -273,7 +273,7 @@ export interface PGN_65002Fields extends PGNFields {
   lineLineAcRmsVoltage?: N2K_Number
   lineNeutralAcRmsVoltage?: N2K_Number
   acFrequency?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65002 extends PGN {
@@ -288,7 +288,7 @@ export interface PGN_65003Fields extends PGNFields {
   lineLineAcRmsVoltage?: N2K_Number
   lineNeutralAcRmsVoltage?: N2K_Number
   acFrequency?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65003 extends PGN {
@@ -303,7 +303,7 @@ export interface PGN_65004Fields extends PGNFields {
   lineLineAcRmsVoltage?: N2K_Number
   lineNeutralAcRmsVoltage?: N2K_Number
   acFrequency?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65004 extends PGN {
@@ -331,7 +331,7 @@ export interface PGN_65006Fields extends PGNFields {
   reactivePower?: N2K_Number
   powerFactor?: N2K_Number
   powerFactorLagging?: enums.PowerFactor|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65006 extends PGN {
@@ -374,7 +374,7 @@ export interface PGN_65009Fields extends PGNFields {
   reactivePower?: N2K_Number
   powerFactor?: N2K_Number
   powerFactorLagging?: enums.PowerFactor|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65009 extends PGN {
@@ -417,7 +417,7 @@ export interface PGN_65012Fields extends PGNFields {
   reactivePower?: N2K_Number
   powerFactor?: N2K_Number
   powerFactorLagging?: enums.PowerFactor|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65012 extends PGN {
@@ -460,7 +460,7 @@ export interface PGN_65015Fields extends PGNFields {
   reactivePower?: N2K_Number
   powerFactor?: N2K_Number
   powerFactorLagging?: enums.PowerFactor|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65015 extends PGN {
@@ -516,7 +516,7 @@ export interface PGN_65019Fields extends PGNFields {
   reactivePower?: N2K_Number
   powerFactor?: N2K_Number
   powerFactorLagging?: enums.PowerFactor|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65019 extends PGN {
@@ -559,7 +559,7 @@ export interface PGN_65022Fields extends PGNFields {
   reactivePower?: N2K_Number
   powerFactor?: N2K_Number
   powerFactorLagging?: enums.PowerFactor|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65022 extends PGN {
@@ -602,7 +602,7 @@ export interface PGN_65025Fields extends PGNFields {
   reactivePower?: N2K_Number
   powerFactor?: N2K_Number
   powerFactorLagging?: enums.PowerFactor|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65025 extends PGN {
@@ -645,7 +645,7 @@ export interface PGN_65028Fields extends PGNFields {
   reactivePower?: N2K_Number
   powerFactor?: N2K_Number
   powerFactorLagging?: enums.PowerFactor|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65028 extends PGN {
@@ -691,11 +691,11 @@ export interface PGN_65240Fields extends PGNFields {
   deviceInstanceLower?: N2K_Number
   deviceInstanceUpper?: N2K_Number
   deviceFunction?: enums.DeviceFunction|number
-  reserved: N2K_Reserved
+  reserved?: number
   deviceClass?: enums.DeviceClass|number
   systemInstance?: N2K_Number
   industryCode?: enums.IndustryCode|number
-  reserved10: N2K_Reserved
+  reserved10?: number
   newSourceAddress?: N2K_Number
 }
 
@@ -709,10 +709,10 @@ export interface PGN_65240 extends PGN {
 */
 export interface PGN_65280Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   heave?: N2K_Number
-  reserved5?: N2K_Reserved
+  reserved5?: number
 }
 
 export interface PGN_65280 extends PGN {
@@ -725,12 +725,12 @@ export interface PGN_65280 extends PGN {
 */
 export interface PGN_65284Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   bankInstance: N2K_Number
   indicatorNumber?: N2K_Number
   breakerCurrent?: N2K_Number
-  reserved7?: N2K_Reserved
+  reserved7?: number
 }
 
 export interface PGN_65284 extends PGN {
@@ -745,10 +745,10 @@ export interface PGN_65284 extends PGN {
 */
 export interface PGN_65285_AirmarFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   bootState?: enums.BootState|number
-  reserved5?: N2K_Reserved
+  reserved5?: number
 }
 
 export interface PGN_65285_Airmar extends PGN {
@@ -763,11 +763,11 @@ export interface PGN_65285_Airmar extends PGN {
 */
 export interface PGN_65285_LowranceFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   temperatureSource?: enums.TemperatureSource|number
   actualTemperature?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_65285_Lowrance extends PGN {
@@ -782,7 +782,7 @@ export interface PGN_65285_Lowrance extends PGN {
 */
 export interface PGN_65286_ChetcoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   instance: N2K_Number
   dimmer1?: N2K_Number
@@ -804,9 +804,9 @@ export interface PGN_65286_Chetco extends PGN {
 */
 export interface PGN_65286_AirmarFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
 }
 
 export interface PGN_65286_Airmar extends PGN {
@@ -821,11 +821,11 @@ export interface PGN_65286_Airmar extends PGN {
 */
 export interface PGN_65287_AirmarFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   formatCode?: N2K_Number
   accessLevel?: enums.AccessLevel|number
-  reserved6?: N2K_Reserved
+  reserved6?: number
   accessSeedKey?: N2K_Number
 }
 
@@ -841,9 +841,9 @@ export interface PGN_65287_Airmar extends PGN {
 */
 export interface PGN_65287_SimradFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
 }
 
 export interface PGN_65287_Simrad extends PGN {
@@ -856,7 +856,7 @@ export interface PGN_65287_Simrad extends PGN {
 */
 export interface PGN_65288Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   sid?: N2K_Binary
   alarmStatus?: enums.SeatalkAlarmStatus|number
@@ -875,9 +875,9 @@ export interface PGN_65288 extends PGN {
 */
 export interface PGN_65289Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
 }
 
 export interface PGN_65289 extends PGN {
@@ -890,9 +890,9 @@ export interface PGN_65289 extends PGN {
 */
 export interface PGN_65290Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
 }
 
 export interface PGN_65290 extends PGN {
@@ -905,9 +905,9 @@ export interface PGN_65290 extends PGN {
 */
 export interface PGN_65292Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
 }
 
 export interface PGN_65292 extends PGN {
@@ -922,9 +922,9 @@ export interface PGN_65292 extends PGN {
 */
 export interface PGN_65293_SimradFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
 }
 
 export interface PGN_65293_Simrad extends PGN {
@@ -939,10 +939,10 @@ export interface PGN_65293_Simrad extends PGN {
 */
 export interface PGN_65293_DiverseYachtServicesFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   instance: N2K_Number
-  reserved5?: N2K_Reserved
+  reserved5?: number
   loadCell?: N2K_Number
 }
 
@@ -957,13 +957,13 @@ export interface PGN_65293_DiverseYachtServices extends PGN {
 */
 export interface PGN_65302Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   a?: N2K_Number
   b?: N2K_Number
   c?: N2K_Number
   d?: N2K_Number
-  reserved8?: N2K_Reserved
+  reserved8?: number
 }
 
 export interface PGN_65302 extends PGN {
@@ -980,12 +980,12 @@ export interface PGN_65302 extends PGN {
 */
 export interface PGN_65305_Simrad_StatusFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   model?: enums.SimnetDeviceModel|number
   report?: enums.SimnetDeviceReport|number
   status?: enums.SimnetApStatus|number
-  spare7?: N2K_Spare
+  spare7?: number
 }
 
 export interface PGN_65305_Simrad_Status extends PGN {
@@ -1002,11 +1002,11 @@ export interface PGN_65305_Simrad_Status extends PGN {
 */
 export interface PGN_65305_Simrad_SendStatusFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   model?: enums.SimnetDeviceModel|number
   report?: enums.SimnetDeviceReport|number
-  spare6?: N2K_Spare
+  spare6?: number
 }
 
 export interface PGN_65305_Simrad_SendStatus extends PGN {
@@ -1023,12 +1023,12 @@ export interface PGN_65305_Simrad_SendStatus extends PGN {
 */
 export interface PGN_65305_Simrad_ModeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   model?: enums.SimnetDeviceModel|number
   report?: enums.SimnetDeviceReport|number
   mode?: enums.SimnetApModeBitfield[]
-  spare7?: N2K_Spare
+  spare7?: number
 }
 
 export interface PGN_65305_Simrad_Mode extends PGN {
@@ -1045,11 +1045,11 @@ export interface PGN_65305_Simrad_Mode extends PGN {
 */
 export interface PGN_65305_Simrad_SendModeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   model?: enums.SimnetDeviceModel|number
   report?: enums.SimnetDeviceReport|number
-  spare6?: N2K_Spare
+  spare6?: number
 }
 
 export interface PGN_65305_Simrad_SendMode extends PGN {
@@ -1066,7 +1066,7 @@ export interface PGN_65305_Simrad_SendMode extends PGN {
 */
 export interface PGN_65305_Simrad_SailingProcessorStatusFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   model?: enums.SimnetDeviceModel|number
   report?: enums.SimnetDeviceReport|number
@@ -1083,12 +1083,12 @@ export interface PGN_65305_Simrad_SailingProcessorStatus extends PGN {
 */
 export interface PGN_65309Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   status?: N2K_Number
   batteryStatus?: N2K_Number
   batteryChargeStatus?: N2K_Number
-  reserved7?: N2K_Reserved
+  reserved7?: number
 }
 
 export interface PGN_65309 extends PGN {
@@ -1101,11 +1101,11 @@ export interface PGN_65309 extends PGN {
 */
 export interface PGN_65312Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   unknown?: N2K_Number
   signalStrength?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_65312 extends PGN {
@@ -1119,14 +1119,14 @@ export interface PGN_65312 extends PGN {
 */
 export interface PGN_65340Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   a?: N2K_Number
   b?: N2K_Number
   c?: N2K_Number
   d?: N2K_Number
   e?: N2K_Number
-  reserved9?: N2K_Reserved
+  reserved9?: number
 }
 
 export interface PGN_65340 extends PGN {
@@ -1139,11 +1139,11 @@ export interface PGN_65340 extends PGN {
 */
 export interface PGN_65341Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   mode?: enums.SimnetApMode|number
-  reserved6?: N2K_Reserved
+  reserved6?: number
   angle?: N2K_Number
 }
 
@@ -1157,11 +1157,11 @@ export interface PGN_65341 extends PGN {
 */
 export interface PGN_65345Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   windDatum?: N2K_Number
   rollingAverageWindAngle?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_65345 extends PGN {
@@ -1177,7 +1177,7 @@ export interface PGN_65350Fields extends PGNFields {
   b?: N2K_Number
   c?: N2K_Number
   d?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65350 extends PGN {
@@ -1190,12 +1190,12 @@ export interface PGN_65350 extends PGN {
 */
 export interface PGN_65359Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   sid?: N2K_Binary
   headingTrue?: N2K_Number
   headingMagnetic?: N2K_Number
-  reserved7?: N2K_Reserved
+  reserved7?: number
 }
 
 export interface PGN_65359 extends PGN {
@@ -1208,12 +1208,12 @@ export interface PGN_65359 extends PGN {
 */
 export interface PGN_65360Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   sid?: N2K_Binary
   targetHeadingTrue?: N2K_Number
   targetHeadingMagnetic?: N2K_Number
-  reserved7?: N2K_Reserved
+  reserved7?: number
 }
 
 export interface PGN_65360 extends PGN {
@@ -1226,11 +1226,11 @@ export interface PGN_65360 extends PGN {
 */
 export interface PGN_65361Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   alarmId?: enums.SeatalkAlarmId|number
   alarmGroup?: enums.SeatalkAlarmGroup|number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_65361 extends PGN {
@@ -1243,16 +1243,16 @@ export interface PGN_65361 extends PGN {
 */
 export interface PGN_65371Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: N2K_Number
   firstKey?: N2K_Number
   secondKey?: N2K_Number
   firstKeyState?: N2K_Number
   secondKeyState?: N2K_Number
-  reserved9?: N2K_Reserved
+  reserved9?: number
   encoderPosition?: N2K_Number
-  reserved11?: N2K_Reserved
+  reserved11?: number
 }
 
 export interface PGN_65371 extends PGN {
@@ -1265,12 +1265,12 @@ export interface PGN_65371 extends PGN {
 */
 export interface PGN_65374Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: N2K_Number
   variant?: N2K_Number
   status?: N2K_Number
-  reserved7?: N2K_Reserved
+  reserved7?: number
 }
 
 export interface PGN_65374 extends PGN {
@@ -1283,12 +1283,12 @@ export interface PGN_65374 extends PGN {
 */
 export interface PGN_65379Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   pilotMode?: enums.SeatalkPilotMode16|number
   subMode?: N2K_Binary
   pilotModeData?: N2K_Binary
-  reserved7?: N2K_Reserved
+  reserved7?: number
 }
 
 export interface PGN_65379 extends PGN {
@@ -1301,11 +1301,11 @@ export interface PGN_65379 extends PGN {
 */
 export interface PGN_65408Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   sid?: N2K_Number
   depthQualityFactor?: enums.AirmarDepthQualityFactor|number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_65408 extends PGN {
@@ -1318,12 +1318,12 @@ export interface PGN_65408 extends PGN {
 */
 export interface PGN_65409Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   sid?: N2K_Number
   durationOfInterval?: N2K_Duration
   numberOfPulsesReceived?: N2K_Number
-  reserved7?: N2K_Reserved
+  reserved7?: number
 }
 
 export interface PGN_65409 extends PGN {
@@ -1336,12 +1336,12 @@ export interface PGN_65409 extends PGN {
 */
 export interface PGN_65410Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   sid?: N2K_Number
   internalDeviceTemperature?: N2K_Number
   supplyVoltage?: N2K_Number
-  reserved7?: N2K_Reserved
+  reserved7?: number
 }
 
 export interface PGN_65410 extends PGN {
@@ -1355,14 +1355,14 @@ export interface PGN_65410 extends PGN {
 */
 export interface PGN_65420Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   a?: N2K_Number
   b?: N2K_Number
   c?: N2K_Number
   d?: N2K_Number
   e?: N2K_Number
-  reserved9?: N2K_Reserved
+  reserved9?: number
 }
 
 export interface PGN_65420 extends PGN {
@@ -1375,9 +1375,9 @@ export interface PGN_65420 extends PGN {
 */
 export interface PGN_65480Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
 }
 
 export interface PGN_65480 extends PGN {
@@ -1395,9 +1395,10 @@ export interface PGN_126208Fields extends PGNFields {
   transmissionInterval?: N2K_Duration
   transmissionIntervalOffset?: N2K_Duration
   numberOfParameters?: N2K_Number
-  parameter?: N2K_FieldIndex
-  value?: N2K_Variable
-  list: any[]
+  list: {
+    parameter?: N2K_FieldIndex
+    value?: N2K_Variable
+  }[]
 }
 
 export interface PGN_126208 extends PGN {
@@ -1414,11 +1415,12 @@ export interface PGN_126208_CommandFields extends PGNFields {
   functionCode?: enums.GroupFunction|number
   pgn?: N2K_Pgn
   priority?: enums.Priority|number
-  reserved?: N2K_Reserved
+  reserved?: number
   numberOfParameters?: N2K_Number
-  parameter?: N2K_FieldIndex
-  value?: N2K_Variable
-  list: any[]
+  list: {
+    parameter?: N2K_FieldIndex
+    value?: N2K_Variable
+  }[]
 }
 
 export interface PGN_126208_Command extends PGN {
@@ -1437,8 +1439,9 @@ export interface PGN_126208_AcknowledgeFields extends PGNFields {
   pgnErrorCode?: enums.PgnErrorCode|number
   transmissionIntervalPriorityErrorCode?: enums.TransmissionInterval|number
   numberOfParameters?: N2K_Number
-  parameter?: enums.ParameterField|number
-  list: any[]
+  list: {
+    parameter?: enums.ParameterField|number
+  }[]
 }
 
 export interface PGN_126208_Acknowledge extends PGN {
@@ -1455,15 +1458,16 @@ export interface PGN_126208_ReadFieldsFields extends PGNFields {
   functionCode?: enums.GroupFunction|number
   pgn?: N2K_Pgn
   manufacturerCode?: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode?: enums.IndustryCode|number
   uniqueId?: N2K_Number
   numberOfSelectionPairs?: N2K_Number
   numberOfParameters?: N2K_Number
-  selectionParameter?: N2K_FieldIndex
-  selectionValue?: N2K_Variable
   parameter?: N2K_FieldIndex
-  list: any[]
+  list: {
+    selectionParameter?: N2K_FieldIndex
+    selectionValue?: N2K_Variable
+  }[]
   list2: any[]
 }
 
@@ -1481,16 +1485,17 @@ export interface PGN_126208_ReadFieldsReplyFields extends PGNFields {
   functionCode?: enums.GroupFunction|number
   pgn?: N2K_Pgn
   manufacturerCode?: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode?: enums.IndustryCode|number
   uniqueId?: N2K_Number
   numberOfSelectionPairs?: N2K_Number
   numberOfParameters?: N2K_Number
-  selectionParameter?: N2K_FieldIndex
-  selectionValue?: N2K_Variable
   parameter?: N2K_FieldIndex
   value?: N2K_Variable
-  list: any[]
+  list: {
+    selectionParameter?: N2K_FieldIndex
+    selectionValue?: N2K_Variable
+  }[]
   list2: any[]
 }
 
@@ -1508,16 +1513,17 @@ export interface PGN_126208_WriteFieldsFields extends PGNFields {
   functionCode?: enums.GroupFunction|number
   pgn?: N2K_Pgn
   manufacturerCode?: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode?: enums.IndustryCode|number
   uniqueId?: N2K_Number
   numberOfSelectionPairs?: N2K_Number
   numberOfParameters?: N2K_Number
-  selectionParameter?: N2K_FieldIndex
-  selectionValue?: N2K_Variable
   parameter?: N2K_FieldIndex
   value?: N2K_Variable
-  list: any[]
+  list: {
+    selectionParameter?: N2K_FieldIndex
+    selectionValue?: N2K_Variable
+  }[]
   list2: any[]
 }
 
@@ -1535,16 +1541,17 @@ export interface PGN_126208_WriteFieldsReplyFields extends PGNFields {
   functionCode?: enums.GroupFunction|number
   pgn?: N2K_Pgn
   manufacturerCode?: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode?: enums.IndustryCode|number
   uniqueId?: N2K_Number
   numberOfSelectionPairs?: N2K_Number
   numberOfParameters?: N2K_Number
-  selectionParameter?: N2K_FieldIndex
-  selectionValue?: N2K_Variable
   parameter?: N2K_FieldIndex
   value?: N2K_Variable
-  list: any[]
+  list: {
+    selectionParameter?: N2K_FieldIndex
+    selectionValue?: N2K_Variable
+  }[]
   list2: any[]
 }
 
@@ -1558,8 +1565,9 @@ export interface PGN_126208_WriteFieldsReply extends PGN {
 */
 export interface PGN_126464Fields extends PGNFields {
   functionCode?: enums.PgnListFunction|number
-  pgn?: N2K_Pgn
-  list: any[]
+  list: {
+    pgn?: N2K_Pgn
+  }[]
 }
 
 export interface PGN_126464 extends PGN {
@@ -1576,7 +1584,7 @@ export interface PGN_126464 extends PGN {
 */
 export interface PGN_126720_Raymarine__0X81F0__0X84Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: N2K_Number
   command?: N2K_Number
@@ -1600,7 +1608,7 @@ export interface PGN_126720_Raymarine__0X81F0__0X84 extends PGN {
 */
 export interface PGN_126720_FusionElectronics_MediaControlFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: N2K_Number
   unknown?: N2K_Number
@@ -1621,7 +1629,7 @@ export interface PGN_126720_FusionElectronics_MediaControl extends PGN {
 */
 export interface PGN_126720_FusionElectronics_SiriusControlFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: N2K_Number
   unknown?: N2K_Number
@@ -1642,7 +1650,7 @@ export interface PGN_126720_FusionElectronics_SiriusControl extends PGN {
 */
 export interface PGN_126720_FusionElectronics_RequestStatusFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.FusionMessageId|number
   unknown?: N2K_Number
@@ -1661,7 +1669,7 @@ export interface PGN_126720_FusionElectronics_RequestStatus extends PGN {
 */
 export interface PGN_126720_FusionElectronics_SourceFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.FusionMessageId|number
   unknown?: N2K_Number
@@ -1681,7 +1689,7 @@ export interface PGN_126720_FusionElectronics_Source extends PGN {
 */
 export interface PGN_126720_FusionElectronics_23Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.FusionMessageId|number
   command?: enums.FusionMuteCommand|number
@@ -1700,7 +1708,7 @@ export interface PGN_126720_FusionElectronics_23 extends PGN {
 */
 export interface PGN_126720_FusionElectronics_SetZoneVolumeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.FusionMessageId|number
   unknown?: N2K_Number
@@ -1721,7 +1729,7 @@ export interface PGN_126720_FusionElectronics_SetZoneVolume extends PGN {
 */
 export interface PGN_126720_FusionElectronics_SetAllVolumesFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.FusionMessageId|number
   unknown?: N2K_Number
@@ -1745,7 +1753,7 @@ export interface PGN_126720_FusionElectronics_SetAllVolumes extends PGN {
 */
 export interface PGN_126720_Raymarine__0X81F0__0X86Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: N2K_Number
   command?: N2K_Number
@@ -1769,11 +1777,11 @@ export interface PGN_126720_Raymarine__0X81F0__0X86 extends PGN {
 */
 export interface PGN_126720_Raymarine__0X81F0__0X90Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: N2K_Number
   command?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
   device?: enums.SeatalkDeviceId|number
 }
 
@@ -1790,7 +1798,7 @@ export interface PGN_126720_Raymarine__0X81F0__0X90 extends PGN {
 */
 export interface PGN_126720_Raymarine__0X0C8CFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: N2K_Number
   group?: enums.SeatalkNetworkGroup|number
@@ -1814,7 +1822,7 @@ export interface PGN_126720_Raymarine__0X0C8C extends PGN {
 */
 export interface PGN_126720_Raymarine__0X0C8C_ColorFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: N2K_Number
   group?: enums.SeatalkNetworkGroup|number
@@ -1837,7 +1845,7 @@ export interface PGN_126720_Raymarine__0X0C8C_Color extends PGN {
 */
 export interface PGN_126720_Airmar_AttitudeOffsetsFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   azimuthOffset?: N2K_Number
@@ -1858,7 +1866,7 @@ export interface PGN_126720_Airmar_AttitudeOffsets extends PGN {
 */
 export interface PGN_126720_Airmar_CalibrateCompassFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   calibrateFunction?: enums.AirmarCalibrateFunction|number
@@ -1888,11 +1896,11 @@ export interface PGN_126720_Airmar_CalibrateCompass extends PGN {
 */
 export interface PGN_126720_Airmar_TrueWindOptionsFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   cogSubstitutionForHdg?: enums.YesNo|number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_126720_Airmar_TrueWindOptions extends PGN {
@@ -1908,11 +1916,11 @@ export interface PGN_126720_Airmar_TrueWindOptions extends PGN {
 */
 export interface PGN_126720_Airmar_SimulateModeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   simulateMode?: enums.OffOn|number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_126720_Airmar_SimulateMode extends PGN {
@@ -1928,11 +1936,11 @@ export interface PGN_126720_Airmar_SimulateMode extends PGN {
 */
 export interface PGN_126720_Airmar_CalibrateDepthFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   speedOfSoundMode?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_126720_Airmar_CalibrateDepth extends PGN {
@@ -1948,13 +1956,14 @@ export interface PGN_126720_Airmar_CalibrateDepth extends PGN {
 */
 export interface PGN_126720_Airmar_CalibrateSpeedFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   numberOfPairsOfDataPoints?: N2K_Number
-  inputFrequency?: N2K_Number
-  outputSpeed?: N2K_Number
-  list: any[]
+  list: {
+    inputFrequency?: N2K_Number
+    outputSpeed?: N2K_Number
+  }[]
 }
 
 export interface PGN_126720_Airmar_CalibrateSpeed extends PGN {
@@ -1970,11 +1979,11 @@ export interface PGN_126720_Airmar_CalibrateSpeed extends PGN {
 */
 export interface PGN_126720_Airmar_CalibrateTemperatureFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   temperatureInstance: enums.AirmarTemperatureInstance|number
-  reserved6?: N2K_Reserved
+  reserved6?: number
   temperatureOffset?: N2K_Number
 }
 
@@ -1991,11 +2000,11 @@ export interface PGN_126720_Airmar_CalibrateTemperature extends PGN {
 */
 export interface PGN_126720_Airmar_SpeedFilterFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   filterType?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
   sampleInterval?: N2K_Duration
 }
 
@@ -2013,11 +2022,11 @@ export interface PGN_126720_Airmar_SpeedFilter extends PGN {
 */
 export interface PGN_126720_Airmar_SpeedFilter_IirFilterFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   filterType?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
   sampleInterval?: N2K_Duration
   filterDuration?: N2K_Duration
 }
@@ -2035,11 +2044,11 @@ export interface PGN_126720_Airmar_SpeedFilter_IirFilter extends PGN {
 */
 export interface PGN_126720_Airmar_TemperatureFilterFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   filterType?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
   sampleInterval?: N2K_Duration
 }
 
@@ -2057,11 +2066,11 @@ export interface PGN_126720_Airmar_TemperatureFilter extends PGN {
 */
 export interface PGN_126720_Airmar_TemperatureFilter_IirFilterFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   filterType?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
   sampleInterval?: N2K_Duration
   filterDuration?: N2K_Duration
 }
@@ -2079,11 +2088,11 @@ export interface PGN_126720_Airmar_TemperatureFilter_IirFilter extends PGN {
 */
 export interface PGN_126720_Airmar_Nmea2000OptionsFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   transmissionInterval?: enums.AirmarTransmissionInterval|number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_126720_Airmar_Nmea2000Options extends PGN {
@@ -2098,7 +2107,7 @@ export interface PGN_126720_Airmar_Nmea2000Options extends PGN {
 */
 export interface PGN_126720_AirmarFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: N2K_Number
 }
@@ -2115,7 +2124,7 @@ export interface PGN_126720_Airmar extends PGN {
 */
 export interface PGN_126720_MaretronFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   productCode?: N2K_Number
   softwareCode?: N2K_Number
@@ -2139,15 +2148,15 @@ export interface PGN_126720_Maretron extends PGN {
 */
 export interface PGN_126720_Garmin_Always222_Always5_Always5_Always5Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   unknownId1?: N2K_Number
   unknownId2?: N2K_Number
   unknownId3?: N2K_Number
   unknownId4?: N2K_Number
-  spare8?: N2K_Spare
+  spare8?: number
   mode?: enums.GarminColorMode|number
-  spare10?: N2K_Spare
+  spare10?: number
   backlight?: enums.GarminBacklightLevel|number
 }
 
@@ -2168,15 +2177,15 @@ export interface PGN_126720_Garmin_Always222_Always5_Always5_Always5 extends PGN
 */
 export interface PGN_126720_Garmin_Always222_Always5_Always5_Always5_NightFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   unknownId1?: N2K_Number
   unknownId2?: N2K_Number
   unknownId3?: N2K_Number
   unknownId4?: N2K_Number
-  spare8?: N2K_Spare
+  spare8?: number
   mode?: enums.GarminColorMode|number
-  spare10?: N2K_Spare
+  spare10?: number
   backlight?: enums.GarminBacklightLevel|number
 }
 
@@ -2197,15 +2206,15 @@ export interface PGN_126720_Garmin_Always222_Always5_Always5_Always5_Night exten
 */
 export interface PGN_126720_Garmin_Always222_Always5_Always5_Always5_ColorFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   unknownId1?: N2K_Number
   unknownId2?: N2K_Number
   unknownId3?: N2K_Number
   unknownId4?: N2K_Number
-  spare8?: N2K_Spare
+  spare8?: number
   mode?: enums.GarminColorMode|number
-  spare10?: N2K_Spare
+  spare10?: number
   color?: enums.GarminColor|number
 }
 
@@ -2233,7 +2242,7 @@ export interface PGN_126983Fields extends PGNFields {
   temporarySilenceSupport: enums.YesNo|number
   acknowledgeSupport: enums.YesNo|number
   escalationSupport: enums.YesNo|number
-  reserved?: N2K_Reserved
+  reserved?: number
   acknowledgeSourceNetworkIdName?: N2K_IsoName
   triggerCondition?: enums.AlertTriggerCondition|number
   thresholdStatus?: enums.AlertThresholdStatus|number
@@ -2261,7 +2270,7 @@ export interface PGN_126984Fields extends PGNFields {
   alertOccurrenceNumber?: N2K_Number
   acknowledgeSourceNetworkIdName?: N2K_IsoName
   responseCommand?: enums.AlertResponseCommand|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_126984 extends PGN {
@@ -2307,7 +2316,7 @@ export interface PGN_126986Fields extends PGNFields {
   alertOccurrenceNumber?: N2K_Number
   alertControl?: N2K_Number
   userDefinedAlertAssignment?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   reactivationPeriod?: N2K_Number
   temporarySilencePeriod?: N2K_Number
   escalationPeriod?: N2K_Number
@@ -2332,11 +2341,12 @@ export interface PGN_126987Fields extends PGNFields {
   dataSourceIndexSource?: N2K_Number
   alertOccurrenceNumber?: N2K_Number
   numberOfParameters?: N2K_Number
-  parameterNumber?: N2K_Number
-  triggerMethod?: N2K_Number
-  thresholdDataFormat?: N2K_Number
-  thresholdLevel?: N2K_Number
-  list: any[]
+  list: {
+    parameterNumber?: N2K_Number
+    triggerMethod?: N2K_Number
+    thresholdDataFormat?: N2K_Number
+    thresholdLevel?: N2K_Number
+  }[]
 }
 
 export interface PGN_126987 extends PGN {
@@ -2358,10 +2368,11 @@ export interface PGN_126988Fields extends PGNFields {
   dataSourceIndexSource?: N2K_Number
   alertOccurrenceNumber?: N2K_Number
   numberOfParameters?: N2K_Number
-  valueParameterNumber?: N2K_Number
-  valueDataFormat?: N2K_Number
-  valueData?: N2K_Number
-  list: any[]
+  list: {
+    valueParameterNumber?: N2K_Number
+    valueDataFormat?: N2K_Number
+    valueData?: N2K_Number
+  }[]
 }
 
 export interface PGN_126988 extends PGN {
@@ -2376,7 +2387,7 @@ export interface PGN_126988 extends PGN {
 export interface PGN_126992Fields extends PGNFields {
   sid?: N2K_Number
   source: enums.SystemTime|number
-  reserved?: N2K_Reserved
+  reserved?: number
   date?: N2K_Date
   time?: N2K_Time
 }
@@ -2396,7 +2407,7 @@ export interface PGN_126993Fields extends PGNFields {
   controller1State?: enums.ControllerState|number
   controller2State?: enums.ControllerState|number
   equipmentStatus?: enums.EquipmentStatus|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_126993 extends PGN {
@@ -2456,21 +2467,21 @@ export interface PGN_127233Fields extends PGNFields {
   sid?: N2K_Number
   mobEmitterId?: N2K_Number
   manOverboardStatus?: enums.MobStatus|number
-  reserved?: N2K_Reserved
+  reserved?: number
   activationTime?: N2K_Time
   positionSource?: enums.MobPositionSource|number
-  reserved7?: N2K_Reserved
+  reserved7?: number
   positionDate?: N2K_Date
   positionTime?: N2K_Time
   latitude?: N2K_Number
   longitude?: N2K_Number
   cogReference?: enums.DirectionReference|number
-  reserved13?: N2K_Reserved
+  reserved13?: number
   cog?: N2K_Number
   sog?: N2K_Number
   mmsiOfVesselOfOrigin: N2K_Mmsi
   mobEmitterBatteryLowStatus?: enums.LowBattery|number
-  reserved18?: N2K_Reserved
+  reserved18?: number
 }
 
 export interface PGN_127233 extends PGN {
@@ -2489,7 +2500,7 @@ export interface PGN_127237Fields extends PGNFields {
   steeringMode?: enums.SteeringMode|number
   turnMode?: enums.TurnMode|number
   headingReference?: enums.DirectionReference|number
-  reserved?: N2K_Reserved
+  reserved?: number
   commandedRudderDirection?: enums.DirectionRudder|number
   commandedRudderAngle?: N2K_Number
   headingToSteerCourse?: N2K_Number
@@ -2513,10 +2524,10 @@ export interface PGN_127237 extends PGN {
 export interface PGN_127245Fields extends PGNFields {
   instance: N2K_Number
   directionOrder?: enums.DirectionRudder|number
-  reserved?: N2K_Reserved
+  reserved?: number
   angleOrder?: N2K_Number
   position?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_127245 extends PGN {
@@ -2533,7 +2544,7 @@ export interface PGN_127250Fields extends PGNFields {
   deviation?: N2K_Number
   variation?: N2K_Number
   reference?: enums.DirectionReference|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_127250 extends PGN {
@@ -2547,7 +2558,7 @@ export interface PGN_127250 extends PGN {
 export interface PGN_127251Fields extends PGNFields {
   sid?: N2K_Number
   rate?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_127251 extends PGN {
@@ -2561,7 +2572,7 @@ export interface PGN_127251 extends PGN {
 export interface PGN_127252Fields extends PGNFields {
   sid?: N2K_Number
   heave?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_127252 extends PGN {
@@ -2577,7 +2588,7 @@ export interface PGN_127257Fields extends PGNFields {
   yaw?: N2K_Number
   pitch?: N2K_Number
   roll?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_127257 extends PGN {
@@ -2591,10 +2602,10 @@ export interface PGN_127257 extends PGN {
 export interface PGN_127258Fields extends PGNFields {
   sid?: N2K_Number
   source?: enums.MagneticVariation|number
-  reserved?: N2K_Reserved
+  reserved?: number
   ageOfService?: N2K_Date
   variation?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_127258 extends PGN {
@@ -2610,7 +2621,7 @@ export interface PGN_127488Fields extends PGNFields {
   speed?: N2K_Number
   boostPressure?: N2K_Number
   tiltTrim?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_127488 extends PGN {
@@ -2631,7 +2642,7 @@ export interface PGN_127489Fields extends PGNFields {
   totalEngineHours?: N2K_Duration
   coolantPressure?: N2K_Number
   fuelPressure?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   discreteStatus1?: enums.EngineStatus1[]
   discreteStatus2?: enums.EngineStatus2[]
   engineLoad?: N2K_Number
@@ -2650,7 +2661,7 @@ export interface PGN_127489 extends PGN {
 export interface PGN_127490Fields extends PGNFields {
   inverterMotorIdentifier: N2K_Number
   operatingMode?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   motorTemperature?: N2K_Number
   inverterTemperature?: N2K_Number
   coolantTemperature?: N2K_Number
@@ -2691,11 +2702,11 @@ export interface PGN_127491 extends PGN {
 export interface PGN_127493Fields extends PGNFields {
   instance: enums.EngineInstance|number
   transmissionGear?: enums.GearStatus|number
-  reserved?: N2K_Reserved
+  reserved?: number
   oilPressure?: N2K_Number
   oilTemperature?: N2K_Number
   discreteStatus1?: N2K_Number
-  reserved7?: N2K_Reserved
+  reserved7?: number
 }
 
 export interface PGN_127493 extends PGN {
@@ -2710,7 +2721,7 @@ export interface PGN_127493 extends PGN {
 export interface PGN_127494Fields extends PGNFields {
   inverterMotorIdentifier: N2K_Number
   motorType?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   motorVoltageRating?: N2K_Number
   maximumContinuousMotorPower?: N2K_Number
   maximumBoostMotorPower?: N2K_Number
@@ -2735,7 +2746,7 @@ export interface PGN_127494 extends PGN {
 export interface PGN_127495Fields extends PGNFields {
   energyStorageIdentifier: N2K_Number
   motorType?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   storageChemistryConversion?: N2K_Number
   maximumTemperatureDerating?: N2K_Number
   maximumTemperatureShutOff?: N2K_Number
@@ -2746,7 +2757,7 @@ export interface PGN_127495Fields extends PGNFields {
   batteryCycleCounter?: N2K_Number
   batteryFullStatus?: N2K_Number
   batteryEmptyStatus?: N2K_Number
-  reserved14?: N2K_Reserved
+  reserved14?: number
   maximumChargeSoc?: N2K_Number
   minimumChargeSoc?: N2K_Number
 }
@@ -2907,17 +2918,18 @@ export interface PGN_127502 extends PGN {
 export interface PGN_127503Fields extends PGNFields {
   instance: N2K_Number
   numberOfLines?: N2K_Number
-  line?: enums.AcLine|number
-  acceptability?: enums.Acceptability|number
-  reserved?: N2K_Reserved
-  voltage?: N2K_Number
-  current?: N2K_Number
-  frequency?: N2K_Number
-  breakerSize?: N2K_Number
-  realPower?: N2K_Number
-  reactivePower?: N2K_Number
-  powerFactor?: N2K_Number
-  list: any[]
+  list: {
+    line?: enums.AcLine|number
+    acceptability?: enums.Acceptability|number
+    reserved?: number
+    voltage?: N2K_Number
+    current?: N2K_Number
+    frequency?: N2K_Number
+    breakerSize?: N2K_Number
+    realPower?: N2K_Number
+    reactivePower?: N2K_Number
+    powerFactor?: N2K_Number
+  }[]
 }
 
 export interface PGN_127503 extends PGN {
@@ -2931,17 +2943,18 @@ export interface PGN_127503 extends PGN {
 export interface PGN_127504Fields extends PGNFields {
   instance: N2K_Number
   numberOfLines?: N2K_Number
-  line?: enums.Line|number
-  waveform?: enums.Waveform|number
-  reserved?: N2K_Reserved
-  voltage?: N2K_Number
-  current?: N2K_Number
-  frequency?: N2K_Number
-  breakerSize?: N2K_Number
-  realPower?: N2K_Number
-  reactivePower?: N2K_Number
-  powerFactor?: N2K_Number
-  list: any[]
+  list: {
+    line?: enums.Line|number
+    waveform?: enums.Waveform|number
+    reserved?: number
+    voltage?: N2K_Number
+    current?: N2K_Number
+    frequency?: N2K_Number
+    breakerSize?: N2K_Number
+    realPower?: N2K_Number
+    reactivePower?: N2K_Number
+    powerFactor?: N2K_Number
+  }[]
 }
 
 export interface PGN_127504 extends PGN {
@@ -2957,7 +2970,7 @@ export interface PGN_127505Fields extends PGNFields {
   type?: enums.TankType|number
   level?: N2K_Number
   capacity?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_127505 extends PGN {
@@ -2994,7 +3007,7 @@ export interface PGN_127507Fields extends PGNFields {
   chargeMode?: enums.ChargerMode|number
   enabled?: enums.OffOn|number
   equalizationPending?: enums.OffOn|number
-  reserved?: N2K_Reserved
+  reserved?: number
   equalizationTimeRemaining?: N2K_Duration
 }
 
@@ -3029,7 +3042,7 @@ export interface PGN_127509Fields extends PGNFields {
   dcInstance: N2K_Number
   operatingState?: enums.InverterState|number
   inverterEnable?: enums.OffOn|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_127509 extends PGN {
@@ -3044,7 +3057,7 @@ export interface PGN_127510Fields extends PGNFields {
   instance: N2K_Number
   batteryInstance: N2K_Number
   chargerEnableDisable?: enums.OffOn|number
-  reserved?: N2K_Reserved
+  reserved?: number
   chargeCurrentLimit?: N2K_Number
   chargingAlgorithm?: enums.ChargingAlgorithm|number
   chargerMode?: enums.ChargerMode|number
@@ -3085,7 +3098,7 @@ export interface PGN_127512Fields extends PGNFields {
   instance: N2K_Number
   generatorInstance: N2K_Number
   agsMode?: enums.AgsMode|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_127512 extends PGN {
@@ -3100,7 +3113,7 @@ export interface PGN_127513Fields extends PGNFields {
   instance: N2K_Number
   batteryType?: enums.BatteryType|number
   supportsEqualization?: enums.YesNo|number
-  reserved?: N2K_Reserved
+  reserved?: number
   nominalVoltage?: enums.BatteryVoltage|number
   chemistry?: enums.BatteryChemistry|number
   capacity?: N2K_Number
@@ -3235,7 +3248,7 @@ export interface PGN_127750Fields extends PGNFields {
   overloadState?: enums.GoodWarningError|number
   lowDcVoltageState?: enums.GoodWarningError|number
   rippleState?: enums.GoodWarningError|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_127750 extends PGN {
@@ -3251,7 +3264,7 @@ export interface PGN_127751Fields extends PGNFields {
   connectionNumber?: N2K_Number
   dcVoltage?: N2K_Number
   dcCurrent?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_127751 extends PGN {
@@ -3266,7 +3279,7 @@ export interface PGN_127751 extends PGN {
 export interface PGN_128000Fields extends PGNFields {
   sid?: N2K_Number
   leewayAngle?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_128000 extends PGN {
@@ -3283,7 +3296,7 @@ export interface PGN_128001Fields extends PGNFields {
   longitudinalAcceleration?: N2K_Number
   transverseAcceleration?: N2K_Number
   verticalAcceleration?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_128001 extends PGN {
@@ -3299,7 +3312,7 @@ export interface PGN_128002Fields extends PGNFields {
   inverterMotorController?: N2K_Number
   activeMotorMode?: N2K_Number
   brakeMode?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   rotationalShaftSpeed?: N2K_Number
   motorDcVoltage?: N2K_Number
   motorDcCurrent?: N2K_Number
@@ -3321,7 +3334,7 @@ export interface PGN_128003Fields extends PGNFields {
   batteryError?: N2K_Number
   batteryVoltage?: N2K_Number
   batteryCurrent?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_128003 extends PGN {
@@ -3355,7 +3368,7 @@ export interface PGN_128006 extends PGN {
 export interface PGN_128007Fields extends PGNFields {
   identifier?: N2K_Number
   motorType?: enums.ThrusterMotorType|number
-  reserved?: N2K_Reserved
+  reserved?: number
   powerRating?: N2K_Number
   maximumTemperatureRating?: N2K_Number
   maximumRotationalSpeed?: N2K_Number
@@ -3392,7 +3405,7 @@ export interface PGN_128259Fields extends PGNFields {
   speedGroundReferenced?: N2K_Number
   speedWaterReferencedType?: enums.WaterReference|number
   speedDirection?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_128259 extends PGN {
@@ -3440,7 +3453,7 @@ export interface PGN_128520Fields extends PGNFields {
   reportedTarget: enums.YesNo|number
   targetAcquisition: enums.TargetAcquisition|number
   bearingReference?: enums.DirectionReference|number
-  reserved?: N2K_Reserved
+  reserved?: number
   bearing?: N2K_Number
   distance?: N2K_Number
   course?: N2K_Number
@@ -3450,7 +3463,7 @@ export interface PGN_128520Fields extends PGNFields {
   utcOfFix?: N2K_Time
   name?: N2K_StringLau
   referenceTarget?: enums.YesNo|number
-  reserved17?: N2K_Reserved
+  reserved17?: number
 }
 
 export interface PGN_128520 extends PGN {
@@ -3476,14 +3489,14 @@ export interface PGN_128538Fields extends PGNFields {
   elevatorLoadSensor2Status?: N2K_Number
   elevatorLoadSensor3Status?: N2K_Number
   elevatorLoadSensor4Status?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   elevatorCarMotionStatus?: N2K_Number
   elevatorCarDoorStatus?: N2K_Number
   elevatorCarEmergencyButtonStatus?: N2K_Number
   elevatorCarBuzzerStatus?: N2K_Number
   openDoorButtonStatus?: N2K_Number
   closeDoorButtonStatus?: N2K_Number
-  reserved21?: N2K_Reserved
+  reserved21?: number
   currentDeck?: N2K_Number
   destinationDeck?: N2K_Number
   totalNumberOfDecks?: N2K_Number
@@ -3494,7 +3507,7 @@ export interface PGN_128538Fields extends PGNFields {
   speedOfElevatorCar?: N2K_Number
   elevatorBrakeStatus?: N2K_Number
   elevatorMotorRotationControlStatus?: N2K_Number
-  reserved32?: N2K_Reserved
+  reserved32?: number
 }
 
 export interface PGN_128538 extends PGN {
@@ -3512,7 +3525,7 @@ export interface PGN_128768Fields extends PGNFields {
   elevatorCarUsage?: N2K_Number
   motorAccelerationDecelerationProfileSelection?: N2K_Number
   motorRotationalControlStatus?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_128768 extends PGN {
@@ -3530,7 +3543,7 @@ export interface PGN_128769Fields extends PGNFields {
   deckButtonId?: N2K_Number
   elevatorCarUsage?: N2K_Number
   elevatorCarButtonSelection?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_128769 extends PGN {
@@ -3547,7 +3560,7 @@ export interface PGN_128776Fields extends PGNFields {
   windlassDirectionControl?: enums.WindlassDirection|number
   anchorDockingControl?: enums.OffOn|number
   speedControlType?: enums.SpeedType|number
-  reserved?: N2K_Reserved
+  reserved?: number
   speedControl?: N2K_Binary
   powerEnable?: enums.OffOn|number
   mechanicalLock?: enums.OffOn|number
@@ -3555,7 +3568,7 @@ export interface PGN_128776Fields extends PGNFields {
   anchorLight?: enums.OffOn|number
   commandTimeout?: N2K_Duration
   windlassControlEvents?: enums.WindlassControl[]
-  reserved14?: N2K_Reserved
+  reserved14?: number
 }
 
 export interface PGN_128776 extends PGN {
@@ -3572,7 +3585,7 @@ export interface PGN_128777Fields extends PGNFields {
   windlassDirectionControl?: enums.WindlassDirection|number
   windlassMotionStatus?: enums.WindlassMotion|number
   rodeTypeStatus?: enums.RodeType|number
-  reserved?: N2K_Reserved
+  reserved?: number
   rodeCounterValue?: N2K_Number
   windlassLineSpeed?: N2K_Number
   anchorDockingStatus?: enums.DockingStatus|number
@@ -3594,7 +3607,7 @@ export interface PGN_128778Fields extends PGNFields {
   controllerVoltage?: N2K_Number
   motorCurrent?: N2K_Number
   totalMotorTime?: N2K_Duration
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_128778 extends PGN {
@@ -3612,7 +3625,7 @@ export interface PGN_128780Fields extends PGNFields {
   devicePosition?: N2K_Number
   maximumDeviceTravel?: N2K_Number
   directionOfTravel?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_128780 extends PGN {
@@ -3639,10 +3652,10 @@ export interface PGN_129025 extends PGN {
 export interface PGN_129026Fields extends PGNFields {
   sid?: N2K_Number
   cogReference?: enums.DirectionReference|number
-  reserved?: N2K_Reserved
+  reserved?: number
   cog?: N2K_Number
   sog?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_129026 extends PGN {
@@ -3673,7 +3686,7 @@ export interface PGN_129028Fields extends PGNFields {
   timeDelta?: N2K_Duration
   gnssQuality?: enums.GnsMethod|number
   direction?: enums.DirectionReference|number
-  reserved?: N2K_Reserved
+  reserved?: number
   cog?: N2K_Number
   altitudeDelta?: N2K_Number
 }
@@ -3696,16 +3709,17 @@ export interface PGN_129029Fields extends PGNFields {
   gnssType?: enums.Gns|number
   method?: enums.GnsMethod|number
   integrity?: enums.GnsIntegrity|number
-  reserved?: N2K_Reserved
+  reserved?: number
   numberOfSvs?: N2K_Number
   hdop?: N2K_Number
   pdop?: N2K_Number
   geoidalSeparation?: N2K_Number
   referenceStations?: N2K_Number
-  referenceStationType?: enums.Gns|number
-  referenceStationId?: N2K_Number
-  ageOfDgnssCorrections?: N2K_Duration
-  list: any[]
+  list: {
+    referenceStationType?: enums.Gns|number
+    referenceStationId?: N2K_Number
+    ageOfDgnssCorrections?: N2K_Duration
+  }[]
 }
 
 export interface PGN_129029 extends PGN {
@@ -3747,9 +3761,9 @@ export interface PGN_129038Fields extends PGNFields {
   rateOfTurn?: N2K_Number
   navStatus?: enums.NavStatus|number
   specialManeuverIndicator?: enums.AisSpecialManeuver|number
-  reserved?: N2K_Reserved
-  spare18?: N2K_Spare
-  reserved19?: N2K_Reserved
+  reserved?: number
+  spare18?: number
+  reserved19?: number
   sequenceId?: N2K_Number
 }
 
@@ -3775,8 +3789,8 @@ export interface PGN_129039Fields extends PGNFields {
   communicationState?: N2K_Binary
   aisTransceiverInformation?: enums.AisTransceiver|number
   heading?: N2K_Number
-  regionalApplication?: N2K_Spare
-  regionalApplicationB?: N2K_Spare
+  regionalApplication?: number
+  regionalApplicationB?: number
   unitType: enums.AisType|number
   integratedDisplay: enums.YesNo|number
   dsc: enums.YesNo|number
@@ -3784,7 +3798,7 @@ export interface PGN_129039Fields extends PGNFields {
   canHandleMsg22: enums.YesNo|number
   aisMode: enums.AisMode|number
   aisCommunicationState: enums.AisCommunicationState|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_129039 extends PGN {
@@ -3806,12 +3820,12 @@ export interface PGN_129040Fields extends PGNFields {
   timeStamp?: enums.TimeStamp|number
   cog?: N2K_Number
   sog?: N2K_Number
-  regionalApplication?: N2K_Spare
-  regionalApplicationB?: N2K_Spare
-  reserved?: N2K_Reserved
+  regionalApplication?: number
+  regionalApplicationB?: number
+  reserved?: number
   typeOfShip?: enums.ShipType|number
   trueHeading?: N2K_Number
-  reserved16?: N2K_Reserved
+  reserved16?: number
   gnssType?: enums.PositionFixDevice|number
   length?: N2K_Number
   beam?: N2K_Number
@@ -3820,9 +3834,9 @@ export interface PGN_129040Fields extends PGNFields {
   name?: N2K_StringFix
   dte: enums.Available|number
   aisMode: enums.AisMode|number
-  spare25?: N2K_Spare
+  spare25?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  reserved27?: N2K_Reserved
+  reserved27?: number
 }
 
 export interface PGN_129040 extends PGN {
@@ -3850,12 +3864,12 @@ export interface PGN_129041Fields extends PGNFields {
   offPositionIndicator: enums.YesNo|number
   virtualAtonFlag: enums.YesNo|number
   assignedModeFlag: enums.AisAssignedMode|number
-  spare: N2K_Spare
+  spare?: number
   positionFixingDeviceType?: enums.PositionFixDevice|number
-  reserved19?: N2K_Reserved
+  reserved19?: number
   atonStatus?: N2K_Binary
   aisTransceiverInformation?: enums.AisTransceiver|number
-  reserved22?: N2K_Reserved
+  reserved22?: number
   atonName?: N2K_StringLau
 }
 
@@ -3907,10 +3921,10 @@ export interface PGN_129045 extends PGN {
 export interface PGN_129283Fields extends PGNFields {
   sid?: N2K_Number
   xteMode?: enums.ResidualMode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   navigationTerminated?: enums.YesNo|number
   xte?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_129283 extends PGN {
@@ -3954,14 +3968,15 @@ export interface PGN_129285Fields extends PGNFields {
   routeId?: N2K_Number
   navigationDirectionInRoute?: enums.Direction|number
   supplementaryRouteWpDataAvailable?: enums.OffOn|number
-  reserved?: N2K_Reserved
+  reserved?: number
   routeName?: N2K_StringLau
-  reserved9?: N2K_Reserved
-  wpId?: N2K_Number
-  wpName?: N2K_StringLau
-  wpLatitude?: N2K_Number
-  wpLongitude?: N2K_Number
-  list: any[]
+  reserved9?: number
+  list: {
+    wpId?: N2K_Number
+    wpName?: N2K_StringLau
+    wpLatitude?: N2K_Number
+    wpLongitude?: N2K_Number
+  }[]
 }
 
 export interface PGN_129285 extends PGN {
@@ -3975,10 +3990,10 @@ export interface PGN_129285 extends PGN {
 export interface PGN_129291Fields extends PGNFields {
   sid?: N2K_Number
   setReference?: enums.DirectionReference|number
-  reserved?: N2K_Reserved
+  reserved?: number
   set?: N2K_Number
   drift?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_129291 extends PGN {
@@ -3993,7 +4008,7 @@ export interface PGN_129301Fields extends PGNFields {
   sid?: N2K_Number
   timeToMark?: N2K_Duration
   markType?: enums.MarkType|number
-  reserved?: N2K_Reserved
+  reserved?: number
   markId?: N2K_Number
 }
 
@@ -4009,7 +4024,7 @@ export interface PGN_129302Fields extends PGNFields {
   sid?: N2K_Number
   bearingReference?: enums.DirectionReference|number
   calculationType?: enums.BearingMode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   bearingOriginToDestination?: N2K_Number
   distance?: N2K_Number
   originMarkType?: enums.MarkType|number
@@ -4037,7 +4052,7 @@ export interface PGN_129538Fields extends PGNFields {
   maxCorrectionAge?: N2K_Duration
   antennaAltitudeFor2dMode?: N2K_Number
   useAntennaAltitudeFor2dMode?: enums.YesNo|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_129538 extends PGN {
@@ -4052,7 +4067,7 @@ export interface PGN_129539Fields extends PGNFields {
   sid?: N2K_Number
   desiredMode?: enums.GnssMode|number
   actualMode?: enums.GnssMode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   hdop?: N2K_Number
   vdop?: N2K_Number
   tdop?: N2K_Number
@@ -4069,16 +4084,17 @@ export interface PGN_129539 extends PGN {
 export interface PGN_129540Fields extends PGNFields {
   sid?: N2K_Number
   rangeResidualMode?: enums.RangeResidualMode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   satsInView?: N2K_Number
-  prn?: N2K_Number
-  elevation?: N2K_Number
-  azimuth?: N2K_Number
-  snr?: N2K_Number
-  rangeResiduals?: N2K_Number
-  status?: enums.SatelliteStatus|number
-  reserved11?: N2K_Reserved
-  list: any[]
+  list: {
+    prn?: N2K_Number
+    elevation?: N2K_Number
+    azimuth?: N2K_Number
+    snr?: N2K_Number
+    rangeResiduals?: N2K_Number
+    status?: enums.SatelliteStatus|number
+    reserved11?: number
+  }[]
 }
 
 export interface PGN_129540 extends PGN {
@@ -4103,7 +4119,7 @@ export interface PGN_129541Fields extends PGNFields {
   meanAnomaly?: N2K_Number
   clockParameter1?: N2K_Number
   clockParameter2?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_129541 extends PGN {
@@ -4136,7 +4152,7 @@ export interface PGN_129542 extends PGN {
 export interface PGN_129545Fields extends PGNFields {
   sid?: N2K_Number
   integrityFlag?: enums.GnsIntegrity|number
-  reserved?: N2K_Reserved
+  reserved?: number
   latitudeExpectedError?: N2K_Number
   longitudeExpectedError?: N2K_Number
   altitudeExpectedError?: N2K_Number
@@ -4159,7 +4175,7 @@ export interface PGN_129546Fields extends PGNFields {
   probabilityOfFalseAlarm?: N2K_Number
   probabilityOfMissedDetection?: N2K_Number
   pseudorangeResidualFilteringTimeConstant?: N2K_Duration
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_129546 extends PGN {
@@ -4195,7 +4211,7 @@ export interface PGN_129549Fields extends PGNFields {
   referenceStationType?: enums.Gns|number
   timeOfCorrections?: N2K_Duration
   stationHealth?: enums.StationHealth|number
-  reserved?: N2K_Reserved
+  reserved?: number
   satelliteId?: N2K_Number
   prc?: N2K_Number
   rrc?: N2K_Number
@@ -4218,7 +4234,7 @@ export interface PGN_129550Fields extends PGNFields {
   serialInterfaceDetectionMode?: enums.SerialDetectionMode|number
   differentialSource?: enums.DifferentialSource|number
   differentialOperationMode?: enums.DifferentialMode|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_129550 extends PGN {
@@ -4240,7 +4256,7 @@ export interface PGN_129551Fields extends PGNFields {
   differentialSignalBitRate?: enums.SerialBitRate|number
   differentialSignalDetectionMode?: enums.SerialDetectionMode|number
   usedAsCorrectionSource?: enums.YesNo|number
-  reserved?: N2K_Reserved
+  reserved?: number
   differentialSource?: enums.DifferentialSource|number
   timeSinceLastSatDifferentialSync?: N2K_Duration
   satelliteServiceIdNo?: N2K_Number
@@ -4258,7 +4274,7 @@ export interface PGN_129551 extends PGN {
 export interface PGN_129556Fields extends PGNFields {
   prn?: N2K_Number
   na?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   cna: N2K_Number
   hna?: N2K_Number
   EpsilonNa?: N2K_Number
@@ -4284,13 +4300,13 @@ export interface PGN_129792Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: N2K_Number
   sourceId: N2K_Mmsi
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  spare6?: N2K_Spare
+  spare6?: number
   longitude?: N2K_Number
   latitude?: N2K_Number
-  reserved9?: N2K_Reserved
-  spare10?: N2K_Spare
+  reserved9?: number
+  spare10?: number
   numberOfBitsInBinaryDataField?: N2K_Number
   binaryData?: N2K_Binary
 }
@@ -4311,12 +4327,12 @@ export interface PGN_129793Fields extends PGNFields {
   latitude?: N2K_Number
   positionAccuracy: enums.PositionAccuracy|number
   raim: enums.RaimFlag|number
-  reserved?: N2K_Reserved
+  reserved?: number
   positionTime?: N2K_Time
   communicationState?: N2K_Binary
   aisTransceiverInformation?: enums.AisTransceiver|number
   positionDate?: N2K_Date
-  reserved13?: N2K_Reserved
+  reserved13?: number
   gnssType?: enums.PositionFixDevice|number
 }
 
@@ -4347,9 +4363,9 @@ export interface PGN_129794Fields extends PGNFields {
   aisVersionIndicator?: enums.AisVersion|number
   gnssType?: enums.PositionFixDevice|number
   dte: enums.Available|number
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  reserved21?: N2K_Reserved
+  reserved21?: number
 }
 
 export interface PGN_129794 extends PGN {
@@ -4364,13 +4380,13 @@ export interface PGN_129795Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: enums.RepeatIndicator|number
   sourceId: N2K_Mmsi
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
   sequenceNumber?: N2K_Number
   destinationId: N2K_Mmsi
-  reserved8?: N2K_Reserved
+  reserved8?: number
   retransmitFlag: enums.YesNo|number
-  reserved10: N2K_Reserved
+  reserved10?: number
   numberOfBitsInBinaryDataField?: N2K_Number
   binaryData?: N2K_Binary
 }
@@ -4387,13 +4403,14 @@ export interface PGN_129796Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: enums.RepeatIndicator|number
   sourceId: N2K_Mmsi
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  spare6?: N2K_Spare
-  destinationId: N2K_Mmsi
-  sequenceNumber?: N2K_Number
-  reserved9?: N2K_Reserved
-  list: any[]
+  spare6?: number
+  list: {
+    destinationId: N2K_Mmsi
+    sequenceNumber?: N2K_Number
+    reserved9?: number
+  }[]
 }
 
 export interface PGN_129796 extends PGN {
@@ -4408,9 +4425,9 @@ export interface PGN_129797Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: enums.RepeatIndicator|number
   sourceId?: N2K_Number
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  spare6?: N2K_Spare
+  spare6?: number
   numberOfBitsInBinaryDataField?: N2K_Number
   binaryData?: N2K_Binary
 }
@@ -4439,8 +4456,8 @@ export interface PGN_129798Fields extends PGNFields {
   altitude?: N2K_Number
   reservedForRegionalApplications?: N2K_Binary
   dte: enums.Available|number
-  spare?: N2K_Spare
-  reserved17?: N2K_Reserved
+  spare?: number
+  reserved17?: number
 }
 
 export interface PGN_129798 extends PGN {
@@ -4473,9 +4490,9 @@ export interface PGN_129800Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: enums.RepeatIndicator|number
   sourceId: N2K_Mmsi
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  spare6?: N2K_Spare
+  spare6?: number
   destinationId: N2K_Mmsi
 }
 
@@ -4491,13 +4508,13 @@ export interface PGN_129801Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: enums.RepeatIndicator|number
   sourceId: N2K_Mmsi
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
   sequenceNumber?: N2K_Number
   destinationId: N2K_Mmsi
-  reserved8?: N2K_Reserved
+  reserved8?: number
   retransmitFlag: enums.YesNo|number
-  spare10: N2K_Spare
+  spare10?: number
   safetyRelatedText?: N2K_StringLau
 }
 
@@ -4513,9 +4530,9 @@ export interface PGN_129802Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: enums.RepeatIndicator|number
   sourceId: N2K_Mmsi
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  spare6?: N2K_Spare
+  spare6?: number
   safetyRelatedText?: N2K_StringLau
 }
 
@@ -4531,24 +4548,24 @@ export interface PGN_129803Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: enums.RepeatIndicator|number
   sourceId: N2K_Mmsi
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  spare6?: N2K_Spare
+  spare6?: number
   destinationId1: N2K_Mmsi
-  reserved8?: N2K_Reserved
+  reserved8?: number
   messageId11?: enums.AisMessageId|number
   slotOffset11?: N2K_Number
-  spare11?: N2K_Spare
+  spare11?: number
   messageId12?: enums.AisMessageId|number
   slotOffset12?: N2K_Number
-  reserved14?: N2K_Reserved
-  reserved15?: N2K_Reserved
+  reserved14?: number
+  reserved15?: number
   destinationId2: N2K_Mmsi
-  reserved17?: N2K_Reserved
+  reserved17?: number
   messageId21?: enums.AisMessageId|number
   slotOffset21?: N2K_Number
-  spare20?: N2K_Spare
-  reserved21?: N2K_Reserved
+  spare20?: number
+  reserved21?: number
   sid?: N2K_Number
 }
 
@@ -4564,17 +4581,17 @@ export interface PGN_129804Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: enums.RepeatIndicator|number
   sourceId: N2K_Mmsi
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  spare6?: N2K_Spare
+  spare6?: number
   destinationIdA: N2K_Mmsi
   offsetA?: N2K_Number
   incrementA?: N2K_Number
   destinationIdB: N2K_Mmsi
   offsetB?: N2K_Number
   incrementB?: N2K_Number
-  spare13?: N2K_Spare
-  reserved14?: N2K_Reserved
+  spare13?: number
+  reserved14?: number
 }
 
 export interface PGN_129804 extends PGN {
@@ -4589,14 +4606,15 @@ export interface PGN_129805Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: enums.RepeatIndicator|number
   sourceId: N2K_Mmsi
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  spare6?: N2K_Spare
-  offset?: N2K_Number
-  numberOfSlots?: N2K_Number
-  timeout?: N2K_Duration
-  increment?: N2K_Number
-  list: any[]
+  spare6?: number
+  list: {
+    offset?: N2K_Number
+    numberOfSlots?: N2K_Number
+    timeout?: N2K_Duration
+    increment?: N2K_Number
+  }[]
 }
 
 export interface PGN_129805 extends PGN {
@@ -4611,26 +4629,26 @@ export interface PGN_129806Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: enums.RepeatIndicator|number
   sourceId: N2K_Mmsi
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  spare6?: N2K_Spare
+  spare6?: number
   channelA?: N2K_Number
   channelB?: N2K_Number
-  reserved9?: N2K_Reserved
+  reserved9?: number
   power: enums.PowerMode|number
   txRxMode?: enums.TxRxMode|number
   northEastLongitudeCorner1?: N2K_Number
   northEastLatitudeCorner1?: N2K_Number
   southWestLongitudeCorner2?: N2K_Number
   southWestLatitudeCorner2?: N2K_Number
-  reserved16: N2K_Reserved
+  reserved16?: number
   addressedOrBroadcastMessageIndicator: enums.BroadcastIndicator|number
   channelABandwidth: enums.Bandwidth|number
   channelBBandwidth: enums.Bandwidth|number
-  reserved20: N2K_Reserved
+  reserved20?: number
   transitionalZoneSize?: enums.ZoneSize|number
-  spare22?: N2K_Spare
-  reserved23: N2K_Reserved
+  spare22?: number
+  reserved23?: number
 }
 
 export interface PGN_129806 extends PGN {
@@ -4645,22 +4663,22 @@ export interface PGN_129807Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: enums.RepeatIndicator|number
   sourceId: N2K_Mmsi
-  spare?: N2K_Spare
+  spare?: number
   txRxMode?: enums.TxRxMode|number
-  reserved6?: N2K_Reserved
+  reserved6?: number
   northEastLongitudeCorner1?: N2K_Number
   northEastLatitudeCorner1?: N2K_Number
   southWestLongitudeCorner2?: N2K_Number
   southWestLatitudeCorner2?: N2K_Number
   stationType?: enums.StationType|number
-  reserved12?: N2K_Reserved
+  reserved12?: number
   shipAndCargoFilter?: enums.ShipType|number
-  spare14?: N2K_Spare
-  reserved15?: N2K_Reserved
+  spare14?: number
+  reserved15?: number
   reportingInterval?: enums.ReportingInterval|number
   quietTime?: N2K_Duration
-  spare18?: N2K_Spare
-  reserved19?: N2K_Reserved
+  spare18?: number
+  reserved19?: number
 }
 
 export interface PGN_129807 extends PGN {
@@ -4687,15 +4705,16 @@ export interface PGN_129808_DistressFields extends PGNFields {
   mmsiOfShipInDistress?: N2K_Decimal
   dscEosSymbol?: N2K_Number
   expansionEnabled?: enums.YesNo|number
-  reserved?: N2K_Reserved
+  reserved?: number
   callingRxFrequencyChannel?: N2K_StringFix
   callingTxFrequencyChannel?: N2K_StringFix
   timeOfReceipt?: N2K_Time
   dateOfReceipt?: N2K_Date
   dscEquipmentAssignedMessageId?: N2K_Number
-  dscExpansionFieldSymbol?: enums.DscExpansionData|number
-  dscExpansionFieldData?: N2K_StringLau
-  list: any[]
+  list: {
+    dscExpansionFieldSymbol?: enums.DscExpansionData|number
+    dscExpansionFieldData?: N2K_StringLau
+  }[]
 }
 
 export interface PGN_129808_Distress extends PGN {
@@ -4721,15 +4740,16 @@ export interface PGN_129808Fields extends PGNFields {
   mmsiOfShipInDistress?: N2K_Decimal
   dscEosSymbol?: N2K_Number
   expansionEnabled?: enums.YesNo|number
-  reserved?: N2K_Reserved
+  reserved?: number
   callingRxFrequencyChannel?: N2K_StringFix
   callingTxFrequencyChannel?: N2K_StringFix
   timeOfReceipt?: N2K_Time
   dateOfReceipt?: N2K_Date
   dscEquipmentAssignedMessageId?: N2K_Number
-  dscExpansionFieldSymbol?: enums.DscExpansionData|number
-  dscExpansionFieldData?: N2K_StringLau
-  list: any[]
+  list: {
+    dscExpansionFieldSymbol?: enums.DscExpansionData|number
+    dscExpansionFieldData?: N2K_StringLau
+  }[]
 }
 
 export interface PGN_129808 extends PGN {
@@ -4746,7 +4766,7 @@ export interface PGN_129809Fields extends PGNFields {
   userId: N2K_Mmsi
   name?: N2K_StringFix
   aisTransceiverInformation?: enums.AisTransceiver|number
-  reserved?: N2K_Reserved
+  reserved?: number
   sequenceId?: N2K_Number
 }
 
@@ -4770,11 +4790,11 @@ export interface PGN_129810Fields extends PGNFields {
   positionReferenceFromStarboard?: N2K_Number
   positionReferenceFromBow?: N2K_Number
   mothershipUserId: N2K_Mmsi
-  reserved?: N2K_Reserved
-  spare13?: N2K_Spare
+  reserved?: number
+  spare13?: number
   gnssType?: enums.PositionFixDevice|number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  reserved16?: N2K_Reserved
+  reserved16?: number
   sequenceId?: N2K_Number
 }
 
@@ -4801,7 +4821,7 @@ export interface PGN_130052Fields extends PGNFields {
   stationStatusY?: enums.StationStatus[]
   stationStatusZ?: enums.StationStatus[]
   mode?: enums.ResidualMode|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130052 extends PGN {
@@ -4827,7 +4847,7 @@ export interface PGN_130053Fields extends PGNFields {
   stationStatusY?: enums.StationStatus[]
   stationStatusZ?: enums.StationStatus[]
   mode?: enums.ResidualMode|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130053 extends PGN {
@@ -4876,7 +4896,7 @@ export interface PGN_130060 extends PGN {
 export interface PGN_130061Fields extends PGNFields {
   dataSourceChannelId?: N2K_Number
   sourceSelectionStatus?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   nameSelectionCriteriaMask?: N2K_Binary
   sourceName?: N2K_IsoName
   pgn?: N2K_Pgn
@@ -4899,16 +4919,17 @@ export interface PGN_130064Fields extends PGNFields {
   startDatabaseId?: N2K_Number
   nitems?: N2K_Number
   numberOfDatabasesAvailable?: N2K_Number
-  databaseId?: N2K_Number
-  databaseName?: N2K_StringLau
-  databaseTimestamp?: N2K_Time
-  databaseDatestamp?: N2K_Date
-  wpPositionResolution?: enums.WpPositionResolution|number
-  reserved?: N2K_Reserved
-  numberOfRoutesInDatabase?: N2K_Number
-  numberOfWpsInDatabase?: N2K_Number
-  numberOfBytesInDatabase?: N2K_Number
-  list: any[]
+  list: {
+    databaseId?: N2K_Number
+    databaseName?: N2K_StringLau
+    databaseTimestamp?: N2K_Time
+    databaseDatestamp?: N2K_Date
+    wpPositionResolution?: enums.WpPositionResolution|number
+    reserved?: number
+    numberOfRoutesInDatabase?: N2K_Number
+    numberOfWpsInDatabase?: N2K_Number
+    numberOfBytesInDatabase?: N2K_Number
+  }[]
 }
 
 export interface PGN_130064 extends PGN {
@@ -4924,12 +4945,13 @@ export interface PGN_130065Fields extends PGNFields {
   nitems?: N2K_Number
   numberOfRoutesInDatabase?: N2K_Number
   databaseId?: N2K_Number
-  routeId?: N2K_Number
-  routeName?: N2K_StringLau
-  reserved?: N2K_Reserved
-  wpIdentificationMethod?: enums.WpIdentificationMethod|number
-  routeStatus?: enums.WpRouteStatus|number
-  list: any[]
+  list: {
+    routeId?: N2K_Number
+    routeName?: N2K_StringLau
+    reserved?: number
+    wpIdentificationMethod?: enums.WpIdentificationMethod|number
+    routeStatus?: enums.WpRouteStatus|number
+  }[]
 }
 
 export interface PGN_130065 extends PGN {
@@ -4969,11 +4991,12 @@ export interface PGN_130067Fields extends PGNFields {
   numberOfWpsInTheRouteWpList?: N2K_Number
   databaseId?: N2K_Number
   routeId?: N2K_Number
-  wpId?: N2K_Number
-  wpName?: N2K_StringLau
-  wpLatitude?: N2K_Number
-  wpLongitude?: N2K_Number
-  list: any[]
+  list: {
+    wpId?: N2K_Number
+    wpName?: N2K_StringLau
+    wpLatitude?: N2K_Number
+    wpLongitude?: N2K_Number
+  }[]
 }
 
 export interface PGN_130067 extends PGN {
@@ -4990,9 +5013,10 @@ export interface PGN_130068Fields extends PGNFields {
   numberOfWpsInTheRouteWpList?: N2K_Number
   databaseId?: N2K_Number
   routeId?: N2K_Number
-  wpId?: N2K_Number
-  wpName?: N2K_StringLau
-  list: any[]
+  list: {
+    wpId?: N2K_Number
+    wpName?: N2K_StringLau
+  }[]
 }
 
 export interface PGN_130068 extends PGN {
@@ -5007,13 +5031,14 @@ export interface PGN_130069Fields extends PGNFields {
   startRps?: N2K_Number
   nitems?: N2K_Number
   numberOfWpsWithASpecificXteLimitOrNavMethod?: N2K_Number
-  databaseId?: N2K_Number
-  routeId?: N2K_Number
-  rps?: N2K_Number
-  xteLimitInTheLegAfterWp?: N2K_Number
-  navMethodInTheLegAfterWp?: enums.WpNavigationMethod|number
-  reserved?: N2K_Reserved
-  list: any[]
+  list: {
+    databaseId?: N2K_Number
+    routeId?: N2K_Number
+    rps?: N2K_Number
+    xteLimitInTheLegAfterWp?: N2K_Number
+    navMethodInTheLegAfterWp?: enums.WpNavigationMethod|number
+    reserved?: number
+  }[]
 }
 
 export interface PGN_130069 extends PGN {
@@ -5030,9 +5055,10 @@ export interface PGN_130070Fields extends PGNFields {
   numberOfWpsWithComments?: N2K_Number
   databaseId?: N2K_Number
   routeId?: N2K_Number
-  wpIdRps?: N2K_Number
-  comment?: N2K_StringLau
-  list: any[]
+  list: {
+    wpIdRps?: N2K_Number
+    comment?: N2K_StringLau
+  }[]
 }
 
 export interface PGN_130070 extends PGN {
@@ -5048,9 +5074,10 @@ export interface PGN_130071Fields extends PGNFields {
   nitems?: N2K_Number
   numberOfRoutesWithComments?: N2K_Number
   databaseId?: N2K_Number
-  routeId?: N2K_Number
-  comment?: N2K_StringLau
-  list: any[]
+  list: {
+    routeId?: N2K_Number
+    comment?: N2K_StringLau
+  }[]
 }
 
 export interface PGN_130071 extends PGN {
@@ -5065,9 +5092,10 @@ export interface PGN_130072Fields extends PGNFields {
   startDatabaseId?: N2K_Number
   nitems?: N2K_Number
   numberOfDatabasesWithComments?: N2K_Number
-  databaseId?: N2K_Number
-  comment?: N2K_StringLau
-  list: any[]
+  list: {
+    databaseId?: N2K_Number
+    comment?: N2K_StringLau
+  }[]
 }
 
 export interface PGN_130072 extends PGN {
@@ -5084,9 +5112,10 @@ export interface PGN_130073Fields extends PGNFields {
   numberOfWpsWithASpecificRadiusOfTurn?: N2K_Number
   databaseId?: N2K_Number
   routeId?: N2K_Number
-  rps?: N2K_Number
-  radiusOfTurn?: N2K_Number
-  list: any[]
+  list: {
+    rps?: N2K_Number
+    radiusOfTurn?: N2K_Number
+  }[]
 }
 
 export interface PGN_130073 extends PGN {
@@ -5102,12 +5131,13 @@ export interface PGN_130074Fields extends PGNFields {
   nitems?: N2K_Number
   numberOfValidWpsInTheWpList?: N2K_Number
   databaseId?: N2K_Number
-  reserved?: N2K_Reserved
-  wpId?: N2K_Number
-  wpName?: N2K_StringLau
-  wpLatitude?: N2K_Number
-  wpLongitude?: N2K_Number
-  list: any[]
+  reserved?: number
+  list: {
+    wpId?: N2K_Number
+    wpName?: N2K_StringLau
+    wpLatitude?: N2K_Number
+    wpLongitude?: N2K_Number
+  }[]
 }
 
 export interface PGN_130074 extends PGN {
@@ -5123,7 +5153,7 @@ export interface PGN_130306Fields extends PGNFields {
   windSpeed?: N2K_Number
   windAngle?: N2K_Number
   reference: enums.WindReference|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130306 extends PGN {
@@ -5140,7 +5170,7 @@ export interface PGN_130310Fields extends PGNFields {
   waterTemperature?: N2K_Number
   outsideAmbientAirTemperature?: N2K_Number
   atmosphericPressure?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130310 extends PGN {
@@ -5175,7 +5205,7 @@ export interface PGN_130312Fields extends PGNFields {
   source: enums.TemperatureSource|number
   actualTemperature?: N2K_Number
   setTemperature?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130312 extends PGN {
@@ -5192,7 +5222,7 @@ export interface PGN_130313Fields extends PGNFields {
   source: enums.HumiditySource|number
   actualHumidity?: N2K_Number
   setHumidity?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130313 extends PGN {
@@ -5208,7 +5238,7 @@ export interface PGN_130314Fields extends PGNFields {
   instance: N2K_Number
   source: enums.PressureSource|number
   pressure?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130314 extends PGN {
@@ -5224,7 +5254,7 @@ export interface PGN_130315Fields extends PGNFields {
   instance: N2K_Number
   source: enums.PressureSource|number
   pressure?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130315 extends PGN {
@@ -5254,7 +5284,7 @@ export interface PGN_130316 extends PGN {
 export interface PGN_130320Fields extends PGNFields {
   mode?: enums.ResidualMode|number
   tideTendency?: enums.Tide|number
-  reserved?: N2K_Reserved
+  reserved?: number
   measurementDate?: N2K_Date
   measurementTime?: N2K_Time
   stationLatitude?: N2K_Number
@@ -5275,7 +5305,7 @@ export interface PGN_130320 extends PGN {
 */
 export interface PGN_130321Fields extends PGNFields {
   mode?: enums.ResidualMode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   measurementDate?: N2K_Date
   measurementTime?: N2K_Time
   stationLatitude?: N2K_Number
@@ -5297,7 +5327,7 @@ export interface PGN_130321 extends PGN {
 export interface PGN_130322Fields extends PGNFields {
   mode?: enums.ResidualMode|number
   state?: enums.FloodState|number
-  reserved: N2K_Reserved
+  reserved?: number
   measurementDate?: N2K_Date
   measurementTime?: N2K_Time
   stationLatitude?: N2K_Number
@@ -5320,7 +5350,7 @@ export interface PGN_130322 extends PGN {
 */
 export interface PGN_130323Fields extends PGNFields {
   mode?: enums.ResidualMode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   measurementDate?: N2K_Date
   measurementTime?: N2K_Time
   stationLatitude?: N2K_Number
@@ -5328,7 +5358,7 @@ export interface PGN_130323Fields extends PGNFields {
   windSpeed?: N2K_Number
   windDirection?: N2K_Number
   windReference?: enums.WindReference|number
-  reserved10?: N2K_Reserved
+  reserved10?: number
   windGusts?: N2K_Number
   atmosphericPressure?: N2K_Number
   ambientTemperature?: N2K_Number
@@ -5346,7 +5376,7 @@ export interface PGN_130323 extends PGN {
 */
 export interface PGN_130324Fields extends PGNFields {
   mode?: enums.ResidualMode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   measurementDate?: N2K_Date
   measurementTime?: N2K_Time
   stationLatitude?: N2K_Number
@@ -5354,7 +5384,7 @@ export interface PGN_130324Fields extends PGNFields {
   windSpeed?: N2K_Number
   windDirection?: N2K_Number
   windReference?: enums.WindReference|number
-  reserved10?: N2K_Reserved
+  reserved10?: number
   windGusts?: N2K_Number
   waveHeight?: N2K_Number
   dominantWavePeriod?: N2K_Duration
@@ -5377,7 +5407,7 @@ export interface PGN_130324 extends PGN {
 export interface PGN_130330Fields extends PGNFields {
   globalEnable?: N2K_Number
   defaultSettingsCommand?: enums.LightingCommand|number
-  reserved?: N2K_Reserved
+  reserved?: number
   nameOfTheLightingController?: N2K_StringLau
   maxScenes?: N2K_Number
   maxSceneConfigurationCount?: N2K_Number
@@ -5400,10 +5430,10 @@ export interface PGN_130330 extends PGN {
 export interface PGN_130560Fields extends PGNFields {
   sid?: N2K_Number
   measurementStatus?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   measurementId?: N2K_Number
   payloadMass?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_130560 extends PGN {
@@ -5429,7 +5459,7 @@ export interface PGN_130561Fields extends PGNFields {
   programRate?: N2K_Number
   programColorSequence?: N2K_Number
   zoneEnabled?: enums.OffOn|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130561 extends PGN {
@@ -5446,15 +5476,16 @@ export interface PGN_130562Fields extends PGNFields {
   zoneName?: N2K_StringLau
   control?: N2K_Number
   configurationCount?: N2K_Number
-  configurationIndex?: N2K_Number
-  zoneIndex?: N2K_Number
-  devicesId?: N2K_Number
-  programIndex?: N2K_Number
-  programColorSequenceIndex?: N2K_Number
-  programIntensity?: N2K_Number
-  programRate?: N2K_Number
-  programColorSequenceRate?: N2K_Number
-  list: any[]
+  list: {
+    configurationIndex?: N2K_Number
+    zoneIndex?: N2K_Number
+    devicesId?: N2K_Number
+    programIndex?: N2K_Number
+    programColorSequenceIndex?: N2K_Number
+    programIntensity?: N2K_Number
+    programRate?: N2K_Number
+    programColorSequenceRate?: N2K_Number
+  }[]
 }
 
 export interface PGN_130562 extends PGN {
@@ -5484,7 +5515,7 @@ export interface PGN_130563Fields extends PGNFields {
   programRate?: N2K_Number
   programColorSequenceRate?: N2K_Number
   enabled?: enums.OffOn|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130563 extends PGN {
@@ -5500,9 +5531,10 @@ export interface PGN_130564Fields extends PGNFields {
   indexOfFirstDevice?: N2K_Number
   totalNumberOfDevices?: N2K_Number
   numberOfDevices?: N2K_Number
-  deviceId?: N2K_Number
-  status?: N2K_Number
-  list: any[]
+  list: {
+    deviceId?: N2K_Number
+    status?: N2K_Number
+  }[]
 }
 
 export interface PGN_130564 extends PGN {
@@ -5517,13 +5549,14 @@ export interface PGN_130564 extends PGN {
 export interface PGN_130565Fields extends PGNFields {
   sequenceIndex?: N2K_Number
   colorCount?: N2K_Number
-  colorIndex?: N2K_Number
-  redComponent?: N2K_Number
-  greenComponent?: N2K_Number
-  blueComponent?: N2K_Number
-  colorTemperature?: N2K_Number
-  intensity?: N2K_Number
-  list: any[]
+  list: {
+    colorIndex?: N2K_Number
+    redComponent?: N2K_Number
+    greenComponent?: N2K_Number
+    blueComponent?: N2K_Number
+    colorTemperature?: N2K_Number
+    intensity?: N2K_Number
+  }[]
 }
 
 export interface PGN_130565 extends PGN {
@@ -5540,7 +5573,7 @@ export interface PGN_130566Fields extends PGNFields {
   nameOfProgram?: N2K_StringLau
   description?: N2K_StringLau
   programCapabilities?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130566 extends PGN {
@@ -5565,7 +5598,7 @@ export interface PGN_130567Fields extends PGNFields {
   oilChangeIndicatorStatus?: enums.OkWarning|number
   filterStatus?: enums.OkWarning|number
   systemStatus?: enums.OkWarning|number
-  reserved?: N2K_Reserved
+  reserved?: number
   salinity?: N2K_Number
   productWaterTemperature?: N2K_Number
   preFilterPressure?: N2K_Number
@@ -5627,7 +5660,7 @@ export interface PGN_130570Fields extends PGNFields {
   zone?: enums.EntertainmentZone|number
   inPlayQueue?: enums.YesNo|number
   locked?: enums.YesNo|number
-  reserved?: N2K_Reserved
+  reserved?: number
   artistName?: N2K_StringLau
   albumName?: N2K_StringLau
   stationName?: N2K_StringLau
@@ -5650,11 +5683,12 @@ export interface PGN_130571Fields extends PGNFields {
   idOffset?: N2K_Number
   idCount?: N2K_Number
   totalIdCount?: N2K_Number
-  idType?: enums.EntertainmentIdType|number
-  id?: N2K_Number
-  name?: N2K_StringLau
   artist?: N2K_StringLau
-  list: any[]
+  list: {
+    idType?: enums.EntertainmentIdType|number
+    id?: N2K_Number
+    name?: N2K_StringLau
+  }[]
 }
 
 export interface PGN_130571 extends PGN {
@@ -5689,17 +5723,18 @@ export interface PGN_130573Fields extends PGNFields {
   idOffset?: N2K_Number
   idCount?: N2K_Number
   totalIdCount?: N2K_Number
-  id?: N2K_Number
-  source?: enums.EntertainmentSource|number
-  number?: N2K_Number
-  name?: N2K_StringLau
-  playSupport?: enums.EntertainmentPlayStatusBitfield[]
-  browseSupport?: enums.EntertainmentGroupBitfield[]
-  thumbsSupport?: enums.YesNo|number
-  connected?: enums.YesNo|number
-  repeatSupport?: enums.EntertainmentRepeatBitfield[]
-  shuffleSupport?: enums.EntertainmentShuffleBitfield[]
-  list: any[]
+  list: {
+    id?: N2K_Number
+    source?: enums.EntertainmentSource|number
+    number?: N2K_Number
+    name?: N2K_StringLau
+    playSupport?: enums.EntertainmentPlayStatusBitfield[]
+    browseSupport?: enums.EntertainmentGroupBitfield[]
+    thumbsSupport?: enums.YesNo|number
+    connected?: enums.YesNo|number
+    repeatSupport?: enums.EntertainmentRepeatBitfield[]
+    shuffleSupport?: enums.EntertainmentShuffleBitfield[]
+  }[]
 }
 
 export interface PGN_130573 extends PGN {
@@ -5714,9 +5749,10 @@ export interface PGN_130574Fields extends PGNFields {
   firstZoneId?: N2K_Number
   zoneCount?: N2K_Number
   totalZoneCount?: N2K_Number
-  zoneId?: enums.EntertainmentZone|number
-  name?: N2K_StringLau
-  list: any[]
+  list: {
+    zoneId?: enums.EntertainmentZone|number
+    name?: N2K_StringLau
+  }[]
 }
 
 export interface PGN_130574 extends PGN {
@@ -5730,7 +5766,7 @@ export interface PGN_130574 extends PGN {
 export interface PGN_130576Fields extends PGNFields {
   portTrimTab?: N2K_Number
   starboardTrimTab?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130576 extends PGN {
@@ -5744,7 +5780,7 @@ export interface PGN_130576 extends PGN {
 export interface PGN_130577Fields extends PGNFields {
   dataMode?: enums.ResidualMode|number
   cogReference?: enums.DirectionReference|number
-  reserved?: N2K_Reserved
+  reserved?: number
   sid?: N2K_Number
   cog?: N2K_Number
   sog?: N2K_Number
@@ -5785,7 +5821,7 @@ export interface PGN_130579Fields extends PGNFields {
   tunerRegions?: enums.EntertainmentRegions|number
   maxFavorites?: N2K_Number
   videoProtocols?: enums.VideoProtocols|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130579 extends PGN {
@@ -5815,9 +5851,10 @@ export interface PGN_130581Fields extends PGNFields {
   firstZoneId?: N2K_Number
   zoneCount?: N2K_Number
   totalZoneCount?: N2K_Number
-  zoneId?: enums.EntertainmentZone|number
-  zoneName?: N2K_StringLau
-  list: any[]
+  list: {
+    zoneId?: enums.EntertainmentZone|number
+    zoneName?: N2K_StringLau
+  }[]
 }
 
 export interface PGN_130581 extends PGN {
@@ -5833,9 +5870,9 @@ export interface PGN_130582Fields extends PGNFields {
   volume?: N2K_Number
   volumeChange?: enums.EntertainmentVolumeControl|number
   mute?: enums.YesNo|number
-  reserved?: N2K_Reserved
+  reserved?: number
   channel?: enums.EntertainmentChannel|number
-  reserved7?: N2K_Reserved
+  reserved7?: number
 }
 
 export interface PGN_130582 extends PGN {
@@ -5850,9 +5887,10 @@ export interface PGN_130583Fields extends PGNFields {
   firstPreset?: N2K_Number
   presetCount?: N2K_Number
   totalPresetCount?: N2K_Number
-  presetType?: enums.EntertainmentEq|number
-  presetName?: N2K_StringLau
-  list: any[]
+  list: {
+    presetType?: enums.EntertainmentEq|number
+    presetName?: N2K_StringLau
+  }[]
 }
 
 export interface PGN_130583 extends PGN {
@@ -5867,11 +5905,12 @@ export interface PGN_130584Fields extends PGNFields {
   firstAddress?: N2K_Number
   addressCount?: N2K_Number
   totalAddressCount?: N2K_Number
-  bluetoothAddress?: N2K_Binary
-  status?: enums.BluetoothStatus|number
-  deviceName?: N2K_StringLau
-  signalStrength?: N2K_Number
-  list: any[]
+  list: {
+    bluetoothAddress?: N2K_Binary
+    status?: enums.BluetoothStatus|number
+    deviceName?: N2K_StringLau
+    signalStrength?: N2K_Number
+  }[]
 }
 
 export interface PGN_130584 extends PGN {
@@ -5927,9 +5966,9 @@ export interface PGN_130586 extends PGN {
 */
 export interface PGN_130816_Navico_Init2Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   a?: N2K_Number
@@ -5949,16 +5988,16 @@ export interface PGN_130816_Navico_Init2 extends PGN {
 */
 export interface PGN_130816_Navico_AmRadioFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   item?: enums.SonichubTuning|number
   frequency?: N2K_Number
   noiseLevel?: N2K_Number
   signalLevel?: N2K_Number
-  reserved11?: N2K_Reserved
+  reserved11?: number
   text?: N2K_StringLz
 }
 
@@ -5975,9 +6014,9 @@ export interface PGN_130816_Navico_AmRadio extends PGN {
 */
 export interface PGN_130816_Navico_ZoneInfoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   zone?: N2K_Number
@@ -5996,9 +6035,9 @@ export interface PGN_130816_Navico_ZoneInfo extends PGN {
 */
 export interface PGN_130816_Navico_SourceFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   source?: enums.SonichubSource|number
@@ -6017,9 +6056,9 @@ export interface PGN_130816_Navico_Source extends PGN {
 */
 export interface PGN_130816_Navico_SourceListFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   sourceId?: N2K_Number
@@ -6040,9 +6079,9 @@ export interface PGN_130816_Navico_SourceList extends PGN {
 */
 export interface PGN_130816_Navico_ControlFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   item?: enums.FusionMuteCommand|number
@@ -6061,16 +6100,16 @@ export interface PGN_130816_Navico_Control extends PGN {
 */
 export interface PGN_130816_Navico_FmRadioFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   item?: enums.SonichubTuning|number
   frequency?: N2K_Number
   noiseLevel?: N2K_Number
   signalLevel?: N2K_Number
-  reserved11?: N2K_Reserved
+  reserved11?: number
   text?: N2K_StringLz
 }
 
@@ -6087,9 +6126,9 @@ export interface PGN_130816_Navico_FmRadio extends PGN {
 */
 export interface PGN_130816_Navico_PlaylistFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   item?: enums.SonichubPlaylist|number
@@ -6113,9 +6152,9 @@ export interface PGN_130816_Navico_Playlist extends PGN {
 */
 export interface PGN_130816_Navico_TrackFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   item?: N2K_Number
@@ -6135,9 +6174,9 @@ export interface PGN_130816_Navico_Track extends PGN {
 */
 export interface PGN_130816_Navico_ArtistFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   item?: N2K_Number
@@ -6157,9 +6196,9 @@ export interface PGN_130816_Navico_Artist extends PGN {
 */
 export interface PGN_130816_Navico_AlbumFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   item?: N2K_Number
@@ -6179,9 +6218,9 @@ export interface PGN_130816_Navico_Album extends PGN {
 */
 export interface PGN_130816_Navico_MenuItemFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   item?: N2K_Number
@@ -6204,9 +6243,9 @@ export interface PGN_130816_Navico_MenuItem extends PGN {
 */
 export interface PGN_130816_Navico_ZonesFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   zones?: N2K_Number
@@ -6225,9 +6264,9 @@ export interface PGN_130816_Navico_Zones extends PGN {
 */
 export interface PGN_130816_Navico_MaxVolumeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   zone?: N2K_Number
@@ -6247,9 +6286,9 @@ export interface PGN_130816_Navico_MaxVolume extends PGN {
 */
 export interface PGN_130816_Navico_VolumeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   zone?: N2K_Number
@@ -6269,9 +6308,9 @@ export interface PGN_130816_Navico_Volume extends PGN {
 */
 export interface PGN_130816_Navico_Init1Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
 }
@@ -6289,9 +6328,9 @@ export interface PGN_130816_Navico_Init1 extends PGN {
 */
 export interface PGN_130816_Navico_PositionFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   position?: N2K_Duration
@@ -6310,9 +6349,9 @@ export interface PGN_130816_Navico_Position extends PGN {
 */
 export interface PGN_130816_Navico_Init3Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   a?: N2K_Number
@@ -6332,9 +6371,9 @@ export interface PGN_130816_Navico_Init3 extends PGN {
 */
 export interface PGN_130816_Simrad_TextFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SimnetCommand|number
   a?: N2K_Number
   b?: N2K_Number
@@ -6356,7 +6395,7 @@ export interface PGN_130816_Simrad_Text extends PGN {
 */
 export interface PGN_130817_NavicoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   a?: N2K_Number
   b?: N2K_Number
@@ -6377,7 +6416,7 @@ export interface PGN_130817_Navico extends PGN {
 */
 export interface PGN_130817_LowranceFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   productCode?: N2K_Number
   model?: N2K_StringFix
@@ -6399,7 +6438,7 @@ export interface PGN_130817_Lowrance extends PGN {
 */
 export interface PGN_130818Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   version?: N2K_Number
   sequence?: N2K_Number
@@ -6416,7 +6455,7 @@ export interface PGN_130818 extends PGN {
 */
 export interface PGN_130819Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -6432,11 +6471,11 @@ export interface PGN_130819 extends PGN {
 */
 export interface PGN_130820_SimradFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   status?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_130820_Simrad extends PGN {
@@ -6451,7 +6490,7 @@ export interface PGN_130820_Simrad extends PGN {
 */
 export interface PGN_130820_FurunoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   a?: N2K_Number
   b?: N2K_Number
@@ -6473,7 +6512,7 @@ export interface PGN_130820_Furuno extends PGN {
 */
 export interface PGN_130820_FusionElectronics_ApiVersionFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId?: enums.FusionStatusMessageId|number
   hwVersionMajor?: N2K_Number
@@ -6496,7 +6535,7 @@ export interface PGN_130820_FusionElectronics_ApiVersion extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SourceFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId?: enums.FusionStatusMessageId|number
   sourceId?: N2K_Number
@@ -6519,7 +6558,7 @@ export interface PGN_130820_FusionElectronics_Source extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SourceCountFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId?: enums.FusionStatusMessageId|number
   sourceCount?: N2K_Number
@@ -6538,7 +6577,7 @@ export interface PGN_130820_FusionElectronics_SourceCount extends PGN {
 */
 export interface PGN_130820_FusionElectronics_TrackInfoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -6562,7 +6601,7 @@ export interface PGN_130820_FusionElectronics_TrackInfo extends PGN {
 */
 export interface PGN_130820_FusionElectronics_TrackTitleFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -6583,7 +6622,7 @@ export interface PGN_130820_FusionElectronics_TrackTitle extends PGN {
 */
 export interface PGN_130820_FusionElectronics_TrackArtistFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -6604,7 +6643,7 @@ export interface PGN_130820_FusionElectronics_TrackArtist extends PGN {
 */
 export interface PGN_130820_FusionElectronics_TrackAlbumFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -6625,7 +6664,7 @@ export interface PGN_130820_FusionElectronics_TrackAlbum extends PGN {
 */
 export interface PGN_130820_FusionElectronics_UnitNameFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   name?: N2K_StringLz
@@ -6644,7 +6683,7 @@ export interface PGN_130820_FusionElectronics_UnitName extends PGN {
 */
 export interface PGN_130820_FusionElectronics_ZoneNameFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   number: N2K_Number
@@ -6664,7 +6703,7 @@ export interface PGN_130820_FusionElectronics_ZoneName extends PGN {
 */
 export interface PGN_130820_FusionElectronics_TrackProgressFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -6684,7 +6723,7 @@ export interface PGN_130820_FusionElectronics_TrackProgress extends PGN {
 */
 export interface PGN_130820_FusionElectronics_TunerFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: enums.FusionRadioSource|number
@@ -6707,7 +6746,7 @@ export interface PGN_130820_FusionElectronics_Tuner extends PGN {
 */
 export interface PGN_130820_FusionElectronics_MarineTunerFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -6729,7 +6768,7 @@ export interface PGN_130820_FusionElectronics_MarineTuner extends PGN {
 */
 export interface PGN_130820_FusionElectronics_MarineSquelchFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -6749,7 +6788,7 @@ export interface PGN_130820_FusionElectronics_MarineSquelch extends PGN {
 */
 export interface PGN_130820_FusionElectronics_MarineScanModeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -6769,7 +6808,7 @@ export interface PGN_130820_FusionElectronics_MarineScanMode extends PGN {
 */
 export interface PGN_130820_FusionElectronics_MenuItemFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -6792,7 +6831,7 @@ export interface PGN_130820_FusionElectronics_MenuItem extends PGN {
 */
 export interface PGN_130820_FusionElectronics_AuxGainFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -6813,7 +6852,7 @@ export interface PGN_130820_FusionElectronics_AuxGain extends PGN {
 */
 export interface PGN_130820_FusionElectronics_Setting_UsbRepeatFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   id?: enums.FusionSetting|number
@@ -6833,7 +6872,7 @@ export interface PGN_130820_FusionElectronics_Setting_UsbRepeat extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SettingFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   id?: enums.FusionSetting|number
@@ -6853,13 +6892,14 @@ export interface PGN_130820_FusionElectronics_Setting extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SettingsFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   count?: N2K_Number
-  id?: enums.FusionSetting|number
-  value?: N2K_Number
-  list: any[]
+  list: {
+    id?: enums.FusionSetting|number
+    value?: N2K_Number
+  }[]
 }
 
 export interface PGN_130820_FusionElectronics_Settings extends PGN {
@@ -6875,7 +6915,7 @@ export interface PGN_130820_FusionElectronics_Settings extends PGN {
 */
 export interface PGN_130820_FusionElectronics_MuteFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   mute?: enums.FusionMuteCommand|number
@@ -6894,7 +6934,7 @@ export interface PGN_130820_FusionElectronics_Mute extends PGN {
 */
 export interface PGN_130820_FusionElectronics_BalanceFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   zone: N2K_Number
@@ -6914,7 +6954,7 @@ export interface PGN_130820_FusionElectronics_Balance extends PGN {
 */
 export interface PGN_130820_FusionElectronics_LowPassFilterFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   zone: N2K_Number
@@ -6934,7 +6974,7 @@ export interface PGN_130820_FusionElectronics_LowPassFilter extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SublevelsFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   zone1?: N2K_Number
@@ -6956,7 +6996,7 @@ export interface PGN_130820_FusionElectronics_Sublevels extends PGN {
 */
 export interface PGN_130820_FusionElectronics_ToneFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   zone: N2K_Number
@@ -6978,7 +7018,7 @@ export interface PGN_130820_FusionElectronics_Tone extends PGN {
 */
 export interface PGN_130820_FusionElectronics_VolumeLimitsFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   zone1VolumeLimit?: N2K_Number
@@ -7000,7 +7040,7 @@ export interface PGN_130820_FusionElectronics_VolumeLimits extends PGN {
 */
 export interface PGN_130820_FusionElectronics_VolumeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   zone1?: N2K_Number
@@ -7022,7 +7062,7 @@ export interface PGN_130820_FusionElectronics_Volume extends PGN {
 */
 export interface PGN_130820_FusionElectronics_CapabilitiesFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   zone1?: N2K_Number
@@ -7045,7 +7085,7 @@ export interface PGN_130820_FusionElectronics_Capabilities extends PGN {
 */
 export interface PGN_130820_FusionElectronics_LineLevelControlFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   zone: N2K_Number
@@ -7065,7 +7105,7 @@ export interface PGN_130820_FusionElectronics_LineLevelControl extends PGN {
 */
 export interface PGN_130820_FusionElectronics_PowerFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   state?: enums.FusionPowerState|number
@@ -7084,7 +7124,7 @@ export interface PGN_130820_FusionElectronics_Power extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SiriusFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -7107,7 +7147,7 @@ export interface PGN_130820_FusionElectronics_Sirius extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SiriusXmChannelFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -7128,7 +7168,7 @@ export interface PGN_130820_FusionElectronics_SiriusXmChannel extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SiriusXmTitleFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -7149,7 +7189,7 @@ export interface PGN_130820_FusionElectronics_SiriusXmTitle extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SiriusXmArtistFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -7170,7 +7210,7 @@ export interface PGN_130820_FusionElectronics_SiriusXmArtist extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SiriusXmGenreFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -7191,7 +7231,7 @@ export interface PGN_130820_FusionElectronics_SiriusXmGenre extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SiriusXmCategoryFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -7212,7 +7252,7 @@ export interface PGN_130820_FusionElectronics_SiriusXmCategory extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SiriusXmSignalFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -7232,7 +7272,7 @@ export interface PGN_130820_FusionElectronics_SiriusXmSignal extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SiriusXmPresetsFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -7252,7 +7292,7 @@ export interface PGN_130820_FusionElectronics_SiriusXmPresets extends PGN {
 */
 export interface PGN_130821_NavicoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   a?: N2K_Number
   message?: N2K_StringFix
@@ -7270,7 +7310,7 @@ export interface PGN_130821_Navico extends PGN {
 */
 export interface PGN_130821_FurunoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   sid?: N2K_Number
   a?: N2K_Number
@@ -7294,7 +7334,7 @@ export interface PGN_130821_Furuno extends PGN {
 */
 export interface PGN_130822Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   data?: N2K_Binary
 }
@@ -7309,7 +7349,7 @@ export interface PGN_130822 extends PGN {
 */
 export interface PGN_130823Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   sid?: N2K_Number
   instance: N2K_Number
@@ -7331,12 +7371,13 @@ export interface PGN_130823 extends PGN {
 */
 export interface PGN_130824_BGFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  key?: N2K_DynamicFieldKey
-  length?: N2K_DynamicFieldLength
-  value?: N2K_DynamicFieldValue
-  list: any[]
+  list: {
+    key?: N2K_DynamicFieldKey
+    length?: N2K_DynamicFieldLength
+    value?: N2K_DynamicFieldValue
+  }[]
 }
 
 export interface PGN_130824_BG extends PGN {
@@ -7351,7 +7392,7 @@ export interface PGN_130824_BG extends PGN {
 */
 export interface PGN_130824_MaretronFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   field4?: N2K_Number
   field5?: N2K_Number
@@ -7370,7 +7411,7 @@ export interface PGN_130824_Maretron extends PGN {
 */
 export interface PGN_130825Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   data?: N2K_Binary
 }
@@ -7385,7 +7426,7 @@ export interface PGN_130825 extends PGN {
 */
 export interface PGN_130827Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   a?: N2K_Number
   b?: N2K_Number
@@ -7405,7 +7446,7 @@ export interface PGN_130827 extends PGN {
 */
 export interface PGN_130828Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7419,7 +7460,7 @@ export interface PGN_130828 extends PGN {
 */
 export interface PGN_130831Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7433,7 +7474,7 @@ export interface PGN_130831 extends PGN {
 */
 export interface PGN_130832Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7447,11 +7488,11 @@ export interface PGN_130832 extends PGN {
 */
 export interface PGN_130833Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   dataType?: N2K_DynamicFieldKey
   length?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
   decimals?: enums.BandgDecimals|number
   shortName?: N2K_StringFix
   longName?: N2K_StringFix
@@ -7467,7 +7508,7 @@ export interface PGN_130833 extends PGN {
 */
 export interface PGN_130834Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7481,7 +7522,7 @@ export interface PGN_130834 extends PGN {
 */
 export interface PGN_130835Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7497,7 +7538,7 @@ export interface PGN_130835 extends PGN {
 */
 export interface PGN_130836_SimradFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   c?: N2K_Number
   device: N2K_Number
@@ -7522,7 +7563,7 @@ export interface PGN_130836_Simrad extends PGN {
 */
 export interface PGN_130836_MaretronFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   instance: N2K_Number
   indicatorNumber?: N2K_Number
@@ -7532,7 +7573,7 @@ export interface PGN_130836_MaretronFields extends PGNFields {
   onCounter?: N2K_Number
   errorCounter?: N2K_Number
   switchStatus?: enums.OffOn|number
-  reserved12?: N2K_Reserved
+  reserved12?: number
 }
 
 export interface PGN_130836_Maretron extends PGN {
@@ -7547,7 +7588,7 @@ export interface PGN_130836_Maretron extends PGN {
 */
 export interface PGN_130837_SimradFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7563,7 +7604,7 @@ export interface PGN_130837_Simrad extends PGN {
 */
 export interface PGN_130837_MaretronFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   instance: N2K_Number
   indicatorNumber?: N2K_Number
@@ -7573,7 +7614,7 @@ export interface PGN_130837_MaretronFields extends PGNFields {
   accumulatedOnPeriod?: N2K_Duration
   accumulatedErrorPeriod?: N2K_Duration
   switchStatus?: enums.OffOn|number
-  reserved12?: N2K_Reserved
+  reserved12?: number
 }
 
 export interface PGN_130837_Maretron extends PGN {
@@ -7586,7 +7627,7 @@ export interface PGN_130837_Maretron extends PGN {
 */
 export interface PGN_130838Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7600,7 +7641,7 @@ export interface PGN_130838 extends PGN {
 */
 export interface PGN_130839Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7614,7 +7655,7 @@ export interface PGN_130839 extends PGN {
 */
 export interface PGN_130840Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7630,7 +7671,7 @@ export interface PGN_130840 extends PGN {
 */
 export interface PGN_130842_SimradFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: N2K_Number
   repeatIndicator?: enums.RepeatIndicator|number
@@ -7652,7 +7693,7 @@ export interface PGN_130842_Simrad extends PGN {
 */
 export interface PGN_130842_FurunoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   a?: N2K_Number
   b?: N2K_Number
@@ -7678,7 +7719,7 @@ export interface PGN_130842_Furuno extends PGN {
 */
 export interface PGN_130842_Simrad_Msg24PartBFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: N2K_Number
   repeatIndicator?: enums.RepeatIndicator|number
@@ -7693,8 +7734,8 @@ export interface PGN_130842_Simrad_Msg24PartBFields extends PGNFields {
   positionReferenceFromStarboard?: N2K_Number
   positionReferenceFromBow?: N2K_Number
   mothershipUserId: N2K_Mmsi
-  spare17?: N2K_Spare
-  reserved18?: N2K_Reserved
+  spare17?: number
+  reserved18?: number
 }
 
 export interface PGN_130842_Simrad_Msg24PartB extends PGN {
@@ -7709,7 +7750,7 @@ export interface PGN_130842_Simrad_Msg24PartB extends PGN {
 */
 export interface PGN_130843_FurunoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   a?: N2K_Number
   b?: N2K_Number
@@ -7730,7 +7771,7 @@ export interface PGN_130843_Furuno extends PGN {
 */
 export interface PGN_130843_SimradFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7746,7 +7787,7 @@ export interface PGN_130843_Simrad extends PGN {
 */
 export interface PGN_130845_FurunoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7762,14 +7803,14 @@ export interface PGN_130845_Furuno extends PGN {
 */
 export interface PGN_130845_SimradFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   address?: N2K_Number
   repeatIndicator?: enums.RepeatIndicator|number
   displayGroup?: enums.SimnetDisplayGroup|number
-  reserved7?: N2K_Reserved
+  reserved7?: number
   key?: N2K_DynamicFieldKey
-  spare9?: N2K_Spare
+  spare9?: number
   minlength?: N2K_Number
   value?: N2K_DynamicFieldValue
 }
@@ -7786,14 +7827,14 @@ export interface PGN_130845_Simrad extends PGN {
 */
 export interface PGN_130846_SimradFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   address?: N2K_Number
   b?: N2K_Number
   displayGroup?: enums.SimnetDisplayGroup|number
   d?: N2K_Number
   key?: N2K_DynamicFieldKey
-  spare9?: N2K_Spare
+  spare9?: number
   length?: N2K_Number
   value?: N2K_DynamicFieldValue
 }
@@ -7810,7 +7851,7 @@ export interface PGN_130846_Simrad extends PGN {
 */
 export interface PGN_130846_FurunoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7824,7 +7865,7 @@ export interface PGN_130846_Furuno extends PGN {
 */
 export interface PGN_130847Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   productCode?: N2K_Number
   year?: N2K_Number
@@ -7843,7 +7884,7 @@ export interface PGN_130847 extends PGN {
 */
 export interface PGN_130848Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   sid?: N2K_Number
   waypointName?: N2K_StringFix
@@ -7866,14 +7907,14 @@ export interface PGN_130848 extends PGN {
 */
 export interface PGN_130850_Simrad_AutopilotFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   address?: N2K_Number
-  reserved5?: N2K_Reserved
+  reserved5?: number
   proprietaryId: enums.SimnetEventCommand|number
   apStatus?: enums.SimnetApStatus|number
   apCommand?: enums.SimnetApEvents|number
-  spare9?: N2K_Spare
+  spare9?: number
   direction?: enums.SimnetDirection|number
   angle?: N2K_Number
 }
@@ -7891,7 +7932,7 @@ export interface PGN_130850_Simrad_Autopilot extends PGN {
 */
 export interface PGN_130850_Simrad_ApCommandFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.SimnetEventCommand|number
   unusedA?: N2K_Number
@@ -7917,12 +7958,12 @@ export interface PGN_130850_Simrad_ApCommand extends PGN {
 */
 export interface PGN_130850_Simrad_AlarmFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   address?: N2K_Number
-  reserved5?: N2K_Reserved
+  reserved5?: number
   proprietaryId: enums.SimnetEventCommand|number
-  reserved7?: N2K_Reserved
+  reserved7?: number
   alarm?: enums.SimnetAlarm|number
   messageId?: N2K_Number
   f?: N2K_Number
@@ -7939,7 +7980,7 @@ export interface PGN_130850_Simrad_Alarm extends PGN {
 */
 export interface PGN_130851Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.SimnetEventCommand|number
   b?: N2K_Number
@@ -7962,7 +8003,7 @@ export interface PGN_130851 extends PGN {
 */
 export interface PGN_130856Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId?: N2K_Number
   b?: N2K_Number
@@ -7981,7 +8022,7 @@ export interface PGN_130856 extends PGN {
 */
 export interface PGN_130860Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   a?: N2K_Number
   b?: N2K_Number
@@ -8001,7 +8042,7 @@ export interface PGN_130860 extends PGN {
 */
 export interface PGN_130880Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   c?: N2K_Number
   apparentWindchillTemperature?: N2K_Number
@@ -8019,7 +8060,7 @@ export interface PGN_130880 extends PGN {
 */
 export interface PGN_130881Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   c?: N2K_Number
   plateTemperature?: N2K_Number
@@ -8037,7 +8078,7 @@ export interface PGN_130881 extends PGN {
 */
 export interface PGN_130918Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   currentWaypointSequence?: N2K_Number
   currentWaypointName?: N2K_StringFix
@@ -8059,10 +8100,10 @@ export interface PGN_130918 extends PGN {
 */
 export interface PGN_130944Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   control: enums.AirmarPostControl|number
-  reserved5?: N2K_Reserved
+  reserved5?: number
   numberOfIdTestResultPairsToFollow?: N2K_Number
   testId?: enums.AirmarPostId|number
   testResult?: N2K_Number

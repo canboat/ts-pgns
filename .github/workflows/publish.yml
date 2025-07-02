@@ -12,7 +12,7 @@ jobs:
           node-version: '22.x'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install and build 
+      - name: Install and build
         run: |
           npm cache clean -f
           npm install npm@latest -g
@@ -20,7 +20,7 @@ jobs:
           npm ci && npm cache clean --force
           npm run build
 
-      - name: Publish 
+      - name: Publish
         run: |
           if [[ "$tag" == *beta* ]];
             then

@@ -33,21 +33,23 @@ export const mapCamelCaseKeys = (pgn: PGN) => {
     throw Error(`can't find matching pgn`)
   }
 
-  const res : any = pgn //copy??
+  const res: any = pgn //copy??
 
-  if ( pgn.fields !== undefined && res.fields === undefined ) {
+  if (pgn.fields !== undefined && res.fields === undefined) {
     res.fields = {}
   }
-  
+
   const repeatingSize = def.RepeatingFieldSet1Size || 0
 
   for (let i = 0; i < def.Fields.length - repeatingSize; i++) {
     const field = def.Fields[i]
-    const value = pgn.fields !== undefined ? (pgn.fields as any)[field.Id] :
-          (pgn as any)[field.Id]
+    const value =
+      pgn.fields !== undefined
+        ? (pgn.fields as any)[field.Id]
+        : (pgn as any)[field.Id]
 
     if (value !== undefined) {
-      if ( pgn.fields !== undefined ) {
+      if (pgn.fields !== undefined) {
         res.fields[field.Name] = value
       } else {
         res[field.Name] = value
@@ -55,8 +57,9 @@ export const mapCamelCaseKeys = (pgn: PGN) => {
     }
   }
 
-  const list = pgn.fields !== undefined ? (pgn.fields as any).list
-        : (pgn as any).list
+  const list =
+      pgn.fields !== undefined ? (pgn.fields as any).list : (pgn as any).list
+  
   if (repeatingSize > 0 && list !== undefined && list.length > 0) {
     const repeating: Field[] = (def.Fields as any).slice(
       def.Fields.length - repeatingSize
@@ -64,19 +67,21 @@ export const mapCamelCaseKeys = (pgn: PGN) => {
 
     const dest: any = pgn.fields !== undefined ? res.fields : res
 
-    if ( dest.list === undefined ) {
+    if (dest.list === undefined) {
       dest.list = []
     }
 
     list.forEach((item: any) => {
-      const copy: { [key: string]: any } = {}
-      dest.list.push(copy)
+      //const copy: { [key: string]: any } = {}
+      //dest.list.push(copy)
       repeating.forEach((field) => {
         const value = item[field.Id]
-
-        if (value !== undefined) {
+        item[field.Name] = value
+        
+        /*if (value !== undefined) {
           copy[field.Name] = value
-        }
+          }
+          */
       })
     })
   }
@@ -100,7 +105,9 @@ export const findMatchingDefinition = (pgn: PGN): Definition => {
   for (let i = 0; i < def.Fields.length - repeatingSize; i++) {
     const field = def.Fields[i]
     const hasMatch = field.Match !== undefined
-    let value = pgn.fields !== undefined ?  (pgn.fields as any)[field.Id]
+    let value =
+      pgn.fields !== undefined
+        ? (pgn.fields as any)[field.Id]
         : (pgn as any)[field.Id]
 
     if (hasMatch) {

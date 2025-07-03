@@ -1,7 +1,7 @@
 import { expect, assert } from 'chai'
 import {
-  PGN_61184_VictronEnergy,
-  PGN_61184_VictronEnergyDefaults,
+  PGN_61184_VictronBatteryRegister,
+  PGN_61184_VictronBatteryRegisterDefaults,
   PGN_129029,
   PGN_129029Defaults,
   ManufacturerCode,
@@ -13,8 +13,8 @@ import { findMatchingDefinition, mapCamelCaseKeys } from '../dist/utilities'
 
 describe('utilities tests', () => {
   it(`findMatchingDefinition works`, (done) => {
-    const pgn: PGN_61184_VictronEnergy = {
-      ...PGN_61184_VictronEnergyDefaults,
+    const pgn: PGN_61184_VictronBatteryRegister = {
+      ...PGN_61184_VictronBatteryRegisterDefaults,
       fields: {
         manufacturerCode: ManufacturerCode.VictronEnergy,
         industryCode: IndustryCode.Marine,

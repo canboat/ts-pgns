@@ -58,8 +58,8 @@ export const mapCamelCaseKeys = (pgn: PGN) => {
   }
 
   const list =
-      pgn.fields !== undefined ? (pgn.fields as any).list : (pgn as any).list
-  
+    pgn.fields !== undefined ? (pgn.fields as any).list : (pgn as any).list
+
   if (repeatingSize > 0 && list !== undefined && list.length > 0) {
     const repeating: Field[] = (def.Fields as any).slice(
       def.Fields.length - repeatingSize
@@ -77,7 +77,7 @@ export const mapCamelCaseKeys = (pgn: PGN) => {
       repeating.forEach((field) => {
         const value = item[field.Id]
         item[field.Name] = value
-        
+
         /*if (value !== undefined) {
           copy[field.Name] = value
           }

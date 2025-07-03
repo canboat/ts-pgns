@@ -57,6 +57,7 @@ export const PGN_59392Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 59904
   Description: ISO Request
@@ -75,6 +76,7 @@ export const PGN_59904Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 60160
   Description: ISO Transport Protocol, Data Transfer
@@ -94,6 +96,7 @@ export const PGN_60160Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 60416
   Description: ISO Transport Protocol, Connection Management - Request To Send
@@ -117,6 +120,11 @@ export const PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendDefa
   dst: 255,
   prio: 3
 }
+
+export const PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendMatchFields = {
+  groupFunctionCode: enums.IsoCommand.Rts,
+}
+
 /*
   PGN: 60416
   Description: ISO Transport Protocol, Connection Management - Clear To Send
@@ -140,6 +148,11 @@ export const PGN_60416_IsoTransportProtocolConnectionManagementClearToSendDefaul
   dst: 255,
   prio: 3
 }
+
+export const PGN_60416_IsoTransportProtocolConnectionManagementClearToSendMatchFields = {
+  groupFunctionCode: enums.IsoCommand.Cts,
+}
+
 /*
   PGN: 60416
   Description: ISO Transport Protocol, Connection Management - End Of Message
@@ -163,6 +176,11 @@ export const PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageDefau
   dst: 255,
   prio: 3
 }
+
+export const PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageMatchFields = {
+  groupFunctionCode: enums.IsoCommand.Eom,
+}
+
 /*
   PGN: 60416
   Description: ISO Transport Protocol, Connection Management - Broadcast Announce
@@ -186,6 +204,11 @@ export const PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce
   dst: 255,
   prio: 3
 }
+
+export const PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceMatchFields = {
+  groupFunctionCode: enums.IsoCommand.Bam,
+}
+
 /*
   PGN: 60416
   Description: ISO Transport Protocol, Connection Management - Abort
@@ -208,6 +231,11 @@ export const PGN_60416_IsoTransportProtocolConnectionManagementAbortDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_60416_IsoTransportProtocolConnectionManagementAbortMatchFields = {
+  groupFunctionCode: enums.IsoCommand.Abort,
+}
+
 /*
   PGN: 60928
   Description: ISO Address Claim
@@ -235,6 +263,7 @@ export const PGN_60928Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 61184
   Description: Seatalk: Wireless Keypad Light Control
@@ -262,6 +291,13 @@ export const PGN_61184_SeatalkWirelessKeypadLightControlDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_61184_SeatalkWirelessKeypadLightControlMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Raymarine,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: 1,
+}
+
 /*
   PGN: 61184
   Description: Seatalk: Wireless Keypad Control
@@ -287,6 +323,12 @@ export const PGN_61184_SeatalkWirelessKeypadControlDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_61184_SeatalkWirelessKeypadControlMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Raymarine,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 61184
   Description: Victron Battery Register
@@ -310,6 +352,12 @@ export const PGN_61184_VictronBatteryRegisterDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_61184_VictronBatteryRegisterMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.VictronEnergy,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 65001
   Description: Bus #1 Phase C Basic AC Quantities
@@ -330,6 +378,7 @@ export const PGN_65001Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65002
   Description: Bus #1 Phase B Basic AC Quantities
@@ -350,6 +399,7 @@ export const PGN_65002Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65003
   Description: Bus #1 Phase A Basic AC Quantities
@@ -370,6 +420,7 @@ export const PGN_65003Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65004
   Description: Bus #1 Average Basic AC Quantities
@@ -390,6 +441,7 @@ export const PGN_65004Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65005
   Description: Utility Total AC Energy
@@ -408,6 +460,7 @@ export const PGN_65005Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65006
   Description: Utility Phase C AC Reactive Power
@@ -428,6 +481,7 @@ export const PGN_65006Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65007
   Description: Utility Phase C AC Power
@@ -446,6 +500,7 @@ export const PGN_65007Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65008
   Description: Utility Phase C Basic AC Quantities
@@ -466,6 +521,7 @@ export const PGN_65008Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65009
   Description: Utility Phase B AC Reactive Power
@@ -486,6 +542,7 @@ export const PGN_65009Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65010
   Description: Utility Phase B AC Power
@@ -504,6 +561,7 @@ export const PGN_65010Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65011
   Description: Utility Phase B Basic AC Quantities
@@ -524,6 +582,7 @@ export const PGN_65011Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65012
   Description: Utility Phase A AC Reactive Power
@@ -544,6 +603,7 @@ export const PGN_65012Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65013
   Description: Utility Phase A AC Power
@@ -562,6 +622,7 @@ export const PGN_65013Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65014
   Description: Utility Phase A Basic AC Quantities
@@ -582,6 +643,7 @@ export const PGN_65014Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65015
   Description: Utility Total AC Reactive Power
@@ -602,6 +664,7 @@ export const PGN_65015Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65016
   Description: Utility Total AC Power
@@ -620,6 +683,7 @@ export const PGN_65016Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65017
   Description: Utility Average Basic AC Quantities
@@ -640,6 +704,7 @@ export const PGN_65017Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65018
   Description: Generator Total AC Energy
@@ -658,6 +723,7 @@ export const PGN_65018Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65019
   Description: Generator Phase C AC Reactive Power
@@ -678,6 +744,7 @@ export const PGN_65019Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65020
   Description: Generator Phase C AC Power
@@ -696,6 +763,7 @@ export const PGN_65020Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65021
   Description: Generator Phase C Basic AC Quantities
@@ -716,6 +784,7 @@ export const PGN_65021Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65022
   Description: Generator Phase B AC Reactive Power
@@ -736,6 +805,7 @@ export const PGN_65022Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65023
   Description: Generator Phase B AC Power
@@ -754,6 +824,7 @@ export const PGN_65023Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65024
   Description: Generator Phase B Basic AC Quantities
@@ -774,6 +845,7 @@ export const PGN_65024Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65025
   Description: Generator Phase A AC Reactive Power
@@ -794,6 +866,7 @@ export const PGN_65025Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65026
   Description: Generator Phase A AC Power
@@ -812,6 +885,7 @@ export const PGN_65026Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65027
   Description: Generator Phase A Basic AC Quantities
@@ -832,6 +906,7 @@ export const PGN_65027Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65028
   Description: Generator Total AC Reactive Power
@@ -852,6 +927,7 @@ export const PGN_65028Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65029
   Description: Generator Total AC Power
@@ -870,6 +946,7 @@ export const PGN_65029Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65030
   Description: Generator Average Basic AC Quantities
@@ -890,6 +967,7 @@ export const PGN_65030Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65240
   Description: ISO Commanded Address
@@ -918,6 +996,7 @@ export const PGN_65240Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65280
   Description: Furuno: Heave
@@ -939,6 +1018,7 @@ export const PGN_65280Defaults = {
   dst: 255,
   prio: 2
 }
+
 /*
   PGN: 65284
   Description: Maretron: Proprietary DC Breaker Current
@@ -962,6 +1042,7 @@ export const PGN_65284Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 65285
   Description: Airmar: Boot State Acknowledgment
@@ -985,6 +1066,12 @@ export const PGN_65285_AirmarBootStateAcknowledgmentDefaults = {
   dst: 255,
   prio: 5
 }
+
+export const PGN_65285_AirmarBootStateAcknowledgmentMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 65285
   Description: Lowrance: Temperature
@@ -1009,6 +1096,12 @@ export const PGN_65285_LowranceTemperatureDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_65285_LowranceTemperatureMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Lowrance,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 65286
   Description: Chetco: Dimmer
@@ -1036,6 +1129,12 @@ export const PGN_65286_ChetcoDimmerDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_65286_ChetcoDimmerMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Chetco,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 65286
   Description: Airmar: Boot State Request
@@ -1058,6 +1157,12 @@ export const PGN_65286_AirmarBootStateRequestDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_65286_AirmarBootStateRequestMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 65287
   Description: Airmar: Access Level
@@ -1083,6 +1188,12 @@ export const PGN_65287_AirmarAccessLevelDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_65287_AirmarAccessLevelMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 65287
   Description: Simnet: Configure Temperature Sensor
@@ -1105,6 +1216,12 @@ export const PGN_65287_SimnetConfigureTemperatureSensorDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_65287_SimnetConfigureTemperatureSensorMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 65288
   Description: Seatalk: Alarm
@@ -1129,6 +1246,7 @@ export const PGN_65288Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 65289
   Description: Simnet: Trim Tab Sensor Calibration
@@ -1149,6 +1267,7 @@ export const PGN_65289Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65290
   Description: Simnet: Paddle Wheel Speed Configuration
@@ -1169,6 +1288,7 @@ export const PGN_65290Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65292
   Description: Simnet: Clear Fluid Level Warnings
@@ -1189,6 +1309,7 @@ export const PGN_65292Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65293
   Description: Simnet: LGC-2000 Configuration
@@ -1211,6 +1332,12 @@ export const PGN_65293_SimnetLgc2000ConfigurationDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_65293_SimnetLgc2000ConfigurationMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 65293
   Description: Diverse Yacht Services: Load Cell
@@ -1235,6 +1362,12 @@ export const PGN_65293_DiverseYachtServicesLoadCellDefaults = {
   dst: 255,
   prio: 2
 }
+
+export const PGN_65293_DiverseYachtServicesLoadCellMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.DiverseYachtServices,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 65302
   Description: Simnet: AP Unknown 1
@@ -1260,6 +1393,7 @@ export const PGN_65302Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 65305
   Description: Simnet: Device Status
@@ -1287,6 +1421,13 @@ export const PGN_65305_SimnetDeviceStatusDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_65305_SimnetDeviceStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+  report: enums.SimnetDeviceReport.Status,
+}
+
 /*
   PGN: 65305
   Description: Simnet: Device Status Request
@@ -1313,6 +1454,13 @@ export const PGN_65305_SimnetDeviceStatusRequestDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_65305_SimnetDeviceStatusRequestMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+  report: enums.SimnetDeviceReport.SendStatus,
+}
+
 /*
   PGN: 65305
   Description: Simnet: Pilot Mode
@@ -1340,6 +1488,13 @@ export const PGN_65305_SimnetPilotModeDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_65305_SimnetPilotModeMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+  report: enums.SimnetDeviceReport.Mode,
+}
+
 /*
   PGN: 65305
   Description: Simnet: Device Mode Request
@@ -1366,6 +1521,13 @@ export const PGN_65305_SimnetDeviceModeRequestDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_65305_SimnetDeviceModeRequestMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+  report: enums.SimnetDeviceReport.SendMode,
+}
+
 /*
   PGN: 65305
   Description: Simnet: Sailing Processor Status
@@ -1392,6 +1554,13 @@ export const PGN_65305_SimnetSailingProcessorStatusDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_65305_SimnetSailingProcessorStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+  report: enums.SimnetDeviceReport.SailingProcessorStatus,
+}
+
 /*
   PGN: 65309
   Description: Navico: Wireless Battery Status
@@ -1415,6 +1584,7 @@ export const PGN_65309Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 65312
   Description: Navico: Wireless Signal Status
@@ -1437,6 +1607,7 @@ export const PGN_65312Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 65340
   Description: Simnet: AP Unknown 2
@@ -1463,6 +1634,7 @@ export const PGN_65340Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65341
   Description: Simnet: Autopilot Angle
@@ -1486,6 +1658,7 @@ export const PGN_65341Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 65345
   Description: Seatalk: Pilot Wind Datum
@@ -1508,6 +1681,7 @@ export const PGN_65345Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65350
   Description: Simnet: Magnetic Field
@@ -1529,6 +1703,7 @@ export const PGN_65350Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65359
   Description: Seatalk: Pilot Heading
@@ -1552,6 +1727,7 @@ export const PGN_65359Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 65360
   Description: Seatalk: Pilot Locked Heading
@@ -1575,6 +1751,7 @@ export const PGN_65360Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 65361
   Description: Seatalk: Silence Alarm
@@ -1597,6 +1774,7 @@ export const PGN_65361Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65371
   Description: Seatalk: Keypad Message
@@ -1624,6 +1802,7 @@ export const PGN_65371Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65374
   Description: SeaTalk: Keypad Heartbeat
@@ -1647,6 +1826,7 @@ export const PGN_65374Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 65379
   Description: Seatalk: Pilot Mode
@@ -1670,6 +1850,7 @@ export const PGN_65379Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 65408
   Description: Airmar: Depth Quality Factor
@@ -1692,6 +1873,7 @@ export const PGN_65408Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 65409
   Description: Airmar: Speed Pulse Count
@@ -1715,6 +1897,7 @@ export const PGN_65409Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 65410
   Description: Airmar: Device Information
@@ -1738,6 +1921,7 @@ export const PGN_65410Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 65420
   Description: Simnet: AP Unknown 3
@@ -1764,6 +1948,7 @@ export const PGN_65420Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 65480
   Description: Simnet: Autopilot Mode
@@ -1784,6 +1969,7 @@ export const PGN_65480Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 126208
   Description: NMEA - Request group function
@@ -1810,6 +1996,10 @@ export const PGN_126208_NmeaRequestGroupFunctionDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126208_NmeaRequestGroupFunctionMatchFields = {
+}
+
 /*
   PGN: 126208
   Description: NMEA - Command group function
@@ -1837,6 +2027,11 @@ export const PGN_126208_NmeaCommandGroupFunctionDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126208_NmeaCommandGroupFunctionMatchFields = {
+  functionCode: enums.GroupFunction.Command,
+}
+
 /*
   PGN: 126208
   Description: NMEA - Acknowledge group function
@@ -1863,6 +2058,11 @@ export const PGN_126208_NmeaAcknowledgeGroupFunctionDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126208_NmeaAcknowledgeGroupFunctionMatchFields = {
+  functionCode: enums.GroupFunction.Acknowledge,
+}
+
 /*
   PGN: 126208
   Description: NMEA - Read Fields group function
@@ -1895,6 +2095,11 @@ export const PGN_126208_NmeaReadFieldsGroupFunctionDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126208_NmeaReadFieldsGroupFunctionMatchFields = {
+  functionCode: enums.GroupFunction.ReadFields,
+}
+
 /*
   PGN: 126208
   Description: NMEA - Read Fields reply group function
@@ -1928,6 +2133,11 @@ export const PGN_126208_NmeaReadFieldsReplyGroupFunctionDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126208_NmeaReadFieldsReplyGroupFunctionMatchFields = {
+  functionCode: enums.GroupFunction.ReadFieldsReply,
+}
+
 /*
   PGN: 126208
   Description: NMEA - Write Fields group function
@@ -1961,6 +2171,11 @@ export const PGN_126208_NmeaWriteFieldsGroupFunctionDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126208_NmeaWriteFieldsGroupFunctionMatchFields = {
+  functionCode: enums.GroupFunction.WriteFields,
+}
+
 /*
   PGN: 126208
   Description: NMEA - Write Fields reply group function
@@ -1994,6 +2209,11 @@ export const PGN_126208_NmeaWriteFieldsReplyGroupFunctionDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126208_NmeaWriteFieldsReplyGroupFunctionMatchFields = {
+  functionCode: enums.GroupFunction.WriteFieldsReply,
+}
+
 /*
   PGN: 126464
   Description: PGN List (Transmit and Receive)
@@ -2014,6 +2234,7 @@ export const PGN_126464Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 126720
   Description: Seatalk1: Pilot Mode
@@ -2044,6 +2265,14 @@ export const PGN_126720_Seatalk1PilotModeDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_Seatalk1PilotModeMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Raymarine,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: 33264,
+  command: 132,
+}
+
 /*
   PGN: 126720
   Description: Fusion: Media Control
@@ -2070,6 +2299,13 @@ export const PGN_126720_FusionMediaControlDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_FusionMediaControlMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: 3,
+}
+
 /*
   PGN: 126720
   Description: Fusion: Sirius Control
@@ -2096,6 +2332,13 @@ export const PGN_126720_FusionSiriusControlDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_FusionSiriusControlMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: 30,
+}
+
 /*
   PGN: 126720
   Description: Fusion: Request Status
@@ -2120,6 +2363,13 @@ export const PGN_126720_FusionRequestStatusDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_FusionRequestStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.FusionMessageId.RequestStatus,
+}
+
 /*
   PGN: 126720
   Description: Fusion: Set Source
@@ -2145,6 +2395,13 @@ export const PGN_126720_FusionSetSourceDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_FusionSetSourceMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.FusionMessageId.Source,
+}
+
 /*
   PGN: 126720
   Description: Fusion: Set Mute
@@ -2169,6 +2426,13 @@ export const PGN_126720_FusionSetMuteDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_FusionSetMuteMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: 23,
+}
+
 /*
   PGN: 126720
   Description: Fusion: Set Zone Volume
@@ -2195,6 +2459,13 @@ export const PGN_126720_FusionSetZoneVolumeDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_FusionSetZoneVolumeMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.FusionMessageId.SetZoneVolume,
+}
+
 /*
   PGN: 126720
   Description: Fusion: Set All Volumes
@@ -2223,6 +2494,13 @@ export const PGN_126720_FusionSetAllVolumesDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_FusionSetAllVolumesMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.FusionMessageId.SetAllVolumes,
+}
+
 /*
   PGN: 126720
   Description: Seatalk1: Keystroke
@@ -2252,6 +2530,14 @@ export const PGN_126720_Seatalk1KeystrokeDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_Seatalk1KeystrokeMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Raymarine,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: 33264,
+  command: 134,
+}
+
 /*
   PGN: 126720
   Description: Seatalk1: Device Identification
@@ -2279,6 +2565,14 @@ export const PGN_126720_Seatalk1DeviceIdentificationDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_Seatalk1DeviceIdentificationMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Raymarine,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: 33264,
+  command: 144,
+}
+
 /*
   PGN: 126720
   Description: Seatalk1: Display Brightness
@@ -2307,6 +2601,13 @@ export const PGN_126720_Seatalk1DisplayBrightnessDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_Seatalk1DisplayBrightnessMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Raymarine,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: 3212,
+}
+
 /*
   PGN: 126720
   Description: Seatalk1: Display Color
@@ -2336,6 +2637,14 @@ export const PGN_126720_Seatalk1DisplayColorDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_Seatalk1DisplayColorMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Raymarine,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: 3212,
+  command: 1,
+}
+
 /*
   PGN: 126720
   Description: Airmar: Attitude Offset
@@ -2362,6 +2671,13 @@ export const PGN_126720_AirmarAttitudeOffsetDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_AirmarAttitudeOffsetMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.AirmarCommand.AttitudeOffsets,
+}
+
 /*
   PGN: 126720
   Description: Airmar: Calibrate Compass
@@ -2397,6 +2713,13 @@ export const PGN_126720_AirmarCalibrateCompassDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_AirmarCalibrateCompassMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.AirmarCommand.CalibrateCompass,
+}
+
 /*
   PGN: 126720
   Description: Airmar: True Wind Options
@@ -2422,6 +2745,13 @@ export const PGN_126720_AirmarTrueWindOptionsDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_AirmarTrueWindOptionsMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.AirmarCommand.TrueWindOptions,
+}
+
 /*
   PGN: 126720
   Description: Airmar: Simulate Mode
@@ -2447,6 +2777,13 @@ export const PGN_126720_AirmarSimulateModeDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_AirmarSimulateModeMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.AirmarCommand.SimulateMode,
+}
+
 /*
   PGN: 126720
   Description: Airmar: Calibrate Depth
@@ -2472,6 +2809,13 @@ export const PGN_126720_AirmarCalibrateDepthDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_AirmarCalibrateDepthMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.AirmarCommand.CalibrateDepth,
+}
+
 /*
   PGN: 126720
   Description: Airmar: Calibrate Speed
@@ -2500,6 +2844,13 @@ export const PGN_126720_AirmarCalibrateSpeedDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_AirmarCalibrateSpeedMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.AirmarCommand.CalibrateSpeed,
+}
+
 /*
   PGN: 126720
   Description: Airmar: Calibrate Temperature
@@ -2526,6 +2877,13 @@ export const PGN_126720_AirmarCalibrateTemperatureDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_AirmarCalibrateTemperatureMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.AirmarCommand.CalibrateTemperature,
+}
+
 /*
   PGN: 126720
   Description: Airmar: Speed Filter None
@@ -2552,6 +2910,13 @@ export const PGN_126720_AirmarSpeedFilterNoneDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_AirmarSpeedFilterNoneMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.AirmarCommand.SpeedFilter,
+}
+
 /*
   PGN: 126720
   Description: Airmar: Speed Filter IIR
@@ -2580,6 +2945,14 @@ export const PGN_126720_AirmarSpeedFilterIirDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_AirmarSpeedFilterIirMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.AirmarCommand.SpeedFilter,
+  filterType: 1,
+}
+
 /*
   PGN: 126720
   Description: Airmar: Temperature Filter None
@@ -2606,6 +2979,13 @@ export const PGN_126720_AirmarTemperatureFilterNoneDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_AirmarTemperatureFilterNoneMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.AirmarCommand.TemperatureFilter,
+}
+
 /*
   PGN: 126720
   Description: Airmar: Temperature Filter IIR
@@ -2634,6 +3014,14 @@ export const PGN_126720_AirmarTemperatureFilterIirDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_AirmarTemperatureFilterIirMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.AirmarCommand.TemperatureFilter,
+  filterType: 1,
+}
+
 /*
   PGN: 126720
   Description: Airmar: NMEA 2000 options
@@ -2659,6 +3047,13 @@ export const PGN_126720_AirmarNmea2000OptionsDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_AirmarNmea2000OptionsMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.AirmarCommand.Nmea2000Options,
+}
+
 /*
   PGN: 126720
   Description: Airmar: Addressable Multi-Frame
@@ -2681,6 +3076,12 @@ export const PGN_126720_AirmarAddressableMultiFrameDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_AirmarAddressableMultiFrameMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 126720
   Description: Maretron: Slave Response
@@ -2706,6 +3107,12 @@ export const PGN_126720_MaretronSlaveResponseDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_MaretronSlaveResponseMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 126720
   Description: Garmin: Day Mode
@@ -2739,6 +3146,16 @@ export const PGN_126720_GarminDayModeDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_GarminDayModeMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.Marine,
+  unknownId1: 222,
+  unknownId2: 5,
+  unknownId3: 5,
+  unknownId4: 5,
+}
+
 /*
   PGN: 126720
   Description: Garmin: Night Mode
@@ -2773,6 +3190,17 @@ export const PGN_126720_GarminNightModeDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_GarminNightModeMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.Marine,
+  unknownId1: 222,
+  unknownId2: 5,
+  unknownId3: 5,
+  unknownId4: 5,
+  mode: enums.GarminColorMode.Night,
+}
+
 /*
   PGN: 126720
   Description: Garmin: Color mode
@@ -2807,6 +3235,17 @@ export const PGN_126720_GarminColorModeDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_126720_GarminColorModeMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.Marine,
+  unknownId1: 222,
+  unknownId2: 5,
+  unknownId3: 5,
+  unknownId4: 5,
+  mode: enums.GarminColorMode.Color,
+}
+
 /*
   PGN: 126983
   Description: Alert
@@ -2844,6 +3283,7 @@ export const PGN_126983Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 126984
   Description: Alert Response
@@ -2872,6 +3312,7 @@ export const PGN_126984Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 126985
   Description: Alert Text
@@ -2900,6 +3341,7 @@ export const PGN_126985Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 126986
   Description: Alert Configuration
@@ -2931,6 +3373,7 @@ export const PGN_126986Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 126987
   Description: Alert Threshold
@@ -2963,6 +3406,7 @@ export const PGN_126987Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 126988
   Description: Alert Value
@@ -2994,6 +3438,7 @@ export const PGN_126988Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 126992
   Description: System Time
@@ -3016,6 +3461,7 @@ export const PGN_126992Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 126993
   Description: Heartbeat
@@ -3039,6 +3485,7 @@ export const PGN_126993Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 126996
   Description: Product Information
@@ -3064,6 +3511,7 @@ export const PGN_126996Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 126998
   Description: Configuration Information
@@ -3084,6 +3532,7 @@ export const PGN_126998Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 127233
   Description: Man Overboard Notification
@@ -3128,6 +3577,7 @@ export const PGN_127233Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 127237
   Description: Heading/Track control
@@ -3162,6 +3612,7 @@ export const PGN_127237Defaults = {
   dst: 255,
   prio: 2
 }
+
 /*
   PGN: 127245
   Description: Rudder
@@ -3184,6 +3635,7 @@ export const PGN_127245Defaults = {
   dst: 255,
   prio: 2
 }
+
 /*
   PGN: 127250
   Description: Vessel Heading
@@ -3206,6 +3658,7 @@ export const PGN_127250Defaults = {
   dst: 255,
   prio: 2
 }
+
 /*
   PGN: 127251
   Description: Rate of Turn
@@ -3225,6 +3678,7 @@ export const PGN_127251Defaults = {
   dst: 255,
   prio: 2
 }
+
 /*
   PGN: 127252
   Description: Heave
@@ -3244,6 +3698,7 @@ export const PGN_127252Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 127257
   Description: Attitude
@@ -3265,6 +3720,7 @@ export const PGN_127257Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 127258
   Description: Magnetic Variation
@@ -3287,6 +3743,7 @@ export const PGN_127258Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 127488
   Description: Engine Parameters, Rapid Update
@@ -3308,6 +3765,7 @@ export const PGN_127488Defaults = {
   dst: 255,
   prio: 2
 }
+
 /*
   PGN: 127489
   Description: Engine Parameters, Dynamic
@@ -3338,6 +3796,7 @@ export const PGN_127489Defaults = {
   dst: 255,
   prio: 2
 }
+
 /*
   PGN: 127490
   Description: Electric Drive Status, Dynamic
@@ -3363,6 +3822,7 @@ export const PGN_127490Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 127491
   Description: Electric Energy Storage Status, Dynamic
@@ -3390,6 +3850,7 @@ export const PGN_127491Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 127493
   Description: Transmission Parameters, Dynamic
@@ -3413,6 +3874,7 @@ export const PGN_127493Defaults = {
   dst: 255,
   prio: 2
 }
+
 /*
   PGN: 127494
   Description: Electric Drive Information
@@ -3443,6 +3905,7 @@ export const PGN_127494Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 127495
   Description: Electric Energy Storage Information
@@ -3476,6 +3939,7 @@ export const PGN_127495Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 127496
   Description: Trip Parameters, Vessel
@@ -3496,6 +3960,7 @@ export const PGN_127496Defaults = {
   dst: 255,
   prio: 5
 }
+
 /*
   PGN: 127497
   Description: Trip Parameters, Engine
@@ -3517,6 +3982,7 @@ export const PGN_127497Defaults = {
   dst: 255,
   prio: 5
 }
+
 /*
   PGN: 127498
   Description: Engine Parameters, Static
@@ -3537,6 +4003,7 @@ export const PGN_127498Defaults = {
   dst: 255,
   prio: 5
 }
+
 /*
   PGN: 127500
   Description: Load Controller Connection State/Control
@@ -3561,6 +4028,7 @@ export const PGN_127500Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 127501
   Description: Binary Switch Bank Status
@@ -3606,6 +4074,7 @@ export const PGN_127501Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 127502
   Description: Switch Bank Control
@@ -3651,6 +4120,7 @@ export const PGN_127502Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 127503
   Description: AC Input Status
@@ -3681,6 +4151,7 @@ export const PGN_127503Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 127504
   Description: AC Output Status
@@ -3711,6 +4182,7 @@ export const PGN_127504Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 127505
   Description: Fluid Level
@@ -3732,6 +4204,7 @@ export const PGN_127505Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 127506
   Description: DC Detailed Status
@@ -3756,6 +4229,7 @@ export const PGN_127506Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 127507
   Description: Charger Status
@@ -3780,6 +4254,7 @@ export const PGN_127507Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 127508
   Description: Battery Status
@@ -3801,6 +4276,7 @@ export const PGN_127508Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 127509
   Description: Inverter Status
@@ -3824,6 +4300,7 @@ export const PGN_127509Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 127510
   Description: Charger Configuration Status
@@ -3851,6 +4328,7 @@ export const PGN_127510Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 127511
   Description: Inverter Configuration Status
@@ -3875,6 +4353,7 @@ export const PGN_127511Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 127512
   Description: AGS Configuration Status
@@ -3895,6 +4374,7 @@ export const PGN_127512Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 127513
   Description: Battery Configuration Status
@@ -3921,6 +4401,7 @@ export const PGN_127513Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 127514
   Description: AGS Status
@@ -3943,6 +4424,7 @@ export const PGN_127514Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 127744
   Description: AC Power / Current - Phase A
@@ -3963,6 +4445,7 @@ export const PGN_127744Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 127745
   Description: AC Power / Current - Phase B
@@ -3983,6 +4466,7 @@ export const PGN_127745Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 127746
   Description: AC Power / Current - Phase C
@@ -4003,6 +4487,7 @@ export const PGN_127746Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 127747
   Description: AC Voltage / Frequency - Phase A
@@ -4024,6 +4509,7 @@ export const PGN_127747Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 127748
   Description: AC Voltage / Frequency - Phase B
@@ -4045,6 +4531,7 @@ export const PGN_127748Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 127749
   Description: AC Voltage / Frequency - Phase C
@@ -4066,6 +4553,7 @@ export const PGN_127749Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 127750
   Description: Converter Status
@@ -4090,6 +4578,7 @@ export const PGN_127750Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 127751
   Description: DC Voltage/Current
@@ -4111,6 +4600,7 @@ export const PGN_127751Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 128000
   Description: Leeway Angle
@@ -4131,6 +4621,7 @@ export const PGN_128000Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 128001
   Description: Vessel Acceleration
@@ -4153,6 +4644,7 @@ export const PGN_128001Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 128002
   Description: Electric Drive Status, Rapid Update
@@ -4177,6 +4669,7 @@ export const PGN_128002Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 128003
   Description: Electric Energy Storage Status, Rapid Update
@@ -4201,6 +4694,7 @@ export const PGN_128003Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 128006
   Description: Thruster Control Status
@@ -4226,6 +4720,7 @@ export const PGN_128006Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 128007
   Description: Thruster Information
@@ -4248,6 +4743,7 @@ export const PGN_128007Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 128008
   Description: Thruster Motor Status
@@ -4270,6 +4766,7 @@ export const PGN_128008Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 128259
   Description: Speed
@@ -4292,6 +4789,7 @@ export const PGN_128259Defaults = {
   dst: 255,
   prio: 2
 }
+
 /*
   PGN: 128267
   Description: Water Depth
@@ -4312,6 +4810,7 @@ export const PGN_128267Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 128275
   Description: Distance Log
@@ -4332,6 +4831,7 @@ export const PGN_128275Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 128520
   Description: Tracked Target Data
@@ -4365,6 +4865,7 @@ export const PGN_128520Defaults = {
   dst: 255,
   prio: 2
 }
+
 /*
   PGN: 128538
   Description: Elevator Car Status
@@ -4414,6 +4915,7 @@ export const PGN_128538Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 128768
   Description: Elevator Motor Control
@@ -4437,6 +4939,7 @@ export const PGN_128768Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 128769
   Description: Elevator Deck Push Button
@@ -4460,6 +4963,7 @@ export const PGN_128769Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 128776
   Description: Windlass Control Status
@@ -4490,6 +4994,7 @@ export const PGN_128776Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 128777
   Description: Anchor Windlass Operating Status
@@ -4516,6 +5021,7 @@ export const PGN_128777Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 128778
   Description: Anchor Windlass Monitoring Status
@@ -4539,6 +5045,7 @@ export const PGN_128778Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 128780
   Description: Linear Actuator Control/Status
@@ -4562,6 +5069,7 @@ export const PGN_128780Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 129025
   Description: Position, Rapid Update
@@ -4580,6 +5088,7 @@ export const PGN_129025Defaults = {
   dst: 255,
   prio: 2
 }
+
 /*
   PGN: 129026
   Description: COG & SOG, Rapid Update
@@ -4602,6 +5111,7 @@ export const PGN_129026Defaults = {
   dst: 255,
   prio: 2
 }
+
 /*
   PGN: 129027
   Description: Position Delta, Rapid Update
@@ -4622,6 +5132,7 @@ export const PGN_129027Defaults = {
   dst: 255,
   prio: 2
 }
+
 /*
   PGN: 129028
   Description: Altitude Delta, Rapid Update
@@ -4645,6 +5156,7 @@ export const PGN_129028Defaults = {
   dst: 255,
   prio: 2
 }
+
 /*
   PGN: 129029
   Description: GNSS Position Data
@@ -4681,6 +5193,7 @@ export const PGN_129029Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 129033
   Description: Time & Date
@@ -4700,6 +5213,7 @@ export const PGN_129033Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 129038
   Description: AIS Class A Position Report
@@ -4736,6 +5250,7 @@ export const PGN_129038Defaults = {
   dst: 255,
   prio: 4
 }
+
 /*
   PGN: 129039
   Description: AIS Class B Position Report
@@ -4775,6 +5290,7 @@ export const PGN_129039Defaults = {
   dst: 255,
   prio: 4
 }
+
 /*
   PGN: 129040
   Description: AIS Class B Extended Position Report
@@ -4818,6 +5334,7 @@ export const PGN_129040Defaults = {
   dst: 255,
   prio: 4
 }
+
 /*
   PGN: 129041
   Description: AIS Aids to Navigation (AtoN) Report
@@ -4857,6 +5374,7 @@ export const PGN_129041Defaults = {
   dst: 255,
   prio: 4
 }
+
 /*
   PGN: 129044
   Description: Datum
@@ -4878,6 +5396,7 @@ export const PGN_129044Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 129045
   Description: User Datum
@@ -4904,6 +5423,7 @@ export const PGN_129045Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 129283
   Description: Cross Track Error
@@ -4926,6 +5446,7 @@ export const PGN_129283Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 129284
   Description: Navigation Data
@@ -4957,6 +5478,7 @@ export const PGN_129284Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 129285
   Description: Navigation - Route/WP Information
@@ -4988,6 +5510,7 @@ export const PGN_129285Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 129291
   Description: Set & Drift, Rapid Update
@@ -5010,6 +5533,7 @@ export const PGN_129291Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 129301
   Description: Navigation - Route / Time to+from Mark
@@ -5031,6 +5555,7 @@ export const PGN_129301Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 129302
   Description: Bearing and Distance between two Marks
@@ -5057,6 +5582,7 @@ export const PGN_129302Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 129538
   Description: GNSS Control Status
@@ -5084,6 +5610,7 @@ export const PGN_129538Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 129539
   Description: GNSS DOPs
@@ -5107,6 +5634,7 @@ export const PGN_129539Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 129540
   Description: GNSS Sats in View
@@ -5136,6 +5664,7 @@ export const PGN_129540Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 129541
   Description: GPS Almanac Data
@@ -5166,6 +5695,7 @@ export const PGN_129541Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 129542
   Description: GNSS Pseudorange Noise Statistics
@@ -5190,6 +5720,7 @@ export const PGN_129542Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 129545
   Description: GNSS RAIM Output
@@ -5216,6 +5747,7 @@ export const PGN_129545Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 129546
   Description: GNSS RAIM Settings
@@ -5237,6 +5769,7 @@ export const PGN_129546Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 129547
   Description: GNSS Pseudorange Error Statistics
@@ -5261,6 +5794,7 @@ export const PGN_129547Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 129549
   Description: DGNSS Corrections
@@ -5288,6 +5822,7 @@ export const PGN_129549Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 129550
   Description: GNSS Differential Correction Receiver Interface
@@ -5311,6 +5846,7 @@ export const PGN_129550Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 129551
   Description: GNSS Differential Correction Receiver Signal
@@ -5341,6 +5877,7 @@ export const PGN_129551Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 129556
   Description: GLONASS Almanac Data
@@ -5372,6 +5909,7 @@ export const PGN_129556Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 129792
   Description: AIS DGNSS Broadcast Binary Message
@@ -5400,6 +5938,7 @@ export const PGN_129792Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 129793
   Description: AIS UTC and Date Report
@@ -5430,6 +5969,7 @@ export const PGN_129793Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 129794
   Description: AIS Class A Static and Voyage Related Data
@@ -5467,6 +6007,7 @@ export const PGN_129794Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 129795
   Description: AIS Addressed Binary Message
@@ -5495,6 +6036,7 @@ export const PGN_129795Defaults = {
   dst: 255,
   prio: 5
 }
+
 /*
   PGN: 129796
   Description: AIS Acknowledge
@@ -5522,6 +6064,7 @@ export const PGN_129796Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 129797
   Description: AIS Binary Broadcast Message
@@ -5546,6 +6089,7 @@ export const PGN_129797Defaults = {
   dst: 255,
   prio: 5
 }
+
 /*
   PGN: 129798
   Description: AIS SAR Aircraft Position Report
@@ -5579,6 +6123,7 @@ export const PGN_129798Defaults = {
   dst: 255,
   prio: 4
 }
+
 /*
   PGN: 129799
   Description: Radio Frequency/Mode/Power
@@ -5602,6 +6147,7 @@ export const PGN_129799Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 129800
   Description: AIS UTC/Date Inquiry
@@ -5625,6 +6171,7 @@ export const PGN_129800Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 129801
   Description: AIS Addressed Safety Related Message
@@ -5652,6 +6199,7 @@ export const PGN_129801Defaults = {
   dst: 255,
   prio: 5
 }
+
 /*
   PGN: 129802
   Description: AIS Safety Related Broadcast Message
@@ -5675,6 +6223,7 @@ export const PGN_129802Defaults = {
   dst: 255,
   prio: 5
 }
+
 /*
   PGN: 129803
   Description: AIS Interrogation
@@ -5713,6 +6262,7 @@ export const PGN_129803Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 129804
   Description: AIS Assignment Mode Command
@@ -5743,6 +6293,7 @@ export const PGN_129804Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 129805
   Description: AIS Data Link Management Message
@@ -5771,6 +6322,7 @@ export const PGN_129805Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 129806
   Description: AIS Channel Management
@@ -5810,6 +6362,7 @@ export const PGN_129806Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 129807
   Description: AIS Class B Group Assignment
@@ -5845,6 +6398,7 @@ export const PGN_129807Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 129808
   Description: DSC Distress Call Information
@@ -5886,6 +6440,11 @@ export const PGN_129808_DscDistressCallInformationDefaults = {
   dst: 255,
   prio: 4
 }
+
+export const PGN_129808_DscDistressCallInformationMatchFields = {
+  dscCategory: enums.DscCategory.Distress,
+}
+
 /*
   PGN: 129808
   Description: DSC Call Information
@@ -5926,6 +6485,7 @@ export const PGN_129808Defaults = {
   dst: 255,
   prio: 4
 }
+
 /*
   PGN: 129809
   Description: AIS Class B static data (msg 24 Part A)
@@ -5949,6 +6509,7 @@ export const PGN_129809Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 129810
   Description: AIS Class B static data (msg 24 Part B)
@@ -5982,6 +6543,7 @@ export const PGN_129810Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 130052
   Description: Loran-C TD Data
@@ -6013,6 +6575,7 @@ export const PGN_130052Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130053
   Description: Loran-C Range Data
@@ -6044,6 +6607,7 @@ export const PGN_130053Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130054
   Description: Loran-C Signal Data
@@ -6065,6 +6629,7 @@ export const PGN_130054Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130060
   Description: Label
@@ -6089,6 +6654,7 @@ export const PGN_130060Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130061
   Description: Channel Source Configuration
@@ -6116,6 +6682,7 @@ export const PGN_130061Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130064
   Description: Route and WP Service - Database List
@@ -6146,6 +6713,7 @@ export const PGN_130064Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 130065
   Description: Route and WP Service - Route List
@@ -6173,6 +6741,7 @@ export const PGN_130065Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 130066
   Description: Route and WP Service - Route/WP-List Attributes
@@ -6201,6 +6770,7 @@ export const PGN_130066Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 130067
   Description: Route and WP Service - Route - WP Name & Position
@@ -6228,6 +6798,7 @@ export const PGN_130067Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 130068
   Description: Route and WP Service - Route - WP Name
@@ -6253,6 +6824,7 @@ export const PGN_130068Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 130069
   Description: Route and WP Service - XTE Limit & Navigation Method
@@ -6280,6 +6852,7 @@ export const PGN_130069Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 130070
   Description: Route and WP Service - WP Comment
@@ -6305,6 +6878,7 @@ export const PGN_130070Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 130071
   Description: Route and WP Service - Route Comment
@@ -6329,6 +6903,7 @@ export const PGN_130071Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 130072
   Description: Route and WP Service - Database Comment
@@ -6352,6 +6927,7 @@ export const PGN_130072Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 130073
   Description: Route and WP Service - Radius of Turn
@@ -6377,6 +6953,7 @@ export const PGN_130073Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 130074
   Description: Route and WP Service - WP List - WP Name & Position
@@ -6404,6 +6981,7 @@ export const PGN_130074Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 130306
   Description: Wind Data
@@ -6425,6 +7003,7 @@ export const PGN_130306Defaults = {
   dst: 255,
   prio: 2
 }
+
 /*
   PGN: 130310
   Description: Environmental Parameters (obsolete)
@@ -6447,6 +7026,7 @@ export const PGN_130310Defaults = {
   dst: 255,
   prio: 5
 }
+
 /*
   PGN: 130311
   Description: Environmental Parameters
@@ -6470,6 +7050,7 @@ export const PGN_130311Defaults = {
   dst: 255,
   prio: 5
 }
+
 /*
   PGN: 130312
   Description: Temperature
@@ -6492,6 +7073,7 @@ export const PGN_130312Defaults = {
   dst: 255,
   prio: 5
 }
+
 /*
   PGN: 130313
   Description: Humidity
@@ -6514,6 +7096,7 @@ export const PGN_130313Defaults = {
   dst: 255,
   prio: 5
 }
+
 /*
   PGN: 130314
   Description: Actual Pressure
@@ -6535,6 +7118,7 @@ export const PGN_130314Defaults = {
   dst: 255,
   prio: 5
 }
+
 /*
   PGN: 130315
   Description: Set Pressure
@@ -6556,6 +7140,7 @@ export const PGN_130315Defaults = {
   dst: 255,
   prio: 5
 }
+
 /*
   PGN: 130316
   Description: Temperature Extended Range
@@ -6577,6 +7162,7 @@ export const PGN_130316Defaults = {
   dst: 255,
   prio: 5
 }
+
 /*
   PGN: 130320
   Description: Tide Station Data
@@ -6604,6 +7190,7 @@ export const PGN_130320Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 130321
   Description: Salinity Station Data
@@ -6630,6 +7217,7 @@ export const PGN_130321Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 130322
   Description: Current Station Data
@@ -6659,6 +7247,7 @@ export const PGN_130322Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 130323
   Description: Meteorological Station Data
@@ -6690,6 +7279,7 @@ export const PGN_130323Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 130324
   Description: Moored Buoy Station Data
@@ -6724,6 +7314,7 @@ export const PGN_130324Defaults = {
   dst: 255,
   prio: 6
 }
+
 /*
   PGN: 130330
   Description: Lighting System Settings
@@ -6753,6 +7344,7 @@ export const PGN_130330Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 130560
   Description: Payload Mass
@@ -6775,6 +7367,7 @@ export const PGN_130560Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130561
   Description: Lighting Zone
@@ -6806,6 +7399,7 @@ export const PGN_130561Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130562
   Description: Lighting Scene
@@ -6837,6 +7431,7 @@ export const PGN_130562Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130563
   Description: Lighting Device
@@ -6872,6 +7467,7 @@ export const PGN_130563Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130564
   Description: Lighting Device Enumeration
@@ -6896,6 +7492,7 @@ export const PGN_130564Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130565
   Description: Lighting Color Sequence
@@ -6923,6 +7520,7 @@ export const PGN_130565Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130566
   Description: Lighting Program
@@ -6945,6 +7543,7 @@ export const PGN_130566Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130567
   Description: Watermaker Input Setting and Status
@@ -6984,6 +7583,7 @@ export const PGN_130567Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130569
   Description: Current Status and File
@@ -7017,6 +7617,7 @@ export const PGN_130569Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130570
   Description: Library Data File
@@ -7050,6 +7651,7 @@ export const PGN_130570Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130571
   Description: Library Data Group
@@ -7080,6 +7682,7 @@ export const PGN_130571Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130572
   Description: Library Data Search
@@ -7105,6 +7708,7 @@ export const PGN_130572Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130573
   Description: Supported Source Data
@@ -7136,6 +7740,7 @@ export const PGN_130573Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130574
   Description: Supported Zone Data
@@ -7159,6 +7764,7 @@ export const PGN_130574Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130576
   Description: Small Craft Status
@@ -7178,6 +7784,7 @@ export const PGN_130576Defaults = {
   dst: 255,
   prio: 2
 }
+
 /*
   PGN: 130577
   Description: Direction Data
@@ -7204,6 +7811,7 @@ export const PGN_130577Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130578
   Description: Vessel Speed Components
@@ -7226,6 +7834,7 @@ export const PGN_130578Defaults = {
   dst: 255,
   prio: 2
 }
+
 /*
   PGN: 130579
   Description: System Configuration
@@ -7248,6 +7857,7 @@ export const PGN_130579Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130580
   Description: System Configuration (deprecated)
@@ -7268,6 +7878,7 @@ export const PGN_130580Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130581
   Description: Zone Configuration (deprecated)
@@ -7291,6 +7902,7 @@ export const PGN_130581Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130582
   Description: Zone Volume
@@ -7314,6 +7926,7 @@ export const PGN_130582Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130583
   Description: Available Audio EQ presets
@@ -7337,6 +7950,7 @@ export const PGN_130583Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130584
   Description: Available Bluetooth addresses
@@ -7362,6 +7976,7 @@ export const PGN_130584Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130585
   Description: Bluetooth source status
@@ -7383,6 +7998,7 @@ export const PGN_130585Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130586
   Description: Zone Configuration
@@ -7412,6 +8028,7 @@ export const PGN_130586Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130816
   Description: SonicHub: Init #2
@@ -7439,6 +8056,13 @@ export const PGN_130816_SonichubInit2Defaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130816_SonichubInit2MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.SonichubCommand.Init2,
+}
+
 /*
   PGN: 130816
   Description: SonicHub: AM Radio
@@ -7470,6 +8094,13 @@ export const PGN_130816_SonichubAmRadioDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130816_SonichubAmRadioMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.SonichubCommand.AmRadio,
+}
+
 /*
   PGN: 130816
   Description: SonicHub: Zone info
@@ -7496,6 +8127,13 @@ export const PGN_130816_SonichubZoneInfoDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130816_SonichubZoneInfoMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.SonichubCommand.ZoneInfo,
+}
+
 /*
   PGN: 130816
   Description: SonicHub: Source
@@ -7522,6 +8160,13 @@ export const PGN_130816_SonichubSourceDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130816_SonichubSourceMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.SonichubCommand.Source,
+}
+
 /*
   PGN: 130816
   Description: SonicHub: Source List
@@ -7550,6 +8195,13 @@ export const PGN_130816_SonichubSourceListDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130816_SonichubSourceListMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.SonichubCommand.SourceList,
+}
+
 /*
   PGN: 130816
   Description: SonicHub: Control
@@ -7576,6 +8228,13 @@ export const PGN_130816_SonichubControlDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130816_SonichubControlMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.SonichubCommand.Control,
+}
+
 /*
   PGN: 130816
   Description: SonicHub: FM Radio
@@ -7607,6 +8266,13 @@ export const PGN_130816_SonichubFmRadioDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130816_SonichubFmRadioMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.SonichubCommand.FmRadio,
+}
+
 /*
   PGN: 130816
   Description: SonicHub: Playlist
@@ -7638,6 +8304,13 @@ export const PGN_130816_SonichubPlaylistDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130816_SonichubPlaylistMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.SonichubCommand.Playlist,
+}
+
 /*
   PGN: 130816
   Description: SonicHub: Track
@@ -7665,6 +8338,13 @@ export const PGN_130816_SonichubTrackDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130816_SonichubTrackMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.SonichubCommand.Track,
+}
+
 /*
   PGN: 130816
   Description: SonicHub: Artist
@@ -7692,6 +8372,13 @@ export const PGN_130816_SonichubArtistDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130816_SonichubArtistMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.SonichubCommand.Artist,
+}
+
 /*
   PGN: 130816
   Description: SonicHub: Album
@@ -7719,6 +8406,13 @@ export const PGN_130816_SonichubAlbumDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130816_SonichubAlbumMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.SonichubCommand.Album,
+}
+
 /*
   PGN: 130816
   Description: SonicHub: Menu Item
@@ -7749,6 +8443,13 @@ export const PGN_130816_SonichubMenuItemDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130816_SonichubMenuItemMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.SonichubCommand.MenuItem,
+}
+
 /*
   PGN: 130816
   Description: SonicHub: Zones
@@ -7775,6 +8476,13 @@ export const PGN_130816_SonichubZonesDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130816_SonichubZonesMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.SonichubCommand.Zones,
+}
+
 /*
   PGN: 130816
   Description: SonicHub: Max Volume
@@ -7802,6 +8510,13 @@ export const PGN_130816_SonichubMaxVolumeDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130816_SonichubMaxVolumeMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.SonichubCommand.MaxVolume,
+}
+
 /*
   PGN: 130816
   Description: SonicHub: Volume
@@ -7829,6 +8544,13 @@ export const PGN_130816_SonichubVolumeDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130816_SonichubVolumeMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.SonichubCommand.Volume,
+}
+
 /*
   PGN: 130816
   Description: SonicHub: Init #1
@@ -7854,6 +8576,13 @@ export const PGN_130816_SonichubInit1Defaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130816_SonichubInit1MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.SonichubCommand.Init1,
+}
+
 /*
   PGN: 130816
   Description: SonicHub: Position
@@ -7880,6 +8609,13 @@ export const PGN_130816_SonichubPositionDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130816_SonichubPositionMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.SonichubCommand.Position,
+}
+
 /*
   PGN: 130816
   Description: SonicHub: Init #3
@@ -7907,6 +8643,13 @@ export const PGN_130816_SonichubInit3Defaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130816_SonichubInit3MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.SonichubCommand.Init3,
+}
+
 /*
   PGN: 130816
   Description: Simrad: Text Message
@@ -7937,6 +8680,13 @@ export const PGN_130816_SimradTextMessageDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130816_SimradTextMessageMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.SimnetCommand.Text,
+}
+
 /*
   PGN: 130817
   Description: Navico: Unknown
@@ -7963,6 +8713,12 @@ export const PGN_130817_NavicoUnknownDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130817_NavicoUnknownMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 130817
   Description: Lowrance: Product Information
@@ -7992,6 +8748,12 @@ export const PGN_130817_LowranceProductInformationDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130817_LowranceProductInformationMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Lowrance,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 130818
   Description: Simnet: Reprogram Data
@@ -8014,6 +8776,7 @@ export const PGN_130818Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 130819
   Description: Simnet: Request Reprogram
@@ -8033,6 +8796,7 @@ export const PGN_130819Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 130820
   Description: Simnet: Reprogram Status
@@ -8057,6 +8821,12 @@ export const PGN_130820_SimnetReprogramStatusDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_SimnetReprogramStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 130820
   Description: Furuno: Unknown 130820
@@ -8083,6 +8853,12 @@ export const PGN_130820_FurunoUnknown130820Defaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FurunoUnknown130820MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Furuno,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Versions
@@ -8111,6 +8887,13 @@ export const PGN_130820_FusionVersionsDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionVersionsMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.ApiVersion,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Source
@@ -8139,6 +8922,13 @@ export const PGN_130820_FusionSourceDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionSourceMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.Source,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Source Count
@@ -8163,6 +8953,13 @@ export const PGN_130820_FusionSourceCountDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionSourceCountMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.SourceCount,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Media
@@ -8192,6 +8989,13 @@ export const PGN_130820_FusionMediaDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionMediaMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.TrackInfo,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Track Name
@@ -8218,6 +9022,13 @@ export const PGN_130820_FusionTrackNameDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionTrackNameMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.TrackTitle,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Artist Name
@@ -8244,6 +9055,13 @@ export const PGN_130820_FusionArtistNameDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionArtistNameMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.TrackArtist,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Album Name
@@ -8270,6 +9088,13 @@ export const PGN_130820_FusionAlbumNameDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionAlbumNameMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.TrackAlbum,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Device Name
@@ -8294,6 +9119,13 @@ export const PGN_130820_FusionDeviceNameDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionDeviceNameMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.UnitName,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Zone Name
@@ -8319,6 +9151,13 @@ export const PGN_130820_FusionZoneNameDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionZoneNameMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.ZoneName,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Track Position
@@ -8344,6 +9183,13 @@ export const PGN_130820_FusionTrackPositionDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionTrackPositionMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.TrackProgress,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Tuner
@@ -8372,6 +9218,13 @@ export const PGN_130820_FusionTunerDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionTunerMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.Tuner,
+}
+
 /*
   PGN: 130820
   Description: Fusion: MARINE_TUNER
@@ -8399,6 +9252,13 @@ export const PGN_130820_FusionMarineTunerDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionMarineTunerMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.MarineTuner,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Marine Squelch
@@ -8424,6 +9284,13 @@ export const PGN_130820_FusionMarineSquelchDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionMarineSquelchMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.MarineSquelch,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Marine Scan Mode
@@ -8449,6 +9316,13 @@ export const PGN_130820_FusionMarineScanModeDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionMarineScanModeMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.MarineScanMode,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Menu Item
@@ -8477,6 +9351,13 @@ export const PGN_130820_FusionMenuItemDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionMenuItemMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.MenuItem,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Aux Gain
@@ -8502,6 +9383,13 @@ export const PGN_130820_FusionAuxGainDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionAuxGainMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.AuxGain,
+}
+
 /*
   PGN: 130820
   Description: Fusion: USB Repeat Status
@@ -8528,6 +9416,14 @@ export const PGN_130820_FusionUsbRepeatStatusDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionUsbRepeatStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.Setting,
+  id: enums.FusionSetting.UsbRepeat,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Setting
@@ -8553,6 +9449,13 @@ export const PGN_130820_FusionSettingDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionSettingMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.Setting,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Settings
@@ -8581,6 +9484,13 @@ export const PGN_130820_FusionSettingsDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionSettingsMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.Settings,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Mute
@@ -8605,6 +9515,13 @@ export const PGN_130820_FusionMuteDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionMuteMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.Mute,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Balance
@@ -8630,6 +9547,13 @@ export const PGN_130820_FusionBalanceDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionBalanceMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.Balance,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Low Pass Filter
@@ -8655,6 +9579,13 @@ export const PGN_130820_FusionLowPassFilterDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionLowPassFilterMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.LowPassFilter,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Sublevels
@@ -8682,6 +9613,13 @@ export const PGN_130820_FusionSublevelsDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionSublevelsMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.Sublevels,
+}
+
 /*
   PGN: 130820
   Description: Fusion: EQ
@@ -8709,6 +9647,13 @@ export const PGN_130820_FusionEqDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionEqMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.Tone,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Volume Limits
@@ -8736,6 +9681,13 @@ export const PGN_130820_FusionVolumeLimitsDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionVolumeLimitsMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.VolumeLimits,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Volumes
@@ -8763,6 +9715,13 @@ export const PGN_130820_FusionVolumesDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionVolumesMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.Volume,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Capabilities
@@ -8791,6 +9750,13 @@ export const PGN_130820_FusionCapabilitiesDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionCapabilitiesMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.Capabilities,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Line Level Control
@@ -8816,6 +9782,13 @@ export const PGN_130820_FusionLineLevelControlDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionLineLevelControlMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.LineLevelControl,
+}
+
 /*
   PGN: 130820
   Description: Fusion: Power State
@@ -8840,6 +9813,13 @@ export const PGN_130820_FusionPowerStateDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionPowerStateMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.Power,
+}
+
 /*
   PGN: 130820
   Description: Fusion: SiriusXM
@@ -8868,6 +9848,13 @@ export const PGN_130820_FusionSiriusxmDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionSiriusxmMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.Sirius,
+}
+
 /*
   PGN: 130820
   Description: Fusion: SiriusXM Channel
@@ -8894,6 +9881,13 @@ export const PGN_130820_FusionSiriusxmChannelDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionSiriusxmChannelMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.SiriusXmChannel,
+}
+
 /*
   PGN: 130820
   Description: Fusion: SiriusXM Title
@@ -8920,6 +9914,13 @@ export const PGN_130820_FusionSiriusxmTitleDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionSiriusxmTitleMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.SiriusXmTitle,
+}
+
 /*
   PGN: 130820
   Description: Fusion: SiriusXM Artist
@@ -8946,6 +9947,13 @@ export const PGN_130820_FusionSiriusxmArtistDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionSiriusxmArtistMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.SiriusXmArtist,
+}
+
 /*
   PGN: 130820
   Description: Fusion: SiriusXM Content Info
@@ -8972,6 +9980,13 @@ export const PGN_130820_FusionSiriusxmContentInfoDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionSiriusxmContentInfoMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.SiriusXmGenre,
+}
+
 /*
   PGN: 130820
   Description: Fusion: SiriusXM Category
@@ -8998,6 +10013,13 @@ export const PGN_130820_FusionSiriusxmCategoryDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionSiriusxmCategoryMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.SiriusXmCategory,
+}
+
 /*
   PGN: 130820
   Description: Fusion: SiriusXM Signal
@@ -9023,6 +10045,13 @@ export const PGN_130820_FusionSiriusxmSignalDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionSiriusxmSignalMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.SiriusXmSignal,
+}
+
 /*
   PGN: 130820
   Description: Fusion: SiriusXM Presets
@@ -9049,6 +10078,13 @@ export const PGN_130820_FusionSiriusxmPresetsDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130820_FusionSiriusxmPresetsMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: enums.FusionStatusMessageId.SiriusXmPresets,
+}
+
 /*
   PGN: 130821
   Description: Navico: ASCII Data
@@ -9072,6 +10108,12 @@ export const PGN_130821_NavicoAsciiDataDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130821_NavicoAsciiDataMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 130821
   Description: Furuno: Unknown 130821
@@ -9103,6 +10145,12 @@ export const PGN_130821_FurunoUnknown130821Defaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130821_FurunoUnknown130821MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Furuno,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 130822
   Description: Navico: Unknown 1
@@ -9123,6 +10171,7 @@ export const PGN_130822Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130823
   Description: Maretron: Proprietary Temperature High Range
@@ -9147,6 +10196,7 @@ export const PGN_130823Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130824
   Description: B&G: key-value data
@@ -9174,6 +10224,12 @@ export const PGN_130824_BGkeyValueDataDefaults = {
   dst: 255,
   prio: 2
 }
+
+export const PGN_130824_BGkeyValueDataMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BG,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 130824
   Description: Maretron: Annunciator
@@ -9200,6 +10256,12 @@ export const PGN_130824_MaretronAnnunciatorDefaults = {
   dst: 255,
   prio: 7
 }
+
+export const PGN_130824_MaretronAnnunciatorMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 130825
   Description: Navico: Unknown 2
@@ -9220,6 +10282,7 @@ export const PGN_130825Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130827
   Description: Lowrance: unknown
@@ -9245,6 +10308,7 @@ export const PGN_130827Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130828
   Description: Simnet: Set Serial Number
@@ -9264,6 +10328,7 @@ export const PGN_130828Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130831
   Description: Suzuki: Engine and Storage Device Config
@@ -9283,6 +10348,7 @@ export const PGN_130831Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130832
   Description: Simnet: Fuel Used - High Resolution
@@ -9302,6 +10368,7 @@ export const PGN_130832Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130833
   Description: B&G: User and Remote rename
@@ -9327,6 +10394,7 @@ export const PGN_130833Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130834
   Description: Simnet: Engine and Tank Configuration
@@ -9346,6 +10414,7 @@ export const PGN_130834Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130835
   Description: Simnet: Set Engine and Tank Configuration
@@ -9365,6 +10434,7 @@ export const PGN_130835Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130836
   Description: Simnet: Fluid Level Sensor Configuration
@@ -9395,6 +10465,12 @@ export const PGN_130836_SimnetFluidLevelSensorConfigurationDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_130836_SimnetFluidLevelSensorConfigurationMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 130836
   Description: Maretron: Switch Status Counter
@@ -9425,6 +10501,12 @@ export const PGN_130836_MaretronSwitchStatusCounterDefaults = {
   dst: 255,
   prio: 6
 }
+
+export const PGN_130836_MaretronSwitchStatusCounterMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 130837
   Description: Simnet: Fuel Flow Turbine Configuration
@@ -9446,6 +10528,12 @@ export const PGN_130837_SimnetFuelFlowTurbineConfigurationDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_130837_SimnetFuelFlowTurbineConfigurationMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 130837
   Description: Maretron: Switch Status Timer
@@ -9476,6 +10564,12 @@ export const PGN_130837_MaretronSwitchStatusTimerDefaults = {
   dst: 255,
   prio: 6
 }
+
+export const PGN_130837_MaretronSwitchStatusTimerMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 130838
   Description: Simnet: Fluid Level Warning
@@ -9495,6 +10589,7 @@ export const PGN_130838Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130839
   Description: Simnet: Pressure Sensor Configuration
@@ -9514,6 +10609,7 @@ export const PGN_130839Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130840
   Description: Simnet: Data User Group Configuration
@@ -9533,6 +10629,7 @@ export const PGN_130840Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130842
   Description: Simnet: AIS Class B static data (msg 24 Part A)
@@ -9560,6 +10657,12 @@ export const PGN_130842_SimnetAisClassBstaticDataMsg24PartADefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_130842_SimnetAisClassBstaticDataMsg24PartAMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 130842
   Description: Furuno: Six Degrees Of Freedom Movement
@@ -9590,6 +10693,12 @@ export const PGN_130842_FurunoSixDegreesOfFreedomMovementDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_130842_FurunoSixDegreesOfFreedomMovementMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Furuno,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 130842
   Description: Simnet: AIS Class B static data (msg 24 Part B)
@@ -9627,6 +10736,13 @@ export const PGN_130842_SimnetAisClassBstaticDataMsg24PartBDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_130842_SimnetAisClassBstaticDataMsg24PartBMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+  messageId: 1,
+}
+
 /*
   PGN: 130843
   Description: Furuno: Heel Angle, Roll Information
@@ -9653,6 +10769,12 @@ export const PGN_130843_FurunoHeelAngleRollInformationDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_130843_FurunoHeelAngleRollInformationMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Furuno,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 130843
   Description: Simnet: Sonar Status, Frequency and DSP Voltage
@@ -9674,6 +10796,12 @@ export const PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 130845
   Description: Furuno: Multi Sats In View Extended
@@ -9695,6 +10823,12 @@ export const PGN_130845_FurunoMultiSatsInViewExtendedDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_130845_FurunoMultiSatsInViewExtendedMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Furuno,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 130845
   Description: Simnet: Key Value
@@ -9724,6 +10858,12 @@ export const PGN_130845_SimnetKeyValueDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_130845_SimnetKeyValueMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 130846
   Description: Simnet: Parameter Set
@@ -9753,6 +10893,12 @@ export const PGN_130846_SimnetParameterSetDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_130846_SimnetParameterSetMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 130846
   Description: Furuno: Motion Sensor Status Extended
@@ -9774,6 +10920,12 @@ export const PGN_130846_FurunoMotionSensorStatusExtendedDefaults = {
   dst: 255,
   prio: 3
 }
+
+export const PGN_130846_FurunoMotionSensorStatusExtendedMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Furuno,
+  industryCode: enums.IndustryCode.Marine,
+}
+
 /*
   PGN: 130847
   Description: SeaTalk: Node Statistics
@@ -9798,6 +10950,7 @@ export const PGN_130847Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130848
   Description: SeaTalk: Waypoint Information
@@ -9823,6 +10976,7 @@ export const PGN_130848Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 130850
   Description: Simnet: AP Command
@@ -9853,6 +11007,13 @@ export const PGN_130850_SimnetApCommandDefaults = {
   dst: 255,
   prio: 2
 }
+
+export const PGN_130850_SimnetApCommandMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.SimnetEventCommand.Autopilot,
+}
+
 /*
   PGN: 130850
   Description: Simnet: Event Command: AP command
@@ -9883,6 +11044,13 @@ export const PGN_130850_SimnetEventCommandApCommandDefaults = {
   dst: 255,
   prio: 2
 }
+
+export const PGN_130850_SimnetEventCommandApCommandMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.SimnetEventCommand.ApCommand,
+}
+
 /*
   PGN: 130850
   Description: Simnet: Alarm
@@ -9914,6 +11082,13 @@ export const PGN_130850_SimnetAlarmDefaults = {
   dst: 255,
   prio: 2
 }
+
+export const PGN_130850_SimnetAlarmMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.SimnetEventCommand.Alarm,
+}
+
 /*
   PGN: 130851
   Description: Simnet: Event Reply: AP command
@@ -9941,6 +11116,7 @@ export const PGN_130851Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 130856
   Description: Simnet: Alarm Message
@@ -9965,6 +11141,7 @@ export const PGN_130856Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130860
   Description: Simnet: AP Unknown 4
@@ -9991,6 +11168,7 @@ export const PGN_130860Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 130880
   Description: Airmar: Additional Weather Data
@@ -10014,6 +11192,7 @@ export const PGN_130880Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130881
   Description: Airmar: Heater Control
@@ -10037,6 +11216,7 @@ export const PGN_130881Defaults = {
   dst: 255,
   prio: 3
 }
+
 /*
   PGN: 130918
   Description: SeaTalk: Route Information
@@ -10064,6 +11244,7 @@ export const PGN_130918Defaults = {
   dst: 255,
   prio: 7
 }
+
 /*
   PGN: 130944
   Description: Airmar: POST
@@ -10088,3 +11269,4 @@ export const PGN_130944Defaults = {
   dst: 255,
   prio: 7
 }
+

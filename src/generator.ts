@@ -297,7 +297,35 @@ if (argv.pgns) {
     console.log(`  pgn: ${pgn.PGN},`)
     console.log(`  dst: 255,`)
     console.log(`  prio: ${pgn.Priority !== undefined ? pgn.Priority : 3}`)
-    console.log('}')
+    console.log('}\n')
+
+    if (isMulti) {
+      if (pgn.Fields.find((f) => f.Match !== undefined)) {
+        console.log(`export const ${typeName}MatchFields = {`)
+        pgn.Fields.forEach((field: Field) => {
+          if (field.Match) {
+            let value: any
+            if (field.FieldType === 'LOOKUP' && field.Description) {
+              const ename =
+                field.LookupEnumeration === 'INDUSTRY_CODE' &&
+                field.Description === 'Marine Industry'
+                  ? 'Marine'
+                  : enumName(field.Description)
+
+              enumName(field.Description)
+              value = `enums.${enumName(field.LookupEnumeration!)}.${ename}`
+            } else {
+              value =
+                typeof field.Description !== 'number'
+                  ? field.Match
+                  : field.Description!
+            }
+            console.log(`  ${fixIdentifier(field.Id, '_')}: ${value},`)
+          }
+        })
+        console.log('}\n')
+      }
+    }
   }
 }
 

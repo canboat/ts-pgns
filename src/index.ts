@@ -18,14 +18,9 @@
 export * from './enums'
 export * from './pgns'
 export * from './definition'
+export * from './utilities'
 
-import {
-  Definition,
-  PGNMap,
-  Enumeration,
-  BitEnumeration,
-  FieldTypeEnumeration
-} from './definition'
+import { Definition, PGNMap } from './definition'
 
 //const canboat = require('../canboat.json')
 import canboat from '../canboat.json'
@@ -64,16 +59,4 @@ export const getPGNMap = (): PGNMap => {
 
 export const getPGN = (num: number): Definition[] | undefined => {
   return getPGNMap()[num]
-}
-
-export const getEnumerations = (): Enumeration[] => {
-  return canboat.LookupEnumerations
-}
-
-export const getBitEnumerations = (): BitEnumeration[] => {
-  return canboat.LookupBitEnumerations
-}
-
-export const getFieldTypeEnumerations = (): FieldTypeEnumeration[] => {
-  return canboat.LookupFieldTypeEnumerations
 }

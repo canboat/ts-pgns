@@ -2,6 +2,7 @@
 
 import {
   PGN_65305_Simrad_SendMode,
+  PGN_65305_Simrad_SendModeDefaults,
   SimnetDeviceModel,
   SimnetDeviceReport,
   ManufacturerCode,
@@ -22,8 +23,7 @@ const obj: any = {
 }
 
 const obj2: PGN_65305_Simrad_SendMode = {
-  pgn: 65305,
-  dst: 255,
+  ...PGN_65305_Simrad_SendModeDefaults,
   fields: {
     manufacturerCode: ManufacturerCode.BepMarine,
     industryCode: IndustryCode.Marine,

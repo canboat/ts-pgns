@@ -27,7 +27,7 @@ export interface PGNFields {
 
 export interface PGN {
   pgn: number
-  prio?: number
+  prio: number
   src?: number
   dst: number
   timestamp?: string
@@ -44,7 +44,7 @@ export interface PGN {
 export interface PGN_59392Fields extends PGNFields {
   control?: enums.IsoControl|number
   groupFunction?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   pgn?: N2K_Pgn
 }
 
@@ -52,6 +52,11 @@ export interface PGN_59392 extends PGN {
  fields: PGN_59392Fields
 }
 
+export const PGN_59392Defaults = {
+  pgn: 59392,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 59904
   Description: ISO Request
@@ -65,6 +70,11 @@ export interface PGN_59904 extends PGN {
  fields: PGN_59904Fields
 }
 
+export const PGN_59904Defaults = {
+  pgn: 59904,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 60160
   Description: ISO Transport Protocol, Data Transfer
@@ -79,6 +89,11 @@ export interface PGN_60160 extends PGN {
  fields: PGN_60160Fields
 }
 
+export const PGN_60160Defaults = {
+  pgn: 60160,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 60416
   Description: ISO Transport Protocol, Connection Management - Request To Send
@@ -97,6 +112,11 @@ export interface PGN_60416_Rts extends PGN {
  fields: PGN_60416_RtsFields
 }
 
+export const PGN_60416_RtsDefaults = {
+  pgn: 60416,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 60416
   Description: ISO Transport Protocol, Connection Management - Clear To Send
@@ -107,7 +127,7 @@ export interface PGN_60416_CtsFields extends PGNFields {
   groupFunctionCode?: enums.IsoCommand|number
   maxPackets?: N2K_Number
   nextSid?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   pgn?: N2K_Pgn
 }
 
@@ -115,6 +135,11 @@ export interface PGN_60416_Cts extends PGN {
  fields: PGN_60416_CtsFields
 }
 
+export const PGN_60416_CtsDefaults = {
+  pgn: 60416,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 60416
   Description: ISO Transport Protocol, Connection Management - End Of Message
@@ -125,7 +150,7 @@ export interface PGN_60416_EomFields extends PGNFields {
   groupFunctionCode?: enums.IsoCommand|number
   totalMessageSize?: N2K_Number
   totalNumberOfFramesReceived?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   pgn?: N2K_Pgn
 }
 
@@ -133,6 +158,11 @@ export interface PGN_60416_Eom extends PGN {
  fields: PGN_60416_EomFields
 }
 
+export const PGN_60416_EomDefaults = {
+  pgn: 60416,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 60416
   Description: ISO Transport Protocol, Connection Management - Broadcast Announce
@@ -143,7 +173,7 @@ export interface PGN_60416_BamFields extends PGNFields {
   groupFunctionCode?: enums.IsoCommand|number
   messageSize?: N2K_Number
   packets?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   pgn?: N2K_Pgn
 }
 
@@ -151,6 +181,11 @@ export interface PGN_60416_Bam extends PGN {
  fields: PGN_60416_BamFields
 }
 
+export const PGN_60416_BamDefaults = {
+  pgn: 60416,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 60416
   Description: ISO Transport Protocol, Connection Management - Abort
@@ -160,7 +195,7 @@ export interface PGN_60416_Bam extends PGN {
 export interface PGN_60416_AbortFields extends PGNFields {
   groupFunctionCode?: enums.IsoCommand|number
   reason?: N2K_Binary
-  reserved?: N2K_Reserved
+  reserved?: number
   pgn?: N2K_Pgn
 }
 
@@ -168,6 +203,11 @@ export interface PGN_60416_Abort extends PGN {
  fields: PGN_60416_AbortFields
 }
 
+export const PGN_60416_AbortDefaults = {
+  pgn: 60416,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 60928
   Description: ISO Address Claim
@@ -179,7 +219,7 @@ export interface PGN_60928Fields extends PGNFields {
   deviceInstanceLower?: N2K_Number
   deviceInstanceUpper?: N2K_Number
   deviceFunction?: enums.DeviceFunction|number
-  spare: N2K_Spare
+  spare?: number
   deviceClass?: enums.DeviceClass|number
   systemInstance?: N2K_Number
   industryGroup?: enums.IndustryCode|number
@@ -190,6 +230,11 @@ export interface PGN_60928 extends PGN {
  fields: PGN_60928Fields
 }
 
+export const PGN_60928Defaults = {
+  pgn: 60928,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 61184
   Description: Seatalk: Wireless Keypad Light Control
@@ -199,19 +244,24 @@ export interface PGN_60928 extends PGN {
 */
 export interface PGN_61184_Raymarine_WirelessKeypadLightControlFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: N2K_Number
   variant?: N2K_Number
   wirelessSetting?: N2K_Number
   wiredSetting?: N2K_Number
-  reserved8?: N2K_Reserved
+  reserved8?: number
 }
 
 export interface PGN_61184_Raymarine_WirelessKeypadLightControl extends PGN {
  fields: PGN_61184_Raymarine_WirelessKeypadLightControlFields
 }
 
+export const PGN_61184_Raymarine_WirelessKeypadLightControlDefaults = {
+  pgn: 61184,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 61184
   Description: Seatalk: Wireless Keypad Control
@@ -220,18 +270,23 @@ export interface PGN_61184_Raymarine_WirelessKeypadLightControl extends PGN {
 */
 export interface PGN_61184_RaymarineFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   PID: N2K_Number
   variant?: N2K_Number
   beepControl?: N2K_Number
-  reserved7?: N2K_Reserved
+  reserved7?: number
 }
 
 export interface PGN_61184_Raymarine extends PGN {
  fields: PGN_61184_RaymarineFields
 }
 
+export const PGN_61184_RaymarineDefaults = {
+  pgn: 61184,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 61184
   Description: Victron Battery Register
@@ -240,7 +295,7 @@ export interface PGN_61184_Raymarine extends PGN {
 */
 export interface PGN_61184_VictronEnergyFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   registerId?: N2K_Number
   payload?: N2K_Number
@@ -250,6 +305,11 @@ export interface PGN_61184_VictronEnergy extends PGN {
  fields: PGN_61184_VictronEnergyFields
 }
 
+export const PGN_61184_VictronEnergyDefaults = {
+  pgn: 61184,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65001
   Description: Bus #1 Phase C Basic AC Quantities
@@ -258,13 +318,18 @@ export interface PGN_65001Fields extends PGNFields {
   lineLineAcRmsVoltage?: N2K_Number
   lineNeutralAcRmsVoltage?: N2K_Number
   acFrequency?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65001 extends PGN {
  fields: PGN_65001Fields
 }
 
+export const PGN_65001Defaults = {
+  pgn: 65001,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65002
   Description: Bus #1 Phase B Basic AC Quantities
@@ -273,13 +338,18 @@ export interface PGN_65002Fields extends PGNFields {
   lineLineAcRmsVoltage?: N2K_Number
   lineNeutralAcRmsVoltage?: N2K_Number
   acFrequency?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65002 extends PGN {
  fields: PGN_65002Fields
 }
 
+export const PGN_65002Defaults = {
+  pgn: 65002,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65003
   Description: Bus #1 Phase A Basic AC Quantities
@@ -288,13 +358,18 @@ export interface PGN_65003Fields extends PGNFields {
   lineLineAcRmsVoltage?: N2K_Number
   lineNeutralAcRmsVoltage?: N2K_Number
   acFrequency?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65003 extends PGN {
  fields: PGN_65003Fields
 }
 
+export const PGN_65003Defaults = {
+  pgn: 65003,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65004
   Description: Bus #1 Average Basic AC Quantities
@@ -303,13 +378,18 @@ export interface PGN_65004Fields extends PGNFields {
   lineLineAcRmsVoltage?: N2K_Number
   lineNeutralAcRmsVoltage?: N2K_Number
   acFrequency?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65004 extends PGN {
  fields: PGN_65004Fields
 }
 
+export const PGN_65004Defaults = {
+  pgn: 65004,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65005
   Description: Utility Total AC Energy
@@ -323,6 +403,11 @@ export interface PGN_65005 extends PGN {
  fields: PGN_65005Fields
 }
 
+export const PGN_65005Defaults = {
+  pgn: 65005,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65006
   Description: Utility Phase C AC Reactive Power
@@ -331,13 +416,18 @@ export interface PGN_65006Fields extends PGNFields {
   reactivePower?: N2K_Number
   powerFactor?: N2K_Number
   powerFactorLagging?: enums.PowerFactor|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65006 extends PGN {
  fields: PGN_65006Fields
 }
 
+export const PGN_65006Defaults = {
+  pgn: 65006,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65007
   Description: Utility Phase C AC Power
@@ -351,6 +441,11 @@ export interface PGN_65007 extends PGN {
  fields: PGN_65007Fields
 }
 
+export const PGN_65007Defaults = {
+  pgn: 65007,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65008
   Description: Utility Phase C Basic AC Quantities
@@ -366,6 +461,11 @@ export interface PGN_65008 extends PGN {
  fields: PGN_65008Fields
 }
 
+export const PGN_65008Defaults = {
+  pgn: 65008,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65009
   Description: Utility Phase B AC Reactive Power
@@ -374,13 +474,18 @@ export interface PGN_65009Fields extends PGNFields {
   reactivePower?: N2K_Number
   powerFactor?: N2K_Number
   powerFactorLagging?: enums.PowerFactor|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65009 extends PGN {
  fields: PGN_65009Fields
 }
 
+export const PGN_65009Defaults = {
+  pgn: 65009,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65010
   Description: Utility Phase B AC Power
@@ -394,6 +499,11 @@ export interface PGN_65010 extends PGN {
  fields: PGN_65010Fields
 }
 
+export const PGN_65010Defaults = {
+  pgn: 65010,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65011
   Description: Utility Phase B Basic AC Quantities
@@ -409,6 +519,11 @@ export interface PGN_65011 extends PGN {
  fields: PGN_65011Fields
 }
 
+export const PGN_65011Defaults = {
+  pgn: 65011,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65012
   Description: Utility Phase A AC Reactive Power
@@ -417,13 +532,18 @@ export interface PGN_65012Fields extends PGNFields {
   reactivePower?: N2K_Number
   powerFactor?: N2K_Number
   powerFactorLagging?: enums.PowerFactor|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65012 extends PGN {
  fields: PGN_65012Fields
 }
 
+export const PGN_65012Defaults = {
+  pgn: 65012,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65013
   Description: Utility Phase A AC Power
@@ -437,6 +557,11 @@ export interface PGN_65013 extends PGN {
  fields: PGN_65013Fields
 }
 
+export const PGN_65013Defaults = {
+  pgn: 65013,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65014
   Description: Utility Phase A Basic AC Quantities
@@ -452,6 +577,11 @@ export interface PGN_65014 extends PGN {
  fields: PGN_65014Fields
 }
 
+export const PGN_65014Defaults = {
+  pgn: 65014,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65015
   Description: Utility Total AC Reactive Power
@@ -460,13 +590,18 @@ export interface PGN_65015Fields extends PGNFields {
   reactivePower?: N2K_Number
   powerFactor?: N2K_Number
   powerFactorLagging?: enums.PowerFactor|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65015 extends PGN {
  fields: PGN_65015Fields
 }
 
+export const PGN_65015Defaults = {
+  pgn: 65015,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65016
   Description: Utility Total AC Power
@@ -480,6 +615,11 @@ export interface PGN_65016 extends PGN {
  fields: PGN_65016Fields
 }
 
+export const PGN_65016Defaults = {
+  pgn: 65016,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65017
   Description: Utility Average Basic AC Quantities
@@ -495,6 +635,11 @@ export interface PGN_65017 extends PGN {
  fields: PGN_65017Fields
 }
 
+export const PGN_65017Defaults = {
+  pgn: 65017,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65018
   Description: Generator Total AC Energy
@@ -508,6 +653,11 @@ export interface PGN_65018 extends PGN {
  fields: PGN_65018Fields
 }
 
+export const PGN_65018Defaults = {
+  pgn: 65018,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65019
   Description: Generator Phase C AC Reactive Power
@@ -516,13 +666,18 @@ export interface PGN_65019Fields extends PGNFields {
   reactivePower?: N2K_Number
   powerFactor?: N2K_Number
   powerFactorLagging?: enums.PowerFactor|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65019 extends PGN {
  fields: PGN_65019Fields
 }
 
+export const PGN_65019Defaults = {
+  pgn: 65019,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65020
   Description: Generator Phase C AC Power
@@ -536,6 +691,11 @@ export interface PGN_65020 extends PGN {
  fields: PGN_65020Fields
 }
 
+export const PGN_65020Defaults = {
+  pgn: 65020,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65021
   Description: Generator Phase C Basic AC Quantities
@@ -551,6 +711,11 @@ export interface PGN_65021 extends PGN {
  fields: PGN_65021Fields
 }
 
+export const PGN_65021Defaults = {
+  pgn: 65021,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65022
   Description: Generator Phase B AC Reactive Power
@@ -559,13 +724,18 @@ export interface PGN_65022Fields extends PGNFields {
   reactivePower?: N2K_Number
   powerFactor?: N2K_Number
   powerFactorLagging?: enums.PowerFactor|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65022 extends PGN {
  fields: PGN_65022Fields
 }
 
+export const PGN_65022Defaults = {
+  pgn: 65022,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65023
   Description: Generator Phase B AC Power
@@ -579,6 +749,11 @@ export interface PGN_65023 extends PGN {
  fields: PGN_65023Fields
 }
 
+export const PGN_65023Defaults = {
+  pgn: 65023,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65024
   Description: Generator Phase B Basic AC Quantities
@@ -594,6 +769,11 @@ export interface PGN_65024 extends PGN {
  fields: PGN_65024Fields
 }
 
+export const PGN_65024Defaults = {
+  pgn: 65024,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65025
   Description: Generator Phase A AC Reactive Power
@@ -602,13 +782,18 @@ export interface PGN_65025Fields extends PGNFields {
   reactivePower?: N2K_Number
   powerFactor?: N2K_Number
   powerFactorLagging?: enums.PowerFactor|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65025 extends PGN {
  fields: PGN_65025Fields
 }
 
+export const PGN_65025Defaults = {
+  pgn: 65025,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65026
   Description: Generator Phase A AC Power
@@ -622,6 +807,11 @@ export interface PGN_65026 extends PGN {
  fields: PGN_65026Fields
 }
 
+export const PGN_65026Defaults = {
+  pgn: 65026,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65027
   Description: Generator Phase A Basic AC Quantities
@@ -637,6 +827,11 @@ export interface PGN_65027 extends PGN {
  fields: PGN_65027Fields
 }
 
+export const PGN_65027Defaults = {
+  pgn: 65027,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65028
   Description: Generator Total AC Reactive Power
@@ -645,13 +840,18 @@ export interface PGN_65028Fields extends PGNFields {
   reactivePower?: N2K_Number
   powerFactor?: N2K_Number
   powerFactorLagging?: enums.PowerFactor|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65028 extends PGN {
  fields: PGN_65028Fields
 }
 
+export const PGN_65028Defaults = {
+  pgn: 65028,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65029
   Description: Generator Total AC Power
@@ -665,6 +865,11 @@ export interface PGN_65029 extends PGN {
  fields: PGN_65029Fields
 }
 
+export const PGN_65029Defaults = {
+  pgn: 65029,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65030
   Description: Generator Average Basic AC Quantities
@@ -680,6 +885,11 @@ export interface PGN_65030 extends PGN {
  fields: PGN_65030Fields
 }
 
+export const PGN_65030Defaults = {
+  pgn: 65030,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65240
   Description: ISO Commanded Address
@@ -691,11 +901,11 @@ export interface PGN_65240Fields extends PGNFields {
   deviceInstanceLower?: N2K_Number
   deviceInstanceUpper?: N2K_Number
   deviceFunction?: enums.DeviceFunction|number
-  reserved: N2K_Reserved
+  reserved?: number
   deviceClass?: enums.DeviceClass|number
   systemInstance?: N2K_Number
   industryCode?: enums.IndustryCode|number
-  reserved10: N2K_Reserved
+  reserved10?: number
   newSourceAddress?: N2K_Number
 }
 
@@ -703,40 +913,55 @@ export interface PGN_65240 extends PGN {
  fields: PGN_65240Fields
 }
 
+export const PGN_65240Defaults = {
+  pgn: 65240,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65280
   Description: Furuno: Heave
 */
 export interface PGN_65280Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   heave?: N2K_Number
-  reserved5?: N2K_Reserved
+  reserved5?: number
 }
 
 export interface PGN_65280 extends PGN {
  fields: PGN_65280Fields
 }
 
+export const PGN_65280Defaults = {
+  pgn: 65280,
+  dst: 255,
+  prio: 2
+}
 /*
   PGN: 65284
   Description: Maretron: Proprietary DC Breaker Current
 */
 export interface PGN_65284Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   bankInstance: N2K_Number
   indicatorNumber?: N2K_Number
   breakerCurrent?: N2K_Number
-  reserved7?: N2K_Reserved
+  reserved7?: number
 }
 
 export interface PGN_65284 extends PGN {
  fields: PGN_65284Fields
 }
 
+export const PGN_65284Defaults = {
+  pgn: 65284,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 65285
   Description: Airmar: Boot State Acknowledgment
@@ -745,16 +970,21 @@ export interface PGN_65284 extends PGN {
 */
 export interface PGN_65285_AirmarFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   bootState?: enums.BootState|number
-  reserved5?: N2K_Reserved
+  reserved5?: number
 }
 
 export interface PGN_65285_Airmar extends PGN {
  fields: PGN_65285_AirmarFields
 }
 
+export const PGN_65285_AirmarDefaults = {
+  pgn: 65285,
+  dst: 255,
+  prio: 5
+}
 /*
   PGN: 65285
   Description: Lowrance: Temperature
@@ -763,17 +993,22 @@ export interface PGN_65285_Airmar extends PGN {
 */
 export interface PGN_65285_LowranceFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   temperatureSource?: enums.TemperatureSource|number
   actualTemperature?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_65285_Lowrance extends PGN {
  fields: PGN_65285_LowranceFields
 }
 
+export const PGN_65285_LowranceDefaults = {
+  pgn: 65285,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65286
   Description: Chetco: Dimmer
@@ -782,7 +1017,7 @@ export interface PGN_65285_Lowrance extends PGN {
 */
 export interface PGN_65286_ChetcoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   instance: N2K_Number
   dimmer1?: N2K_Number
@@ -796,6 +1031,11 @@ export interface PGN_65286_Chetco extends PGN {
  fields: PGN_65286_ChetcoFields
 }
 
+export const PGN_65286_ChetcoDefaults = {
+  pgn: 65286,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65286
   Description: Airmar: Boot State Request
@@ -804,15 +1044,20 @@ export interface PGN_65286_Chetco extends PGN {
 */
 export interface PGN_65286_AirmarFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
 }
 
 export interface PGN_65286_Airmar extends PGN {
  fields: PGN_65286_AirmarFields
 }
 
+export const PGN_65286_AirmarDefaults = {
+  pgn: 65286,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65287
   Description: Airmar: Access Level
@@ -821,11 +1066,11 @@ export interface PGN_65286_Airmar extends PGN {
 */
 export interface PGN_65287_AirmarFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   formatCode?: N2K_Number
   accessLevel?: enums.AccessLevel|number
-  reserved6?: N2K_Reserved
+  reserved6?: number
   accessSeedKey?: N2K_Number
 }
 
@@ -833,6 +1078,11 @@ export interface PGN_65287_Airmar extends PGN {
  fields: PGN_65287_AirmarFields
 }
 
+export const PGN_65287_AirmarDefaults = {
+  pgn: 65287,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65287
   Description: Simnet: Configure Temperature Sensor
@@ -841,22 +1091,27 @@ export interface PGN_65287_Airmar extends PGN {
 */
 export interface PGN_65287_SimradFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
 }
 
 export interface PGN_65287_Simrad extends PGN {
  fields: PGN_65287_SimradFields
 }
 
+export const PGN_65287_SimradDefaults = {
+  pgn: 65287,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65288
   Description: Seatalk: Alarm
 */
 export interface PGN_65288Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   sid?: N2K_Binary
   alarmStatus?: enums.SeatalkAlarmStatus|number
@@ -869,51 +1124,71 @@ export interface PGN_65288 extends PGN {
  fields: PGN_65288Fields
 }
 
+export const PGN_65288Defaults = {
+  pgn: 65288,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 65289
   Description: Simnet: Trim Tab Sensor Calibration
 */
 export interface PGN_65289Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
 }
 
 export interface PGN_65289 extends PGN {
  fields: PGN_65289Fields
 }
 
+export const PGN_65289Defaults = {
+  pgn: 65289,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65290
   Description: Simnet: Paddle Wheel Speed Configuration
 */
 export interface PGN_65290Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
 }
 
 export interface PGN_65290 extends PGN {
  fields: PGN_65290Fields
 }
 
+export const PGN_65290Defaults = {
+  pgn: 65290,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65292
   Description: Simnet: Clear Fluid Level Warnings
 */
 export interface PGN_65292Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
 }
 
 export interface PGN_65292 extends PGN {
  fields: PGN_65292Fields
 }
 
+export const PGN_65292Defaults = {
+  pgn: 65292,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65293
   Description: Simnet: LGC-2000 Configuration
@@ -922,15 +1197,20 @@ export interface PGN_65292 extends PGN {
 */
 export interface PGN_65293_SimradFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
 }
 
 export interface PGN_65293_Simrad extends PGN {
  fields: PGN_65293_SimradFields
 }
 
+export const PGN_65293_SimradDefaults = {
+  pgn: 65293,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65293
   Description: Diverse Yacht Services: Load Cell
@@ -939,10 +1219,10 @@ export interface PGN_65293_Simrad extends PGN {
 */
 export interface PGN_65293_DiverseYachtServicesFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   instance: N2K_Number
-  reserved5?: N2K_Reserved
+  reserved5?: number
   loadCell?: N2K_Number
 }
 
@@ -950,6 +1230,11 @@ export interface PGN_65293_DiverseYachtServices extends PGN {
  fields: PGN_65293_DiverseYachtServicesFields
 }
 
+export const PGN_65293_DiverseYachtServicesDefaults = {
+  pgn: 65293,
+  dst: 255,
+  prio: 2
+}
 /*
   PGN: 65302
   Description: Simnet: AP Unknown 1
@@ -957,19 +1242,24 @@ export interface PGN_65293_DiverseYachtServices extends PGN {
 */
 export interface PGN_65302Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   a?: N2K_Number
   b?: N2K_Number
   c?: N2K_Number
   d?: N2K_Number
-  reserved8?: N2K_Reserved
+  reserved8?: number
 }
 
 export interface PGN_65302 extends PGN {
  fields: PGN_65302Fields
 }
 
+export const PGN_65302Defaults = {
+  pgn: 65302,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 65305
   Description: Simnet: Device Status
@@ -980,18 +1270,23 @@ export interface PGN_65302 extends PGN {
 */
 export interface PGN_65305_Simrad_StatusFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   model?: enums.SimnetDeviceModel|number
   report?: enums.SimnetDeviceReport|number
   status?: enums.SimnetApStatus|number
-  spare7?: N2K_Spare
+  spare7?: number
 }
 
 export interface PGN_65305_Simrad_Status extends PGN {
  fields: PGN_65305_Simrad_StatusFields
 }
 
+export const PGN_65305_Simrad_StatusDefaults = {
+  pgn: 65305,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65305
   Description: Simnet: Device Status Request
@@ -1002,17 +1297,22 @@ export interface PGN_65305_Simrad_Status extends PGN {
 */
 export interface PGN_65305_Simrad_SendStatusFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   model?: enums.SimnetDeviceModel|number
   report?: enums.SimnetDeviceReport|number
-  spare6?: N2K_Spare
+  spare6?: number
 }
 
 export interface PGN_65305_Simrad_SendStatus extends PGN {
  fields: PGN_65305_Simrad_SendStatusFields
 }
 
+export const PGN_65305_Simrad_SendStatusDefaults = {
+  pgn: 65305,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65305
   Description: Simnet: Pilot Mode
@@ -1023,18 +1323,23 @@ export interface PGN_65305_Simrad_SendStatus extends PGN {
 */
 export interface PGN_65305_Simrad_ModeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   model?: enums.SimnetDeviceModel|number
   report?: enums.SimnetDeviceReport|number
   mode?: enums.SimnetApModeBitfield[]
-  spare7?: N2K_Spare
+  spare7?: number
 }
 
 export interface PGN_65305_Simrad_Mode extends PGN {
  fields: PGN_65305_Simrad_ModeFields
 }
 
+export const PGN_65305_Simrad_ModeDefaults = {
+  pgn: 65305,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65305
   Description: Simnet: Device Mode Request
@@ -1045,17 +1350,22 @@ export interface PGN_65305_Simrad_Mode extends PGN {
 */
 export interface PGN_65305_Simrad_SendModeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   model?: enums.SimnetDeviceModel|number
   report?: enums.SimnetDeviceReport|number
-  spare6?: N2K_Spare
+  spare6?: number
 }
 
 export interface PGN_65305_Simrad_SendMode extends PGN {
  fields: PGN_65305_Simrad_SendModeFields
 }
 
+export const PGN_65305_Simrad_SendModeDefaults = {
+  pgn: 65305,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65305
   Description: Simnet: Sailing Processor Status
@@ -1066,7 +1376,7 @@ export interface PGN_65305_Simrad_SendMode extends PGN {
 */
 export interface PGN_65305_Simrad_SailingProcessorStatusFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   model?: enums.SimnetDeviceModel|number
   report?: enums.SimnetDeviceReport|number
@@ -1077,41 +1387,56 @@ export interface PGN_65305_Simrad_SailingProcessorStatus extends PGN {
  fields: PGN_65305_Simrad_SailingProcessorStatusFields
 }
 
+export const PGN_65305_Simrad_SailingProcessorStatusDefaults = {
+  pgn: 65305,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65309
   Description: Navico: Wireless Battery Status
 */
 export interface PGN_65309Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   status?: N2K_Number
   batteryStatus?: N2K_Number
   batteryChargeStatus?: N2K_Number
-  reserved7?: N2K_Reserved
+  reserved7?: number
 }
 
 export interface PGN_65309 extends PGN {
  fields: PGN_65309Fields
 }
 
+export const PGN_65309Defaults = {
+  pgn: 65309,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 65312
   Description: Navico: Wireless Signal Status
 */
 export interface PGN_65312Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   unknown?: N2K_Number
   signalStrength?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_65312 extends PGN {
  fields: PGN_65312Fields
 }
 
+export const PGN_65312Defaults = {
+  pgn: 65312,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 65340
   Description: Simnet: AP Unknown 2
@@ -1119,31 +1444,36 @@ export interface PGN_65312 extends PGN {
 */
 export interface PGN_65340Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   a?: N2K_Number
   b?: N2K_Number
   c?: N2K_Number
   d?: N2K_Number
   e?: N2K_Number
-  reserved9?: N2K_Reserved
+  reserved9?: number
 }
 
 export interface PGN_65340 extends PGN {
  fields: PGN_65340Fields
 }
 
+export const PGN_65340Defaults = {
+  pgn: 65340,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65341
   Description: Simnet: Autopilot Angle
 */
 export interface PGN_65341Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   mode?: enums.SimnetApMode|number
-  reserved6?: N2K_Reserved
+  reserved6?: number
   angle?: N2K_Number
 }
 
@@ -1151,23 +1481,33 @@ export interface PGN_65341 extends PGN {
  fields: PGN_65341Fields
 }
 
+export const PGN_65341Defaults = {
+  pgn: 65341,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 65345
   Description: Seatalk: Pilot Wind Datum
 */
 export interface PGN_65345Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   windDatum?: N2K_Number
   rollingAverageWindAngle?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_65345 extends PGN {
  fields: PGN_65345Fields
 }
 
+export const PGN_65345Defaults = {
+  pgn: 65345,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65350
   Description: Simnet: Magnetic Field
@@ -1177,177 +1517,227 @@ export interface PGN_65350Fields extends PGNFields {
   b?: N2K_Number
   c?: N2K_Number
   d?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_65350 extends PGN {
  fields: PGN_65350Fields
 }
 
+export const PGN_65350Defaults = {
+  pgn: 65350,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65359
   Description: Seatalk: Pilot Heading
 */
 export interface PGN_65359Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   sid?: N2K_Binary
   headingTrue?: N2K_Number
   headingMagnetic?: N2K_Number
-  reserved7?: N2K_Reserved
+  reserved7?: number
 }
 
 export interface PGN_65359 extends PGN {
  fields: PGN_65359Fields
 }
 
+export const PGN_65359Defaults = {
+  pgn: 65359,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 65360
   Description: Seatalk: Pilot Locked Heading
 */
 export interface PGN_65360Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   sid?: N2K_Binary
   targetHeadingTrue?: N2K_Number
   targetHeadingMagnetic?: N2K_Number
-  reserved7?: N2K_Reserved
+  reserved7?: number
 }
 
 export interface PGN_65360 extends PGN {
  fields: PGN_65360Fields
 }
 
+export const PGN_65360Defaults = {
+  pgn: 65360,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 65361
   Description: Seatalk: Silence Alarm
 */
 export interface PGN_65361Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   alarmId?: enums.SeatalkAlarmId|number
   alarmGroup?: enums.SeatalkAlarmGroup|number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_65361 extends PGN {
  fields: PGN_65361Fields
 }
 
+export const PGN_65361Defaults = {
+  pgn: 65361,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65371
   Description: Seatalk: Keypad Message
 */
 export interface PGN_65371Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: N2K_Number
   firstKey?: N2K_Number
   secondKey?: N2K_Number
   firstKeyState?: N2K_Number
   secondKeyState?: N2K_Number
-  reserved9?: N2K_Reserved
+  reserved9?: number
   encoderPosition?: N2K_Number
-  reserved11?: N2K_Reserved
+  reserved11?: number
 }
 
 export interface PGN_65371 extends PGN {
  fields: PGN_65371Fields
 }
 
+export const PGN_65371Defaults = {
+  pgn: 65371,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65374
   Description: SeaTalk: Keypad Heartbeat
 */
 export interface PGN_65374Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: N2K_Number
   variant?: N2K_Number
   status?: N2K_Number
-  reserved7?: N2K_Reserved
+  reserved7?: number
 }
 
 export interface PGN_65374 extends PGN {
  fields: PGN_65374Fields
 }
 
+export const PGN_65374Defaults = {
+  pgn: 65374,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 65379
   Description: Seatalk: Pilot Mode
 */
 export interface PGN_65379Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   pilotMode?: enums.SeatalkPilotMode16|number
   subMode?: N2K_Binary
   pilotModeData?: N2K_Binary
-  reserved7?: N2K_Reserved
+  reserved7?: number
 }
 
 export interface PGN_65379 extends PGN {
  fields: PGN_65379Fields
 }
 
+export const PGN_65379Defaults = {
+  pgn: 65379,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 65408
   Description: Airmar: Depth Quality Factor
 */
 export interface PGN_65408Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   sid?: N2K_Number
   depthQualityFactor?: enums.AirmarDepthQualityFactor|number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_65408 extends PGN {
  fields: PGN_65408Fields
 }
 
+export const PGN_65408Defaults = {
+  pgn: 65408,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 65409
   Description: Airmar: Speed Pulse Count
 */
 export interface PGN_65409Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   sid?: N2K_Number
   durationOfInterval?: N2K_Duration
   numberOfPulsesReceived?: N2K_Number
-  reserved7?: N2K_Reserved
+  reserved7?: number
 }
 
 export interface PGN_65409 extends PGN {
  fields: PGN_65409Fields
 }
 
+export const PGN_65409Defaults = {
+  pgn: 65409,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 65410
   Description: Airmar: Device Information
 */
 export interface PGN_65410Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   sid?: N2K_Number
   internalDeviceTemperature?: N2K_Number
   supplyVoltage?: N2K_Number
-  reserved7?: N2K_Reserved
+  reserved7?: number
 }
 
 export interface PGN_65410 extends PGN {
  fields: PGN_65410Fields
 }
 
+export const PGN_65410Defaults = {
+  pgn: 65410,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 65420
   Description: Simnet: AP Unknown 3
@@ -1355,35 +1745,45 @@ export interface PGN_65410 extends PGN {
 */
 export interface PGN_65420Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   a?: N2K_Number
   b?: N2K_Number
   c?: N2K_Number
   d?: N2K_Number
   e?: N2K_Number
-  reserved9?: N2K_Reserved
+  reserved9?: number
 }
 
 export interface PGN_65420 extends PGN {
  fields: PGN_65420Fields
 }
 
+export const PGN_65420Defaults = {
+  pgn: 65420,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 65480
   Description: Simnet: Autopilot Mode
 */
 export interface PGN_65480Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
 }
 
 export interface PGN_65480 extends PGN {
  fields: PGN_65480Fields
 }
 
+export const PGN_65480Defaults = {
+  pgn: 65480,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126208
   Description: NMEA - Request group function
@@ -1395,15 +1795,21 @@ export interface PGN_126208Fields extends PGNFields {
   transmissionInterval?: N2K_Duration
   transmissionIntervalOffset?: N2K_Duration
   numberOfParameters?: N2K_Number
-  parameter?: N2K_FieldIndex
-  value?: N2K_Variable
-  list: any[]
+  list: {
+    parameter?: N2K_FieldIndex
+    value?: N2K_Variable
+  }[]
 }
 
 export interface PGN_126208 extends PGN {
  fields: PGN_126208Fields
 }
 
+export const PGN_126208Defaults = {
+  pgn: 126208,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126208
   Description: NMEA - Command group function
@@ -1414,17 +1820,23 @@ export interface PGN_126208_CommandFields extends PGNFields {
   functionCode?: enums.GroupFunction|number
   pgn?: N2K_Pgn
   priority?: enums.Priority|number
-  reserved?: N2K_Reserved
+  reserved?: number
   numberOfParameters?: N2K_Number
-  parameter?: N2K_FieldIndex
-  value?: N2K_Variable
-  list: any[]
+  list: {
+    parameter?: N2K_FieldIndex
+    value?: N2K_Variable
+  }[]
 }
 
 export interface PGN_126208_Command extends PGN {
  fields: PGN_126208_CommandFields
 }
 
+export const PGN_126208_CommandDefaults = {
+  pgn: 126208,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126208
   Description: NMEA - Acknowledge group function
@@ -1437,14 +1849,20 @@ export interface PGN_126208_AcknowledgeFields extends PGNFields {
   pgnErrorCode?: enums.PgnErrorCode|number
   transmissionIntervalPriorityErrorCode?: enums.TransmissionInterval|number
   numberOfParameters?: N2K_Number
-  parameter?: enums.ParameterField|number
-  list: any[]
+  list: {
+    parameter?: enums.ParameterField|number
+  }[]
 }
 
 export interface PGN_126208_Acknowledge extends PGN {
  fields: PGN_126208_AcknowledgeFields
 }
 
+export const PGN_126208_AcknowledgeDefaults = {
+  pgn: 126208,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126208
   Description: NMEA - Read Fields group function
@@ -1455,15 +1873,16 @@ export interface PGN_126208_ReadFieldsFields extends PGNFields {
   functionCode?: enums.GroupFunction|number
   pgn?: N2K_Pgn
   manufacturerCode?: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode?: enums.IndustryCode|number
   uniqueId?: N2K_Number
   numberOfSelectionPairs?: N2K_Number
   numberOfParameters?: N2K_Number
-  selectionParameter?: N2K_FieldIndex
-  selectionValue?: N2K_Variable
   parameter?: N2K_FieldIndex
-  list: any[]
+  list: {
+    selectionParameter?: N2K_FieldIndex
+    selectionValue?: N2K_Variable
+  }[]
   list2: any[]
 }
 
@@ -1471,6 +1890,11 @@ export interface PGN_126208_ReadFields extends PGN {
  fields: PGN_126208_ReadFieldsFields
 }
 
+export const PGN_126208_ReadFieldsDefaults = {
+  pgn: 126208,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126208
   Description: NMEA - Read Fields reply group function
@@ -1481,16 +1905,17 @@ export interface PGN_126208_ReadFieldsReplyFields extends PGNFields {
   functionCode?: enums.GroupFunction|number
   pgn?: N2K_Pgn
   manufacturerCode?: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode?: enums.IndustryCode|number
   uniqueId?: N2K_Number
   numberOfSelectionPairs?: N2K_Number
   numberOfParameters?: N2K_Number
-  selectionParameter?: N2K_FieldIndex
-  selectionValue?: N2K_Variable
   parameter?: N2K_FieldIndex
   value?: N2K_Variable
-  list: any[]
+  list: {
+    selectionParameter?: N2K_FieldIndex
+    selectionValue?: N2K_Variable
+  }[]
   list2: any[]
 }
 
@@ -1498,6 +1923,11 @@ export interface PGN_126208_ReadFieldsReply extends PGN {
  fields: PGN_126208_ReadFieldsReplyFields
 }
 
+export const PGN_126208_ReadFieldsReplyDefaults = {
+  pgn: 126208,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126208
   Description: NMEA - Write Fields group function
@@ -1508,16 +1938,17 @@ export interface PGN_126208_WriteFieldsFields extends PGNFields {
   functionCode?: enums.GroupFunction|number
   pgn?: N2K_Pgn
   manufacturerCode?: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode?: enums.IndustryCode|number
   uniqueId?: N2K_Number
   numberOfSelectionPairs?: N2K_Number
   numberOfParameters?: N2K_Number
-  selectionParameter?: N2K_FieldIndex
-  selectionValue?: N2K_Variable
   parameter?: N2K_FieldIndex
   value?: N2K_Variable
-  list: any[]
+  list: {
+    selectionParameter?: N2K_FieldIndex
+    selectionValue?: N2K_Variable
+  }[]
   list2: any[]
 }
 
@@ -1525,6 +1956,11 @@ export interface PGN_126208_WriteFields extends PGN {
  fields: PGN_126208_WriteFieldsFields
 }
 
+export const PGN_126208_WriteFieldsDefaults = {
+  pgn: 126208,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126208
   Description: NMEA - Write Fields reply group function
@@ -1535,16 +1971,17 @@ export interface PGN_126208_WriteFieldsReplyFields extends PGNFields {
   functionCode?: enums.GroupFunction|number
   pgn?: N2K_Pgn
   manufacturerCode?: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode?: enums.IndustryCode|number
   uniqueId?: N2K_Number
   numberOfSelectionPairs?: N2K_Number
   numberOfParameters?: N2K_Number
-  selectionParameter?: N2K_FieldIndex
-  selectionValue?: N2K_Variable
   parameter?: N2K_FieldIndex
   value?: N2K_Variable
-  list: any[]
+  list: {
+    selectionParameter?: N2K_FieldIndex
+    selectionValue?: N2K_Variable
+  }[]
   list2: any[]
 }
 
@@ -1552,20 +1989,31 @@ export interface PGN_126208_WriteFieldsReply extends PGN {
  fields: PGN_126208_WriteFieldsReplyFields
 }
 
+export const PGN_126208_WriteFieldsReplyDefaults = {
+  pgn: 126208,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126464
   Description: PGN List (Transmit and Receive)
 */
 export interface PGN_126464Fields extends PGNFields {
   functionCode?: enums.PgnListFunction|number
-  pgn?: N2K_Pgn
-  list: any[]
+  list: {
+    pgn?: N2K_Pgn
+  }[]
 }
 
 export interface PGN_126464 extends PGN {
  fields: PGN_126464Fields
 }
 
+export const PGN_126464Defaults = {
+  pgn: 126464,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Seatalk1: Pilot Mode
@@ -1576,7 +2024,7 @@ export interface PGN_126464 extends PGN {
 */
 export interface PGN_126720_Raymarine__0X81F0__0X84Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: N2K_Number
   command?: N2K_Number
@@ -1591,6 +2039,11 @@ export interface PGN_126720_Raymarine__0X81F0__0X84 extends PGN {
  fields: PGN_126720_Raymarine__0X81F0__0X84Fields
 }
 
+export const PGN_126720_Raymarine__0X81F0__0X84Defaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Fusion: Media Control
@@ -1600,7 +2053,7 @@ export interface PGN_126720_Raymarine__0X81F0__0X84 extends PGN {
 */
 export interface PGN_126720_FusionElectronics_MediaControlFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: N2K_Number
   unknown?: N2K_Number
@@ -1612,6 +2065,11 @@ export interface PGN_126720_FusionElectronics_MediaControl extends PGN {
  fields: PGN_126720_FusionElectronics_MediaControlFields
 }
 
+export const PGN_126720_FusionElectronics_MediaControlDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Fusion: Sirius Control
@@ -1621,7 +2079,7 @@ export interface PGN_126720_FusionElectronics_MediaControl extends PGN {
 */
 export interface PGN_126720_FusionElectronics_SiriusControlFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: N2K_Number
   unknown?: N2K_Number
@@ -1633,6 +2091,11 @@ export interface PGN_126720_FusionElectronics_SiriusControl extends PGN {
  fields: PGN_126720_FusionElectronics_SiriusControlFields
 }
 
+export const PGN_126720_FusionElectronics_SiriusControlDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Fusion: Request Status
@@ -1642,7 +2105,7 @@ export interface PGN_126720_FusionElectronics_SiriusControl extends PGN {
 */
 export interface PGN_126720_FusionElectronics_RequestStatusFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.FusionMessageId|number
   unknown?: N2K_Number
@@ -1652,6 +2115,11 @@ export interface PGN_126720_FusionElectronics_RequestStatus extends PGN {
  fields: PGN_126720_FusionElectronics_RequestStatusFields
 }
 
+export const PGN_126720_FusionElectronics_RequestStatusDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Fusion: Set Source
@@ -1661,7 +2129,7 @@ export interface PGN_126720_FusionElectronics_RequestStatus extends PGN {
 */
 export interface PGN_126720_FusionElectronics_SourceFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.FusionMessageId|number
   unknown?: N2K_Number
@@ -1672,6 +2140,11 @@ export interface PGN_126720_FusionElectronics_Source extends PGN {
  fields: PGN_126720_FusionElectronics_SourceFields
 }
 
+export const PGN_126720_FusionElectronics_SourceDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Fusion: Set Mute
@@ -1681,7 +2154,7 @@ export interface PGN_126720_FusionElectronics_Source extends PGN {
 */
 export interface PGN_126720_FusionElectronics_23Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.FusionMessageId|number
   command?: enums.FusionMuteCommand|number
@@ -1691,6 +2164,11 @@ export interface PGN_126720_FusionElectronics_23 extends PGN {
  fields: PGN_126720_FusionElectronics_23Fields
 }
 
+export const PGN_126720_FusionElectronics_23Defaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Fusion: Set Zone Volume
@@ -1700,7 +2178,7 @@ export interface PGN_126720_FusionElectronics_23 extends PGN {
 */
 export interface PGN_126720_FusionElectronics_SetZoneVolumeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.FusionMessageId|number
   unknown?: N2K_Number
@@ -1712,6 +2190,11 @@ export interface PGN_126720_FusionElectronics_SetZoneVolume extends PGN {
  fields: PGN_126720_FusionElectronics_SetZoneVolumeFields
 }
 
+export const PGN_126720_FusionElectronics_SetZoneVolumeDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Fusion: Set All Volumes
@@ -1721,7 +2204,7 @@ export interface PGN_126720_FusionElectronics_SetZoneVolume extends PGN {
 */
 export interface PGN_126720_FusionElectronics_SetAllVolumesFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.FusionMessageId|number
   unknown?: N2K_Number
@@ -1735,6 +2218,11 @@ export interface PGN_126720_FusionElectronics_SetAllVolumes extends PGN {
  fields: PGN_126720_FusionElectronics_SetAllVolumesFields
 }
 
+export const PGN_126720_FusionElectronics_SetAllVolumesDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Seatalk1: Keystroke
@@ -1745,7 +2233,7 @@ export interface PGN_126720_FusionElectronics_SetAllVolumes extends PGN {
 */
 export interface PGN_126720_Raymarine__0X81F0__0X86Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: N2K_Number
   command?: N2K_Number
@@ -1759,6 +2247,11 @@ export interface PGN_126720_Raymarine__0X81F0__0X86 extends PGN {
  fields: PGN_126720_Raymarine__0X81F0__0X86Fields
 }
 
+export const PGN_126720_Raymarine__0X81F0__0X86Defaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Seatalk1: Device Identification
@@ -1769,11 +2262,11 @@ export interface PGN_126720_Raymarine__0X81F0__0X86 extends PGN {
 */
 export interface PGN_126720_Raymarine__0X81F0__0X90Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: N2K_Number
   command?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
   device?: enums.SeatalkDeviceId|number
 }
 
@@ -1781,6 +2274,11 @@ export interface PGN_126720_Raymarine__0X81F0__0X90 extends PGN {
  fields: PGN_126720_Raymarine__0X81F0__0X90Fields
 }
 
+export const PGN_126720_Raymarine__0X81F0__0X90Defaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Seatalk1: Display Brightness
@@ -1790,7 +2288,7 @@ export interface PGN_126720_Raymarine__0X81F0__0X90 extends PGN {
 */
 export interface PGN_126720_Raymarine__0X0C8CFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: N2K_Number
   group?: enums.SeatalkNetworkGroup|number
@@ -1804,6 +2302,11 @@ export interface PGN_126720_Raymarine__0X0C8C extends PGN {
  fields: PGN_126720_Raymarine__0X0C8CFields
 }
 
+export const PGN_126720_Raymarine__0X0C8CDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Seatalk1: Display Color
@@ -1814,7 +2317,7 @@ export interface PGN_126720_Raymarine__0X0C8C extends PGN {
 */
 export interface PGN_126720_Raymarine__0X0C8C_ColorFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: N2K_Number
   group?: enums.SeatalkNetworkGroup|number
@@ -1828,6 +2331,11 @@ export interface PGN_126720_Raymarine__0X0C8C_Color extends PGN {
  fields: PGN_126720_Raymarine__0X0C8C_ColorFields
 }
 
+export const PGN_126720_Raymarine__0X0C8C_ColorDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Airmar: Attitude Offset
@@ -1837,7 +2345,7 @@ export interface PGN_126720_Raymarine__0X0C8C_Color extends PGN {
 */
 export interface PGN_126720_Airmar_AttitudeOffsetsFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   azimuthOffset?: N2K_Number
@@ -1849,6 +2357,11 @@ export interface PGN_126720_Airmar_AttitudeOffsets extends PGN {
  fields: PGN_126720_Airmar_AttitudeOffsetsFields
 }
 
+export const PGN_126720_Airmar_AttitudeOffsetsDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Airmar: Calibrate Compass
@@ -1858,7 +2371,7 @@ export interface PGN_126720_Airmar_AttitudeOffsets extends PGN {
 */
 export interface PGN_126720_Airmar_CalibrateCompassFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   calibrateFunction?: enums.AirmarCalibrateFunction|number
@@ -1879,6 +2392,11 @@ export interface PGN_126720_Airmar_CalibrateCompass extends PGN {
  fields: PGN_126720_Airmar_CalibrateCompassFields
 }
 
+export const PGN_126720_Airmar_CalibrateCompassDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Airmar: True Wind Options
@@ -1888,17 +2406,22 @@ export interface PGN_126720_Airmar_CalibrateCompass extends PGN {
 */
 export interface PGN_126720_Airmar_TrueWindOptionsFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   cogSubstitutionForHdg?: enums.YesNo|number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_126720_Airmar_TrueWindOptions extends PGN {
  fields: PGN_126720_Airmar_TrueWindOptionsFields
 }
 
+export const PGN_126720_Airmar_TrueWindOptionsDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Airmar: Simulate Mode
@@ -1908,17 +2431,22 @@ export interface PGN_126720_Airmar_TrueWindOptions extends PGN {
 */
 export interface PGN_126720_Airmar_SimulateModeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   simulateMode?: enums.OffOn|number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_126720_Airmar_SimulateMode extends PGN {
  fields: PGN_126720_Airmar_SimulateModeFields
 }
 
+export const PGN_126720_Airmar_SimulateModeDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Airmar: Calibrate Depth
@@ -1928,17 +2456,22 @@ export interface PGN_126720_Airmar_SimulateMode extends PGN {
 */
 export interface PGN_126720_Airmar_CalibrateDepthFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   speedOfSoundMode?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_126720_Airmar_CalibrateDepth extends PGN {
  fields: PGN_126720_Airmar_CalibrateDepthFields
 }
 
+export const PGN_126720_Airmar_CalibrateDepthDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Airmar: Calibrate Speed
@@ -1948,19 +2481,25 @@ export interface PGN_126720_Airmar_CalibrateDepth extends PGN {
 */
 export interface PGN_126720_Airmar_CalibrateSpeedFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   numberOfPairsOfDataPoints?: N2K_Number
-  inputFrequency?: N2K_Number
-  outputSpeed?: N2K_Number
-  list: any[]
+  list: {
+    inputFrequency?: N2K_Number
+    outputSpeed?: N2K_Number
+  }[]
 }
 
 export interface PGN_126720_Airmar_CalibrateSpeed extends PGN {
  fields: PGN_126720_Airmar_CalibrateSpeedFields
 }
 
+export const PGN_126720_Airmar_CalibrateSpeedDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Airmar: Calibrate Temperature
@@ -1970,11 +2509,11 @@ export interface PGN_126720_Airmar_CalibrateSpeed extends PGN {
 */
 export interface PGN_126720_Airmar_CalibrateTemperatureFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   temperatureInstance: enums.AirmarTemperatureInstance|number
-  reserved6?: N2K_Reserved
+  reserved6?: number
   temperatureOffset?: N2K_Number
 }
 
@@ -1982,6 +2521,11 @@ export interface PGN_126720_Airmar_CalibrateTemperature extends PGN {
  fields: PGN_126720_Airmar_CalibrateTemperatureFields
 }
 
+export const PGN_126720_Airmar_CalibrateTemperatureDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Airmar: Speed Filter None
@@ -1991,11 +2535,11 @@ export interface PGN_126720_Airmar_CalibrateTemperature extends PGN {
 */
 export interface PGN_126720_Airmar_SpeedFilterFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   filterType?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
   sampleInterval?: N2K_Duration
 }
 
@@ -2003,6 +2547,11 @@ export interface PGN_126720_Airmar_SpeedFilter extends PGN {
  fields: PGN_126720_Airmar_SpeedFilterFields
 }
 
+export const PGN_126720_Airmar_SpeedFilterDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Airmar: Speed Filter IIR
@@ -2013,11 +2562,11 @@ export interface PGN_126720_Airmar_SpeedFilter extends PGN {
 */
 export interface PGN_126720_Airmar_SpeedFilter_IirFilterFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   filterType?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
   sampleInterval?: N2K_Duration
   filterDuration?: N2K_Duration
 }
@@ -2026,6 +2575,11 @@ export interface PGN_126720_Airmar_SpeedFilter_IirFilter extends PGN {
  fields: PGN_126720_Airmar_SpeedFilter_IirFilterFields
 }
 
+export const PGN_126720_Airmar_SpeedFilter_IirFilterDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Airmar: Temperature Filter None
@@ -2035,11 +2589,11 @@ export interface PGN_126720_Airmar_SpeedFilter_IirFilter extends PGN {
 */
 export interface PGN_126720_Airmar_TemperatureFilterFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   filterType?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
   sampleInterval?: N2K_Duration
 }
 
@@ -2047,6 +2601,11 @@ export interface PGN_126720_Airmar_TemperatureFilter extends PGN {
  fields: PGN_126720_Airmar_TemperatureFilterFields
 }
 
+export const PGN_126720_Airmar_TemperatureFilterDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Airmar: Temperature Filter IIR
@@ -2057,11 +2616,11 @@ export interface PGN_126720_Airmar_TemperatureFilter extends PGN {
 */
 export interface PGN_126720_Airmar_TemperatureFilter_IirFilterFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   filterType?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
   sampleInterval?: N2K_Duration
   filterDuration?: N2K_Duration
 }
@@ -2070,6 +2629,11 @@ export interface PGN_126720_Airmar_TemperatureFilter_IirFilter extends PGN {
  fields: PGN_126720_Airmar_TemperatureFilter_IirFilterFields
 }
 
+export const PGN_126720_Airmar_TemperatureFilter_IirFilterDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Airmar: NMEA 2000 options
@@ -2079,17 +2643,22 @@ export interface PGN_126720_Airmar_TemperatureFilter_IirFilter extends PGN {
 */
 export interface PGN_126720_Airmar_Nmea2000OptionsFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.AirmarCommand|number
   transmissionInterval?: enums.AirmarTransmissionInterval|number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_126720_Airmar_Nmea2000Options extends PGN {
  fields: PGN_126720_Airmar_Nmea2000OptionsFields
 }
 
+export const PGN_126720_Airmar_Nmea2000OptionsDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Airmar: Addressable Multi-Frame
@@ -2098,7 +2667,7 @@ export interface PGN_126720_Airmar_Nmea2000Options extends PGN {
 */
 export interface PGN_126720_AirmarFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: N2K_Number
 }
@@ -2107,6 +2676,11 @@ export interface PGN_126720_Airmar extends PGN {
  fields: PGN_126720_AirmarFields
 }
 
+export const PGN_126720_AirmarDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Maretron: Slave Response
@@ -2115,7 +2689,7 @@ export interface PGN_126720_Airmar extends PGN {
 */
 export interface PGN_126720_MaretronFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   productCode?: N2K_Number
   softwareCode?: N2K_Number
@@ -2127,6 +2701,11 @@ export interface PGN_126720_Maretron extends PGN {
  fields: PGN_126720_MaretronFields
 }
 
+export const PGN_126720_MaretronDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Garmin: Day Mode
@@ -2139,15 +2718,15 @@ export interface PGN_126720_Maretron extends PGN {
 */
 export interface PGN_126720_Garmin_Always222_Always5_Always5_Always5Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   unknownId1?: N2K_Number
   unknownId2?: N2K_Number
   unknownId3?: N2K_Number
   unknownId4?: N2K_Number
-  spare8?: N2K_Spare
+  spare8?: number
   mode?: enums.GarminColorMode|number
-  spare10?: N2K_Spare
+  spare10?: number
   backlight?: enums.GarminBacklightLevel|number
 }
 
@@ -2155,6 +2734,11 @@ export interface PGN_126720_Garmin_Always222_Always5_Always5_Always5 extends PGN
  fields: PGN_126720_Garmin_Always222_Always5_Always5_Always5Fields
 }
 
+export const PGN_126720_Garmin_Always222_Always5_Always5_Always5Defaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Garmin: Night Mode
@@ -2168,15 +2752,15 @@ export interface PGN_126720_Garmin_Always222_Always5_Always5_Always5 extends PGN
 */
 export interface PGN_126720_Garmin_Always222_Always5_Always5_Always5_NightFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   unknownId1?: N2K_Number
   unknownId2?: N2K_Number
   unknownId3?: N2K_Number
   unknownId4?: N2K_Number
-  spare8?: N2K_Spare
+  spare8?: number
   mode?: enums.GarminColorMode|number
-  spare10?: N2K_Spare
+  spare10?: number
   backlight?: enums.GarminBacklightLevel|number
 }
 
@@ -2184,6 +2768,11 @@ export interface PGN_126720_Garmin_Always222_Always5_Always5_Always5_Night exten
  fields: PGN_126720_Garmin_Always222_Always5_Always5_Always5_NightFields
 }
 
+export const PGN_126720_Garmin_Always222_Always5_Always5_Always5_NightDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126720
   Description: Garmin: Color mode
@@ -2197,15 +2786,15 @@ export interface PGN_126720_Garmin_Always222_Always5_Always5_Always5_Night exten
 */
 export interface PGN_126720_Garmin_Always222_Always5_Always5_Always5_ColorFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   unknownId1?: N2K_Number
   unknownId2?: N2K_Number
   unknownId3?: N2K_Number
   unknownId4?: N2K_Number
-  spare8?: N2K_Spare
+  spare8?: number
   mode?: enums.GarminColorMode|number
-  spare10?: N2K_Spare
+  spare10?: number
   color?: enums.GarminColor|number
 }
 
@@ -2213,6 +2802,11 @@ export interface PGN_126720_Garmin_Always222_Always5_Always5_Always5_Color exten
  fields: PGN_126720_Garmin_Always222_Always5_Always5_Always5_ColorFields
 }
 
+export const PGN_126720_Garmin_Always222_Always5_Always5_Always5_ColorDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126983
   Description: Alert
@@ -2233,7 +2827,7 @@ export interface PGN_126983Fields extends PGNFields {
   temporarySilenceSupport: enums.YesNo|number
   acknowledgeSupport: enums.YesNo|number
   escalationSupport: enums.YesNo|number
-  reserved?: N2K_Reserved
+  reserved?: number
   acknowledgeSourceNetworkIdName?: N2K_IsoName
   triggerCondition?: enums.AlertTriggerCondition|number
   thresholdStatus?: enums.AlertThresholdStatus|number
@@ -2245,6 +2839,11 @@ export interface PGN_126983 extends PGN {
  fields: PGN_126983Fields
 }
 
+export const PGN_126983Defaults = {
+  pgn: 126983,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126984
   Description: Alert Response
@@ -2261,13 +2860,18 @@ export interface PGN_126984Fields extends PGNFields {
   alertOccurrenceNumber?: N2K_Number
   acknowledgeSourceNetworkIdName?: N2K_IsoName
   responseCommand?: enums.AlertResponseCommand|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_126984 extends PGN {
  fields: PGN_126984Fields
 }
 
+export const PGN_126984Defaults = {
+  pgn: 126984,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126985
   Description: Alert Text
@@ -2291,6 +2895,11 @@ export interface PGN_126985 extends PGN {
  fields: PGN_126985Fields
 }
 
+export const PGN_126985Defaults = {
+  pgn: 126985,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126986
   Description: Alert Configuration
@@ -2307,7 +2916,7 @@ export interface PGN_126986Fields extends PGNFields {
   alertOccurrenceNumber?: N2K_Number
   alertControl?: N2K_Number
   userDefinedAlertAssignment?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   reactivationPeriod?: N2K_Number
   temporarySilencePeriod?: N2K_Number
   escalationPeriod?: N2K_Number
@@ -2317,6 +2926,11 @@ export interface PGN_126986 extends PGN {
  fields: PGN_126986Fields
 }
 
+export const PGN_126986Defaults = {
+  pgn: 126986,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126987
   Description: Alert Threshold
@@ -2332,17 +2946,23 @@ export interface PGN_126987Fields extends PGNFields {
   dataSourceIndexSource?: N2K_Number
   alertOccurrenceNumber?: N2K_Number
   numberOfParameters?: N2K_Number
-  parameterNumber?: N2K_Number
-  triggerMethod?: N2K_Number
-  thresholdDataFormat?: N2K_Number
-  thresholdLevel?: N2K_Number
-  list: any[]
+  list: {
+    parameterNumber?: N2K_Number
+    triggerMethod?: N2K_Number
+    thresholdDataFormat?: N2K_Number
+    thresholdLevel?: N2K_Number
+  }[]
 }
 
 export interface PGN_126987 extends PGN {
  fields: PGN_126987Fields
 }
 
+export const PGN_126987Defaults = {
+  pgn: 126987,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126988
   Description: Alert Value
@@ -2358,16 +2978,22 @@ export interface PGN_126988Fields extends PGNFields {
   dataSourceIndexSource?: N2K_Number
   alertOccurrenceNumber?: N2K_Number
   numberOfParameters?: N2K_Number
-  valueParameterNumber?: N2K_Number
-  valueDataFormat?: N2K_Number
-  valueData?: N2K_Number
-  list: any[]
+  list: {
+    valueParameterNumber?: N2K_Number
+    valueDataFormat?: N2K_Number
+    valueData?: N2K_Number
+  }[]
 }
 
 export interface PGN_126988 extends PGN {
  fields: PGN_126988Fields
 }
 
+export const PGN_126988Defaults = {
+  pgn: 126988,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126992
   Description: System Time
@@ -2376,7 +3002,7 @@ export interface PGN_126988 extends PGN {
 export interface PGN_126992Fields extends PGNFields {
   sid?: N2K_Number
   source: enums.SystemTime|number
-  reserved?: N2K_Reserved
+  reserved?: number
   date?: N2K_Date
   time?: N2K_Time
 }
@@ -2385,6 +3011,11 @@ export interface PGN_126992 extends PGN {
  fields: PGN_126992Fields
 }
 
+export const PGN_126992Defaults = {
+  pgn: 126992,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 126993
   Description: Heartbeat
@@ -2396,13 +3027,18 @@ export interface PGN_126993Fields extends PGNFields {
   controller1State?: enums.ControllerState|number
   controller2State?: enums.ControllerState|number
   equipmentStatus?: enums.EquipmentStatus|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_126993 extends PGN {
  fields: PGN_126993Fields
 }
 
+export const PGN_126993Defaults = {
+  pgn: 126993,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 126996
   Description: Product Information
@@ -2423,6 +3059,11 @@ export interface PGN_126996 extends PGN {
  fields: PGN_126996Fields
 }
 
+export const PGN_126996Defaults = {
+  pgn: 126996,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 126998
   Description: Configuration Information
@@ -2438,6 +3079,11 @@ export interface PGN_126998 extends PGN {
  fields: PGN_126998Fields
 }
 
+export const PGN_126998Defaults = {
+  pgn: 126998,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 127233
   Description: Man Overboard Notification
@@ -2456,27 +3102,32 @@ export interface PGN_127233Fields extends PGNFields {
   sid?: N2K_Number
   mobEmitterId?: N2K_Number
   manOverboardStatus?: enums.MobStatus|number
-  reserved?: N2K_Reserved
+  reserved?: number
   activationTime?: N2K_Time
   positionSource?: enums.MobPositionSource|number
-  reserved7?: N2K_Reserved
+  reserved7?: number
   positionDate?: N2K_Date
   positionTime?: N2K_Time
   latitude?: N2K_Number
   longitude?: N2K_Number
   cogReference?: enums.DirectionReference|number
-  reserved13?: N2K_Reserved
+  reserved13?: number
   cog?: N2K_Number
   sog?: N2K_Number
   mmsiOfVesselOfOrigin: N2K_Mmsi
   mobEmitterBatteryLowStatus?: enums.LowBattery|number
-  reserved18?: N2K_Reserved
+  reserved18?: number
 }
 
 export interface PGN_127233 extends PGN {
  fields: PGN_127233Fields
 }
 
+export const PGN_127233Defaults = {
+  pgn: 127233,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 127237
   Description: Heading/Track control
@@ -2489,7 +3140,7 @@ export interface PGN_127237Fields extends PGNFields {
   steeringMode?: enums.SteeringMode|number
   turnMode?: enums.TurnMode|number
   headingReference?: enums.DirectionReference|number
-  reserved?: N2K_Reserved
+  reserved?: number
   commandedRudderDirection?: enums.DirectionRudder|number
   commandedRudderAngle?: N2K_Number
   headingToSteerCourse?: N2K_Number
@@ -2506,6 +3157,11 @@ export interface PGN_127237 extends PGN {
  fields: PGN_127237Fields
 }
 
+export const PGN_127237Defaults = {
+  pgn: 127237,
+  dst: 255,
+  prio: 2
+}
 /*
   PGN: 127245
   Description: Rudder
@@ -2513,16 +3169,21 @@ export interface PGN_127237 extends PGN {
 export interface PGN_127245Fields extends PGNFields {
   instance: N2K_Number
   directionOrder?: enums.DirectionRudder|number
-  reserved?: N2K_Reserved
+  reserved?: number
   angleOrder?: N2K_Number
   position?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_127245 extends PGN {
  fields: PGN_127245Fields
 }
 
+export const PGN_127245Defaults = {
+  pgn: 127245,
+  dst: 255,
+  prio: 2
+}
 /*
   PGN: 127250
   Description: Vessel Heading
@@ -2533,13 +3194,18 @@ export interface PGN_127250Fields extends PGNFields {
   deviation?: N2K_Number
   variation?: N2K_Number
   reference?: enums.DirectionReference|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_127250 extends PGN {
  fields: PGN_127250Fields
 }
 
+export const PGN_127250Defaults = {
+  pgn: 127250,
+  dst: 255,
+  prio: 2
+}
 /*
   PGN: 127251
   Description: Rate of Turn
@@ -2547,13 +3213,18 @@ export interface PGN_127250 extends PGN {
 export interface PGN_127251Fields extends PGNFields {
   sid?: N2K_Number
   rate?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_127251 extends PGN {
  fields: PGN_127251Fields
 }
 
+export const PGN_127251Defaults = {
+  pgn: 127251,
+  dst: 255,
+  prio: 2
+}
 /*
   PGN: 127252
   Description: Heave
@@ -2561,13 +3232,18 @@ export interface PGN_127251 extends PGN {
 export interface PGN_127252Fields extends PGNFields {
   sid?: N2K_Number
   heave?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_127252 extends PGN {
  fields: PGN_127252Fields
 }
 
+export const PGN_127252Defaults = {
+  pgn: 127252,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 127257
   Description: Attitude
@@ -2577,13 +3253,18 @@ export interface PGN_127257Fields extends PGNFields {
   yaw?: N2K_Number
   pitch?: N2K_Number
   roll?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_127257 extends PGN {
  fields: PGN_127257Fields
 }
 
+export const PGN_127257Defaults = {
+  pgn: 127257,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 127258
   Description: Magnetic Variation
@@ -2591,16 +3272,21 @@ export interface PGN_127257 extends PGN {
 export interface PGN_127258Fields extends PGNFields {
   sid?: N2K_Number
   source?: enums.MagneticVariation|number
-  reserved?: N2K_Reserved
+  reserved?: number
   ageOfService?: N2K_Date
   variation?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_127258 extends PGN {
  fields: PGN_127258Fields
 }
 
+export const PGN_127258Defaults = {
+  pgn: 127258,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 127488
   Description: Engine Parameters, Rapid Update
@@ -2610,13 +3296,18 @@ export interface PGN_127488Fields extends PGNFields {
   speed?: N2K_Number
   boostPressure?: N2K_Number
   tiltTrim?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_127488 extends PGN {
  fields: PGN_127488Fields
 }
 
+export const PGN_127488Defaults = {
+  pgn: 127488,
+  dst: 255,
+  prio: 2
+}
 /*
   PGN: 127489
   Description: Engine Parameters, Dynamic
@@ -2631,7 +3322,7 @@ export interface PGN_127489Fields extends PGNFields {
   totalEngineHours?: N2K_Duration
   coolantPressure?: N2K_Number
   fuelPressure?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   discreteStatus1?: enums.EngineStatus1[]
   discreteStatus2?: enums.EngineStatus2[]
   engineLoad?: N2K_Number
@@ -2642,6 +3333,11 @@ export interface PGN_127489 extends PGN {
  fields: PGN_127489Fields
 }
 
+export const PGN_127489Defaults = {
+  pgn: 127489,
+  dst: 255,
+  prio: 2
+}
 /*
   PGN: 127490
   Description: Electric Drive Status, Dynamic
@@ -2650,7 +3346,7 @@ export interface PGN_127489 extends PGN {
 export interface PGN_127490Fields extends PGNFields {
   inverterMotorIdentifier: N2K_Number
   operatingMode?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   motorTemperature?: N2K_Number
   inverterTemperature?: N2K_Number
   coolantTemperature?: N2K_Number
@@ -2662,6 +3358,11 @@ export interface PGN_127490 extends PGN {
  fields: PGN_127490Fields
 }
 
+export const PGN_127490Defaults = {
+  pgn: 127490,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 127491
   Description: Electric Energy Storage Status, Dynamic
@@ -2684,6 +3385,11 @@ export interface PGN_127491 extends PGN {
  fields: PGN_127491Fields
 }
 
+export const PGN_127491Defaults = {
+  pgn: 127491,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 127493
   Description: Transmission Parameters, Dynamic
@@ -2691,17 +3397,22 @@ export interface PGN_127491 extends PGN {
 export interface PGN_127493Fields extends PGNFields {
   instance: enums.EngineInstance|number
   transmissionGear?: enums.GearStatus|number
-  reserved?: N2K_Reserved
+  reserved?: number
   oilPressure?: N2K_Number
   oilTemperature?: N2K_Number
   discreteStatus1?: N2K_Number
-  reserved7?: N2K_Reserved
+  reserved7?: number
 }
 
 export interface PGN_127493 extends PGN {
  fields: PGN_127493Fields
 }
 
+export const PGN_127493Defaults = {
+  pgn: 127493,
+  dst: 255,
+  prio: 2
+}
 /*
   PGN: 127494
   Description: Electric Drive Information
@@ -2710,7 +3421,7 @@ export interface PGN_127493 extends PGN {
 export interface PGN_127494Fields extends PGNFields {
   inverterMotorIdentifier: N2K_Number
   motorType?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   motorVoltageRating?: N2K_Number
   maximumContinuousMotorPower?: N2K_Number
   maximumBoostMotorPower?: N2K_Number
@@ -2727,6 +3438,11 @@ export interface PGN_127494 extends PGN {
  fields: PGN_127494Fields
 }
 
+export const PGN_127494Defaults = {
+  pgn: 127494,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 127495
   Description: Electric Energy Storage Information
@@ -2735,7 +3451,7 @@ export interface PGN_127494 extends PGN {
 export interface PGN_127495Fields extends PGNFields {
   energyStorageIdentifier: N2K_Number
   motorType?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   storageChemistryConversion?: N2K_Number
   maximumTemperatureDerating?: N2K_Number
   maximumTemperatureShutOff?: N2K_Number
@@ -2746,7 +3462,7 @@ export interface PGN_127495Fields extends PGNFields {
   batteryCycleCounter?: N2K_Number
   batteryFullStatus?: N2K_Number
   batteryEmptyStatus?: N2K_Number
-  reserved14?: N2K_Reserved
+  reserved14?: number
   maximumChargeSoc?: N2K_Number
   minimumChargeSoc?: N2K_Number
 }
@@ -2755,6 +3471,11 @@ export interface PGN_127495 extends PGN {
  fields: PGN_127495Fields
 }
 
+export const PGN_127495Defaults = {
+  pgn: 127495,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 127496
   Description: Trip Parameters, Vessel
@@ -2770,6 +3491,11 @@ export interface PGN_127496 extends PGN {
  fields: PGN_127496Fields
 }
 
+export const PGN_127496Defaults = {
+  pgn: 127496,
+  dst: 255,
+  prio: 5
+}
 /*
   PGN: 127497
   Description: Trip Parameters, Engine
@@ -2786,6 +3512,11 @@ export interface PGN_127497 extends PGN {
  fields: PGN_127497Fields
 }
 
+export const PGN_127497Defaults = {
+  pgn: 127497,
+  dst: 255,
+  prio: 5
+}
 /*
   PGN: 127498
   Description: Engine Parameters, Static
@@ -2801,6 +3532,11 @@ export interface PGN_127498 extends PGN {
  fields: PGN_127498Fields
 }
 
+export const PGN_127498Defaults = {
+  pgn: 127498,
+  dst: 255,
+  prio: 5
+}
 /*
   PGN: 127500
   Description: Load Controller Connection State/Control
@@ -2820,6 +3556,11 @@ export interface PGN_127500 extends PGN {
  fields: PGN_127500Fields
 }
 
+export const PGN_127500Defaults = {
+  pgn: 127500,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 127501
   Description: Binary Switch Bank Status
@@ -2860,6 +3601,11 @@ export interface PGN_127501 extends PGN {
  fields: PGN_127501Fields
 }
 
+export const PGN_127501Defaults = {
+  pgn: 127501,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 127502
   Description: Switch Bank Control
@@ -2900,6 +3646,11 @@ export interface PGN_127502 extends PGN {
  fields: PGN_127502Fields
 }
 
+export const PGN_127502Defaults = {
+  pgn: 127502,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 127503
   Description: AC Input Status
@@ -2907,23 +3658,29 @@ export interface PGN_127502 extends PGN {
 export interface PGN_127503Fields extends PGNFields {
   instance: N2K_Number
   numberOfLines?: N2K_Number
-  line?: enums.AcLine|number
-  acceptability?: enums.Acceptability|number
-  reserved?: N2K_Reserved
-  voltage?: N2K_Number
-  current?: N2K_Number
-  frequency?: N2K_Number
-  breakerSize?: N2K_Number
-  realPower?: N2K_Number
-  reactivePower?: N2K_Number
-  powerFactor?: N2K_Number
-  list: any[]
+  list: {
+    line?: enums.AcLine|number
+    acceptability?: enums.Acceptability|number
+    reserved?: number
+    voltage?: N2K_Number
+    current?: N2K_Number
+    frequency?: N2K_Number
+    breakerSize?: N2K_Number
+    realPower?: N2K_Number
+    reactivePower?: N2K_Number
+    powerFactor?: N2K_Number
+  }[]
 }
 
 export interface PGN_127503 extends PGN {
  fields: PGN_127503Fields
 }
 
+export const PGN_127503Defaults = {
+  pgn: 127503,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 127504
   Description: AC Output Status
@@ -2931,23 +3688,29 @@ export interface PGN_127503 extends PGN {
 export interface PGN_127504Fields extends PGNFields {
   instance: N2K_Number
   numberOfLines?: N2K_Number
-  line?: enums.Line|number
-  waveform?: enums.Waveform|number
-  reserved?: N2K_Reserved
-  voltage?: N2K_Number
-  current?: N2K_Number
-  frequency?: N2K_Number
-  breakerSize?: N2K_Number
-  realPower?: N2K_Number
-  reactivePower?: N2K_Number
-  powerFactor?: N2K_Number
-  list: any[]
+  list: {
+    line?: enums.Line|number
+    waveform?: enums.Waveform|number
+    reserved?: number
+    voltage?: N2K_Number
+    current?: N2K_Number
+    frequency?: N2K_Number
+    breakerSize?: N2K_Number
+    realPower?: N2K_Number
+    reactivePower?: N2K_Number
+    powerFactor?: N2K_Number
+  }[]
 }
 
 export interface PGN_127504 extends PGN {
  fields: PGN_127504Fields
 }
 
+export const PGN_127504Defaults = {
+  pgn: 127504,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 127505
   Description: Fluid Level
@@ -2957,13 +3720,18 @@ export interface PGN_127505Fields extends PGNFields {
   type?: enums.TankType|number
   level?: N2K_Number
   capacity?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_127505 extends PGN {
  fields: PGN_127505Fields
 }
 
+export const PGN_127505Defaults = {
+  pgn: 127505,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 127506
   Description: DC Detailed Status
@@ -2983,6 +3751,11 @@ export interface PGN_127506 extends PGN {
  fields: PGN_127506Fields
 }
 
+export const PGN_127506Defaults = {
+  pgn: 127506,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 127507
   Description: Charger Status
@@ -2994,7 +3767,7 @@ export interface PGN_127507Fields extends PGNFields {
   chargeMode?: enums.ChargerMode|number
   enabled?: enums.OffOn|number
   equalizationPending?: enums.OffOn|number
-  reserved?: N2K_Reserved
+  reserved?: number
   equalizationTimeRemaining?: N2K_Duration
 }
 
@@ -3002,6 +3775,11 @@ export interface PGN_127507 extends PGN {
  fields: PGN_127507Fields
 }
 
+export const PGN_127507Defaults = {
+  pgn: 127507,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 127508
   Description: Battery Status
@@ -3018,6 +3796,11 @@ export interface PGN_127508 extends PGN {
  fields: PGN_127508Fields
 }
 
+export const PGN_127508Defaults = {
+  pgn: 127508,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 127509
   Description: Inverter Status
@@ -3029,13 +3812,18 @@ export interface PGN_127509Fields extends PGNFields {
   dcInstance: N2K_Number
   operatingState?: enums.InverterState|number
   inverterEnable?: enums.OffOn|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_127509 extends PGN {
  fields: PGN_127509Fields
 }
 
+export const PGN_127509Defaults = {
+  pgn: 127509,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 127510
   Description: Charger Configuration Status
@@ -3044,7 +3832,7 @@ export interface PGN_127510Fields extends PGNFields {
   instance: N2K_Number
   batteryInstance: N2K_Number
   chargerEnableDisable?: enums.OffOn|number
-  reserved?: N2K_Reserved
+  reserved?: number
   chargeCurrentLimit?: N2K_Number
   chargingAlgorithm?: enums.ChargingAlgorithm|number
   chargerMode?: enums.ChargerMode|number
@@ -3058,6 +3846,11 @@ export interface PGN_127510 extends PGN {
  fields: PGN_127510Fields
 }
 
+export const PGN_127510Defaults = {
+  pgn: 127510,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 127511
   Description: Inverter Configuration Status
@@ -3077,6 +3870,11 @@ export interface PGN_127511 extends PGN {
  fields: PGN_127511Fields
 }
 
+export const PGN_127511Defaults = {
+  pgn: 127511,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 127512
   Description: AGS Configuration Status
@@ -3085,13 +3883,18 @@ export interface PGN_127512Fields extends PGNFields {
   instance: N2K_Number
   generatorInstance: N2K_Number
   agsMode?: enums.AgsMode|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_127512 extends PGN {
  fields: PGN_127512Fields
 }
 
+export const PGN_127512Defaults = {
+  pgn: 127512,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 127513
   Description: Battery Configuration Status
@@ -3100,7 +3903,7 @@ export interface PGN_127513Fields extends PGNFields {
   instance: N2K_Number
   batteryType?: enums.BatteryType|number
   supportsEqualization?: enums.YesNo|number
-  reserved?: N2K_Reserved
+  reserved?: number
   nominalVoltage?: enums.BatteryVoltage|number
   chemistry?: enums.BatteryChemistry|number
   capacity?: N2K_Number
@@ -3113,6 +3916,11 @@ export interface PGN_127513 extends PGN {
  fields: PGN_127513Fields
 }
 
+export const PGN_127513Defaults = {
+  pgn: 127513,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 127514
   Description: AGS Status
@@ -3130,6 +3938,11 @@ export interface PGN_127514 extends PGN {
  fields: PGN_127514Fields
 }
 
+export const PGN_127514Defaults = {
+  pgn: 127514,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 127744
   Description: AC Power / Current - Phase A
@@ -3145,6 +3958,11 @@ export interface PGN_127744 extends PGN {
  fields: PGN_127744Fields
 }
 
+export const PGN_127744Defaults = {
+  pgn: 127744,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 127745
   Description: AC Power / Current - Phase B
@@ -3160,6 +3978,11 @@ export interface PGN_127745 extends PGN {
  fields: PGN_127745Fields
 }
 
+export const PGN_127745Defaults = {
+  pgn: 127745,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 127746
   Description: AC Power / Current - Phase C
@@ -3175,6 +3998,11 @@ export interface PGN_127746 extends PGN {
  fields: PGN_127746Fields
 }
 
+export const PGN_127746Defaults = {
+  pgn: 127746,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 127747
   Description: AC Voltage / Frequency - Phase A
@@ -3191,6 +4019,11 @@ export interface PGN_127747 extends PGN {
  fields: PGN_127747Fields
 }
 
+export const PGN_127747Defaults = {
+  pgn: 127747,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 127748
   Description: AC Voltage / Frequency - Phase B
@@ -3207,6 +4040,11 @@ export interface PGN_127748 extends PGN {
  fields: PGN_127748Fields
 }
 
+export const PGN_127748Defaults = {
+  pgn: 127748,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 127749
   Description: AC Voltage / Frequency - Phase C
@@ -3223,6 +4061,11 @@ export interface PGN_127749 extends PGN {
  fields: PGN_127749Fields
 }
 
+export const PGN_127749Defaults = {
+  pgn: 127749,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 127750
   Description: Converter Status
@@ -3235,13 +4078,18 @@ export interface PGN_127750Fields extends PGNFields {
   overloadState?: enums.GoodWarningError|number
   lowDcVoltageState?: enums.GoodWarningError|number
   rippleState?: enums.GoodWarningError|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_127750 extends PGN {
  fields: PGN_127750Fields
 }
 
+export const PGN_127750Defaults = {
+  pgn: 127750,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 127751
   Description: DC Voltage/Current
@@ -3251,13 +4099,18 @@ export interface PGN_127751Fields extends PGNFields {
   connectionNumber?: N2K_Number
   dcVoltage?: N2K_Number
   dcCurrent?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_127751 extends PGN {
  fields: PGN_127751Fields
 }
 
+export const PGN_127751Defaults = {
+  pgn: 127751,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 128000
   Description: Leeway Angle
@@ -3266,13 +4119,18 @@ export interface PGN_127751 extends PGN {
 export interface PGN_128000Fields extends PGNFields {
   sid?: N2K_Number
   leewayAngle?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_128000 extends PGN {
  fields: PGN_128000Fields
 }
 
+export const PGN_128000Defaults = {
+  pgn: 128000,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 128001
   Description: Vessel Acceleration
@@ -3283,13 +4141,18 @@ export interface PGN_128001Fields extends PGNFields {
   longitudinalAcceleration?: N2K_Number
   transverseAcceleration?: N2K_Number
   verticalAcceleration?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_128001 extends PGN {
  fields: PGN_128001Fields
 }
 
+export const PGN_128001Defaults = {
+  pgn: 128001,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 128002
   Description: Electric Drive Status, Rapid Update
@@ -3299,7 +4162,7 @@ export interface PGN_128002Fields extends PGNFields {
   inverterMotorController?: N2K_Number
   activeMotorMode?: N2K_Number
   brakeMode?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   rotationalShaftSpeed?: N2K_Number
   motorDcVoltage?: N2K_Number
   motorDcCurrent?: N2K_Number
@@ -3309,6 +4172,11 @@ export interface PGN_128002 extends PGN {
  fields: PGN_128002Fields
 }
 
+export const PGN_128002Defaults = {
+  pgn: 128002,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 128003
   Description: Electric Energy Storage Status, Rapid Update
@@ -3321,13 +4189,18 @@ export interface PGN_128003Fields extends PGNFields {
   batteryError?: N2K_Number
   batteryVoltage?: N2K_Number
   batteryCurrent?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_128003 extends PGN {
  fields: PGN_128003Fields
 }
 
+export const PGN_128003Defaults = {
+  pgn: 128003,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 128006
   Description: Thruster Control Status
@@ -3348,6 +4221,11 @@ export interface PGN_128006 extends PGN {
  fields: PGN_128006Fields
 }
 
+export const PGN_128006Defaults = {
+  pgn: 128006,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 128007
   Description: Thruster Information
@@ -3355,7 +4233,7 @@ export interface PGN_128006 extends PGN {
 export interface PGN_128007Fields extends PGNFields {
   identifier?: N2K_Number
   motorType?: enums.ThrusterMotorType|number
-  reserved?: N2K_Reserved
+  reserved?: number
   powerRating?: N2K_Number
   maximumTemperatureRating?: N2K_Number
   maximumRotationalSpeed?: N2K_Number
@@ -3365,6 +4243,11 @@ export interface PGN_128007 extends PGN {
  fields: PGN_128007Fields
 }
 
+export const PGN_128007Defaults = {
+  pgn: 128007,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 128008
   Description: Thruster Motor Status
@@ -3382,6 +4265,11 @@ export interface PGN_128008 extends PGN {
  fields: PGN_128008Fields
 }
 
+export const PGN_128008Defaults = {
+  pgn: 128008,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 128259
   Description: Speed
@@ -3392,13 +4280,18 @@ export interface PGN_128259Fields extends PGNFields {
   speedGroundReferenced?: N2K_Number
   speedWaterReferencedType?: enums.WaterReference|number
   speedDirection?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_128259 extends PGN {
  fields: PGN_128259Fields
 }
 
+export const PGN_128259Defaults = {
+  pgn: 128259,
+  dst: 255,
+  prio: 2
+}
 /*
   PGN: 128267
   Description: Water Depth
@@ -3414,6 +4307,11 @@ export interface PGN_128267 extends PGN {
  fields: PGN_128267Fields
 }
 
+export const PGN_128267Defaults = {
+  pgn: 128267,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 128275
   Description: Distance Log
@@ -3429,6 +4327,11 @@ export interface PGN_128275 extends PGN {
  fields: PGN_128275Fields
 }
 
+export const PGN_128275Defaults = {
+  pgn: 128275,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 128520
   Description: Tracked Target Data
@@ -3440,7 +4343,7 @@ export interface PGN_128520Fields extends PGNFields {
   reportedTarget: enums.YesNo|number
   targetAcquisition: enums.TargetAcquisition|number
   bearingReference?: enums.DirectionReference|number
-  reserved?: N2K_Reserved
+  reserved?: number
   bearing?: N2K_Number
   distance?: N2K_Number
   course?: N2K_Number
@@ -3450,13 +4353,18 @@ export interface PGN_128520Fields extends PGNFields {
   utcOfFix?: N2K_Time
   name?: N2K_StringLau
   referenceTarget?: enums.YesNo|number
-  reserved17?: N2K_Reserved
+  reserved17?: number
 }
 
 export interface PGN_128520 extends PGN {
  fields: PGN_128520Fields
 }
 
+export const PGN_128520Defaults = {
+  pgn: 128520,
+  dst: 255,
+  prio: 2
+}
 /*
   PGN: 128538
   Description: Elevator Car Status
@@ -3476,14 +4384,14 @@ export interface PGN_128538Fields extends PGNFields {
   elevatorLoadSensor2Status?: N2K_Number
   elevatorLoadSensor3Status?: N2K_Number
   elevatorLoadSensor4Status?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   elevatorCarMotionStatus?: N2K_Number
   elevatorCarDoorStatus?: N2K_Number
   elevatorCarEmergencyButtonStatus?: N2K_Number
   elevatorCarBuzzerStatus?: N2K_Number
   openDoorButtonStatus?: N2K_Number
   closeDoorButtonStatus?: N2K_Number
-  reserved21?: N2K_Reserved
+  reserved21?: number
   currentDeck?: N2K_Number
   destinationDeck?: N2K_Number
   totalNumberOfDecks?: N2K_Number
@@ -3494,13 +4402,18 @@ export interface PGN_128538Fields extends PGNFields {
   speedOfElevatorCar?: N2K_Number
   elevatorBrakeStatus?: N2K_Number
   elevatorMotorRotationControlStatus?: N2K_Number
-  reserved32?: N2K_Reserved
+  reserved32?: number
 }
 
 export interface PGN_128538 extends PGN {
  fields: PGN_128538Fields
 }
 
+export const PGN_128538Defaults = {
+  pgn: 128538,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 128768
   Description: Elevator Motor Control
@@ -3512,13 +4425,18 @@ export interface PGN_128768Fields extends PGNFields {
   elevatorCarUsage?: N2K_Number
   motorAccelerationDecelerationProfileSelection?: N2K_Number
   motorRotationalControlStatus?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_128768 extends PGN {
  fields: PGN_128768Fields
 }
 
+export const PGN_128768Defaults = {
+  pgn: 128768,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 128769
   Description: Elevator Deck Push Button
@@ -3530,13 +4448,18 @@ export interface PGN_128769Fields extends PGNFields {
   deckButtonId?: N2K_Number
   elevatorCarUsage?: N2K_Number
   elevatorCarButtonSelection?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_128769 extends PGN {
  fields: PGN_128769Fields
 }
 
+export const PGN_128769Defaults = {
+  pgn: 128769,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 128776
   Description: Windlass Control Status
@@ -3547,7 +4470,7 @@ export interface PGN_128776Fields extends PGNFields {
   windlassDirectionControl?: enums.WindlassDirection|number
   anchorDockingControl?: enums.OffOn|number
   speedControlType?: enums.SpeedType|number
-  reserved?: N2K_Reserved
+  reserved?: number
   speedControl?: N2K_Binary
   powerEnable?: enums.OffOn|number
   mechanicalLock?: enums.OffOn|number
@@ -3555,13 +4478,18 @@ export interface PGN_128776Fields extends PGNFields {
   anchorLight?: enums.OffOn|number
   commandTimeout?: N2K_Duration
   windlassControlEvents?: enums.WindlassControl[]
-  reserved14?: N2K_Reserved
+  reserved14?: number
 }
 
 export interface PGN_128776 extends PGN {
  fields: PGN_128776Fields
 }
 
+export const PGN_128776Defaults = {
+  pgn: 128776,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 128777
   Description: Anchor Windlass Operating Status
@@ -3572,7 +4500,7 @@ export interface PGN_128777Fields extends PGNFields {
   windlassDirectionControl?: enums.WindlassDirection|number
   windlassMotionStatus?: enums.WindlassMotion|number
   rodeTypeStatus?: enums.RodeType|number
-  reserved?: N2K_Reserved
+  reserved?: number
   rodeCounterValue?: N2K_Number
   windlassLineSpeed?: N2K_Number
   anchorDockingStatus?: enums.DockingStatus|number
@@ -3583,6 +4511,11 @@ export interface PGN_128777 extends PGN {
  fields: PGN_128777Fields
 }
 
+export const PGN_128777Defaults = {
+  pgn: 128777,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 128778
   Description: Anchor Windlass Monitoring Status
@@ -3594,13 +4527,18 @@ export interface PGN_128778Fields extends PGNFields {
   controllerVoltage?: N2K_Number
   motorCurrent?: N2K_Number
   totalMotorTime?: N2K_Duration
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_128778 extends PGN {
  fields: PGN_128778Fields
 }
 
+export const PGN_128778Defaults = {
+  pgn: 128778,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 128780
   Description: Linear Actuator Control/Status
@@ -3612,13 +4550,18 @@ export interface PGN_128780Fields extends PGNFields {
   devicePosition?: N2K_Number
   maximumDeviceTravel?: N2K_Number
   directionOfTravel?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_128780 extends PGN {
  fields: PGN_128780Fields
 }
 
+export const PGN_128780Defaults = {
+  pgn: 128780,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 129025
   Description: Position, Rapid Update
@@ -3632,6 +4575,11 @@ export interface PGN_129025 extends PGN {
  fields: PGN_129025Fields
 }
 
+export const PGN_129025Defaults = {
+  pgn: 129025,
+  dst: 255,
+  prio: 2
+}
 /*
   PGN: 129026
   Description: COG & SOG, Rapid Update
@@ -3639,16 +4587,21 @@ export interface PGN_129025 extends PGN {
 export interface PGN_129026Fields extends PGNFields {
   sid?: N2K_Number
   cogReference?: enums.DirectionReference|number
-  reserved?: N2K_Reserved
+  reserved?: number
   cog?: N2K_Number
   sog?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_129026 extends PGN {
  fields: PGN_129026Fields
 }
 
+export const PGN_129026Defaults = {
+  pgn: 129026,
+  dst: 255,
+  prio: 2
+}
 /*
   PGN: 129027
   Description: Position Delta, Rapid Update
@@ -3664,6 +4617,11 @@ export interface PGN_129027 extends PGN {
  fields: PGN_129027Fields
 }
 
+export const PGN_129027Defaults = {
+  pgn: 129027,
+  dst: 255,
+  prio: 2
+}
 /*
   PGN: 129028
   Description: Altitude Delta, Rapid Update
@@ -3673,7 +4631,7 @@ export interface PGN_129028Fields extends PGNFields {
   timeDelta?: N2K_Duration
   gnssQuality?: enums.GnsMethod|number
   direction?: enums.DirectionReference|number
-  reserved?: N2K_Reserved
+  reserved?: number
   cog?: N2K_Number
   altitudeDelta?: N2K_Number
 }
@@ -3682,6 +4640,11 @@ export interface PGN_129028 extends PGN {
  fields: PGN_129028Fields
 }
 
+export const PGN_129028Defaults = {
+  pgn: 129028,
+  dst: 255,
+  prio: 2
+}
 /*
   PGN: 129029
   Description: GNSS Position Data
@@ -3696,22 +4659,28 @@ export interface PGN_129029Fields extends PGNFields {
   gnssType?: enums.Gns|number
   method?: enums.GnsMethod|number
   integrity?: enums.GnsIntegrity|number
-  reserved?: N2K_Reserved
+  reserved?: number
   numberOfSvs?: N2K_Number
   hdop?: N2K_Number
   pdop?: N2K_Number
   geoidalSeparation?: N2K_Number
   referenceStations?: N2K_Number
-  referenceStationType?: enums.Gns|number
-  referenceStationId?: N2K_Number
-  ageOfDgnssCorrections?: N2K_Duration
-  list: any[]
+  list: {
+    referenceStationType?: enums.Gns|number
+    referenceStationId?: N2K_Number
+    ageOfDgnssCorrections?: N2K_Duration
+  }[]
 }
 
 export interface PGN_129029 extends PGN {
  fields: PGN_129029Fields
 }
 
+export const PGN_129029Defaults = {
+  pgn: 129029,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 129033
   Description: Time & Date
@@ -3726,6 +4695,11 @@ export interface PGN_129033 extends PGN {
  fields: PGN_129033Fields
 }
 
+export const PGN_129033Defaults = {
+  pgn: 129033,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 129038
   Description: AIS Class A Position Report
@@ -3747,9 +4721,9 @@ export interface PGN_129038Fields extends PGNFields {
   rateOfTurn?: N2K_Number
   navStatus?: enums.NavStatus|number
   specialManeuverIndicator?: enums.AisSpecialManeuver|number
-  reserved?: N2K_Reserved
-  spare18?: N2K_Spare
-  reserved19?: N2K_Reserved
+  reserved?: number
+  spare18?: number
+  reserved19?: number
   sequenceId?: N2K_Number
 }
 
@@ -3757,6 +4731,11 @@ export interface PGN_129038 extends PGN {
  fields: PGN_129038Fields
 }
 
+export const PGN_129038Defaults = {
+  pgn: 129038,
+  dst: 255,
+  prio: 4
+}
 /*
   PGN: 129039
   Description: AIS Class B Position Report
@@ -3775,8 +4754,8 @@ export interface PGN_129039Fields extends PGNFields {
   communicationState?: N2K_Binary
   aisTransceiverInformation?: enums.AisTransceiver|number
   heading?: N2K_Number
-  regionalApplication?: N2K_Spare
-  regionalApplicationB?: N2K_Spare
+  regionalApplication?: number
+  regionalApplicationB?: number
   unitType: enums.AisType|number
   integratedDisplay: enums.YesNo|number
   dsc: enums.YesNo|number
@@ -3784,13 +4763,18 @@ export interface PGN_129039Fields extends PGNFields {
   canHandleMsg22: enums.YesNo|number
   aisMode: enums.AisMode|number
   aisCommunicationState: enums.AisCommunicationState|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_129039 extends PGN {
  fields: PGN_129039Fields
 }
 
+export const PGN_129039Defaults = {
+  pgn: 129039,
+  dst: 255,
+  prio: 4
+}
 /*
   PGN: 129040
   Description: AIS Class B Extended Position Report
@@ -3806,12 +4790,12 @@ export interface PGN_129040Fields extends PGNFields {
   timeStamp?: enums.TimeStamp|number
   cog?: N2K_Number
   sog?: N2K_Number
-  regionalApplication?: N2K_Spare
-  regionalApplicationB?: N2K_Spare
-  reserved?: N2K_Reserved
+  regionalApplication?: number
+  regionalApplicationB?: number
+  reserved?: number
   typeOfShip?: enums.ShipType|number
   trueHeading?: N2K_Number
-  reserved16?: N2K_Reserved
+  reserved16?: number
   gnssType?: enums.PositionFixDevice|number
   length?: N2K_Number
   beam?: N2K_Number
@@ -3820,15 +4804,20 @@ export interface PGN_129040Fields extends PGNFields {
   name?: N2K_StringFix
   dte: enums.Available|number
   aisMode: enums.AisMode|number
-  spare25?: N2K_Spare
+  spare25?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  reserved27?: N2K_Reserved
+  reserved27?: number
 }
 
 export interface PGN_129040 extends PGN {
  fields: PGN_129040Fields
 }
 
+export const PGN_129040Defaults = {
+  pgn: 129040,
+  dst: 255,
+  prio: 4
+}
 /*
   PGN: 129041
   Description: AIS Aids to Navigation (AtoN) Report
@@ -3850,12 +4839,12 @@ export interface PGN_129041Fields extends PGNFields {
   offPositionIndicator: enums.YesNo|number
   virtualAtonFlag: enums.YesNo|number
   assignedModeFlag: enums.AisAssignedMode|number
-  spare: N2K_Spare
+  spare?: number
   positionFixingDeviceType?: enums.PositionFixDevice|number
-  reserved19?: N2K_Reserved
+  reserved19?: number
   atonStatus?: N2K_Binary
   aisTransceiverInformation?: enums.AisTransceiver|number
-  reserved22?: N2K_Reserved
+  reserved22?: number
   atonName?: N2K_StringLau
 }
 
@@ -3863,6 +4852,11 @@ export interface PGN_129041 extends PGN {
  fields: PGN_129041Fields
 }
 
+export const PGN_129041Defaults = {
+  pgn: 129041,
+  dst: 255,
+  prio: 4
+}
 /*
   PGN: 129044
   Description: Datum
@@ -3879,6 +4873,11 @@ export interface PGN_129044 extends PGN {
  fields: PGN_129044Fields
 }
 
+export const PGN_129044Defaults = {
+  pgn: 129044,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 129045
   Description: User Datum
@@ -3900,6 +4899,11 @@ export interface PGN_129045 extends PGN {
  fields: PGN_129045Fields
 }
 
+export const PGN_129045Defaults = {
+  pgn: 129045,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 129283
   Description: Cross Track Error
@@ -3907,16 +4911,21 @@ export interface PGN_129045 extends PGN {
 export interface PGN_129283Fields extends PGNFields {
   sid?: N2K_Number
   xteMode?: enums.ResidualMode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   navigationTerminated?: enums.YesNo|number
   xte?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_129283 extends PGN {
  fields: PGN_129283Fields
 }
 
+export const PGN_129283Defaults = {
+  pgn: 129283,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 129284
   Description: Navigation Data
@@ -3943,6 +4952,11 @@ export interface PGN_129284 extends PGN {
  fields: PGN_129284Fields
 }
 
+export const PGN_129284Defaults = {
+  pgn: 129284,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 129285
   Description: Navigation - Route/WP Information
@@ -3954,20 +4968,26 @@ export interface PGN_129285Fields extends PGNFields {
   routeId?: N2K_Number
   navigationDirectionInRoute?: enums.Direction|number
   supplementaryRouteWpDataAvailable?: enums.OffOn|number
-  reserved?: N2K_Reserved
+  reserved?: number
   routeName?: N2K_StringLau
-  reserved9?: N2K_Reserved
-  wpId?: N2K_Number
-  wpName?: N2K_StringLau
-  wpLatitude?: N2K_Number
-  wpLongitude?: N2K_Number
-  list: any[]
+  reserved9?: number
+  list: {
+    wpId?: N2K_Number
+    wpName?: N2K_StringLau
+    wpLatitude?: N2K_Number
+    wpLongitude?: N2K_Number
+  }[]
 }
 
 export interface PGN_129285 extends PGN {
  fields: PGN_129285Fields
 }
 
+export const PGN_129285Defaults = {
+  pgn: 129285,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 129291
   Description: Set & Drift, Rapid Update
@@ -3975,16 +4995,21 @@ export interface PGN_129285 extends PGN {
 export interface PGN_129291Fields extends PGNFields {
   sid?: N2K_Number
   setReference?: enums.DirectionReference|number
-  reserved?: N2K_Reserved
+  reserved?: number
   set?: N2K_Number
   drift?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_129291 extends PGN {
  fields: PGN_129291Fields
 }
 
+export const PGN_129291Defaults = {
+  pgn: 129291,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 129301
   Description: Navigation - Route / Time to+from Mark
@@ -3993,7 +5018,7 @@ export interface PGN_129301Fields extends PGNFields {
   sid?: N2K_Number
   timeToMark?: N2K_Duration
   markType?: enums.MarkType|number
-  reserved?: N2K_Reserved
+  reserved?: number
   markId?: N2K_Number
 }
 
@@ -4001,6 +5026,11 @@ export interface PGN_129301 extends PGN {
  fields: PGN_129301Fields
 }
 
+export const PGN_129301Defaults = {
+  pgn: 129301,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 129302
   Description: Bearing and Distance between two Marks
@@ -4009,7 +5039,7 @@ export interface PGN_129302Fields extends PGNFields {
   sid?: N2K_Number
   bearingReference?: enums.DirectionReference|number
   calculationType?: enums.BearingMode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   bearingOriginToDestination?: N2K_Number
   distance?: N2K_Number
   originMarkType?: enums.MarkType|number
@@ -4022,6 +5052,11 @@ export interface PGN_129302 extends PGN {
  fields: PGN_129302Fields
 }
 
+export const PGN_129302Defaults = {
+  pgn: 129302,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 129538
   Description: GNSS Control Status
@@ -4037,13 +5072,18 @@ export interface PGN_129538Fields extends PGNFields {
   maxCorrectionAge?: N2K_Duration
   antennaAltitudeFor2dMode?: N2K_Number
   useAntennaAltitudeFor2dMode?: enums.YesNo|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_129538 extends PGN {
  fields: PGN_129538Fields
 }
 
+export const PGN_129538Defaults = {
+  pgn: 129538,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 129539
   Description: GNSS DOPs
@@ -4052,7 +5092,7 @@ export interface PGN_129539Fields extends PGNFields {
   sid?: N2K_Number
   desiredMode?: enums.GnssMode|number
   actualMode?: enums.GnssMode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   hdop?: N2K_Number
   vdop?: N2K_Number
   tdop?: N2K_Number
@@ -4062,6 +5102,11 @@ export interface PGN_129539 extends PGN {
  fields: PGN_129539Fields
 }
 
+export const PGN_129539Defaults = {
+  pgn: 129539,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 129540
   Description: GNSS Sats in View
@@ -4069,22 +5114,28 @@ export interface PGN_129539 extends PGN {
 export interface PGN_129540Fields extends PGNFields {
   sid?: N2K_Number
   rangeResidualMode?: enums.RangeResidualMode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   satsInView?: N2K_Number
-  prn?: N2K_Number
-  elevation?: N2K_Number
-  azimuth?: N2K_Number
-  snr?: N2K_Number
-  rangeResiduals?: N2K_Number
-  status?: enums.SatelliteStatus|number
-  reserved11?: N2K_Reserved
-  list: any[]
+  list: {
+    prn?: N2K_Number
+    elevation?: N2K_Number
+    azimuth?: N2K_Number
+    snr?: N2K_Number
+    rangeResiduals?: N2K_Number
+    status?: enums.SatelliteStatus|number
+    reserved11?: number
+  }[]
 }
 
 export interface PGN_129540 extends PGN {
  fields: PGN_129540Fields
 }
 
+export const PGN_129540Defaults = {
+  pgn: 129540,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 129541
   Description: GPS Almanac Data
@@ -4103,13 +5154,18 @@ export interface PGN_129541Fields extends PGNFields {
   meanAnomaly?: N2K_Number
   clockParameter1?: N2K_Number
   clockParameter2?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_129541 extends PGN {
  fields: PGN_129541Fields
 }
 
+export const PGN_129541Defaults = {
+  pgn: 129541,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 129542
   Description: GNSS Pseudorange Noise Statistics
@@ -4129,6 +5185,11 @@ export interface PGN_129542 extends PGN {
  fields: PGN_129542Fields
 }
 
+export const PGN_129542Defaults = {
+  pgn: 129542,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 129545
   Description: GNSS RAIM Output
@@ -4136,7 +5197,7 @@ export interface PGN_129542 extends PGN {
 export interface PGN_129545Fields extends PGNFields {
   sid?: N2K_Number
   integrityFlag?: enums.GnsIntegrity|number
-  reserved?: N2K_Reserved
+  reserved?: number
   latitudeExpectedError?: N2K_Number
   longitudeExpectedError?: N2K_Number
   altitudeExpectedError?: N2K_Number
@@ -4150,6 +5211,11 @@ export interface PGN_129545 extends PGN {
  fields: PGN_129545Fields
 }
 
+export const PGN_129545Defaults = {
+  pgn: 129545,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 129546
   Description: GNSS RAIM Settings
@@ -4159,13 +5225,18 @@ export interface PGN_129546Fields extends PGNFields {
   probabilityOfFalseAlarm?: N2K_Number
   probabilityOfMissedDetection?: N2K_Number
   pseudorangeResidualFilteringTimeConstant?: N2K_Duration
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_129546 extends PGN {
  fields: PGN_129546Fields
 }
 
+export const PGN_129546Defaults = {
+  pgn: 129546,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 129547
   Description: GNSS Pseudorange Error Statistics
@@ -4185,6 +5256,11 @@ export interface PGN_129547 extends PGN {
  fields: PGN_129547Fields
 }
 
+export const PGN_129547Defaults = {
+  pgn: 129547,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 129549
   Description: DGNSS Corrections
@@ -4195,7 +5271,7 @@ export interface PGN_129549Fields extends PGNFields {
   referenceStationType?: enums.Gns|number
   timeOfCorrections?: N2K_Duration
   stationHealth?: enums.StationHealth|number
-  reserved?: N2K_Reserved
+  reserved?: number
   satelliteId?: N2K_Number
   prc?: N2K_Number
   rrc?: N2K_Number
@@ -4207,6 +5283,11 @@ export interface PGN_129549 extends PGN {
  fields: PGN_129549Fields
 }
 
+export const PGN_129549Defaults = {
+  pgn: 129549,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 129550
   Description: GNSS Differential Correction Receiver Interface
@@ -4218,13 +5299,18 @@ export interface PGN_129550Fields extends PGNFields {
   serialInterfaceDetectionMode?: enums.SerialDetectionMode|number
   differentialSource?: enums.DifferentialSource|number
   differentialOperationMode?: enums.DifferentialMode|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_129550 extends PGN {
  fields: PGN_129550Fields
 }
 
+export const PGN_129550Defaults = {
+  pgn: 129550,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 129551
   Description: GNSS Differential Correction Receiver Signal
@@ -4240,7 +5326,7 @@ export interface PGN_129551Fields extends PGNFields {
   differentialSignalBitRate?: enums.SerialBitRate|number
   differentialSignalDetectionMode?: enums.SerialDetectionMode|number
   usedAsCorrectionSource?: enums.YesNo|number
-  reserved?: N2K_Reserved
+  reserved?: number
   differentialSource?: enums.DifferentialSource|number
   timeSinceLastSatDifferentialSync?: N2K_Duration
   satelliteServiceIdNo?: N2K_Number
@@ -4250,6 +5336,11 @@ export interface PGN_129551 extends PGN {
  fields: PGN_129551Fields
 }
 
+export const PGN_129551Defaults = {
+  pgn: 129551,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 129556
   Description: GLONASS Almanac Data
@@ -4258,7 +5349,7 @@ export interface PGN_129551 extends PGN {
 export interface PGN_129556Fields extends PGNFields {
   prn?: N2K_Number
   na?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   cna: N2K_Number
   hna?: N2K_Number
   EpsilonNa?: N2K_Number
@@ -4276,6 +5367,11 @@ export interface PGN_129556 extends PGN {
  fields: PGN_129556Fields
 }
 
+export const PGN_129556Defaults = {
+  pgn: 129556,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 129792
   Description: AIS DGNSS Broadcast Binary Message
@@ -4284,13 +5380,13 @@ export interface PGN_129792Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: N2K_Number
   sourceId: N2K_Mmsi
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  spare6?: N2K_Spare
+  spare6?: number
   longitude?: N2K_Number
   latitude?: N2K_Number
-  reserved9?: N2K_Reserved
-  spare10?: N2K_Spare
+  reserved9?: number
+  spare10?: number
   numberOfBitsInBinaryDataField?: N2K_Number
   binaryData?: N2K_Binary
 }
@@ -4299,6 +5395,11 @@ export interface PGN_129792 extends PGN {
  fields: PGN_129792Fields
 }
 
+export const PGN_129792Defaults = {
+  pgn: 129792,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 129793
   Description: AIS UTC and Date Report
@@ -4311,12 +5412,12 @@ export interface PGN_129793Fields extends PGNFields {
   latitude?: N2K_Number
   positionAccuracy: enums.PositionAccuracy|number
   raim: enums.RaimFlag|number
-  reserved?: N2K_Reserved
+  reserved?: number
   positionTime?: N2K_Time
   communicationState?: N2K_Binary
   aisTransceiverInformation?: enums.AisTransceiver|number
   positionDate?: N2K_Date
-  reserved13?: N2K_Reserved
+  reserved13?: number
   gnssType?: enums.PositionFixDevice|number
 }
 
@@ -4324,6 +5425,11 @@ export interface PGN_129793 extends PGN {
  fields: PGN_129793Fields
 }
 
+export const PGN_129793Defaults = {
+  pgn: 129793,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 129794
   Description: AIS Class A Static and Voyage Related Data
@@ -4347,15 +5453,20 @@ export interface PGN_129794Fields extends PGNFields {
   aisVersionIndicator?: enums.AisVersion|number
   gnssType?: enums.PositionFixDevice|number
   dte: enums.Available|number
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  reserved21?: N2K_Reserved
+  reserved21?: number
 }
 
 export interface PGN_129794 extends PGN {
  fields: PGN_129794Fields
 }
 
+export const PGN_129794Defaults = {
+  pgn: 129794,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 129795
   Description: AIS Addressed Binary Message
@@ -4364,13 +5475,13 @@ export interface PGN_129795Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: enums.RepeatIndicator|number
   sourceId: N2K_Mmsi
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
   sequenceNumber?: N2K_Number
   destinationId: N2K_Mmsi
-  reserved8?: N2K_Reserved
+  reserved8?: number
   retransmitFlag: enums.YesNo|number
-  reserved10: N2K_Reserved
+  reserved10?: number
   numberOfBitsInBinaryDataField?: N2K_Number
   binaryData?: N2K_Binary
 }
@@ -4379,6 +5490,11 @@ export interface PGN_129795 extends PGN {
  fields: PGN_129795Fields
 }
 
+export const PGN_129795Defaults = {
+  pgn: 129795,
+  dst: 255,
+  prio: 5
+}
 /*
   PGN: 129796
   Description: AIS Acknowledge
@@ -4387,19 +5503,25 @@ export interface PGN_129796Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: enums.RepeatIndicator|number
   sourceId: N2K_Mmsi
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  spare6?: N2K_Spare
-  destinationId: N2K_Mmsi
-  sequenceNumber?: N2K_Number
-  reserved9?: N2K_Reserved
-  list: any[]
+  spare6?: number
+  list: {
+    destinationId: N2K_Mmsi
+    sequenceNumber?: N2K_Number
+    reserved9?: number
+  }[]
 }
 
 export interface PGN_129796 extends PGN {
  fields: PGN_129796Fields
 }
 
+export const PGN_129796Defaults = {
+  pgn: 129796,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 129797
   Description: AIS Binary Broadcast Message
@@ -4408,9 +5530,9 @@ export interface PGN_129797Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: enums.RepeatIndicator|number
   sourceId?: N2K_Number
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  spare6?: N2K_Spare
+  spare6?: number
   numberOfBitsInBinaryDataField?: N2K_Number
   binaryData?: N2K_Binary
 }
@@ -4419,6 +5541,11 @@ export interface PGN_129797 extends PGN {
  fields: PGN_129797Fields
 }
 
+export const PGN_129797Defaults = {
+  pgn: 129797,
+  dst: 255,
+  prio: 5
+}
 /*
   PGN: 129798
   Description: AIS SAR Aircraft Position Report
@@ -4439,14 +5566,19 @@ export interface PGN_129798Fields extends PGNFields {
   altitude?: N2K_Number
   reservedForRegionalApplications?: N2K_Binary
   dte: enums.Available|number
-  spare?: N2K_Spare
-  reserved17?: N2K_Reserved
+  spare?: number
+  reserved17?: number
 }
 
 export interface PGN_129798 extends PGN {
  fields: PGN_129798Fields
 }
 
+export const PGN_129798Defaults = {
+  pgn: 129798,
+  dst: 255,
+  prio: 4
+}
 /*
   PGN: 129799
   Description: Radio Frequency/Mode/Power
@@ -4465,6 +5597,11 @@ export interface PGN_129799 extends PGN {
  fields: PGN_129799Fields
 }
 
+export const PGN_129799Defaults = {
+  pgn: 129799,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 129800
   Description: AIS UTC/Date Inquiry
@@ -4473,9 +5610,9 @@ export interface PGN_129800Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: enums.RepeatIndicator|number
   sourceId: N2K_Mmsi
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  spare6?: N2K_Spare
+  spare6?: number
   destinationId: N2K_Mmsi
 }
 
@@ -4483,6 +5620,11 @@ export interface PGN_129800 extends PGN {
  fields: PGN_129800Fields
 }
 
+export const PGN_129800Defaults = {
+  pgn: 129800,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 129801
   Description: AIS Addressed Safety Related Message
@@ -4491,13 +5633,13 @@ export interface PGN_129801Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: enums.RepeatIndicator|number
   sourceId: N2K_Mmsi
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
   sequenceNumber?: N2K_Number
   destinationId: N2K_Mmsi
-  reserved8?: N2K_Reserved
+  reserved8?: number
   retransmitFlag: enums.YesNo|number
-  spare10: N2K_Spare
+  spare10?: number
   safetyRelatedText?: N2K_StringLau
 }
 
@@ -4505,6 +5647,11 @@ export interface PGN_129801 extends PGN {
  fields: PGN_129801Fields
 }
 
+export const PGN_129801Defaults = {
+  pgn: 129801,
+  dst: 255,
+  prio: 5
+}
 /*
   PGN: 129802
   Description: AIS Safety Related Broadcast Message
@@ -4513,9 +5660,9 @@ export interface PGN_129802Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: enums.RepeatIndicator|number
   sourceId: N2K_Mmsi
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  spare6?: N2K_Spare
+  spare6?: number
   safetyRelatedText?: N2K_StringLau
 }
 
@@ -4523,6 +5670,11 @@ export interface PGN_129802 extends PGN {
  fields: PGN_129802Fields
 }
 
+export const PGN_129802Defaults = {
+  pgn: 129802,
+  dst: 255,
+  prio: 5
+}
 /*
   PGN: 129803
   Description: AIS Interrogation
@@ -4531,24 +5683,24 @@ export interface PGN_129803Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: enums.RepeatIndicator|number
   sourceId: N2K_Mmsi
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  spare6?: N2K_Spare
+  spare6?: number
   destinationId1: N2K_Mmsi
-  reserved8?: N2K_Reserved
+  reserved8?: number
   messageId11?: enums.AisMessageId|number
   slotOffset11?: N2K_Number
-  spare11?: N2K_Spare
+  spare11?: number
   messageId12?: enums.AisMessageId|number
   slotOffset12?: N2K_Number
-  reserved14?: N2K_Reserved
-  reserved15?: N2K_Reserved
+  reserved14?: number
+  reserved15?: number
   destinationId2: N2K_Mmsi
-  reserved17?: N2K_Reserved
+  reserved17?: number
   messageId21?: enums.AisMessageId|number
   slotOffset21?: N2K_Number
-  spare20?: N2K_Spare
-  reserved21?: N2K_Reserved
+  spare20?: number
+  reserved21?: number
   sid?: N2K_Number
 }
 
@@ -4556,6 +5708,11 @@ export interface PGN_129803 extends PGN {
  fields: PGN_129803Fields
 }
 
+export const PGN_129803Defaults = {
+  pgn: 129803,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 129804
   Description: AIS Assignment Mode Command
@@ -4564,23 +5721,28 @@ export interface PGN_129804Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: enums.RepeatIndicator|number
   sourceId: N2K_Mmsi
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  spare6?: N2K_Spare
+  spare6?: number
   destinationIdA: N2K_Mmsi
   offsetA?: N2K_Number
   incrementA?: N2K_Number
   destinationIdB: N2K_Mmsi
   offsetB?: N2K_Number
   incrementB?: N2K_Number
-  spare13?: N2K_Spare
-  reserved14?: N2K_Reserved
+  spare13?: number
+  reserved14?: number
 }
 
 export interface PGN_129804 extends PGN {
  fields: PGN_129804Fields
 }
 
+export const PGN_129804Defaults = {
+  pgn: 129804,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 129805
   Description: AIS Data Link Management Message
@@ -4589,20 +5751,26 @@ export interface PGN_129805Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: enums.RepeatIndicator|number
   sourceId: N2K_Mmsi
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  spare6?: N2K_Spare
-  offset?: N2K_Number
-  numberOfSlots?: N2K_Number
-  timeout?: N2K_Duration
-  increment?: N2K_Number
-  list: any[]
+  spare6?: number
+  list: {
+    offset?: N2K_Number
+    numberOfSlots?: N2K_Number
+    timeout?: N2K_Duration
+    increment?: N2K_Number
+  }[]
 }
 
 export interface PGN_129805 extends PGN {
  fields: PGN_129805Fields
 }
 
+export const PGN_129805Defaults = {
+  pgn: 129805,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 129806
   Description: AIS Channel Management
@@ -4611,32 +5779,37 @@ export interface PGN_129806Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: enums.RepeatIndicator|number
   sourceId: N2K_Mmsi
-  reserved: N2K_Reserved
+  reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  spare6?: N2K_Spare
+  spare6?: number
   channelA?: N2K_Number
   channelB?: N2K_Number
-  reserved9?: N2K_Reserved
+  reserved9?: number
   power: enums.PowerMode|number
   txRxMode?: enums.TxRxMode|number
   northEastLongitudeCorner1?: N2K_Number
   northEastLatitudeCorner1?: N2K_Number
   southWestLongitudeCorner2?: N2K_Number
   southWestLatitudeCorner2?: N2K_Number
-  reserved16: N2K_Reserved
+  reserved16?: number
   addressedOrBroadcastMessageIndicator: enums.BroadcastIndicator|number
   channelABandwidth: enums.Bandwidth|number
   channelBBandwidth: enums.Bandwidth|number
-  reserved20: N2K_Reserved
+  reserved20?: number
   transitionalZoneSize?: enums.ZoneSize|number
-  spare22?: N2K_Spare
-  reserved23: N2K_Reserved
+  spare22?: number
+  reserved23?: number
 }
 
 export interface PGN_129806 extends PGN {
  fields: PGN_129806Fields
 }
 
+export const PGN_129806Defaults = {
+  pgn: 129806,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 129807
   Description: AIS Class B Group Assignment
@@ -4645,28 +5818,33 @@ export interface PGN_129807Fields extends PGNFields {
   messageId?: enums.AisMessageId|number
   repeatIndicator?: enums.RepeatIndicator|number
   sourceId: N2K_Mmsi
-  spare?: N2K_Spare
+  spare?: number
   txRxMode?: enums.TxRxMode|number
-  reserved6?: N2K_Reserved
+  reserved6?: number
   northEastLongitudeCorner1?: N2K_Number
   northEastLatitudeCorner1?: N2K_Number
   southWestLongitudeCorner2?: N2K_Number
   southWestLatitudeCorner2?: N2K_Number
   stationType?: enums.StationType|number
-  reserved12?: N2K_Reserved
+  reserved12?: number
   shipAndCargoFilter?: enums.ShipType|number
-  spare14?: N2K_Spare
-  reserved15?: N2K_Reserved
+  spare14?: number
+  reserved15?: number
   reportingInterval?: enums.ReportingInterval|number
   quietTime?: N2K_Duration
-  spare18?: N2K_Spare
-  reserved19?: N2K_Reserved
+  spare18?: number
+  reserved19?: number
 }
 
 export interface PGN_129807 extends PGN {
  fields: PGN_129807Fields
 }
 
+export const PGN_129807Defaults = {
+  pgn: 129807,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 129808
   Description: DSC Distress Call Information
@@ -4687,21 +5865,27 @@ export interface PGN_129808_DistressFields extends PGNFields {
   mmsiOfShipInDistress?: N2K_Decimal
   dscEosSymbol?: N2K_Number
   expansionEnabled?: enums.YesNo|number
-  reserved?: N2K_Reserved
+  reserved?: number
   callingRxFrequencyChannel?: N2K_StringFix
   callingTxFrequencyChannel?: N2K_StringFix
   timeOfReceipt?: N2K_Time
   dateOfReceipt?: N2K_Date
   dscEquipmentAssignedMessageId?: N2K_Number
-  dscExpansionFieldSymbol?: enums.DscExpansionData|number
-  dscExpansionFieldData?: N2K_StringLau
-  list: any[]
+  list: {
+    dscExpansionFieldSymbol?: enums.DscExpansionData|number
+    dscExpansionFieldData?: N2K_StringLau
+  }[]
 }
 
 export interface PGN_129808_Distress extends PGN {
  fields: PGN_129808_DistressFields
 }
 
+export const PGN_129808_DistressDefaults = {
+  pgn: 129808,
+  dst: 255,
+  prio: 4
+}
 /*
   PGN: 129808
   Description: DSC Call Information
@@ -4721,21 +5905,27 @@ export interface PGN_129808Fields extends PGNFields {
   mmsiOfShipInDistress?: N2K_Decimal
   dscEosSymbol?: N2K_Number
   expansionEnabled?: enums.YesNo|number
-  reserved?: N2K_Reserved
+  reserved?: number
   callingRxFrequencyChannel?: N2K_StringFix
   callingTxFrequencyChannel?: N2K_StringFix
   timeOfReceipt?: N2K_Time
   dateOfReceipt?: N2K_Date
   dscEquipmentAssignedMessageId?: N2K_Number
-  dscExpansionFieldSymbol?: enums.DscExpansionData|number
-  dscExpansionFieldData?: N2K_StringLau
-  list: any[]
+  list: {
+    dscExpansionFieldSymbol?: enums.DscExpansionData|number
+    dscExpansionFieldData?: N2K_StringLau
+  }[]
 }
 
 export interface PGN_129808 extends PGN {
  fields: PGN_129808Fields
 }
 
+export const PGN_129808Defaults = {
+  pgn: 129808,
+  dst: 255,
+  prio: 4
+}
 /*
   PGN: 129809
   Description: AIS Class B static data (msg 24 Part A)
@@ -4746,7 +5936,7 @@ export interface PGN_129809Fields extends PGNFields {
   userId: N2K_Mmsi
   name?: N2K_StringFix
   aisTransceiverInformation?: enums.AisTransceiver|number
-  reserved?: N2K_Reserved
+  reserved?: number
   sequenceId?: N2K_Number
 }
 
@@ -4754,6 +5944,11 @@ export interface PGN_129809 extends PGN {
  fields: PGN_129809Fields
 }
 
+export const PGN_129809Defaults = {
+  pgn: 129809,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 129810
   Description: AIS Class B static data (msg 24 Part B)
@@ -4770,11 +5965,11 @@ export interface PGN_129810Fields extends PGNFields {
   positionReferenceFromStarboard?: N2K_Number
   positionReferenceFromBow?: N2K_Number
   mothershipUserId: N2K_Mmsi
-  reserved?: N2K_Reserved
-  spare13?: N2K_Spare
+  reserved?: number
+  spare13?: number
   gnssType?: enums.PositionFixDevice|number
   aisTransceiverInformation?: enums.AisTransceiver|number
-  reserved16?: N2K_Reserved
+  reserved16?: number
   sequenceId?: N2K_Number
 }
 
@@ -4782,6 +5977,11 @@ export interface PGN_129810 extends PGN {
  fields: PGN_129810Fields
 }
 
+export const PGN_129810Defaults = {
+  pgn: 129810,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 130052
   Description: Loran-C TD Data
@@ -4801,13 +6001,18 @@ export interface PGN_130052Fields extends PGNFields {
   stationStatusY?: enums.StationStatus[]
   stationStatusZ?: enums.StationStatus[]
   mode?: enums.ResidualMode|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130052 extends PGN {
  fields: PGN_130052Fields
 }
 
+export const PGN_130052Defaults = {
+  pgn: 130052,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130053
   Description: Loran-C Range Data
@@ -4827,13 +6032,18 @@ export interface PGN_130053Fields extends PGNFields {
   stationStatusY?: enums.StationStatus[]
   stationStatusZ?: enums.StationStatus[]
   mode?: enums.ResidualMode|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130053 extends PGN {
  fields: PGN_130053Fields
 }
 
+export const PGN_130053Defaults = {
+  pgn: 130053,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130054
   Description: Loran-C Signal Data
@@ -4850,6 +6060,11 @@ export interface PGN_130054 extends PGN {
  fields: PGN_130054Fields
 }
 
+export const PGN_130054Defaults = {
+  pgn: 130054,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130060
   Description: Label
@@ -4869,6 +6084,11 @@ export interface PGN_130060 extends PGN {
  fields: PGN_130060Fields
 }
 
+export const PGN_130060Defaults = {
+  pgn: 130060,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130061
   Description: Channel Source Configuration
@@ -4876,7 +6096,7 @@ export interface PGN_130060 extends PGN {
 export interface PGN_130061Fields extends PGNFields {
   dataSourceChannelId?: N2K_Number
   sourceSelectionStatus?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   nameSelectionCriteriaMask?: N2K_Binary
   sourceName?: N2K_IsoName
   pgn?: N2K_Pgn
@@ -4891,6 +6111,11 @@ export interface PGN_130061 extends PGN {
  fields: PGN_130061Fields
 }
 
+export const PGN_130061Defaults = {
+  pgn: 130061,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130064
   Description: Route and WP Service - Database List
@@ -4899,22 +6124,28 @@ export interface PGN_130064Fields extends PGNFields {
   startDatabaseId?: N2K_Number
   nitems?: N2K_Number
   numberOfDatabasesAvailable?: N2K_Number
-  databaseId?: N2K_Number
-  databaseName?: N2K_StringLau
-  databaseTimestamp?: N2K_Time
-  databaseDatestamp?: N2K_Date
-  wpPositionResolution?: enums.WpPositionResolution|number
-  reserved?: N2K_Reserved
-  numberOfRoutesInDatabase?: N2K_Number
-  numberOfWpsInDatabase?: N2K_Number
-  numberOfBytesInDatabase?: N2K_Number
-  list: any[]
+  list: {
+    databaseId?: N2K_Number
+    databaseName?: N2K_StringLau
+    databaseTimestamp?: N2K_Time
+    databaseDatestamp?: N2K_Date
+    wpPositionResolution?: enums.WpPositionResolution|number
+    reserved?: number
+    numberOfRoutesInDatabase?: N2K_Number
+    numberOfWpsInDatabase?: N2K_Number
+    numberOfBytesInDatabase?: N2K_Number
+  }[]
 }
 
 export interface PGN_130064 extends PGN {
  fields: PGN_130064Fields
 }
 
+export const PGN_130064Defaults = {
+  pgn: 130064,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130065
   Description: Route and WP Service - Route List
@@ -4924,18 +6155,24 @@ export interface PGN_130065Fields extends PGNFields {
   nitems?: N2K_Number
   numberOfRoutesInDatabase?: N2K_Number
   databaseId?: N2K_Number
-  routeId?: N2K_Number
-  routeName?: N2K_StringLau
-  reserved?: N2K_Reserved
-  wpIdentificationMethod?: enums.WpIdentificationMethod|number
-  routeStatus?: enums.WpRouteStatus|number
-  list: any[]
+  list: {
+    routeId?: N2K_Number
+    routeName?: N2K_StringLau
+    reserved?: number
+    wpIdentificationMethod?: enums.WpIdentificationMethod|number
+    routeStatus?: enums.WpRouteStatus|number
+  }[]
 }
 
 export interface PGN_130065 extends PGN {
  fields: PGN_130065Fields
 }
 
+export const PGN_130065Defaults = {
+  pgn: 130065,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130066
   Description: Route and WP Service - Route/WP-List Attributes
@@ -4959,6 +6196,11 @@ export interface PGN_130066 extends PGN {
  fields: PGN_130066Fields
 }
 
+export const PGN_130066Defaults = {
+  pgn: 130066,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130067
   Description: Route and WP Service - Route - WP Name & Position
@@ -4969,17 +6211,23 @@ export interface PGN_130067Fields extends PGNFields {
   numberOfWpsInTheRouteWpList?: N2K_Number
   databaseId?: N2K_Number
   routeId?: N2K_Number
-  wpId?: N2K_Number
-  wpName?: N2K_StringLau
-  wpLatitude?: N2K_Number
-  wpLongitude?: N2K_Number
-  list: any[]
+  list: {
+    wpId?: N2K_Number
+    wpName?: N2K_StringLau
+    wpLatitude?: N2K_Number
+    wpLongitude?: N2K_Number
+  }[]
 }
 
 export interface PGN_130067 extends PGN {
  fields: PGN_130067Fields
 }
 
+export const PGN_130067Defaults = {
+  pgn: 130067,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130068
   Description: Route and WP Service - Route - WP Name
@@ -4990,15 +6238,21 @@ export interface PGN_130068Fields extends PGNFields {
   numberOfWpsInTheRouteWpList?: N2K_Number
   databaseId?: N2K_Number
   routeId?: N2K_Number
-  wpId?: N2K_Number
-  wpName?: N2K_StringLau
-  list: any[]
+  list: {
+    wpId?: N2K_Number
+    wpName?: N2K_StringLau
+  }[]
 }
 
 export interface PGN_130068 extends PGN {
  fields: PGN_130068Fields
 }
 
+export const PGN_130068Defaults = {
+  pgn: 130068,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130069
   Description: Route and WP Service - XTE Limit & Navigation Method
@@ -5007,19 +6261,25 @@ export interface PGN_130069Fields extends PGNFields {
   startRps?: N2K_Number
   nitems?: N2K_Number
   numberOfWpsWithASpecificXteLimitOrNavMethod?: N2K_Number
-  databaseId?: N2K_Number
-  routeId?: N2K_Number
-  rps?: N2K_Number
-  xteLimitInTheLegAfterWp?: N2K_Number
-  navMethodInTheLegAfterWp?: enums.WpNavigationMethod|number
-  reserved?: N2K_Reserved
-  list: any[]
+  list: {
+    databaseId?: N2K_Number
+    routeId?: N2K_Number
+    rps?: N2K_Number
+    xteLimitInTheLegAfterWp?: N2K_Number
+    navMethodInTheLegAfterWp?: enums.WpNavigationMethod|number
+    reserved?: number
+  }[]
 }
 
 export interface PGN_130069 extends PGN {
  fields: PGN_130069Fields
 }
 
+export const PGN_130069Defaults = {
+  pgn: 130069,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130070
   Description: Route and WP Service - WP Comment
@@ -5030,15 +6290,21 @@ export interface PGN_130070Fields extends PGNFields {
   numberOfWpsWithComments?: N2K_Number
   databaseId?: N2K_Number
   routeId?: N2K_Number
-  wpIdRps?: N2K_Number
-  comment?: N2K_StringLau
-  list: any[]
+  list: {
+    wpIdRps?: N2K_Number
+    comment?: N2K_StringLau
+  }[]
 }
 
 export interface PGN_130070 extends PGN {
  fields: PGN_130070Fields
 }
 
+export const PGN_130070Defaults = {
+  pgn: 130070,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130071
   Description: Route and WP Service - Route Comment
@@ -5048,15 +6314,21 @@ export interface PGN_130071Fields extends PGNFields {
   nitems?: N2K_Number
   numberOfRoutesWithComments?: N2K_Number
   databaseId?: N2K_Number
-  routeId?: N2K_Number
-  comment?: N2K_StringLau
-  list: any[]
+  list: {
+    routeId?: N2K_Number
+    comment?: N2K_StringLau
+  }[]
 }
 
 export interface PGN_130071 extends PGN {
  fields: PGN_130071Fields
 }
 
+export const PGN_130071Defaults = {
+  pgn: 130071,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130072
   Description: Route and WP Service - Database Comment
@@ -5065,15 +6337,21 @@ export interface PGN_130072Fields extends PGNFields {
   startDatabaseId?: N2K_Number
   nitems?: N2K_Number
   numberOfDatabasesWithComments?: N2K_Number
-  databaseId?: N2K_Number
-  comment?: N2K_StringLau
-  list: any[]
+  list: {
+    databaseId?: N2K_Number
+    comment?: N2K_StringLau
+  }[]
 }
 
 export interface PGN_130072 extends PGN {
  fields: PGN_130072Fields
 }
 
+export const PGN_130072Defaults = {
+  pgn: 130072,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130073
   Description: Route and WP Service - Radius of Turn
@@ -5084,15 +6362,21 @@ export interface PGN_130073Fields extends PGNFields {
   numberOfWpsWithASpecificRadiusOfTurn?: N2K_Number
   databaseId?: N2K_Number
   routeId?: N2K_Number
-  rps?: N2K_Number
-  radiusOfTurn?: N2K_Number
-  list: any[]
+  list: {
+    rps?: N2K_Number
+    radiusOfTurn?: N2K_Number
+  }[]
 }
 
 export interface PGN_130073 extends PGN {
  fields: PGN_130073Fields
 }
 
+export const PGN_130073Defaults = {
+  pgn: 130073,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130074
   Description: Route and WP Service - WP List - WP Name & Position
@@ -5102,18 +6386,24 @@ export interface PGN_130074Fields extends PGNFields {
   nitems?: N2K_Number
   numberOfValidWpsInTheWpList?: N2K_Number
   databaseId?: N2K_Number
-  reserved?: N2K_Reserved
-  wpId?: N2K_Number
-  wpName?: N2K_StringLau
-  wpLatitude?: N2K_Number
-  wpLongitude?: N2K_Number
-  list: any[]
+  reserved?: number
+  list: {
+    wpId?: N2K_Number
+    wpName?: N2K_StringLau
+    wpLatitude?: N2K_Number
+    wpLongitude?: N2K_Number
+  }[]
 }
 
 export interface PGN_130074 extends PGN {
  fields: PGN_130074Fields
 }
 
+export const PGN_130074Defaults = {
+  pgn: 130074,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130306
   Description: Wind Data
@@ -5123,13 +6413,18 @@ export interface PGN_130306Fields extends PGNFields {
   windSpeed?: N2K_Number
   windAngle?: N2K_Number
   reference: enums.WindReference|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130306 extends PGN {
  fields: PGN_130306Fields
 }
 
+export const PGN_130306Defaults = {
+  pgn: 130306,
+  dst: 255,
+  prio: 2
+}
 /*
   PGN: 130310
   Description: Environmental Parameters (obsolete)
@@ -5140,13 +6435,18 @@ export interface PGN_130310Fields extends PGNFields {
   waterTemperature?: N2K_Number
   outsideAmbientAirTemperature?: N2K_Number
   atmosphericPressure?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130310 extends PGN {
  fields: PGN_130310Fields
 }
 
+export const PGN_130310Defaults = {
+  pgn: 130310,
+  dst: 255,
+  prio: 5
+}
 /*
   PGN: 130311
   Description: Environmental Parameters
@@ -5165,6 +6465,11 @@ export interface PGN_130311 extends PGN {
  fields: PGN_130311Fields
 }
 
+export const PGN_130311Defaults = {
+  pgn: 130311,
+  dst: 255,
+  prio: 5
+}
 /*
   PGN: 130312
   Description: Temperature
@@ -5175,13 +6480,18 @@ export interface PGN_130312Fields extends PGNFields {
   source: enums.TemperatureSource|number
   actualTemperature?: N2K_Number
   setTemperature?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130312 extends PGN {
  fields: PGN_130312Fields
 }
 
+export const PGN_130312Defaults = {
+  pgn: 130312,
+  dst: 255,
+  prio: 5
+}
 /*
   PGN: 130313
   Description: Humidity
@@ -5192,13 +6502,18 @@ export interface PGN_130313Fields extends PGNFields {
   source: enums.HumiditySource|number
   actualHumidity?: N2K_Number
   setHumidity?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130313 extends PGN {
  fields: PGN_130313Fields
 }
 
+export const PGN_130313Defaults = {
+  pgn: 130313,
+  dst: 255,
+  prio: 5
+}
 /*
   PGN: 130314
   Description: Actual Pressure
@@ -5208,13 +6523,18 @@ export interface PGN_130314Fields extends PGNFields {
   instance: N2K_Number
   source: enums.PressureSource|number
   pressure?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130314 extends PGN {
  fields: PGN_130314Fields
 }
 
+export const PGN_130314Defaults = {
+  pgn: 130314,
+  dst: 255,
+  prio: 5
+}
 /*
   PGN: 130315
   Description: Set Pressure
@@ -5224,13 +6544,18 @@ export interface PGN_130315Fields extends PGNFields {
   instance: N2K_Number
   source: enums.PressureSource|number
   pressure?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130315 extends PGN {
  fields: PGN_130315Fields
 }
 
+export const PGN_130315Defaults = {
+  pgn: 130315,
+  dst: 255,
+  prio: 5
+}
 /*
   PGN: 130316
   Description: Temperature Extended Range
@@ -5247,6 +6572,11 @@ export interface PGN_130316 extends PGN {
  fields: PGN_130316Fields
 }
 
+export const PGN_130316Defaults = {
+  pgn: 130316,
+  dst: 255,
+  prio: 5
+}
 /*
   PGN: 130320
   Description: Tide Station Data
@@ -5254,7 +6584,7 @@ export interface PGN_130316 extends PGN {
 export interface PGN_130320Fields extends PGNFields {
   mode?: enums.ResidualMode|number
   tideTendency?: enums.Tide|number
-  reserved?: N2K_Reserved
+  reserved?: number
   measurementDate?: N2K_Date
   measurementTime?: N2K_Time
   stationLatitude?: N2K_Number
@@ -5269,13 +6599,18 @@ export interface PGN_130320 extends PGN {
  fields: PGN_130320Fields
 }
 
+export const PGN_130320Defaults = {
+  pgn: 130320,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 130321
   Description: Salinity Station Data
 */
 export interface PGN_130321Fields extends PGNFields {
   mode?: enums.ResidualMode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   measurementDate?: N2K_Date
   measurementTime?: N2K_Time
   stationLatitude?: N2K_Number
@@ -5290,6 +6625,11 @@ export interface PGN_130321 extends PGN {
  fields: PGN_130321Fields
 }
 
+export const PGN_130321Defaults = {
+  pgn: 130321,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 130322
   Description: Current Station Data
@@ -5297,7 +6637,7 @@ export interface PGN_130321 extends PGN {
 export interface PGN_130322Fields extends PGNFields {
   mode?: enums.ResidualMode|number
   state?: enums.FloodState|number
-  reserved: N2K_Reserved
+  reserved?: number
   measurementDate?: N2K_Date
   measurementTime?: N2K_Time
   stationLatitude?: N2K_Number
@@ -5314,13 +6654,18 @@ export interface PGN_130322 extends PGN {
  fields: PGN_130322Fields
 }
 
+export const PGN_130322Defaults = {
+  pgn: 130322,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 130323
   Description: Meteorological Station Data
 */
 export interface PGN_130323Fields extends PGNFields {
   mode?: enums.ResidualMode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   measurementDate?: N2K_Date
   measurementTime?: N2K_Time
   stationLatitude?: N2K_Number
@@ -5328,7 +6673,7 @@ export interface PGN_130323Fields extends PGNFields {
   windSpeed?: N2K_Number
   windDirection?: N2K_Number
   windReference?: enums.WindReference|number
-  reserved10?: N2K_Reserved
+  reserved10?: number
   windGusts?: N2K_Number
   atmosphericPressure?: N2K_Number
   ambientTemperature?: N2K_Number
@@ -5340,13 +6685,18 @@ export interface PGN_130323 extends PGN {
  fields: PGN_130323Fields
 }
 
+export const PGN_130323Defaults = {
+  pgn: 130323,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 130324
   Description: Moored Buoy Station Data
 */
 export interface PGN_130324Fields extends PGNFields {
   mode?: enums.ResidualMode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   measurementDate?: N2K_Date
   measurementTime?: N2K_Time
   stationLatitude?: N2K_Number
@@ -5354,7 +6704,7 @@ export interface PGN_130324Fields extends PGNFields {
   windSpeed?: N2K_Number
   windDirection?: N2K_Number
   windReference?: enums.WindReference|number
-  reserved10?: N2K_Reserved
+  reserved10?: number
   windGusts?: N2K_Number
   waveHeight?: N2K_Number
   dominantWavePeriod?: N2K_Duration
@@ -5369,6 +6719,11 @@ export interface PGN_130324 extends PGN {
  fields: PGN_130324Fields
 }
 
+export const PGN_130324Defaults = {
+  pgn: 130324,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 130330
   Description: Lighting System Settings
@@ -5377,7 +6732,7 @@ export interface PGN_130324 extends PGN {
 export interface PGN_130330Fields extends PGNFields {
   globalEnable?: N2K_Number
   defaultSettingsCommand?: enums.LightingCommand|number
-  reserved?: N2K_Reserved
+  reserved?: number
   nameOfTheLightingController?: N2K_StringLau
   maxScenes?: N2K_Number
   maxSceneConfigurationCount?: N2K_Number
@@ -5393,6 +6748,11 @@ export interface PGN_130330 extends PGN {
  fields: PGN_130330Fields
 }
 
+export const PGN_130330Defaults = {
+  pgn: 130330,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130560
   Description: Payload Mass
@@ -5400,16 +6760,21 @@ export interface PGN_130330 extends PGN {
 export interface PGN_130560Fields extends PGNFields {
   sid?: N2K_Number
   measurementStatus?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
   measurementId?: N2K_Number
   payloadMass?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_130560 extends PGN {
  fields: PGN_130560Fields
 }
 
+export const PGN_130560Defaults = {
+  pgn: 130560,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130561
   Description: Lighting Zone
@@ -5429,13 +6794,18 @@ export interface PGN_130561Fields extends PGNFields {
   programRate?: N2K_Number
   programColorSequence?: N2K_Number
   zoneEnabled?: enums.OffOn|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130561 extends PGN {
  fields: PGN_130561Fields
 }
 
+export const PGN_130561Defaults = {
+  pgn: 130561,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130562
   Description: Lighting Scene
@@ -5446,21 +6816,27 @@ export interface PGN_130562Fields extends PGNFields {
   zoneName?: N2K_StringLau
   control?: N2K_Number
   configurationCount?: N2K_Number
-  configurationIndex?: N2K_Number
-  zoneIndex?: N2K_Number
-  devicesId?: N2K_Number
-  programIndex?: N2K_Number
-  programColorSequenceIndex?: N2K_Number
-  programIntensity?: N2K_Number
-  programRate?: N2K_Number
-  programColorSequenceRate?: N2K_Number
-  list: any[]
+  list: {
+    configurationIndex?: N2K_Number
+    zoneIndex?: N2K_Number
+    devicesId?: N2K_Number
+    programIndex?: N2K_Number
+    programColorSequenceIndex?: N2K_Number
+    programIntensity?: N2K_Number
+    programRate?: N2K_Number
+    programColorSequenceRate?: N2K_Number
+  }[]
 }
 
 export interface PGN_130562 extends PGN {
  fields: PGN_130562Fields
 }
 
+export const PGN_130562Defaults = {
+  pgn: 130562,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130563
   Description: Lighting Device
@@ -5484,13 +6860,18 @@ export interface PGN_130563Fields extends PGNFields {
   programRate?: N2K_Number
   programColorSequenceRate?: N2K_Number
   enabled?: enums.OffOn|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130563 extends PGN {
  fields: PGN_130563Fields
 }
 
+export const PGN_130563Defaults = {
+  pgn: 130563,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130564
   Description: Lighting Device Enumeration
@@ -5500,15 +6881,21 @@ export interface PGN_130564Fields extends PGNFields {
   indexOfFirstDevice?: N2K_Number
   totalNumberOfDevices?: N2K_Number
   numberOfDevices?: N2K_Number
-  deviceId?: N2K_Number
-  status?: N2K_Number
-  list: any[]
+  list: {
+    deviceId?: N2K_Number
+    status?: N2K_Number
+  }[]
 }
 
 export interface PGN_130564 extends PGN {
  fields: PGN_130564Fields
 }
 
+export const PGN_130564Defaults = {
+  pgn: 130564,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130565
   Description: Lighting Color Sequence
@@ -5517,19 +6904,25 @@ export interface PGN_130564 extends PGN {
 export interface PGN_130565Fields extends PGNFields {
   sequenceIndex?: N2K_Number
   colorCount?: N2K_Number
-  colorIndex?: N2K_Number
-  redComponent?: N2K_Number
-  greenComponent?: N2K_Number
-  blueComponent?: N2K_Number
-  colorTemperature?: N2K_Number
-  intensity?: N2K_Number
-  list: any[]
+  list: {
+    colorIndex?: N2K_Number
+    redComponent?: N2K_Number
+    greenComponent?: N2K_Number
+    blueComponent?: N2K_Number
+    colorTemperature?: N2K_Number
+    intensity?: N2K_Number
+  }[]
 }
 
 export interface PGN_130565 extends PGN {
  fields: PGN_130565Fields
 }
 
+export const PGN_130565Defaults = {
+  pgn: 130565,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130566
   Description: Lighting Program
@@ -5540,13 +6933,18 @@ export interface PGN_130566Fields extends PGNFields {
   nameOfProgram?: N2K_StringLau
   description?: N2K_StringLau
   programCapabilities?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130566 extends PGN {
  fields: PGN_130566Fields
 }
 
+export const PGN_130566Defaults = {
+  pgn: 130566,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130567
   Description: Watermaker Input Setting and Status
@@ -5565,7 +6963,7 @@ export interface PGN_130567Fields extends PGNFields {
   oilChangeIndicatorStatus?: enums.OkWarning|number
   filterStatus?: enums.OkWarning|number
   systemStatus?: enums.OkWarning|number
-  reserved?: N2K_Reserved
+  reserved?: number
   salinity?: N2K_Number
   productWaterTemperature?: N2K_Number
   preFilterPressure?: N2K_Number
@@ -5581,6 +6979,11 @@ export interface PGN_130567 extends PGN {
  fields: PGN_130567Fields
 }
 
+export const PGN_130567Defaults = {
+  pgn: 130567,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130569
   Description: Current Status and File
@@ -5609,6 +7012,11 @@ export interface PGN_130569 extends PGN {
  fields: PGN_130569Fields
 }
 
+export const PGN_130569Defaults = {
+  pgn: 130569,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130570
   Description: Library Data File
@@ -5627,7 +7035,7 @@ export interface PGN_130570Fields extends PGNFields {
   zone?: enums.EntertainmentZone|number
   inPlayQueue?: enums.YesNo|number
   locked?: enums.YesNo|number
-  reserved?: N2K_Reserved
+  reserved?: number
   artistName?: N2K_StringLau
   albumName?: N2K_StringLau
   stationName?: N2K_StringLau
@@ -5637,6 +7045,11 @@ export interface PGN_130570 extends PGN {
  fields: PGN_130570Fields
 }
 
+export const PGN_130570Defaults = {
+  pgn: 130570,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130571
   Description: Library Data Group
@@ -5650,17 +7063,23 @@ export interface PGN_130571Fields extends PGNFields {
   idOffset?: N2K_Number
   idCount?: N2K_Number
   totalIdCount?: N2K_Number
-  idType?: enums.EntertainmentIdType|number
-  id?: N2K_Number
-  name?: N2K_StringLau
   artist?: N2K_StringLau
-  list: any[]
+  list: {
+    idType?: enums.EntertainmentIdType|number
+    id?: N2K_Number
+    name?: N2K_StringLau
+  }[]
 }
 
 export interface PGN_130571 extends PGN {
  fields: PGN_130571Fields
 }
 
+export const PGN_130571Defaults = {
+  pgn: 130571,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130572
   Description: Library Data Search
@@ -5681,6 +7100,11 @@ export interface PGN_130572 extends PGN {
  fields: PGN_130572Fields
 }
 
+export const PGN_130572Defaults = {
+  pgn: 130572,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130573
   Description: Supported Source Data
@@ -5689,23 +7113,29 @@ export interface PGN_130573Fields extends PGNFields {
   idOffset?: N2K_Number
   idCount?: N2K_Number
   totalIdCount?: N2K_Number
-  id?: N2K_Number
-  source?: enums.EntertainmentSource|number
-  number?: N2K_Number
-  name?: N2K_StringLau
-  playSupport?: enums.EntertainmentPlayStatusBitfield[]
-  browseSupport?: enums.EntertainmentGroupBitfield[]
-  thumbsSupport?: enums.YesNo|number
-  connected?: enums.YesNo|number
-  repeatSupport?: enums.EntertainmentRepeatBitfield[]
-  shuffleSupport?: enums.EntertainmentShuffleBitfield[]
-  list: any[]
+  list: {
+    id?: N2K_Number
+    source?: enums.EntertainmentSource|number
+    number?: N2K_Number
+    name?: N2K_StringLau
+    playSupport?: enums.EntertainmentPlayStatusBitfield[]
+    browseSupport?: enums.EntertainmentGroupBitfield[]
+    thumbsSupport?: enums.YesNo|number
+    connected?: enums.YesNo|number
+    repeatSupport?: enums.EntertainmentRepeatBitfield[]
+    shuffleSupport?: enums.EntertainmentShuffleBitfield[]
+  }[]
 }
 
 export interface PGN_130573 extends PGN {
  fields: PGN_130573Fields
 }
 
+export const PGN_130573Defaults = {
+  pgn: 130573,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130574
   Description: Supported Zone Data
@@ -5714,15 +7144,21 @@ export interface PGN_130574Fields extends PGNFields {
   firstZoneId?: N2K_Number
   zoneCount?: N2K_Number
   totalZoneCount?: N2K_Number
-  zoneId?: enums.EntertainmentZone|number
-  name?: N2K_StringLau
-  list: any[]
+  list: {
+    zoneId?: enums.EntertainmentZone|number
+    name?: N2K_StringLau
+  }[]
 }
 
 export interface PGN_130574 extends PGN {
  fields: PGN_130574Fields
 }
 
+export const PGN_130574Defaults = {
+  pgn: 130574,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130576
   Description: Small Craft Status
@@ -5730,13 +7166,18 @@ export interface PGN_130574 extends PGN {
 export interface PGN_130576Fields extends PGNFields {
   portTrimTab?: N2K_Number
   starboardTrimTab?: N2K_Number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130576 extends PGN {
  fields: PGN_130576Fields
 }
 
+export const PGN_130576Defaults = {
+  pgn: 130576,
+  dst: 255,
+  prio: 2
+}
 /*
   PGN: 130577
   Description: Direction Data
@@ -5744,7 +7185,7 @@ export interface PGN_130576 extends PGN {
 export interface PGN_130577Fields extends PGNFields {
   dataMode?: enums.ResidualMode|number
   cogReference?: enums.DirectionReference|number
-  reserved?: N2K_Reserved
+  reserved?: number
   sid?: N2K_Number
   cog?: N2K_Number
   sog?: N2K_Number
@@ -5758,6 +7199,11 @@ export interface PGN_130577 extends PGN {
  fields: PGN_130577Fields
 }
 
+export const PGN_130577Defaults = {
+  pgn: 130577,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130578
   Description: Vessel Speed Components
@@ -5775,6 +7221,11 @@ export interface PGN_130578 extends PGN {
  fields: PGN_130578Fields
 }
 
+export const PGN_130578Defaults = {
+  pgn: 130578,
+  dst: 255,
+  prio: 2
+}
 /*
   PGN: 130579
   Description: System Configuration
@@ -5785,13 +7236,18 @@ export interface PGN_130579Fields extends PGNFields {
   tunerRegions?: enums.EntertainmentRegions|number
   maxFavorites?: N2K_Number
   videoProtocols?: enums.VideoProtocols|number
-  reserved?: N2K_Reserved
+  reserved?: number
 }
 
 export interface PGN_130579 extends PGN {
  fields: PGN_130579Fields
 }
 
+export const PGN_130579Defaults = {
+  pgn: 130579,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130580
   Description: System Configuration (deprecated)
@@ -5807,6 +7263,11 @@ export interface PGN_130580 extends PGN {
  fields: PGN_130580Fields
 }
 
+export const PGN_130580Defaults = {
+  pgn: 130580,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130581
   Description: Zone Configuration (deprecated)
@@ -5815,15 +7276,21 @@ export interface PGN_130581Fields extends PGNFields {
   firstZoneId?: N2K_Number
   zoneCount?: N2K_Number
   totalZoneCount?: N2K_Number
-  zoneId?: enums.EntertainmentZone|number
-  zoneName?: N2K_StringLau
-  list: any[]
+  list: {
+    zoneId?: enums.EntertainmentZone|number
+    zoneName?: N2K_StringLau
+  }[]
 }
 
 export interface PGN_130581 extends PGN {
  fields: PGN_130581Fields
 }
 
+export const PGN_130581Defaults = {
+  pgn: 130581,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130582
   Description: Zone Volume
@@ -5833,15 +7300,20 @@ export interface PGN_130582Fields extends PGNFields {
   volume?: N2K_Number
   volumeChange?: enums.EntertainmentVolumeControl|number
   mute?: enums.YesNo|number
-  reserved?: N2K_Reserved
+  reserved?: number
   channel?: enums.EntertainmentChannel|number
-  reserved7?: N2K_Reserved
+  reserved7?: number
 }
 
 export interface PGN_130582 extends PGN {
  fields: PGN_130582Fields
 }
 
+export const PGN_130582Defaults = {
+  pgn: 130582,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130583
   Description: Available Audio EQ presets
@@ -5850,15 +7322,21 @@ export interface PGN_130583Fields extends PGNFields {
   firstPreset?: N2K_Number
   presetCount?: N2K_Number
   totalPresetCount?: N2K_Number
-  presetType?: enums.EntertainmentEq|number
-  presetName?: N2K_StringLau
-  list: any[]
+  list: {
+    presetType?: enums.EntertainmentEq|number
+    presetName?: N2K_StringLau
+  }[]
 }
 
 export interface PGN_130583 extends PGN {
  fields: PGN_130583Fields
 }
 
+export const PGN_130583Defaults = {
+  pgn: 130583,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130584
   Description: Available Bluetooth addresses
@@ -5867,17 +7345,23 @@ export interface PGN_130584Fields extends PGNFields {
   firstAddress?: N2K_Number
   addressCount?: N2K_Number
   totalAddressCount?: N2K_Number
-  bluetoothAddress?: N2K_Binary
-  status?: enums.BluetoothStatus|number
-  deviceName?: N2K_StringLau
-  signalStrength?: N2K_Number
-  list: any[]
+  list: {
+    bluetoothAddress?: N2K_Binary
+    status?: enums.BluetoothStatus|number
+    deviceName?: N2K_StringLau
+    signalStrength?: N2K_Number
+  }[]
 }
 
 export interface PGN_130584 extends PGN {
  fields: PGN_130584Fields
 }
 
+export const PGN_130584Defaults = {
+  pgn: 130584,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130585
   Description: Bluetooth source status
@@ -5894,6 +7378,11 @@ export interface PGN_130585 extends PGN {
  fields: PGN_130585Fields
 }
 
+export const PGN_130585Defaults = {
+  pgn: 130585,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130586
   Description: Zone Configuration
@@ -5918,6 +7407,11 @@ export interface PGN_130586 extends PGN {
  fields: PGN_130586Fields
 }
 
+export const PGN_130586Defaults = {
+  pgn: 130586,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130816
   Description: SonicHub: Init #2
@@ -5927,9 +7421,9 @@ export interface PGN_130586 extends PGN {
 */
 export interface PGN_130816_Navico_Init2Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   a?: N2K_Number
@@ -5940,6 +7434,11 @@ export interface PGN_130816_Navico_Init2 extends PGN {
  fields: PGN_130816_Navico_Init2Fields
 }
 
+export const PGN_130816_Navico_Init2Defaults = {
+  pgn: 130816,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130816
   Description: SonicHub: AM Radio
@@ -5949,16 +7448,16 @@ export interface PGN_130816_Navico_Init2 extends PGN {
 */
 export interface PGN_130816_Navico_AmRadioFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   item?: enums.SonichubTuning|number
   frequency?: N2K_Number
   noiseLevel?: N2K_Number
   signalLevel?: N2K_Number
-  reserved11?: N2K_Reserved
+  reserved11?: number
   text?: N2K_StringLz
 }
 
@@ -5966,6 +7465,11 @@ export interface PGN_130816_Navico_AmRadio extends PGN {
  fields: PGN_130816_Navico_AmRadioFields
 }
 
+export const PGN_130816_Navico_AmRadioDefaults = {
+  pgn: 130816,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130816
   Description: SonicHub: Zone info
@@ -5975,9 +7479,9 @@ export interface PGN_130816_Navico_AmRadio extends PGN {
 */
 export interface PGN_130816_Navico_ZoneInfoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   zone?: N2K_Number
@@ -5987,6 +7491,11 @@ export interface PGN_130816_Navico_ZoneInfo extends PGN {
  fields: PGN_130816_Navico_ZoneInfoFields
 }
 
+export const PGN_130816_Navico_ZoneInfoDefaults = {
+  pgn: 130816,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130816
   Description: SonicHub: Source
@@ -5996,9 +7505,9 @@ export interface PGN_130816_Navico_ZoneInfo extends PGN {
 */
 export interface PGN_130816_Navico_SourceFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   source?: enums.SonichubSource|number
@@ -6008,6 +7517,11 @@ export interface PGN_130816_Navico_Source extends PGN {
  fields: PGN_130816_Navico_SourceFields
 }
 
+export const PGN_130816_Navico_SourceDefaults = {
+  pgn: 130816,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130816
   Description: SonicHub: Source List
@@ -6017,9 +7531,9 @@ export interface PGN_130816_Navico_Source extends PGN {
 */
 export interface PGN_130816_Navico_SourceListFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   sourceId?: N2K_Number
@@ -6031,6 +7545,11 @@ export interface PGN_130816_Navico_SourceList extends PGN {
  fields: PGN_130816_Navico_SourceListFields
 }
 
+export const PGN_130816_Navico_SourceListDefaults = {
+  pgn: 130816,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130816
   Description: SonicHub: Control
@@ -6040,9 +7559,9 @@ export interface PGN_130816_Navico_SourceList extends PGN {
 */
 export interface PGN_130816_Navico_ControlFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   item?: enums.FusionMuteCommand|number
@@ -6052,6 +7571,11 @@ export interface PGN_130816_Navico_Control extends PGN {
  fields: PGN_130816_Navico_ControlFields
 }
 
+export const PGN_130816_Navico_ControlDefaults = {
+  pgn: 130816,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130816
   Description: SonicHub: FM Radio
@@ -6061,16 +7585,16 @@ export interface PGN_130816_Navico_Control extends PGN {
 */
 export interface PGN_130816_Navico_FmRadioFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   item?: enums.SonichubTuning|number
   frequency?: N2K_Number
   noiseLevel?: N2K_Number
   signalLevel?: N2K_Number
-  reserved11?: N2K_Reserved
+  reserved11?: number
   text?: N2K_StringLz
 }
 
@@ -6078,6 +7602,11 @@ export interface PGN_130816_Navico_FmRadio extends PGN {
  fields: PGN_130816_Navico_FmRadioFields
 }
 
+export const PGN_130816_Navico_FmRadioDefaults = {
+  pgn: 130816,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130816
   Description: SonicHub: Playlist
@@ -6087,9 +7616,9 @@ export interface PGN_130816_Navico_FmRadio extends PGN {
 */
 export interface PGN_130816_Navico_PlaylistFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   item?: enums.SonichubPlaylist|number
@@ -6104,6 +7633,11 @@ export interface PGN_130816_Navico_Playlist extends PGN {
  fields: PGN_130816_Navico_PlaylistFields
 }
 
+export const PGN_130816_Navico_PlaylistDefaults = {
+  pgn: 130816,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130816
   Description: SonicHub: Track
@@ -6113,9 +7647,9 @@ export interface PGN_130816_Navico_Playlist extends PGN {
 */
 export interface PGN_130816_Navico_TrackFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   item?: N2K_Number
@@ -6126,6 +7660,11 @@ export interface PGN_130816_Navico_Track extends PGN {
  fields: PGN_130816_Navico_TrackFields
 }
 
+export const PGN_130816_Navico_TrackDefaults = {
+  pgn: 130816,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130816
   Description: SonicHub: Artist
@@ -6135,9 +7674,9 @@ export interface PGN_130816_Navico_Track extends PGN {
 */
 export interface PGN_130816_Navico_ArtistFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   item?: N2K_Number
@@ -6148,6 +7687,11 @@ export interface PGN_130816_Navico_Artist extends PGN {
  fields: PGN_130816_Navico_ArtistFields
 }
 
+export const PGN_130816_Navico_ArtistDefaults = {
+  pgn: 130816,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130816
   Description: SonicHub: Album
@@ -6157,9 +7701,9 @@ export interface PGN_130816_Navico_Artist extends PGN {
 */
 export interface PGN_130816_Navico_AlbumFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   item?: N2K_Number
@@ -6170,6 +7714,11 @@ export interface PGN_130816_Navico_Album extends PGN {
  fields: PGN_130816_Navico_AlbumFields
 }
 
+export const PGN_130816_Navico_AlbumDefaults = {
+  pgn: 130816,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130816
   Description: SonicHub: Menu Item
@@ -6179,9 +7728,9 @@ export interface PGN_130816_Navico_Album extends PGN {
 */
 export interface PGN_130816_Navico_MenuItemFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   item?: N2K_Number
@@ -6195,6 +7744,11 @@ export interface PGN_130816_Navico_MenuItem extends PGN {
  fields: PGN_130816_Navico_MenuItemFields
 }
 
+export const PGN_130816_Navico_MenuItemDefaults = {
+  pgn: 130816,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130816
   Description: SonicHub: Zones
@@ -6204,9 +7758,9 @@ export interface PGN_130816_Navico_MenuItem extends PGN {
 */
 export interface PGN_130816_Navico_ZonesFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   zones?: N2K_Number
@@ -6216,6 +7770,11 @@ export interface PGN_130816_Navico_Zones extends PGN {
  fields: PGN_130816_Navico_ZonesFields
 }
 
+export const PGN_130816_Navico_ZonesDefaults = {
+  pgn: 130816,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130816
   Description: SonicHub: Max Volume
@@ -6225,9 +7784,9 @@ export interface PGN_130816_Navico_Zones extends PGN {
 */
 export interface PGN_130816_Navico_MaxVolumeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   zone?: N2K_Number
@@ -6238,6 +7797,11 @@ export interface PGN_130816_Navico_MaxVolume extends PGN {
  fields: PGN_130816_Navico_MaxVolumeFields
 }
 
+export const PGN_130816_Navico_MaxVolumeDefaults = {
+  pgn: 130816,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130816
   Description: SonicHub: Volume
@@ -6247,9 +7811,9 @@ export interface PGN_130816_Navico_MaxVolume extends PGN {
 */
 export interface PGN_130816_Navico_VolumeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   zone?: N2K_Number
@@ -6260,6 +7824,11 @@ export interface PGN_130816_Navico_Volume extends PGN {
  fields: PGN_130816_Navico_VolumeFields
 }
 
+export const PGN_130816_Navico_VolumeDefaults = {
+  pgn: 130816,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130816
   Description: SonicHub: Init #1
@@ -6269,9 +7838,9 @@ export interface PGN_130816_Navico_Volume extends PGN {
 */
 export interface PGN_130816_Navico_Init1Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
 }
@@ -6280,6 +7849,11 @@ export interface PGN_130816_Navico_Init1 extends PGN {
  fields: PGN_130816_Navico_Init1Fields
 }
 
+export const PGN_130816_Navico_Init1Defaults = {
+  pgn: 130816,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130816
   Description: SonicHub: Position
@@ -6289,9 +7863,9 @@ export interface PGN_130816_Navico_Init1 extends PGN {
 */
 export interface PGN_130816_Navico_PositionFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   position?: N2K_Duration
@@ -6301,6 +7875,11 @@ export interface PGN_130816_Navico_Position extends PGN {
  fields: PGN_130816_Navico_PositionFields
 }
 
+export const PGN_130816_Navico_PositionDefaults = {
+  pgn: 130816,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130816
   Description: SonicHub: Init #3
@@ -6310,9 +7889,9 @@ export interface PGN_130816_Navico_Position extends PGN {
 */
 export interface PGN_130816_Navico_Init3Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SonichubCommand|number
   control?: enums.SonichubControl|number
   a?: N2K_Number
@@ -6323,6 +7902,11 @@ export interface PGN_130816_Navico_Init3 extends PGN {
  fields: PGN_130816_Navico_Init3Fields
 }
 
+export const PGN_130816_Navico_Init3Defaults = {
+  pgn: 130816,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130816
   Description: Simrad: Text Message
@@ -6332,9 +7916,9 @@ export interface PGN_130816_Navico_Init3 extends PGN {
 */
 export interface PGN_130816_Simrad_TextFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   proprietaryId: enums.SimnetCommand|number
   a?: N2K_Number
   b?: N2K_Number
@@ -6348,6 +7932,11 @@ export interface PGN_130816_Simrad_Text extends PGN {
  fields: PGN_130816_Simrad_TextFields
 }
 
+export const PGN_130816_Simrad_TextDefaults = {
+  pgn: 130816,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130817
   Description: Navico: Unknown
@@ -6356,7 +7945,7 @@ export interface PGN_130816_Simrad_Text extends PGN {
 */
 export interface PGN_130817_NavicoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   a?: N2K_Number
   b?: N2K_Number
@@ -6369,6 +7958,11 @@ export interface PGN_130817_Navico extends PGN {
  fields: PGN_130817_NavicoFields
 }
 
+export const PGN_130817_NavicoDefaults = {
+  pgn: 130817,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130817
   Description: Lowrance: Product Information
@@ -6377,7 +7971,7 @@ export interface PGN_130817_Navico extends PGN {
 */
 export interface PGN_130817_LowranceFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   productCode?: N2K_Number
   model?: N2K_StringFix
@@ -6393,13 +7987,18 @@ export interface PGN_130817_Lowrance extends PGN {
  fields: PGN_130817_LowranceFields
 }
 
+export const PGN_130817_LowranceDefaults = {
+  pgn: 130817,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130818
   Description: Simnet: Reprogram Data
 */
 export interface PGN_130818Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   version?: N2K_Number
   sequence?: N2K_Number
@@ -6410,13 +8009,18 @@ export interface PGN_130818 extends PGN {
  fields: PGN_130818Fields
 }
 
+export const PGN_130818Defaults = {
+  pgn: 130818,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130819
   Description: Simnet: Request Reprogram
 */
 export interface PGN_130819Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -6424,6 +8028,11 @@ export interface PGN_130819 extends PGN {
  fields: PGN_130819Fields
 }
 
+export const PGN_130819Defaults = {
+  pgn: 130819,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Simnet: Reprogram Status
@@ -6432,17 +8041,22 @@ export interface PGN_130819 extends PGN {
 */
 export interface PGN_130820_SimradFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  reserved4?: N2K_Reserved
+  reserved4?: number
   status?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
 }
 
 export interface PGN_130820_Simrad extends PGN {
  fields: PGN_130820_SimradFields
 }
 
+export const PGN_130820_SimradDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Furuno: Unknown 130820
@@ -6451,7 +8065,7 @@ export interface PGN_130820_Simrad extends PGN {
 */
 export interface PGN_130820_FurunoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   a?: N2K_Number
   b?: N2K_Number
@@ -6464,6 +8078,11 @@ export interface PGN_130820_Furuno extends PGN {
  fields: PGN_130820_FurunoFields
 }
 
+export const PGN_130820_FurunoDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Versions
@@ -6473,7 +8092,7 @@ export interface PGN_130820_Furuno extends PGN {
 */
 export interface PGN_130820_FusionElectronics_ApiVersionFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId?: enums.FusionStatusMessageId|number
   hwVersionMajor?: N2K_Number
@@ -6487,6 +8106,11 @@ export interface PGN_130820_FusionElectronics_ApiVersion extends PGN {
  fields: PGN_130820_FusionElectronics_ApiVersionFields
 }
 
+export const PGN_130820_FusionElectronics_ApiVersionDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Source
@@ -6496,7 +8120,7 @@ export interface PGN_130820_FusionElectronics_ApiVersion extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SourceFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId?: enums.FusionStatusMessageId|number
   sourceId?: N2K_Number
@@ -6510,6 +8134,11 @@ export interface PGN_130820_FusionElectronics_Source extends PGN {
  fields: PGN_130820_FusionElectronics_SourceFields
 }
 
+export const PGN_130820_FusionElectronics_SourceDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Source Count
@@ -6519,7 +8148,7 @@ export interface PGN_130820_FusionElectronics_Source extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SourceCountFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId?: enums.FusionStatusMessageId|number
   sourceCount?: N2K_Number
@@ -6529,6 +8158,11 @@ export interface PGN_130820_FusionElectronics_SourceCount extends PGN {
  fields: PGN_130820_FusionElectronics_SourceCountFields
 }
 
+export const PGN_130820_FusionElectronics_SourceCountDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Media
@@ -6538,7 +8172,7 @@ export interface PGN_130820_FusionElectronics_SourceCount extends PGN {
 */
 export interface PGN_130820_FusionElectronics_TrackInfoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -6553,6 +8187,11 @@ export interface PGN_130820_FusionElectronics_TrackInfo extends PGN {
  fields: PGN_130820_FusionElectronics_TrackInfoFields
 }
 
+export const PGN_130820_FusionElectronics_TrackInfoDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Track Name
@@ -6562,7 +8201,7 @@ export interface PGN_130820_FusionElectronics_TrackInfo extends PGN {
 */
 export interface PGN_130820_FusionElectronics_TrackTitleFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -6574,6 +8213,11 @@ export interface PGN_130820_FusionElectronics_TrackTitle extends PGN {
  fields: PGN_130820_FusionElectronics_TrackTitleFields
 }
 
+export const PGN_130820_FusionElectronics_TrackTitleDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Artist Name
@@ -6583,7 +8227,7 @@ export interface PGN_130820_FusionElectronics_TrackTitle extends PGN {
 */
 export interface PGN_130820_FusionElectronics_TrackArtistFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -6595,6 +8239,11 @@ export interface PGN_130820_FusionElectronics_TrackArtist extends PGN {
  fields: PGN_130820_FusionElectronics_TrackArtistFields
 }
 
+export const PGN_130820_FusionElectronics_TrackArtistDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Album Name
@@ -6604,7 +8253,7 @@ export interface PGN_130820_FusionElectronics_TrackArtist extends PGN {
 */
 export interface PGN_130820_FusionElectronics_TrackAlbumFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -6616,6 +8265,11 @@ export interface PGN_130820_FusionElectronics_TrackAlbum extends PGN {
  fields: PGN_130820_FusionElectronics_TrackAlbumFields
 }
 
+export const PGN_130820_FusionElectronics_TrackAlbumDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Device Name
@@ -6625,7 +8279,7 @@ export interface PGN_130820_FusionElectronics_TrackAlbum extends PGN {
 */
 export interface PGN_130820_FusionElectronics_UnitNameFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   name?: N2K_StringLz
@@ -6635,6 +8289,11 @@ export interface PGN_130820_FusionElectronics_UnitName extends PGN {
  fields: PGN_130820_FusionElectronics_UnitNameFields
 }
 
+export const PGN_130820_FusionElectronics_UnitNameDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Zone Name
@@ -6644,7 +8303,7 @@ export interface PGN_130820_FusionElectronics_UnitName extends PGN {
 */
 export interface PGN_130820_FusionElectronics_ZoneNameFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   number: N2K_Number
@@ -6655,6 +8314,11 @@ export interface PGN_130820_FusionElectronics_ZoneName extends PGN {
  fields: PGN_130820_FusionElectronics_ZoneNameFields
 }
 
+export const PGN_130820_FusionElectronics_ZoneNameDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Track Position
@@ -6664,7 +8328,7 @@ export interface PGN_130820_FusionElectronics_ZoneName extends PGN {
 */
 export interface PGN_130820_FusionElectronics_TrackProgressFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -6675,6 +8339,11 @@ export interface PGN_130820_FusionElectronics_TrackProgress extends PGN {
  fields: PGN_130820_FusionElectronics_TrackProgressFields
 }
 
+export const PGN_130820_FusionElectronics_TrackProgressDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Tuner
@@ -6684,7 +8353,7 @@ export interface PGN_130820_FusionElectronics_TrackProgress extends PGN {
 */
 export interface PGN_130820_FusionElectronics_TunerFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: enums.FusionRadioSource|number
@@ -6698,6 +8367,11 @@ export interface PGN_130820_FusionElectronics_Tuner extends PGN {
  fields: PGN_130820_FusionElectronics_TunerFields
 }
 
+export const PGN_130820_FusionElectronics_TunerDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: MARINE_TUNER
@@ -6707,7 +8381,7 @@ export interface PGN_130820_FusionElectronics_Tuner extends PGN {
 */
 export interface PGN_130820_FusionElectronics_MarineTunerFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -6720,6 +8394,11 @@ export interface PGN_130820_FusionElectronics_MarineTuner extends PGN {
  fields: PGN_130820_FusionElectronics_MarineTunerFields
 }
 
+export const PGN_130820_FusionElectronics_MarineTunerDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Marine Squelch
@@ -6729,7 +8408,7 @@ export interface PGN_130820_FusionElectronics_MarineTuner extends PGN {
 */
 export interface PGN_130820_FusionElectronics_MarineSquelchFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -6740,6 +8419,11 @@ export interface PGN_130820_FusionElectronics_MarineSquelch extends PGN {
  fields: PGN_130820_FusionElectronics_MarineSquelchFields
 }
 
+export const PGN_130820_FusionElectronics_MarineSquelchDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Marine Scan Mode
@@ -6749,7 +8433,7 @@ export interface PGN_130820_FusionElectronics_MarineSquelch extends PGN {
 */
 export interface PGN_130820_FusionElectronics_MarineScanModeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -6760,6 +8444,11 @@ export interface PGN_130820_FusionElectronics_MarineScanMode extends PGN {
  fields: PGN_130820_FusionElectronics_MarineScanModeFields
 }
 
+export const PGN_130820_FusionElectronics_MarineScanModeDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Menu Item
@@ -6769,7 +8458,7 @@ export interface PGN_130820_FusionElectronics_MarineScanMode extends PGN {
 */
 export interface PGN_130820_FusionElectronics_MenuItemFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -6783,6 +8472,11 @@ export interface PGN_130820_FusionElectronics_MenuItem extends PGN {
  fields: PGN_130820_FusionElectronics_MenuItemFields
 }
 
+export const PGN_130820_FusionElectronics_MenuItemDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Aux Gain
@@ -6792,7 +8486,7 @@ export interface PGN_130820_FusionElectronics_MenuItem extends PGN {
 */
 export interface PGN_130820_FusionElectronics_AuxGainFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -6803,6 +8497,11 @@ export interface PGN_130820_FusionElectronics_AuxGain extends PGN {
  fields: PGN_130820_FusionElectronics_AuxGainFields
 }
 
+export const PGN_130820_FusionElectronics_AuxGainDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: USB Repeat Status
@@ -6813,7 +8512,7 @@ export interface PGN_130820_FusionElectronics_AuxGain extends PGN {
 */
 export interface PGN_130820_FusionElectronics_Setting_UsbRepeatFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   id?: enums.FusionSetting|number
@@ -6824,6 +8523,11 @@ export interface PGN_130820_FusionElectronics_Setting_UsbRepeat extends PGN {
  fields: PGN_130820_FusionElectronics_Setting_UsbRepeatFields
 }
 
+export const PGN_130820_FusionElectronics_Setting_UsbRepeatDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Setting
@@ -6833,7 +8537,7 @@ export interface PGN_130820_FusionElectronics_Setting_UsbRepeat extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SettingFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   id?: enums.FusionSetting|number
@@ -6844,6 +8548,11 @@ export interface PGN_130820_FusionElectronics_Setting extends PGN {
  fields: PGN_130820_FusionElectronics_SettingFields
 }
 
+export const PGN_130820_FusionElectronics_SettingDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Settings
@@ -6853,19 +8562,25 @@ export interface PGN_130820_FusionElectronics_Setting extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SettingsFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   count?: N2K_Number
-  id?: enums.FusionSetting|number
-  value?: N2K_Number
-  list: any[]
+  list: {
+    id?: enums.FusionSetting|number
+    value?: N2K_Number
+  }[]
 }
 
 export interface PGN_130820_FusionElectronics_Settings extends PGN {
  fields: PGN_130820_FusionElectronics_SettingsFields
 }
 
+export const PGN_130820_FusionElectronics_SettingsDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Mute
@@ -6875,7 +8590,7 @@ export interface PGN_130820_FusionElectronics_Settings extends PGN {
 */
 export interface PGN_130820_FusionElectronics_MuteFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   mute?: enums.FusionMuteCommand|number
@@ -6885,6 +8600,11 @@ export interface PGN_130820_FusionElectronics_Mute extends PGN {
  fields: PGN_130820_FusionElectronics_MuteFields
 }
 
+export const PGN_130820_FusionElectronics_MuteDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Balance
@@ -6894,7 +8614,7 @@ export interface PGN_130820_FusionElectronics_Mute extends PGN {
 */
 export interface PGN_130820_FusionElectronics_BalanceFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   zone: N2K_Number
@@ -6905,6 +8625,11 @@ export interface PGN_130820_FusionElectronics_Balance extends PGN {
  fields: PGN_130820_FusionElectronics_BalanceFields
 }
 
+export const PGN_130820_FusionElectronics_BalanceDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Low Pass Filter
@@ -6914,7 +8639,7 @@ export interface PGN_130820_FusionElectronics_Balance extends PGN {
 */
 export interface PGN_130820_FusionElectronics_LowPassFilterFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   zone: N2K_Number
@@ -6925,6 +8650,11 @@ export interface PGN_130820_FusionElectronics_LowPassFilter extends PGN {
  fields: PGN_130820_FusionElectronics_LowPassFilterFields
 }
 
+export const PGN_130820_FusionElectronics_LowPassFilterDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Sublevels
@@ -6934,7 +8664,7 @@ export interface PGN_130820_FusionElectronics_LowPassFilter extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SublevelsFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   zone1?: N2K_Number
@@ -6947,6 +8677,11 @@ export interface PGN_130820_FusionElectronics_Sublevels extends PGN {
  fields: PGN_130820_FusionElectronics_SublevelsFields
 }
 
+export const PGN_130820_FusionElectronics_SublevelsDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: EQ
@@ -6956,7 +8691,7 @@ export interface PGN_130820_FusionElectronics_Sublevels extends PGN {
 */
 export interface PGN_130820_FusionElectronics_ToneFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   zone: N2K_Number
@@ -6969,6 +8704,11 @@ export interface PGN_130820_FusionElectronics_Tone extends PGN {
  fields: PGN_130820_FusionElectronics_ToneFields
 }
 
+export const PGN_130820_FusionElectronics_ToneDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Volume Limits
@@ -6978,7 +8718,7 @@ export interface PGN_130820_FusionElectronics_Tone extends PGN {
 */
 export interface PGN_130820_FusionElectronics_VolumeLimitsFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   zone1VolumeLimit?: N2K_Number
@@ -6991,6 +8731,11 @@ export interface PGN_130820_FusionElectronics_VolumeLimits extends PGN {
  fields: PGN_130820_FusionElectronics_VolumeLimitsFields
 }
 
+export const PGN_130820_FusionElectronics_VolumeLimitsDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Volumes
@@ -7000,7 +8745,7 @@ export interface PGN_130820_FusionElectronics_VolumeLimits extends PGN {
 */
 export interface PGN_130820_FusionElectronics_VolumeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   zone1?: N2K_Number
@@ -7013,6 +8758,11 @@ export interface PGN_130820_FusionElectronics_Volume extends PGN {
  fields: PGN_130820_FusionElectronics_VolumeFields
 }
 
+export const PGN_130820_FusionElectronics_VolumeDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Capabilities
@@ -7022,7 +8772,7 @@ export interface PGN_130820_FusionElectronics_Volume extends PGN {
 */
 export interface PGN_130820_FusionElectronics_CapabilitiesFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   zone1?: N2K_Number
@@ -7036,6 +8786,11 @@ export interface PGN_130820_FusionElectronics_Capabilities extends PGN {
  fields: PGN_130820_FusionElectronics_CapabilitiesFields
 }
 
+export const PGN_130820_FusionElectronics_CapabilitiesDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Line Level Control
@@ -7045,7 +8800,7 @@ export interface PGN_130820_FusionElectronics_Capabilities extends PGN {
 */
 export interface PGN_130820_FusionElectronics_LineLevelControlFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   zone: N2K_Number
@@ -7056,6 +8811,11 @@ export interface PGN_130820_FusionElectronics_LineLevelControl extends PGN {
  fields: PGN_130820_FusionElectronics_LineLevelControlFields
 }
 
+export const PGN_130820_FusionElectronics_LineLevelControlDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: Power State
@@ -7065,7 +8825,7 @@ export interface PGN_130820_FusionElectronics_LineLevelControl extends PGN {
 */
 export interface PGN_130820_FusionElectronics_PowerFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   state?: enums.FusionPowerState|number
@@ -7075,6 +8835,11 @@ export interface PGN_130820_FusionElectronics_Power extends PGN {
  fields: PGN_130820_FusionElectronics_PowerFields
 }
 
+export const PGN_130820_FusionElectronics_PowerDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: SiriusXM
@@ -7084,7 +8849,7 @@ export interface PGN_130820_FusionElectronics_Power extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SiriusFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -7098,6 +8863,11 @@ export interface PGN_130820_FusionElectronics_Sirius extends PGN {
  fields: PGN_130820_FusionElectronics_SiriusFields
 }
 
+export const PGN_130820_FusionElectronics_SiriusDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: SiriusXM Channel
@@ -7107,7 +8877,7 @@ export interface PGN_130820_FusionElectronics_Sirius extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SiriusXmChannelFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -7119,6 +8889,11 @@ export interface PGN_130820_FusionElectronics_SiriusXmChannel extends PGN {
  fields: PGN_130820_FusionElectronics_SiriusXmChannelFields
 }
 
+export const PGN_130820_FusionElectronics_SiriusXmChannelDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: SiriusXM Title
@@ -7128,7 +8903,7 @@ export interface PGN_130820_FusionElectronics_SiriusXmChannel extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SiriusXmTitleFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -7140,6 +8915,11 @@ export interface PGN_130820_FusionElectronics_SiriusXmTitle extends PGN {
  fields: PGN_130820_FusionElectronics_SiriusXmTitleFields
 }
 
+export const PGN_130820_FusionElectronics_SiriusXmTitleDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: SiriusXM Artist
@@ -7149,7 +8929,7 @@ export interface PGN_130820_FusionElectronics_SiriusXmTitle extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SiriusXmArtistFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -7161,6 +8941,11 @@ export interface PGN_130820_FusionElectronics_SiriusXmArtist extends PGN {
  fields: PGN_130820_FusionElectronics_SiriusXmArtistFields
 }
 
+export const PGN_130820_FusionElectronics_SiriusXmArtistDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: SiriusXM Content Info
@@ -7170,7 +8955,7 @@ export interface PGN_130820_FusionElectronics_SiriusXmArtist extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SiriusXmGenreFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -7182,6 +8967,11 @@ export interface PGN_130820_FusionElectronics_SiriusXmGenre extends PGN {
  fields: PGN_130820_FusionElectronics_SiriusXmGenreFields
 }
 
+export const PGN_130820_FusionElectronics_SiriusXmGenreDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: SiriusXM Category
@@ -7191,7 +8981,7 @@ export interface PGN_130820_FusionElectronics_SiriusXmGenre extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SiriusXmCategoryFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -7203,6 +8993,11 @@ export interface PGN_130820_FusionElectronics_SiriusXmCategory extends PGN {
  fields: PGN_130820_FusionElectronics_SiriusXmCategoryFields
 }
 
+export const PGN_130820_FusionElectronics_SiriusXmCategoryDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: SiriusXM Signal
@@ -7212,7 +9007,7 @@ export interface PGN_130820_FusionElectronics_SiriusXmCategory extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SiriusXmSignalFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -7223,6 +9018,11 @@ export interface PGN_130820_FusionElectronics_SiriusXmSignal extends PGN {
  fields: PGN_130820_FusionElectronics_SiriusXmSignalFields
 }
 
+export const PGN_130820_FusionElectronics_SiriusXmSignalDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130820
   Description: Fusion: SiriusXM Presets
@@ -7232,7 +9032,7 @@ export interface PGN_130820_FusionElectronics_SiriusXmSignal extends PGN {
 */
 export interface PGN_130820_FusionElectronics_SiriusXmPresetsFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: enums.FusionStatusMessageId|number
   sourceId: N2K_Number
@@ -7244,6 +9044,11 @@ export interface PGN_130820_FusionElectronics_SiriusXmPresets extends PGN {
  fields: PGN_130820_FusionElectronics_SiriusXmPresetsFields
 }
 
+export const PGN_130820_FusionElectronics_SiriusXmPresetsDefaults = {
+  pgn: 130820,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130821
   Description: Navico: ASCII Data
@@ -7252,7 +9057,7 @@ export interface PGN_130820_FusionElectronics_SiriusXmPresets extends PGN {
 */
 export interface PGN_130821_NavicoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   a?: N2K_Number
   message?: N2K_StringFix
@@ -7262,6 +9067,11 @@ export interface PGN_130821_Navico extends PGN {
  fields: PGN_130821_NavicoFields
 }
 
+export const PGN_130821_NavicoDefaults = {
+  pgn: 130821,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130821
   Description: Furuno: Unknown 130821
@@ -7270,7 +9080,7 @@ export interface PGN_130821_Navico extends PGN {
 */
 export interface PGN_130821_FurunoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   sid?: N2K_Number
   a?: N2K_Number
@@ -7288,13 +9098,18 @@ export interface PGN_130821_Furuno extends PGN {
  fields: PGN_130821_FurunoFields
 }
 
+export const PGN_130821_FurunoDefaults = {
+  pgn: 130821,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130822
   Description: Navico: Unknown 1
 */
 export interface PGN_130822Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   data?: N2K_Binary
 }
@@ -7303,13 +9118,18 @@ export interface PGN_130822 extends PGN {
  fields: PGN_130822Fields
 }
 
+export const PGN_130822Defaults = {
+  pgn: 130822,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130823
   Description: Maretron: Proprietary Temperature High Range
 */
 export interface PGN_130823Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   sid?: N2K_Number
   instance: N2K_Number
@@ -7322,6 +9142,11 @@ export interface PGN_130823 extends PGN {
  fields: PGN_130823Fields
 }
 
+export const PGN_130823Defaults = {
+  pgn: 130823,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130824
   Description: B&G: key-value data
@@ -7331,18 +9156,24 @@ export interface PGN_130823 extends PGN {
 */
 export interface PGN_130824_BGFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
-  key?: N2K_DynamicFieldKey
-  length?: N2K_DynamicFieldLength
-  value?: N2K_DynamicFieldValue
-  list: any[]
+  list: {
+    key?: N2K_DynamicFieldKey
+    length?: N2K_DynamicFieldLength
+    value?: N2K_DynamicFieldValue
+  }[]
 }
 
 export interface PGN_130824_BG extends PGN {
  fields: PGN_130824_BGFields
 }
 
+export const PGN_130824_BGDefaults = {
+  pgn: 130824,
+  dst: 255,
+  prio: 2
+}
 /*
   PGN: 130824
   Description: Maretron: Annunciator
@@ -7351,7 +9182,7 @@ export interface PGN_130824_BG extends PGN {
 */
 export interface PGN_130824_MaretronFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   field4?: N2K_Number
   field5?: N2K_Number
@@ -7364,13 +9195,18 @@ export interface PGN_130824_Maretron extends PGN {
  fields: PGN_130824_MaretronFields
 }
 
+export const PGN_130824_MaretronDefaults = {
+  pgn: 130824,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130825
   Description: Navico: Unknown 2
 */
 export interface PGN_130825Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   data?: N2K_Binary
 }
@@ -7379,13 +9215,18 @@ export interface PGN_130825 extends PGN {
  fields: PGN_130825Fields
 }
 
+export const PGN_130825Defaults = {
+  pgn: 130825,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130827
   Description: Lowrance: unknown
 */
 export interface PGN_130827Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   a?: N2K_Number
   b?: N2K_Number
@@ -7399,13 +9240,18 @@ export interface PGN_130827 extends PGN {
  fields: PGN_130827Fields
 }
 
+export const PGN_130827Defaults = {
+  pgn: 130827,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130828
   Description: Simnet: Set Serial Number
 */
 export interface PGN_130828Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7413,13 +9259,18 @@ export interface PGN_130828 extends PGN {
  fields: PGN_130828Fields
 }
 
+export const PGN_130828Defaults = {
+  pgn: 130828,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130831
   Description: Suzuki: Engine and Storage Device Config
 */
 export interface PGN_130831Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7427,13 +9278,18 @@ export interface PGN_130831 extends PGN {
  fields: PGN_130831Fields
 }
 
+export const PGN_130831Defaults = {
+  pgn: 130831,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130832
   Description: Simnet: Fuel Used - High Resolution
 */
 export interface PGN_130832Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7441,17 +9297,22 @@ export interface PGN_130832 extends PGN {
  fields: PGN_130832Fields
 }
 
+export const PGN_130832Defaults = {
+  pgn: 130832,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130833
   Description: B&G: User and Remote rename
 */
 export interface PGN_130833Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   dataType?: N2K_DynamicFieldKey
   length?: N2K_Number
-  reserved6?: N2K_Reserved
+  reserved6?: number
   decimals?: enums.BandgDecimals|number
   shortName?: N2K_StringFix
   longName?: N2K_StringFix
@@ -7461,13 +9322,18 @@ export interface PGN_130833 extends PGN {
  fields: PGN_130833Fields
 }
 
+export const PGN_130833Defaults = {
+  pgn: 130833,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130834
   Description: Simnet: Engine and Tank Configuration
 */
 export interface PGN_130834Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7475,13 +9341,18 @@ export interface PGN_130834 extends PGN {
  fields: PGN_130834Fields
 }
 
+export const PGN_130834Defaults = {
+  pgn: 130834,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130835
   Description: Simnet: Set Engine and Tank Configuration
 */
 export interface PGN_130835Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7489,6 +9360,11 @@ export interface PGN_130835 extends PGN {
  fields: PGN_130835Fields
 }
 
+export const PGN_130835Defaults = {
+  pgn: 130835,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130836
   Description: Simnet: Fluid Level Sensor Configuration
@@ -7497,7 +9373,7 @@ export interface PGN_130835 extends PGN {
 */
 export interface PGN_130836_SimradFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   c?: N2K_Number
   device: N2K_Number
@@ -7514,6 +9390,11 @@ export interface PGN_130836_Simrad extends PGN {
  fields: PGN_130836_SimradFields
 }
 
+export const PGN_130836_SimradDefaults = {
+  pgn: 130836,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130836
   Description: Maretron: Switch Status Counter
@@ -7522,7 +9403,7 @@ export interface PGN_130836_Simrad extends PGN {
 */
 export interface PGN_130836_MaretronFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   instance: N2K_Number
   indicatorNumber?: N2K_Number
@@ -7532,13 +9413,18 @@ export interface PGN_130836_MaretronFields extends PGNFields {
   onCounter?: N2K_Number
   errorCounter?: N2K_Number
   switchStatus?: enums.OffOn|number
-  reserved12?: N2K_Reserved
+  reserved12?: number
 }
 
 export interface PGN_130836_Maretron extends PGN {
  fields: PGN_130836_MaretronFields
 }
 
+export const PGN_130836_MaretronDefaults = {
+  pgn: 130836,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 130837
   Description: Simnet: Fuel Flow Turbine Configuration
@@ -7547,7 +9433,7 @@ export interface PGN_130836_Maretron extends PGN {
 */
 export interface PGN_130837_SimradFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7555,6 +9441,11 @@ export interface PGN_130837_Simrad extends PGN {
  fields: PGN_130837_SimradFields
 }
 
+export const PGN_130837_SimradDefaults = {
+  pgn: 130837,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130837
   Description: Maretron: Switch Status Timer
@@ -7563,7 +9454,7 @@ export interface PGN_130837_Simrad extends PGN {
 */
 export interface PGN_130837_MaretronFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   instance: N2K_Number
   indicatorNumber?: N2K_Number
@@ -7573,20 +9464,25 @@ export interface PGN_130837_MaretronFields extends PGNFields {
   accumulatedOnPeriod?: N2K_Duration
   accumulatedErrorPeriod?: N2K_Duration
   switchStatus?: enums.OffOn|number
-  reserved12?: N2K_Reserved
+  reserved12?: number
 }
 
 export interface PGN_130837_Maretron extends PGN {
  fields: PGN_130837_MaretronFields
 }
 
+export const PGN_130837_MaretronDefaults = {
+  pgn: 130837,
+  dst: 255,
+  prio: 6
+}
 /*
   PGN: 130838
   Description: Simnet: Fluid Level Warning
 */
 export interface PGN_130838Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7594,13 +9490,18 @@ export interface PGN_130838 extends PGN {
  fields: PGN_130838Fields
 }
 
+export const PGN_130838Defaults = {
+  pgn: 130838,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130839
   Description: Simnet: Pressure Sensor Configuration
 */
 export interface PGN_130839Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7608,13 +9509,18 @@ export interface PGN_130839 extends PGN {
  fields: PGN_130839Fields
 }
 
+export const PGN_130839Defaults = {
+  pgn: 130839,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130840
   Description: Simnet: Data User Group Configuration
 */
 export interface PGN_130840Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7622,6 +9528,11 @@ export interface PGN_130840 extends PGN {
  fields: PGN_130840Fields
 }
 
+export const PGN_130840Defaults = {
+  pgn: 130840,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130842
   Description: Simnet: AIS Class B static data (msg 24 Part A)
@@ -7630,7 +9541,7 @@ export interface PGN_130840 extends PGN {
 */
 export interface PGN_130842_SimradFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: N2K_Number
   repeatIndicator?: enums.RepeatIndicator|number
@@ -7644,6 +9555,11 @@ export interface PGN_130842_Simrad extends PGN {
  fields: PGN_130842_SimradFields
 }
 
+export const PGN_130842_SimradDefaults = {
+  pgn: 130842,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130842
   Description: Furuno: Six Degrees Of Freedom Movement
@@ -7652,7 +9568,7 @@ export interface PGN_130842_Simrad extends PGN {
 */
 export interface PGN_130842_FurunoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   a?: N2K_Number
   b?: N2K_Number
@@ -7669,6 +9585,11 @@ export interface PGN_130842_Furuno extends PGN {
  fields: PGN_130842_FurunoFields
 }
 
+export const PGN_130842_FurunoDefaults = {
+  pgn: 130842,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130842
   Description: Simnet: AIS Class B static data (msg 24 Part B)
@@ -7678,7 +9599,7 @@ export interface PGN_130842_Furuno extends PGN {
 */
 export interface PGN_130842_Simrad_Msg24PartBFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId: N2K_Number
   repeatIndicator?: enums.RepeatIndicator|number
@@ -7693,14 +9614,19 @@ export interface PGN_130842_Simrad_Msg24PartBFields extends PGNFields {
   positionReferenceFromStarboard?: N2K_Number
   positionReferenceFromBow?: N2K_Number
   mothershipUserId: N2K_Mmsi
-  spare17?: N2K_Spare
-  reserved18?: N2K_Reserved
+  spare17?: number
+  reserved18?: number
 }
 
 export interface PGN_130842_Simrad_Msg24PartB extends PGN {
  fields: PGN_130842_Simrad_Msg24PartBFields
 }
 
+export const PGN_130842_Simrad_Msg24PartBDefaults = {
+  pgn: 130842,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130843
   Description: Furuno: Heel Angle, Roll Information
@@ -7709,7 +9635,7 @@ export interface PGN_130842_Simrad_Msg24PartB extends PGN {
 */
 export interface PGN_130843_FurunoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   a?: N2K_Number
   b?: N2K_Number
@@ -7722,6 +9648,11 @@ export interface PGN_130843_Furuno extends PGN {
  fields: PGN_130843_FurunoFields
 }
 
+export const PGN_130843_FurunoDefaults = {
+  pgn: 130843,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130843
   Description: Simnet: Sonar Status, Frequency and DSP Voltage
@@ -7730,7 +9661,7 @@ export interface PGN_130843_Furuno extends PGN {
 */
 export interface PGN_130843_SimradFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7738,6 +9669,11 @@ export interface PGN_130843_Simrad extends PGN {
  fields: PGN_130843_SimradFields
 }
 
+export const PGN_130843_SimradDefaults = {
+  pgn: 130843,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130845
   Description: Furuno: Multi Sats In View Extended
@@ -7746,7 +9682,7 @@ export interface PGN_130843_Simrad extends PGN {
 */
 export interface PGN_130845_FurunoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7754,6 +9690,11 @@ export interface PGN_130845_Furuno extends PGN {
  fields: PGN_130845_FurunoFields
 }
 
+export const PGN_130845_FurunoDefaults = {
+  pgn: 130845,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130845
   Description: Simnet: Key Value
@@ -7762,14 +9703,14 @@ export interface PGN_130845_Furuno extends PGN {
 */
 export interface PGN_130845_SimradFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   address?: N2K_Number
   repeatIndicator?: enums.RepeatIndicator|number
   displayGroup?: enums.SimnetDisplayGroup|number
-  reserved7?: N2K_Reserved
+  reserved7?: number
   key?: N2K_DynamicFieldKey
-  spare9?: N2K_Spare
+  spare9?: number
   minlength?: N2K_Number
   value?: N2K_DynamicFieldValue
 }
@@ -7778,6 +9719,11 @@ export interface PGN_130845_Simrad extends PGN {
  fields: PGN_130845_SimradFields
 }
 
+export const PGN_130845_SimradDefaults = {
+  pgn: 130845,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130846
   Description: Simnet: Parameter Set
@@ -7786,14 +9732,14 @@ export interface PGN_130845_Simrad extends PGN {
 */
 export interface PGN_130846_SimradFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   address?: N2K_Number
   b?: N2K_Number
   displayGroup?: enums.SimnetDisplayGroup|number
   d?: N2K_Number
   key?: N2K_DynamicFieldKey
-  spare9?: N2K_Spare
+  spare9?: number
   length?: N2K_Number
   value?: N2K_DynamicFieldValue
 }
@@ -7802,6 +9748,11 @@ export interface PGN_130846_Simrad extends PGN {
  fields: PGN_130846_SimradFields
 }
 
+export const PGN_130846_SimradDefaults = {
+  pgn: 130846,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130846
   Description: Furuno: Motion Sensor Status Extended
@@ -7810,7 +9761,7 @@ export interface PGN_130846_Simrad extends PGN {
 */
 export interface PGN_130846_FurunoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
@@ -7818,13 +9769,18 @@ export interface PGN_130846_Furuno extends PGN {
  fields: PGN_130846_FurunoFields
 }
 
+export const PGN_130846_FurunoDefaults = {
+  pgn: 130846,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130847
   Description: SeaTalk: Node Statistics
 */
 export interface PGN_130847Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   productCode?: N2K_Number
   year?: N2K_Number
@@ -7837,13 +9793,18 @@ export interface PGN_130847 extends PGN {
  fields: PGN_130847Fields
 }
 
+export const PGN_130847Defaults = {
+  pgn: 130847,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130848
   Description: SeaTalk: Waypoint Information
 */
 export interface PGN_130848Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   sid?: N2K_Number
   waypointName?: N2K_StringFix
@@ -7857,6 +9818,11 @@ export interface PGN_130848 extends PGN {
  fields: PGN_130848Fields
 }
 
+export const PGN_130848Defaults = {
+  pgn: 130848,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130850
   Description: Simnet: AP Command
@@ -7866,14 +9832,14 @@ export interface PGN_130848 extends PGN {
 */
 export interface PGN_130850_Simrad_AutopilotFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   address?: N2K_Number
-  reserved5?: N2K_Reserved
+  reserved5?: number
   proprietaryId: enums.SimnetEventCommand|number
   apStatus?: enums.SimnetApStatus|number
   apCommand?: enums.SimnetApEvents|number
-  spare9?: N2K_Spare
+  spare9?: number
   direction?: enums.SimnetDirection|number
   angle?: N2K_Number
 }
@@ -7882,6 +9848,11 @@ export interface PGN_130850_Simrad_Autopilot extends PGN {
  fields: PGN_130850_Simrad_AutopilotFields
 }
 
+export const PGN_130850_Simrad_AutopilotDefaults = {
+  pgn: 130850,
+  dst: 255,
+  prio: 2
+}
 /*
   PGN: 130850
   Description: Simnet: Event Command: AP command
@@ -7891,7 +9862,7 @@ export interface PGN_130850_Simrad_Autopilot extends PGN {
 */
 export interface PGN_130850_Simrad_ApCommandFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.SimnetEventCommand|number
   unusedA?: N2K_Number
@@ -7907,6 +9878,11 @@ export interface PGN_130850_Simrad_ApCommand extends PGN {
  fields: PGN_130850_Simrad_ApCommandFields
 }
 
+export const PGN_130850_Simrad_ApCommandDefaults = {
+  pgn: 130850,
+  dst: 255,
+  prio: 2
+}
 /*
   PGN: 130850
   Description: Simnet: Alarm
@@ -7917,12 +9893,12 @@ export interface PGN_130850_Simrad_ApCommand extends PGN {
 */
 export interface PGN_130850_Simrad_AlarmFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   address?: N2K_Number
-  reserved5?: N2K_Reserved
+  reserved5?: number
   proprietaryId: enums.SimnetEventCommand|number
-  reserved7?: N2K_Reserved
+  reserved7?: number
   alarm?: enums.SimnetAlarm|number
   messageId?: N2K_Number
   f?: N2K_Number
@@ -7933,13 +9909,18 @@ export interface PGN_130850_Simrad_Alarm extends PGN {
  fields: PGN_130850_Simrad_AlarmFields
 }
 
+export const PGN_130850_Simrad_AlarmDefaults = {
+  pgn: 130850,
+  dst: 255,
+  prio: 2
+}
 /*
   PGN: 130851
   Description: Simnet: Event Reply: AP command
 */
 export interface PGN_130851Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: enums.SimnetEventCommand|number
   b?: N2K_Number
@@ -7955,6 +9936,11 @@ export interface PGN_130851 extends PGN {
  fields: PGN_130851Fields
 }
 
+export const PGN_130851Defaults = {
+  pgn: 130851,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130856
   Description: Simnet: Alarm Message
@@ -7962,7 +9948,7 @@ export interface PGN_130851 extends PGN {
 */
 export interface PGN_130856Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   messageId?: N2K_Number
   b?: N2K_Number
@@ -7974,6 +9960,11 @@ export interface PGN_130856 extends PGN {
  fields: PGN_130856Fields
 }
 
+export const PGN_130856Defaults = {
+  pgn: 130856,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130860
   Description: Simnet: AP Unknown 4
@@ -7981,7 +9972,7 @@ export interface PGN_130856 extends PGN {
 */
 export interface PGN_130860Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   a?: N2K_Number
   b?: N2K_Number
@@ -7995,13 +9986,18 @@ export interface PGN_130860 extends PGN {
  fields: PGN_130860Fields
 }
 
+export const PGN_130860Defaults = {
+  pgn: 130860,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130880
   Description: Airmar: Additional Weather Data
 */
 export interface PGN_130880Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   c?: N2K_Number
   apparentWindchillTemperature?: N2K_Number
@@ -8013,13 +10009,18 @@ export interface PGN_130880 extends PGN {
  fields: PGN_130880Fields
 }
 
+export const PGN_130880Defaults = {
+  pgn: 130880,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130881
   Description: Airmar: Heater Control
 */
 export interface PGN_130881Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   c?: N2K_Number
   plateTemperature?: N2K_Number
@@ -8031,13 +10032,18 @@ export interface PGN_130881 extends PGN {
  fields: PGN_130881Fields
 }
 
+export const PGN_130881Defaults = {
+  pgn: 130881,
+  dst: 255,
+  prio: 3
+}
 /*
   PGN: 130918
   Description: SeaTalk: Route Information
 */
 export interface PGN_130918Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   currentWaypointSequence?: N2K_Number
   currentWaypointName?: N2K_StringFix
@@ -8053,16 +10059,21 @@ export interface PGN_130918 extends PGN {
  fields: PGN_130918Fields
 }
 
+export const PGN_130918Defaults = {
+  pgn: 130918,
+  dst: 255,
+  prio: 7
+}
 /*
   PGN: 130944
   Description: Airmar: POST
 */
 export interface PGN_130944Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
-  reserved?: N2K_Reserved
+  reserved?: number
   industryCode: enums.IndustryCode|number
   control: enums.AirmarPostControl|number
-  reserved5?: N2K_Reserved
+  reserved5?: number
   numberOfIdTestResultPairsToFollow?: N2K_Number
   testId?: enums.AirmarPostId|number
   testResult?: N2K_Number
@@ -8072,3 +10083,8 @@ export interface PGN_130944 extends PGN {
  fields: PGN_130944Fields
 }
 
+export const PGN_130944Defaults = {
+  pgn: 130944,
+  dst: 255,
+  prio: 7
+}

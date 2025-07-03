@@ -131,7 +131,7 @@ if (argv.pgns) {
 
   console.log('export interface PGN {')
   console.log('  pgn: number')
-  console.log('  prio?: number')
+  console.log('  prio: number')
   console.log('  src?: number')
   console.log('  dst: number')
   console.log('  timestamp?: string')
@@ -263,9 +263,8 @@ if (argv.pgns) {
     pgn.Fields.forEach((field: Field, idx: number) => {
       if (
         pgn.RepeatingFieldSet1StartField !== undefined &&
-          idx + 1 >= pgn.RepeatingFieldSet1StartField &&
-          idx + 1 <
-          pgn.RepeatingFieldSet1StartField + pgn.RepeatingFieldSet1Size!
+        idx + 1 >= pgn.RepeatingFieldSet1StartField &&
+        idx + 1 < pgn.RepeatingFieldSet1StartField + pgn.RepeatingFieldSet1Size!
       ) {
         return
       }
@@ -287,6 +286,12 @@ if (argv.pgns) {
     console.log(`export interface ${typeName} extends PGN {`)
     console.log(` fields: ${typeName}Fields`)
     console.log('}\n')
+
+    console.log(`export const ${typeName}Defaults = {`)
+    console.log(`  pgn: ${pgn.PGN},`)
+    console.log(`  dst: 255,`)
+    console.log(`  prio: ${pgn.Priority !== undefined ? pgn.Priority : 3}`)
+    console.log('}')
   }
 }
 

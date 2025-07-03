@@ -33,37 +33,44 @@ export const mapCamelCaseKeys = (pgn: PGN) => {
     throw Error(`can't find matching pgn`)
   }
 
-  const res: any = {
-    pgn: pgn.pgn,
-    dst: pgn.dst,
-    prio: pgn.prio,
-    src: pgn.src,
-    timestamp: pgn.timestamp,
-    fields: {}
-  }
+  const res : any = pgn //copy??
 
+  if ( pgn.fields !== undefined && res.fields === undefined ) {
+    res.fields = {}
+  }
+  
   const repeatingSize = def.RepeatingFieldSet1Size || 0
 
   for (let i = 0; i < def.Fields.length - repeatingSize; i++) {
     const field = def.Fields[i]
-    const value = (pgn.fields as any)[field.Id]
+    const value = pgn.fields !== undefined ? (pgn.fields as any)[field.Id] :
+          (pgn as any)[field.Id]
 
     if (value !== undefined) {
-      res.fields[field.Name] = value
+      if ( pgn.fields !== undefined ) {
+        res.fields[field.Name] = value
+      } else {
+        res[field.Name] = value
+      }
     }
   }
 
-  const list = (pgn.fields as any).list
+  const list = pgn.fields !== undefined ? (pgn.fields as any).list
+        : (pgn as any).list
   if (repeatingSize > 0 && list !== undefined && list.length > 0) {
     const repeating: Field[] = (def.Fields as any).slice(
       def.Fields.length - repeatingSize
     )
 
-    res.fields.list = []
+    const dest: any = pgn.fields !== undefined ? res.fields : res
+
+    if ( dest.list === undefined ) {
+      dest.list = []
+    }
 
     list.forEach((item: any) => {
       const copy: { [key: string]: any } = {}
-      res.fields.list.push(copy)
+      dest.list.push(copy)
       repeating.forEach((field) => {
         const value = item[field.Id]
 
@@ -93,7 +100,8 @@ export const findMatchingDefinition = (pgn: PGN): Definition => {
   for (let i = 0; i < def.Fields.length - repeatingSize; i++) {
     const field = def.Fields[i]
     const hasMatch = field.Match !== undefined
-    let value = (pgn.fields as any)[field.Id]
+    let value = pgn.fields !== undefined ?  (pgn.fields as any)[field.Id]
+        : (pgn as any)[field.Id]
 
     if (hasMatch) {
       const num = getNumericValue(field, value)

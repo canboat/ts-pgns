@@ -249,6 +249,11 @@ if (argv.pgns) {
     let typeName = `PGN_${pgn.PGN}`
 
     if (isMulti) {
+      if (pgn.Fields.find((f) => f.Match !== undefined)) {
+        typeName = `${typeName}_${camelCase(pgn.Id, { pascalCase: true })}`
+      }
+
+      /*
       pgn.Fields.forEach((field: Field) => {
         if (field.Match && field.LookupEnumeration !== 'INDUSTRY_CODE') {
           const desc = field.Description
@@ -256,7 +261,8 @@ if (argv.pgns) {
             : field.Match
           typeName = typeName + `_${desc}`
         }
-      })
+        })
+      */
     }
 
     console.log(`export interface ${typeName}Fields extends PGNFields {`)

@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import {
-  PGN_65305_Simrad_SendMode,
-  PGN_65305_Simrad_SendModeDefaults,
+  PGN_65305_SimnetDeviceModeRequest,
+  PGN_65305_SimnetDeviceModeRequestDefaults,
   SimnetDeviceModel,
   SimnetDeviceReport,
   ManufacturerCode,
@@ -22,8 +22,8 @@ const obj: any = {
   }
 }
 
-const obj2: PGN_65305_Simrad_SendMode = {
-  ...PGN_65305_Simrad_SendModeDefaults,
+const obj2: PGN_65305_SimnetDeviceModeRequest = {
+  ...PGN_65305_SimnetDeviceModeRequestDefaults,
   fields: {
     manufacturerCode: ManufacturerCode.BepMarine,
     industryCode: IndustryCode.Marine,
@@ -36,7 +36,7 @@ const obj2: PGN_65305_Simrad_SendMode = {
 tryIt(obj)
 tryIt(obj2)
 
-function tryIt(pgn: PGN_65305_Simrad_SendMode) {
+function tryIt(pgn: PGN_65305_SimnetDeviceModeRequest) {
   if (pgn.fields.manufacturerCode === ManufacturerCode.BepMarine) {
     console.log(pgn.fields.manufacturerCode)
   }

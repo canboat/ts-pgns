@@ -100,7 +100,7 @@ export const PGN_60160Defaults = {
   Explanation: ISO 11783 defines this group function PGN as part of the Transport Protocol method used for transmitting messages that have 9 or more data bytes. This PGN's role in the transport process is to prepare the receiver for the fact that this sender wants to transmit a long message. The receiver will respond with CTS.
   Match: Group Function Code == RTS
 */
-export interface PGN_60416_RtsFields extends PGNFields {
+export interface PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendFields extends PGNFields {
   groupFunctionCode?: enums.IsoCommand|number
   messageSize?: N2K_Number
   packets?: N2K_Number
@@ -108,11 +108,11 @@ export interface PGN_60416_RtsFields extends PGNFields {
   pgn?: N2K_Pgn
 }
 
-export interface PGN_60416_Rts extends PGN {
- fields: PGN_60416_RtsFields
+export interface PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend extends PGN {
+ fields: PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendFields
 }
 
-export const PGN_60416_RtsDefaults = {
+export const PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendDefaults = {
   pgn: 60416,
   dst: 255,
   prio: 3
@@ -123,7 +123,7 @@ export const PGN_60416_RtsDefaults = {
   Explanation: ISO 11783 defines this group function PGN as part of the Transport Protocol method used for transmitting messages that have 9 or more data bytes. This PGN's role in the transport process is to signal to the sender that the receive is ready to receive a number of frames.
   Match: Group Function Code == CTS
 */
-export interface PGN_60416_CtsFields extends PGNFields {
+export interface PGN_60416_IsoTransportProtocolConnectionManagementClearToSendFields extends PGNFields {
   groupFunctionCode?: enums.IsoCommand|number
   maxPackets?: N2K_Number
   nextSid?: N2K_Number
@@ -131,11 +131,11 @@ export interface PGN_60416_CtsFields extends PGNFields {
   pgn?: N2K_Pgn
 }
 
-export interface PGN_60416_Cts extends PGN {
- fields: PGN_60416_CtsFields
+export interface PGN_60416_IsoTransportProtocolConnectionManagementClearToSend extends PGN {
+ fields: PGN_60416_IsoTransportProtocolConnectionManagementClearToSendFields
 }
 
-export const PGN_60416_CtsDefaults = {
+export const PGN_60416_IsoTransportProtocolConnectionManagementClearToSendDefaults = {
   pgn: 60416,
   dst: 255,
   prio: 3
@@ -146,7 +146,7 @@ export const PGN_60416_CtsDefaults = {
   Explanation: ISO 11783 defines this group function PGN as part of the Transport Protocol method used for transmitting messages that have 9 or more data bytes. This PGN's role in the transport process is to mark the end of the message.
   Match: Group Function Code == EOM
 */
-export interface PGN_60416_EomFields extends PGNFields {
+export interface PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageFields extends PGNFields {
   groupFunctionCode?: enums.IsoCommand|number
   totalMessageSize?: N2K_Number
   totalNumberOfFramesReceived?: N2K_Number
@@ -154,11 +154,11 @@ export interface PGN_60416_EomFields extends PGNFields {
   pgn?: N2K_Pgn
 }
 
-export interface PGN_60416_Eom extends PGN {
- fields: PGN_60416_EomFields
+export interface PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessage extends PGN {
+ fields: PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageFields
 }
 
-export const PGN_60416_EomDefaults = {
+export const PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageDefaults = {
   pgn: 60416,
   dst: 255,
   prio: 3
@@ -169,7 +169,7 @@ export const PGN_60416_EomDefaults = {
   Explanation: ISO 11783 defines this group function PGN as part of the Transport Protocol method used for transmitting messages that have 9 or more data bytes. This PGN's role in the transport process is to announce a broadcast of a long message spanning multiple frames.
   Match: Group Function Code == BAM
 */
-export interface PGN_60416_BamFields extends PGNFields {
+export interface PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceFields extends PGNFields {
   groupFunctionCode?: enums.IsoCommand|number
   messageSize?: N2K_Number
   packets?: N2K_Number
@@ -177,11 +177,11 @@ export interface PGN_60416_BamFields extends PGNFields {
   pgn?: N2K_Pgn
 }
 
-export interface PGN_60416_Bam extends PGN {
- fields: PGN_60416_BamFields
+export interface PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce extends PGN {
+ fields: PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceFields
 }
 
-export const PGN_60416_BamDefaults = {
+export const PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceDefaults = {
   pgn: 60416,
   dst: 255,
   prio: 3
@@ -192,18 +192,18 @@ export const PGN_60416_BamDefaults = {
   Explanation: ISO 11783 defines this group function PGN as part of the Transport Protocol method used for transmitting messages that have 9 or more data bytes. This PGN's role in the transport process is to announce an abort of a long message spanning multiple frames.
   Match: Group Function Code == Abort
 */
-export interface PGN_60416_AbortFields extends PGNFields {
+export interface PGN_60416_IsoTransportProtocolConnectionManagementAbortFields extends PGNFields {
   groupFunctionCode?: enums.IsoCommand|number
   reason?: N2K_Binary
   reserved?: number
   pgn?: N2K_Pgn
 }
 
-export interface PGN_60416_Abort extends PGN {
- fields: PGN_60416_AbortFields
+export interface PGN_60416_IsoTransportProtocolConnectionManagementAbort extends PGN {
+ fields: PGN_60416_IsoTransportProtocolConnectionManagementAbortFields
 }
 
-export const PGN_60416_AbortDefaults = {
+export const PGN_60416_IsoTransportProtocolConnectionManagementAbortDefaults = {
   pgn: 60416,
   dst: 255,
   prio: 3
@@ -242,7 +242,7 @@ export const PGN_60928Defaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Wireless Keypad Light Control
 */
-export interface PGN_61184_Raymarine_WirelessKeypadLightControlFields extends PGNFields {
+export interface PGN_61184_SeatalkWirelessKeypadLightControlFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -253,11 +253,11 @@ export interface PGN_61184_Raymarine_WirelessKeypadLightControlFields extends PG
   reserved8?: number
 }
 
-export interface PGN_61184_Raymarine_WirelessKeypadLightControl extends PGN {
- fields: PGN_61184_Raymarine_WirelessKeypadLightControlFields
+export interface PGN_61184_SeatalkWirelessKeypadLightControl extends PGN {
+ fields: PGN_61184_SeatalkWirelessKeypadLightControlFields
 }
 
-export const PGN_61184_Raymarine_WirelessKeypadLightControlDefaults = {
+export const PGN_61184_SeatalkWirelessKeypadLightControlDefaults = {
   pgn: 61184,
   dst: 255,
   prio: 3
@@ -268,7 +268,7 @@ export const PGN_61184_Raymarine_WirelessKeypadLightControlDefaults = {
   Match: Manufacturer Code == Raymarine
   Match: Industry Code == Marine Industry
 */
-export interface PGN_61184_RaymarineFields extends PGNFields {
+export interface PGN_61184_SeatalkWirelessKeypadControlFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -278,11 +278,11 @@ export interface PGN_61184_RaymarineFields extends PGNFields {
   reserved7?: number
 }
 
-export interface PGN_61184_Raymarine extends PGN {
- fields: PGN_61184_RaymarineFields
+export interface PGN_61184_SeatalkWirelessKeypadControl extends PGN {
+ fields: PGN_61184_SeatalkWirelessKeypadControlFields
 }
 
-export const PGN_61184_RaymarineDefaults = {
+export const PGN_61184_SeatalkWirelessKeypadControlDefaults = {
   pgn: 61184,
   dst: 255,
   prio: 3
@@ -293,7 +293,7 @@ export const PGN_61184_RaymarineDefaults = {
   Match: Manufacturer Code == Victron Energy
   Match: Industry Code == Marine Industry
 */
-export interface PGN_61184_VictronEnergyFields extends PGNFields {
+export interface PGN_61184_VictronBatteryRegisterFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -301,11 +301,11 @@ export interface PGN_61184_VictronEnergyFields extends PGNFields {
   payload?: N2K_Number
 }
 
-export interface PGN_61184_VictronEnergy extends PGN {
- fields: PGN_61184_VictronEnergyFields
+export interface PGN_61184_VictronBatteryRegister extends PGN {
+ fields: PGN_61184_VictronBatteryRegisterFields
 }
 
-export const PGN_61184_VictronEnergyDefaults = {
+export const PGN_61184_VictronBatteryRegisterDefaults = {
   pgn: 61184,
   dst: 255,
   prio: 3
@@ -968,7 +968,7 @@ export const PGN_65284Defaults = {
   Match: Manufacturer Code == Airmar
   Match: Industry Code == Marine Industry
 */
-export interface PGN_65285_AirmarFields extends PGNFields {
+export interface PGN_65285_AirmarBootStateAcknowledgmentFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -976,11 +976,11 @@ export interface PGN_65285_AirmarFields extends PGNFields {
   reserved5?: number
 }
 
-export interface PGN_65285_Airmar extends PGN {
- fields: PGN_65285_AirmarFields
+export interface PGN_65285_AirmarBootStateAcknowledgment extends PGN {
+ fields: PGN_65285_AirmarBootStateAcknowledgmentFields
 }
 
-export const PGN_65285_AirmarDefaults = {
+export const PGN_65285_AirmarBootStateAcknowledgmentDefaults = {
   pgn: 65285,
   dst: 255,
   prio: 5
@@ -991,7 +991,7 @@ export const PGN_65285_AirmarDefaults = {
   Match: Manufacturer Code == Lowrance
   Match: Industry Code == Marine Industry
 */
-export interface PGN_65285_LowranceFields extends PGNFields {
+export interface PGN_65285_LowranceTemperatureFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -1000,11 +1000,11 @@ export interface PGN_65285_LowranceFields extends PGNFields {
   reserved6?: number
 }
 
-export interface PGN_65285_Lowrance extends PGN {
- fields: PGN_65285_LowranceFields
+export interface PGN_65285_LowranceTemperature extends PGN {
+ fields: PGN_65285_LowranceTemperatureFields
 }
 
-export const PGN_65285_LowranceDefaults = {
+export const PGN_65285_LowranceTemperatureDefaults = {
   pgn: 65285,
   dst: 255,
   prio: 3
@@ -1015,7 +1015,7 @@ export const PGN_65285_LowranceDefaults = {
   Match: Manufacturer Code == Chetco
   Match: Industry Code == Marine Industry
 */
-export interface PGN_65286_ChetcoFields extends PGNFields {
+export interface PGN_65286_ChetcoDimmerFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -1027,11 +1027,11 @@ export interface PGN_65286_ChetcoFields extends PGNFields {
   control?: N2K_Number
 }
 
-export interface PGN_65286_Chetco extends PGN {
- fields: PGN_65286_ChetcoFields
+export interface PGN_65286_ChetcoDimmer extends PGN {
+ fields: PGN_65286_ChetcoDimmerFields
 }
 
-export const PGN_65286_ChetcoDefaults = {
+export const PGN_65286_ChetcoDimmerDefaults = {
   pgn: 65286,
   dst: 255,
   prio: 3
@@ -1042,18 +1042,18 @@ export const PGN_65286_ChetcoDefaults = {
   Match: Manufacturer Code == Airmar
   Match: Industry Code == Marine Industry
 */
-export interface PGN_65286_AirmarFields extends PGNFields {
+export interface PGN_65286_AirmarBootStateRequestFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
   reserved4?: number
 }
 
-export interface PGN_65286_Airmar extends PGN {
- fields: PGN_65286_AirmarFields
+export interface PGN_65286_AirmarBootStateRequest extends PGN {
+ fields: PGN_65286_AirmarBootStateRequestFields
 }
 
-export const PGN_65286_AirmarDefaults = {
+export const PGN_65286_AirmarBootStateRequestDefaults = {
   pgn: 65286,
   dst: 255,
   prio: 3
@@ -1064,7 +1064,7 @@ export const PGN_65286_AirmarDefaults = {
   Match: Manufacturer Code == Airmar
   Match: Industry Code == Marine Industry
 */
-export interface PGN_65287_AirmarFields extends PGNFields {
+export interface PGN_65287_AirmarAccessLevelFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -1074,11 +1074,11 @@ export interface PGN_65287_AirmarFields extends PGNFields {
   accessSeedKey?: N2K_Number
 }
 
-export interface PGN_65287_Airmar extends PGN {
- fields: PGN_65287_AirmarFields
+export interface PGN_65287_AirmarAccessLevel extends PGN {
+ fields: PGN_65287_AirmarAccessLevelFields
 }
 
-export const PGN_65287_AirmarDefaults = {
+export const PGN_65287_AirmarAccessLevelDefaults = {
   pgn: 65287,
   dst: 255,
   prio: 3
@@ -1089,18 +1089,18 @@ export const PGN_65287_AirmarDefaults = {
   Match: Manufacturer Code == Simrad
   Match: Industry Code == Marine Industry
 */
-export interface PGN_65287_SimradFields extends PGNFields {
+export interface PGN_65287_SimnetConfigureTemperatureSensorFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
   reserved4?: number
 }
 
-export interface PGN_65287_Simrad extends PGN {
- fields: PGN_65287_SimradFields
+export interface PGN_65287_SimnetConfigureTemperatureSensor extends PGN {
+ fields: PGN_65287_SimnetConfigureTemperatureSensorFields
 }
 
-export const PGN_65287_SimradDefaults = {
+export const PGN_65287_SimnetConfigureTemperatureSensorDefaults = {
   pgn: 65287,
   dst: 255,
   prio: 3
@@ -1195,18 +1195,18 @@ export const PGN_65292Defaults = {
   Match: Manufacturer Code == Simrad
   Match: Industry Code == Marine Industry
 */
-export interface PGN_65293_SimradFields extends PGNFields {
+export interface PGN_65293_SimnetLgc2000ConfigurationFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
   reserved4?: number
 }
 
-export interface PGN_65293_Simrad extends PGN {
- fields: PGN_65293_SimradFields
+export interface PGN_65293_SimnetLgc2000Configuration extends PGN {
+ fields: PGN_65293_SimnetLgc2000ConfigurationFields
 }
 
-export const PGN_65293_SimradDefaults = {
+export const PGN_65293_SimnetLgc2000ConfigurationDefaults = {
   pgn: 65293,
   dst: 255,
   prio: 3
@@ -1217,7 +1217,7 @@ export const PGN_65293_SimradDefaults = {
   Match: Manufacturer Code == Diverse Yacht Services
   Match: Industry Code == Marine Industry
 */
-export interface PGN_65293_DiverseYachtServicesFields extends PGNFields {
+export interface PGN_65293_DiverseYachtServicesLoadCellFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -1226,11 +1226,11 @@ export interface PGN_65293_DiverseYachtServicesFields extends PGNFields {
   loadCell?: N2K_Number
 }
 
-export interface PGN_65293_DiverseYachtServices extends PGN {
- fields: PGN_65293_DiverseYachtServicesFields
+export interface PGN_65293_DiverseYachtServicesLoadCell extends PGN {
+ fields: PGN_65293_DiverseYachtServicesLoadCellFields
 }
 
-export const PGN_65293_DiverseYachtServicesDefaults = {
+export const PGN_65293_DiverseYachtServicesLoadCellDefaults = {
   pgn: 65293,
   dst: 255,
   prio: 2
@@ -1268,7 +1268,7 @@ export const PGN_65302Defaults = {
   Match: Industry Code == Marine Industry
   Match: Report == Status
 */
-export interface PGN_65305_Simrad_StatusFields extends PGNFields {
+export interface PGN_65305_SimnetDeviceStatusFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -1278,11 +1278,11 @@ export interface PGN_65305_Simrad_StatusFields extends PGNFields {
   spare7?: number
 }
 
-export interface PGN_65305_Simrad_Status extends PGN {
- fields: PGN_65305_Simrad_StatusFields
+export interface PGN_65305_SimnetDeviceStatus extends PGN {
+ fields: PGN_65305_SimnetDeviceStatusFields
 }
 
-export const PGN_65305_Simrad_StatusDefaults = {
+export const PGN_65305_SimnetDeviceStatusDefaults = {
   pgn: 65305,
   dst: 255,
   prio: 3
@@ -1295,7 +1295,7 @@ export const PGN_65305_Simrad_StatusDefaults = {
   Match: Industry Code == Marine Industry
   Match: Report == Send Status
 */
-export interface PGN_65305_Simrad_SendStatusFields extends PGNFields {
+export interface PGN_65305_SimnetDeviceStatusRequestFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -1304,11 +1304,11 @@ export interface PGN_65305_Simrad_SendStatusFields extends PGNFields {
   spare6?: number
 }
 
-export interface PGN_65305_Simrad_SendStatus extends PGN {
- fields: PGN_65305_Simrad_SendStatusFields
+export interface PGN_65305_SimnetDeviceStatusRequest extends PGN {
+ fields: PGN_65305_SimnetDeviceStatusRequestFields
 }
 
-export const PGN_65305_Simrad_SendStatusDefaults = {
+export const PGN_65305_SimnetDeviceStatusRequestDefaults = {
   pgn: 65305,
   dst: 255,
   prio: 3
@@ -1321,7 +1321,7 @@ export const PGN_65305_Simrad_SendStatusDefaults = {
   Match: Industry Code == Marine Industry
   Match: Report == Mode
 */
-export interface PGN_65305_Simrad_ModeFields extends PGNFields {
+export interface PGN_65305_SimnetPilotModeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -1331,11 +1331,11 @@ export interface PGN_65305_Simrad_ModeFields extends PGNFields {
   spare7?: number
 }
 
-export interface PGN_65305_Simrad_Mode extends PGN {
- fields: PGN_65305_Simrad_ModeFields
+export interface PGN_65305_SimnetPilotMode extends PGN {
+ fields: PGN_65305_SimnetPilotModeFields
 }
 
-export const PGN_65305_Simrad_ModeDefaults = {
+export const PGN_65305_SimnetPilotModeDefaults = {
   pgn: 65305,
   dst: 255,
   prio: 3
@@ -1348,7 +1348,7 @@ export const PGN_65305_Simrad_ModeDefaults = {
   Match: Industry Code == Marine Industry
   Match: Report == Send Mode
 */
-export interface PGN_65305_Simrad_SendModeFields extends PGNFields {
+export interface PGN_65305_SimnetDeviceModeRequestFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -1357,11 +1357,11 @@ export interface PGN_65305_Simrad_SendModeFields extends PGNFields {
   spare6?: number
 }
 
-export interface PGN_65305_Simrad_SendMode extends PGN {
- fields: PGN_65305_Simrad_SendModeFields
+export interface PGN_65305_SimnetDeviceModeRequest extends PGN {
+ fields: PGN_65305_SimnetDeviceModeRequestFields
 }
 
-export const PGN_65305_Simrad_SendModeDefaults = {
+export const PGN_65305_SimnetDeviceModeRequestDefaults = {
   pgn: 65305,
   dst: 255,
   prio: 3
@@ -1374,7 +1374,7 @@ export const PGN_65305_Simrad_SendModeDefaults = {
   Match: Industry Code == Marine Industry
   Match: Report == Sailing Processor Status
 */
-export interface PGN_65305_Simrad_SailingProcessorStatusFields extends PGNFields {
+export interface PGN_65305_SimnetSailingProcessorStatusFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -1383,11 +1383,11 @@ export interface PGN_65305_Simrad_SailingProcessorStatusFields extends PGNFields
   data?: N2K_Binary
 }
 
-export interface PGN_65305_Simrad_SailingProcessorStatus extends PGN {
- fields: PGN_65305_Simrad_SailingProcessorStatusFields
+export interface PGN_65305_SimnetSailingProcessorStatus extends PGN {
+ fields: PGN_65305_SimnetSailingProcessorStatusFields
 }
 
-export const PGN_65305_Simrad_SailingProcessorStatusDefaults = {
+export const PGN_65305_SimnetSailingProcessorStatusDefaults = {
   pgn: 65305,
   dst: 255,
   prio: 3
@@ -1789,7 +1789,7 @@ export const PGN_65480Defaults = {
   Description: NMEA - Request group function
   Explanation: This is the Request variation of this group function PGN. The receiver shall respond by sending the requested PGN, at the desired transmission interval.
 */
-export interface PGN_126208Fields extends PGNFields {
+export interface PGN_126208_NmeaRequestGroupFunctionFields extends PGNFields {
   functionCode?: enums.GroupFunction|number
   pgn?: N2K_Pgn
   transmissionInterval?: N2K_Duration
@@ -1801,11 +1801,11 @@ export interface PGN_126208Fields extends PGNFields {
   }[]
 }
 
-export interface PGN_126208 extends PGN {
- fields: PGN_126208Fields
+export interface PGN_126208_NmeaRequestGroupFunction extends PGN {
+ fields: PGN_126208_NmeaRequestGroupFunctionFields
 }
 
-export const PGN_126208Defaults = {
+export const PGN_126208_NmeaRequestGroupFunctionDefaults = {
   pgn: 126208,
   dst: 255,
   prio: 3
@@ -1816,7 +1816,7 @@ export const PGN_126208Defaults = {
   Explanation: This is the Command variation of this group function PGN. This instructs the receiver to modify its internal state for the passed parameters. The receiver shall reply with an Acknowledge reply.
   Match: Function Code == Command
 */
-export interface PGN_126208_CommandFields extends PGNFields {
+export interface PGN_126208_NmeaCommandGroupFunctionFields extends PGNFields {
   functionCode?: enums.GroupFunction|number
   pgn?: N2K_Pgn
   priority?: enums.Priority|number
@@ -1828,11 +1828,11 @@ export interface PGN_126208_CommandFields extends PGNFields {
   }[]
 }
 
-export interface PGN_126208_Command extends PGN {
- fields: PGN_126208_CommandFields
+export interface PGN_126208_NmeaCommandGroupFunction extends PGN {
+ fields: PGN_126208_NmeaCommandGroupFunctionFields
 }
 
-export const PGN_126208_CommandDefaults = {
+export const PGN_126208_NmeaCommandGroupFunctionDefaults = {
   pgn: 126208,
   dst: 255,
   prio: 3
@@ -1843,7 +1843,7 @@ export const PGN_126208_CommandDefaults = {
   Explanation: This is the Acknowledge variation of this group function PGN. When a device receives a Command, it will attempt to perform the command (change its parameters) and reply positively or negatively.
   Match: Function Code == Acknowledge
 */
-export interface PGN_126208_AcknowledgeFields extends PGNFields {
+export interface PGN_126208_NmeaAcknowledgeGroupFunctionFields extends PGNFields {
   functionCode?: enums.GroupFunction|number
   pgn?: N2K_Pgn
   pgnErrorCode?: enums.PgnErrorCode|number
@@ -1854,11 +1854,11 @@ export interface PGN_126208_AcknowledgeFields extends PGNFields {
   }[]
 }
 
-export interface PGN_126208_Acknowledge extends PGN {
- fields: PGN_126208_AcknowledgeFields
+export interface PGN_126208_NmeaAcknowledgeGroupFunction extends PGN {
+ fields: PGN_126208_NmeaAcknowledgeGroupFunctionFields
 }
 
-export const PGN_126208_AcknowledgeDefaults = {
+export const PGN_126208_NmeaAcknowledgeGroupFunctionDefaults = {
   pgn: 126208,
   dst: 255,
   prio: 3
@@ -1869,7 +1869,7 @@ export const PGN_126208_AcknowledgeDefaults = {
   Explanation: This is the Read Fields variation of this group function PGN. The receiver shall respond by sending a Read Reply variation of this PGN, containing the desired values. This PGN is special as it contains two sets of repeating fields, and the fields that contain the information how many repetitions there are do not have a fixed offset in the PGN as the fields 3 to 5 are only present if field 2 is for a proprietary PGN
   Match: Function Code == Read Fields
 */
-export interface PGN_126208_ReadFieldsFields extends PGNFields {
+export interface PGN_126208_NmeaReadFieldsGroupFunctionFields extends PGNFields {
   functionCode?: enums.GroupFunction|number
   pgn?: N2K_Pgn
   manufacturerCode?: enums.ManufacturerCode|number
@@ -1886,11 +1886,11 @@ export interface PGN_126208_ReadFieldsFields extends PGNFields {
   list2: any[]
 }
 
-export interface PGN_126208_ReadFields extends PGN {
- fields: PGN_126208_ReadFieldsFields
+export interface PGN_126208_NmeaReadFieldsGroupFunction extends PGN {
+ fields: PGN_126208_NmeaReadFieldsGroupFunctionFields
 }
 
-export const PGN_126208_ReadFieldsDefaults = {
+export const PGN_126208_NmeaReadFieldsGroupFunctionDefaults = {
   pgn: 126208,
   dst: 255,
   prio: 3
@@ -1901,7 +1901,7 @@ export const PGN_126208_ReadFieldsDefaults = {
   Explanation: This is the Read Fields Reply variation of this group function PGN. The receiver is responding to a Read Fields request. This PGN is special as it contains two sets of repeating fields, and the fields that contain the information how many repetitions there are do not have a fixed offset in the PGN as the fields 3 to 5 are only present if field 2 is for a proprietary PGN
   Match: Function Code == Read Fields Reply
 */
-export interface PGN_126208_ReadFieldsReplyFields extends PGNFields {
+export interface PGN_126208_NmeaReadFieldsReplyGroupFunctionFields extends PGNFields {
   functionCode?: enums.GroupFunction|number
   pgn?: N2K_Pgn
   manufacturerCode?: enums.ManufacturerCode|number
@@ -1919,11 +1919,11 @@ export interface PGN_126208_ReadFieldsReplyFields extends PGNFields {
   list2: any[]
 }
 
-export interface PGN_126208_ReadFieldsReply extends PGN {
- fields: PGN_126208_ReadFieldsReplyFields
+export interface PGN_126208_NmeaReadFieldsReplyGroupFunction extends PGN {
+ fields: PGN_126208_NmeaReadFieldsReplyGroupFunctionFields
 }
 
-export const PGN_126208_ReadFieldsReplyDefaults = {
+export const PGN_126208_NmeaReadFieldsReplyGroupFunctionDefaults = {
   pgn: 126208,
   dst: 255,
   prio: 3
@@ -1934,7 +1934,7 @@ export const PGN_126208_ReadFieldsReplyDefaults = {
   Explanation: This is the Write Fields variation of this group function PGN. The receiver shall modify internal state and reply with a Write Fields Reply message. This PGN is special as it contains two sets of repeating fields, and the fields that contain the information how many repetitions there are do not have a fixed offset in the PGN as the fields 3 to 5 are only present if field 2 is for a proprietary PGN
   Match: Function Code == Write Fields
 */
-export interface PGN_126208_WriteFieldsFields extends PGNFields {
+export interface PGN_126208_NmeaWriteFieldsGroupFunctionFields extends PGNFields {
   functionCode?: enums.GroupFunction|number
   pgn?: N2K_Pgn
   manufacturerCode?: enums.ManufacturerCode|number
@@ -1952,11 +1952,11 @@ export interface PGN_126208_WriteFieldsFields extends PGNFields {
   list2: any[]
 }
 
-export interface PGN_126208_WriteFields extends PGN {
- fields: PGN_126208_WriteFieldsFields
+export interface PGN_126208_NmeaWriteFieldsGroupFunction extends PGN {
+ fields: PGN_126208_NmeaWriteFieldsGroupFunctionFields
 }
 
-export const PGN_126208_WriteFieldsDefaults = {
+export const PGN_126208_NmeaWriteFieldsGroupFunctionDefaults = {
   pgn: 126208,
   dst: 255,
   prio: 3
@@ -1967,7 +1967,7 @@ export const PGN_126208_WriteFieldsDefaults = {
   Explanation: This is the Write Fields Reply variation of this group function PGN. The receiver is responding to a Write Fields request. This PGN is special as it contains two sets of repeating fields, and the fields that contain the information how many repetitions there are do not have a fixed offset in the PGN as the fields 3 to 5 are only present if field 2 is for a proprietary PGN
   Match: Function Code == Write Fields Reply
 */
-export interface PGN_126208_WriteFieldsReplyFields extends PGNFields {
+export interface PGN_126208_NmeaWriteFieldsReplyGroupFunctionFields extends PGNFields {
   functionCode?: enums.GroupFunction|number
   pgn?: N2K_Pgn
   manufacturerCode?: enums.ManufacturerCode|number
@@ -1985,11 +1985,11 @@ export interface PGN_126208_WriteFieldsReplyFields extends PGNFields {
   list2: any[]
 }
 
-export interface PGN_126208_WriteFieldsReply extends PGN {
- fields: PGN_126208_WriteFieldsReplyFields
+export interface PGN_126208_NmeaWriteFieldsReplyGroupFunction extends PGN {
+ fields: PGN_126208_NmeaWriteFieldsReplyGroupFunctionFields
 }
 
-export const PGN_126208_WriteFieldsReplyDefaults = {
+export const PGN_126208_NmeaWriteFieldsReplyGroupFunctionDefaults = {
   pgn: 126208,
   dst: 255,
   prio: 3
@@ -2022,7 +2022,7 @@ export const PGN_126464Defaults = {
   Match: Proprietary ID == 0x81f0
   Match: command == 0x84
 */
-export interface PGN_126720_Raymarine__0X81F0__0X84Fields extends PGNFields {
+export interface PGN_126720_Seatalk1PilotModeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2035,11 +2035,11 @@ export interface PGN_126720_Raymarine__0X81F0__0X84Fields extends PGNFields {
   unknown2?: N2K_Binary
 }
 
-export interface PGN_126720_Raymarine__0X81F0__0X84 extends PGN {
- fields: PGN_126720_Raymarine__0X81F0__0X84Fields
+export interface PGN_126720_Seatalk1PilotMode extends PGN {
+ fields: PGN_126720_Seatalk1PilotModeFields
 }
 
-export const PGN_126720_Raymarine__0X81F0__0X84Defaults = {
+export const PGN_126720_Seatalk1PilotModeDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2051,7 +2051,7 @@ export const PGN_126720_Raymarine__0X81F0__0X84Defaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Media Control
 */
-export interface PGN_126720_FusionElectronics_MediaControlFields extends PGNFields {
+export interface PGN_126720_FusionMediaControlFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2061,11 +2061,11 @@ export interface PGN_126720_FusionElectronics_MediaControlFields extends PGNFiel
   command?: enums.FusionCommand|number
 }
 
-export interface PGN_126720_FusionElectronics_MediaControl extends PGN {
- fields: PGN_126720_FusionElectronics_MediaControlFields
+export interface PGN_126720_FusionMediaControl extends PGN {
+ fields: PGN_126720_FusionMediaControlFields
 }
 
-export const PGN_126720_FusionElectronics_MediaControlDefaults = {
+export const PGN_126720_FusionMediaControlDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2077,7 +2077,7 @@ export const PGN_126720_FusionElectronics_MediaControlDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Sirius Control
 */
-export interface PGN_126720_FusionElectronics_SiriusControlFields extends PGNFields {
+export interface PGN_126720_FusionSiriusControlFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2087,11 +2087,11 @@ export interface PGN_126720_FusionElectronics_SiriusControlFields extends PGNFie
   command?: enums.FusionSiriusCommand|number
 }
 
-export interface PGN_126720_FusionElectronics_SiriusControl extends PGN {
- fields: PGN_126720_FusionElectronics_SiriusControlFields
+export interface PGN_126720_FusionSiriusControl extends PGN {
+ fields: PGN_126720_FusionSiriusControlFields
 }
 
-export const PGN_126720_FusionElectronics_SiriusControlDefaults = {
+export const PGN_126720_FusionSiriusControlDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2103,7 +2103,7 @@ export const PGN_126720_FusionElectronics_SiriusControlDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Request Status
 */
-export interface PGN_126720_FusionElectronics_RequestStatusFields extends PGNFields {
+export interface PGN_126720_FusionRequestStatusFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2111,11 +2111,11 @@ export interface PGN_126720_FusionElectronics_RequestStatusFields extends PGNFie
   unknown?: N2K_Number
 }
 
-export interface PGN_126720_FusionElectronics_RequestStatus extends PGN {
- fields: PGN_126720_FusionElectronics_RequestStatusFields
+export interface PGN_126720_FusionRequestStatus extends PGN {
+ fields: PGN_126720_FusionRequestStatusFields
 }
 
-export const PGN_126720_FusionElectronics_RequestStatusDefaults = {
+export const PGN_126720_FusionRequestStatusDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2127,7 +2127,7 @@ export const PGN_126720_FusionElectronics_RequestStatusDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Source
 */
-export interface PGN_126720_FusionElectronics_SourceFields extends PGNFields {
+export interface PGN_126720_FusionSetSourceFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2136,11 +2136,11 @@ export interface PGN_126720_FusionElectronics_SourceFields extends PGNFields {
   sourceId?: N2K_Number
 }
 
-export interface PGN_126720_FusionElectronics_Source extends PGN {
- fields: PGN_126720_FusionElectronics_SourceFields
+export interface PGN_126720_FusionSetSource extends PGN {
+ fields: PGN_126720_FusionSetSourceFields
 }
 
-export const PGN_126720_FusionElectronics_SourceDefaults = {
+export const PGN_126720_FusionSetSourceDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2152,7 +2152,7 @@ export const PGN_126720_FusionElectronics_SourceDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == 23
 */
-export interface PGN_126720_FusionElectronics_23Fields extends PGNFields {
+export interface PGN_126720_FusionSetMuteFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2160,11 +2160,11 @@ export interface PGN_126720_FusionElectronics_23Fields extends PGNFields {
   command?: enums.FusionMuteCommand|number
 }
 
-export interface PGN_126720_FusionElectronics_23 extends PGN {
- fields: PGN_126720_FusionElectronics_23Fields
+export interface PGN_126720_FusionSetMute extends PGN {
+ fields: PGN_126720_FusionSetMuteFields
 }
 
-export const PGN_126720_FusionElectronics_23Defaults = {
+export const PGN_126720_FusionSetMuteDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2176,7 +2176,7 @@ export const PGN_126720_FusionElectronics_23Defaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Set Zone Volume
 */
-export interface PGN_126720_FusionElectronics_SetZoneVolumeFields extends PGNFields {
+export interface PGN_126720_FusionSetZoneVolumeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2186,11 +2186,11 @@ export interface PGN_126720_FusionElectronics_SetZoneVolumeFields extends PGNFie
   volume?: N2K_Number
 }
 
-export interface PGN_126720_FusionElectronics_SetZoneVolume extends PGN {
- fields: PGN_126720_FusionElectronics_SetZoneVolumeFields
+export interface PGN_126720_FusionSetZoneVolume extends PGN {
+ fields: PGN_126720_FusionSetZoneVolumeFields
 }
 
-export const PGN_126720_FusionElectronics_SetZoneVolumeDefaults = {
+export const PGN_126720_FusionSetZoneVolumeDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2202,7 +2202,7 @@ export const PGN_126720_FusionElectronics_SetZoneVolumeDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Set All Volumes
 */
-export interface PGN_126720_FusionElectronics_SetAllVolumesFields extends PGNFields {
+export interface PGN_126720_FusionSetAllVolumesFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2214,11 +2214,11 @@ export interface PGN_126720_FusionElectronics_SetAllVolumesFields extends PGNFie
   zone4?: N2K_Number
 }
 
-export interface PGN_126720_FusionElectronics_SetAllVolumes extends PGN {
- fields: PGN_126720_FusionElectronics_SetAllVolumesFields
+export interface PGN_126720_FusionSetAllVolumes extends PGN {
+ fields: PGN_126720_FusionSetAllVolumesFields
 }
 
-export const PGN_126720_FusionElectronics_SetAllVolumesDefaults = {
+export const PGN_126720_FusionSetAllVolumesDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2231,7 +2231,7 @@ export const PGN_126720_FusionElectronics_SetAllVolumesDefaults = {
   Match: Proprietary ID == 0x81f0
   Match: command == 0x86
 */
-export interface PGN_126720_Raymarine__0X81F0__0X86Fields extends PGNFields {
+export interface PGN_126720_Seatalk1KeystrokeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2243,11 +2243,11 @@ export interface PGN_126720_Raymarine__0X81F0__0X86Fields extends PGNFields {
   unknownData?: N2K_Binary
 }
 
-export interface PGN_126720_Raymarine__0X81F0__0X86 extends PGN {
- fields: PGN_126720_Raymarine__0X81F0__0X86Fields
+export interface PGN_126720_Seatalk1Keystroke extends PGN {
+ fields: PGN_126720_Seatalk1KeystrokeFields
 }
 
-export const PGN_126720_Raymarine__0X81F0__0X86Defaults = {
+export const PGN_126720_Seatalk1KeystrokeDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2260,7 +2260,7 @@ export const PGN_126720_Raymarine__0X81F0__0X86Defaults = {
   Match: Proprietary ID == 0x81f0
   Match: command == 0x90
 */
-export interface PGN_126720_Raymarine__0X81F0__0X90Fields extends PGNFields {
+export interface PGN_126720_Seatalk1DeviceIdentificationFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2270,11 +2270,11 @@ export interface PGN_126720_Raymarine__0X81F0__0X90Fields extends PGNFields {
   device?: enums.SeatalkDeviceId|number
 }
 
-export interface PGN_126720_Raymarine__0X81F0__0X90 extends PGN {
- fields: PGN_126720_Raymarine__0X81F0__0X90Fields
+export interface PGN_126720_Seatalk1DeviceIdentification extends PGN {
+ fields: PGN_126720_Seatalk1DeviceIdentificationFields
 }
 
-export const PGN_126720_Raymarine__0X81F0__0X90Defaults = {
+export const PGN_126720_Seatalk1DeviceIdentificationDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2286,7 +2286,7 @@ export const PGN_126720_Raymarine__0X81F0__0X90Defaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == 0x0c8c
 */
-export interface PGN_126720_Raymarine__0X0C8CFields extends PGNFields {
+export interface PGN_126720_Seatalk1DisplayBrightnessFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2298,11 +2298,11 @@ export interface PGN_126720_Raymarine__0X0C8CFields extends PGNFields {
   unknown2?: N2K_Binary
 }
 
-export interface PGN_126720_Raymarine__0X0C8C extends PGN {
- fields: PGN_126720_Raymarine__0X0C8CFields
+export interface PGN_126720_Seatalk1DisplayBrightness extends PGN {
+ fields: PGN_126720_Seatalk1DisplayBrightnessFields
 }
 
-export const PGN_126720_Raymarine__0X0C8CDefaults = {
+export const PGN_126720_Seatalk1DisplayBrightnessDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2315,7 +2315,7 @@ export const PGN_126720_Raymarine__0X0C8CDefaults = {
   Match: Proprietary ID == 0x0c8c
   Match: Command == Color
 */
-export interface PGN_126720_Raymarine__0X0C8C_ColorFields extends PGNFields {
+export interface PGN_126720_Seatalk1DisplayColorFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2327,11 +2327,11 @@ export interface PGN_126720_Raymarine__0X0C8C_ColorFields extends PGNFields {
   unknown2?: N2K_Binary
 }
 
-export interface PGN_126720_Raymarine__0X0C8C_Color extends PGN {
- fields: PGN_126720_Raymarine__0X0C8C_ColorFields
+export interface PGN_126720_Seatalk1DisplayColor extends PGN {
+ fields: PGN_126720_Seatalk1DisplayColorFields
 }
 
-export const PGN_126720_Raymarine__0X0C8C_ColorDefaults = {
+export const PGN_126720_Seatalk1DisplayColorDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2343,7 +2343,7 @@ export const PGN_126720_Raymarine__0X0C8C_ColorDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Attitude Offsets
 */
-export interface PGN_126720_Airmar_AttitudeOffsetsFields extends PGNFields {
+export interface PGN_126720_AirmarAttitudeOffsetFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2353,11 +2353,11 @@ export interface PGN_126720_Airmar_AttitudeOffsetsFields extends PGNFields {
   rollOffset?: N2K_Number
 }
 
-export interface PGN_126720_Airmar_AttitudeOffsets extends PGN {
- fields: PGN_126720_Airmar_AttitudeOffsetsFields
+export interface PGN_126720_AirmarAttitudeOffset extends PGN {
+ fields: PGN_126720_AirmarAttitudeOffsetFields
 }
 
-export const PGN_126720_Airmar_AttitudeOffsetsDefaults = {
+export const PGN_126720_AirmarAttitudeOffsetDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2369,7 +2369,7 @@ export const PGN_126720_Airmar_AttitudeOffsetsDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Calibrate Compass
 */
-export interface PGN_126720_Airmar_CalibrateCompassFields extends PGNFields {
+export interface PGN_126720_AirmarCalibrateCompassFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2388,11 +2388,11 @@ export interface PGN_126720_Airmar_CalibrateCompassFields extends PGNFields {
   compassRateGyroDamping?: N2K_Duration
 }
 
-export interface PGN_126720_Airmar_CalibrateCompass extends PGN {
- fields: PGN_126720_Airmar_CalibrateCompassFields
+export interface PGN_126720_AirmarCalibrateCompass extends PGN {
+ fields: PGN_126720_AirmarCalibrateCompassFields
 }
 
-export const PGN_126720_Airmar_CalibrateCompassDefaults = {
+export const PGN_126720_AirmarCalibrateCompassDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2404,7 +2404,7 @@ export const PGN_126720_Airmar_CalibrateCompassDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == True Wind Options
 */
-export interface PGN_126720_Airmar_TrueWindOptionsFields extends PGNFields {
+export interface PGN_126720_AirmarTrueWindOptionsFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2413,11 +2413,11 @@ export interface PGN_126720_Airmar_TrueWindOptionsFields extends PGNFields {
   reserved6?: number
 }
 
-export interface PGN_126720_Airmar_TrueWindOptions extends PGN {
- fields: PGN_126720_Airmar_TrueWindOptionsFields
+export interface PGN_126720_AirmarTrueWindOptions extends PGN {
+ fields: PGN_126720_AirmarTrueWindOptionsFields
 }
 
-export const PGN_126720_Airmar_TrueWindOptionsDefaults = {
+export const PGN_126720_AirmarTrueWindOptionsDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2429,7 +2429,7 @@ export const PGN_126720_Airmar_TrueWindOptionsDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Simulate Mode
 */
-export interface PGN_126720_Airmar_SimulateModeFields extends PGNFields {
+export interface PGN_126720_AirmarSimulateModeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2438,11 +2438,11 @@ export interface PGN_126720_Airmar_SimulateModeFields extends PGNFields {
   reserved6?: number
 }
 
-export interface PGN_126720_Airmar_SimulateMode extends PGN {
- fields: PGN_126720_Airmar_SimulateModeFields
+export interface PGN_126720_AirmarSimulateMode extends PGN {
+ fields: PGN_126720_AirmarSimulateModeFields
 }
 
-export const PGN_126720_Airmar_SimulateModeDefaults = {
+export const PGN_126720_AirmarSimulateModeDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2454,7 +2454,7 @@ export const PGN_126720_Airmar_SimulateModeDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Calibrate Depth
 */
-export interface PGN_126720_Airmar_CalibrateDepthFields extends PGNFields {
+export interface PGN_126720_AirmarCalibrateDepthFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2463,11 +2463,11 @@ export interface PGN_126720_Airmar_CalibrateDepthFields extends PGNFields {
   reserved6?: number
 }
 
-export interface PGN_126720_Airmar_CalibrateDepth extends PGN {
- fields: PGN_126720_Airmar_CalibrateDepthFields
+export interface PGN_126720_AirmarCalibrateDepth extends PGN {
+ fields: PGN_126720_AirmarCalibrateDepthFields
 }
 
-export const PGN_126720_Airmar_CalibrateDepthDefaults = {
+export const PGN_126720_AirmarCalibrateDepthDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2479,7 +2479,7 @@ export const PGN_126720_Airmar_CalibrateDepthDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Calibrate Speed
 */
-export interface PGN_126720_Airmar_CalibrateSpeedFields extends PGNFields {
+export interface PGN_126720_AirmarCalibrateSpeedFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2491,11 +2491,11 @@ export interface PGN_126720_Airmar_CalibrateSpeedFields extends PGNFields {
   }[]
 }
 
-export interface PGN_126720_Airmar_CalibrateSpeed extends PGN {
- fields: PGN_126720_Airmar_CalibrateSpeedFields
+export interface PGN_126720_AirmarCalibrateSpeed extends PGN {
+ fields: PGN_126720_AirmarCalibrateSpeedFields
 }
 
-export const PGN_126720_Airmar_CalibrateSpeedDefaults = {
+export const PGN_126720_AirmarCalibrateSpeedDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2507,7 +2507,7 @@ export const PGN_126720_Airmar_CalibrateSpeedDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Calibrate Temperature
 */
-export interface PGN_126720_Airmar_CalibrateTemperatureFields extends PGNFields {
+export interface PGN_126720_AirmarCalibrateTemperatureFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2517,11 +2517,11 @@ export interface PGN_126720_Airmar_CalibrateTemperatureFields extends PGNFields 
   temperatureOffset?: N2K_Number
 }
 
-export interface PGN_126720_Airmar_CalibrateTemperature extends PGN {
- fields: PGN_126720_Airmar_CalibrateTemperatureFields
+export interface PGN_126720_AirmarCalibrateTemperature extends PGN {
+ fields: PGN_126720_AirmarCalibrateTemperatureFields
 }
 
-export const PGN_126720_Airmar_CalibrateTemperatureDefaults = {
+export const PGN_126720_AirmarCalibrateTemperatureDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2533,7 +2533,7 @@ export const PGN_126720_Airmar_CalibrateTemperatureDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Speed Filter
 */
-export interface PGN_126720_Airmar_SpeedFilterFields extends PGNFields {
+export interface PGN_126720_AirmarSpeedFilterNoneFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2543,11 +2543,11 @@ export interface PGN_126720_Airmar_SpeedFilterFields extends PGNFields {
   sampleInterval?: N2K_Duration
 }
 
-export interface PGN_126720_Airmar_SpeedFilter extends PGN {
- fields: PGN_126720_Airmar_SpeedFilterFields
+export interface PGN_126720_AirmarSpeedFilterNone extends PGN {
+ fields: PGN_126720_AirmarSpeedFilterNoneFields
 }
 
-export const PGN_126720_Airmar_SpeedFilterDefaults = {
+export const PGN_126720_AirmarSpeedFilterNoneDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2560,7 +2560,7 @@ export const PGN_126720_Airmar_SpeedFilterDefaults = {
   Match: Proprietary ID == Speed Filter
   Match: Filter type == IIR filter
 */
-export interface PGN_126720_Airmar_SpeedFilter_IirFilterFields extends PGNFields {
+export interface PGN_126720_AirmarSpeedFilterIirFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2571,11 +2571,11 @@ export interface PGN_126720_Airmar_SpeedFilter_IirFilterFields extends PGNFields
   filterDuration?: N2K_Duration
 }
 
-export interface PGN_126720_Airmar_SpeedFilter_IirFilter extends PGN {
- fields: PGN_126720_Airmar_SpeedFilter_IirFilterFields
+export interface PGN_126720_AirmarSpeedFilterIir extends PGN {
+ fields: PGN_126720_AirmarSpeedFilterIirFields
 }
 
-export const PGN_126720_Airmar_SpeedFilter_IirFilterDefaults = {
+export const PGN_126720_AirmarSpeedFilterIirDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2587,7 +2587,7 @@ export const PGN_126720_Airmar_SpeedFilter_IirFilterDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Temperature Filter
 */
-export interface PGN_126720_Airmar_TemperatureFilterFields extends PGNFields {
+export interface PGN_126720_AirmarTemperatureFilterNoneFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2597,11 +2597,11 @@ export interface PGN_126720_Airmar_TemperatureFilterFields extends PGNFields {
   sampleInterval?: N2K_Duration
 }
 
-export interface PGN_126720_Airmar_TemperatureFilter extends PGN {
- fields: PGN_126720_Airmar_TemperatureFilterFields
+export interface PGN_126720_AirmarTemperatureFilterNone extends PGN {
+ fields: PGN_126720_AirmarTemperatureFilterNoneFields
 }
 
-export const PGN_126720_Airmar_TemperatureFilterDefaults = {
+export const PGN_126720_AirmarTemperatureFilterNoneDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2614,7 +2614,7 @@ export const PGN_126720_Airmar_TemperatureFilterDefaults = {
   Match: Proprietary ID == Temperature Filter
   Match: Filter type == IIR filter
 */
-export interface PGN_126720_Airmar_TemperatureFilter_IirFilterFields extends PGNFields {
+export interface PGN_126720_AirmarTemperatureFilterIirFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2625,11 +2625,11 @@ export interface PGN_126720_Airmar_TemperatureFilter_IirFilterFields extends PGN
   filterDuration?: N2K_Duration
 }
 
-export interface PGN_126720_Airmar_TemperatureFilter_IirFilter extends PGN {
- fields: PGN_126720_Airmar_TemperatureFilter_IirFilterFields
+export interface PGN_126720_AirmarTemperatureFilterIir extends PGN {
+ fields: PGN_126720_AirmarTemperatureFilterIirFields
 }
 
-export const PGN_126720_Airmar_TemperatureFilter_IirFilterDefaults = {
+export const PGN_126720_AirmarTemperatureFilterIirDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2641,7 +2641,7 @@ export const PGN_126720_Airmar_TemperatureFilter_IirFilterDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == NMEA 2000 options
 */
-export interface PGN_126720_Airmar_Nmea2000OptionsFields extends PGNFields {
+export interface PGN_126720_AirmarNmea2000OptionsFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2650,11 +2650,11 @@ export interface PGN_126720_Airmar_Nmea2000OptionsFields extends PGNFields {
   reserved6?: number
 }
 
-export interface PGN_126720_Airmar_Nmea2000Options extends PGN {
- fields: PGN_126720_Airmar_Nmea2000OptionsFields
+export interface PGN_126720_AirmarNmea2000Options extends PGN {
+ fields: PGN_126720_AirmarNmea2000OptionsFields
 }
 
-export const PGN_126720_Airmar_Nmea2000OptionsDefaults = {
+export const PGN_126720_AirmarNmea2000OptionsDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2665,18 +2665,18 @@ export const PGN_126720_Airmar_Nmea2000OptionsDefaults = {
   Match: Manufacturer Code == Airmar
   Match: Industry Code == Marine Industry
 */
-export interface PGN_126720_AirmarFields extends PGNFields {
+export interface PGN_126720_AirmarAddressableMultiFrameFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
   proprietaryId: N2K_Number
 }
 
-export interface PGN_126720_Airmar extends PGN {
- fields: PGN_126720_AirmarFields
+export interface PGN_126720_AirmarAddressableMultiFrame extends PGN {
+ fields: PGN_126720_AirmarAddressableMultiFrameFields
 }
 
-export const PGN_126720_AirmarDefaults = {
+export const PGN_126720_AirmarAddressableMultiFrameDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2687,7 +2687,7 @@ export const PGN_126720_AirmarDefaults = {
   Match: Manufacturer Code == Maretron
   Match: Industry Code == Marine Industry
 */
-export interface PGN_126720_MaretronFields extends PGNFields {
+export interface PGN_126720_MaretronSlaveResponseFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2697,11 +2697,11 @@ export interface PGN_126720_MaretronFields extends PGNFields {
   status?: N2K_Number
 }
 
-export interface PGN_126720_Maretron extends PGN {
- fields: PGN_126720_MaretronFields
+export interface PGN_126720_MaretronSlaveResponse extends PGN {
+ fields: PGN_126720_MaretronSlaveResponseFields
 }
 
-export const PGN_126720_MaretronDefaults = {
+export const PGN_126720_MaretronSlaveResponseDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2716,7 +2716,7 @@ export const PGN_126720_MaretronDefaults = {
   Match: Unknown ID 3 == Always 5
   Match: Unknown ID 4 == Always 5
 */
-export interface PGN_126720_Garmin_Always222_Always5_Always5_Always5Fields extends PGNFields {
+export interface PGN_126720_GarminDayModeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2730,11 +2730,11 @@ export interface PGN_126720_Garmin_Always222_Always5_Always5_Always5Fields exten
   backlight?: enums.GarminBacklightLevel|number
 }
 
-export interface PGN_126720_Garmin_Always222_Always5_Always5_Always5 extends PGN {
- fields: PGN_126720_Garmin_Always222_Always5_Always5_Always5Fields
+export interface PGN_126720_GarminDayMode extends PGN {
+ fields: PGN_126720_GarminDayModeFields
 }
 
-export const PGN_126720_Garmin_Always222_Always5_Always5_Always5Defaults = {
+export const PGN_126720_GarminDayModeDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2750,7 +2750,7 @@ export const PGN_126720_Garmin_Always222_Always5_Always5_Always5Defaults = {
   Match: Unknown ID 4 == Always 5
   Match: Mode == Night
 */
-export interface PGN_126720_Garmin_Always222_Always5_Always5_Always5_NightFields extends PGNFields {
+export interface PGN_126720_GarminNightModeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2764,11 +2764,11 @@ export interface PGN_126720_Garmin_Always222_Always5_Always5_Always5_NightFields
   backlight?: enums.GarminBacklightLevel|number
 }
 
-export interface PGN_126720_Garmin_Always222_Always5_Always5_Always5_Night extends PGN {
- fields: PGN_126720_Garmin_Always222_Always5_Always5_Always5_NightFields
+export interface PGN_126720_GarminNightMode extends PGN {
+ fields: PGN_126720_GarminNightModeFields
 }
 
-export const PGN_126720_Garmin_Always222_Always5_Always5_Always5_NightDefaults = {
+export const PGN_126720_GarminNightModeDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -2784,7 +2784,7 @@ export const PGN_126720_Garmin_Always222_Always5_Always5_Always5_NightDefaults =
   Match: Unknown ID 4 == Always 5
   Match: Mode == Color
 */
-export interface PGN_126720_Garmin_Always222_Always5_Always5_Always5_ColorFields extends PGNFields {
+export interface PGN_126720_GarminColorModeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -2798,11 +2798,11 @@ export interface PGN_126720_Garmin_Always222_Always5_Always5_Always5_ColorFields
   color?: enums.GarminColor|number
 }
 
-export interface PGN_126720_Garmin_Always222_Always5_Always5_Always5_Color extends PGN {
- fields: PGN_126720_Garmin_Always222_Always5_Always5_Always5_ColorFields
+export interface PGN_126720_GarminColorMode extends PGN {
+ fields: PGN_126720_GarminColorModeFields
 }
 
-export const PGN_126720_Garmin_Always222_Always5_Always5_Always5_ColorDefaults = {
+export const PGN_126720_GarminColorModeDefaults = {
   pgn: 126720,
   dst: 255,
   prio: 3
@@ -5850,7 +5850,7 @@ export const PGN_129807Defaults = {
   Description: DSC Distress Call Information
   Match: DSC Category == Distress
 */
-export interface PGN_129808_DistressFields extends PGNFields {
+export interface PGN_129808_DscDistressCallInformationFields extends PGNFields {
   dscFormat?: enums.DscFormat|number
   dscCategory?: enums.DscCategory|number
   dscMessageAddress?: N2K_Decimal
@@ -5877,11 +5877,11 @@ export interface PGN_129808_DistressFields extends PGNFields {
   }[]
 }
 
-export interface PGN_129808_Distress extends PGN {
- fields: PGN_129808_DistressFields
+export interface PGN_129808_DscDistressCallInformation extends PGN {
+ fields: PGN_129808_DscDistressCallInformationFields
 }
 
-export const PGN_129808_DistressDefaults = {
+export const PGN_129808_DscDistressCallInformationDefaults = {
   pgn: 129808,
   dst: 255,
   prio: 4
@@ -7419,7 +7419,7 @@ export const PGN_130586Defaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Init #2
 */
-export interface PGN_130816_Navico_Init2Fields extends PGNFields {
+export interface PGN_130816_SonichubInit2Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -7430,11 +7430,11 @@ export interface PGN_130816_Navico_Init2Fields extends PGNFields {
   b?: N2K_Number
 }
 
-export interface PGN_130816_Navico_Init2 extends PGN {
- fields: PGN_130816_Navico_Init2Fields
+export interface PGN_130816_SonichubInit2 extends PGN {
+ fields: PGN_130816_SonichubInit2Fields
 }
 
-export const PGN_130816_Navico_Init2Defaults = {
+export const PGN_130816_SonichubInit2Defaults = {
   pgn: 130816,
   dst: 255,
   prio: 7
@@ -7446,7 +7446,7 @@ export const PGN_130816_Navico_Init2Defaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == AM Radio
 */
-export interface PGN_130816_Navico_AmRadioFields extends PGNFields {
+export interface PGN_130816_SonichubAmRadioFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -7461,11 +7461,11 @@ export interface PGN_130816_Navico_AmRadioFields extends PGNFields {
   text?: N2K_StringLz
 }
 
-export interface PGN_130816_Navico_AmRadio extends PGN {
- fields: PGN_130816_Navico_AmRadioFields
+export interface PGN_130816_SonichubAmRadio extends PGN {
+ fields: PGN_130816_SonichubAmRadioFields
 }
 
-export const PGN_130816_Navico_AmRadioDefaults = {
+export const PGN_130816_SonichubAmRadioDefaults = {
   pgn: 130816,
   dst: 255,
   prio: 7
@@ -7477,7 +7477,7 @@ export const PGN_130816_Navico_AmRadioDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Zone Info
 */
-export interface PGN_130816_Navico_ZoneInfoFields extends PGNFields {
+export interface PGN_130816_SonichubZoneInfoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -7487,11 +7487,11 @@ export interface PGN_130816_Navico_ZoneInfoFields extends PGNFields {
   zone?: N2K_Number
 }
 
-export interface PGN_130816_Navico_ZoneInfo extends PGN {
- fields: PGN_130816_Navico_ZoneInfoFields
+export interface PGN_130816_SonichubZoneInfo extends PGN {
+ fields: PGN_130816_SonichubZoneInfoFields
 }
 
-export const PGN_130816_Navico_ZoneInfoDefaults = {
+export const PGN_130816_SonichubZoneInfoDefaults = {
   pgn: 130816,
   dst: 255,
   prio: 7
@@ -7503,7 +7503,7 @@ export const PGN_130816_Navico_ZoneInfoDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Source
 */
-export interface PGN_130816_Navico_SourceFields extends PGNFields {
+export interface PGN_130816_SonichubSourceFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -7513,11 +7513,11 @@ export interface PGN_130816_Navico_SourceFields extends PGNFields {
   source?: enums.SonichubSource|number
 }
 
-export interface PGN_130816_Navico_Source extends PGN {
- fields: PGN_130816_Navico_SourceFields
+export interface PGN_130816_SonichubSource extends PGN {
+ fields: PGN_130816_SonichubSourceFields
 }
 
-export const PGN_130816_Navico_SourceDefaults = {
+export const PGN_130816_SonichubSourceDefaults = {
   pgn: 130816,
   dst: 255,
   prio: 7
@@ -7529,7 +7529,7 @@ export const PGN_130816_Navico_SourceDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Source List
 */
-export interface PGN_130816_Navico_SourceListFields extends PGNFields {
+export interface PGN_130816_SonichubSourceListFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -7541,11 +7541,11 @@ export interface PGN_130816_Navico_SourceListFields extends PGNFields {
   text?: N2K_StringLz
 }
 
-export interface PGN_130816_Navico_SourceList extends PGN {
- fields: PGN_130816_Navico_SourceListFields
+export interface PGN_130816_SonichubSourceList extends PGN {
+ fields: PGN_130816_SonichubSourceListFields
 }
 
-export const PGN_130816_Navico_SourceListDefaults = {
+export const PGN_130816_SonichubSourceListDefaults = {
   pgn: 130816,
   dst: 255,
   prio: 7
@@ -7557,7 +7557,7 @@ export const PGN_130816_Navico_SourceListDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Control
 */
-export interface PGN_130816_Navico_ControlFields extends PGNFields {
+export interface PGN_130816_SonichubControlFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -7567,11 +7567,11 @@ export interface PGN_130816_Navico_ControlFields extends PGNFields {
   item?: enums.FusionMuteCommand|number
 }
 
-export interface PGN_130816_Navico_Control extends PGN {
- fields: PGN_130816_Navico_ControlFields
+export interface PGN_130816_SonichubControl extends PGN {
+ fields: PGN_130816_SonichubControlFields
 }
 
-export const PGN_130816_Navico_ControlDefaults = {
+export const PGN_130816_SonichubControlDefaults = {
   pgn: 130816,
   dst: 255,
   prio: 7
@@ -7583,7 +7583,7 @@ export const PGN_130816_Navico_ControlDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == FM Radio
 */
-export interface PGN_130816_Navico_FmRadioFields extends PGNFields {
+export interface PGN_130816_SonichubFmRadioFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -7598,11 +7598,11 @@ export interface PGN_130816_Navico_FmRadioFields extends PGNFields {
   text?: N2K_StringLz
 }
 
-export interface PGN_130816_Navico_FmRadio extends PGN {
- fields: PGN_130816_Navico_FmRadioFields
+export interface PGN_130816_SonichubFmRadio extends PGN {
+ fields: PGN_130816_SonichubFmRadioFields
 }
 
-export const PGN_130816_Navico_FmRadioDefaults = {
+export const PGN_130816_SonichubFmRadioDefaults = {
   pgn: 130816,
   dst: 255,
   prio: 7
@@ -7614,7 +7614,7 @@ export const PGN_130816_Navico_FmRadioDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Playlist
 */
-export interface PGN_130816_Navico_PlaylistFields extends PGNFields {
+export interface PGN_130816_SonichubPlaylistFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -7629,11 +7629,11 @@ export interface PGN_130816_Navico_PlaylistFields extends PGNFields {
   positionInTrack?: N2K_Duration
 }
 
-export interface PGN_130816_Navico_Playlist extends PGN {
- fields: PGN_130816_Navico_PlaylistFields
+export interface PGN_130816_SonichubPlaylist extends PGN {
+ fields: PGN_130816_SonichubPlaylistFields
 }
 
-export const PGN_130816_Navico_PlaylistDefaults = {
+export const PGN_130816_SonichubPlaylistDefaults = {
   pgn: 130816,
   dst: 255,
   prio: 7
@@ -7645,7 +7645,7 @@ export const PGN_130816_Navico_PlaylistDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Track
 */
-export interface PGN_130816_Navico_TrackFields extends PGNFields {
+export interface PGN_130816_SonichubTrackFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -7656,11 +7656,11 @@ export interface PGN_130816_Navico_TrackFields extends PGNFields {
   text?: N2K_StringLz
 }
 
-export interface PGN_130816_Navico_Track extends PGN {
- fields: PGN_130816_Navico_TrackFields
+export interface PGN_130816_SonichubTrack extends PGN {
+ fields: PGN_130816_SonichubTrackFields
 }
 
-export const PGN_130816_Navico_TrackDefaults = {
+export const PGN_130816_SonichubTrackDefaults = {
   pgn: 130816,
   dst: 255,
   prio: 7
@@ -7672,7 +7672,7 @@ export const PGN_130816_Navico_TrackDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Artist
 */
-export interface PGN_130816_Navico_ArtistFields extends PGNFields {
+export interface PGN_130816_SonichubArtistFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -7683,11 +7683,11 @@ export interface PGN_130816_Navico_ArtistFields extends PGNFields {
   text?: N2K_StringLz
 }
 
-export interface PGN_130816_Navico_Artist extends PGN {
- fields: PGN_130816_Navico_ArtistFields
+export interface PGN_130816_SonichubArtist extends PGN {
+ fields: PGN_130816_SonichubArtistFields
 }
 
-export const PGN_130816_Navico_ArtistDefaults = {
+export const PGN_130816_SonichubArtistDefaults = {
   pgn: 130816,
   dst: 255,
   prio: 7
@@ -7699,7 +7699,7 @@ export const PGN_130816_Navico_ArtistDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Album
 */
-export interface PGN_130816_Navico_AlbumFields extends PGNFields {
+export interface PGN_130816_SonichubAlbumFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -7710,11 +7710,11 @@ export interface PGN_130816_Navico_AlbumFields extends PGNFields {
   text?: N2K_StringLz
 }
 
-export interface PGN_130816_Navico_Album extends PGN {
- fields: PGN_130816_Navico_AlbumFields
+export interface PGN_130816_SonichubAlbum extends PGN {
+ fields: PGN_130816_SonichubAlbumFields
 }
 
-export const PGN_130816_Navico_AlbumDefaults = {
+export const PGN_130816_SonichubAlbumDefaults = {
   pgn: 130816,
   dst: 255,
   prio: 7
@@ -7726,7 +7726,7 @@ export const PGN_130816_Navico_AlbumDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Menu Item
 */
-export interface PGN_130816_Navico_MenuItemFields extends PGNFields {
+export interface PGN_130816_SonichubMenuItemFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -7740,11 +7740,11 @@ export interface PGN_130816_Navico_MenuItemFields extends PGNFields {
   text?: N2K_StringLz
 }
 
-export interface PGN_130816_Navico_MenuItem extends PGN {
- fields: PGN_130816_Navico_MenuItemFields
+export interface PGN_130816_SonichubMenuItem extends PGN {
+ fields: PGN_130816_SonichubMenuItemFields
 }
 
-export const PGN_130816_Navico_MenuItemDefaults = {
+export const PGN_130816_SonichubMenuItemDefaults = {
   pgn: 130816,
   dst: 255,
   prio: 7
@@ -7756,7 +7756,7 @@ export const PGN_130816_Navico_MenuItemDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Zones
 */
-export interface PGN_130816_Navico_ZonesFields extends PGNFields {
+export interface PGN_130816_SonichubZonesFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -7766,11 +7766,11 @@ export interface PGN_130816_Navico_ZonesFields extends PGNFields {
   zones?: N2K_Number
 }
 
-export interface PGN_130816_Navico_Zones extends PGN {
- fields: PGN_130816_Navico_ZonesFields
+export interface PGN_130816_SonichubZones extends PGN {
+ fields: PGN_130816_SonichubZonesFields
 }
 
-export const PGN_130816_Navico_ZonesDefaults = {
+export const PGN_130816_SonichubZonesDefaults = {
   pgn: 130816,
   dst: 255,
   prio: 7
@@ -7782,7 +7782,7 @@ export const PGN_130816_Navico_ZonesDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Max Volume
 */
-export interface PGN_130816_Navico_MaxVolumeFields extends PGNFields {
+export interface PGN_130816_SonichubMaxVolumeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -7793,11 +7793,11 @@ export interface PGN_130816_Navico_MaxVolumeFields extends PGNFields {
   level?: N2K_Number
 }
 
-export interface PGN_130816_Navico_MaxVolume extends PGN {
- fields: PGN_130816_Navico_MaxVolumeFields
+export interface PGN_130816_SonichubMaxVolume extends PGN {
+ fields: PGN_130816_SonichubMaxVolumeFields
 }
 
-export const PGN_130816_Navico_MaxVolumeDefaults = {
+export const PGN_130816_SonichubMaxVolumeDefaults = {
   pgn: 130816,
   dst: 255,
   prio: 7
@@ -7809,7 +7809,7 @@ export const PGN_130816_Navico_MaxVolumeDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Volume
 */
-export interface PGN_130816_Navico_VolumeFields extends PGNFields {
+export interface PGN_130816_SonichubVolumeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -7820,11 +7820,11 @@ export interface PGN_130816_Navico_VolumeFields extends PGNFields {
   level?: N2K_Number
 }
 
-export interface PGN_130816_Navico_Volume extends PGN {
- fields: PGN_130816_Navico_VolumeFields
+export interface PGN_130816_SonichubVolume extends PGN {
+ fields: PGN_130816_SonichubVolumeFields
 }
 
-export const PGN_130816_Navico_VolumeDefaults = {
+export const PGN_130816_SonichubVolumeDefaults = {
   pgn: 130816,
   dst: 255,
   prio: 7
@@ -7836,7 +7836,7 @@ export const PGN_130816_Navico_VolumeDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Init #1
 */
-export interface PGN_130816_Navico_Init1Fields extends PGNFields {
+export interface PGN_130816_SonichubInit1Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -7845,11 +7845,11 @@ export interface PGN_130816_Navico_Init1Fields extends PGNFields {
   control?: enums.SonichubControl|number
 }
 
-export interface PGN_130816_Navico_Init1 extends PGN {
- fields: PGN_130816_Navico_Init1Fields
+export interface PGN_130816_SonichubInit1 extends PGN {
+ fields: PGN_130816_SonichubInit1Fields
 }
 
-export const PGN_130816_Navico_Init1Defaults = {
+export const PGN_130816_SonichubInit1Defaults = {
   pgn: 130816,
   dst: 255,
   prio: 7
@@ -7861,7 +7861,7 @@ export const PGN_130816_Navico_Init1Defaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Position
 */
-export interface PGN_130816_Navico_PositionFields extends PGNFields {
+export interface PGN_130816_SonichubPositionFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -7871,11 +7871,11 @@ export interface PGN_130816_Navico_PositionFields extends PGNFields {
   position?: N2K_Duration
 }
 
-export interface PGN_130816_Navico_Position extends PGN {
- fields: PGN_130816_Navico_PositionFields
+export interface PGN_130816_SonichubPosition extends PGN {
+ fields: PGN_130816_SonichubPositionFields
 }
 
-export const PGN_130816_Navico_PositionDefaults = {
+export const PGN_130816_SonichubPositionDefaults = {
   pgn: 130816,
   dst: 255,
   prio: 7
@@ -7887,7 +7887,7 @@ export const PGN_130816_Navico_PositionDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Init #3
 */
-export interface PGN_130816_Navico_Init3Fields extends PGNFields {
+export interface PGN_130816_SonichubInit3Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -7898,11 +7898,11 @@ export interface PGN_130816_Navico_Init3Fields extends PGNFields {
   b?: N2K_Number
 }
 
-export interface PGN_130816_Navico_Init3 extends PGN {
- fields: PGN_130816_Navico_Init3Fields
+export interface PGN_130816_SonichubInit3 extends PGN {
+ fields: PGN_130816_SonichubInit3Fields
 }
 
-export const PGN_130816_Navico_Init3Defaults = {
+export const PGN_130816_SonichubInit3Defaults = {
   pgn: 130816,
   dst: 255,
   prio: 7
@@ -7914,7 +7914,7 @@ export const PGN_130816_Navico_Init3Defaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Text
 */
-export interface PGN_130816_Simrad_TextFields extends PGNFields {
+export interface PGN_130816_SimradTextMessageFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -7928,11 +7928,11 @@ export interface PGN_130816_Simrad_TextFields extends PGNFields {
   text?: N2K_StringFix
 }
 
-export interface PGN_130816_Simrad_Text extends PGN {
- fields: PGN_130816_Simrad_TextFields
+export interface PGN_130816_SimradTextMessage extends PGN {
+ fields: PGN_130816_SimradTextMessageFields
 }
 
-export const PGN_130816_Simrad_TextDefaults = {
+export const PGN_130816_SimradTextMessageDefaults = {
   pgn: 130816,
   dst: 255,
   prio: 7
@@ -7943,7 +7943,7 @@ export const PGN_130816_Simrad_TextDefaults = {
   Match: Manufacturer Code == Navico
   Match: Industry Code == Marine Industry
 */
-export interface PGN_130817_NavicoFields extends PGNFields {
+export interface PGN_130817_NavicoUnknownFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -7954,11 +7954,11 @@ export interface PGN_130817_NavicoFields extends PGNFields {
   e?: N2K_Number
 }
 
-export interface PGN_130817_Navico extends PGN {
- fields: PGN_130817_NavicoFields
+export interface PGN_130817_NavicoUnknown extends PGN {
+ fields: PGN_130817_NavicoUnknownFields
 }
 
-export const PGN_130817_NavicoDefaults = {
+export const PGN_130817_NavicoUnknownDefaults = {
   pgn: 130817,
   dst: 255,
   prio: 7
@@ -7969,7 +7969,7 @@ export const PGN_130817_NavicoDefaults = {
   Match: Manufacturer Code == Lowrance
   Match: Industry Code == Marine Industry
 */
-export interface PGN_130817_LowranceFields extends PGNFields {
+export interface PGN_130817_LowranceProductInformationFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -7983,11 +7983,11 @@ export interface PGN_130817_LowranceFields extends PGNFields {
   firmwareTime?: N2K_StringFix
 }
 
-export interface PGN_130817_Lowrance extends PGN {
- fields: PGN_130817_LowranceFields
+export interface PGN_130817_LowranceProductInformation extends PGN {
+ fields: PGN_130817_LowranceProductInformationFields
 }
 
-export const PGN_130817_LowranceDefaults = {
+export const PGN_130817_LowranceProductInformationDefaults = {
   pgn: 130817,
   dst: 255,
   prio: 7
@@ -8039,7 +8039,7 @@ export const PGN_130819Defaults = {
   Match: Manufacturer Code == Simrad
   Match: Industry Code == Marine Industry
 */
-export interface PGN_130820_SimradFields extends PGNFields {
+export interface PGN_130820_SimnetReprogramStatusFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8048,11 +8048,11 @@ export interface PGN_130820_SimradFields extends PGNFields {
   reserved6?: number
 }
 
-export interface PGN_130820_Simrad extends PGN {
- fields: PGN_130820_SimradFields
+export interface PGN_130820_SimnetReprogramStatus extends PGN {
+ fields: PGN_130820_SimnetReprogramStatusFields
 }
 
-export const PGN_130820_SimradDefaults = {
+export const PGN_130820_SimnetReprogramStatusDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8063,7 +8063,7 @@ export const PGN_130820_SimradDefaults = {
   Match: Manufacturer Code == Furuno
   Match: Industry Code == Marine Industry
 */
-export interface PGN_130820_FurunoFields extends PGNFields {
+export interface PGN_130820_FurunoUnknown130820Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8074,11 +8074,11 @@ export interface PGN_130820_FurunoFields extends PGNFields {
   e?: N2K_Number
 }
 
-export interface PGN_130820_Furuno extends PGN {
- fields: PGN_130820_FurunoFields
+export interface PGN_130820_FurunoUnknown130820 extends PGN {
+ fields: PGN_130820_FurunoUnknown130820Fields
 }
 
-export const PGN_130820_FurunoDefaults = {
+export const PGN_130820_FurunoUnknown130820Defaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8090,7 +8090,7 @@ export const PGN_130820_FurunoDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == API Version
 */
-export interface PGN_130820_FusionElectronics_ApiVersionFields extends PGNFields {
+export interface PGN_130820_FusionVersionsFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8102,11 +8102,11 @@ export interface PGN_130820_FusionElectronics_ApiVersionFields extends PGNFields
   buildNumber?: N2K_Number
 }
 
-export interface PGN_130820_FusionElectronics_ApiVersion extends PGN {
- fields: PGN_130820_FusionElectronics_ApiVersionFields
+export interface PGN_130820_FusionVersions extends PGN {
+ fields: PGN_130820_FusionVersionsFields
 }
 
-export const PGN_130820_FusionElectronics_ApiVersionDefaults = {
+export const PGN_130820_FusionVersionsDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8118,7 +8118,7 @@ export const PGN_130820_FusionElectronics_ApiVersionDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Source
 */
-export interface PGN_130820_FusionElectronics_SourceFields extends PGNFields {
+export interface PGN_130820_FusionSourceFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8130,11 +8130,11 @@ export interface PGN_130820_FusionElectronics_SourceFields extends PGNFields {
   source?: N2K_StringLz
 }
 
-export interface PGN_130820_FusionElectronics_Source extends PGN {
- fields: PGN_130820_FusionElectronics_SourceFields
+export interface PGN_130820_FusionSource extends PGN {
+ fields: PGN_130820_FusionSourceFields
 }
 
-export const PGN_130820_FusionElectronics_SourceDefaults = {
+export const PGN_130820_FusionSourceDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8146,7 +8146,7 @@ export const PGN_130820_FusionElectronics_SourceDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Source Count
 */
-export interface PGN_130820_FusionElectronics_SourceCountFields extends PGNFields {
+export interface PGN_130820_FusionSourceCountFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8154,11 +8154,11 @@ export interface PGN_130820_FusionElectronics_SourceCountFields extends PGNField
   sourceCount?: N2K_Number
 }
 
-export interface PGN_130820_FusionElectronics_SourceCount extends PGN {
- fields: PGN_130820_FusionElectronics_SourceCountFields
+export interface PGN_130820_FusionSourceCount extends PGN {
+ fields: PGN_130820_FusionSourceCountFields
 }
 
-export const PGN_130820_FusionElectronics_SourceCountDefaults = {
+export const PGN_130820_FusionSourceCountDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8170,7 +8170,7 @@ export const PGN_130820_FusionElectronics_SourceCountDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Track Info
 */
-export interface PGN_130820_FusionElectronics_TrackInfoFields extends PGNFields {
+export interface PGN_130820_FusionMediaFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8183,11 +8183,11 @@ export interface PGN_130820_FusionElectronics_TrackInfoFields extends PGNFields 
   positionInTrack?: N2K_Duration
 }
 
-export interface PGN_130820_FusionElectronics_TrackInfo extends PGN {
- fields: PGN_130820_FusionElectronics_TrackInfoFields
+export interface PGN_130820_FusionMedia extends PGN {
+ fields: PGN_130820_FusionMediaFields
 }
 
-export const PGN_130820_FusionElectronics_TrackInfoDefaults = {
+export const PGN_130820_FusionMediaDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8199,7 +8199,7 @@ export const PGN_130820_FusionElectronics_TrackInfoDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Track Title
 */
-export interface PGN_130820_FusionElectronics_TrackTitleFields extends PGNFields {
+export interface PGN_130820_FusionTrackNameFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8209,11 +8209,11 @@ export interface PGN_130820_FusionElectronics_TrackTitleFields extends PGNFields
   track?: N2K_StringLz
 }
 
-export interface PGN_130820_FusionElectronics_TrackTitle extends PGN {
- fields: PGN_130820_FusionElectronics_TrackTitleFields
+export interface PGN_130820_FusionTrackName extends PGN {
+ fields: PGN_130820_FusionTrackNameFields
 }
 
-export const PGN_130820_FusionElectronics_TrackTitleDefaults = {
+export const PGN_130820_FusionTrackNameDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8225,7 +8225,7 @@ export const PGN_130820_FusionElectronics_TrackTitleDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Track Artist
 */
-export interface PGN_130820_FusionElectronics_TrackArtistFields extends PGNFields {
+export interface PGN_130820_FusionArtistNameFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8235,11 +8235,11 @@ export interface PGN_130820_FusionElectronics_TrackArtistFields extends PGNField
   artist?: N2K_StringLz
 }
 
-export interface PGN_130820_FusionElectronics_TrackArtist extends PGN {
- fields: PGN_130820_FusionElectronics_TrackArtistFields
+export interface PGN_130820_FusionArtistName extends PGN {
+ fields: PGN_130820_FusionArtistNameFields
 }
 
-export const PGN_130820_FusionElectronics_TrackArtistDefaults = {
+export const PGN_130820_FusionArtistNameDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8251,7 +8251,7 @@ export const PGN_130820_FusionElectronics_TrackArtistDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Track Album
 */
-export interface PGN_130820_FusionElectronics_TrackAlbumFields extends PGNFields {
+export interface PGN_130820_FusionAlbumNameFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8261,11 +8261,11 @@ export interface PGN_130820_FusionElectronics_TrackAlbumFields extends PGNFields
   album?: N2K_StringLz
 }
 
-export interface PGN_130820_FusionElectronics_TrackAlbum extends PGN {
- fields: PGN_130820_FusionElectronics_TrackAlbumFields
+export interface PGN_130820_FusionAlbumName extends PGN {
+ fields: PGN_130820_FusionAlbumNameFields
 }
 
-export const PGN_130820_FusionElectronics_TrackAlbumDefaults = {
+export const PGN_130820_FusionAlbumNameDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8277,7 +8277,7 @@ export const PGN_130820_FusionElectronics_TrackAlbumDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Unit Name
 */
-export interface PGN_130820_FusionElectronics_UnitNameFields extends PGNFields {
+export interface PGN_130820_FusionDeviceNameFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8285,11 +8285,11 @@ export interface PGN_130820_FusionElectronics_UnitNameFields extends PGNFields {
   name?: N2K_StringLz
 }
 
-export interface PGN_130820_FusionElectronics_UnitName extends PGN {
- fields: PGN_130820_FusionElectronics_UnitNameFields
+export interface PGN_130820_FusionDeviceName extends PGN {
+ fields: PGN_130820_FusionDeviceNameFields
 }
 
-export const PGN_130820_FusionElectronics_UnitNameDefaults = {
+export const PGN_130820_FusionDeviceNameDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8301,7 +8301,7 @@ export const PGN_130820_FusionElectronics_UnitNameDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Zone Name
 */
-export interface PGN_130820_FusionElectronics_ZoneNameFields extends PGNFields {
+export interface PGN_130820_FusionZoneNameFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8310,11 +8310,11 @@ export interface PGN_130820_FusionElectronics_ZoneNameFields extends PGNFields {
   name?: N2K_StringLz
 }
 
-export interface PGN_130820_FusionElectronics_ZoneName extends PGN {
- fields: PGN_130820_FusionElectronics_ZoneNameFields
+export interface PGN_130820_FusionZoneName extends PGN {
+ fields: PGN_130820_FusionZoneNameFields
 }
 
-export const PGN_130820_FusionElectronics_ZoneNameDefaults = {
+export const PGN_130820_FusionZoneNameDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8326,7 +8326,7 @@ export const PGN_130820_FusionElectronics_ZoneNameDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Track Progress
 */
-export interface PGN_130820_FusionElectronics_TrackProgressFields extends PGNFields {
+export interface PGN_130820_FusionTrackPositionFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8335,11 +8335,11 @@ export interface PGN_130820_FusionElectronics_TrackProgressFields extends PGNFie
   progress?: N2K_Duration
 }
 
-export interface PGN_130820_FusionElectronics_TrackProgress extends PGN {
- fields: PGN_130820_FusionElectronics_TrackProgressFields
+export interface PGN_130820_FusionTrackPosition extends PGN {
+ fields: PGN_130820_FusionTrackPositionFields
 }
 
-export const PGN_130820_FusionElectronics_TrackProgressDefaults = {
+export const PGN_130820_FusionTrackPositionDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8351,7 +8351,7 @@ export const PGN_130820_FusionElectronics_TrackProgressDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Tuner
 */
-export interface PGN_130820_FusionElectronics_TunerFields extends PGNFields {
+export interface PGN_130820_FusionTunerFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8363,11 +8363,11 @@ export interface PGN_130820_FusionElectronics_TunerFields extends PGNFields {
   track?: N2K_StringLz
 }
 
-export interface PGN_130820_FusionElectronics_Tuner extends PGN {
- fields: PGN_130820_FusionElectronics_TunerFields
+export interface PGN_130820_FusionTuner extends PGN {
+ fields: PGN_130820_FusionTunerFields
 }
 
-export const PGN_130820_FusionElectronics_TunerDefaults = {
+export const PGN_130820_FusionTunerDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8379,7 +8379,7 @@ export const PGN_130820_FusionElectronics_TunerDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Marine Tuner
 */
-export interface PGN_130820_FusionElectronics_MarineTunerFields extends PGNFields {
+export interface PGN_130820_FusionMarineTunerFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8390,11 +8390,11 @@ export interface PGN_130820_FusionElectronics_MarineTunerFields extends PGNField
   name?: N2K_StringLz
 }
 
-export interface PGN_130820_FusionElectronics_MarineTuner extends PGN {
- fields: PGN_130820_FusionElectronics_MarineTunerFields
+export interface PGN_130820_FusionMarineTuner extends PGN {
+ fields: PGN_130820_FusionMarineTunerFields
 }
 
-export const PGN_130820_FusionElectronics_MarineTunerDefaults = {
+export const PGN_130820_FusionMarineTunerDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8406,7 +8406,7 @@ export const PGN_130820_FusionElectronics_MarineTunerDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Marine Squelch
 */
-export interface PGN_130820_FusionElectronics_MarineSquelchFields extends PGNFields {
+export interface PGN_130820_FusionMarineSquelchFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8415,11 +8415,11 @@ export interface PGN_130820_FusionElectronics_MarineSquelchFields extends PGNFie
   squelch?: N2K_Number
 }
 
-export interface PGN_130820_FusionElectronics_MarineSquelch extends PGN {
- fields: PGN_130820_FusionElectronics_MarineSquelchFields
+export interface PGN_130820_FusionMarineSquelch extends PGN {
+ fields: PGN_130820_FusionMarineSquelchFields
 }
 
-export const PGN_130820_FusionElectronics_MarineSquelchDefaults = {
+export const PGN_130820_FusionMarineSquelchDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8431,7 +8431,7 @@ export const PGN_130820_FusionElectronics_MarineSquelchDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Marine Scan Mode
 */
-export interface PGN_130820_FusionElectronics_MarineScanModeFields extends PGNFields {
+export interface PGN_130820_FusionMarineScanModeFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8440,11 +8440,11 @@ export interface PGN_130820_FusionElectronics_MarineScanModeFields extends PGNFi
   scan?: enums.YesNo|number
 }
 
-export interface PGN_130820_FusionElectronics_MarineScanMode extends PGN {
- fields: PGN_130820_FusionElectronics_MarineScanModeFields
+export interface PGN_130820_FusionMarineScanMode extends PGN {
+ fields: PGN_130820_FusionMarineScanModeFields
 }
 
-export const PGN_130820_FusionElectronics_MarineScanModeDefaults = {
+export const PGN_130820_FusionMarineScanModeDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8456,7 +8456,7 @@ export const PGN_130820_FusionElectronics_MarineScanModeDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Menu Item
 */
-export interface PGN_130820_FusionElectronics_MenuItemFields extends PGNFields {
+export interface PGN_130820_FusionMenuItemFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8468,11 +8468,11 @@ export interface PGN_130820_FusionElectronics_MenuItemFields extends PGNFields {
   text?: N2K_StringLz
 }
 
-export interface PGN_130820_FusionElectronics_MenuItem extends PGN {
- fields: PGN_130820_FusionElectronics_MenuItemFields
+export interface PGN_130820_FusionMenuItem extends PGN {
+ fields: PGN_130820_FusionMenuItemFields
 }
 
-export const PGN_130820_FusionElectronics_MenuItemDefaults = {
+export const PGN_130820_FusionMenuItemDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8484,7 +8484,7 @@ export const PGN_130820_FusionElectronics_MenuItemDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Aux Gain
 */
-export interface PGN_130820_FusionElectronics_AuxGainFields extends PGNFields {
+export interface PGN_130820_FusionAuxGainFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8493,11 +8493,11 @@ export interface PGN_130820_FusionElectronics_AuxGainFields extends PGNFields {
   gain?: N2K_Number
 }
 
-export interface PGN_130820_FusionElectronics_AuxGain extends PGN {
- fields: PGN_130820_FusionElectronics_AuxGainFields
+export interface PGN_130820_FusionAuxGain extends PGN {
+ fields: PGN_130820_FusionAuxGainFields
 }
 
-export const PGN_130820_FusionElectronics_AuxGainDefaults = {
+export const PGN_130820_FusionAuxGainDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8510,7 +8510,7 @@ export const PGN_130820_FusionElectronics_AuxGainDefaults = {
   Match: Message ID == Setting
   Match: ID == USB repeat
 */
-export interface PGN_130820_FusionElectronics_Setting_UsbRepeatFields extends PGNFields {
+export interface PGN_130820_FusionUsbRepeatStatusFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8519,11 +8519,11 @@ export interface PGN_130820_FusionElectronics_Setting_UsbRepeatFields extends PG
   status?: enums.FusionRepeatStatus|number
 }
 
-export interface PGN_130820_FusionElectronics_Setting_UsbRepeat extends PGN {
- fields: PGN_130820_FusionElectronics_Setting_UsbRepeatFields
+export interface PGN_130820_FusionUsbRepeatStatus extends PGN {
+ fields: PGN_130820_FusionUsbRepeatStatusFields
 }
 
-export const PGN_130820_FusionElectronics_Setting_UsbRepeatDefaults = {
+export const PGN_130820_FusionUsbRepeatStatusDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8535,7 +8535,7 @@ export const PGN_130820_FusionElectronics_Setting_UsbRepeatDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Setting
 */
-export interface PGN_130820_FusionElectronics_SettingFields extends PGNFields {
+export interface PGN_130820_FusionSettingFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8544,11 +8544,11 @@ export interface PGN_130820_FusionElectronics_SettingFields extends PGNFields {
   value?: N2K_Number
 }
 
-export interface PGN_130820_FusionElectronics_Setting extends PGN {
- fields: PGN_130820_FusionElectronics_SettingFields
+export interface PGN_130820_FusionSetting extends PGN {
+ fields: PGN_130820_FusionSettingFields
 }
 
-export const PGN_130820_FusionElectronics_SettingDefaults = {
+export const PGN_130820_FusionSettingDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8560,7 +8560,7 @@ export const PGN_130820_FusionElectronics_SettingDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Settings
 */
-export interface PGN_130820_FusionElectronics_SettingsFields extends PGNFields {
+export interface PGN_130820_FusionSettingsFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8572,11 +8572,11 @@ export interface PGN_130820_FusionElectronics_SettingsFields extends PGNFields {
   }[]
 }
 
-export interface PGN_130820_FusionElectronics_Settings extends PGN {
- fields: PGN_130820_FusionElectronics_SettingsFields
+export interface PGN_130820_FusionSettings extends PGN {
+ fields: PGN_130820_FusionSettingsFields
 }
 
-export const PGN_130820_FusionElectronics_SettingsDefaults = {
+export const PGN_130820_FusionSettingsDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8588,7 +8588,7 @@ export const PGN_130820_FusionElectronics_SettingsDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Mute
 */
-export interface PGN_130820_FusionElectronics_MuteFields extends PGNFields {
+export interface PGN_130820_FusionMuteFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8596,11 +8596,11 @@ export interface PGN_130820_FusionElectronics_MuteFields extends PGNFields {
   mute?: enums.FusionMuteCommand|number
 }
 
-export interface PGN_130820_FusionElectronics_Mute extends PGN {
- fields: PGN_130820_FusionElectronics_MuteFields
+export interface PGN_130820_FusionMute extends PGN {
+ fields: PGN_130820_FusionMuteFields
 }
 
-export const PGN_130820_FusionElectronics_MuteDefaults = {
+export const PGN_130820_FusionMuteDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8612,7 +8612,7 @@ export const PGN_130820_FusionElectronics_MuteDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Balance
 */
-export interface PGN_130820_FusionElectronics_BalanceFields extends PGNFields {
+export interface PGN_130820_FusionBalanceFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8621,11 +8621,11 @@ export interface PGN_130820_FusionElectronics_BalanceFields extends PGNFields {
   value?: N2K_Number
 }
 
-export interface PGN_130820_FusionElectronics_Balance extends PGN {
- fields: PGN_130820_FusionElectronics_BalanceFields
+export interface PGN_130820_FusionBalance extends PGN {
+ fields: PGN_130820_FusionBalanceFields
 }
 
-export const PGN_130820_FusionElectronics_BalanceDefaults = {
+export const PGN_130820_FusionBalanceDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8637,7 +8637,7 @@ export const PGN_130820_FusionElectronics_BalanceDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Low Pass Filter
 */
-export interface PGN_130820_FusionElectronics_LowPassFilterFields extends PGNFields {
+export interface PGN_130820_FusionLowPassFilterFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8646,11 +8646,11 @@ export interface PGN_130820_FusionElectronics_LowPassFilterFields extends PGNFie
   filter?: N2K_Number
 }
 
-export interface PGN_130820_FusionElectronics_LowPassFilter extends PGN {
- fields: PGN_130820_FusionElectronics_LowPassFilterFields
+export interface PGN_130820_FusionLowPassFilter extends PGN {
+ fields: PGN_130820_FusionLowPassFilterFields
 }
 
-export const PGN_130820_FusionElectronics_LowPassFilterDefaults = {
+export const PGN_130820_FusionLowPassFilterDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8662,7 +8662,7 @@ export const PGN_130820_FusionElectronics_LowPassFilterDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Sublevels
 */
-export interface PGN_130820_FusionElectronics_SublevelsFields extends PGNFields {
+export interface PGN_130820_FusionSublevelsFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8673,11 +8673,11 @@ export interface PGN_130820_FusionElectronics_SublevelsFields extends PGNFields 
   zone4?: N2K_Number
 }
 
-export interface PGN_130820_FusionElectronics_Sublevels extends PGN {
- fields: PGN_130820_FusionElectronics_SublevelsFields
+export interface PGN_130820_FusionSublevels extends PGN {
+ fields: PGN_130820_FusionSublevelsFields
 }
 
-export const PGN_130820_FusionElectronics_SublevelsDefaults = {
+export const PGN_130820_FusionSublevelsDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8689,7 +8689,7 @@ export const PGN_130820_FusionElectronics_SublevelsDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Tone
 */
-export interface PGN_130820_FusionElectronics_ToneFields extends PGNFields {
+export interface PGN_130820_FusionEqFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8700,11 +8700,11 @@ export interface PGN_130820_FusionElectronics_ToneFields extends PGNFields {
   treble?: N2K_Number
 }
 
-export interface PGN_130820_FusionElectronics_Tone extends PGN {
- fields: PGN_130820_FusionElectronics_ToneFields
+export interface PGN_130820_FusionEq extends PGN {
+ fields: PGN_130820_FusionEqFields
 }
 
-export const PGN_130820_FusionElectronics_ToneDefaults = {
+export const PGN_130820_FusionEqDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8716,7 +8716,7 @@ export const PGN_130820_FusionElectronics_ToneDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Volume Limits
 */
-export interface PGN_130820_FusionElectronics_VolumeLimitsFields extends PGNFields {
+export interface PGN_130820_FusionVolumeLimitsFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8727,11 +8727,11 @@ export interface PGN_130820_FusionElectronics_VolumeLimitsFields extends PGNFiel
   zone4VolumeLimit?: N2K_Number
 }
 
-export interface PGN_130820_FusionElectronics_VolumeLimits extends PGN {
- fields: PGN_130820_FusionElectronics_VolumeLimitsFields
+export interface PGN_130820_FusionVolumeLimits extends PGN {
+ fields: PGN_130820_FusionVolumeLimitsFields
 }
 
-export const PGN_130820_FusionElectronics_VolumeLimitsDefaults = {
+export const PGN_130820_FusionVolumeLimitsDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8743,7 +8743,7 @@ export const PGN_130820_FusionElectronics_VolumeLimitsDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Volume
 */
-export interface PGN_130820_FusionElectronics_VolumeFields extends PGNFields {
+export interface PGN_130820_FusionVolumesFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8754,11 +8754,11 @@ export interface PGN_130820_FusionElectronics_VolumeFields extends PGNFields {
   zone4?: N2K_Number
 }
 
-export interface PGN_130820_FusionElectronics_Volume extends PGN {
- fields: PGN_130820_FusionElectronics_VolumeFields
+export interface PGN_130820_FusionVolumes extends PGN {
+ fields: PGN_130820_FusionVolumesFields
 }
 
-export const PGN_130820_FusionElectronics_VolumeDefaults = {
+export const PGN_130820_FusionVolumesDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8770,7 +8770,7 @@ export const PGN_130820_FusionElectronics_VolumeDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Capabilities
 */
-export interface PGN_130820_FusionElectronics_CapabilitiesFields extends PGNFields {
+export interface PGN_130820_FusionCapabilitiesFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8782,11 +8782,11 @@ export interface PGN_130820_FusionElectronics_CapabilitiesFields extends PGNFiel
   global?: N2K_Number
 }
 
-export interface PGN_130820_FusionElectronics_Capabilities extends PGN {
- fields: PGN_130820_FusionElectronics_CapabilitiesFields
+export interface PGN_130820_FusionCapabilities extends PGN {
+ fields: PGN_130820_FusionCapabilitiesFields
 }
 
-export const PGN_130820_FusionElectronics_CapabilitiesDefaults = {
+export const PGN_130820_FusionCapabilitiesDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8798,7 +8798,7 @@ export const PGN_130820_FusionElectronics_CapabilitiesDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Line Level Control
 */
-export interface PGN_130820_FusionElectronics_LineLevelControlFields extends PGNFields {
+export interface PGN_130820_FusionLineLevelControlFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8807,11 +8807,11 @@ export interface PGN_130820_FusionElectronics_LineLevelControlFields extends PGN
   control?: N2K_Number
 }
 
-export interface PGN_130820_FusionElectronics_LineLevelControl extends PGN {
- fields: PGN_130820_FusionElectronics_LineLevelControlFields
+export interface PGN_130820_FusionLineLevelControl extends PGN {
+ fields: PGN_130820_FusionLineLevelControlFields
 }
 
-export const PGN_130820_FusionElectronics_LineLevelControlDefaults = {
+export const PGN_130820_FusionLineLevelControlDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8823,7 +8823,7 @@ export const PGN_130820_FusionElectronics_LineLevelControlDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Power
 */
-export interface PGN_130820_FusionElectronics_PowerFields extends PGNFields {
+export interface PGN_130820_FusionPowerStateFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8831,11 +8831,11 @@ export interface PGN_130820_FusionElectronics_PowerFields extends PGNFields {
   state?: enums.FusionPowerState|number
 }
 
-export interface PGN_130820_FusionElectronics_Power extends PGN {
- fields: PGN_130820_FusionElectronics_PowerFields
+export interface PGN_130820_FusionPowerState extends PGN {
+ fields: PGN_130820_FusionPowerStateFields
 }
 
-export const PGN_130820_FusionElectronics_PowerDefaults = {
+export const PGN_130820_FusionPowerStateDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8847,7 +8847,7 @@ export const PGN_130820_FusionElectronics_PowerDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Sirius
 */
-export interface PGN_130820_FusionElectronics_SiriusFields extends PGNFields {
+export interface PGN_130820_FusionSiriusxmFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8859,11 +8859,11 @@ export interface PGN_130820_FusionElectronics_SiriusFields extends PGNFields {
   tuningMode?: enums.FusionSiriusTuningMode|number
 }
 
-export interface PGN_130820_FusionElectronics_Sirius extends PGN {
- fields: PGN_130820_FusionElectronics_SiriusFields
+export interface PGN_130820_FusionSiriusxm extends PGN {
+ fields: PGN_130820_FusionSiriusxmFields
 }
 
-export const PGN_130820_FusionElectronics_SiriusDefaults = {
+export const PGN_130820_FusionSiriusxmDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8875,7 +8875,7 @@ export const PGN_130820_FusionElectronics_SiriusDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == SiriusXM Channel
 */
-export interface PGN_130820_FusionElectronics_SiriusXmChannelFields extends PGNFields {
+export interface PGN_130820_FusionSiriusxmChannelFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8885,11 +8885,11 @@ export interface PGN_130820_FusionElectronics_SiriusXmChannelFields extends PGNF
   channel?: N2K_StringLz
 }
 
-export interface PGN_130820_FusionElectronics_SiriusXmChannel extends PGN {
- fields: PGN_130820_FusionElectronics_SiriusXmChannelFields
+export interface PGN_130820_FusionSiriusxmChannel extends PGN {
+ fields: PGN_130820_FusionSiriusxmChannelFields
 }
 
-export const PGN_130820_FusionElectronics_SiriusXmChannelDefaults = {
+export const PGN_130820_FusionSiriusxmChannelDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8901,7 +8901,7 @@ export const PGN_130820_FusionElectronics_SiriusXmChannelDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == SiriusXM Title
 */
-export interface PGN_130820_FusionElectronics_SiriusXmTitleFields extends PGNFields {
+export interface PGN_130820_FusionSiriusxmTitleFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8911,11 +8911,11 @@ export interface PGN_130820_FusionElectronics_SiriusXmTitleFields extends PGNFie
   title?: N2K_StringLz
 }
 
-export interface PGN_130820_FusionElectronics_SiriusXmTitle extends PGN {
- fields: PGN_130820_FusionElectronics_SiriusXmTitleFields
+export interface PGN_130820_FusionSiriusxmTitle extends PGN {
+ fields: PGN_130820_FusionSiriusxmTitleFields
 }
 
-export const PGN_130820_FusionElectronics_SiriusXmTitleDefaults = {
+export const PGN_130820_FusionSiriusxmTitleDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8927,7 +8927,7 @@ export const PGN_130820_FusionElectronics_SiriusXmTitleDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == SiriusXM Artist
 */
-export interface PGN_130820_FusionElectronics_SiriusXmArtistFields extends PGNFields {
+export interface PGN_130820_FusionSiriusxmArtistFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8937,11 +8937,11 @@ export interface PGN_130820_FusionElectronics_SiriusXmArtistFields extends PGNFi
   artist?: N2K_StringLz
 }
 
-export interface PGN_130820_FusionElectronics_SiriusXmArtist extends PGN {
- fields: PGN_130820_FusionElectronics_SiriusXmArtistFields
+export interface PGN_130820_FusionSiriusxmArtist extends PGN {
+ fields: PGN_130820_FusionSiriusxmArtistFields
 }
 
-export const PGN_130820_FusionElectronics_SiriusXmArtistDefaults = {
+export const PGN_130820_FusionSiriusxmArtistDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8953,7 +8953,7 @@ export const PGN_130820_FusionElectronics_SiriusXmArtistDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == SiriusXM Genre
 */
-export interface PGN_130820_FusionElectronics_SiriusXmGenreFields extends PGNFields {
+export interface PGN_130820_FusionSiriusxmContentInfoFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8963,11 +8963,11 @@ export interface PGN_130820_FusionElectronics_SiriusXmGenreFields extends PGNFie
   genre?: N2K_StringLz
 }
 
-export interface PGN_130820_FusionElectronics_SiriusXmGenre extends PGN {
- fields: PGN_130820_FusionElectronics_SiriusXmGenreFields
+export interface PGN_130820_FusionSiriusxmContentInfo extends PGN {
+ fields: PGN_130820_FusionSiriusxmContentInfoFields
 }
 
-export const PGN_130820_FusionElectronics_SiriusXmGenreDefaults = {
+export const PGN_130820_FusionSiriusxmContentInfoDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -8979,7 +8979,7 @@ export const PGN_130820_FusionElectronics_SiriusXmGenreDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == SiriusXM Category
 */
-export interface PGN_130820_FusionElectronics_SiriusXmCategoryFields extends PGNFields {
+export interface PGN_130820_FusionSiriusxmCategoryFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -8989,11 +8989,11 @@ export interface PGN_130820_FusionElectronics_SiriusXmCategoryFields extends PGN
   name?: N2K_StringLz
 }
 
-export interface PGN_130820_FusionElectronics_SiriusXmCategory extends PGN {
- fields: PGN_130820_FusionElectronics_SiriusXmCategoryFields
+export interface PGN_130820_FusionSiriusxmCategory extends PGN {
+ fields: PGN_130820_FusionSiriusxmCategoryFields
 }
 
-export const PGN_130820_FusionElectronics_SiriusXmCategoryDefaults = {
+export const PGN_130820_FusionSiriusxmCategoryDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -9005,7 +9005,7 @@ export const PGN_130820_FusionElectronics_SiriusXmCategoryDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == SiriusXm Signal
 */
-export interface PGN_130820_FusionElectronics_SiriusXmSignalFields extends PGNFields {
+export interface PGN_130820_FusionSiriusxmSignalFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -9014,11 +9014,11 @@ export interface PGN_130820_FusionElectronics_SiriusXmSignalFields extends PGNFi
   signal?: N2K_Number
 }
 
-export interface PGN_130820_FusionElectronics_SiriusXmSignal extends PGN {
- fields: PGN_130820_FusionElectronics_SiriusXmSignalFields
+export interface PGN_130820_FusionSiriusxmSignal extends PGN {
+ fields: PGN_130820_FusionSiriusxmSignalFields
 }
 
-export const PGN_130820_FusionElectronics_SiriusXmSignalDefaults = {
+export const PGN_130820_FusionSiriusxmSignalDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -9030,7 +9030,7 @@ export const PGN_130820_FusionElectronics_SiriusXmSignalDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == SiriusXM Presets
 */
-export interface PGN_130820_FusionElectronics_SiriusXmPresetsFields extends PGNFields {
+export interface PGN_130820_FusionSiriusxmPresetsFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -9040,11 +9040,11 @@ export interface PGN_130820_FusionElectronics_SiriusXmPresetsFields extends PGNF
   values?: N2K_Binary
 }
 
-export interface PGN_130820_FusionElectronics_SiriusXmPresets extends PGN {
- fields: PGN_130820_FusionElectronics_SiriusXmPresetsFields
+export interface PGN_130820_FusionSiriusxmPresets extends PGN {
+ fields: PGN_130820_FusionSiriusxmPresetsFields
 }
 
-export const PGN_130820_FusionElectronics_SiriusXmPresetsDefaults = {
+export const PGN_130820_FusionSiriusxmPresetsDefaults = {
   pgn: 130820,
   dst: 255,
   prio: 7
@@ -9055,7 +9055,7 @@ export const PGN_130820_FusionElectronics_SiriusXmPresetsDefaults = {
   Match: Manufacturer Code == Navico
   Match: Industry Code == Marine Industry
 */
-export interface PGN_130821_NavicoFields extends PGNFields {
+export interface PGN_130821_NavicoAsciiDataFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -9063,11 +9063,11 @@ export interface PGN_130821_NavicoFields extends PGNFields {
   message?: N2K_StringFix
 }
 
-export interface PGN_130821_Navico extends PGN {
- fields: PGN_130821_NavicoFields
+export interface PGN_130821_NavicoAsciiData extends PGN {
+ fields: PGN_130821_NavicoAsciiDataFields
 }
 
-export const PGN_130821_NavicoDefaults = {
+export const PGN_130821_NavicoAsciiDataDefaults = {
   pgn: 130821,
   dst: 255,
   prio: 7
@@ -9078,7 +9078,7 @@ export const PGN_130821_NavicoDefaults = {
   Match: Manufacturer Code == Furuno
   Match: Industry Code == Marine Industry
 */
-export interface PGN_130821_FurunoFields extends PGNFields {
+export interface PGN_130821_FurunoUnknown130821Fields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -9094,11 +9094,11 @@ export interface PGN_130821_FurunoFields extends PGNFields {
   i?: N2K_Number
 }
 
-export interface PGN_130821_Furuno extends PGN {
- fields: PGN_130821_FurunoFields
+export interface PGN_130821_FurunoUnknown130821 extends PGN {
+ fields: PGN_130821_FurunoUnknown130821Fields
 }
 
-export const PGN_130821_FurunoDefaults = {
+export const PGN_130821_FurunoUnknown130821Defaults = {
   pgn: 130821,
   dst: 255,
   prio: 7
@@ -9154,7 +9154,7 @@ export const PGN_130823Defaults = {
   Match: Manufacturer Code == B & G
   Match: Industry Code == Marine Industry
 */
-export interface PGN_130824_BGFields extends PGNFields {
+export interface PGN_130824_BGkeyValueDataFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -9165,11 +9165,11 @@ export interface PGN_130824_BGFields extends PGNFields {
   }[]
 }
 
-export interface PGN_130824_BG extends PGN {
- fields: PGN_130824_BGFields
+export interface PGN_130824_BGkeyValueData extends PGN {
+ fields: PGN_130824_BGkeyValueDataFields
 }
 
-export const PGN_130824_BGDefaults = {
+export const PGN_130824_BGkeyValueDataDefaults = {
   pgn: 130824,
   dst: 255,
   prio: 2
@@ -9180,7 +9180,7 @@ export const PGN_130824_BGDefaults = {
   Match: Manufacturer Code == Maretron
   Match: Industry Code == Marine Industry
 */
-export interface PGN_130824_MaretronFields extends PGNFields {
+export interface PGN_130824_MaretronAnnunciatorFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -9191,11 +9191,11 @@ export interface PGN_130824_MaretronFields extends PGNFields {
   field8?: N2K_Number
 }
 
-export interface PGN_130824_Maretron extends PGN {
- fields: PGN_130824_MaretronFields
+export interface PGN_130824_MaretronAnnunciator extends PGN {
+ fields: PGN_130824_MaretronAnnunciatorFields
 }
 
-export const PGN_130824_MaretronDefaults = {
+export const PGN_130824_MaretronAnnunciatorDefaults = {
   pgn: 130824,
   dst: 255,
   prio: 7
@@ -9371,7 +9371,7 @@ export const PGN_130835Defaults = {
   Match: Manufacturer Code == Simrad
   Match: Industry Code == Marine Industry
 */
-export interface PGN_130836_SimradFields extends PGNFields {
+export interface PGN_130836_SimnetFluidLevelSensorConfigurationFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -9386,11 +9386,11 @@ export interface PGN_130836_SimradFields extends PGNFields {
   i?: N2K_Number
 }
 
-export interface PGN_130836_Simrad extends PGN {
- fields: PGN_130836_SimradFields
+export interface PGN_130836_SimnetFluidLevelSensorConfiguration extends PGN {
+ fields: PGN_130836_SimnetFluidLevelSensorConfigurationFields
 }
 
-export const PGN_130836_SimradDefaults = {
+export const PGN_130836_SimnetFluidLevelSensorConfigurationDefaults = {
   pgn: 130836,
   dst: 255,
   prio: 3
@@ -9401,7 +9401,7 @@ export const PGN_130836_SimradDefaults = {
   Match: Manufacturer Code == Maretron
   Match: Industry Code == Marine Industry
 */
-export interface PGN_130836_MaretronFields extends PGNFields {
+export interface PGN_130836_MaretronSwitchStatusCounterFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -9416,11 +9416,11 @@ export interface PGN_130836_MaretronFields extends PGNFields {
   reserved12?: number
 }
 
-export interface PGN_130836_Maretron extends PGN {
- fields: PGN_130836_MaretronFields
+export interface PGN_130836_MaretronSwitchStatusCounter extends PGN {
+ fields: PGN_130836_MaretronSwitchStatusCounterFields
 }
 
-export const PGN_130836_MaretronDefaults = {
+export const PGN_130836_MaretronSwitchStatusCounterDefaults = {
   pgn: 130836,
   dst: 255,
   prio: 6
@@ -9431,17 +9431,17 @@ export const PGN_130836_MaretronDefaults = {
   Match: Manufacturer Code == Simrad
   Match: Industry Code == Marine Industry
 */
-export interface PGN_130837_SimradFields extends PGNFields {
+export interface PGN_130837_SimnetFuelFlowTurbineConfigurationFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
-export interface PGN_130837_Simrad extends PGN {
- fields: PGN_130837_SimradFields
+export interface PGN_130837_SimnetFuelFlowTurbineConfiguration extends PGN {
+ fields: PGN_130837_SimnetFuelFlowTurbineConfigurationFields
 }
 
-export const PGN_130837_SimradDefaults = {
+export const PGN_130837_SimnetFuelFlowTurbineConfigurationDefaults = {
   pgn: 130837,
   dst: 255,
   prio: 3
@@ -9452,7 +9452,7 @@ export const PGN_130837_SimradDefaults = {
   Match: Manufacturer Code == Maretron
   Match: Industry Code == Marine Industry
 */
-export interface PGN_130837_MaretronFields extends PGNFields {
+export interface PGN_130837_MaretronSwitchStatusTimerFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -9467,11 +9467,11 @@ export interface PGN_130837_MaretronFields extends PGNFields {
   reserved12?: number
 }
 
-export interface PGN_130837_Maretron extends PGN {
- fields: PGN_130837_MaretronFields
+export interface PGN_130837_MaretronSwitchStatusTimer extends PGN {
+ fields: PGN_130837_MaretronSwitchStatusTimerFields
 }
 
-export const PGN_130837_MaretronDefaults = {
+export const PGN_130837_MaretronSwitchStatusTimerDefaults = {
   pgn: 130837,
   dst: 255,
   prio: 6
@@ -9539,7 +9539,7 @@ export const PGN_130840Defaults = {
   Match: Manufacturer Code == Simrad
   Match: Industry Code == Marine Industry
 */
-export interface PGN_130842_SimradFields extends PGNFields {
+export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartAFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -9551,11 +9551,11 @@ export interface PGN_130842_SimradFields extends PGNFields {
   name?: N2K_StringFix
 }
 
-export interface PGN_130842_Simrad extends PGN {
- fields: PGN_130842_SimradFields
+export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartA extends PGN {
+ fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartAFields
 }
 
-export const PGN_130842_SimradDefaults = {
+export const PGN_130842_SimnetAisClassBstaticDataMsg24PartADefaults = {
   pgn: 130842,
   dst: 255,
   prio: 3
@@ -9566,7 +9566,7 @@ export const PGN_130842_SimradDefaults = {
   Match: Manufacturer Code == Furuno
   Match: Industry Code == Marine Industry
 */
-export interface PGN_130842_FurunoFields extends PGNFields {
+export interface PGN_130842_FurunoSixDegreesOfFreedomMovementFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -9581,11 +9581,11 @@ export interface PGN_130842_FurunoFields extends PGNFields {
   i?: N2K_Number
 }
 
-export interface PGN_130842_Furuno extends PGN {
- fields: PGN_130842_FurunoFields
+export interface PGN_130842_FurunoSixDegreesOfFreedomMovement extends PGN {
+ fields: PGN_130842_FurunoSixDegreesOfFreedomMovementFields
 }
 
-export const PGN_130842_FurunoDefaults = {
+export const PGN_130842_FurunoSixDegreesOfFreedomMovementDefaults = {
   pgn: 130842,
   dst: 255,
   prio: 3
@@ -9597,7 +9597,7 @@ export const PGN_130842_FurunoDefaults = {
   Match: Industry Code == Marine Industry
   Match: Message ID == Msg 24 Part B
 */
-export interface PGN_130842_Simrad_Msg24PartBFields extends PGNFields {
+export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartBFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -9618,11 +9618,11 @@ export interface PGN_130842_Simrad_Msg24PartBFields extends PGNFields {
   reserved18?: number
 }
 
-export interface PGN_130842_Simrad_Msg24PartB extends PGN {
- fields: PGN_130842_Simrad_Msg24PartBFields
+export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartB extends PGN {
+ fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartBFields
 }
 
-export const PGN_130842_Simrad_Msg24PartBDefaults = {
+export const PGN_130842_SimnetAisClassBstaticDataMsg24PartBDefaults = {
   pgn: 130842,
   dst: 255,
   prio: 3
@@ -9633,7 +9633,7 @@ export const PGN_130842_Simrad_Msg24PartBDefaults = {
   Match: Manufacturer Code == Furuno
   Match: Industry Code == Marine Industry
 */
-export interface PGN_130843_FurunoFields extends PGNFields {
+export interface PGN_130843_FurunoHeelAngleRollInformationFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -9644,11 +9644,11 @@ export interface PGN_130843_FurunoFields extends PGNFields {
   roll?: N2K_Number
 }
 
-export interface PGN_130843_Furuno extends PGN {
- fields: PGN_130843_FurunoFields
+export interface PGN_130843_FurunoHeelAngleRollInformation extends PGN {
+ fields: PGN_130843_FurunoHeelAngleRollInformationFields
 }
 
-export const PGN_130843_FurunoDefaults = {
+export const PGN_130843_FurunoHeelAngleRollInformationDefaults = {
   pgn: 130843,
   dst: 255,
   prio: 3
@@ -9659,17 +9659,17 @@ export const PGN_130843_FurunoDefaults = {
   Match: Manufacturer Code == Simrad
   Match: Industry Code == Marine Industry
 */
-export interface PGN_130843_SimradFields extends PGNFields {
+export interface PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
-export interface PGN_130843_Simrad extends PGN {
- fields: PGN_130843_SimradFields
+export interface PGN_130843_SimnetSonarStatusFrequencyAndDspVoltage extends PGN {
+ fields: PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageFields
 }
 
-export const PGN_130843_SimradDefaults = {
+export const PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageDefaults = {
   pgn: 130843,
   dst: 255,
   prio: 3
@@ -9680,17 +9680,17 @@ export const PGN_130843_SimradDefaults = {
   Match: Manufacturer Code == Furuno
   Match: Industry Code == Marine Industry
 */
-export interface PGN_130845_FurunoFields extends PGNFields {
+export interface PGN_130845_FurunoMultiSatsInViewExtendedFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
-export interface PGN_130845_Furuno extends PGN {
- fields: PGN_130845_FurunoFields
+export interface PGN_130845_FurunoMultiSatsInViewExtended extends PGN {
+ fields: PGN_130845_FurunoMultiSatsInViewExtendedFields
 }
 
-export const PGN_130845_FurunoDefaults = {
+export const PGN_130845_FurunoMultiSatsInViewExtendedDefaults = {
   pgn: 130845,
   dst: 255,
   prio: 3
@@ -9701,7 +9701,7 @@ export const PGN_130845_FurunoDefaults = {
   Match: Manufacturer Code == Simrad
   Match: Industry Code == Marine Industry
 */
-export interface PGN_130845_SimradFields extends PGNFields {
+export interface PGN_130845_SimnetKeyValueFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -9715,11 +9715,11 @@ export interface PGN_130845_SimradFields extends PGNFields {
   value?: N2K_DynamicFieldValue
 }
 
-export interface PGN_130845_Simrad extends PGN {
- fields: PGN_130845_SimradFields
+export interface PGN_130845_SimnetKeyValue extends PGN {
+ fields: PGN_130845_SimnetKeyValueFields
 }
 
-export const PGN_130845_SimradDefaults = {
+export const PGN_130845_SimnetKeyValueDefaults = {
   pgn: 130845,
   dst: 255,
   prio: 3
@@ -9730,7 +9730,7 @@ export const PGN_130845_SimradDefaults = {
   Match: Manufacturer Code == Simrad
   Match: Industry Code == Marine Industry
 */
-export interface PGN_130846_SimradFields extends PGNFields {
+export interface PGN_130846_SimnetParameterSetFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -9744,11 +9744,11 @@ export interface PGN_130846_SimradFields extends PGNFields {
   value?: N2K_DynamicFieldValue
 }
 
-export interface PGN_130846_Simrad extends PGN {
- fields: PGN_130846_SimradFields
+export interface PGN_130846_SimnetParameterSet extends PGN {
+ fields: PGN_130846_SimnetParameterSetFields
 }
 
-export const PGN_130846_SimradDefaults = {
+export const PGN_130846_SimnetParameterSetDefaults = {
   pgn: 130846,
   dst: 255,
   prio: 3
@@ -9759,17 +9759,17 @@ export const PGN_130846_SimradDefaults = {
   Match: Manufacturer Code == Furuno
   Match: Industry Code == Marine Industry
 */
-export interface PGN_130846_FurunoFields extends PGNFields {
+export interface PGN_130846_FurunoMotionSensorStatusExtendedFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
 }
 
-export interface PGN_130846_Furuno extends PGN {
- fields: PGN_130846_FurunoFields
+export interface PGN_130846_FurunoMotionSensorStatusExtended extends PGN {
+ fields: PGN_130846_FurunoMotionSensorStatusExtendedFields
 }
 
-export const PGN_130846_FurunoDefaults = {
+export const PGN_130846_FurunoMotionSensorStatusExtendedDefaults = {
   pgn: 130846,
   dst: 255,
   prio: 3
@@ -9830,7 +9830,7 @@ export const PGN_130848Defaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Autopilot
 */
-export interface PGN_130850_Simrad_AutopilotFields extends PGNFields {
+export interface PGN_130850_SimnetApCommandFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -9844,11 +9844,11 @@ export interface PGN_130850_Simrad_AutopilotFields extends PGNFields {
   angle?: N2K_Number
 }
 
-export interface PGN_130850_Simrad_Autopilot extends PGN {
- fields: PGN_130850_Simrad_AutopilotFields
+export interface PGN_130850_SimnetApCommand extends PGN {
+ fields: PGN_130850_SimnetApCommandFields
 }
 
-export const PGN_130850_Simrad_AutopilotDefaults = {
+export const PGN_130850_SimnetApCommandDefaults = {
   pgn: 130850,
   dst: 255,
   prio: 2
@@ -9860,7 +9860,7 @@ export const PGN_130850_Simrad_AutopilotDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == AP command
 */
-export interface PGN_130850_Simrad_ApCommandFields extends PGNFields {
+export interface PGN_130850_SimnetEventCommandApCommandFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -9874,11 +9874,11 @@ export interface PGN_130850_Simrad_ApCommandFields extends PGNFields {
   unusedC?: N2K_Number
 }
 
-export interface PGN_130850_Simrad_ApCommand extends PGN {
- fields: PGN_130850_Simrad_ApCommandFields
+export interface PGN_130850_SimnetEventCommandApCommand extends PGN {
+ fields: PGN_130850_SimnetEventCommandApCommandFields
 }
 
-export const PGN_130850_Simrad_ApCommandDefaults = {
+export const PGN_130850_SimnetEventCommandApCommandDefaults = {
   pgn: 130850,
   dst: 255,
   prio: 2
@@ -9891,7 +9891,7 @@ export const PGN_130850_Simrad_ApCommandDefaults = {
   Match: Industry Code == Marine Industry
   Match: Proprietary ID == Alarm
 */
-export interface PGN_130850_Simrad_AlarmFields extends PGNFields {
+export interface PGN_130850_SimnetAlarmFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -9905,11 +9905,11 @@ export interface PGN_130850_Simrad_AlarmFields extends PGNFields {
   g?: N2K_Number
 }
 
-export interface PGN_130850_Simrad_Alarm extends PGN {
- fields: PGN_130850_Simrad_AlarmFields
+export interface PGN_130850_SimnetAlarm extends PGN {
+ fields: PGN_130850_SimnetAlarmFields
 }
 
-export const PGN_130850_Simrad_AlarmDefaults = {
+export const PGN_130850_SimnetAlarmDefaults = {
   pgn: 130850,
   dst: 255,
   prio: 2

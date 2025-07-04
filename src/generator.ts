@@ -141,8 +141,7 @@ if (argv.pgns) {
   console.log('/**')
   console.log(` * @category PGN Definitions`)
   console.log(' */')
-  console.log('export interface PGNFields {')
-  console.log('}\n')
+  console.log('export interface PGNFields {}\n')
 
   console.log(`/**'
  * @category PGN Definitions
@@ -158,7 +157,10 @@ export interface PGNInterface {
   fields: PGNFields
 }\n`)
 
-  console.log(`export class PGN {
+  console.log(`/**
+ * @category PGN Definitions
+ */
+export class PGN {
   pgn: number
   prio: number
   src?: number
@@ -168,7 +170,7 @@ export interface PGNInterface {
   description?: string
   fields: PGNFields
   
-  constructor(fields:PGN) {
+  constructor(fields: PGN) {
     this.pgn = fields.pgn
     this.prio = fields.prio
     this.src = fields.src
@@ -240,7 +242,7 @@ export interface PGNInterface {
 
       case 'LOOKUP':
         if (field.LookupEnumeration) {
-          type = `enums.${enumName(field.LookupEnumeration)}|number`
+          type = `enums.${enumName(field.LookupEnumeration)} | number`
         } else {
           //FIXME! error
         }
@@ -248,7 +250,7 @@ export interface PGNInterface {
 
       case 'INDIRECT_LOOKUP':
         if (field.LookupIndirectEnumeration) {
-          type = `enums.${enumName(field.LookupIndirectEnumeration)}|number`
+          type = `enums.${enumName(field.LookupIndirectEnumeration)} | number`
         }
         break
 
@@ -296,29 +298,29 @@ export interface PGNInterface {
     }
 
     console.log('/**')
-    console.log(`  * PGN: ${pgn.PGN}`)
-    console.log('  *')
-    console.log(`  * Description: ${pgn.Description}`)
+    console.log(` * PGN: ${pgn.PGN}`)
+    console.log(' *')
+    console.log(` * Description: ${pgn.Description}`)
     if (pgn.Explanation) {
-      console.log('  *')
-      console.log(`  * Explanation: ${pgn.Explanation}`)
+      console.log(' *')
+      console.log(` * Explanation: ${pgn.Explanation}`)
     }
     if (isMulti) {
-      console.log('  *')
+      console.log(' *')
       pgn.Fields.forEach((field: Field) => {
         if (field.Match) {
           console.log(
-            `  * Match: ${field.Name} == ${field.Description || field.Match}<br>`
+            ` * Match: ${field.Name} == ${field.Description || field.Match}<br>`
           )
         }
       })
     }
-    console.log('  *')
-    console.log(`  * @category ${typeName}`)
+    console.log(' *')
+    console.log(` * @category ${typeName}`)
     console.log(' */')
 
     console.log(`export interface ${typeName}Interface extends PGNInterface {`)
-    console.log(` fields: ${typeName}Fields`)
+    console.log(`  fields: ${typeName}Fields`)
     console.log('}\n')
 
     category()
@@ -327,8 +329,9 @@ export interface PGNInterface {
       pgn.Fields.forEach((field: Field, idx: number) => {
         if (
           pgn.RepeatingFieldSet1StartField !== undefined &&
-            idx + 1 >= pgn.RepeatingFieldSet1StartField &&
-            idx + 1 < pgn.RepeatingFieldSet1StartField + pgn.RepeatingFieldSet1Size!
+          idx + 1 >= pgn.RepeatingFieldSet1StartField &&
+          idx + 1 <
+            pgn.RepeatingFieldSet1StartField + pgn.RepeatingFieldSet1Size!
         ) {
           return
         }
@@ -348,7 +351,6 @@ export interface PGNInterface {
     }
     outputFields()
     console.log('}\n')
-
 
     category()
     console.log(`export const ${typeName}Defaults = {`)
@@ -416,14 +418,14 @@ export interface PGNInterface {
     const createArgs = hasMatchFields ? 'CreateArgs' : 'Fields'
 
     category()
-    console.log(`export class ${typeName}  extends PGN implements ${typeName}Interface {
+    console.log(`export class ${typeName} extends PGN implements ${typeName}Interface {
   fields: ${typeName}Fields
   
-  constructor(fields: ${typeName}${createArgs}, dst:number=255) {
+  constructor(fields: ${typeName}${createArgs}, dst: number = 255) {
     super(${typeName}Defaults)
     this.src = dst`)
 
-    if ( hasMatchFields ) {
+    if (hasMatchFields) {
       console.log(`    this.fields = { ...${typeName}MatchFields, ...fields }`)
     } else {
       console.log(`    this.fields = fields`)
@@ -447,8 +449,6 @@ export interface PGNInterface {
     console.log('  }')
     console.log('}')
     */
-
-    
   }
 }
 

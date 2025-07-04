@@ -1,7 +1,6 @@
 *.guard.ts
 public
 *.json
-src/pgns.ts
 src/enums.ts
 docs
 

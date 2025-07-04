@@ -20,11 +20,15 @@ export * from './pgns'
 export * from './definition'
 export * from './utilities'
 
-import { Definition, PGNMap } from './definition'
+import { Definition } from './definition'
+import { PGNMap } from './utilities'
 
 //const canboat = require('../canboat.json')
 import canboat from '../canboat.json'
 
+/**
+ * @category PGN Definition Access
+ */
 export const getAllPGNs = (): Definition[] => {
   const all: Definition[] = canboat.PGNs as Definition[]
   return all.filter(
@@ -34,6 +38,9 @@ export const getAllPGNs = (): Definition[] => {
 
 let pgnMap: PGNMap
 
+/**
+ * @category PGN Definition Access
+ */
 export const getPGNMap = (): PGNMap => {
   if (pgnMap === undefined) {
     const res: { [key: number]: Definition[] } = {}
@@ -57,6 +64,9 @@ export const getPGNMap = (): PGNMap => {
   return pgnMap
 }
 
+/**
+ * @category PGN Definition Access
+ */
 export const getPGN = (num: number): Definition[] | undefined => {
   return getPGNMap()[num]
 }

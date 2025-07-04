@@ -1,14 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export type PGNMap = {
-  [key: number]: Definition[]
-}
-
+/**
+ * @category PGN Definitions
+ */
 export enum Type {
   Single = 'Single',
   Fast = 'Fast'
 }
 
+/**
+ * @category PGN Definitions
+ */
 export enum FieldType {
   Binary = 'BINARY',
   BitLookup = 'BITLOOKUP',
@@ -35,6 +37,9 @@ export enum FieldType {
   Variable = 'VARIABLE'
 }
 
+/**
+ * @category PGN Definitions
+ */
 export enum PhysicalQuantity {
   Angle = 'ANGLE',
   AngularVelocity = 'ANGULAR_VELOCITY',
@@ -65,30 +70,48 @@ export enum PhysicalQuantity {
   VolumetricFlow = 'VOLUMETRIC_FLOW'
 }
 
+/**
+ * @category PGN Definitions
+ */
 export type EnumValue = {
   Name: string
   Value: number
 }
 
+/**
+ * @category PGN Definitions
+ */
 export interface EnumBase {
   Name: string
 }
 
+/**
+ * @category PGN Definitions
+ */
 export interface Enumeration extends EnumBase {
   MaxValue: number
   EnumValues: EnumValue[]
 }
 
+/**
+ * @category PGN Definitions
+ */
 export type EnumBitValue = {
   Name: string
   Bit: number
 }
 
+/**
+ * @category PGN Definitions
+ */
 export interface BitEnumeration extends EnumBase {
   MaxValue: number
   EnumBitValues: EnumBitValue[]
 }
 
+/**
+ * @category PGN Definitions
+ */
 export type EnumFieldTypeValue = {
   name: string
   value: number
@@ -98,11 +121,17 @@ export type EnumFieldTypeValue = {
   Bits: string
 }
 
+/**
+ * @category PGN Definitions
+ */
 export interface FieldTypeEnumeration extends EnumBase {
   MaxValue: number
   EnumFieldTypeValues: EnumFieldTypeValue[]
 }
 
+/**
+ * @category PGN Definitions
+ */
 export type Field = {
   Id: string
   Name: string
@@ -130,6 +159,9 @@ export type Field = {
   LookupFieldTypeEnumeration: string
 }
 
+/**
+ * @category PGN Definitions
+ */
 export type Definition = {
   PGN: number
   Id: string

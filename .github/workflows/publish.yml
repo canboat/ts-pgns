@@ -18,7 +18,6 @@ jobs:
           npm install npm@latest -g
           npm install --package-lock-only
           npm ci && npm cache clean --force
-          npm run build
 
       - name: Publish
         run: |

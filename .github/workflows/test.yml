@@ -10,7 +10,7 @@ on:
     branches: ['main']
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     strategy:
@@ -25,3 +25,20 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
       - run: npm run ci-test
+
+      - name: Verify Changed files
+        continue-on-error: true
+        uses: tj-actions/verify-changed-files@v20
+        id: verify-changed-files
+        with:
+          fail-if-changed: true
+          files: |
+            src
+
+      - name: Files Changed
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        env:
+          CHANGED_FILES: ${{ steps.verify-changed-files.outputs.changed_files }}
+        run: |
+          echo "Changed files: $CHANGED_FILES"
+          exit 1

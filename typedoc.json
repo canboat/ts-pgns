@@ -1,0 +1,18 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "name": "Canboat ts-pgns",
+  "entryPoints": ["./src/index.ts"],
+  "searchInComments": true,
+  "includeHierarchySummary": false,
+  "lightHighlightTheme": "github-light-default",
+  "darkHighlightTheme": "github-dark-dimmed",
+  "searchInComments": true,
+  "navigation": {
+    "includeCategories": true,
+    "includeGroups": false,
+    "excludeReferences": true,
+    "includeFolders": false,
+    "compactFolders": false
+  },
+  "categoryOrder": ["PGN Definition Access", "PGN Definitions", "Field Types", "Enumerations", "Utilities", "PGNS", "*"]
+}

@@ -420,7 +420,7 @@ export class PGN {
     category()
     console.log(`export class ${typeName} extends PGN implements ${typeName}Interface {
   fields: ${typeName}Fields
-  
+
   constructor(fields: ${typeName}${createArgs}, dst: number = 255) {
     super(${typeName}Defaults)
     this.src = dst`)

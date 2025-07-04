@@ -3,6 +3,7 @@ import {
   PGN_61184_VictronBatteryRegister,
   PGN_61184_VictronBatteryRegisterDefaults,
   PGN_61184_VictronBatteryRegisterMatchFields,
+  create61184_VictronBatteryRegister,
   PGN_129029,
   PGN_129029Defaults,
   ManufacturerCode,
@@ -14,6 +15,7 @@ import { findMatchingDefinition, mapCamelCaseKeys } from '../dist/utilities'
 
 describe('utilities tests', () => {
   it(`findMatchingDefinition works`, (done) => {
+    /*
     const pgn: PGN_61184_VictronBatteryRegister = {
       ...PGN_61184_VictronBatteryRegisterDefaults,
       fields: {
@@ -21,7 +23,13 @@ describe('utilities tests', () => {
         registerId: 1,
         payload: 100
       }
-    }
+      }*/
+
+    const pgn = create61184_VictronBatteryRegister({
+      xxx: 2,
+      registerId: 1,
+      payload: 100
+    })
 
     try {
       const def = findMatchingDefinition(pgn)

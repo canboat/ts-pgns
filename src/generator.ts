@@ -248,9 +248,11 @@ if (argv.pgns) {
 
     let typeName = `PGN_${pgn.PGN}`
 
+    let hasMatchFields = false
     if (isMulti) {
       if (pgn.Fields.find((f) => f.Match !== undefined)) {
         typeName = `${typeName}_${camelCase(pgn.Id, { pascalCase: true })}`
+        hasMatchFields = true
       }
 
       /*
@@ -299,33 +301,75 @@ if (argv.pgns) {
     console.log(`  prio: ${pgn.Priority !== undefined ? pgn.Priority : 3}`)
     console.log('}\n')
 
-    if (isMulti) {
-      if (pgn.Fields.find((f) => f.Match !== undefined)) {
-        console.log(`export const ${typeName}MatchFields = {`)
-        pgn.Fields.forEach((field: Field) => {
-          if (field.Match) {
-            let value: any
-            if (field.FieldType === 'LOOKUP' && field.Description) {
-              const ename =
-                field.LookupEnumeration === 'INDUSTRY_CODE' &&
-                field.Description === 'Marine Industry'
-                  ? 'Marine'
-                  : enumName(field.Description)
+    if (hasMatchFields) {
+      console.log(`export const ${typeName}MatchFields = {`)
+      pgn.Fields.forEach((field: Field) => {
+        if (field.Match) {
+          let value: any
+          if (field.FieldType === 'LOOKUP' && field.Description) {
+            const ename =
+              field.LookupEnumeration === 'INDUSTRY_CODE' &&
+              field.Description === 'Marine Industry'
+                ? 'Marine'
+                : enumName(field.Description)
 
-              enumName(field.Description)
-              value = `enums.${enumName(field.LookupEnumeration!)}.${ename}`
-            } else {
-              value =
-                typeof field.Description !== 'number'
-                  ? field.Match
-                  : field.Description!
-            }
-            console.log(`  ${fixIdentifier(field.Id, '_')}: ${value},`)
+            enumName(field.Description)
+            value = `enums.${enumName(field.LookupEnumeration!)}.${ename}`
+          } else {
+            value =
+              typeof field.Description !== 'number'
+                ? field.Match
+                : field.Description!
           }
-        })
-        console.log('}\n')
+          console.log(`  ${fixIdentifier(field.Id, '_')}: ${value},`)
+        }
+      })
+      console.log('}\n')
+
+      console.log(`export interface ${typeName}CreateArgs {`)
+      pgn.Fields.forEach((field: Field, idx) => {
+        if (!field.Match) {
+          if (
+            pgn.RepeatingFieldSet1StartField !== undefined &&
+            idx + 1 >= pgn.RepeatingFieldSet1StartField &&
+            idx + 1 <
+              pgn.RepeatingFieldSet1StartField + pgn.RepeatingFieldSet1Size!
+          ) {
+            return
+          }
+          console.log(`  ${getFieldString(field)}`)
+        }
+      })
+      if (pgn.RepeatingFieldSet1Size !== undefined) {
+        console.log(`  list: {`)
+        for (let i = 0; i < pgn.RepeatingFieldSet1Size; i++) {
+          const field = pgn.Fields[i + pgn.RepeatingFieldSet1StartField! - 1]
+          console.log(`    ${getFieldString(field)}`)
+        }
+        console.log('  }[]')
       }
+      if (pgn.RepeatingFieldSet2Size !== undefined) {
+        console.log(`  list2: any[]`)
+      }
+      console.log('}\n')
     }
+
+    const createArgs = hasMatchFields ? 'CreateArgs' : 'Fields'
+
+    console.log(
+      `export const new${typeName} = (fields: ${typeName}${createArgs}, dst:number=255) : ${typeName} => {`
+    )
+    console.log('  return {')
+    console.log(`    ...${typeName}Defaults,`)
+    console.log('    dst,')
+    console.log('    fields: {')
+    if (hasMatchFields) {
+      console.log(`      ...${typeName}MatchFields,`)
+    }
+    console.log('      ...fields')
+    console.log('    }')
+    console.log('  }')
+    console.log('}')
   }
 }
 

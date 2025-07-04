@@ -58,6 +58,15 @@ export const PGN_59392Defaults = {
   prio: 6
 }
 
+export const newPGN_59392 = (fields: PGN_59392Fields, dst:number=255) : PGN_59392 => {
+  return {
+    ...PGN_59392Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 59904
   Description: ISO Request
@@ -77,6 +86,15 @@ export const PGN_59904Defaults = {
   prio: 6
 }
 
+export const newPGN_59904 = (fields: PGN_59904Fields, dst:number=255) : PGN_59904 => {
+  return {
+    ...PGN_59904Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 60160
   Description: ISO Transport Protocol, Data Transfer
@@ -97,6 +115,15 @@ export const PGN_60160Defaults = {
   prio: 3
 }
 
+export const newPGN_60160 = (fields: PGN_60160Fields, dst:number=255) : PGN_60160 => {
+  return {
+    ...PGN_60160Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 60416
   Description: ISO Transport Protocol, Connection Management - Request To Send
@@ -125,6 +152,23 @@ export const PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendMatc
   groupFunctionCode: enums.IsoCommand.Rts,
 }
 
+export interface PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendCreateArgs {
+  messageSize?: N2K_Number
+  packets?: N2K_Number
+  packetsReply?: N2K_Number
+  pgn?: N2K_Pgn
+}
+
+export const newPGN_60416_IsoTransportProtocolConnectionManagementRequestToSend = (fields: PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendCreateArgs, dst:number=255) : PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend => {
+  return {
+    ...PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendDefaults,
+    dst,
+    fields: {
+      ...PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 60416
   Description: ISO Transport Protocol, Connection Management - Clear To Send
@@ -153,6 +197,23 @@ export const PGN_60416_IsoTransportProtocolConnectionManagementClearToSendMatchF
   groupFunctionCode: enums.IsoCommand.Cts,
 }
 
+export interface PGN_60416_IsoTransportProtocolConnectionManagementClearToSendCreateArgs {
+  maxPackets?: N2K_Number
+  nextSid?: N2K_Number
+  reserved?: number
+  pgn?: N2K_Pgn
+}
+
+export const newPGN_60416_IsoTransportProtocolConnectionManagementClearToSend = (fields: PGN_60416_IsoTransportProtocolConnectionManagementClearToSendCreateArgs, dst:number=255) : PGN_60416_IsoTransportProtocolConnectionManagementClearToSend => {
+  return {
+    ...PGN_60416_IsoTransportProtocolConnectionManagementClearToSendDefaults,
+    dst,
+    fields: {
+      ...PGN_60416_IsoTransportProtocolConnectionManagementClearToSendMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 60416
   Description: ISO Transport Protocol, Connection Management - End Of Message
@@ -181,6 +242,23 @@ export const PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageMatch
   groupFunctionCode: enums.IsoCommand.Eom,
 }
 
+export interface PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageCreateArgs {
+  totalMessageSize?: N2K_Number
+  totalNumberOfFramesReceived?: N2K_Number
+  reserved?: number
+  pgn?: N2K_Pgn
+}
+
+export const newPGN_60416_IsoTransportProtocolConnectionManagementEndOfMessage = (fields: PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageCreateArgs, dst:number=255) : PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessage => {
+  return {
+    ...PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageDefaults,
+    dst,
+    fields: {
+      ...PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 60416
   Description: ISO Transport Protocol, Connection Management - Broadcast Announce
@@ -209,6 +287,23 @@ export const PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce
   groupFunctionCode: enums.IsoCommand.Bam,
 }
 
+export interface PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceCreateArgs {
+  messageSize?: N2K_Number
+  packets?: N2K_Number
+  reserved?: number
+  pgn?: N2K_Pgn
+}
+
+export const newPGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce = (fields: PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceCreateArgs, dst:number=255) : PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce => {
+  return {
+    ...PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceDefaults,
+    dst,
+    fields: {
+      ...PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 60416
   Description: ISO Transport Protocol, Connection Management - Abort
@@ -236,6 +331,22 @@ export const PGN_60416_IsoTransportProtocolConnectionManagementAbortMatchFields 
   groupFunctionCode: enums.IsoCommand.Abort,
 }
 
+export interface PGN_60416_IsoTransportProtocolConnectionManagementAbortCreateArgs {
+  reason?: N2K_Binary
+  reserved?: number
+  pgn?: N2K_Pgn
+}
+
+export const newPGN_60416_IsoTransportProtocolConnectionManagementAbort = (fields: PGN_60416_IsoTransportProtocolConnectionManagementAbortCreateArgs, dst:number=255) : PGN_60416_IsoTransportProtocolConnectionManagementAbort => {
+  return {
+    ...PGN_60416_IsoTransportProtocolConnectionManagementAbortDefaults,
+    dst,
+    fields: {
+      ...PGN_60416_IsoTransportProtocolConnectionManagementAbortMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 60928
   Description: ISO Address Claim
@@ -264,6 +375,15 @@ export const PGN_60928Defaults = {
   prio: 6
 }
 
+export const newPGN_60928 = (fields: PGN_60928Fields, dst:number=255) : PGN_60928 => {
+  return {
+    ...PGN_60928Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 61184
   Description: Seatalk: Wireless Keypad Light Control
@@ -298,6 +418,24 @@ export const PGN_61184_SeatalkWirelessKeypadLightControlMatchFields = {
   proprietaryId: 1,
 }
 
+export interface PGN_61184_SeatalkWirelessKeypadLightControlCreateArgs {
+  reserved?: number
+  variant?: N2K_Number
+  wirelessSetting?: N2K_Number
+  wiredSetting?: N2K_Number
+  reserved8?: number
+}
+
+export const newPGN_61184_SeatalkWirelessKeypadLightControl = (fields: PGN_61184_SeatalkWirelessKeypadLightControlCreateArgs, dst:number=255) : PGN_61184_SeatalkWirelessKeypadLightControl => {
+  return {
+    ...PGN_61184_SeatalkWirelessKeypadLightControlDefaults,
+    dst,
+    fields: {
+      ...PGN_61184_SeatalkWirelessKeypadLightControlMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 61184
   Description: Seatalk: Wireless Keypad Control
@@ -329,6 +467,24 @@ export const PGN_61184_SeatalkWirelessKeypadControlMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_61184_SeatalkWirelessKeypadControlCreateArgs {
+  reserved?: number
+  PID: N2K_Number
+  variant?: N2K_Number
+  beepControl?: N2K_Number
+  reserved7?: number
+}
+
+export const newPGN_61184_SeatalkWirelessKeypadControl = (fields: PGN_61184_SeatalkWirelessKeypadControlCreateArgs, dst:number=255) : PGN_61184_SeatalkWirelessKeypadControl => {
+  return {
+    ...PGN_61184_SeatalkWirelessKeypadControlDefaults,
+    dst,
+    fields: {
+      ...PGN_61184_SeatalkWirelessKeypadControlMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 61184
   Description: Victron Battery Register
@@ -358,6 +514,22 @@ export const PGN_61184_VictronBatteryRegisterMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_61184_VictronBatteryRegisterCreateArgs {
+  reserved?: number
+  registerId?: N2K_Number
+  payload?: N2K_Number
+}
+
+export const newPGN_61184_VictronBatteryRegister = (fields: PGN_61184_VictronBatteryRegisterCreateArgs, dst:number=255) : PGN_61184_VictronBatteryRegister => {
+  return {
+    ...PGN_61184_VictronBatteryRegisterDefaults,
+    dst,
+    fields: {
+      ...PGN_61184_VictronBatteryRegisterMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65001
   Description: Bus #1 Phase C Basic AC Quantities
@@ -379,6 +551,15 @@ export const PGN_65001Defaults = {
   prio: 3
 }
 
+export const newPGN_65001 = (fields: PGN_65001Fields, dst:number=255) : PGN_65001 => {
+  return {
+    ...PGN_65001Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65002
   Description: Bus #1 Phase B Basic AC Quantities
@@ -400,6 +581,15 @@ export const PGN_65002Defaults = {
   prio: 3
 }
 
+export const newPGN_65002 = (fields: PGN_65002Fields, dst:number=255) : PGN_65002 => {
+  return {
+    ...PGN_65002Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65003
   Description: Bus #1 Phase A Basic AC Quantities
@@ -421,6 +611,15 @@ export const PGN_65003Defaults = {
   prio: 3
 }
 
+export const newPGN_65003 = (fields: PGN_65003Fields, dst:number=255) : PGN_65003 => {
+  return {
+    ...PGN_65003Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65004
   Description: Bus #1 Average Basic AC Quantities
@@ -442,6 +641,15 @@ export const PGN_65004Defaults = {
   prio: 3
 }
 
+export const newPGN_65004 = (fields: PGN_65004Fields, dst:number=255) : PGN_65004 => {
+  return {
+    ...PGN_65004Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65005
   Description: Utility Total AC Energy
@@ -461,6 +669,15 @@ export const PGN_65005Defaults = {
   prio: 3
 }
 
+export const newPGN_65005 = (fields: PGN_65005Fields, dst:number=255) : PGN_65005 => {
+  return {
+    ...PGN_65005Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65006
   Description: Utility Phase C AC Reactive Power
@@ -482,6 +699,15 @@ export const PGN_65006Defaults = {
   prio: 3
 }
 
+export const newPGN_65006 = (fields: PGN_65006Fields, dst:number=255) : PGN_65006 => {
+  return {
+    ...PGN_65006Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65007
   Description: Utility Phase C AC Power
@@ -501,6 +727,15 @@ export const PGN_65007Defaults = {
   prio: 3
 }
 
+export const newPGN_65007 = (fields: PGN_65007Fields, dst:number=255) : PGN_65007 => {
+  return {
+    ...PGN_65007Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65008
   Description: Utility Phase C Basic AC Quantities
@@ -522,6 +757,15 @@ export const PGN_65008Defaults = {
   prio: 3
 }
 
+export const newPGN_65008 = (fields: PGN_65008Fields, dst:number=255) : PGN_65008 => {
+  return {
+    ...PGN_65008Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65009
   Description: Utility Phase B AC Reactive Power
@@ -543,6 +787,15 @@ export const PGN_65009Defaults = {
   prio: 3
 }
 
+export const newPGN_65009 = (fields: PGN_65009Fields, dst:number=255) : PGN_65009 => {
+  return {
+    ...PGN_65009Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65010
   Description: Utility Phase B AC Power
@@ -562,6 +815,15 @@ export const PGN_65010Defaults = {
   prio: 3
 }
 
+export const newPGN_65010 = (fields: PGN_65010Fields, dst:number=255) : PGN_65010 => {
+  return {
+    ...PGN_65010Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65011
   Description: Utility Phase B Basic AC Quantities
@@ -583,6 +845,15 @@ export const PGN_65011Defaults = {
   prio: 3
 }
 
+export const newPGN_65011 = (fields: PGN_65011Fields, dst:number=255) : PGN_65011 => {
+  return {
+    ...PGN_65011Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65012
   Description: Utility Phase A AC Reactive Power
@@ -604,6 +875,15 @@ export const PGN_65012Defaults = {
   prio: 3
 }
 
+export const newPGN_65012 = (fields: PGN_65012Fields, dst:number=255) : PGN_65012 => {
+  return {
+    ...PGN_65012Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65013
   Description: Utility Phase A AC Power
@@ -623,6 +903,15 @@ export const PGN_65013Defaults = {
   prio: 3
 }
 
+export const newPGN_65013 = (fields: PGN_65013Fields, dst:number=255) : PGN_65013 => {
+  return {
+    ...PGN_65013Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65014
   Description: Utility Phase A Basic AC Quantities
@@ -644,6 +933,15 @@ export const PGN_65014Defaults = {
   prio: 3
 }
 
+export const newPGN_65014 = (fields: PGN_65014Fields, dst:number=255) : PGN_65014 => {
+  return {
+    ...PGN_65014Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65015
   Description: Utility Total AC Reactive Power
@@ -665,6 +963,15 @@ export const PGN_65015Defaults = {
   prio: 3
 }
 
+export const newPGN_65015 = (fields: PGN_65015Fields, dst:number=255) : PGN_65015 => {
+  return {
+    ...PGN_65015Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65016
   Description: Utility Total AC Power
@@ -684,6 +991,15 @@ export const PGN_65016Defaults = {
   prio: 3
 }
 
+export const newPGN_65016 = (fields: PGN_65016Fields, dst:number=255) : PGN_65016 => {
+  return {
+    ...PGN_65016Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65017
   Description: Utility Average Basic AC Quantities
@@ -705,6 +1021,15 @@ export const PGN_65017Defaults = {
   prio: 3
 }
 
+export const newPGN_65017 = (fields: PGN_65017Fields, dst:number=255) : PGN_65017 => {
+  return {
+    ...PGN_65017Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65018
   Description: Generator Total AC Energy
@@ -724,6 +1049,15 @@ export const PGN_65018Defaults = {
   prio: 3
 }
 
+export const newPGN_65018 = (fields: PGN_65018Fields, dst:number=255) : PGN_65018 => {
+  return {
+    ...PGN_65018Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65019
   Description: Generator Phase C AC Reactive Power
@@ -745,6 +1079,15 @@ export const PGN_65019Defaults = {
   prio: 3
 }
 
+export const newPGN_65019 = (fields: PGN_65019Fields, dst:number=255) : PGN_65019 => {
+  return {
+    ...PGN_65019Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65020
   Description: Generator Phase C AC Power
@@ -764,6 +1107,15 @@ export const PGN_65020Defaults = {
   prio: 3
 }
 
+export const newPGN_65020 = (fields: PGN_65020Fields, dst:number=255) : PGN_65020 => {
+  return {
+    ...PGN_65020Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65021
   Description: Generator Phase C Basic AC Quantities
@@ -785,6 +1137,15 @@ export const PGN_65021Defaults = {
   prio: 3
 }
 
+export const newPGN_65021 = (fields: PGN_65021Fields, dst:number=255) : PGN_65021 => {
+  return {
+    ...PGN_65021Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65022
   Description: Generator Phase B AC Reactive Power
@@ -806,6 +1167,15 @@ export const PGN_65022Defaults = {
   prio: 3
 }
 
+export const newPGN_65022 = (fields: PGN_65022Fields, dst:number=255) : PGN_65022 => {
+  return {
+    ...PGN_65022Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65023
   Description: Generator Phase B AC Power
@@ -825,6 +1195,15 @@ export const PGN_65023Defaults = {
   prio: 3
 }
 
+export const newPGN_65023 = (fields: PGN_65023Fields, dst:number=255) : PGN_65023 => {
+  return {
+    ...PGN_65023Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65024
   Description: Generator Phase B Basic AC Quantities
@@ -846,6 +1225,15 @@ export const PGN_65024Defaults = {
   prio: 3
 }
 
+export const newPGN_65024 = (fields: PGN_65024Fields, dst:number=255) : PGN_65024 => {
+  return {
+    ...PGN_65024Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65025
   Description: Generator Phase A AC Reactive Power
@@ -867,6 +1255,15 @@ export const PGN_65025Defaults = {
   prio: 3
 }
 
+export const newPGN_65025 = (fields: PGN_65025Fields, dst:number=255) : PGN_65025 => {
+  return {
+    ...PGN_65025Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65026
   Description: Generator Phase A AC Power
@@ -886,6 +1283,15 @@ export const PGN_65026Defaults = {
   prio: 3
 }
 
+export const newPGN_65026 = (fields: PGN_65026Fields, dst:number=255) : PGN_65026 => {
+  return {
+    ...PGN_65026Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65027
   Description: Generator Phase A Basic AC Quantities
@@ -907,6 +1313,15 @@ export const PGN_65027Defaults = {
   prio: 3
 }
 
+export const newPGN_65027 = (fields: PGN_65027Fields, dst:number=255) : PGN_65027 => {
+  return {
+    ...PGN_65027Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65028
   Description: Generator Total AC Reactive Power
@@ -928,6 +1343,15 @@ export const PGN_65028Defaults = {
   prio: 3
 }
 
+export const newPGN_65028 = (fields: PGN_65028Fields, dst:number=255) : PGN_65028 => {
+  return {
+    ...PGN_65028Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65029
   Description: Generator Total AC Power
@@ -947,6 +1371,15 @@ export const PGN_65029Defaults = {
   prio: 3
 }
 
+export const newPGN_65029 = (fields: PGN_65029Fields, dst:number=255) : PGN_65029 => {
+  return {
+    ...PGN_65029Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65030
   Description: Generator Average Basic AC Quantities
@@ -968,6 +1401,15 @@ export const PGN_65030Defaults = {
   prio: 3
 }
 
+export const newPGN_65030 = (fields: PGN_65030Fields, dst:number=255) : PGN_65030 => {
+  return {
+    ...PGN_65030Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65240
   Description: ISO Commanded Address
@@ -997,6 +1439,15 @@ export const PGN_65240Defaults = {
   prio: 3
 }
 
+export const newPGN_65240 = (fields: PGN_65240Fields, dst:number=255) : PGN_65240 => {
+  return {
+    ...PGN_65240Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65280
   Description: Furuno: Heave
@@ -1019,6 +1470,15 @@ export const PGN_65280Defaults = {
   prio: 2
 }
 
+export const newPGN_65280 = (fields: PGN_65280Fields, dst:number=255) : PGN_65280 => {
+  return {
+    ...PGN_65280Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65284
   Description: Maretron: Proprietary DC Breaker Current
@@ -1043,6 +1503,15 @@ export const PGN_65284Defaults = {
   prio: 6
 }
 
+export const newPGN_65284 = (fields: PGN_65284Fields, dst:number=255) : PGN_65284 => {
+  return {
+    ...PGN_65284Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65285
   Description: Airmar: Boot State Acknowledgment
@@ -1072,6 +1541,22 @@ export const PGN_65285_AirmarBootStateAcknowledgmentMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_65285_AirmarBootStateAcknowledgmentCreateArgs {
+  reserved?: number
+  bootState?: enums.BootState|number
+  reserved5?: number
+}
+
+export const newPGN_65285_AirmarBootStateAcknowledgment = (fields: PGN_65285_AirmarBootStateAcknowledgmentCreateArgs, dst:number=255) : PGN_65285_AirmarBootStateAcknowledgment => {
+  return {
+    ...PGN_65285_AirmarBootStateAcknowledgmentDefaults,
+    dst,
+    fields: {
+      ...PGN_65285_AirmarBootStateAcknowledgmentMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65285
   Description: Lowrance: Temperature
@@ -1102,6 +1587,23 @@ export const PGN_65285_LowranceTemperatureMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_65285_LowranceTemperatureCreateArgs {
+  reserved?: number
+  temperatureSource?: enums.TemperatureSource|number
+  actualTemperature?: N2K_Number
+  reserved6?: number
+}
+
+export const newPGN_65285_LowranceTemperature = (fields: PGN_65285_LowranceTemperatureCreateArgs, dst:number=255) : PGN_65285_LowranceTemperature => {
+  return {
+    ...PGN_65285_LowranceTemperatureDefaults,
+    dst,
+    fields: {
+      ...PGN_65285_LowranceTemperatureMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65286
   Description: Chetco: Dimmer
@@ -1135,6 +1637,26 @@ export const PGN_65286_ChetcoDimmerMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_65286_ChetcoDimmerCreateArgs {
+  reserved?: number
+  instance: N2K_Number
+  dimmer1?: N2K_Number
+  dimmer2?: N2K_Number
+  dimmer3?: N2K_Number
+  dimmer4?: N2K_Number
+  control?: N2K_Number
+}
+
+export const newPGN_65286_ChetcoDimmer = (fields: PGN_65286_ChetcoDimmerCreateArgs, dst:number=255) : PGN_65286_ChetcoDimmer => {
+  return {
+    ...PGN_65286_ChetcoDimmerDefaults,
+    dst,
+    fields: {
+      ...PGN_65286_ChetcoDimmerMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65286
   Description: Airmar: Boot State Request
@@ -1163,6 +1685,21 @@ export const PGN_65286_AirmarBootStateRequestMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_65286_AirmarBootStateRequestCreateArgs {
+  reserved?: number
+  reserved4?: number
+}
+
+export const newPGN_65286_AirmarBootStateRequest = (fields: PGN_65286_AirmarBootStateRequestCreateArgs, dst:number=255) : PGN_65286_AirmarBootStateRequest => {
+  return {
+    ...PGN_65286_AirmarBootStateRequestDefaults,
+    dst,
+    fields: {
+      ...PGN_65286_AirmarBootStateRequestMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65287
   Description: Airmar: Access Level
@@ -1194,6 +1731,24 @@ export const PGN_65287_AirmarAccessLevelMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_65287_AirmarAccessLevelCreateArgs {
+  reserved?: number
+  formatCode?: N2K_Number
+  accessLevel?: enums.AccessLevel|number
+  reserved6?: number
+  accessSeedKey?: N2K_Number
+}
+
+export const newPGN_65287_AirmarAccessLevel = (fields: PGN_65287_AirmarAccessLevelCreateArgs, dst:number=255) : PGN_65287_AirmarAccessLevel => {
+  return {
+    ...PGN_65287_AirmarAccessLevelDefaults,
+    dst,
+    fields: {
+      ...PGN_65287_AirmarAccessLevelMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65287
   Description: Simnet: Configure Temperature Sensor
@@ -1222,6 +1777,21 @@ export const PGN_65287_SimnetConfigureTemperatureSensorMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_65287_SimnetConfigureTemperatureSensorCreateArgs {
+  reserved?: number
+  reserved4?: number
+}
+
+export const newPGN_65287_SimnetConfigureTemperatureSensor = (fields: PGN_65287_SimnetConfigureTemperatureSensorCreateArgs, dst:number=255) : PGN_65287_SimnetConfigureTemperatureSensor => {
+  return {
+    ...PGN_65287_SimnetConfigureTemperatureSensorDefaults,
+    dst,
+    fields: {
+      ...PGN_65287_SimnetConfigureTemperatureSensorMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65288
   Description: Seatalk: Alarm
@@ -1247,6 +1817,15 @@ export const PGN_65288Defaults = {
   prio: 7
 }
 
+export const newPGN_65288 = (fields: PGN_65288Fields, dst:number=255) : PGN_65288 => {
+  return {
+    ...PGN_65288Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65289
   Description: Simnet: Trim Tab Sensor Calibration
@@ -1268,6 +1847,15 @@ export const PGN_65289Defaults = {
   prio: 3
 }
 
+export const newPGN_65289 = (fields: PGN_65289Fields, dst:number=255) : PGN_65289 => {
+  return {
+    ...PGN_65289Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65290
   Description: Simnet: Paddle Wheel Speed Configuration
@@ -1289,6 +1877,15 @@ export const PGN_65290Defaults = {
   prio: 3
 }
 
+export const newPGN_65290 = (fields: PGN_65290Fields, dst:number=255) : PGN_65290 => {
+  return {
+    ...PGN_65290Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65292
   Description: Simnet: Clear Fluid Level Warnings
@@ -1310,6 +1907,15 @@ export const PGN_65292Defaults = {
   prio: 3
 }
 
+export const newPGN_65292 = (fields: PGN_65292Fields, dst:number=255) : PGN_65292 => {
+  return {
+    ...PGN_65292Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65293
   Description: Simnet: LGC-2000 Configuration
@@ -1338,6 +1944,21 @@ export const PGN_65293_SimnetLgc2000ConfigurationMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_65293_SimnetLgc2000ConfigurationCreateArgs {
+  reserved?: number
+  reserved4?: number
+}
+
+export const newPGN_65293_SimnetLgc2000Configuration = (fields: PGN_65293_SimnetLgc2000ConfigurationCreateArgs, dst:number=255) : PGN_65293_SimnetLgc2000Configuration => {
+  return {
+    ...PGN_65293_SimnetLgc2000ConfigurationDefaults,
+    dst,
+    fields: {
+      ...PGN_65293_SimnetLgc2000ConfigurationMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65293
   Description: Diverse Yacht Services: Load Cell
@@ -1368,6 +1989,23 @@ export const PGN_65293_DiverseYachtServicesLoadCellMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_65293_DiverseYachtServicesLoadCellCreateArgs {
+  reserved?: number
+  instance: N2K_Number
+  reserved5?: number
+  loadCell?: N2K_Number
+}
+
+export const newPGN_65293_DiverseYachtServicesLoadCell = (fields: PGN_65293_DiverseYachtServicesLoadCellCreateArgs, dst:number=255) : PGN_65293_DiverseYachtServicesLoadCell => {
+  return {
+    ...PGN_65293_DiverseYachtServicesLoadCellDefaults,
+    dst,
+    fields: {
+      ...PGN_65293_DiverseYachtServicesLoadCellMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65302
   Description: Simnet: AP Unknown 1
@@ -1394,6 +2032,15 @@ export const PGN_65302Defaults = {
   prio: 7
 }
 
+export const newPGN_65302 = (fields: PGN_65302Fields, dst:number=255) : PGN_65302 => {
+  return {
+    ...PGN_65302Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65305
   Description: Simnet: Device Status
@@ -1428,6 +2075,23 @@ export const PGN_65305_SimnetDeviceStatusMatchFields = {
   report: enums.SimnetDeviceReport.Status,
 }
 
+export interface PGN_65305_SimnetDeviceStatusCreateArgs {
+  reserved?: number
+  model?: enums.SimnetDeviceModel|number
+  status?: enums.SimnetApStatus|number
+  spare7?: number
+}
+
+export const newPGN_65305_SimnetDeviceStatus = (fields: PGN_65305_SimnetDeviceStatusCreateArgs, dst:number=255) : PGN_65305_SimnetDeviceStatus => {
+  return {
+    ...PGN_65305_SimnetDeviceStatusDefaults,
+    dst,
+    fields: {
+      ...PGN_65305_SimnetDeviceStatusMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65305
   Description: Simnet: Device Status Request
@@ -1461,6 +2125,22 @@ export const PGN_65305_SimnetDeviceStatusRequestMatchFields = {
   report: enums.SimnetDeviceReport.SendStatus,
 }
 
+export interface PGN_65305_SimnetDeviceStatusRequestCreateArgs {
+  reserved?: number
+  model?: enums.SimnetDeviceModel|number
+  spare6?: number
+}
+
+export const newPGN_65305_SimnetDeviceStatusRequest = (fields: PGN_65305_SimnetDeviceStatusRequestCreateArgs, dst:number=255) : PGN_65305_SimnetDeviceStatusRequest => {
+  return {
+    ...PGN_65305_SimnetDeviceStatusRequestDefaults,
+    dst,
+    fields: {
+      ...PGN_65305_SimnetDeviceStatusRequestMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65305
   Description: Simnet: Pilot Mode
@@ -1495,6 +2175,23 @@ export const PGN_65305_SimnetPilotModeMatchFields = {
   report: enums.SimnetDeviceReport.Mode,
 }
 
+export interface PGN_65305_SimnetPilotModeCreateArgs {
+  reserved?: number
+  model?: enums.SimnetDeviceModel|number
+  mode?: enums.SimnetApModeBitfield[]
+  spare7?: number
+}
+
+export const newPGN_65305_SimnetPilotMode = (fields: PGN_65305_SimnetPilotModeCreateArgs, dst:number=255) : PGN_65305_SimnetPilotMode => {
+  return {
+    ...PGN_65305_SimnetPilotModeDefaults,
+    dst,
+    fields: {
+      ...PGN_65305_SimnetPilotModeMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65305
   Description: Simnet: Device Mode Request
@@ -1528,6 +2225,22 @@ export const PGN_65305_SimnetDeviceModeRequestMatchFields = {
   report: enums.SimnetDeviceReport.SendMode,
 }
 
+export interface PGN_65305_SimnetDeviceModeRequestCreateArgs {
+  reserved?: number
+  model?: enums.SimnetDeviceModel|number
+  spare6?: number
+}
+
+export const newPGN_65305_SimnetDeviceModeRequest = (fields: PGN_65305_SimnetDeviceModeRequestCreateArgs, dst:number=255) : PGN_65305_SimnetDeviceModeRequest => {
+  return {
+    ...PGN_65305_SimnetDeviceModeRequestDefaults,
+    dst,
+    fields: {
+      ...PGN_65305_SimnetDeviceModeRequestMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65305
   Description: Simnet: Sailing Processor Status
@@ -1561,6 +2274,22 @@ export const PGN_65305_SimnetSailingProcessorStatusMatchFields = {
   report: enums.SimnetDeviceReport.SailingProcessorStatus,
 }
 
+export interface PGN_65305_SimnetSailingProcessorStatusCreateArgs {
+  reserved?: number
+  model?: enums.SimnetDeviceModel|number
+  data?: N2K_Binary
+}
+
+export const newPGN_65305_SimnetSailingProcessorStatus = (fields: PGN_65305_SimnetSailingProcessorStatusCreateArgs, dst:number=255) : PGN_65305_SimnetSailingProcessorStatus => {
+  return {
+    ...PGN_65305_SimnetSailingProcessorStatusDefaults,
+    dst,
+    fields: {
+      ...PGN_65305_SimnetSailingProcessorStatusMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65309
   Description: Navico: Wireless Battery Status
@@ -1585,6 +2314,15 @@ export const PGN_65309Defaults = {
   prio: 7
 }
 
+export const newPGN_65309 = (fields: PGN_65309Fields, dst:number=255) : PGN_65309 => {
+  return {
+    ...PGN_65309Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65312
   Description: Navico: Wireless Signal Status
@@ -1608,6 +2346,15 @@ export const PGN_65312Defaults = {
   prio: 7
 }
 
+export const newPGN_65312 = (fields: PGN_65312Fields, dst:number=255) : PGN_65312 => {
+  return {
+    ...PGN_65312Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65340
   Description: Simnet: AP Unknown 2
@@ -1635,6 +2382,15 @@ export const PGN_65340Defaults = {
   prio: 3
 }
 
+export const newPGN_65340 = (fields: PGN_65340Fields, dst:number=255) : PGN_65340 => {
+  return {
+    ...PGN_65340Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65341
   Description: Simnet: Autopilot Angle
@@ -1659,6 +2415,15 @@ export const PGN_65341Defaults = {
   prio: 6
 }
 
+export const newPGN_65341 = (fields: PGN_65341Fields, dst:number=255) : PGN_65341 => {
+  return {
+    ...PGN_65341Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65345
   Description: Seatalk: Pilot Wind Datum
@@ -1682,6 +2447,15 @@ export const PGN_65345Defaults = {
   prio: 3
 }
 
+export const newPGN_65345 = (fields: PGN_65345Fields, dst:number=255) : PGN_65345 => {
+  return {
+    ...PGN_65345Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65350
   Description: Simnet: Magnetic Field
@@ -1704,6 +2478,15 @@ export const PGN_65350Defaults = {
   prio: 3
 }
 
+export const newPGN_65350 = (fields: PGN_65350Fields, dst:number=255) : PGN_65350 => {
+  return {
+    ...PGN_65350Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65359
   Description: Seatalk: Pilot Heading
@@ -1728,6 +2511,15 @@ export const PGN_65359Defaults = {
   prio: 7
 }
 
+export const newPGN_65359 = (fields: PGN_65359Fields, dst:number=255) : PGN_65359 => {
+  return {
+    ...PGN_65359Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65360
   Description: Seatalk: Pilot Locked Heading
@@ -1752,6 +2544,15 @@ export const PGN_65360Defaults = {
   prio: 7
 }
 
+export const newPGN_65360 = (fields: PGN_65360Fields, dst:number=255) : PGN_65360 => {
+  return {
+    ...PGN_65360Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65361
   Description: Seatalk: Silence Alarm
@@ -1775,6 +2576,15 @@ export const PGN_65361Defaults = {
   prio: 3
 }
 
+export const newPGN_65361 = (fields: PGN_65361Fields, dst:number=255) : PGN_65361 => {
+  return {
+    ...PGN_65361Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65371
   Description: Seatalk: Keypad Message
@@ -1803,6 +2613,15 @@ export const PGN_65371Defaults = {
   prio: 3
 }
 
+export const newPGN_65371 = (fields: PGN_65371Fields, dst:number=255) : PGN_65371 => {
+  return {
+    ...PGN_65371Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65374
   Description: SeaTalk: Keypad Heartbeat
@@ -1827,6 +2646,15 @@ export const PGN_65374Defaults = {
   prio: 3
 }
 
+export const newPGN_65374 = (fields: PGN_65374Fields, dst:number=255) : PGN_65374 => {
+  return {
+    ...PGN_65374Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65379
   Description: Seatalk: Pilot Mode
@@ -1851,6 +2679,15 @@ export const PGN_65379Defaults = {
   prio: 7
 }
 
+export const newPGN_65379 = (fields: PGN_65379Fields, dst:number=255) : PGN_65379 => {
+  return {
+    ...PGN_65379Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65408
   Description: Airmar: Depth Quality Factor
@@ -1874,6 +2711,15 @@ export const PGN_65408Defaults = {
   prio: 7
 }
 
+export const newPGN_65408 = (fields: PGN_65408Fields, dst:number=255) : PGN_65408 => {
+  return {
+    ...PGN_65408Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65409
   Description: Airmar: Speed Pulse Count
@@ -1898,6 +2744,15 @@ export const PGN_65409Defaults = {
   prio: 7
 }
 
+export const newPGN_65409 = (fields: PGN_65409Fields, dst:number=255) : PGN_65409 => {
+  return {
+    ...PGN_65409Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65410
   Description: Airmar: Device Information
@@ -1922,6 +2777,15 @@ export const PGN_65410Defaults = {
   prio: 7
 }
 
+export const newPGN_65410 = (fields: PGN_65410Fields, dst:number=255) : PGN_65410 => {
+  return {
+    ...PGN_65410Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65420
   Description: Simnet: AP Unknown 3
@@ -1949,6 +2813,15 @@ export const PGN_65420Defaults = {
   prio: 6
 }
 
+export const newPGN_65420 = (fields: PGN_65420Fields, dst:number=255) : PGN_65420 => {
+  return {
+    ...PGN_65420Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 65480
   Description: Simnet: Autopilot Mode
@@ -1970,6 +2843,15 @@ export const PGN_65480Defaults = {
   prio: 3
 }
 
+export const newPGN_65480 = (fields: PGN_65480Fields, dst:number=255) : PGN_65480 => {
+  return {
+    ...PGN_65480Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126208
   Description: NMEA - Request group function
@@ -2000,6 +2882,28 @@ export const PGN_126208_NmeaRequestGroupFunctionDefaults = {
 export const PGN_126208_NmeaRequestGroupFunctionMatchFields = {
 }
 
+export interface PGN_126208_NmeaRequestGroupFunctionCreateArgs {
+  functionCode?: enums.GroupFunction|number
+  pgn?: N2K_Pgn
+  transmissionInterval?: N2K_Duration
+  transmissionIntervalOffset?: N2K_Duration
+  numberOfParameters?: N2K_Number
+  list: {
+    parameter?: N2K_FieldIndex
+    value?: N2K_Variable
+  }[]
+}
+
+export const newPGN_126208_NmeaRequestGroupFunction = (fields: PGN_126208_NmeaRequestGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaRequestGroupFunction => {
+  return {
+    ...PGN_126208_NmeaRequestGroupFunctionDefaults,
+    dst,
+    fields: {
+      ...PGN_126208_NmeaRequestGroupFunctionMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126208
   Description: NMEA - Command group function
@@ -2032,6 +2936,27 @@ export const PGN_126208_NmeaCommandGroupFunctionMatchFields = {
   functionCode: enums.GroupFunction.Command,
 }
 
+export interface PGN_126208_NmeaCommandGroupFunctionCreateArgs {
+  pgn?: N2K_Pgn
+  priority?: enums.Priority|number
+  reserved?: number
+  numberOfParameters?: N2K_Number
+  list: {
+    parameter?: N2K_FieldIndex
+    value?: N2K_Variable
+  }[]
+}
+
+export const newPGN_126208_NmeaCommandGroupFunction = (fields: PGN_126208_NmeaCommandGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaCommandGroupFunction => {
+  return {
+    ...PGN_126208_NmeaCommandGroupFunctionDefaults,
+    dst,
+    fields: {
+      ...PGN_126208_NmeaCommandGroupFunctionMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126208
   Description: NMEA - Acknowledge group function
@@ -2063,6 +2988,26 @@ export const PGN_126208_NmeaAcknowledgeGroupFunctionMatchFields = {
   functionCode: enums.GroupFunction.Acknowledge,
 }
 
+export interface PGN_126208_NmeaAcknowledgeGroupFunctionCreateArgs {
+  pgn?: N2K_Pgn
+  pgnErrorCode?: enums.PgnErrorCode|number
+  transmissionIntervalPriorityErrorCode?: enums.TransmissionInterval|number
+  numberOfParameters?: N2K_Number
+  list: {
+    parameter?: enums.ParameterField|number
+  }[]
+}
+
+export const newPGN_126208_NmeaAcknowledgeGroupFunction = (fields: PGN_126208_NmeaAcknowledgeGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaAcknowledgeGroupFunction => {
+  return {
+    ...PGN_126208_NmeaAcknowledgeGroupFunctionDefaults,
+    dst,
+    fields: {
+      ...PGN_126208_NmeaAcknowledgeGroupFunctionMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126208
   Description: NMEA - Read Fields group function
@@ -2100,6 +3045,32 @@ export const PGN_126208_NmeaReadFieldsGroupFunctionMatchFields = {
   functionCode: enums.GroupFunction.ReadFields,
 }
 
+export interface PGN_126208_NmeaReadFieldsGroupFunctionCreateArgs {
+  pgn?: N2K_Pgn
+  manufacturerCode?: enums.ManufacturerCode|number
+  reserved?: number
+  industryCode?: enums.IndustryCode|number
+  uniqueId?: N2K_Number
+  numberOfSelectionPairs?: N2K_Number
+  numberOfParameters?: N2K_Number
+  parameter?: N2K_FieldIndex
+  list: {
+    selectionParameter?: N2K_FieldIndex
+    selectionValue?: N2K_Variable
+  }[]
+  list2: any[]
+}
+
+export const newPGN_126208_NmeaReadFieldsGroupFunction = (fields: PGN_126208_NmeaReadFieldsGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaReadFieldsGroupFunction => {
+  return {
+    ...PGN_126208_NmeaReadFieldsGroupFunctionDefaults,
+    dst,
+    fields: {
+      ...PGN_126208_NmeaReadFieldsGroupFunctionMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126208
   Description: NMEA - Read Fields reply group function
@@ -2138,6 +3109,33 @@ export const PGN_126208_NmeaReadFieldsReplyGroupFunctionMatchFields = {
   functionCode: enums.GroupFunction.ReadFieldsReply,
 }
 
+export interface PGN_126208_NmeaReadFieldsReplyGroupFunctionCreateArgs {
+  pgn?: N2K_Pgn
+  manufacturerCode?: enums.ManufacturerCode|number
+  reserved?: number
+  industryCode?: enums.IndustryCode|number
+  uniqueId?: N2K_Number
+  numberOfSelectionPairs?: N2K_Number
+  numberOfParameters?: N2K_Number
+  parameter?: N2K_FieldIndex
+  value?: N2K_Variable
+  list: {
+    selectionParameter?: N2K_FieldIndex
+    selectionValue?: N2K_Variable
+  }[]
+  list2: any[]
+}
+
+export const newPGN_126208_NmeaReadFieldsReplyGroupFunction = (fields: PGN_126208_NmeaReadFieldsReplyGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaReadFieldsReplyGroupFunction => {
+  return {
+    ...PGN_126208_NmeaReadFieldsReplyGroupFunctionDefaults,
+    dst,
+    fields: {
+      ...PGN_126208_NmeaReadFieldsReplyGroupFunctionMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126208
   Description: NMEA - Write Fields group function
@@ -2176,6 +3174,33 @@ export const PGN_126208_NmeaWriteFieldsGroupFunctionMatchFields = {
   functionCode: enums.GroupFunction.WriteFields,
 }
 
+export interface PGN_126208_NmeaWriteFieldsGroupFunctionCreateArgs {
+  pgn?: N2K_Pgn
+  manufacturerCode?: enums.ManufacturerCode|number
+  reserved?: number
+  industryCode?: enums.IndustryCode|number
+  uniqueId?: N2K_Number
+  numberOfSelectionPairs?: N2K_Number
+  numberOfParameters?: N2K_Number
+  parameter?: N2K_FieldIndex
+  value?: N2K_Variable
+  list: {
+    selectionParameter?: N2K_FieldIndex
+    selectionValue?: N2K_Variable
+  }[]
+  list2: any[]
+}
+
+export const newPGN_126208_NmeaWriteFieldsGroupFunction = (fields: PGN_126208_NmeaWriteFieldsGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaWriteFieldsGroupFunction => {
+  return {
+    ...PGN_126208_NmeaWriteFieldsGroupFunctionDefaults,
+    dst,
+    fields: {
+      ...PGN_126208_NmeaWriteFieldsGroupFunctionMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126208
   Description: NMEA - Write Fields reply group function
@@ -2214,6 +3239,33 @@ export const PGN_126208_NmeaWriteFieldsReplyGroupFunctionMatchFields = {
   functionCode: enums.GroupFunction.WriteFieldsReply,
 }
 
+export interface PGN_126208_NmeaWriteFieldsReplyGroupFunctionCreateArgs {
+  pgn?: N2K_Pgn
+  manufacturerCode?: enums.ManufacturerCode|number
+  reserved?: number
+  industryCode?: enums.IndustryCode|number
+  uniqueId?: N2K_Number
+  numberOfSelectionPairs?: N2K_Number
+  numberOfParameters?: N2K_Number
+  parameter?: N2K_FieldIndex
+  value?: N2K_Variable
+  list: {
+    selectionParameter?: N2K_FieldIndex
+    selectionValue?: N2K_Variable
+  }[]
+  list2: any[]
+}
+
+export const newPGN_126208_NmeaWriteFieldsReplyGroupFunction = (fields: PGN_126208_NmeaWriteFieldsReplyGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaWriteFieldsReplyGroupFunction => {
+  return {
+    ...PGN_126208_NmeaWriteFieldsReplyGroupFunctionDefaults,
+    dst,
+    fields: {
+      ...PGN_126208_NmeaWriteFieldsReplyGroupFunctionMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126464
   Description: PGN List (Transmit and Receive)
@@ -2235,6 +3287,15 @@ export const PGN_126464Defaults = {
   prio: 3
 }
 
+export const newPGN_126464 = (fields: PGN_126464Fields, dst:number=255) : PGN_126464 => {
+  return {
+    ...PGN_126464Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Seatalk1: Pilot Mode
@@ -2273,6 +3334,25 @@ export const PGN_126720_Seatalk1PilotModeMatchFields = {
   command: 132,
 }
 
+export interface PGN_126720_Seatalk1PilotModeCreateArgs {
+  reserved?: number
+  unknown1?: N2K_Binary
+  pilotMode?: enums.SeatalkPilotMode|number
+  subMode?: N2K_Number
+  pilotModeData?: N2K_Binary
+  unknown2?: N2K_Binary
+}
+
+export const newPGN_126720_Seatalk1PilotMode = (fields: PGN_126720_Seatalk1PilotModeCreateArgs, dst:number=255) : PGN_126720_Seatalk1PilotMode => {
+  return {
+    ...PGN_126720_Seatalk1PilotModeDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_Seatalk1PilotModeMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Fusion: Media Control
@@ -2306,6 +3386,23 @@ export const PGN_126720_FusionMediaControlMatchFields = {
   proprietaryId: 3,
 }
 
+export interface PGN_126720_FusionMediaControlCreateArgs {
+  reserved?: number
+  unknown?: N2K_Number
+  sourceId?: N2K_Number
+  command?: enums.FusionCommand|number
+}
+
+export const newPGN_126720_FusionMediaControl = (fields: PGN_126720_FusionMediaControlCreateArgs, dst:number=255) : PGN_126720_FusionMediaControl => {
+  return {
+    ...PGN_126720_FusionMediaControlDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_FusionMediaControlMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Fusion: Sirius Control
@@ -2339,6 +3436,23 @@ export const PGN_126720_FusionSiriusControlMatchFields = {
   proprietaryId: 30,
 }
 
+export interface PGN_126720_FusionSiriusControlCreateArgs {
+  reserved?: number
+  unknown?: N2K_Number
+  sourceId?: N2K_Number
+  command?: enums.FusionSiriusCommand|number
+}
+
+export const newPGN_126720_FusionSiriusControl = (fields: PGN_126720_FusionSiriusControlCreateArgs, dst:number=255) : PGN_126720_FusionSiriusControl => {
+  return {
+    ...PGN_126720_FusionSiriusControlDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_FusionSiriusControlMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Fusion: Request Status
@@ -2370,6 +3484,21 @@ export const PGN_126720_FusionRequestStatusMatchFields = {
   proprietaryId: enums.FusionMessageId.RequestStatus,
 }
 
+export interface PGN_126720_FusionRequestStatusCreateArgs {
+  reserved?: number
+  unknown?: N2K_Number
+}
+
+export const newPGN_126720_FusionRequestStatus = (fields: PGN_126720_FusionRequestStatusCreateArgs, dst:number=255) : PGN_126720_FusionRequestStatus => {
+  return {
+    ...PGN_126720_FusionRequestStatusDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_FusionRequestStatusMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Fusion: Set Source
@@ -2402,6 +3531,22 @@ export const PGN_126720_FusionSetSourceMatchFields = {
   proprietaryId: enums.FusionMessageId.Source,
 }
 
+export interface PGN_126720_FusionSetSourceCreateArgs {
+  reserved?: number
+  unknown?: N2K_Number
+  sourceId?: N2K_Number
+}
+
+export const newPGN_126720_FusionSetSource = (fields: PGN_126720_FusionSetSourceCreateArgs, dst:number=255) : PGN_126720_FusionSetSource => {
+  return {
+    ...PGN_126720_FusionSetSourceDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_FusionSetSourceMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Fusion: Set Mute
@@ -2433,6 +3578,21 @@ export const PGN_126720_FusionSetMuteMatchFields = {
   proprietaryId: 23,
 }
 
+export interface PGN_126720_FusionSetMuteCreateArgs {
+  reserved?: number
+  command?: enums.FusionMuteCommand|number
+}
+
+export const newPGN_126720_FusionSetMute = (fields: PGN_126720_FusionSetMuteCreateArgs, dst:number=255) : PGN_126720_FusionSetMute => {
+  return {
+    ...PGN_126720_FusionSetMuteDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_FusionSetMuteMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Fusion: Set Zone Volume
@@ -2466,6 +3626,23 @@ export const PGN_126720_FusionSetZoneVolumeMatchFields = {
   proprietaryId: enums.FusionMessageId.SetZoneVolume,
 }
 
+export interface PGN_126720_FusionSetZoneVolumeCreateArgs {
+  reserved?: number
+  unknown?: N2K_Number
+  zone?: N2K_Number
+  volume?: N2K_Number
+}
+
+export const newPGN_126720_FusionSetZoneVolume = (fields: PGN_126720_FusionSetZoneVolumeCreateArgs, dst:number=255) : PGN_126720_FusionSetZoneVolume => {
+  return {
+    ...PGN_126720_FusionSetZoneVolumeDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_FusionSetZoneVolumeMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Fusion: Set All Volumes
@@ -2501,6 +3678,25 @@ export const PGN_126720_FusionSetAllVolumesMatchFields = {
   proprietaryId: enums.FusionMessageId.SetAllVolumes,
 }
 
+export interface PGN_126720_FusionSetAllVolumesCreateArgs {
+  reserved?: number
+  unknown?: N2K_Number
+  zone1?: N2K_Number
+  zone2?: N2K_Number
+  zone3?: N2K_Number
+  zone4?: N2K_Number
+}
+
+export const newPGN_126720_FusionSetAllVolumes = (fields: PGN_126720_FusionSetAllVolumesCreateArgs, dst:number=255) : PGN_126720_FusionSetAllVolumes => {
+  return {
+    ...PGN_126720_FusionSetAllVolumesDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_FusionSetAllVolumesMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Seatalk1: Keystroke
@@ -2538,6 +3734,24 @@ export const PGN_126720_Seatalk1KeystrokeMatchFields = {
   command: 134,
 }
 
+export interface PGN_126720_Seatalk1KeystrokeCreateArgs {
+  reserved?: number
+  device?: N2K_Number
+  key?: enums.SeatalkKeystroke|number
+  keyinverted?: N2K_Number
+  unknownData?: N2K_Binary
+}
+
+export const newPGN_126720_Seatalk1Keystroke = (fields: PGN_126720_Seatalk1KeystrokeCreateArgs, dst:number=255) : PGN_126720_Seatalk1Keystroke => {
+  return {
+    ...PGN_126720_Seatalk1KeystrokeDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_Seatalk1KeystrokeMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Seatalk1: Device Identification
@@ -2573,6 +3787,22 @@ export const PGN_126720_Seatalk1DeviceIdentificationMatchFields = {
   command: 144,
 }
 
+export interface PGN_126720_Seatalk1DeviceIdentificationCreateArgs {
+  reserved?: number
+  reserved6?: number
+  device?: enums.SeatalkDeviceId|number
+}
+
+export const newPGN_126720_Seatalk1DeviceIdentification = (fields: PGN_126720_Seatalk1DeviceIdentificationCreateArgs, dst:number=255) : PGN_126720_Seatalk1DeviceIdentification => {
+  return {
+    ...PGN_126720_Seatalk1DeviceIdentificationDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_Seatalk1DeviceIdentificationMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Seatalk1: Display Brightness
@@ -2608,6 +3838,25 @@ export const PGN_126720_Seatalk1DisplayBrightnessMatchFields = {
   proprietaryId: 3212,
 }
 
+export interface PGN_126720_Seatalk1DisplayBrightnessCreateArgs {
+  reserved?: number
+  group?: enums.SeatalkNetworkGroup|number
+  unknown1?: N2K_Binary
+  command?: N2K_Number
+  brightness?: N2K_Number
+  unknown2?: N2K_Binary
+}
+
+export const newPGN_126720_Seatalk1DisplayBrightness = (fields: PGN_126720_Seatalk1DisplayBrightnessCreateArgs, dst:number=255) : PGN_126720_Seatalk1DisplayBrightness => {
+  return {
+    ...PGN_126720_Seatalk1DisplayBrightnessDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_Seatalk1DisplayBrightnessMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Seatalk1: Display Color
@@ -2645,6 +3894,24 @@ export const PGN_126720_Seatalk1DisplayColorMatchFields = {
   command: 1,
 }
 
+export interface PGN_126720_Seatalk1DisplayColorCreateArgs {
+  reserved?: number
+  group?: enums.SeatalkNetworkGroup|number
+  unknown1?: N2K_Binary
+  color?: enums.SeatalkDisplayColor|number
+  unknown2?: N2K_Binary
+}
+
+export const newPGN_126720_Seatalk1DisplayColor = (fields: PGN_126720_Seatalk1DisplayColorCreateArgs, dst:number=255) : PGN_126720_Seatalk1DisplayColor => {
+  return {
+    ...PGN_126720_Seatalk1DisplayColorDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_Seatalk1DisplayColorMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Airmar: Attitude Offset
@@ -2678,6 +3945,23 @@ export const PGN_126720_AirmarAttitudeOffsetMatchFields = {
   proprietaryId: enums.AirmarCommand.AttitudeOffsets,
 }
 
+export interface PGN_126720_AirmarAttitudeOffsetCreateArgs {
+  reserved?: number
+  azimuthOffset?: N2K_Number
+  pitchOffset?: N2K_Number
+  rollOffset?: N2K_Number
+}
+
+export const newPGN_126720_AirmarAttitudeOffset = (fields: PGN_126720_AirmarAttitudeOffsetCreateArgs, dst:number=255) : PGN_126720_AirmarAttitudeOffset => {
+  return {
+    ...PGN_126720_AirmarAttitudeOffsetDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_AirmarAttitudeOffsetMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Airmar: Calibrate Compass
@@ -2720,6 +4004,32 @@ export const PGN_126720_AirmarCalibrateCompassMatchFields = {
   proprietaryId: enums.AirmarCommand.CalibrateCompass,
 }
 
+export interface PGN_126720_AirmarCalibrateCompassCreateArgs {
+  reserved?: number
+  calibrateFunction?: enums.AirmarCalibrateFunction|number
+  calibrationStatus?: enums.AirmarCalibrateStatus|number
+  verifyScore?: N2K_Number
+  xAxisGainValue?: N2K_Number
+  yAxisGainValue?: N2K_Number
+  zAxisGainValue?: N2K_Number
+  xAxisLinearOffset?: N2K_Number
+  yAxisLinearOffset?: N2K_Number
+  zAxisLinearOffset?: N2K_Number
+  xAxisAngularOffset?: N2K_Number
+  pitchAndRollDamping?: N2K_Duration
+  compassRateGyroDamping?: N2K_Duration
+}
+
+export const newPGN_126720_AirmarCalibrateCompass = (fields: PGN_126720_AirmarCalibrateCompassCreateArgs, dst:number=255) : PGN_126720_AirmarCalibrateCompass => {
+  return {
+    ...PGN_126720_AirmarCalibrateCompassDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_AirmarCalibrateCompassMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Airmar: True Wind Options
@@ -2752,6 +4062,22 @@ export const PGN_126720_AirmarTrueWindOptionsMatchFields = {
   proprietaryId: enums.AirmarCommand.TrueWindOptions,
 }
 
+export interface PGN_126720_AirmarTrueWindOptionsCreateArgs {
+  reserved?: number
+  cogSubstitutionForHdg?: enums.YesNo|number
+  reserved6?: number
+}
+
+export const newPGN_126720_AirmarTrueWindOptions = (fields: PGN_126720_AirmarTrueWindOptionsCreateArgs, dst:number=255) : PGN_126720_AirmarTrueWindOptions => {
+  return {
+    ...PGN_126720_AirmarTrueWindOptionsDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_AirmarTrueWindOptionsMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Airmar: Simulate Mode
@@ -2784,6 +4110,22 @@ export const PGN_126720_AirmarSimulateModeMatchFields = {
   proprietaryId: enums.AirmarCommand.SimulateMode,
 }
 
+export interface PGN_126720_AirmarSimulateModeCreateArgs {
+  reserved?: number
+  simulateMode?: enums.OffOn|number
+  reserved6?: number
+}
+
+export const newPGN_126720_AirmarSimulateMode = (fields: PGN_126720_AirmarSimulateModeCreateArgs, dst:number=255) : PGN_126720_AirmarSimulateMode => {
+  return {
+    ...PGN_126720_AirmarSimulateModeDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_AirmarSimulateModeMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Airmar: Calibrate Depth
@@ -2816,6 +4158,22 @@ export const PGN_126720_AirmarCalibrateDepthMatchFields = {
   proprietaryId: enums.AirmarCommand.CalibrateDepth,
 }
 
+export interface PGN_126720_AirmarCalibrateDepthCreateArgs {
+  reserved?: number
+  speedOfSoundMode?: N2K_Number
+  reserved6?: number
+}
+
+export const newPGN_126720_AirmarCalibrateDepth = (fields: PGN_126720_AirmarCalibrateDepthCreateArgs, dst:number=255) : PGN_126720_AirmarCalibrateDepth => {
+  return {
+    ...PGN_126720_AirmarCalibrateDepthDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_AirmarCalibrateDepthMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Airmar: Calibrate Speed
@@ -2851,6 +4209,25 @@ export const PGN_126720_AirmarCalibrateSpeedMatchFields = {
   proprietaryId: enums.AirmarCommand.CalibrateSpeed,
 }
 
+export interface PGN_126720_AirmarCalibrateSpeedCreateArgs {
+  reserved?: number
+  numberOfPairsOfDataPoints?: N2K_Number
+  list: {
+    inputFrequency?: N2K_Number
+    outputSpeed?: N2K_Number
+  }[]
+}
+
+export const newPGN_126720_AirmarCalibrateSpeed = (fields: PGN_126720_AirmarCalibrateSpeedCreateArgs, dst:number=255) : PGN_126720_AirmarCalibrateSpeed => {
+  return {
+    ...PGN_126720_AirmarCalibrateSpeedDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_AirmarCalibrateSpeedMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Airmar: Calibrate Temperature
@@ -2884,6 +4261,23 @@ export const PGN_126720_AirmarCalibrateTemperatureMatchFields = {
   proprietaryId: enums.AirmarCommand.CalibrateTemperature,
 }
 
+export interface PGN_126720_AirmarCalibrateTemperatureCreateArgs {
+  reserved?: number
+  temperatureInstance: enums.AirmarTemperatureInstance|number
+  reserved6?: number
+  temperatureOffset?: N2K_Number
+}
+
+export const newPGN_126720_AirmarCalibrateTemperature = (fields: PGN_126720_AirmarCalibrateTemperatureCreateArgs, dst:number=255) : PGN_126720_AirmarCalibrateTemperature => {
+  return {
+    ...PGN_126720_AirmarCalibrateTemperatureDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_AirmarCalibrateTemperatureMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Airmar: Speed Filter None
@@ -2917,6 +4311,23 @@ export const PGN_126720_AirmarSpeedFilterNoneMatchFields = {
   proprietaryId: enums.AirmarCommand.SpeedFilter,
 }
 
+export interface PGN_126720_AirmarSpeedFilterNoneCreateArgs {
+  reserved?: number
+  filterType?: N2K_Number
+  reserved6?: number
+  sampleInterval?: N2K_Duration
+}
+
+export const newPGN_126720_AirmarSpeedFilterNone = (fields: PGN_126720_AirmarSpeedFilterNoneCreateArgs, dst:number=255) : PGN_126720_AirmarSpeedFilterNone => {
+  return {
+    ...PGN_126720_AirmarSpeedFilterNoneDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_AirmarSpeedFilterNoneMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Airmar: Speed Filter IIR
@@ -2953,6 +4364,23 @@ export const PGN_126720_AirmarSpeedFilterIirMatchFields = {
   filterType: 1,
 }
 
+export interface PGN_126720_AirmarSpeedFilterIirCreateArgs {
+  reserved?: number
+  reserved6?: number
+  sampleInterval?: N2K_Duration
+  filterDuration?: N2K_Duration
+}
+
+export const newPGN_126720_AirmarSpeedFilterIir = (fields: PGN_126720_AirmarSpeedFilterIirCreateArgs, dst:number=255) : PGN_126720_AirmarSpeedFilterIir => {
+  return {
+    ...PGN_126720_AirmarSpeedFilterIirDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_AirmarSpeedFilterIirMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Airmar: Temperature Filter None
@@ -2986,6 +4414,23 @@ export const PGN_126720_AirmarTemperatureFilterNoneMatchFields = {
   proprietaryId: enums.AirmarCommand.TemperatureFilter,
 }
 
+export interface PGN_126720_AirmarTemperatureFilterNoneCreateArgs {
+  reserved?: number
+  filterType?: N2K_Number
+  reserved6?: number
+  sampleInterval?: N2K_Duration
+}
+
+export const newPGN_126720_AirmarTemperatureFilterNone = (fields: PGN_126720_AirmarTemperatureFilterNoneCreateArgs, dst:number=255) : PGN_126720_AirmarTemperatureFilterNone => {
+  return {
+    ...PGN_126720_AirmarTemperatureFilterNoneDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_AirmarTemperatureFilterNoneMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Airmar: Temperature Filter IIR
@@ -3022,6 +4467,23 @@ export const PGN_126720_AirmarTemperatureFilterIirMatchFields = {
   filterType: 1,
 }
 
+export interface PGN_126720_AirmarTemperatureFilterIirCreateArgs {
+  reserved?: number
+  reserved6?: number
+  sampleInterval?: N2K_Duration
+  filterDuration?: N2K_Duration
+}
+
+export const newPGN_126720_AirmarTemperatureFilterIir = (fields: PGN_126720_AirmarTemperatureFilterIirCreateArgs, dst:number=255) : PGN_126720_AirmarTemperatureFilterIir => {
+  return {
+    ...PGN_126720_AirmarTemperatureFilterIirDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_AirmarTemperatureFilterIirMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Airmar: NMEA 2000 options
@@ -3054,6 +4516,22 @@ export const PGN_126720_AirmarNmea2000OptionsMatchFields = {
   proprietaryId: enums.AirmarCommand.Nmea2000Options,
 }
 
+export interface PGN_126720_AirmarNmea2000OptionsCreateArgs {
+  reserved?: number
+  transmissionInterval?: enums.AirmarTransmissionInterval|number
+  reserved6?: number
+}
+
+export const newPGN_126720_AirmarNmea2000Options = (fields: PGN_126720_AirmarNmea2000OptionsCreateArgs, dst:number=255) : PGN_126720_AirmarNmea2000Options => {
+  return {
+    ...PGN_126720_AirmarNmea2000OptionsDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_AirmarNmea2000OptionsMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Airmar: Addressable Multi-Frame
@@ -3082,6 +4560,21 @@ export const PGN_126720_AirmarAddressableMultiFrameMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_126720_AirmarAddressableMultiFrameCreateArgs {
+  reserved?: number
+  proprietaryId: N2K_Number
+}
+
+export const newPGN_126720_AirmarAddressableMultiFrame = (fields: PGN_126720_AirmarAddressableMultiFrameCreateArgs, dst:number=255) : PGN_126720_AirmarAddressableMultiFrame => {
+  return {
+    ...PGN_126720_AirmarAddressableMultiFrameDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_AirmarAddressableMultiFrameMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Maretron: Slave Response
@@ -3113,6 +4606,24 @@ export const PGN_126720_MaretronSlaveResponseMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_126720_MaretronSlaveResponseCreateArgs {
+  reserved?: number
+  productCode?: N2K_Number
+  softwareCode?: N2K_Number
+  command?: N2K_Number
+  status?: N2K_Number
+}
+
+export const newPGN_126720_MaretronSlaveResponse = (fields: PGN_126720_MaretronSlaveResponseCreateArgs, dst:number=255) : PGN_126720_MaretronSlaveResponse => {
+  return {
+    ...PGN_126720_MaretronSlaveResponseDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_MaretronSlaveResponseMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Garmin: Day Mode
@@ -3156,6 +4667,24 @@ export const PGN_126720_GarminDayModeMatchFields = {
   unknownId4: 5,
 }
 
+export interface PGN_126720_GarminDayModeCreateArgs {
+  reserved?: number
+  spare8?: number
+  mode?: enums.GarminColorMode|number
+  spare10?: number
+  backlight?: enums.GarminBacklightLevel|number
+}
+
+export const newPGN_126720_GarminDayMode = (fields: PGN_126720_GarminDayModeCreateArgs, dst:number=255) : PGN_126720_GarminDayMode => {
+  return {
+    ...PGN_126720_GarminDayModeDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_GarminDayModeMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Garmin: Night Mode
@@ -3201,6 +4730,23 @@ export const PGN_126720_GarminNightModeMatchFields = {
   mode: enums.GarminColorMode.Night,
 }
 
+export interface PGN_126720_GarminNightModeCreateArgs {
+  reserved?: number
+  spare8?: number
+  spare10?: number
+  backlight?: enums.GarminBacklightLevel|number
+}
+
+export const newPGN_126720_GarminNightMode = (fields: PGN_126720_GarminNightModeCreateArgs, dst:number=255) : PGN_126720_GarminNightMode => {
+  return {
+    ...PGN_126720_GarminNightModeDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_GarminNightModeMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126720
   Description: Garmin: Color mode
@@ -3246,6 +4792,23 @@ export const PGN_126720_GarminColorModeMatchFields = {
   mode: enums.GarminColorMode.Color,
 }
 
+export interface PGN_126720_GarminColorModeCreateArgs {
+  reserved?: number
+  spare8?: number
+  spare10?: number
+  color?: enums.GarminColor|number
+}
+
+export const newPGN_126720_GarminColorMode = (fields: PGN_126720_GarminColorModeCreateArgs, dst:number=255) : PGN_126720_GarminColorMode => {
+  return {
+    ...PGN_126720_GarminColorModeDefaults,
+    dst,
+    fields: {
+      ...PGN_126720_GarminColorModeMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126983
   Description: Alert
@@ -3284,6 +4847,15 @@ export const PGN_126983Defaults = {
   prio: 3
 }
 
+export const newPGN_126983 = (fields: PGN_126983Fields, dst:number=255) : PGN_126983 => {
+  return {
+    ...PGN_126983Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126984
   Description: Alert Response
@@ -3313,6 +4885,15 @@ export const PGN_126984Defaults = {
   prio: 3
 }
 
+export const newPGN_126984 = (fields: PGN_126984Fields, dst:number=255) : PGN_126984 => {
+  return {
+    ...PGN_126984Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126985
   Description: Alert Text
@@ -3342,6 +4923,15 @@ export const PGN_126985Defaults = {
   prio: 3
 }
 
+export const newPGN_126985 = (fields: PGN_126985Fields, dst:number=255) : PGN_126985 => {
+  return {
+    ...PGN_126985Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126986
   Description: Alert Configuration
@@ -3374,6 +4964,15 @@ export const PGN_126986Defaults = {
   prio: 3
 }
 
+export const newPGN_126986 = (fields: PGN_126986Fields, dst:number=255) : PGN_126986 => {
+  return {
+    ...PGN_126986Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126987
   Description: Alert Threshold
@@ -3407,6 +5006,15 @@ export const PGN_126987Defaults = {
   prio: 3
 }
 
+export const newPGN_126987 = (fields: PGN_126987Fields, dst:number=255) : PGN_126987 => {
+  return {
+    ...PGN_126987Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126988
   Description: Alert Value
@@ -3439,6 +5047,15 @@ export const PGN_126988Defaults = {
   prio: 3
 }
 
+export const newPGN_126988 = (fields: PGN_126988Fields, dst:number=255) : PGN_126988 => {
+  return {
+    ...PGN_126988Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126992
   Description: System Time
@@ -3462,6 +5079,15 @@ export const PGN_126992Defaults = {
   prio: 3
 }
 
+export const newPGN_126992 = (fields: PGN_126992Fields, dst:number=255) : PGN_126992 => {
+  return {
+    ...PGN_126992Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126993
   Description: Heartbeat
@@ -3486,6 +5112,15 @@ export const PGN_126993Defaults = {
   prio: 7
 }
 
+export const newPGN_126993 = (fields: PGN_126993Fields, dst:number=255) : PGN_126993 => {
+  return {
+    ...PGN_126993Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126996
   Description: Product Information
@@ -3512,6 +5147,15 @@ export const PGN_126996Defaults = {
   prio: 6
 }
 
+export const newPGN_126996 = (fields: PGN_126996Fields, dst:number=255) : PGN_126996 => {
+  return {
+    ...PGN_126996Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 126998
   Description: Configuration Information
@@ -3533,6 +5177,15 @@ export const PGN_126998Defaults = {
   prio: 6
 }
 
+export const newPGN_126998 = (fields: PGN_126998Fields, dst:number=255) : PGN_126998 => {
+  return {
+    ...PGN_126998Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127233
   Description: Man Overboard Notification
@@ -3578,6 +5231,15 @@ export const PGN_127233Defaults = {
   prio: 3
 }
 
+export const newPGN_127233 = (fields: PGN_127233Fields, dst:number=255) : PGN_127233 => {
+  return {
+    ...PGN_127233Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127237
   Description: Heading/Track control
@@ -3613,6 +5275,15 @@ export const PGN_127237Defaults = {
   prio: 2
 }
 
+export const newPGN_127237 = (fields: PGN_127237Fields, dst:number=255) : PGN_127237 => {
+  return {
+    ...PGN_127237Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127245
   Description: Rudder
@@ -3636,6 +5307,15 @@ export const PGN_127245Defaults = {
   prio: 2
 }
 
+export const newPGN_127245 = (fields: PGN_127245Fields, dst:number=255) : PGN_127245 => {
+  return {
+    ...PGN_127245Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127250
   Description: Vessel Heading
@@ -3659,6 +5339,15 @@ export const PGN_127250Defaults = {
   prio: 2
 }
 
+export const newPGN_127250 = (fields: PGN_127250Fields, dst:number=255) : PGN_127250 => {
+  return {
+    ...PGN_127250Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127251
   Description: Rate of Turn
@@ -3679,6 +5368,15 @@ export const PGN_127251Defaults = {
   prio: 2
 }
 
+export const newPGN_127251 = (fields: PGN_127251Fields, dst:number=255) : PGN_127251 => {
+  return {
+    ...PGN_127251Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127252
   Description: Heave
@@ -3699,6 +5397,15 @@ export const PGN_127252Defaults = {
   prio: 3
 }
 
+export const newPGN_127252 = (fields: PGN_127252Fields, dst:number=255) : PGN_127252 => {
+  return {
+    ...PGN_127252Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127257
   Description: Attitude
@@ -3721,6 +5428,15 @@ export const PGN_127257Defaults = {
   prio: 3
 }
 
+export const newPGN_127257 = (fields: PGN_127257Fields, dst:number=255) : PGN_127257 => {
+  return {
+    ...PGN_127257Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127258
   Description: Magnetic Variation
@@ -3744,6 +5460,15 @@ export const PGN_127258Defaults = {
   prio: 7
 }
 
+export const newPGN_127258 = (fields: PGN_127258Fields, dst:number=255) : PGN_127258 => {
+  return {
+    ...PGN_127258Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127488
   Description: Engine Parameters, Rapid Update
@@ -3766,6 +5491,15 @@ export const PGN_127488Defaults = {
   prio: 2
 }
 
+export const newPGN_127488 = (fields: PGN_127488Fields, dst:number=255) : PGN_127488 => {
+  return {
+    ...PGN_127488Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127489
   Description: Engine Parameters, Dynamic
@@ -3797,6 +5531,15 @@ export const PGN_127489Defaults = {
   prio: 2
 }
 
+export const newPGN_127489 = (fields: PGN_127489Fields, dst:number=255) : PGN_127489 => {
+  return {
+    ...PGN_127489Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127490
   Description: Electric Drive Status, Dynamic
@@ -3823,6 +5566,15 @@ export const PGN_127490Defaults = {
   prio: 3
 }
 
+export const newPGN_127490 = (fields: PGN_127490Fields, dst:number=255) : PGN_127490 => {
+  return {
+    ...PGN_127490Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127491
   Description: Electric Energy Storage Status, Dynamic
@@ -3851,6 +5603,15 @@ export const PGN_127491Defaults = {
   prio: 3
 }
 
+export const newPGN_127491 = (fields: PGN_127491Fields, dst:number=255) : PGN_127491 => {
+  return {
+    ...PGN_127491Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127493
   Description: Transmission Parameters, Dynamic
@@ -3875,6 +5636,15 @@ export const PGN_127493Defaults = {
   prio: 2
 }
 
+export const newPGN_127493 = (fields: PGN_127493Fields, dst:number=255) : PGN_127493 => {
+  return {
+    ...PGN_127493Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127494
   Description: Electric Drive Information
@@ -3906,6 +5676,15 @@ export const PGN_127494Defaults = {
   prio: 3
 }
 
+export const newPGN_127494 = (fields: PGN_127494Fields, dst:number=255) : PGN_127494 => {
+  return {
+    ...PGN_127494Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127495
   Description: Electric Energy Storage Information
@@ -3940,6 +5719,15 @@ export const PGN_127495Defaults = {
   prio: 3
 }
 
+export const newPGN_127495 = (fields: PGN_127495Fields, dst:number=255) : PGN_127495 => {
+  return {
+    ...PGN_127495Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127496
   Description: Trip Parameters, Vessel
@@ -3961,6 +5749,15 @@ export const PGN_127496Defaults = {
   prio: 5
 }
 
+export const newPGN_127496 = (fields: PGN_127496Fields, dst:number=255) : PGN_127496 => {
+  return {
+    ...PGN_127496Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127497
   Description: Trip Parameters, Engine
@@ -3983,6 +5780,15 @@ export const PGN_127497Defaults = {
   prio: 5
 }
 
+export const newPGN_127497 = (fields: PGN_127497Fields, dst:number=255) : PGN_127497 => {
+  return {
+    ...PGN_127497Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127498
   Description: Engine Parameters, Static
@@ -4004,6 +5810,15 @@ export const PGN_127498Defaults = {
   prio: 5
 }
 
+export const newPGN_127498 = (fields: PGN_127498Fields, dst:number=255) : PGN_127498 => {
+  return {
+    ...PGN_127498Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127500
   Description: Load Controller Connection State/Control
@@ -4029,6 +5844,15 @@ export const PGN_127500Defaults = {
   prio: 3
 }
 
+export const newPGN_127500 = (fields: PGN_127500Fields, dst:number=255) : PGN_127500 => {
+  return {
+    ...PGN_127500Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127501
   Description: Binary Switch Bank Status
@@ -4075,6 +5899,15 @@ export const PGN_127501Defaults = {
   prio: 3
 }
 
+export const newPGN_127501 = (fields: PGN_127501Fields, dst:number=255) : PGN_127501 => {
+  return {
+    ...PGN_127501Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127502
   Description: Switch Bank Control
@@ -4121,6 +5954,15 @@ export const PGN_127502Defaults = {
   prio: 3
 }
 
+export const newPGN_127502 = (fields: PGN_127502Fields, dst:number=255) : PGN_127502 => {
+  return {
+    ...PGN_127502Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127503
   Description: AC Input Status
@@ -4152,6 +5994,15 @@ export const PGN_127503Defaults = {
   prio: 6
 }
 
+export const newPGN_127503 = (fields: PGN_127503Fields, dst:number=255) : PGN_127503 => {
+  return {
+    ...PGN_127503Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127504
   Description: AC Output Status
@@ -4183,6 +6034,15 @@ export const PGN_127504Defaults = {
   prio: 6
 }
 
+export const newPGN_127504 = (fields: PGN_127504Fields, dst:number=255) : PGN_127504 => {
+  return {
+    ...PGN_127504Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127505
   Description: Fluid Level
@@ -4205,6 +6065,15 @@ export const PGN_127505Defaults = {
   prio: 6
 }
 
+export const newPGN_127505 = (fields: PGN_127505Fields, dst:number=255) : PGN_127505 => {
+  return {
+    ...PGN_127505Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127506
   Description: DC Detailed Status
@@ -4230,6 +6099,15 @@ export const PGN_127506Defaults = {
   prio: 6
 }
 
+export const newPGN_127506 = (fields: PGN_127506Fields, dst:number=255) : PGN_127506 => {
+  return {
+    ...PGN_127506Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127507
   Description: Charger Status
@@ -4255,6 +6133,15 @@ export const PGN_127507Defaults = {
   prio: 6
 }
 
+export const newPGN_127507 = (fields: PGN_127507Fields, dst:number=255) : PGN_127507 => {
+  return {
+    ...PGN_127507Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127508
   Description: Battery Status
@@ -4277,6 +6164,15 @@ export const PGN_127508Defaults = {
   prio: 6
 }
 
+export const newPGN_127508 = (fields: PGN_127508Fields, dst:number=255) : PGN_127508 => {
+  return {
+    ...PGN_127508Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127509
   Description: Inverter Status
@@ -4301,6 +6197,15 @@ export const PGN_127509Defaults = {
   prio: 6
 }
 
+export const newPGN_127509 = (fields: PGN_127509Fields, dst:number=255) : PGN_127509 => {
+  return {
+    ...PGN_127509Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127510
   Description: Charger Configuration Status
@@ -4329,6 +6234,15 @@ export const PGN_127510Defaults = {
   prio: 6
 }
 
+export const newPGN_127510 = (fields: PGN_127510Fields, dst:number=255) : PGN_127510 => {
+  return {
+    ...PGN_127510Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127511
   Description: Inverter Configuration Status
@@ -4354,6 +6268,15 @@ export const PGN_127511Defaults = {
   prio: 6
 }
 
+export const newPGN_127511 = (fields: PGN_127511Fields, dst:number=255) : PGN_127511 => {
+  return {
+    ...PGN_127511Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127512
   Description: AGS Configuration Status
@@ -4375,6 +6298,15 @@ export const PGN_127512Defaults = {
   prio: 6
 }
 
+export const newPGN_127512 = (fields: PGN_127512Fields, dst:number=255) : PGN_127512 => {
+  return {
+    ...PGN_127512Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127513
   Description: Battery Configuration Status
@@ -4402,6 +6334,15 @@ export const PGN_127513Defaults = {
   prio: 6
 }
 
+export const newPGN_127513 = (fields: PGN_127513Fields, dst:number=255) : PGN_127513 => {
+  return {
+    ...PGN_127513Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127514
   Description: AGS Status
@@ -4425,6 +6366,15 @@ export const PGN_127514Defaults = {
   prio: 6
 }
 
+export const newPGN_127514 = (fields: PGN_127514Fields, dst:number=255) : PGN_127514 => {
+  return {
+    ...PGN_127514Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127744
   Description: AC Power / Current - Phase A
@@ -4446,6 +6396,15 @@ export const PGN_127744Defaults = {
   prio: 3
 }
 
+export const newPGN_127744 = (fields: PGN_127744Fields, dst:number=255) : PGN_127744 => {
+  return {
+    ...PGN_127744Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127745
   Description: AC Power / Current - Phase B
@@ -4467,6 +6426,15 @@ export const PGN_127745Defaults = {
   prio: 3
 }
 
+export const newPGN_127745 = (fields: PGN_127745Fields, dst:number=255) : PGN_127745 => {
+  return {
+    ...PGN_127745Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127746
   Description: AC Power / Current - Phase C
@@ -4488,6 +6456,15 @@ export const PGN_127746Defaults = {
   prio: 3
 }
 
+export const newPGN_127746 = (fields: PGN_127746Fields, dst:number=255) : PGN_127746 => {
+  return {
+    ...PGN_127746Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127747
   Description: AC Voltage / Frequency - Phase A
@@ -4510,6 +6487,15 @@ export const PGN_127747Defaults = {
   prio: 3
 }
 
+export const newPGN_127747 = (fields: PGN_127747Fields, dst:number=255) : PGN_127747 => {
+  return {
+    ...PGN_127747Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127748
   Description: AC Voltage / Frequency - Phase B
@@ -4532,6 +6518,15 @@ export const PGN_127748Defaults = {
   prio: 3
 }
 
+export const newPGN_127748 = (fields: PGN_127748Fields, dst:number=255) : PGN_127748 => {
+  return {
+    ...PGN_127748Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127749
   Description: AC Voltage / Frequency - Phase C
@@ -4554,6 +6549,15 @@ export const PGN_127749Defaults = {
   prio: 3
 }
 
+export const newPGN_127749 = (fields: PGN_127749Fields, dst:number=255) : PGN_127749 => {
+  return {
+    ...PGN_127749Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127750
   Description: Converter Status
@@ -4579,6 +6583,15 @@ export const PGN_127750Defaults = {
   prio: 3
 }
 
+export const newPGN_127750 = (fields: PGN_127750Fields, dst:number=255) : PGN_127750 => {
+  return {
+    ...PGN_127750Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 127751
   Description: DC Voltage/Current
@@ -4601,6 +6614,15 @@ export const PGN_127751Defaults = {
   prio: 3
 }
 
+export const newPGN_127751 = (fields: PGN_127751Fields, dst:number=255) : PGN_127751 => {
+  return {
+    ...PGN_127751Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 128000
   Description: Leeway Angle
@@ -4622,6 +6644,15 @@ export const PGN_128000Defaults = {
   prio: 3
 }
 
+export const newPGN_128000 = (fields: PGN_128000Fields, dst:number=255) : PGN_128000 => {
+  return {
+    ...PGN_128000Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 128001
   Description: Vessel Acceleration
@@ -4645,6 +6676,15 @@ export const PGN_128001Defaults = {
   prio: 3
 }
 
+export const newPGN_128001 = (fields: PGN_128001Fields, dst:number=255) : PGN_128001 => {
+  return {
+    ...PGN_128001Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 128002
   Description: Electric Drive Status, Rapid Update
@@ -4670,6 +6710,15 @@ export const PGN_128002Defaults = {
   prio: 3
 }
 
+export const newPGN_128002 = (fields: PGN_128002Fields, dst:number=255) : PGN_128002 => {
+  return {
+    ...PGN_128002Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 128003
   Description: Electric Energy Storage Status, Rapid Update
@@ -4695,6 +6744,15 @@ export const PGN_128003Defaults = {
   prio: 3
 }
 
+export const newPGN_128003 = (fields: PGN_128003Fields, dst:number=255) : PGN_128003 => {
+  return {
+    ...PGN_128003Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 128006
   Description: Thruster Control Status
@@ -4721,6 +6779,15 @@ export const PGN_128006Defaults = {
   prio: 3
 }
 
+export const newPGN_128006 = (fields: PGN_128006Fields, dst:number=255) : PGN_128006 => {
+  return {
+    ...PGN_128006Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 128007
   Description: Thruster Information
@@ -4744,6 +6811,15 @@ export const PGN_128007Defaults = {
   prio: 3
 }
 
+export const newPGN_128007 = (fields: PGN_128007Fields, dst:number=255) : PGN_128007 => {
+  return {
+    ...PGN_128007Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 128008
   Description: Thruster Motor Status
@@ -4767,6 +6843,15 @@ export const PGN_128008Defaults = {
   prio: 3
 }
 
+export const newPGN_128008 = (fields: PGN_128008Fields, dst:number=255) : PGN_128008 => {
+  return {
+    ...PGN_128008Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 128259
   Description: Speed
@@ -4790,6 +6875,15 @@ export const PGN_128259Defaults = {
   prio: 2
 }
 
+export const newPGN_128259 = (fields: PGN_128259Fields, dst:number=255) : PGN_128259 => {
+  return {
+    ...PGN_128259Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 128267
   Description: Water Depth
@@ -4811,6 +6905,15 @@ export const PGN_128267Defaults = {
   prio: 3
 }
 
+export const newPGN_128267 = (fields: PGN_128267Fields, dst:number=255) : PGN_128267 => {
+  return {
+    ...PGN_128267Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 128275
   Description: Distance Log
@@ -4832,6 +6935,15 @@ export const PGN_128275Defaults = {
   prio: 6
 }
 
+export const newPGN_128275 = (fields: PGN_128275Fields, dst:number=255) : PGN_128275 => {
+  return {
+    ...PGN_128275Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 128520
   Description: Tracked Target Data
@@ -4866,6 +6978,15 @@ export const PGN_128520Defaults = {
   prio: 2
 }
 
+export const newPGN_128520 = (fields: PGN_128520Fields, dst:number=255) : PGN_128520 => {
+  return {
+    ...PGN_128520Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 128538
   Description: Elevator Car Status
@@ -4916,6 +7037,15 @@ export const PGN_128538Defaults = {
   prio: 3
 }
 
+export const newPGN_128538 = (fields: PGN_128538Fields, dst:number=255) : PGN_128538 => {
+  return {
+    ...PGN_128538Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 128768
   Description: Elevator Motor Control
@@ -4940,6 +7070,15 @@ export const PGN_128768Defaults = {
   prio: 3
 }
 
+export const newPGN_128768 = (fields: PGN_128768Fields, dst:number=255) : PGN_128768 => {
+  return {
+    ...PGN_128768Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 128769
   Description: Elevator Deck Push Button
@@ -4964,6 +7103,15 @@ export const PGN_128769Defaults = {
   prio: 3
 }
 
+export const newPGN_128769 = (fields: PGN_128769Fields, dst:number=255) : PGN_128769 => {
+  return {
+    ...PGN_128769Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 128776
   Description: Windlass Control Status
@@ -4995,6 +7143,15 @@ export const PGN_128776Defaults = {
   prio: 3
 }
 
+export const newPGN_128776 = (fields: PGN_128776Fields, dst:number=255) : PGN_128776 => {
+  return {
+    ...PGN_128776Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 128777
   Description: Anchor Windlass Operating Status
@@ -5022,6 +7179,15 @@ export const PGN_128777Defaults = {
   prio: 3
 }
 
+export const newPGN_128777 = (fields: PGN_128777Fields, dst:number=255) : PGN_128777 => {
+  return {
+    ...PGN_128777Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 128778
   Description: Anchor Windlass Monitoring Status
@@ -5046,6 +7212,15 @@ export const PGN_128778Defaults = {
   prio: 3
 }
 
+export const newPGN_128778 = (fields: PGN_128778Fields, dst:number=255) : PGN_128778 => {
+  return {
+    ...PGN_128778Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 128780
   Description: Linear Actuator Control/Status
@@ -5070,6 +7245,15 @@ export const PGN_128780Defaults = {
   prio: 3
 }
 
+export const newPGN_128780 = (fields: PGN_128780Fields, dst:number=255) : PGN_128780 => {
+  return {
+    ...PGN_128780Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129025
   Description: Position, Rapid Update
@@ -5089,6 +7273,15 @@ export const PGN_129025Defaults = {
   prio: 2
 }
 
+export const newPGN_129025 = (fields: PGN_129025Fields, dst:number=255) : PGN_129025 => {
+  return {
+    ...PGN_129025Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129026
   Description: COG & SOG, Rapid Update
@@ -5112,6 +7305,15 @@ export const PGN_129026Defaults = {
   prio: 2
 }
 
+export const newPGN_129026 = (fields: PGN_129026Fields, dst:number=255) : PGN_129026 => {
+  return {
+    ...PGN_129026Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129027
   Description: Position Delta, Rapid Update
@@ -5133,6 +7335,15 @@ export const PGN_129027Defaults = {
   prio: 2
 }
 
+export const newPGN_129027 = (fields: PGN_129027Fields, dst:number=255) : PGN_129027 => {
+  return {
+    ...PGN_129027Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129028
   Description: Altitude Delta, Rapid Update
@@ -5157,6 +7368,15 @@ export const PGN_129028Defaults = {
   prio: 2
 }
 
+export const newPGN_129028 = (fields: PGN_129028Fields, dst:number=255) : PGN_129028 => {
+  return {
+    ...PGN_129028Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129029
   Description: GNSS Position Data
@@ -5194,6 +7414,15 @@ export const PGN_129029Defaults = {
   prio: 3
 }
 
+export const newPGN_129029 = (fields: PGN_129029Fields, dst:number=255) : PGN_129029 => {
+  return {
+    ...PGN_129029Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129033
   Description: Time & Date
@@ -5214,6 +7443,15 @@ export const PGN_129033Defaults = {
   prio: 3
 }
 
+export const newPGN_129033 = (fields: PGN_129033Fields, dst:number=255) : PGN_129033 => {
+  return {
+    ...PGN_129033Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129038
   Description: AIS Class A Position Report
@@ -5251,6 +7489,15 @@ export const PGN_129038Defaults = {
   prio: 4
 }
 
+export const newPGN_129038 = (fields: PGN_129038Fields, dst:number=255) : PGN_129038 => {
+  return {
+    ...PGN_129038Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129039
   Description: AIS Class B Position Report
@@ -5291,6 +7538,15 @@ export const PGN_129039Defaults = {
   prio: 4
 }
 
+export const newPGN_129039 = (fields: PGN_129039Fields, dst:number=255) : PGN_129039 => {
+  return {
+    ...PGN_129039Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129040
   Description: AIS Class B Extended Position Report
@@ -5335,6 +7591,15 @@ export const PGN_129040Defaults = {
   prio: 4
 }
 
+export const newPGN_129040 = (fields: PGN_129040Fields, dst:number=255) : PGN_129040 => {
+  return {
+    ...PGN_129040Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129041
   Description: AIS Aids to Navigation (AtoN) Report
@@ -5375,6 +7640,15 @@ export const PGN_129041Defaults = {
   prio: 4
 }
 
+export const newPGN_129041 = (fields: PGN_129041Fields, dst:number=255) : PGN_129041 => {
+  return {
+    ...PGN_129041Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129044
   Description: Datum
@@ -5397,6 +7671,15 @@ export const PGN_129044Defaults = {
   prio: 6
 }
 
+export const newPGN_129044 = (fields: PGN_129044Fields, dst:number=255) : PGN_129044 => {
+  return {
+    ...PGN_129044Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129045
   Description: User Datum
@@ -5424,6 +7707,15 @@ export const PGN_129045Defaults = {
   prio: 6
 }
 
+export const newPGN_129045 = (fields: PGN_129045Fields, dst:number=255) : PGN_129045 => {
+  return {
+    ...PGN_129045Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129283
   Description: Cross Track Error
@@ -5447,6 +7739,15 @@ export const PGN_129283Defaults = {
   prio: 3
 }
 
+export const newPGN_129283 = (fields: PGN_129283Fields, dst:number=255) : PGN_129283 => {
+  return {
+    ...PGN_129283Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129284
   Description: Navigation Data
@@ -5479,6 +7780,15 @@ export const PGN_129284Defaults = {
   prio: 3
 }
 
+export const newPGN_129284 = (fields: PGN_129284Fields, dst:number=255) : PGN_129284 => {
+  return {
+    ...PGN_129284Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129285
   Description: Navigation - Route/WP Information
@@ -5511,6 +7821,15 @@ export const PGN_129285Defaults = {
   prio: 6
 }
 
+export const newPGN_129285 = (fields: PGN_129285Fields, dst:number=255) : PGN_129285 => {
+  return {
+    ...PGN_129285Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129291
   Description: Set & Drift, Rapid Update
@@ -5534,6 +7853,15 @@ export const PGN_129291Defaults = {
   prio: 3
 }
 
+export const newPGN_129291 = (fields: PGN_129291Fields, dst:number=255) : PGN_129291 => {
+  return {
+    ...PGN_129291Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129301
   Description: Navigation - Route / Time to+from Mark
@@ -5556,6 +7884,15 @@ export const PGN_129301Defaults = {
   prio: 3
 }
 
+export const newPGN_129301 = (fields: PGN_129301Fields, dst:number=255) : PGN_129301 => {
+  return {
+    ...PGN_129301Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129302
   Description: Bearing and Distance between two Marks
@@ -5583,6 +7920,15 @@ export const PGN_129302Defaults = {
   prio: 6
 }
 
+export const newPGN_129302 = (fields: PGN_129302Fields, dst:number=255) : PGN_129302 => {
+  return {
+    ...PGN_129302Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129538
   Description: GNSS Control Status
@@ -5611,6 +7957,15 @@ export const PGN_129538Defaults = {
   prio: 6
 }
 
+export const newPGN_129538 = (fields: PGN_129538Fields, dst:number=255) : PGN_129538 => {
+  return {
+    ...PGN_129538Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129539
   Description: GNSS DOPs
@@ -5635,6 +7990,15 @@ export const PGN_129539Defaults = {
   prio: 6
 }
 
+export const newPGN_129539 = (fields: PGN_129539Fields, dst:number=255) : PGN_129539 => {
+  return {
+    ...PGN_129539Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129540
   Description: GNSS Sats in View
@@ -5665,6 +8029,15 @@ export const PGN_129540Defaults = {
   prio: 6
 }
 
+export const newPGN_129540 = (fields: PGN_129540Fields, dst:number=255) : PGN_129540 => {
+  return {
+    ...PGN_129540Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129541
   Description: GPS Almanac Data
@@ -5696,6 +8069,15 @@ export const PGN_129541Defaults = {
   prio: 6
 }
 
+export const newPGN_129541 = (fields: PGN_129541Fields, dst:number=255) : PGN_129541 => {
+  return {
+    ...PGN_129541Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129542
   Description: GNSS Pseudorange Noise Statistics
@@ -5721,6 +8103,15 @@ export const PGN_129542Defaults = {
   prio: 6
 }
 
+export const newPGN_129542 = (fields: PGN_129542Fields, dst:number=255) : PGN_129542 => {
+  return {
+    ...PGN_129542Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129545
   Description: GNSS RAIM Output
@@ -5748,6 +8139,15 @@ export const PGN_129545Defaults = {
   prio: 6
 }
 
+export const newPGN_129545 = (fields: PGN_129545Fields, dst:number=255) : PGN_129545 => {
+  return {
+    ...PGN_129545Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129546
   Description: GNSS RAIM Settings
@@ -5770,6 +8170,15 @@ export const PGN_129546Defaults = {
   prio: 6
 }
 
+export const newPGN_129546 = (fields: PGN_129546Fields, dst:number=255) : PGN_129546 => {
+  return {
+    ...PGN_129546Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129547
   Description: GNSS Pseudorange Error Statistics
@@ -5795,6 +8204,15 @@ export const PGN_129547Defaults = {
   prio: 6
 }
 
+export const newPGN_129547 = (fields: PGN_129547Fields, dst:number=255) : PGN_129547 => {
+  return {
+    ...PGN_129547Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129549
   Description: DGNSS Corrections
@@ -5823,6 +8241,15 @@ export const PGN_129549Defaults = {
   prio: 6
 }
 
+export const newPGN_129549 = (fields: PGN_129549Fields, dst:number=255) : PGN_129549 => {
+  return {
+    ...PGN_129549Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129550
   Description: GNSS Differential Correction Receiver Interface
@@ -5847,6 +8274,15 @@ export const PGN_129550Defaults = {
   prio: 6
 }
 
+export const newPGN_129550 = (fields: PGN_129550Fields, dst:number=255) : PGN_129550 => {
+  return {
+    ...PGN_129550Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129551
   Description: GNSS Differential Correction Receiver Signal
@@ -5878,6 +8314,15 @@ export const PGN_129551Defaults = {
   prio: 6
 }
 
+export const newPGN_129551 = (fields: PGN_129551Fields, dst:number=255) : PGN_129551 => {
+  return {
+    ...PGN_129551Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129556
   Description: GLONASS Almanac Data
@@ -5910,6 +8355,15 @@ export const PGN_129556Defaults = {
   prio: 6
 }
 
+export const newPGN_129556 = (fields: PGN_129556Fields, dst:number=255) : PGN_129556 => {
+  return {
+    ...PGN_129556Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129792
   Description: AIS DGNSS Broadcast Binary Message
@@ -5939,6 +8393,15 @@ export const PGN_129792Defaults = {
   prio: 6
 }
 
+export const newPGN_129792 = (fields: PGN_129792Fields, dst:number=255) : PGN_129792 => {
+  return {
+    ...PGN_129792Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129793
   Description: AIS UTC and Date Report
@@ -5970,6 +8433,15 @@ export const PGN_129793Defaults = {
   prio: 7
 }
 
+export const newPGN_129793 = (fields: PGN_129793Fields, dst:number=255) : PGN_129793 => {
+  return {
+    ...PGN_129793Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129794
   Description: AIS Class A Static and Voyage Related Data
@@ -6008,6 +8480,15 @@ export const PGN_129794Defaults = {
   prio: 6
 }
 
+export const newPGN_129794 = (fields: PGN_129794Fields, dst:number=255) : PGN_129794 => {
+  return {
+    ...PGN_129794Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129795
   Description: AIS Addressed Binary Message
@@ -6037,6 +8518,15 @@ export const PGN_129795Defaults = {
   prio: 5
 }
 
+export const newPGN_129795 = (fields: PGN_129795Fields, dst:number=255) : PGN_129795 => {
+  return {
+    ...PGN_129795Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129796
   Description: AIS Acknowledge
@@ -6065,6 +8555,15 @@ export const PGN_129796Defaults = {
   prio: 7
 }
 
+export const newPGN_129796 = (fields: PGN_129796Fields, dst:number=255) : PGN_129796 => {
+  return {
+    ...PGN_129796Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129797
   Description: AIS Binary Broadcast Message
@@ -6090,6 +8589,15 @@ export const PGN_129797Defaults = {
   prio: 5
 }
 
+export const newPGN_129797 = (fields: PGN_129797Fields, dst:number=255) : PGN_129797 => {
+  return {
+    ...PGN_129797Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129798
   Description: AIS SAR Aircraft Position Report
@@ -6124,6 +8632,15 @@ export const PGN_129798Defaults = {
   prio: 4
 }
 
+export const newPGN_129798 = (fields: PGN_129798Fields, dst:number=255) : PGN_129798 => {
+  return {
+    ...PGN_129798Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129799
   Description: Radio Frequency/Mode/Power
@@ -6148,6 +8665,15 @@ export const PGN_129799Defaults = {
   prio: 3
 }
 
+export const newPGN_129799 = (fields: PGN_129799Fields, dst:number=255) : PGN_129799 => {
+  return {
+    ...PGN_129799Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129800
   Description: AIS UTC/Date Inquiry
@@ -6172,6 +8698,15 @@ export const PGN_129800Defaults = {
   prio: 7
 }
 
+export const newPGN_129800 = (fields: PGN_129800Fields, dst:number=255) : PGN_129800 => {
+  return {
+    ...PGN_129800Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129801
   Description: AIS Addressed Safety Related Message
@@ -6200,6 +8735,15 @@ export const PGN_129801Defaults = {
   prio: 5
 }
 
+export const newPGN_129801 = (fields: PGN_129801Fields, dst:number=255) : PGN_129801 => {
+  return {
+    ...PGN_129801Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129802
   Description: AIS Safety Related Broadcast Message
@@ -6224,6 +8768,15 @@ export const PGN_129802Defaults = {
   prio: 5
 }
 
+export const newPGN_129802 = (fields: PGN_129802Fields, dst:number=255) : PGN_129802 => {
+  return {
+    ...PGN_129802Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129803
   Description: AIS Interrogation
@@ -6263,6 +8816,15 @@ export const PGN_129803Defaults = {
   prio: 7
 }
 
+export const newPGN_129803 = (fields: PGN_129803Fields, dst:number=255) : PGN_129803 => {
+  return {
+    ...PGN_129803Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129804
   Description: AIS Assignment Mode Command
@@ -6294,6 +8856,15 @@ export const PGN_129804Defaults = {
   prio: 7
 }
 
+export const newPGN_129804 = (fields: PGN_129804Fields, dst:number=255) : PGN_129804 => {
+  return {
+    ...PGN_129804Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129805
   Description: AIS Data Link Management Message
@@ -6323,6 +8894,15 @@ export const PGN_129805Defaults = {
   prio: 7
 }
 
+export const newPGN_129805 = (fields: PGN_129805Fields, dst:number=255) : PGN_129805 => {
+  return {
+    ...PGN_129805Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129806
   Description: AIS Channel Management
@@ -6363,6 +8943,15 @@ export const PGN_129806Defaults = {
   prio: 7
 }
 
+export const newPGN_129806 = (fields: PGN_129806Fields, dst:number=255) : PGN_129806 => {
+  return {
+    ...PGN_129806Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129807
   Description: AIS Class B Group Assignment
@@ -6399,6 +8988,15 @@ export const PGN_129807Defaults = {
   prio: 7
 }
 
+export const newPGN_129807 = (fields: PGN_129807Fields, dst:number=255) : PGN_129807 => {
+  return {
+    ...PGN_129807Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129808
   Description: DSC Distress Call Information
@@ -6445,6 +9043,42 @@ export const PGN_129808_DscDistressCallInformationMatchFields = {
   dscCategory: enums.DscCategory.Distress,
 }
 
+export interface PGN_129808_DscDistressCallInformationCreateArgs {
+  dscFormat?: enums.DscFormat|number
+  dscMessageAddress?: N2K_Decimal
+  natureOfDistress?: enums.DscNature|number
+  subsequentCommunicationModeOr2ndTelecommand?: enums.DscSecondTelecommand|number
+  proposedRxFrequencyChannel?: N2K_StringFix
+  proposedTxFrequencyChannel?: N2K_StringFix
+  telephoneNumber?: N2K_StringLau
+  latitudeOfVesselReported?: N2K_Number
+  longitudeOfVesselReported?: N2K_Number
+  timeOfPosition?: N2K_Time
+  mmsiOfShipInDistress?: N2K_Decimal
+  dscEosSymbol?: N2K_Number
+  expansionEnabled?: enums.YesNo|number
+  reserved?: number
+  callingRxFrequencyChannel?: N2K_StringFix
+  callingTxFrequencyChannel?: N2K_StringFix
+  timeOfReceipt?: N2K_Time
+  dateOfReceipt?: N2K_Date
+  dscEquipmentAssignedMessageId?: N2K_Number
+  list: {
+    dscExpansionFieldSymbol?: enums.DscExpansionData|number
+    dscExpansionFieldData?: N2K_StringLau
+  }[]
+}
+
+export const newPGN_129808_DscDistressCallInformation = (fields: PGN_129808_DscDistressCallInformationCreateArgs, dst:number=255) : PGN_129808_DscDistressCallInformation => {
+  return {
+    ...PGN_129808_DscDistressCallInformationDefaults,
+    dst,
+    fields: {
+      ...PGN_129808_DscDistressCallInformationMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129808
   Description: DSC Call Information
@@ -6486,6 +9120,15 @@ export const PGN_129808Defaults = {
   prio: 4
 }
 
+export const newPGN_129808 = (fields: PGN_129808Fields, dst:number=255) : PGN_129808 => {
+  return {
+    ...PGN_129808Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129809
   Description: AIS Class B static data (msg 24 Part A)
@@ -6510,6 +9153,15 @@ export const PGN_129809Defaults = {
   prio: 6
 }
 
+export const newPGN_129809 = (fields: PGN_129809Fields, dst:number=255) : PGN_129809 => {
+  return {
+    ...PGN_129809Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 129810
   Description: AIS Class B static data (msg 24 Part B)
@@ -6544,6 +9196,15 @@ export const PGN_129810Defaults = {
   prio: 6
 }
 
+export const newPGN_129810 = (fields: PGN_129810Fields, dst:number=255) : PGN_129810 => {
+  return {
+    ...PGN_129810Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130052
   Description: Loran-C TD Data
@@ -6576,6 +9237,15 @@ export const PGN_130052Defaults = {
   prio: 3
 }
 
+export const newPGN_130052 = (fields: PGN_130052Fields, dst:number=255) : PGN_130052 => {
+  return {
+    ...PGN_130052Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130053
   Description: Loran-C Range Data
@@ -6608,6 +9278,15 @@ export const PGN_130053Defaults = {
   prio: 3
 }
 
+export const newPGN_130053 = (fields: PGN_130053Fields, dst:number=255) : PGN_130053 => {
+  return {
+    ...PGN_130053Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130054
   Description: Loran-C Signal Data
@@ -6630,6 +9309,15 @@ export const PGN_130054Defaults = {
   prio: 3
 }
 
+export const newPGN_130054 = (fields: PGN_130054Fields, dst:number=255) : PGN_130054 => {
+  return {
+    ...PGN_130054Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130060
   Description: Label
@@ -6655,6 +9343,15 @@ export const PGN_130060Defaults = {
   prio: 3
 }
 
+export const newPGN_130060 = (fields: PGN_130060Fields, dst:number=255) : PGN_130060 => {
+  return {
+    ...PGN_130060Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130061
   Description: Channel Source Configuration
@@ -6683,6 +9380,15 @@ export const PGN_130061Defaults = {
   prio: 3
 }
 
+export const newPGN_130061 = (fields: PGN_130061Fields, dst:number=255) : PGN_130061 => {
+  return {
+    ...PGN_130061Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130064
   Description: Route and WP Service - Database List
@@ -6714,6 +9420,15 @@ export const PGN_130064Defaults = {
   prio: 7
 }
 
+export const newPGN_130064 = (fields: PGN_130064Fields, dst:number=255) : PGN_130064 => {
+  return {
+    ...PGN_130064Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130065
   Description: Route and WP Service - Route List
@@ -6742,6 +9457,15 @@ export const PGN_130065Defaults = {
   prio: 7
 }
 
+export const newPGN_130065 = (fields: PGN_130065Fields, dst:number=255) : PGN_130065 => {
+  return {
+    ...PGN_130065Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130066
   Description: Route and WP Service - Route/WP-List Attributes
@@ -6771,6 +9495,15 @@ export const PGN_130066Defaults = {
   prio: 7
 }
 
+export const newPGN_130066 = (fields: PGN_130066Fields, dst:number=255) : PGN_130066 => {
+  return {
+    ...PGN_130066Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130067
   Description: Route and WP Service - Route - WP Name & Position
@@ -6799,6 +9532,15 @@ export const PGN_130067Defaults = {
   prio: 7
 }
 
+export const newPGN_130067 = (fields: PGN_130067Fields, dst:number=255) : PGN_130067 => {
+  return {
+    ...PGN_130067Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130068
   Description: Route and WP Service - Route - WP Name
@@ -6825,6 +9567,15 @@ export const PGN_130068Defaults = {
   prio: 7
 }
 
+export const newPGN_130068 = (fields: PGN_130068Fields, dst:number=255) : PGN_130068 => {
+  return {
+    ...PGN_130068Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130069
   Description: Route and WP Service - XTE Limit & Navigation Method
@@ -6853,6 +9604,15 @@ export const PGN_130069Defaults = {
   prio: 7
 }
 
+export const newPGN_130069 = (fields: PGN_130069Fields, dst:number=255) : PGN_130069 => {
+  return {
+    ...PGN_130069Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130070
   Description: Route and WP Service - WP Comment
@@ -6879,6 +9639,15 @@ export const PGN_130070Defaults = {
   prio: 7
 }
 
+export const newPGN_130070 = (fields: PGN_130070Fields, dst:number=255) : PGN_130070 => {
+  return {
+    ...PGN_130070Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130071
   Description: Route and WP Service - Route Comment
@@ -6904,6 +9673,15 @@ export const PGN_130071Defaults = {
   prio: 7
 }
 
+export const newPGN_130071 = (fields: PGN_130071Fields, dst:number=255) : PGN_130071 => {
+  return {
+    ...PGN_130071Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130072
   Description: Route and WP Service - Database Comment
@@ -6928,6 +9706,15 @@ export const PGN_130072Defaults = {
   prio: 7
 }
 
+export const newPGN_130072 = (fields: PGN_130072Fields, dst:number=255) : PGN_130072 => {
+  return {
+    ...PGN_130072Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130073
   Description: Route and WP Service - Radius of Turn
@@ -6954,6 +9741,15 @@ export const PGN_130073Defaults = {
   prio: 7
 }
 
+export const newPGN_130073 = (fields: PGN_130073Fields, dst:number=255) : PGN_130073 => {
+  return {
+    ...PGN_130073Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130074
   Description: Route and WP Service - WP List - WP Name & Position
@@ -6982,6 +9778,15 @@ export const PGN_130074Defaults = {
   prio: 7
 }
 
+export const newPGN_130074 = (fields: PGN_130074Fields, dst:number=255) : PGN_130074 => {
+  return {
+    ...PGN_130074Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130306
   Description: Wind Data
@@ -7004,6 +9809,15 @@ export const PGN_130306Defaults = {
   prio: 2
 }
 
+export const newPGN_130306 = (fields: PGN_130306Fields, dst:number=255) : PGN_130306 => {
+  return {
+    ...PGN_130306Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130310
   Description: Environmental Parameters (obsolete)
@@ -7027,6 +9841,15 @@ export const PGN_130310Defaults = {
   prio: 5
 }
 
+export const newPGN_130310 = (fields: PGN_130310Fields, dst:number=255) : PGN_130310 => {
+  return {
+    ...PGN_130310Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130311
   Description: Environmental Parameters
@@ -7051,6 +9874,15 @@ export const PGN_130311Defaults = {
   prio: 5
 }
 
+export const newPGN_130311 = (fields: PGN_130311Fields, dst:number=255) : PGN_130311 => {
+  return {
+    ...PGN_130311Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130312
   Description: Temperature
@@ -7074,6 +9906,15 @@ export const PGN_130312Defaults = {
   prio: 5
 }
 
+export const newPGN_130312 = (fields: PGN_130312Fields, dst:number=255) : PGN_130312 => {
+  return {
+    ...PGN_130312Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130313
   Description: Humidity
@@ -7097,6 +9938,15 @@ export const PGN_130313Defaults = {
   prio: 5
 }
 
+export const newPGN_130313 = (fields: PGN_130313Fields, dst:number=255) : PGN_130313 => {
+  return {
+    ...PGN_130313Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130314
   Description: Actual Pressure
@@ -7119,6 +9969,15 @@ export const PGN_130314Defaults = {
   prio: 5
 }
 
+export const newPGN_130314 = (fields: PGN_130314Fields, dst:number=255) : PGN_130314 => {
+  return {
+    ...PGN_130314Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130315
   Description: Set Pressure
@@ -7141,6 +10000,15 @@ export const PGN_130315Defaults = {
   prio: 5
 }
 
+export const newPGN_130315 = (fields: PGN_130315Fields, dst:number=255) : PGN_130315 => {
+  return {
+    ...PGN_130315Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130316
   Description: Temperature Extended Range
@@ -7163,6 +10031,15 @@ export const PGN_130316Defaults = {
   prio: 5
 }
 
+export const newPGN_130316 = (fields: PGN_130316Fields, dst:number=255) : PGN_130316 => {
+  return {
+    ...PGN_130316Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130320
   Description: Tide Station Data
@@ -7191,6 +10068,15 @@ export const PGN_130320Defaults = {
   prio: 6
 }
 
+export const newPGN_130320 = (fields: PGN_130320Fields, dst:number=255) : PGN_130320 => {
+  return {
+    ...PGN_130320Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130321
   Description: Salinity Station Data
@@ -7218,6 +10104,15 @@ export const PGN_130321Defaults = {
   prio: 6
 }
 
+export const newPGN_130321 = (fields: PGN_130321Fields, dst:number=255) : PGN_130321 => {
+  return {
+    ...PGN_130321Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130322
   Description: Current Station Data
@@ -7248,6 +10143,15 @@ export const PGN_130322Defaults = {
   prio: 6
 }
 
+export const newPGN_130322 = (fields: PGN_130322Fields, dst:number=255) : PGN_130322 => {
+  return {
+    ...PGN_130322Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130323
   Description: Meteorological Station Data
@@ -7280,6 +10184,15 @@ export const PGN_130323Defaults = {
   prio: 6
 }
 
+export const newPGN_130323 = (fields: PGN_130323Fields, dst:number=255) : PGN_130323 => {
+  return {
+    ...PGN_130323Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130324
   Description: Moored Buoy Station Data
@@ -7315,6 +10228,15 @@ export const PGN_130324Defaults = {
   prio: 6
 }
 
+export const newPGN_130324 = (fields: PGN_130324Fields, dst:number=255) : PGN_130324 => {
+  return {
+    ...PGN_130324Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130330
   Description: Lighting System Settings
@@ -7345,6 +10267,15 @@ export const PGN_130330Defaults = {
   prio: 7
 }
 
+export const newPGN_130330 = (fields: PGN_130330Fields, dst:number=255) : PGN_130330 => {
+  return {
+    ...PGN_130330Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130560
   Description: Payload Mass
@@ -7368,6 +10299,15 @@ export const PGN_130560Defaults = {
   prio: 3
 }
 
+export const newPGN_130560 = (fields: PGN_130560Fields, dst:number=255) : PGN_130560 => {
+  return {
+    ...PGN_130560Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130561
   Description: Lighting Zone
@@ -7400,6 +10340,15 @@ export const PGN_130561Defaults = {
   prio: 3
 }
 
+export const newPGN_130561 = (fields: PGN_130561Fields, dst:number=255) : PGN_130561 => {
+  return {
+    ...PGN_130561Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130562
   Description: Lighting Scene
@@ -7432,6 +10381,15 @@ export const PGN_130562Defaults = {
   prio: 3
 }
 
+export const newPGN_130562 = (fields: PGN_130562Fields, dst:number=255) : PGN_130562 => {
+  return {
+    ...PGN_130562Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130563
   Description: Lighting Device
@@ -7468,6 +10426,15 @@ export const PGN_130563Defaults = {
   prio: 3
 }
 
+export const newPGN_130563 = (fields: PGN_130563Fields, dst:number=255) : PGN_130563 => {
+  return {
+    ...PGN_130563Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130564
   Description: Lighting Device Enumeration
@@ -7493,6 +10460,15 @@ export const PGN_130564Defaults = {
   prio: 3
 }
 
+export const newPGN_130564 = (fields: PGN_130564Fields, dst:number=255) : PGN_130564 => {
+  return {
+    ...PGN_130564Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130565
   Description: Lighting Color Sequence
@@ -7521,6 +10497,15 @@ export const PGN_130565Defaults = {
   prio: 3
 }
 
+export const newPGN_130565 = (fields: PGN_130565Fields, dst:number=255) : PGN_130565 => {
+  return {
+    ...PGN_130565Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130566
   Description: Lighting Program
@@ -7544,6 +10529,15 @@ export const PGN_130566Defaults = {
   prio: 3
 }
 
+export const newPGN_130566 = (fields: PGN_130566Fields, dst:number=255) : PGN_130566 => {
+  return {
+    ...PGN_130566Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130567
   Description: Watermaker Input Setting and Status
@@ -7584,6 +10578,15 @@ export const PGN_130567Defaults = {
   prio: 3
 }
 
+export const newPGN_130567 = (fields: PGN_130567Fields, dst:number=255) : PGN_130567 => {
+  return {
+    ...PGN_130567Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130569
   Description: Current Status and File
@@ -7618,6 +10621,15 @@ export const PGN_130569Defaults = {
   prio: 3
 }
 
+export const newPGN_130569 = (fields: PGN_130569Fields, dst:number=255) : PGN_130569 => {
+  return {
+    ...PGN_130569Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130570
   Description: Library Data File
@@ -7652,6 +10664,15 @@ export const PGN_130570Defaults = {
   prio: 3
 }
 
+export const newPGN_130570 = (fields: PGN_130570Fields, dst:number=255) : PGN_130570 => {
+  return {
+    ...PGN_130570Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130571
   Description: Library Data Group
@@ -7683,6 +10704,15 @@ export const PGN_130571Defaults = {
   prio: 3
 }
 
+export const newPGN_130571 = (fields: PGN_130571Fields, dst:number=255) : PGN_130571 => {
+  return {
+    ...PGN_130571Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130572
   Description: Library Data Search
@@ -7709,6 +10739,15 @@ export const PGN_130572Defaults = {
   prio: 3
 }
 
+export const newPGN_130572 = (fields: PGN_130572Fields, dst:number=255) : PGN_130572 => {
+  return {
+    ...PGN_130572Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130573
   Description: Supported Source Data
@@ -7741,6 +10780,15 @@ export const PGN_130573Defaults = {
   prio: 3
 }
 
+export const newPGN_130573 = (fields: PGN_130573Fields, dst:number=255) : PGN_130573 => {
+  return {
+    ...PGN_130573Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130574
   Description: Supported Zone Data
@@ -7765,6 +10813,15 @@ export const PGN_130574Defaults = {
   prio: 3
 }
 
+export const newPGN_130574 = (fields: PGN_130574Fields, dst:number=255) : PGN_130574 => {
+  return {
+    ...PGN_130574Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130576
   Description: Small Craft Status
@@ -7785,6 +10842,15 @@ export const PGN_130576Defaults = {
   prio: 2
 }
 
+export const newPGN_130576 = (fields: PGN_130576Fields, dst:number=255) : PGN_130576 => {
+  return {
+    ...PGN_130576Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130577
   Description: Direction Data
@@ -7812,6 +10878,15 @@ export const PGN_130577Defaults = {
   prio: 3
 }
 
+export const newPGN_130577 = (fields: PGN_130577Fields, dst:number=255) : PGN_130577 => {
+  return {
+    ...PGN_130577Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130578
   Description: Vessel Speed Components
@@ -7835,6 +10910,15 @@ export const PGN_130578Defaults = {
   prio: 2
 }
 
+export const newPGN_130578 = (fields: PGN_130578Fields, dst:number=255) : PGN_130578 => {
+  return {
+    ...PGN_130578Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130579
   Description: System Configuration
@@ -7858,6 +10942,15 @@ export const PGN_130579Defaults = {
   prio: 3
 }
 
+export const newPGN_130579 = (fields: PGN_130579Fields, dst:number=255) : PGN_130579 => {
+  return {
+    ...PGN_130579Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130580
   Description: System Configuration (deprecated)
@@ -7879,6 +10972,15 @@ export const PGN_130580Defaults = {
   prio: 3
 }
 
+export const newPGN_130580 = (fields: PGN_130580Fields, dst:number=255) : PGN_130580 => {
+  return {
+    ...PGN_130580Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130581
   Description: Zone Configuration (deprecated)
@@ -7903,6 +11005,15 @@ export const PGN_130581Defaults = {
   prio: 3
 }
 
+export const newPGN_130581 = (fields: PGN_130581Fields, dst:number=255) : PGN_130581 => {
+  return {
+    ...PGN_130581Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130582
   Description: Zone Volume
@@ -7927,6 +11038,15 @@ export const PGN_130582Defaults = {
   prio: 3
 }
 
+export const newPGN_130582 = (fields: PGN_130582Fields, dst:number=255) : PGN_130582 => {
+  return {
+    ...PGN_130582Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130583
   Description: Available Audio EQ presets
@@ -7951,6 +11071,15 @@ export const PGN_130583Defaults = {
   prio: 3
 }
 
+export const newPGN_130583 = (fields: PGN_130583Fields, dst:number=255) : PGN_130583 => {
+  return {
+    ...PGN_130583Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130584
   Description: Available Bluetooth addresses
@@ -7977,6 +11106,15 @@ export const PGN_130584Defaults = {
   prio: 3
 }
 
+export const newPGN_130584 = (fields: PGN_130584Fields, dst:number=255) : PGN_130584 => {
+  return {
+    ...PGN_130584Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130585
   Description: Bluetooth source status
@@ -7999,6 +11137,15 @@ export const PGN_130585Defaults = {
   prio: 3
 }
 
+export const newPGN_130585 = (fields: PGN_130585Fields, dst:number=255) : PGN_130585 => {
+  return {
+    ...PGN_130585Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130586
   Description: Zone Configuration
@@ -8029,6 +11176,15 @@ export const PGN_130586Defaults = {
   prio: 3
 }
 
+export const newPGN_130586 = (fields: PGN_130586Fields, dst:number=255) : PGN_130586 => {
+  return {
+    ...PGN_130586Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130816
   Description: SonicHub: Init #2
@@ -8063,6 +11219,24 @@ export const PGN_130816_SonichubInit2MatchFields = {
   proprietaryId: enums.SonichubCommand.Init2,
 }
 
+export interface PGN_130816_SonichubInit2CreateArgs {
+  reserved?: number
+  reserved4?: number
+  control?: enums.SonichubControl|number
+  a?: N2K_Number
+  b?: N2K_Number
+}
+
+export const newPGN_130816_SonichubInit2 = (fields: PGN_130816_SonichubInit2CreateArgs, dst:number=255) : PGN_130816_SonichubInit2 => {
+  return {
+    ...PGN_130816_SonichubInit2Defaults,
+    dst,
+    fields: {
+      ...PGN_130816_SonichubInit2MatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130816
   Description: SonicHub: AM Radio
@@ -8101,6 +11275,28 @@ export const PGN_130816_SonichubAmRadioMatchFields = {
   proprietaryId: enums.SonichubCommand.AmRadio,
 }
 
+export interface PGN_130816_SonichubAmRadioCreateArgs {
+  reserved?: number
+  reserved4?: number
+  control?: enums.SonichubControl|number
+  item?: enums.SonichubTuning|number
+  frequency?: N2K_Number
+  noiseLevel?: N2K_Number
+  signalLevel?: N2K_Number
+  reserved11?: number
+  text?: N2K_StringLz
+}
+
+export const newPGN_130816_SonichubAmRadio = (fields: PGN_130816_SonichubAmRadioCreateArgs, dst:number=255) : PGN_130816_SonichubAmRadio => {
+  return {
+    ...PGN_130816_SonichubAmRadioDefaults,
+    dst,
+    fields: {
+      ...PGN_130816_SonichubAmRadioMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130816
   Description: SonicHub: Zone info
@@ -8134,6 +11330,23 @@ export const PGN_130816_SonichubZoneInfoMatchFields = {
   proprietaryId: enums.SonichubCommand.ZoneInfo,
 }
 
+export interface PGN_130816_SonichubZoneInfoCreateArgs {
+  reserved?: number
+  reserved4?: number
+  control?: enums.SonichubControl|number
+  zone?: N2K_Number
+}
+
+export const newPGN_130816_SonichubZoneInfo = (fields: PGN_130816_SonichubZoneInfoCreateArgs, dst:number=255) : PGN_130816_SonichubZoneInfo => {
+  return {
+    ...PGN_130816_SonichubZoneInfoDefaults,
+    dst,
+    fields: {
+      ...PGN_130816_SonichubZoneInfoMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130816
   Description: SonicHub: Source
@@ -8167,6 +11380,23 @@ export const PGN_130816_SonichubSourceMatchFields = {
   proprietaryId: enums.SonichubCommand.Source,
 }
 
+export interface PGN_130816_SonichubSourceCreateArgs {
+  reserved?: number
+  reserved4?: number
+  control?: enums.SonichubControl|number
+  source?: enums.SonichubSource|number
+}
+
+export const newPGN_130816_SonichubSource = (fields: PGN_130816_SonichubSourceCreateArgs, dst:number=255) : PGN_130816_SonichubSource => {
+  return {
+    ...PGN_130816_SonichubSourceDefaults,
+    dst,
+    fields: {
+      ...PGN_130816_SonichubSourceMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130816
   Description: SonicHub: Source List
@@ -8202,6 +11432,25 @@ export const PGN_130816_SonichubSourceListMatchFields = {
   proprietaryId: enums.SonichubCommand.SourceList,
 }
 
+export interface PGN_130816_SonichubSourceListCreateArgs {
+  reserved?: number
+  reserved4?: number
+  control?: enums.SonichubControl|number
+  sourceId?: N2K_Number
+  a?: N2K_Number
+  text?: N2K_StringLz
+}
+
+export const newPGN_130816_SonichubSourceList = (fields: PGN_130816_SonichubSourceListCreateArgs, dst:number=255) : PGN_130816_SonichubSourceList => {
+  return {
+    ...PGN_130816_SonichubSourceListDefaults,
+    dst,
+    fields: {
+      ...PGN_130816_SonichubSourceListMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130816
   Description: SonicHub: Control
@@ -8235,6 +11484,23 @@ export const PGN_130816_SonichubControlMatchFields = {
   proprietaryId: enums.SonichubCommand.Control,
 }
 
+export interface PGN_130816_SonichubControlCreateArgs {
+  reserved?: number
+  reserved4?: number
+  control?: enums.SonichubControl|number
+  item?: enums.FusionMuteCommand|number
+}
+
+export const newPGN_130816_SonichubControl = (fields: PGN_130816_SonichubControlCreateArgs, dst:number=255) : PGN_130816_SonichubControl => {
+  return {
+    ...PGN_130816_SonichubControlDefaults,
+    dst,
+    fields: {
+      ...PGN_130816_SonichubControlMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130816
   Description: SonicHub: FM Radio
@@ -8273,6 +11539,28 @@ export const PGN_130816_SonichubFmRadioMatchFields = {
   proprietaryId: enums.SonichubCommand.FmRadio,
 }
 
+export interface PGN_130816_SonichubFmRadioCreateArgs {
+  reserved?: number
+  reserved4?: number
+  control?: enums.SonichubControl|number
+  item?: enums.SonichubTuning|number
+  frequency?: N2K_Number
+  noiseLevel?: N2K_Number
+  signalLevel?: N2K_Number
+  reserved11?: number
+  text?: N2K_StringLz
+}
+
+export const newPGN_130816_SonichubFmRadio = (fields: PGN_130816_SonichubFmRadioCreateArgs, dst:number=255) : PGN_130816_SonichubFmRadio => {
+  return {
+    ...PGN_130816_SonichubFmRadioDefaults,
+    dst,
+    fields: {
+      ...PGN_130816_SonichubFmRadioMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130816
   Description: SonicHub: Playlist
@@ -8311,6 +11599,28 @@ export const PGN_130816_SonichubPlaylistMatchFields = {
   proprietaryId: enums.SonichubCommand.Playlist,
 }
 
+export interface PGN_130816_SonichubPlaylistCreateArgs {
+  reserved?: number
+  reserved4?: number
+  control?: enums.SonichubControl|number
+  item?: enums.SonichubPlaylist|number
+  a?: N2K_Number
+  currentTrack?: N2K_Number
+  tracks?: N2K_Number
+  length?: N2K_Duration
+  positionInTrack?: N2K_Duration
+}
+
+export const newPGN_130816_SonichubPlaylist = (fields: PGN_130816_SonichubPlaylistCreateArgs, dst:number=255) : PGN_130816_SonichubPlaylist => {
+  return {
+    ...PGN_130816_SonichubPlaylistDefaults,
+    dst,
+    fields: {
+      ...PGN_130816_SonichubPlaylistMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130816
   Description: SonicHub: Track
@@ -8345,6 +11655,24 @@ export const PGN_130816_SonichubTrackMatchFields = {
   proprietaryId: enums.SonichubCommand.Track,
 }
 
+export interface PGN_130816_SonichubTrackCreateArgs {
+  reserved?: number
+  reserved4?: number
+  control?: enums.SonichubControl|number
+  item?: N2K_Number
+  text?: N2K_StringLz
+}
+
+export const newPGN_130816_SonichubTrack = (fields: PGN_130816_SonichubTrackCreateArgs, dst:number=255) : PGN_130816_SonichubTrack => {
+  return {
+    ...PGN_130816_SonichubTrackDefaults,
+    dst,
+    fields: {
+      ...PGN_130816_SonichubTrackMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130816
   Description: SonicHub: Artist
@@ -8379,6 +11707,24 @@ export const PGN_130816_SonichubArtistMatchFields = {
   proprietaryId: enums.SonichubCommand.Artist,
 }
 
+export interface PGN_130816_SonichubArtistCreateArgs {
+  reserved?: number
+  reserved4?: number
+  control?: enums.SonichubControl|number
+  item?: N2K_Number
+  text?: N2K_StringLz
+}
+
+export const newPGN_130816_SonichubArtist = (fields: PGN_130816_SonichubArtistCreateArgs, dst:number=255) : PGN_130816_SonichubArtist => {
+  return {
+    ...PGN_130816_SonichubArtistDefaults,
+    dst,
+    fields: {
+      ...PGN_130816_SonichubArtistMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130816
   Description: SonicHub: Album
@@ -8413,6 +11759,24 @@ export const PGN_130816_SonichubAlbumMatchFields = {
   proprietaryId: enums.SonichubCommand.Album,
 }
 
+export interface PGN_130816_SonichubAlbumCreateArgs {
+  reserved?: number
+  reserved4?: number
+  control?: enums.SonichubControl|number
+  item?: N2K_Number
+  text?: N2K_StringLz
+}
+
+export const newPGN_130816_SonichubAlbum = (fields: PGN_130816_SonichubAlbumCreateArgs, dst:number=255) : PGN_130816_SonichubAlbum => {
+  return {
+    ...PGN_130816_SonichubAlbumDefaults,
+    dst,
+    fields: {
+      ...PGN_130816_SonichubAlbumMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130816
   Description: SonicHub: Menu Item
@@ -8450,6 +11814,27 @@ export const PGN_130816_SonichubMenuItemMatchFields = {
   proprietaryId: enums.SonichubCommand.MenuItem,
 }
 
+export interface PGN_130816_SonichubMenuItemCreateArgs {
+  reserved?: number
+  reserved4?: number
+  control?: enums.SonichubControl|number
+  item?: N2K_Number
+  c?: N2K_Number
+  d?: N2K_Number
+  e?: N2K_Number
+  text?: N2K_StringLz
+}
+
+export const newPGN_130816_SonichubMenuItem = (fields: PGN_130816_SonichubMenuItemCreateArgs, dst:number=255) : PGN_130816_SonichubMenuItem => {
+  return {
+    ...PGN_130816_SonichubMenuItemDefaults,
+    dst,
+    fields: {
+      ...PGN_130816_SonichubMenuItemMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130816
   Description: SonicHub: Zones
@@ -8483,6 +11868,23 @@ export const PGN_130816_SonichubZonesMatchFields = {
   proprietaryId: enums.SonichubCommand.Zones,
 }
 
+export interface PGN_130816_SonichubZonesCreateArgs {
+  reserved?: number
+  reserved4?: number
+  control?: enums.SonichubControl|number
+  zones?: N2K_Number
+}
+
+export const newPGN_130816_SonichubZones = (fields: PGN_130816_SonichubZonesCreateArgs, dst:number=255) : PGN_130816_SonichubZones => {
+  return {
+    ...PGN_130816_SonichubZonesDefaults,
+    dst,
+    fields: {
+      ...PGN_130816_SonichubZonesMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130816
   Description: SonicHub: Max Volume
@@ -8517,6 +11919,24 @@ export const PGN_130816_SonichubMaxVolumeMatchFields = {
   proprietaryId: enums.SonichubCommand.MaxVolume,
 }
 
+export interface PGN_130816_SonichubMaxVolumeCreateArgs {
+  reserved?: number
+  reserved4?: number
+  control?: enums.SonichubControl|number
+  zone?: N2K_Number
+  level?: N2K_Number
+}
+
+export const newPGN_130816_SonichubMaxVolume = (fields: PGN_130816_SonichubMaxVolumeCreateArgs, dst:number=255) : PGN_130816_SonichubMaxVolume => {
+  return {
+    ...PGN_130816_SonichubMaxVolumeDefaults,
+    dst,
+    fields: {
+      ...PGN_130816_SonichubMaxVolumeMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130816
   Description: SonicHub: Volume
@@ -8551,6 +11971,24 @@ export const PGN_130816_SonichubVolumeMatchFields = {
   proprietaryId: enums.SonichubCommand.Volume,
 }
 
+export interface PGN_130816_SonichubVolumeCreateArgs {
+  reserved?: number
+  reserved4?: number
+  control?: enums.SonichubControl|number
+  zone?: N2K_Number
+  level?: N2K_Number
+}
+
+export const newPGN_130816_SonichubVolume = (fields: PGN_130816_SonichubVolumeCreateArgs, dst:number=255) : PGN_130816_SonichubVolume => {
+  return {
+    ...PGN_130816_SonichubVolumeDefaults,
+    dst,
+    fields: {
+      ...PGN_130816_SonichubVolumeMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130816
   Description: SonicHub: Init #1
@@ -8583,6 +12021,22 @@ export const PGN_130816_SonichubInit1MatchFields = {
   proprietaryId: enums.SonichubCommand.Init1,
 }
 
+export interface PGN_130816_SonichubInit1CreateArgs {
+  reserved?: number
+  reserved4?: number
+  control?: enums.SonichubControl|number
+}
+
+export const newPGN_130816_SonichubInit1 = (fields: PGN_130816_SonichubInit1CreateArgs, dst:number=255) : PGN_130816_SonichubInit1 => {
+  return {
+    ...PGN_130816_SonichubInit1Defaults,
+    dst,
+    fields: {
+      ...PGN_130816_SonichubInit1MatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130816
   Description: SonicHub: Position
@@ -8616,6 +12070,23 @@ export const PGN_130816_SonichubPositionMatchFields = {
   proprietaryId: enums.SonichubCommand.Position,
 }
 
+export interface PGN_130816_SonichubPositionCreateArgs {
+  reserved?: number
+  reserved4?: number
+  control?: enums.SonichubControl|number
+  position?: N2K_Duration
+}
+
+export const newPGN_130816_SonichubPosition = (fields: PGN_130816_SonichubPositionCreateArgs, dst:number=255) : PGN_130816_SonichubPosition => {
+  return {
+    ...PGN_130816_SonichubPositionDefaults,
+    dst,
+    fields: {
+      ...PGN_130816_SonichubPositionMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130816
   Description: SonicHub: Init #3
@@ -8650,6 +12121,24 @@ export const PGN_130816_SonichubInit3MatchFields = {
   proprietaryId: enums.SonichubCommand.Init3,
 }
 
+export interface PGN_130816_SonichubInit3CreateArgs {
+  reserved?: number
+  reserved4?: number
+  control?: enums.SonichubControl|number
+  a?: N2K_Number
+  b?: N2K_Number
+}
+
+export const newPGN_130816_SonichubInit3 = (fields: PGN_130816_SonichubInit3CreateArgs, dst:number=255) : PGN_130816_SonichubInit3 => {
+  return {
+    ...PGN_130816_SonichubInit3Defaults,
+    dst,
+    fields: {
+      ...PGN_130816_SonichubInit3MatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130816
   Description: Simrad: Text Message
@@ -8687,6 +12176,27 @@ export const PGN_130816_SimradTextMessageMatchFields = {
   proprietaryId: enums.SimnetCommand.Text,
 }
 
+export interface PGN_130816_SimradTextMessageCreateArgs {
+  reserved?: number
+  reserved4?: number
+  a?: N2K_Number
+  b?: N2K_Number
+  c?: N2K_Number
+  sid?: N2K_Number
+  prio?: N2K_Number
+  text?: N2K_StringFix
+}
+
+export const newPGN_130816_SimradTextMessage = (fields: PGN_130816_SimradTextMessageCreateArgs, dst:number=255) : PGN_130816_SimradTextMessage => {
+  return {
+    ...PGN_130816_SimradTextMessageDefaults,
+    dst,
+    fields: {
+      ...PGN_130816_SimradTextMessageMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130817
   Description: Navico: Unknown
@@ -8719,6 +12229,25 @@ export const PGN_130817_NavicoUnknownMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_130817_NavicoUnknownCreateArgs {
+  reserved?: number
+  a?: N2K_Number
+  b?: N2K_Number
+  c?: N2K_Number
+  d?: N2K_Number
+  e?: N2K_Number
+}
+
+export const newPGN_130817_NavicoUnknown = (fields: PGN_130817_NavicoUnknownCreateArgs, dst:number=255) : PGN_130817_NavicoUnknown => {
+  return {
+    ...PGN_130817_NavicoUnknownDefaults,
+    dst,
+    fields: {
+      ...PGN_130817_NavicoUnknownMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130817
   Description: Lowrance: Product Information
@@ -8754,6 +12283,28 @@ export const PGN_130817_LowranceProductInformationMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_130817_LowranceProductInformationCreateArgs {
+  reserved?: number
+  productCode?: N2K_Number
+  model?: N2K_StringFix
+  a?: N2K_Number
+  b?: N2K_Number
+  c?: N2K_Number
+  firmwareVersion?: N2K_StringFix
+  firmwareDate?: N2K_StringFix
+  firmwareTime?: N2K_StringFix
+}
+
+export const newPGN_130817_LowranceProductInformation = (fields: PGN_130817_LowranceProductInformationCreateArgs, dst:number=255) : PGN_130817_LowranceProductInformation => {
+  return {
+    ...PGN_130817_LowranceProductInformationDefaults,
+    dst,
+    fields: {
+      ...PGN_130817_LowranceProductInformationMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130818
   Description: Simnet: Reprogram Data
@@ -8777,6 +12328,15 @@ export const PGN_130818Defaults = {
   prio: 7
 }
 
+export const newPGN_130818 = (fields: PGN_130818Fields, dst:number=255) : PGN_130818 => {
+  return {
+    ...PGN_130818Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130819
   Description: Simnet: Request Reprogram
@@ -8797,6 +12357,15 @@ export const PGN_130819Defaults = {
   prio: 7
 }
 
+export const newPGN_130819 = (fields: PGN_130819Fields, dst:number=255) : PGN_130819 => {
+  return {
+    ...PGN_130819Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Simnet: Reprogram Status
@@ -8827,6 +12396,23 @@ export const PGN_130820_SimnetReprogramStatusMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_130820_SimnetReprogramStatusCreateArgs {
+  reserved?: number
+  reserved4?: number
+  status?: N2K_Number
+  reserved6?: number
+}
+
+export const newPGN_130820_SimnetReprogramStatus = (fields: PGN_130820_SimnetReprogramStatusCreateArgs, dst:number=255) : PGN_130820_SimnetReprogramStatus => {
+  return {
+    ...PGN_130820_SimnetReprogramStatusDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_SimnetReprogramStatusMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Furuno: Unknown 130820
@@ -8859,6 +12445,25 @@ export const PGN_130820_FurunoUnknown130820MatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_130820_FurunoUnknown130820CreateArgs {
+  reserved?: number
+  a?: N2K_Number
+  b?: N2K_Number
+  c?: N2K_Number
+  d?: N2K_Number
+  e?: N2K_Number
+}
+
+export const newPGN_130820_FurunoUnknown130820 = (fields: PGN_130820_FurunoUnknown130820CreateArgs, dst:number=255) : PGN_130820_FurunoUnknown130820 => {
+  return {
+    ...PGN_130820_FurunoUnknown130820Defaults,
+    dst,
+    fields: {
+      ...PGN_130820_FurunoUnknown130820MatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Versions
@@ -8894,6 +12499,25 @@ export const PGN_130820_FusionVersionsMatchFields = {
   messageId: enums.FusionStatusMessageId.ApiVersion,
 }
 
+export interface PGN_130820_FusionVersionsCreateArgs {
+  reserved?: number
+  hwVersionMajor?: N2K_Number
+  hwVersionMinor?: N2K_Number
+  swVersionMajor?: N2K_Number
+  swVersionMinor?: N2K_Number
+  buildNumber?: N2K_Number
+}
+
+export const newPGN_130820_FusionVersions = (fields: PGN_130820_FusionVersionsCreateArgs, dst:number=255) : PGN_130820_FusionVersions => {
+  return {
+    ...PGN_130820_FusionVersionsDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionVersionsMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Source
@@ -8929,6 +12553,25 @@ export const PGN_130820_FusionSourceMatchFields = {
   messageId: enums.FusionStatusMessageId.Source,
 }
 
+export interface PGN_130820_FusionSourceCreateArgs {
+  reserved?: number
+  sourceId?: N2K_Number
+  currentSourceId?: N2K_Number
+  sourceType?: enums.FusionSourceType|number
+  flags?: N2K_Number
+  source?: N2K_StringLz
+}
+
+export const newPGN_130820_FusionSource = (fields: PGN_130820_FusionSourceCreateArgs, dst:number=255) : PGN_130820_FusionSource => {
+  return {
+    ...PGN_130820_FusionSourceDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionSourceMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Source Count
@@ -8960,6 +12603,21 @@ export const PGN_130820_FusionSourceCountMatchFields = {
   messageId: enums.FusionStatusMessageId.SourceCount,
 }
 
+export interface PGN_130820_FusionSourceCountCreateArgs {
+  reserved?: number
+  sourceCount?: N2K_Number
+}
+
+export const newPGN_130820_FusionSourceCount = (fields: PGN_130820_FusionSourceCountCreateArgs, dst:number=255) : PGN_130820_FusionSourceCount => {
+  return {
+    ...PGN_130820_FusionSourceCountDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionSourceCountMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Media
@@ -8996,6 +12654,26 @@ export const PGN_130820_FusionMediaMatchFields = {
   messageId: enums.FusionStatusMessageId.TrackInfo,
 }
 
+export interface PGN_130820_FusionMediaCreateArgs {
+  reserved?: number
+  sourceId: N2K_Number
+  flags?: enums.FusionPlayStatus|number
+  track?: N2K_Number
+  trackCount?: N2K_Number
+  length?: N2K_Duration
+  positionInTrack?: N2K_Duration
+}
+
+export const newPGN_130820_FusionMedia = (fields: PGN_130820_FusionMediaCreateArgs, dst:number=255) : PGN_130820_FusionMedia => {
+  return {
+    ...PGN_130820_FusionMediaDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionMediaMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Track Name
@@ -9029,6 +12707,23 @@ export const PGN_130820_FusionTrackNameMatchFields = {
   messageId: enums.FusionStatusMessageId.TrackTitle,
 }
 
+export interface PGN_130820_FusionTrackNameCreateArgs {
+  reserved?: number
+  sourceId: N2K_Number
+  index?: N2K_Number
+  track?: N2K_StringLz
+}
+
+export const newPGN_130820_FusionTrackName = (fields: PGN_130820_FusionTrackNameCreateArgs, dst:number=255) : PGN_130820_FusionTrackName => {
+  return {
+    ...PGN_130820_FusionTrackNameDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionTrackNameMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Artist Name
@@ -9062,6 +12757,23 @@ export const PGN_130820_FusionArtistNameMatchFields = {
   messageId: enums.FusionStatusMessageId.TrackArtist,
 }
 
+export interface PGN_130820_FusionArtistNameCreateArgs {
+  reserved?: number
+  sourceId: N2K_Number
+  index?: N2K_Number
+  artist?: N2K_StringLz
+}
+
+export const newPGN_130820_FusionArtistName = (fields: PGN_130820_FusionArtistNameCreateArgs, dst:number=255) : PGN_130820_FusionArtistName => {
+  return {
+    ...PGN_130820_FusionArtistNameDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionArtistNameMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Album Name
@@ -9095,6 +12807,23 @@ export const PGN_130820_FusionAlbumNameMatchFields = {
   messageId: enums.FusionStatusMessageId.TrackAlbum,
 }
 
+export interface PGN_130820_FusionAlbumNameCreateArgs {
+  reserved?: number
+  sourceId: N2K_Number
+  index?: N2K_Number
+  album?: N2K_StringLz
+}
+
+export const newPGN_130820_FusionAlbumName = (fields: PGN_130820_FusionAlbumNameCreateArgs, dst:number=255) : PGN_130820_FusionAlbumName => {
+  return {
+    ...PGN_130820_FusionAlbumNameDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionAlbumNameMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Device Name
@@ -9126,6 +12855,21 @@ export const PGN_130820_FusionDeviceNameMatchFields = {
   messageId: enums.FusionStatusMessageId.UnitName,
 }
 
+export interface PGN_130820_FusionDeviceNameCreateArgs {
+  reserved?: number
+  name?: N2K_StringLz
+}
+
+export const newPGN_130820_FusionDeviceName = (fields: PGN_130820_FusionDeviceNameCreateArgs, dst:number=255) : PGN_130820_FusionDeviceName => {
+  return {
+    ...PGN_130820_FusionDeviceNameDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionDeviceNameMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Zone Name
@@ -9158,6 +12902,22 @@ export const PGN_130820_FusionZoneNameMatchFields = {
   messageId: enums.FusionStatusMessageId.ZoneName,
 }
 
+export interface PGN_130820_FusionZoneNameCreateArgs {
+  reserved?: number
+  number: N2K_Number
+  name?: N2K_StringLz
+}
+
+export const newPGN_130820_FusionZoneName = (fields: PGN_130820_FusionZoneNameCreateArgs, dst:number=255) : PGN_130820_FusionZoneName => {
+  return {
+    ...PGN_130820_FusionZoneNameDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionZoneNameMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Track Position
@@ -9190,6 +12950,22 @@ export const PGN_130820_FusionTrackPositionMatchFields = {
   messageId: enums.FusionStatusMessageId.TrackProgress,
 }
 
+export interface PGN_130820_FusionTrackPositionCreateArgs {
+  reserved?: number
+  sourceId: N2K_Number
+  progress?: N2K_Duration
+}
+
+export const newPGN_130820_FusionTrackPosition = (fields: PGN_130820_FusionTrackPositionCreateArgs, dst:number=255) : PGN_130820_FusionTrackPosition => {
+  return {
+    ...PGN_130820_FusionTrackPositionDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionTrackPositionMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Tuner
@@ -9225,6 +13001,25 @@ export const PGN_130820_FusionTunerMatchFields = {
   messageId: enums.FusionStatusMessageId.Tuner,
 }
 
+export interface PGN_130820_FusionTunerCreateArgs {
+  reserved?: number
+  sourceId: enums.FusionRadioSource|number
+  scanning?: N2K_Number
+  frequency?: N2K_Number
+  signalStrength?: N2K_Number
+  track?: N2K_StringLz
+}
+
+export const newPGN_130820_FusionTuner = (fields: PGN_130820_FusionTunerCreateArgs, dst:number=255) : PGN_130820_FusionTuner => {
+  return {
+    ...PGN_130820_FusionTunerDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionTunerMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: MARINE_TUNER
@@ -9259,6 +13054,24 @@ export const PGN_130820_FusionMarineTunerMatchFields = {
   messageId: enums.FusionStatusMessageId.MarineTuner,
 }
 
+export interface PGN_130820_FusionMarineTunerCreateArgs {
+  reserved?: number
+  sourceId: N2K_Number
+  channel?: N2K_Number
+  signalStrength?: N2K_Number
+  name?: N2K_StringLz
+}
+
+export const newPGN_130820_FusionMarineTuner = (fields: PGN_130820_FusionMarineTunerCreateArgs, dst:number=255) : PGN_130820_FusionMarineTuner => {
+  return {
+    ...PGN_130820_FusionMarineTunerDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionMarineTunerMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Marine Squelch
@@ -9291,6 +13104,22 @@ export const PGN_130820_FusionMarineSquelchMatchFields = {
   messageId: enums.FusionStatusMessageId.MarineSquelch,
 }
 
+export interface PGN_130820_FusionMarineSquelchCreateArgs {
+  reserved?: number
+  sourceId: N2K_Number
+  squelch?: N2K_Number
+}
+
+export const newPGN_130820_FusionMarineSquelch = (fields: PGN_130820_FusionMarineSquelchCreateArgs, dst:number=255) : PGN_130820_FusionMarineSquelch => {
+  return {
+    ...PGN_130820_FusionMarineSquelchDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionMarineSquelchMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Marine Scan Mode
@@ -9323,6 +13152,22 @@ export const PGN_130820_FusionMarineScanModeMatchFields = {
   messageId: enums.FusionStatusMessageId.MarineScanMode,
 }
 
+export interface PGN_130820_FusionMarineScanModeCreateArgs {
+  reserved?: number
+  sourceId: N2K_Number
+  scan?: enums.YesNo|number
+}
+
+export const newPGN_130820_FusionMarineScanMode = (fields: PGN_130820_FusionMarineScanModeCreateArgs, dst:number=255) : PGN_130820_FusionMarineScanMode => {
+  return {
+    ...PGN_130820_FusionMarineScanModeDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionMarineScanModeMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Menu Item
@@ -9358,6 +13203,25 @@ export const PGN_130820_FusionMenuItemMatchFields = {
   messageId: enums.FusionStatusMessageId.MenuItem,
 }
 
+export interface PGN_130820_FusionMenuItemCreateArgs {
+  reserved?: number
+  sourceId: N2K_Number
+  itemIndex?: N2K_Number
+  flags?: N2K_Number
+  lockId?: N2K_Number
+  text?: N2K_StringLz
+}
+
+export const newPGN_130820_FusionMenuItem = (fields: PGN_130820_FusionMenuItemCreateArgs, dst:number=255) : PGN_130820_FusionMenuItem => {
+  return {
+    ...PGN_130820_FusionMenuItemDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionMenuItemMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Aux Gain
@@ -9390,6 +13254,22 @@ export const PGN_130820_FusionAuxGainMatchFields = {
   messageId: enums.FusionStatusMessageId.AuxGain,
 }
 
+export interface PGN_130820_FusionAuxGainCreateArgs {
+  reserved?: number
+  sourceId: N2K_Number
+  gain?: N2K_Number
+}
+
+export const newPGN_130820_FusionAuxGain = (fields: PGN_130820_FusionAuxGainCreateArgs, dst:number=255) : PGN_130820_FusionAuxGain => {
+  return {
+    ...PGN_130820_FusionAuxGainDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionAuxGainMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: USB Repeat Status
@@ -9424,6 +13304,21 @@ export const PGN_130820_FusionUsbRepeatStatusMatchFields = {
   id: enums.FusionSetting.UsbRepeat,
 }
 
+export interface PGN_130820_FusionUsbRepeatStatusCreateArgs {
+  reserved?: number
+  status?: enums.FusionRepeatStatus|number
+}
+
+export const newPGN_130820_FusionUsbRepeatStatus = (fields: PGN_130820_FusionUsbRepeatStatusCreateArgs, dst:number=255) : PGN_130820_FusionUsbRepeatStatus => {
+  return {
+    ...PGN_130820_FusionUsbRepeatStatusDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionUsbRepeatStatusMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Setting
@@ -9456,6 +13351,22 @@ export const PGN_130820_FusionSettingMatchFields = {
   messageId: enums.FusionStatusMessageId.Setting,
 }
 
+export interface PGN_130820_FusionSettingCreateArgs {
+  reserved?: number
+  id?: enums.FusionSetting|number
+  value?: N2K_Number
+}
+
+export const newPGN_130820_FusionSetting = (fields: PGN_130820_FusionSettingCreateArgs, dst:number=255) : PGN_130820_FusionSetting => {
+  return {
+    ...PGN_130820_FusionSettingDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionSettingMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Settings
@@ -9491,6 +13402,25 @@ export const PGN_130820_FusionSettingsMatchFields = {
   messageId: enums.FusionStatusMessageId.Settings,
 }
 
+export interface PGN_130820_FusionSettingsCreateArgs {
+  reserved?: number
+  count?: N2K_Number
+  list: {
+    id?: enums.FusionSetting|number
+    value?: N2K_Number
+  }[]
+}
+
+export const newPGN_130820_FusionSettings = (fields: PGN_130820_FusionSettingsCreateArgs, dst:number=255) : PGN_130820_FusionSettings => {
+  return {
+    ...PGN_130820_FusionSettingsDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionSettingsMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Mute
@@ -9522,6 +13452,21 @@ export const PGN_130820_FusionMuteMatchFields = {
   messageId: enums.FusionStatusMessageId.Mute,
 }
 
+export interface PGN_130820_FusionMuteCreateArgs {
+  reserved?: number
+  mute?: enums.FusionMuteCommand|number
+}
+
+export const newPGN_130820_FusionMute = (fields: PGN_130820_FusionMuteCreateArgs, dst:number=255) : PGN_130820_FusionMute => {
+  return {
+    ...PGN_130820_FusionMuteDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionMuteMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Balance
@@ -9554,6 +13499,22 @@ export const PGN_130820_FusionBalanceMatchFields = {
   messageId: enums.FusionStatusMessageId.Balance,
 }
 
+export interface PGN_130820_FusionBalanceCreateArgs {
+  reserved?: number
+  zone: N2K_Number
+  value?: N2K_Number
+}
+
+export const newPGN_130820_FusionBalance = (fields: PGN_130820_FusionBalanceCreateArgs, dst:number=255) : PGN_130820_FusionBalance => {
+  return {
+    ...PGN_130820_FusionBalanceDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionBalanceMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Low Pass Filter
@@ -9586,6 +13547,22 @@ export const PGN_130820_FusionLowPassFilterMatchFields = {
   messageId: enums.FusionStatusMessageId.LowPassFilter,
 }
 
+export interface PGN_130820_FusionLowPassFilterCreateArgs {
+  reserved?: number
+  zone: N2K_Number
+  filter?: N2K_Number
+}
+
+export const newPGN_130820_FusionLowPassFilter = (fields: PGN_130820_FusionLowPassFilterCreateArgs, dst:number=255) : PGN_130820_FusionLowPassFilter => {
+  return {
+    ...PGN_130820_FusionLowPassFilterDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionLowPassFilterMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Sublevels
@@ -9620,6 +13597,24 @@ export const PGN_130820_FusionSublevelsMatchFields = {
   messageId: enums.FusionStatusMessageId.Sublevels,
 }
 
+export interface PGN_130820_FusionSublevelsCreateArgs {
+  reserved?: number
+  zone1?: N2K_Number
+  zone2?: N2K_Number
+  zone3?: N2K_Number
+  zone4?: N2K_Number
+}
+
+export const newPGN_130820_FusionSublevels = (fields: PGN_130820_FusionSublevelsCreateArgs, dst:number=255) : PGN_130820_FusionSublevels => {
+  return {
+    ...PGN_130820_FusionSublevelsDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionSublevelsMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: EQ
@@ -9654,6 +13649,24 @@ export const PGN_130820_FusionEqMatchFields = {
   messageId: enums.FusionStatusMessageId.Tone,
 }
 
+export interface PGN_130820_FusionEqCreateArgs {
+  reserved?: number
+  zone: N2K_Number
+  bass?: N2K_Number
+  mid?: N2K_Number
+  treble?: N2K_Number
+}
+
+export const newPGN_130820_FusionEq = (fields: PGN_130820_FusionEqCreateArgs, dst:number=255) : PGN_130820_FusionEq => {
+  return {
+    ...PGN_130820_FusionEqDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionEqMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Volume Limits
@@ -9688,6 +13701,24 @@ export const PGN_130820_FusionVolumeLimitsMatchFields = {
   messageId: enums.FusionStatusMessageId.VolumeLimits,
 }
 
+export interface PGN_130820_FusionVolumeLimitsCreateArgs {
+  reserved?: number
+  zone1VolumeLimit?: N2K_Number
+  zone2VolumeLimit?: N2K_Number
+  zone3VolumeLimit?: N2K_Number
+  zone4VolumeLimit?: N2K_Number
+}
+
+export const newPGN_130820_FusionVolumeLimits = (fields: PGN_130820_FusionVolumeLimitsCreateArgs, dst:number=255) : PGN_130820_FusionVolumeLimits => {
+  return {
+    ...PGN_130820_FusionVolumeLimitsDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionVolumeLimitsMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Volumes
@@ -9722,6 +13753,24 @@ export const PGN_130820_FusionVolumesMatchFields = {
   messageId: enums.FusionStatusMessageId.Volume,
 }
 
+export interface PGN_130820_FusionVolumesCreateArgs {
+  reserved?: number
+  zone1?: N2K_Number
+  zone2?: N2K_Number
+  zone3?: N2K_Number
+  zone4?: N2K_Number
+}
+
+export const newPGN_130820_FusionVolumes = (fields: PGN_130820_FusionVolumesCreateArgs, dst:number=255) : PGN_130820_FusionVolumes => {
+  return {
+    ...PGN_130820_FusionVolumesDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionVolumesMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Capabilities
@@ -9757,6 +13806,25 @@ export const PGN_130820_FusionCapabilitiesMatchFields = {
   messageId: enums.FusionStatusMessageId.Capabilities,
 }
 
+export interface PGN_130820_FusionCapabilitiesCreateArgs {
+  reserved?: number
+  zone1?: N2K_Number
+  zone2?: N2K_Number
+  zone3?: N2K_Number
+  zone4?: N2K_Number
+  global?: N2K_Number
+}
+
+export const newPGN_130820_FusionCapabilities = (fields: PGN_130820_FusionCapabilitiesCreateArgs, dst:number=255) : PGN_130820_FusionCapabilities => {
+  return {
+    ...PGN_130820_FusionCapabilitiesDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionCapabilitiesMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Line Level Control
@@ -9789,6 +13857,22 @@ export const PGN_130820_FusionLineLevelControlMatchFields = {
   messageId: enums.FusionStatusMessageId.LineLevelControl,
 }
 
+export interface PGN_130820_FusionLineLevelControlCreateArgs {
+  reserved?: number
+  zone: N2K_Number
+  control?: N2K_Number
+}
+
+export const newPGN_130820_FusionLineLevelControl = (fields: PGN_130820_FusionLineLevelControlCreateArgs, dst:number=255) : PGN_130820_FusionLineLevelControl => {
+  return {
+    ...PGN_130820_FusionLineLevelControlDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionLineLevelControlMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: Power State
@@ -9820,6 +13904,21 @@ export const PGN_130820_FusionPowerStateMatchFields = {
   messageId: enums.FusionStatusMessageId.Power,
 }
 
+export interface PGN_130820_FusionPowerStateCreateArgs {
+  reserved?: number
+  state?: enums.FusionPowerState|number
+}
+
+export const newPGN_130820_FusionPowerState = (fields: PGN_130820_FusionPowerStateCreateArgs, dst:number=255) : PGN_130820_FusionPowerState => {
+  return {
+    ...PGN_130820_FusionPowerStateDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionPowerStateMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: SiriusXM
@@ -9855,6 +13954,25 @@ export const PGN_130820_FusionSiriusxmMatchFields = {
   messageId: enums.FusionStatusMessageId.Sirius,
 }
 
+export interface PGN_130820_FusionSiriusxmCreateArgs {
+  reserved?: number
+  sourceId: N2K_Number
+  comState?: enums.FusionSiriusComState|number
+  alert?: enums.FusionSiriusComState|number
+  advisoryChannel?: N2K_Number
+  tuningMode?: enums.FusionSiriusTuningMode|number
+}
+
+export const newPGN_130820_FusionSiriusxm = (fields: PGN_130820_FusionSiriusxmCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxm => {
+  return {
+    ...PGN_130820_FusionSiriusxmDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionSiriusxmMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: SiriusXM Channel
@@ -9888,6 +14006,23 @@ export const PGN_130820_FusionSiriusxmChannelMatchFields = {
   messageId: enums.FusionStatusMessageId.SiriusXmChannel,
 }
 
+export interface PGN_130820_FusionSiriusxmChannelCreateArgs {
+  reserved?: number
+  sourceId: N2K_Number
+  channelNumber?: N2K_Number
+  channel?: N2K_StringLz
+}
+
+export const newPGN_130820_FusionSiriusxmChannel = (fields: PGN_130820_FusionSiriusxmChannelCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmChannel => {
+  return {
+    ...PGN_130820_FusionSiriusxmChannelDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionSiriusxmChannelMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: SiriusXM Title
@@ -9921,6 +14056,23 @@ export const PGN_130820_FusionSiriusxmTitleMatchFields = {
   messageId: enums.FusionStatusMessageId.SiriusXmTitle,
 }
 
+export interface PGN_130820_FusionSiriusxmTitleCreateArgs {
+  reserved?: number
+  sourceId: N2K_Number
+  channel?: N2K_Number
+  title?: N2K_StringLz
+}
+
+export const newPGN_130820_FusionSiriusxmTitle = (fields: PGN_130820_FusionSiriusxmTitleCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmTitle => {
+  return {
+    ...PGN_130820_FusionSiriusxmTitleDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionSiriusxmTitleMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: SiriusXM Artist
@@ -9954,6 +14106,23 @@ export const PGN_130820_FusionSiriusxmArtistMatchFields = {
   messageId: enums.FusionStatusMessageId.SiriusXmArtist,
 }
 
+export interface PGN_130820_FusionSiriusxmArtistCreateArgs {
+  reserved?: number
+  sourceId: N2K_Number
+  channel?: N2K_Number
+  artist?: N2K_StringLz
+}
+
+export const newPGN_130820_FusionSiriusxmArtist = (fields: PGN_130820_FusionSiriusxmArtistCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmArtist => {
+  return {
+    ...PGN_130820_FusionSiriusxmArtistDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionSiriusxmArtistMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: SiriusXM Content Info
@@ -9987,6 +14156,23 @@ export const PGN_130820_FusionSiriusxmContentInfoMatchFields = {
   messageId: enums.FusionStatusMessageId.SiriusXmGenre,
 }
 
+export interface PGN_130820_FusionSiriusxmContentInfoCreateArgs {
+  reserved?: number
+  sourceId: N2K_Number
+  channel?: N2K_Number
+  genre?: N2K_StringLz
+}
+
+export const newPGN_130820_FusionSiriusxmContentInfo = (fields: PGN_130820_FusionSiriusxmContentInfoCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmContentInfo => {
+  return {
+    ...PGN_130820_FusionSiriusxmContentInfoDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionSiriusxmContentInfoMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: SiriusXM Category
@@ -10020,6 +14206,23 @@ export const PGN_130820_FusionSiriusxmCategoryMatchFields = {
   messageId: enums.FusionStatusMessageId.SiriusXmCategory,
 }
 
+export interface PGN_130820_FusionSiriusxmCategoryCreateArgs {
+  reserved?: number
+  sourceId: N2K_Number
+  channel?: N2K_Number
+  name?: N2K_StringLz
+}
+
+export const newPGN_130820_FusionSiriusxmCategory = (fields: PGN_130820_FusionSiriusxmCategoryCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmCategory => {
+  return {
+    ...PGN_130820_FusionSiriusxmCategoryDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionSiriusxmCategoryMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: SiriusXM Signal
@@ -10052,6 +14255,22 @@ export const PGN_130820_FusionSiriusxmSignalMatchFields = {
   messageId: enums.FusionStatusMessageId.SiriusXmSignal,
 }
 
+export interface PGN_130820_FusionSiriusxmSignalCreateArgs {
+  reserved?: number
+  sourceId: N2K_Number
+  signal?: N2K_Number
+}
+
+export const newPGN_130820_FusionSiriusxmSignal = (fields: PGN_130820_FusionSiriusxmSignalCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmSignal => {
+  return {
+    ...PGN_130820_FusionSiriusxmSignalDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionSiriusxmSignalMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130820
   Description: Fusion: SiriusXM Presets
@@ -10085,6 +14304,23 @@ export const PGN_130820_FusionSiriusxmPresetsMatchFields = {
   messageId: enums.FusionStatusMessageId.SiriusXmPresets,
 }
 
+export interface PGN_130820_FusionSiriusxmPresetsCreateArgs {
+  reserved?: number
+  sourceId: N2K_Number
+  count?: N2K_Number
+  values?: N2K_Binary
+}
+
+export const newPGN_130820_FusionSiriusxmPresets = (fields: PGN_130820_FusionSiriusxmPresetsCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmPresets => {
+  return {
+    ...PGN_130820_FusionSiriusxmPresetsDefaults,
+    dst,
+    fields: {
+      ...PGN_130820_FusionSiriusxmPresetsMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130821
   Description: Navico: ASCII Data
@@ -10114,6 +14350,22 @@ export const PGN_130821_NavicoAsciiDataMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_130821_NavicoAsciiDataCreateArgs {
+  reserved?: number
+  a?: N2K_Number
+  message?: N2K_StringFix
+}
+
+export const newPGN_130821_NavicoAsciiData = (fields: PGN_130821_NavicoAsciiDataCreateArgs, dst:number=255) : PGN_130821_NavicoAsciiData => {
+  return {
+    ...PGN_130821_NavicoAsciiDataDefaults,
+    dst,
+    fields: {
+      ...PGN_130821_NavicoAsciiDataMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130821
   Description: Furuno: Unknown 130821
@@ -10151,6 +14403,30 @@ export const PGN_130821_FurunoUnknown130821MatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_130821_FurunoUnknown130821CreateArgs {
+  reserved?: number
+  sid?: N2K_Number
+  a?: N2K_Number
+  b?: N2K_Number
+  c?: N2K_Number
+  d?: N2K_Number
+  e?: N2K_Number
+  f?: N2K_Number
+  g?: N2K_Number
+  h?: N2K_Number
+  i?: N2K_Number
+}
+
+export const newPGN_130821_FurunoUnknown130821 = (fields: PGN_130821_FurunoUnknown130821CreateArgs, dst:number=255) : PGN_130821_FurunoUnknown130821 => {
+  return {
+    ...PGN_130821_FurunoUnknown130821Defaults,
+    dst,
+    fields: {
+      ...PGN_130821_FurunoUnknown130821MatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130822
   Description: Navico: Unknown 1
@@ -10172,6 +14448,15 @@ export const PGN_130822Defaults = {
   prio: 3
 }
 
+export const newPGN_130822 = (fields: PGN_130822Fields, dst:number=255) : PGN_130822 => {
+  return {
+    ...PGN_130822Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130823
   Description: Maretron: Proprietary Temperature High Range
@@ -10197,6 +14482,15 @@ export const PGN_130823Defaults = {
   prio: 3
 }
 
+export const newPGN_130823 = (fields: PGN_130823Fields, dst:number=255) : PGN_130823 => {
+  return {
+    ...PGN_130823Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130824
   Description: B&G: key-value data
@@ -10230,6 +14524,25 @@ export const PGN_130824_BGkeyValueDataMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_130824_BGkeyValueDataCreateArgs {
+  reserved?: number
+  list: {
+    key?: N2K_DynamicFieldKey
+    length?: N2K_DynamicFieldLength
+    value?: N2K_DynamicFieldValue
+  }[]
+}
+
+export const newPGN_130824_BGkeyValueData = (fields: PGN_130824_BGkeyValueDataCreateArgs, dst:number=255) : PGN_130824_BGkeyValueData => {
+  return {
+    ...PGN_130824_BGkeyValueDataDefaults,
+    dst,
+    fields: {
+      ...PGN_130824_BGkeyValueDataMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130824
   Description: Maretron: Annunciator
@@ -10262,6 +14575,25 @@ export const PGN_130824_MaretronAnnunciatorMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_130824_MaretronAnnunciatorCreateArgs {
+  reserved?: number
+  field4?: N2K_Number
+  field5?: N2K_Number
+  field6?: N2K_Number
+  field7?: N2K_Number
+  field8?: N2K_Number
+}
+
+export const newPGN_130824_MaretronAnnunciator = (fields: PGN_130824_MaretronAnnunciatorCreateArgs, dst:number=255) : PGN_130824_MaretronAnnunciator => {
+  return {
+    ...PGN_130824_MaretronAnnunciatorDefaults,
+    dst,
+    fields: {
+      ...PGN_130824_MaretronAnnunciatorMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130825
   Description: Navico: Unknown 2
@@ -10283,6 +14615,15 @@ export const PGN_130825Defaults = {
   prio: 3
 }
 
+export const newPGN_130825 = (fields: PGN_130825Fields, dst:number=255) : PGN_130825 => {
+  return {
+    ...PGN_130825Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130827
   Description: Lowrance: unknown
@@ -10309,6 +14650,15 @@ export const PGN_130827Defaults = {
   prio: 3
 }
 
+export const newPGN_130827 = (fields: PGN_130827Fields, dst:number=255) : PGN_130827 => {
+  return {
+    ...PGN_130827Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130828
   Description: Simnet: Set Serial Number
@@ -10329,6 +14679,15 @@ export const PGN_130828Defaults = {
   prio: 3
 }
 
+export const newPGN_130828 = (fields: PGN_130828Fields, dst:number=255) : PGN_130828 => {
+  return {
+    ...PGN_130828Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130831
   Description: Suzuki: Engine and Storage Device Config
@@ -10349,6 +14708,15 @@ export const PGN_130831Defaults = {
   prio: 3
 }
 
+export const newPGN_130831 = (fields: PGN_130831Fields, dst:number=255) : PGN_130831 => {
+  return {
+    ...PGN_130831Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130832
   Description: Simnet: Fuel Used - High Resolution
@@ -10369,6 +14737,15 @@ export const PGN_130832Defaults = {
   prio: 3
 }
 
+export const newPGN_130832 = (fields: PGN_130832Fields, dst:number=255) : PGN_130832 => {
+  return {
+    ...PGN_130832Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130833
   Description: B&G: User and Remote rename
@@ -10395,6 +14772,15 @@ export const PGN_130833Defaults = {
   prio: 3
 }
 
+export const newPGN_130833 = (fields: PGN_130833Fields, dst:number=255) : PGN_130833 => {
+  return {
+    ...PGN_130833Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130834
   Description: Simnet: Engine and Tank Configuration
@@ -10415,6 +14801,15 @@ export const PGN_130834Defaults = {
   prio: 3
 }
 
+export const newPGN_130834 = (fields: PGN_130834Fields, dst:number=255) : PGN_130834 => {
+  return {
+    ...PGN_130834Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130835
   Description: Simnet: Set Engine and Tank Configuration
@@ -10435,6 +14830,15 @@ export const PGN_130835Defaults = {
   prio: 3
 }
 
+export const newPGN_130835 = (fields: PGN_130835Fields, dst:number=255) : PGN_130835 => {
+  return {
+    ...PGN_130835Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130836
   Description: Simnet: Fluid Level Sensor Configuration
@@ -10471,6 +14875,29 @@ export const PGN_130836_SimnetFluidLevelSensorConfigurationMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_130836_SimnetFluidLevelSensorConfigurationCreateArgs {
+  reserved?: number
+  c?: N2K_Number
+  device: N2K_Number
+  instance: N2K_Number
+  f?: N2K_Number
+  tankType?: enums.TankType|number
+  capacity?: N2K_Number
+  g?: N2K_Number
+  h?: N2K_Number
+  i?: N2K_Number
+}
+
+export const newPGN_130836_SimnetFluidLevelSensorConfiguration = (fields: PGN_130836_SimnetFluidLevelSensorConfigurationCreateArgs, dst:number=255) : PGN_130836_SimnetFluidLevelSensorConfiguration => {
+  return {
+    ...PGN_130836_SimnetFluidLevelSensorConfigurationDefaults,
+    dst,
+    fields: {
+      ...PGN_130836_SimnetFluidLevelSensorConfigurationMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130836
   Description: Maretron: Switch Status Counter
@@ -10507,6 +14934,29 @@ export const PGN_130836_MaretronSwitchStatusCounterMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_130836_MaretronSwitchStatusCounterCreateArgs {
+  reserved?: number
+  instance: N2K_Number
+  indicatorNumber?: N2K_Number
+  startDate?: N2K_Date
+  startTime?: N2K_Time
+  offCounter?: N2K_Number
+  onCounter?: N2K_Number
+  errorCounter?: N2K_Number
+  switchStatus?: enums.OffOn|number
+  reserved12?: number
+}
+
+export const newPGN_130836_MaretronSwitchStatusCounter = (fields: PGN_130836_MaretronSwitchStatusCounterCreateArgs, dst:number=255) : PGN_130836_MaretronSwitchStatusCounter => {
+  return {
+    ...PGN_130836_MaretronSwitchStatusCounterDefaults,
+    dst,
+    fields: {
+      ...PGN_130836_MaretronSwitchStatusCounterMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130837
   Description: Simnet: Fuel Flow Turbine Configuration
@@ -10534,6 +14984,20 @@ export const PGN_130837_SimnetFuelFlowTurbineConfigurationMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_130837_SimnetFuelFlowTurbineConfigurationCreateArgs {
+  reserved?: number
+}
+
+export const newPGN_130837_SimnetFuelFlowTurbineConfiguration = (fields: PGN_130837_SimnetFuelFlowTurbineConfigurationCreateArgs, dst:number=255) : PGN_130837_SimnetFuelFlowTurbineConfiguration => {
+  return {
+    ...PGN_130837_SimnetFuelFlowTurbineConfigurationDefaults,
+    dst,
+    fields: {
+      ...PGN_130837_SimnetFuelFlowTurbineConfigurationMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130837
   Description: Maretron: Switch Status Timer
@@ -10570,6 +15034,29 @@ export const PGN_130837_MaretronSwitchStatusTimerMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_130837_MaretronSwitchStatusTimerCreateArgs {
+  reserved?: number
+  instance: N2K_Number
+  indicatorNumber?: N2K_Number
+  startDate?: N2K_Date
+  startTime?: N2K_Time
+  accumulatedOffPeriod?: N2K_Duration
+  accumulatedOnPeriod?: N2K_Duration
+  accumulatedErrorPeriod?: N2K_Duration
+  switchStatus?: enums.OffOn|number
+  reserved12?: number
+}
+
+export const newPGN_130837_MaretronSwitchStatusTimer = (fields: PGN_130837_MaretronSwitchStatusTimerCreateArgs, dst:number=255) : PGN_130837_MaretronSwitchStatusTimer => {
+  return {
+    ...PGN_130837_MaretronSwitchStatusTimerDefaults,
+    dst,
+    fields: {
+      ...PGN_130837_MaretronSwitchStatusTimerMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130838
   Description: Simnet: Fluid Level Warning
@@ -10590,6 +15077,15 @@ export const PGN_130838Defaults = {
   prio: 3
 }
 
+export const newPGN_130838 = (fields: PGN_130838Fields, dst:number=255) : PGN_130838 => {
+  return {
+    ...PGN_130838Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130839
   Description: Simnet: Pressure Sensor Configuration
@@ -10610,6 +15106,15 @@ export const PGN_130839Defaults = {
   prio: 3
 }
 
+export const newPGN_130839 = (fields: PGN_130839Fields, dst:number=255) : PGN_130839 => {
+  return {
+    ...PGN_130839Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130840
   Description: Simnet: Data User Group Configuration
@@ -10630,6 +15135,15 @@ export const PGN_130840Defaults = {
   prio: 3
 }
 
+export const newPGN_130840 = (fields: PGN_130840Fields, dst:number=255) : PGN_130840 => {
+  return {
+    ...PGN_130840Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130842
   Description: Simnet: AIS Class B static data (msg 24 Part A)
@@ -10663,6 +15177,26 @@ export const PGN_130842_SimnetAisClassBstaticDataMsg24PartAMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartACreateArgs {
+  reserved?: number
+  messageId: N2K_Number
+  repeatIndicator?: enums.RepeatIndicator|number
+  d?: N2K_Number
+  e?: N2K_Number
+  userId: N2K_Mmsi
+  name?: N2K_StringFix
+}
+
+export const newPGN_130842_SimnetAisClassBstaticDataMsg24PartA = (fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartACreateArgs, dst:number=255) : PGN_130842_SimnetAisClassBstaticDataMsg24PartA => {
+  return {
+    ...PGN_130842_SimnetAisClassBstaticDataMsg24PartADefaults,
+    dst,
+    fields: {
+      ...PGN_130842_SimnetAisClassBstaticDataMsg24PartAMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130842
   Description: Furuno: Six Degrees Of Freedom Movement
@@ -10699,6 +15233,29 @@ export const PGN_130842_FurunoSixDegreesOfFreedomMovementMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_130842_FurunoSixDegreesOfFreedomMovementCreateArgs {
+  reserved?: number
+  a?: N2K_Number
+  b?: N2K_Number
+  c?: N2K_Number
+  d?: N2K_Number
+  e?: N2K_Number
+  f?: N2K_Number
+  g?: N2K_Number
+  h?: N2K_Number
+  i?: N2K_Number
+}
+
+export const newPGN_130842_FurunoSixDegreesOfFreedomMovement = (fields: PGN_130842_FurunoSixDegreesOfFreedomMovementCreateArgs, dst:number=255) : PGN_130842_FurunoSixDegreesOfFreedomMovement => {
+  return {
+    ...PGN_130842_FurunoSixDegreesOfFreedomMovementDefaults,
+    dst,
+    fields: {
+      ...PGN_130842_FurunoSixDegreesOfFreedomMovementMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130842
   Description: Simnet: AIS Class B static data (msg 24 Part B)
@@ -10743,6 +15300,34 @@ export const PGN_130842_SimnetAisClassBstaticDataMsg24PartBMatchFields = {
   messageId: 1,
 }
 
+export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartBCreateArgs {
+  reserved?: number
+  repeatIndicator?: enums.RepeatIndicator|number
+  d?: N2K_Number
+  e?: N2K_Number
+  userId: N2K_Mmsi
+  typeOfShip?: enums.ShipType|number
+  vendorId?: N2K_StringFix
+  callsign?: N2K_StringFix
+  length?: N2K_Number
+  beam?: N2K_Number
+  positionReferenceFromStarboard?: N2K_Number
+  positionReferenceFromBow?: N2K_Number
+  mothershipUserId: N2K_Mmsi
+  spare17?: number
+  reserved18?: number
+}
+
+export const newPGN_130842_SimnetAisClassBstaticDataMsg24PartB = (fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartBCreateArgs, dst:number=255) : PGN_130842_SimnetAisClassBstaticDataMsg24PartB => {
+  return {
+    ...PGN_130842_SimnetAisClassBstaticDataMsg24PartBDefaults,
+    dst,
+    fields: {
+      ...PGN_130842_SimnetAisClassBstaticDataMsg24PartBMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130843
   Description: Furuno: Heel Angle, Roll Information
@@ -10775,6 +15360,25 @@ export const PGN_130843_FurunoHeelAngleRollInformationMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_130843_FurunoHeelAngleRollInformationCreateArgs {
+  reserved?: number
+  a?: N2K_Number
+  b?: N2K_Number
+  yaw?: N2K_Number
+  pitch?: N2K_Number
+  roll?: N2K_Number
+}
+
+export const newPGN_130843_FurunoHeelAngleRollInformation = (fields: PGN_130843_FurunoHeelAngleRollInformationCreateArgs, dst:number=255) : PGN_130843_FurunoHeelAngleRollInformation => {
+  return {
+    ...PGN_130843_FurunoHeelAngleRollInformationDefaults,
+    dst,
+    fields: {
+      ...PGN_130843_FurunoHeelAngleRollInformationMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130843
   Description: Simnet: Sonar Status, Frequency and DSP Voltage
@@ -10802,6 +15406,20 @@ export const PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageCreateArgs {
+  reserved?: number
+}
+
+export const newPGN_130843_SimnetSonarStatusFrequencyAndDspVoltage = (fields: PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageCreateArgs, dst:number=255) : PGN_130843_SimnetSonarStatusFrequencyAndDspVoltage => {
+  return {
+    ...PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageDefaults,
+    dst,
+    fields: {
+      ...PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130845
   Description: Furuno: Multi Sats In View Extended
@@ -10829,6 +15447,20 @@ export const PGN_130845_FurunoMultiSatsInViewExtendedMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_130845_FurunoMultiSatsInViewExtendedCreateArgs {
+  reserved?: number
+}
+
+export const newPGN_130845_FurunoMultiSatsInViewExtended = (fields: PGN_130845_FurunoMultiSatsInViewExtendedCreateArgs, dst:number=255) : PGN_130845_FurunoMultiSatsInViewExtended => {
+  return {
+    ...PGN_130845_FurunoMultiSatsInViewExtendedDefaults,
+    dst,
+    fields: {
+      ...PGN_130845_FurunoMultiSatsInViewExtendedMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130845
   Description: Simnet: Key Value
@@ -10864,6 +15496,28 @@ export const PGN_130845_SimnetKeyValueMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_130845_SimnetKeyValueCreateArgs {
+  reserved?: number
+  address?: N2K_Number
+  repeatIndicator?: enums.RepeatIndicator|number
+  displayGroup?: enums.SimnetDisplayGroup|number
+  reserved7?: number
+  key?: N2K_DynamicFieldKey
+  spare9?: number
+  minlength?: N2K_Number
+  value?: N2K_DynamicFieldValue
+}
+
+export const newPGN_130845_SimnetKeyValue = (fields: PGN_130845_SimnetKeyValueCreateArgs, dst:number=255) : PGN_130845_SimnetKeyValue => {
+  return {
+    ...PGN_130845_SimnetKeyValueDefaults,
+    dst,
+    fields: {
+      ...PGN_130845_SimnetKeyValueMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130846
   Description: Simnet: Parameter Set
@@ -10899,6 +15553,28 @@ export const PGN_130846_SimnetParameterSetMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_130846_SimnetParameterSetCreateArgs {
+  reserved?: number
+  address?: N2K_Number
+  b?: N2K_Number
+  displayGroup?: enums.SimnetDisplayGroup|number
+  d?: N2K_Number
+  key?: N2K_DynamicFieldKey
+  spare9?: number
+  length?: N2K_Number
+  value?: N2K_DynamicFieldValue
+}
+
+export const newPGN_130846_SimnetParameterSet = (fields: PGN_130846_SimnetParameterSetCreateArgs, dst:number=255) : PGN_130846_SimnetParameterSet => {
+  return {
+    ...PGN_130846_SimnetParameterSetDefaults,
+    dst,
+    fields: {
+      ...PGN_130846_SimnetParameterSetMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130846
   Description: Furuno: Motion Sensor Status Extended
@@ -10926,6 +15602,20 @@ export const PGN_130846_FurunoMotionSensorStatusExtendedMatchFields = {
   industryCode: enums.IndustryCode.Marine,
 }
 
+export interface PGN_130846_FurunoMotionSensorStatusExtendedCreateArgs {
+  reserved?: number
+}
+
+export const newPGN_130846_FurunoMotionSensorStatusExtended = (fields: PGN_130846_FurunoMotionSensorStatusExtendedCreateArgs, dst:number=255) : PGN_130846_FurunoMotionSensorStatusExtended => {
+  return {
+    ...PGN_130846_FurunoMotionSensorStatusExtendedDefaults,
+    dst,
+    fields: {
+      ...PGN_130846_FurunoMotionSensorStatusExtendedMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130847
   Description: SeaTalk: Node Statistics
@@ -10951,6 +15641,15 @@ export const PGN_130847Defaults = {
   prio: 3
 }
 
+export const newPGN_130847 = (fields: PGN_130847Fields, dst:number=255) : PGN_130847 => {
+  return {
+    ...PGN_130847Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130848
   Description: SeaTalk: Waypoint Information
@@ -10977,6 +15676,15 @@ export const PGN_130848Defaults = {
   prio: 7
 }
 
+export const newPGN_130848 = (fields: PGN_130848Fields, dst:number=255) : PGN_130848 => {
+  return {
+    ...PGN_130848Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130850
   Description: Simnet: AP Command
@@ -11014,6 +15722,27 @@ export const PGN_130850_SimnetApCommandMatchFields = {
   proprietaryId: enums.SimnetEventCommand.Autopilot,
 }
 
+export interface PGN_130850_SimnetApCommandCreateArgs {
+  reserved?: number
+  address?: N2K_Number
+  reserved5?: number
+  apStatus?: enums.SimnetApStatus|number
+  apCommand?: enums.SimnetApEvents|number
+  spare9?: number
+  direction?: enums.SimnetDirection|number
+  angle?: N2K_Number
+}
+
+export const newPGN_130850_SimnetApCommand = (fields: PGN_130850_SimnetApCommandCreateArgs, dst:number=255) : PGN_130850_SimnetApCommand => {
+  return {
+    ...PGN_130850_SimnetApCommandDefaults,
+    dst,
+    fields: {
+      ...PGN_130850_SimnetApCommandMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130850
   Description: Simnet: Event Command: AP command
@@ -11051,6 +15780,27 @@ export const PGN_130850_SimnetEventCommandApCommandMatchFields = {
   proprietaryId: enums.SimnetEventCommand.ApCommand,
 }
 
+export interface PGN_130850_SimnetEventCommandApCommandCreateArgs {
+  reserved?: number
+  unusedA?: N2K_Number
+  controllingDevice?: N2K_Number
+  event?: enums.SimnetApEvents|number
+  unusedB?: N2K_Number
+  direction?: enums.SimnetDirection|number
+  angle?: N2K_Number
+  unusedC?: N2K_Number
+}
+
+export const newPGN_130850_SimnetEventCommandApCommand = (fields: PGN_130850_SimnetEventCommandApCommandCreateArgs, dst:number=255) : PGN_130850_SimnetEventCommandApCommand => {
+  return {
+    ...PGN_130850_SimnetEventCommandApCommandDefaults,
+    dst,
+    fields: {
+      ...PGN_130850_SimnetEventCommandApCommandMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130850
   Description: Simnet: Alarm
@@ -11089,6 +15839,27 @@ export const PGN_130850_SimnetAlarmMatchFields = {
   proprietaryId: enums.SimnetEventCommand.Alarm,
 }
 
+export interface PGN_130850_SimnetAlarmCreateArgs {
+  reserved?: number
+  address?: N2K_Number
+  reserved5?: number
+  reserved7?: number
+  alarm?: enums.SimnetAlarm|number
+  messageId?: N2K_Number
+  f?: N2K_Number
+  g?: N2K_Number
+}
+
+export const newPGN_130850_SimnetAlarm = (fields: PGN_130850_SimnetAlarmCreateArgs, dst:number=255) : PGN_130850_SimnetAlarm => {
+  return {
+    ...PGN_130850_SimnetAlarmDefaults,
+    dst,
+    fields: {
+      ...PGN_130850_SimnetAlarmMatchFields,
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130851
   Description: Simnet: Event Reply: AP command
@@ -11117,6 +15888,15 @@ export const PGN_130851Defaults = {
   prio: 7
 }
 
+export const newPGN_130851 = (fields: PGN_130851Fields, dst:number=255) : PGN_130851 => {
+  return {
+    ...PGN_130851Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130856
   Description: Simnet: Alarm Message
@@ -11142,6 +15922,15 @@ export const PGN_130856Defaults = {
   prio: 3
 }
 
+export const newPGN_130856 = (fields: PGN_130856Fields, dst:number=255) : PGN_130856 => {
+  return {
+    ...PGN_130856Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130860
   Description: Simnet: AP Unknown 4
@@ -11169,6 +15958,15 @@ export const PGN_130860Defaults = {
   prio: 7
 }
 
+export const newPGN_130860 = (fields: PGN_130860Fields, dst:number=255) : PGN_130860 => {
+  return {
+    ...PGN_130860Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130880
   Description: Airmar: Additional Weather Data
@@ -11193,6 +15991,15 @@ export const PGN_130880Defaults = {
   prio: 3
 }
 
+export const newPGN_130880 = (fields: PGN_130880Fields, dst:number=255) : PGN_130880 => {
+  return {
+    ...PGN_130880Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130881
   Description: Airmar: Heater Control
@@ -11217,6 +16024,15 @@ export const PGN_130881Defaults = {
   prio: 3
 }
 
+export const newPGN_130881 = (fields: PGN_130881Fields, dst:number=255) : PGN_130881 => {
+  return {
+    ...PGN_130881Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130918
   Description: SeaTalk: Route Information
@@ -11245,6 +16061,15 @@ export const PGN_130918Defaults = {
   prio: 7
 }
 
+export const newPGN_130918 = (fields: PGN_130918Fields, dst:number=255) : PGN_130918 => {
+  return {
+    ...PGN_130918Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}
 /*
   PGN: 130944
   Description: Airmar: POST
@@ -11270,3 +16095,12 @@ export const PGN_130944Defaults = {
   prio: 7
 }
 
+export const newPGN_130944 = (fields: PGN_130944Fields, dst:number=255) : PGN_130944 => {
+  return {
+    ...PGN_130944Defaults,
+    dst,
+    fields: {
+      ...fields
+    }
+  }
+}

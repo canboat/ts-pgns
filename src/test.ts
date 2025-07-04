@@ -3,6 +3,7 @@
 import {
   PGN_65305_SimnetDeviceModeRequest,
   PGN_65305_SimnetDeviceModeRequestDefaults,
+  newPGN_61184_VictronBatteryRegister,
   SimnetDeviceModel,
   SimnetDeviceReport,
   ManufacturerCode,
@@ -50,3 +51,8 @@ if (pgn !== undefined) {
   const inter: number | undefined = pgn[0].TransmissionInterval
   console.log(inter)
 }
+const battery = newPGN_61184_VictronBatteryRegister({
+  registerId: 1,
+  payload: 100
+})
+console.log(battery)

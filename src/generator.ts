@@ -22,7 +22,7 @@ import minimist from 'minimist'
 import pgns from '../canboat.json'
 
 const argv = minimist(process.argv.slice(2), {
-  boolean: ['enums', 'pgns', "categories"],
+  boolean: ['enums', 'pgns', 'categories'],
   alias: { h: 'help' }
 })
 
@@ -49,11 +49,11 @@ organizePGNs()
 
 if (argv.enums) {
   const category = () => {
-      console.log('/**')
-      console.log(` * @category Enumerations`)
-      console.log(' */')
+    console.log('/**')
+    console.log(` * @category Enumerations`)
+    console.log(' */')
   }
-  
+
   pgns.LookupEnumerations.forEach((en: any) => {
     const done: { [key: string]: number } = {}
     category()
@@ -130,7 +130,7 @@ if (argv.pgns) {
 
     console.log('/**')
     console.log(` * @category Field Types`)
-    console.log(' */')    
+    console.log(' */')
     console.log(
       `export type N2K_${camelCase(ft.Name, { pascalCase: true })} = ${type}`
     )
@@ -146,7 +146,7 @@ if (argv.pgns) {
 
   console.log('/**')
   console.log(` * @category PGN Definitions`)
-  console.log(' */')  
+  console.log(' */')
   console.log('export interface PGN {')
   console.log('  pgn: number')
   console.log('  prio: number')
@@ -247,7 +247,6 @@ if (argv.pgns) {
   }
 
   function outputPGN(pgn: Definition, isMulti: boolean) {
-    
     let typeName = `PGN_${pgn.PGN}`
 
     let hasMatchFields = false
@@ -296,7 +295,7 @@ if (argv.pgns) {
     console.log('  *')
     console.log(`  * @category ${typeName}`)
     console.log(' */')
-    
+
     console.log(`export interface ${typeName} extends PGN {`)
     console.log(` fields: ${typeName}Fields`)
     console.log('}\n')
@@ -359,7 +358,7 @@ if (argv.pgns) {
       })
       console.log('}\n')
 
-      category()      
+      category()
       console.log(`export interface ${typeName}CreateArgs {`)
       pgn.Fields.forEach((field: Field, idx) => {
         if (!field.Match) {
@@ -390,7 +389,7 @@ if (argv.pgns) {
 
     const createArgs = hasMatchFields ? 'CreateArgs' : 'Fields'
 
-    category()    
+    category()
     console.log(
       `export const new${typeName} = (fields: ${typeName}${createArgs}, dst:number=255) : ${typeName} => {`
     )

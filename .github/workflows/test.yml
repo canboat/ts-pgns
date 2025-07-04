@@ -29,6 +29,7 @@ jobs:
         uses: tj-actions/verify-changed-files@v20
         id: verify-changed-files
         with:
+          fail-if-changed: true
           files: |
             docs
             src

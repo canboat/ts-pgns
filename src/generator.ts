@@ -247,26 +247,28 @@ if (argv.pgns) {
   }
 
   function outputPGN(pgn: Definition, isMulti: boolean) {
-    let typeName = `PGN_${pgn.PGN}`
+    let hasMatchFields = isMulti && pgn.Fields.find((f) => f.Match !== undefined)
+    let typeNameNoPGN = `${pgn.PGN}`
+    //let typeNameNoPGN = `${pgn.PGN}_${pgn.Id.charAt(0).toUpperCase() + pgn.Id.slice(1)}`
 
-    let hasMatchFields = false
-    if (isMulti) {
-      if (pgn.Fields.find((f) => f.Match !== undefined)) {
-        typeName = `${typeName}_${camelCase(pgn.Id, { pascalCase: true })}`
-        hasMatchFields = true
-      }
-
+    
+   if ( hasMatchFields ) {
+        typeNameNoPGN = `${typeNameNoPGN}_${camelCase(pgn.Id, { pascalCase: true })}`
+   }
+    
       /*
       pgn.Fields.forEach((field: Field) => {
         if (field.Match && field.LookupEnumeration !== 'INDUSTRY_CODE') {
           const desc = field.Description
             ? enumName(field.Description)
             : field.Match
-          typeName = typeName + `_${desc}`
-        }
+            typeName = typeName + `_${desc}`
+            }
         })
       */
-    }
+
+    const typeName = `PGN_${typeNameNoPGN}`
+
 
     const category = () => {
       console.log('/**')
@@ -391,7 +393,7 @@ if (argv.pgns) {
 
     category()
     console.log(
-      `export const new${typeName} = (fields: ${typeName}${createArgs}, dst:number=255) : ${typeName} => {`
+      `export const new${typeNameNoPGN} = (fields: ${typeName}${createArgs}, dst:number=255) : ${typeName} => {`
     )
     console.log('  return {')
     console.log(`    ...${typeName}Defaults,`)

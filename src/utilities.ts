@@ -34,6 +34,8 @@ export type PGNMap = {
 }
 
 /**
+ * Convers a PGN created using camelCase keys to one using Names
+ * 
  * @category Utilities
  */
 export const mapCamelCaseKeys = (pgn: PGN) => {

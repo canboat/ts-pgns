@@ -102,6 +102,27 @@ export interface PGN {
   fields: PGNFields
 }
 
+export class PGNClass {
+  pgn: number
+  prio: number
+  src?: number
+  dst: number
+  timestamp?: string
+  input?: string[]
+  description?: string
+  fields: PGNFields
+  
+  constructor(fields:PGN) {
+    this.pgn = fields.pgn
+    this.prio = fields.prio
+    this.src = fields.src
+    this.dst = fields.dst
+    this.timestamp = fields.timestamp
+    this.fields = fields.fields
+  }
+  
+}
+
 /**
   * PGN: 59392
   *
@@ -137,7 +158,7 @@ export const PGN_59392Defaults = {
 /**
  * @category PGN_59392
  */
-export const newPGN_59392 = (fields: PGN_59392Fields, dst:number=255) : PGN_59392 => {
+export const new59392 = (fields: PGN_59392Fields, dst:number=255) : PGN_59392 => {
   return {
     ...PGN_59392Defaults,
     dst,
@@ -178,7 +199,7 @@ export const PGN_59904Defaults = {
 /**
  * @category PGN_59904
  */
-export const newPGN_59904 = (fields: PGN_59904Fields, dst:number=255) : PGN_59904 => {
+export const new59904 = (fields: PGN_59904Fields, dst:number=255) : PGN_59904 => {
   return {
     ...PGN_59904Defaults,
     dst,
@@ -220,7 +241,7 @@ export const PGN_60160Defaults = {
 /**
  * @category PGN_60160
  */
-export const newPGN_60160 = (fields: PGN_60160Fields, dst:number=255) : PGN_60160 => {
+export const new60160 = (fields: PGN_60160Fields, dst:number=255) : PGN_60160 => {
   return {
     ...PGN_60160Defaults,
     dst,
@@ -284,7 +305,7 @@ export interface PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend
 /**
  * @category PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend
  */
-export const newPGN_60416_IsoTransportProtocolConnectionManagementRequestToSend = (fields: PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendCreateArgs, dst:number=255) : PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend => {
+export const new60416_IsoTransportProtocolConnectionManagementRequestToSend = (fields: PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendCreateArgs, dst:number=255) : PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend => {
   return {
     ...PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendDefaults,
     dst,
@@ -349,7 +370,7 @@ export interface PGN_60416_IsoTransportProtocolConnectionManagementClearToSendCr
 /**
  * @category PGN_60416_IsoTransportProtocolConnectionManagementClearToSend
  */
-export const newPGN_60416_IsoTransportProtocolConnectionManagementClearToSend = (fields: PGN_60416_IsoTransportProtocolConnectionManagementClearToSendCreateArgs, dst:number=255) : PGN_60416_IsoTransportProtocolConnectionManagementClearToSend => {
+export const new60416_IsoTransportProtocolConnectionManagementClearToSend = (fields: PGN_60416_IsoTransportProtocolConnectionManagementClearToSendCreateArgs, dst:number=255) : PGN_60416_IsoTransportProtocolConnectionManagementClearToSend => {
   return {
     ...PGN_60416_IsoTransportProtocolConnectionManagementClearToSendDefaults,
     dst,
@@ -414,7 +435,7 @@ export interface PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageC
 /**
  * @category PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessage
  */
-export const newPGN_60416_IsoTransportProtocolConnectionManagementEndOfMessage = (fields: PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageCreateArgs, dst:number=255) : PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessage => {
+export const new60416_IsoTransportProtocolConnectionManagementEndOfMessage = (fields: PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageCreateArgs, dst:number=255) : PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessage => {
   return {
     ...PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageDefaults,
     dst,
@@ -479,7 +500,7 @@ export interface PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnno
 /**
  * @category PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce
  */
-export const newPGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce = (fields: PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceCreateArgs, dst:number=255) : PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce => {
+export const new60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce = (fields: PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceCreateArgs, dst:number=255) : PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce => {
   return {
     ...PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceDefaults,
     dst,
@@ -542,7 +563,7 @@ export interface PGN_60416_IsoTransportProtocolConnectionManagementAbortCreateAr
 /**
  * @category PGN_60416_IsoTransportProtocolConnectionManagementAbort
  */
-export const newPGN_60416_IsoTransportProtocolConnectionManagementAbort = (fields: PGN_60416_IsoTransportProtocolConnectionManagementAbortCreateArgs, dst:number=255) : PGN_60416_IsoTransportProtocolConnectionManagementAbort => {
+export const new60416_IsoTransportProtocolConnectionManagementAbort = (fields: PGN_60416_IsoTransportProtocolConnectionManagementAbortCreateArgs, dst:number=255) : PGN_60416_IsoTransportProtocolConnectionManagementAbort => {
   return {
     ...PGN_60416_IsoTransportProtocolConnectionManagementAbortDefaults,
     dst,
@@ -593,7 +614,7 @@ export const PGN_60928Defaults = {
 /**
  * @category PGN_60928
  */
-export const newPGN_60928 = (fields: PGN_60928Fields, dst:number=255) : PGN_60928 => {
+export const new60928 = (fields: PGN_60928Fields, dst:number=255) : PGN_60928 => {
   return {
     ...PGN_60928Defaults,
     dst,
@@ -663,7 +684,7 @@ export interface PGN_61184_SeatalkWirelessKeypadLightControlCreateArgs {
 /**
  * @category PGN_61184_SeatalkWirelessKeypadLightControl
  */
-export const newPGN_61184_SeatalkWirelessKeypadLightControl = (fields: PGN_61184_SeatalkWirelessKeypadLightControlCreateArgs, dst:number=255) : PGN_61184_SeatalkWirelessKeypadLightControl => {
+export const new61184_SeatalkWirelessKeypadLightControl = (fields: PGN_61184_SeatalkWirelessKeypadLightControlCreateArgs, dst:number=255) : PGN_61184_SeatalkWirelessKeypadLightControl => {
   return {
     ...PGN_61184_SeatalkWirelessKeypadLightControlDefaults,
     dst,
@@ -731,7 +752,7 @@ export interface PGN_61184_SeatalkWirelessKeypadControlCreateArgs {
 /**
  * @category PGN_61184_SeatalkWirelessKeypadControl
  */
-export const newPGN_61184_SeatalkWirelessKeypadControl = (fields: PGN_61184_SeatalkWirelessKeypadControlCreateArgs, dst:number=255) : PGN_61184_SeatalkWirelessKeypadControl => {
+export const new61184_SeatalkWirelessKeypadControl = (fields: PGN_61184_SeatalkWirelessKeypadControlCreateArgs, dst:number=255) : PGN_61184_SeatalkWirelessKeypadControl => {
   return {
     ...PGN_61184_SeatalkWirelessKeypadControlDefaults,
     dst,
@@ -751,14 +772,14 @@ export const newPGN_61184_SeatalkWirelessKeypadControl = (fields: PGN_61184_Seat
   *
   * @category PGN_61184_VictronBatteryRegister
  */
-export interface PGN_61184_VictronBatteryRegister extends PGN {
+export interface PGN_61184_VictronBatteryRegisterInterface extends PGN {
  fields: PGN_61184_VictronBatteryRegisterFields
 }
 
 /**
  * @category PGN_61184_VictronBatteryRegister
  */
-export interface PGN_61184_VictronBatteryRegisterFields {
+export interface PGN_61184_VictronBatteryRegisterFields extends PGNFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -772,7 +793,8 @@ export interface PGN_61184_VictronBatteryRegisterFields {
 export const PGN_61184_VictronBatteryRegisterDefaults = {
   pgn: 61184,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -792,10 +814,24 @@ export interface PGN_61184_VictronBatteryRegisterCreateArgs {
   payload?: N2K_Number
 }
 
+export class PGN_61184_VictronBatteryRegister  extends PGNClass implements PGN_61184_VictronBatteryRegisterInterface {
+  fields: PGN_61184_VictronBatteryRegisterFields
+  
+  constructor(fields: PGN_61184_VictronBatteryRegisterCreateArgs, dst:number=255) {
+    super(PGN_61184_VictronBatteryRegisterDefaults)
+    this.pgn = PGN_61184_VictronBatteryRegisterDefaults.pgn
+    this.prio = PGN_61184_VictronBatteryRegisterDefaults.prio
+    this.src = 255
+    this.dst = PGN_61184_VictronBatteryRegisterDefaults.dst
+    this.fields = { ...PGN_61184_VictronBatteryRegisterMatchFields, ...fields }
+  }
+}
+
+
 /**
  * @category PGN_61184_VictronBatteryRegister
  */
-export const newPGN_61184_VictronBatteryRegister = (fields: PGN_61184_VictronBatteryRegisterCreateArgs, dst:number=255) : PGN_61184_VictronBatteryRegister => {
+export const new61184_VictronBatteryRegister = (fields: PGN_61184_VictronBatteryRegisterCreateArgs, dst:number=255) : PGN_61184_VictronBatteryRegister => {
   return {
     ...PGN_61184_VictronBatteryRegisterDefaults,
     dst,
@@ -838,7 +874,7 @@ export const PGN_65001Defaults = {
 /**
  * @category PGN_65001
  */
-export const newPGN_65001 = (fields: PGN_65001Fields, dst:number=255) : PGN_65001 => {
+export const new65001 = (fields: PGN_65001Fields, dst:number=255) : PGN_65001 => {
   return {
     ...PGN_65001Defaults,
     dst,
@@ -880,7 +916,7 @@ export const PGN_65002Defaults = {
 /**
  * @category PGN_65002
  */
-export const newPGN_65002 = (fields: PGN_65002Fields, dst:number=255) : PGN_65002 => {
+export const new65002 = (fields: PGN_65002Fields, dst:number=255) : PGN_65002 => {
   return {
     ...PGN_65002Defaults,
     dst,
@@ -922,7 +958,7 @@ export const PGN_65003Defaults = {
 /**
  * @category PGN_65003
  */
-export const newPGN_65003 = (fields: PGN_65003Fields, dst:number=255) : PGN_65003 => {
+export const new65003 = (fields: PGN_65003Fields, dst:number=255) : PGN_65003 => {
   return {
     ...PGN_65003Defaults,
     dst,
@@ -964,7 +1000,7 @@ export const PGN_65004Defaults = {
 /**
  * @category PGN_65004
  */
-export const newPGN_65004 = (fields: PGN_65004Fields, dst:number=255) : PGN_65004 => {
+export const new65004 = (fields: PGN_65004Fields, dst:number=255) : PGN_65004 => {
   return {
     ...PGN_65004Defaults,
     dst,
@@ -1004,7 +1040,7 @@ export const PGN_65005Defaults = {
 /**
  * @category PGN_65005
  */
-export const newPGN_65005 = (fields: PGN_65005Fields, dst:number=255) : PGN_65005 => {
+export const new65005 = (fields: PGN_65005Fields, dst:number=255) : PGN_65005 => {
   return {
     ...PGN_65005Defaults,
     dst,
@@ -1046,7 +1082,7 @@ export const PGN_65006Defaults = {
 /**
  * @category PGN_65006
  */
-export const newPGN_65006 = (fields: PGN_65006Fields, dst:number=255) : PGN_65006 => {
+export const new65006 = (fields: PGN_65006Fields, dst:number=255) : PGN_65006 => {
   return {
     ...PGN_65006Defaults,
     dst,
@@ -1086,7 +1122,7 @@ export const PGN_65007Defaults = {
 /**
  * @category PGN_65007
  */
-export const newPGN_65007 = (fields: PGN_65007Fields, dst:number=255) : PGN_65007 => {
+export const new65007 = (fields: PGN_65007Fields, dst:number=255) : PGN_65007 => {
   return {
     ...PGN_65007Defaults,
     dst,
@@ -1128,7 +1164,7 @@ export const PGN_65008Defaults = {
 /**
  * @category PGN_65008
  */
-export const newPGN_65008 = (fields: PGN_65008Fields, dst:number=255) : PGN_65008 => {
+export const new65008 = (fields: PGN_65008Fields, dst:number=255) : PGN_65008 => {
   return {
     ...PGN_65008Defaults,
     dst,
@@ -1170,7 +1206,7 @@ export const PGN_65009Defaults = {
 /**
  * @category PGN_65009
  */
-export const newPGN_65009 = (fields: PGN_65009Fields, dst:number=255) : PGN_65009 => {
+export const new65009 = (fields: PGN_65009Fields, dst:number=255) : PGN_65009 => {
   return {
     ...PGN_65009Defaults,
     dst,
@@ -1210,7 +1246,7 @@ export const PGN_65010Defaults = {
 /**
  * @category PGN_65010
  */
-export const newPGN_65010 = (fields: PGN_65010Fields, dst:number=255) : PGN_65010 => {
+export const new65010 = (fields: PGN_65010Fields, dst:number=255) : PGN_65010 => {
   return {
     ...PGN_65010Defaults,
     dst,
@@ -1252,7 +1288,7 @@ export const PGN_65011Defaults = {
 /**
  * @category PGN_65011
  */
-export const newPGN_65011 = (fields: PGN_65011Fields, dst:number=255) : PGN_65011 => {
+export const new65011 = (fields: PGN_65011Fields, dst:number=255) : PGN_65011 => {
   return {
     ...PGN_65011Defaults,
     dst,
@@ -1294,7 +1330,7 @@ export const PGN_65012Defaults = {
 /**
  * @category PGN_65012
  */
-export const newPGN_65012 = (fields: PGN_65012Fields, dst:number=255) : PGN_65012 => {
+export const new65012 = (fields: PGN_65012Fields, dst:number=255) : PGN_65012 => {
   return {
     ...PGN_65012Defaults,
     dst,
@@ -1334,7 +1370,7 @@ export const PGN_65013Defaults = {
 /**
  * @category PGN_65013
  */
-export const newPGN_65013 = (fields: PGN_65013Fields, dst:number=255) : PGN_65013 => {
+export const new65013 = (fields: PGN_65013Fields, dst:number=255) : PGN_65013 => {
   return {
     ...PGN_65013Defaults,
     dst,
@@ -1376,7 +1412,7 @@ export const PGN_65014Defaults = {
 /**
  * @category PGN_65014
  */
-export const newPGN_65014 = (fields: PGN_65014Fields, dst:number=255) : PGN_65014 => {
+export const new65014 = (fields: PGN_65014Fields, dst:number=255) : PGN_65014 => {
   return {
     ...PGN_65014Defaults,
     dst,
@@ -1418,7 +1454,7 @@ export const PGN_65015Defaults = {
 /**
  * @category PGN_65015
  */
-export const newPGN_65015 = (fields: PGN_65015Fields, dst:number=255) : PGN_65015 => {
+export const new65015 = (fields: PGN_65015Fields, dst:number=255) : PGN_65015 => {
   return {
     ...PGN_65015Defaults,
     dst,
@@ -1458,7 +1494,7 @@ export const PGN_65016Defaults = {
 /**
  * @category PGN_65016
  */
-export const newPGN_65016 = (fields: PGN_65016Fields, dst:number=255) : PGN_65016 => {
+export const new65016 = (fields: PGN_65016Fields, dst:number=255) : PGN_65016 => {
   return {
     ...PGN_65016Defaults,
     dst,
@@ -1500,7 +1536,7 @@ export const PGN_65017Defaults = {
 /**
  * @category PGN_65017
  */
-export const newPGN_65017 = (fields: PGN_65017Fields, dst:number=255) : PGN_65017 => {
+export const new65017 = (fields: PGN_65017Fields, dst:number=255) : PGN_65017 => {
   return {
     ...PGN_65017Defaults,
     dst,
@@ -1540,7 +1576,7 @@ export const PGN_65018Defaults = {
 /**
  * @category PGN_65018
  */
-export const newPGN_65018 = (fields: PGN_65018Fields, dst:number=255) : PGN_65018 => {
+export const new65018 = (fields: PGN_65018Fields, dst:number=255) : PGN_65018 => {
   return {
     ...PGN_65018Defaults,
     dst,
@@ -1582,7 +1618,7 @@ export const PGN_65019Defaults = {
 /**
  * @category PGN_65019
  */
-export const newPGN_65019 = (fields: PGN_65019Fields, dst:number=255) : PGN_65019 => {
+export const new65019 = (fields: PGN_65019Fields, dst:number=255) : PGN_65019 => {
   return {
     ...PGN_65019Defaults,
     dst,
@@ -1622,7 +1658,7 @@ export const PGN_65020Defaults = {
 /**
  * @category PGN_65020
  */
-export const newPGN_65020 = (fields: PGN_65020Fields, dst:number=255) : PGN_65020 => {
+export const new65020 = (fields: PGN_65020Fields, dst:number=255) : PGN_65020 => {
   return {
     ...PGN_65020Defaults,
     dst,
@@ -1664,7 +1700,7 @@ export const PGN_65021Defaults = {
 /**
  * @category PGN_65021
  */
-export const newPGN_65021 = (fields: PGN_65021Fields, dst:number=255) : PGN_65021 => {
+export const new65021 = (fields: PGN_65021Fields, dst:number=255) : PGN_65021 => {
   return {
     ...PGN_65021Defaults,
     dst,
@@ -1706,7 +1742,7 @@ export const PGN_65022Defaults = {
 /**
  * @category PGN_65022
  */
-export const newPGN_65022 = (fields: PGN_65022Fields, dst:number=255) : PGN_65022 => {
+export const new65022 = (fields: PGN_65022Fields, dst:number=255) : PGN_65022 => {
   return {
     ...PGN_65022Defaults,
     dst,
@@ -1746,7 +1782,7 @@ export const PGN_65023Defaults = {
 /**
  * @category PGN_65023
  */
-export const newPGN_65023 = (fields: PGN_65023Fields, dst:number=255) : PGN_65023 => {
+export const new65023 = (fields: PGN_65023Fields, dst:number=255) : PGN_65023 => {
   return {
     ...PGN_65023Defaults,
     dst,
@@ -1788,7 +1824,7 @@ export const PGN_65024Defaults = {
 /**
  * @category PGN_65024
  */
-export const newPGN_65024 = (fields: PGN_65024Fields, dst:number=255) : PGN_65024 => {
+export const new65024 = (fields: PGN_65024Fields, dst:number=255) : PGN_65024 => {
   return {
     ...PGN_65024Defaults,
     dst,
@@ -1830,7 +1866,7 @@ export const PGN_65025Defaults = {
 /**
  * @category PGN_65025
  */
-export const newPGN_65025 = (fields: PGN_65025Fields, dst:number=255) : PGN_65025 => {
+export const new65025 = (fields: PGN_65025Fields, dst:number=255) : PGN_65025 => {
   return {
     ...PGN_65025Defaults,
     dst,
@@ -1870,7 +1906,7 @@ export const PGN_65026Defaults = {
 /**
  * @category PGN_65026
  */
-export const newPGN_65026 = (fields: PGN_65026Fields, dst:number=255) : PGN_65026 => {
+export const new65026 = (fields: PGN_65026Fields, dst:number=255) : PGN_65026 => {
   return {
     ...PGN_65026Defaults,
     dst,
@@ -1912,7 +1948,7 @@ export const PGN_65027Defaults = {
 /**
  * @category PGN_65027
  */
-export const newPGN_65027 = (fields: PGN_65027Fields, dst:number=255) : PGN_65027 => {
+export const new65027 = (fields: PGN_65027Fields, dst:number=255) : PGN_65027 => {
   return {
     ...PGN_65027Defaults,
     dst,
@@ -1954,7 +1990,7 @@ export const PGN_65028Defaults = {
 /**
  * @category PGN_65028
  */
-export const newPGN_65028 = (fields: PGN_65028Fields, dst:number=255) : PGN_65028 => {
+export const new65028 = (fields: PGN_65028Fields, dst:number=255) : PGN_65028 => {
   return {
     ...PGN_65028Defaults,
     dst,
@@ -1994,7 +2030,7 @@ export const PGN_65029Defaults = {
 /**
  * @category PGN_65029
  */
-export const newPGN_65029 = (fields: PGN_65029Fields, dst:number=255) : PGN_65029 => {
+export const new65029 = (fields: PGN_65029Fields, dst:number=255) : PGN_65029 => {
   return {
     ...PGN_65029Defaults,
     dst,
@@ -2036,7 +2072,7 @@ export const PGN_65030Defaults = {
 /**
  * @category PGN_65030
  */
-export const newPGN_65030 = (fields: PGN_65030Fields, dst:number=255) : PGN_65030 => {
+export const new65030 = (fields: PGN_65030Fields, dst:number=255) : PGN_65030 => {
   return {
     ...PGN_65030Defaults,
     dst,
@@ -2087,7 +2123,7 @@ export const PGN_65240Defaults = {
 /**
  * @category PGN_65240
  */
-export const newPGN_65240 = (fields: PGN_65240Fields, dst:number=255) : PGN_65240 => {
+export const new65240 = (fields: PGN_65240Fields, dst:number=255) : PGN_65240 => {
   return {
     ...PGN_65240Defaults,
     dst,
@@ -2130,7 +2166,7 @@ export const PGN_65280Defaults = {
 /**
  * @category PGN_65280
  */
-export const newPGN_65280 = (fields: PGN_65280Fields, dst:number=255) : PGN_65280 => {
+export const new65280 = (fields: PGN_65280Fields, dst:number=255) : PGN_65280 => {
   return {
     ...PGN_65280Defaults,
     dst,
@@ -2175,7 +2211,7 @@ export const PGN_65284Defaults = {
 /**
  * @category PGN_65284
  */
-export const newPGN_65284 = (fields: PGN_65284Fields, dst:number=255) : PGN_65284 => {
+export const new65284 = (fields: PGN_65284Fields, dst:number=255) : PGN_65284 => {
   return {
     ...PGN_65284Defaults,
     dst,
@@ -2238,7 +2274,7 @@ export interface PGN_65285_AirmarBootStateAcknowledgmentCreateArgs {
 /**
  * @category PGN_65285_AirmarBootStateAcknowledgment
  */
-export const newPGN_65285_AirmarBootStateAcknowledgment = (fields: PGN_65285_AirmarBootStateAcknowledgmentCreateArgs, dst:number=255) : PGN_65285_AirmarBootStateAcknowledgment => {
+export const new65285_AirmarBootStateAcknowledgment = (fields: PGN_65285_AirmarBootStateAcknowledgmentCreateArgs, dst:number=255) : PGN_65285_AirmarBootStateAcknowledgment => {
   return {
     ...PGN_65285_AirmarBootStateAcknowledgmentDefaults,
     dst,
@@ -2304,7 +2340,7 @@ export interface PGN_65285_LowranceTemperatureCreateArgs {
 /**
  * @category PGN_65285_LowranceTemperature
  */
-export const newPGN_65285_LowranceTemperature = (fields: PGN_65285_LowranceTemperatureCreateArgs, dst:number=255) : PGN_65285_LowranceTemperature => {
+export const new65285_LowranceTemperature = (fields: PGN_65285_LowranceTemperatureCreateArgs, dst:number=255) : PGN_65285_LowranceTemperature => {
   return {
     ...PGN_65285_LowranceTemperatureDefaults,
     dst,
@@ -2376,7 +2412,7 @@ export interface PGN_65286_ChetcoDimmerCreateArgs {
 /**
  * @category PGN_65286_ChetcoDimmer
  */
-export const newPGN_65286_ChetcoDimmer = (fields: PGN_65286_ChetcoDimmerCreateArgs, dst:number=255) : PGN_65286_ChetcoDimmer => {
+export const new65286_ChetcoDimmer = (fields: PGN_65286_ChetcoDimmerCreateArgs, dst:number=255) : PGN_65286_ChetcoDimmer => {
   return {
     ...PGN_65286_ChetcoDimmerDefaults,
     dst,
@@ -2438,7 +2474,7 @@ export interface PGN_65286_AirmarBootStateRequestCreateArgs {
 /**
  * @category PGN_65286_AirmarBootStateRequest
  */
-export const newPGN_65286_AirmarBootStateRequest = (fields: PGN_65286_AirmarBootStateRequestCreateArgs, dst:number=255) : PGN_65286_AirmarBootStateRequest => {
+export const new65286_AirmarBootStateRequest = (fields: PGN_65286_AirmarBootStateRequestCreateArgs, dst:number=255) : PGN_65286_AirmarBootStateRequest => {
   return {
     ...PGN_65286_AirmarBootStateRequestDefaults,
     dst,
@@ -2506,7 +2542,7 @@ export interface PGN_65287_AirmarAccessLevelCreateArgs {
 /**
  * @category PGN_65287_AirmarAccessLevel
  */
-export const newPGN_65287_AirmarAccessLevel = (fields: PGN_65287_AirmarAccessLevelCreateArgs, dst:number=255) : PGN_65287_AirmarAccessLevel => {
+export const new65287_AirmarAccessLevel = (fields: PGN_65287_AirmarAccessLevelCreateArgs, dst:number=255) : PGN_65287_AirmarAccessLevel => {
   return {
     ...PGN_65287_AirmarAccessLevelDefaults,
     dst,
@@ -2568,7 +2604,7 @@ export interface PGN_65287_SimnetConfigureTemperatureSensorCreateArgs {
 /**
  * @category PGN_65287_SimnetConfigureTemperatureSensor
  */
-export const newPGN_65287_SimnetConfigureTemperatureSensor = (fields: PGN_65287_SimnetConfigureTemperatureSensorCreateArgs, dst:number=255) : PGN_65287_SimnetConfigureTemperatureSensor => {
+export const new65287_SimnetConfigureTemperatureSensor = (fields: PGN_65287_SimnetConfigureTemperatureSensorCreateArgs, dst:number=255) : PGN_65287_SimnetConfigureTemperatureSensor => {
   return {
     ...PGN_65287_SimnetConfigureTemperatureSensorDefaults,
     dst,
@@ -2615,7 +2651,7 @@ export const PGN_65288Defaults = {
 /**
  * @category PGN_65288
  */
-export const newPGN_65288 = (fields: PGN_65288Fields, dst:number=255) : PGN_65288 => {
+export const new65288 = (fields: PGN_65288Fields, dst:number=255) : PGN_65288 => {
   return {
     ...PGN_65288Defaults,
     dst,
@@ -2657,7 +2693,7 @@ export const PGN_65289Defaults = {
 /**
  * @category PGN_65289
  */
-export const newPGN_65289 = (fields: PGN_65289Fields, dst:number=255) : PGN_65289 => {
+export const new65289 = (fields: PGN_65289Fields, dst:number=255) : PGN_65289 => {
   return {
     ...PGN_65289Defaults,
     dst,
@@ -2699,7 +2735,7 @@ export const PGN_65290Defaults = {
 /**
  * @category PGN_65290
  */
-export const newPGN_65290 = (fields: PGN_65290Fields, dst:number=255) : PGN_65290 => {
+export const new65290 = (fields: PGN_65290Fields, dst:number=255) : PGN_65290 => {
   return {
     ...PGN_65290Defaults,
     dst,
@@ -2741,7 +2777,7 @@ export const PGN_65292Defaults = {
 /**
  * @category PGN_65292
  */
-export const newPGN_65292 = (fields: PGN_65292Fields, dst:number=255) : PGN_65292 => {
+export const new65292 = (fields: PGN_65292Fields, dst:number=255) : PGN_65292 => {
   return {
     ...PGN_65292Defaults,
     dst,
@@ -2802,7 +2838,7 @@ export interface PGN_65293_SimnetLgc2000ConfigurationCreateArgs {
 /**
  * @category PGN_65293_SimnetLgc2000Configuration
  */
-export const newPGN_65293_SimnetLgc2000Configuration = (fields: PGN_65293_SimnetLgc2000ConfigurationCreateArgs, dst:number=255) : PGN_65293_SimnetLgc2000Configuration => {
+export const new65293_SimnetLgc2000Configuration = (fields: PGN_65293_SimnetLgc2000ConfigurationCreateArgs, dst:number=255) : PGN_65293_SimnetLgc2000Configuration => {
   return {
     ...PGN_65293_SimnetLgc2000ConfigurationDefaults,
     dst,
@@ -2868,7 +2904,7 @@ export interface PGN_65293_DiverseYachtServicesLoadCellCreateArgs {
 /**
  * @category PGN_65293_DiverseYachtServicesLoadCell
  */
-export const newPGN_65293_DiverseYachtServicesLoadCell = (fields: PGN_65293_DiverseYachtServicesLoadCellCreateArgs, dst:number=255) : PGN_65293_DiverseYachtServicesLoadCell => {
+export const new65293_DiverseYachtServicesLoadCell = (fields: PGN_65293_DiverseYachtServicesLoadCellCreateArgs, dst:number=255) : PGN_65293_DiverseYachtServicesLoadCell => {
   return {
     ...PGN_65293_DiverseYachtServicesLoadCellDefaults,
     dst,
@@ -2917,7 +2953,7 @@ export const PGN_65302Defaults = {
 /**
  * @category PGN_65302
  */
-export const newPGN_65302 = (fields: PGN_65302Fields, dst:number=255) : PGN_65302 => {
+export const new65302 = (fields: PGN_65302Fields, dst:number=255) : PGN_65302 => {
   return {
     ...PGN_65302Defaults,
     dst,
@@ -2987,7 +3023,7 @@ export interface PGN_65305_SimnetDeviceStatusCreateArgs {
 /**
  * @category PGN_65305_SimnetDeviceStatus
  */
-export const newPGN_65305_SimnetDeviceStatus = (fields: PGN_65305_SimnetDeviceStatusCreateArgs, dst:number=255) : PGN_65305_SimnetDeviceStatus => {
+export const new65305_SimnetDeviceStatus = (fields: PGN_65305_SimnetDeviceStatusCreateArgs, dst:number=255) : PGN_65305_SimnetDeviceStatus => {
   return {
     ...PGN_65305_SimnetDeviceStatusDefaults,
     dst,
@@ -3056,7 +3092,7 @@ export interface PGN_65305_SimnetDeviceStatusRequestCreateArgs {
 /**
  * @category PGN_65305_SimnetDeviceStatusRequest
  */
-export const newPGN_65305_SimnetDeviceStatusRequest = (fields: PGN_65305_SimnetDeviceStatusRequestCreateArgs, dst:number=255) : PGN_65305_SimnetDeviceStatusRequest => {
+export const new65305_SimnetDeviceStatusRequest = (fields: PGN_65305_SimnetDeviceStatusRequestCreateArgs, dst:number=255) : PGN_65305_SimnetDeviceStatusRequest => {
   return {
     ...PGN_65305_SimnetDeviceStatusRequestDefaults,
     dst,
@@ -3127,7 +3163,7 @@ export interface PGN_65305_SimnetPilotModeCreateArgs {
 /**
  * @category PGN_65305_SimnetPilotMode
  */
-export const newPGN_65305_SimnetPilotMode = (fields: PGN_65305_SimnetPilotModeCreateArgs, dst:number=255) : PGN_65305_SimnetPilotMode => {
+export const new65305_SimnetPilotMode = (fields: PGN_65305_SimnetPilotModeCreateArgs, dst:number=255) : PGN_65305_SimnetPilotMode => {
   return {
     ...PGN_65305_SimnetPilotModeDefaults,
     dst,
@@ -3196,7 +3232,7 @@ export interface PGN_65305_SimnetDeviceModeRequestCreateArgs {
 /**
  * @category PGN_65305_SimnetDeviceModeRequest
  */
-export const newPGN_65305_SimnetDeviceModeRequest = (fields: PGN_65305_SimnetDeviceModeRequestCreateArgs, dst:number=255) : PGN_65305_SimnetDeviceModeRequest => {
+export const new65305_SimnetDeviceModeRequest = (fields: PGN_65305_SimnetDeviceModeRequestCreateArgs, dst:number=255) : PGN_65305_SimnetDeviceModeRequest => {
   return {
     ...PGN_65305_SimnetDeviceModeRequestDefaults,
     dst,
@@ -3265,7 +3301,7 @@ export interface PGN_65305_SimnetSailingProcessorStatusCreateArgs {
 /**
  * @category PGN_65305_SimnetSailingProcessorStatus
  */
-export const newPGN_65305_SimnetSailingProcessorStatus = (fields: PGN_65305_SimnetSailingProcessorStatusCreateArgs, dst:number=255) : PGN_65305_SimnetSailingProcessorStatus => {
+export const new65305_SimnetSailingProcessorStatus = (fields: PGN_65305_SimnetSailingProcessorStatusCreateArgs, dst:number=255) : PGN_65305_SimnetSailingProcessorStatus => {
   return {
     ...PGN_65305_SimnetSailingProcessorStatusDefaults,
     dst,
@@ -3311,7 +3347,7 @@ export const PGN_65309Defaults = {
 /**
  * @category PGN_65309
  */
-export const newPGN_65309 = (fields: PGN_65309Fields, dst:number=255) : PGN_65309 => {
+export const new65309 = (fields: PGN_65309Fields, dst:number=255) : PGN_65309 => {
   return {
     ...PGN_65309Defaults,
     dst,
@@ -3355,7 +3391,7 @@ export const PGN_65312Defaults = {
 /**
  * @category PGN_65312
  */
-export const newPGN_65312 = (fields: PGN_65312Fields, dst:number=255) : PGN_65312 => {
+export const new65312 = (fields: PGN_65312Fields, dst:number=255) : PGN_65312 => {
   return {
     ...PGN_65312Defaults,
     dst,
@@ -3404,7 +3440,7 @@ export const PGN_65340Defaults = {
 /**
  * @category PGN_65340
  */
-export const newPGN_65340 = (fields: PGN_65340Fields, dst:number=255) : PGN_65340 => {
+export const new65340 = (fields: PGN_65340Fields, dst:number=255) : PGN_65340 => {
   return {
     ...PGN_65340Defaults,
     dst,
@@ -3449,7 +3485,7 @@ export const PGN_65341Defaults = {
 /**
  * @category PGN_65341
  */
-export const newPGN_65341 = (fields: PGN_65341Fields, dst:number=255) : PGN_65341 => {
+export const new65341 = (fields: PGN_65341Fields, dst:number=255) : PGN_65341 => {
   return {
     ...PGN_65341Defaults,
     dst,
@@ -3493,7 +3529,7 @@ export const PGN_65345Defaults = {
 /**
  * @category PGN_65345
  */
-export const newPGN_65345 = (fields: PGN_65345Fields, dst:number=255) : PGN_65345 => {
+export const new65345 = (fields: PGN_65345Fields, dst:number=255) : PGN_65345 => {
   return {
     ...PGN_65345Defaults,
     dst,
@@ -3536,7 +3572,7 @@ export const PGN_65350Defaults = {
 /**
  * @category PGN_65350
  */
-export const newPGN_65350 = (fields: PGN_65350Fields, dst:number=255) : PGN_65350 => {
+export const new65350 = (fields: PGN_65350Fields, dst:number=255) : PGN_65350 => {
   return {
     ...PGN_65350Defaults,
     dst,
@@ -3581,7 +3617,7 @@ export const PGN_65359Defaults = {
 /**
  * @category PGN_65359
  */
-export const newPGN_65359 = (fields: PGN_65359Fields, dst:number=255) : PGN_65359 => {
+export const new65359 = (fields: PGN_65359Fields, dst:number=255) : PGN_65359 => {
   return {
     ...PGN_65359Defaults,
     dst,
@@ -3626,7 +3662,7 @@ export const PGN_65360Defaults = {
 /**
  * @category PGN_65360
  */
-export const newPGN_65360 = (fields: PGN_65360Fields, dst:number=255) : PGN_65360 => {
+export const new65360 = (fields: PGN_65360Fields, dst:number=255) : PGN_65360 => {
   return {
     ...PGN_65360Defaults,
     dst,
@@ -3670,7 +3706,7 @@ export const PGN_65361Defaults = {
 /**
  * @category PGN_65361
  */
-export const newPGN_65361 = (fields: PGN_65361Fields, dst:number=255) : PGN_65361 => {
+export const new65361 = (fields: PGN_65361Fields, dst:number=255) : PGN_65361 => {
   return {
     ...PGN_65361Defaults,
     dst,
@@ -3719,7 +3755,7 @@ export const PGN_65371Defaults = {
 /**
  * @category PGN_65371
  */
-export const newPGN_65371 = (fields: PGN_65371Fields, dst:number=255) : PGN_65371 => {
+export const new65371 = (fields: PGN_65371Fields, dst:number=255) : PGN_65371 => {
   return {
     ...PGN_65371Defaults,
     dst,
@@ -3764,7 +3800,7 @@ export const PGN_65374Defaults = {
 /**
  * @category PGN_65374
  */
-export const newPGN_65374 = (fields: PGN_65374Fields, dst:number=255) : PGN_65374 => {
+export const new65374 = (fields: PGN_65374Fields, dst:number=255) : PGN_65374 => {
   return {
     ...PGN_65374Defaults,
     dst,
@@ -3809,7 +3845,7 @@ export const PGN_65379Defaults = {
 /**
  * @category PGN_65379
  */
-export const newPGN_65379 = (fields: PGN_65379Fields, dst:number=255) : PGN_65379 => {
+export const new65379 = (fields: PGN_65379Fields, dst:number=255) : PGN_65379 => {
   return {
     ...PGN_65379Defaults,
     dst,
@@ -3853,7 +3889,7 @@ export const PGN_65408Defaults = {
 /**
  * @category PGN_65408
  */
-export const newPGN_65408 = (fields: PGN_65408Fields, dst:number=255) : PGN_65408 => {
+export const new65408 = (fields: PGN_65408Fields, dst:number=255) : PGN_65408 => {
   return {
     ...PGN_65408Defaults,
     dst,
@@ -3898,7 +3934,7 @@ export const PGN_65409Defaults = {
 /**
  * @category PGN_65409
  */
-export const newPGN_65409 = (fields: PGN_65409Fields, dst:number=255) : PGN_65409 => {
+export const new65409 = (fields: PGN_65409Fields, dst:number=255) : PGN_65409 => {
   return {
     ...PGN_65409Defaults,
     dst,
@@ -3943,7 +3979,7 @@ export const PGN_65410Defaults = {
 /**
  * @category PGN_65410
  */
-export const newPGN_65410 = (fields: PGN_65410Fields, dst:number=255) : PGN_65410 => {
+export const new65410 = (fields: PGN_65410Fields, dst:number=255) : PGN_65410 => {
   return {
     ...PGN_65410Defaults,
     dst,
@@ -3992,7 +4028,7 @@ export const PGN_65420Defaults = {
 /**
  * @category PGN_65420
  */
-export const newPGN_65420 = (fields: PGN_65420Fields, dst:number=255) : PGN_65420 => {
+export const new65420 = (fields: PGN_65420Fields, dst:number=255) : PGN_65420 => {
   return {
     ...PGN_65420Defaults,
     dst,
@@ -4034,7 +4070,7 @@ export const PGN_65480Defaults = {
 /**
  * @category PGN_65480
  */
-export const newPGN_65480 = (fields: PGN_65480Fields, dst:number=255) : PGN_65480 => {
+export const new65480 = (fields: PGN_65480Fields, dst:number=255) : PGN_65480 => {
   return {
     ...PGN_65480Defaults,
     dst,
@@ -4105,7 +4141,7 @@ export interface PGN_126208_NmeaRequestGroupFunctionCreateArgs {
 /**
  * @category PGN_126208_NmeaRequestGroupFunction
  */
-export const newPGN_126208_NmeaRequestGroupFunction = (fields: PGN_126208_NmeaRequestGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaRequestGroupFunction => {
+export const new126208_NmeaRequestGroupFunction = (fields: PGN_126208_NmeaRequestGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaRequestGroupFunction => {
   return {
     ...PGN_126208_NmeaRequestGroupFunctionDefaults,
     dst,
@@ -4178,7 +4214,7 @@ export interface PGN_126208_NmeaCommandGroupFunctionCreateArgs {
 /**
  * @category PGN_126208_NmeaCommandGroupFunction
  */
-export const newPGN_126208_NmeaCommandGroupFunction = (fields: PGN_126208_NmeaCommandGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaCommandGroupFunction => {
+export const new126208_NmeaCommandGroupFunction = (fields: PGN_126208_NmeaCommandGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaCommandGroupFunction => {
   return {
     ...PGN_126208_NmeaCommandGroupFunctionDefaults,
     dst,
@@ -4249,7 +4285,7 @@ export interface PGN_126208_NmeaAcknowledgeGroupFunctionCreateArgs {
 /**
  * @category PGN_126208_NmeaAcknowledgeGroupFunction
  */
-export const newPGN_126208_NmeaAcknowledgeGroupFunction = (fields: PGN_126208_NmeaAcknowledgeGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaAcknowledgeGroupFunction => {
+export const new126208_NmeaAcknowledgeGroupFunction = (fields: PGN_126208_NmeaAcknowledgeGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaAcknowledgeGroupFunction => {
   return {
     ...PGN_126208_NmeaAcknowledgeGroupFunctionDefaults,
     dst,
@@ -4332,7 +4368,7 @@ export interface PGN_126208_NmeaReadFieldsGroupFunctionCreateArgs {
 /**
  * @category PGN_126208_NmeaReadFieldsGroupFunction
  */
-export const newPGN_126208_NmeaReadFieldsGroupFunction = (fields: PGN_126208_NmeaReadFieldsGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaReadFieldsGroupFunction => {
+export const new126208_NmeaReadFieldsGroupFunction = (fields: PGN_126208_NmeaReadFieldsGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaReadFieldsGroupFunction => {
   return {
     ...PGN_126208_NmeaReadFieldsGroupFunctionDefaults,
     dst,
@@ -4417,7 +4453,7 @@ export interface PGN_126208_NmeaReadFieldsReplyGroupFunctionCreateArgs {
 /**
  * @category PGN_126208_NmeaReadFieldsReplyGroupFunction
  */
-export const newPGN_126208_NmeaReadFieldsReplyGroupFunction = (fields: PGN_126208_NmeaReadFieldsReplyGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaReadFieldsReplyGroupFunction => {
+export const new126208_NmeaReadFieldsReplyGroupFunction = (fields: PGN_126208_NmeaReadFieldsReplyGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaReadFieldsReplyGroupFunction => {
   return {
     ...PGN_126208_NmeaReadFieldsReplyGroupFunctionDefaults,
     dst,
@@ -4502,7 +4538,7 @@ export interface PGN_126208_NmeaWriteFieldsGroupFunctionCreateArgs {
 /**
  * @category PGN_126208_NmeaWriteFieldsGroupFunction
  */
-export const newPGN_126208_NmeaWriteFieldsGroupFunction = (fields: PGN_126208_NmeaWriteFieldsGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaWriteFieldsGroupFunction => {
+export const new126208_NmeaWriteFieldsGroupFunction = (fields: PGN_126208_NmeaWriteFieldsGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaWriteFieldsGroupFunction => {
   return {
     ...PGN_126208_NmeaWriteFieldsGroupFunctionDefaults,
     dst,
@@ -4587,7 +4623,7 @@ export interface PGN_126208_NmeaWriteFieldsReplyGroupFunctionCreateArgs {
 /**
  * @category PGN_126208_NmeaWriteFieldsReplyGroupFunction
  */
-export const newPGN_126208_NmeaWriteFieldsReplyGroupFunction = (fields: PGN_126208_NmeaWriteFieldsReplyGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaWriteFieldsReplyGroupFunction => {
+export const new126208_NmeaWriteFieldsReplyGroupFunction = (fields: PGN_126208_NmeaWriteFieldsReplyGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaWriteFieldsReplyGroupFunction => {
   return {
     ...PGN_126208_NmeaWriteFieldsReplyGroupFunctionDefaults,
     dst,
@@ -4630,7 +4666,7 @@ export const PGN_126464Defaults = {
 /**
  * @category PGN_126464
  */
-export const newPGN_126464 = (fields: PGN_126464Fields, dst:number=255) : PGN_126464 => {
+export const new126464 = (fields: PGN_126464Fields, dst:number=255) : PGN_126464 => {
   return {
     ...PGN_126464Defaults,
     dst,
@@ -4705,7 +4741,7 @@ export interface PGN_126720_Seatalk1PilotModeCreateArgs {
 /**
  * @category PGN_126720_Seatalk1PilotMode
  */
-export const newPGN_126720_Seatalk1PilotMode = (fields: PGN_126720_Seatalk1PilotModeCreateArgs, dst:number=255) : PGN_126720_Seatalk1PilotMode => {
+export const new126720_Seatalk1PilotMode = (fields: PGN_126720_Seatalk1PilotModeCreateArgs, dst:number=255) : PGN_126720_Seatalk1PilotMode => {
   return {
     ...PGN_126720_Seatalk1PilotModeDefaults,
     dst,
@@ -4774,7 +4810,7 @@ export interface PGN_126720_FusionMediaControlCreateArgs {
 /**
  * @category PGN_126720_FusionMediaControl
  */
-export const newPGN_126720_FusionMediaControl = (fields: PGN_126720_FusionMediaControlCreateArgs, dst:number=255) : PGN_126720_FusionMediaControl => {
+export const new126720_FusionMediaControl = (fields: PGN_126720_FusionMediaControlCreateArgs, dst:number=255) : PGN_126720_FusionMediaControl => {
   return {
     ...PGN_126720_FusionMediaControlDefaults,
     dst,
@@ -4843,7 +4879,7 @@ export interface PGN_126720_FusionSiriusControlCreateArgs {
 /**
  * @category PGN_126720_FusionSiriusControl
  */
-export const newPGN_126720_FusionSiriusControl = (fields: PGN_126720_FusionSiriusControlCreateArgs, dst:number=255) : PGN_126720_FusionSiriusControl => {
+export const new126720_FusionSiriusControl = (fields: PGN_126720_FusionSiriusControlCreateArgs, dst:number=255) : PGN_126720_FusionSiriusControl => {
   return {
     ...PGN_126720_FusionSiriusControlDefaults,
     dst,
@@ -4908,7 +4944,7 @@ export interface PGN_126720_FusionRequestStatusCreateArgs {
 /**
  * @category PGN_126720_FusionRequestStatus
  */
-export const newPGN_126720_FusionRequestStatus = (fields: PGN_126720_FusionRequestStatusCreateArgs, dst:number=255) : PGN_126720_FusionRequestStatus => {
+export const new126720_FusionRequestStatus = (fields: PGN_126720_FusionRequestStatusCreateArgs, dst:number=255) : PGN_126720_FusionRequestStatus => {
   return {
     ...PGN_126720_FusionRequestStatusDefaults,
     dst,
@@ -4975,7 +5011,7 @@ export interface PGN_126720_FusionSetSourceCreateArgs {
 /**
  * @category PGN_126720_FusionSetSource
  */
-export const newPGN_126720_FusionSetSource = (fields: PGN_126720_FusionSetSourceCreateArgs, dst:number=255) : PGN_126720_FusionSetSource => {
+export const new126720_FusionSetSource = (fields: PGN_126720_FusionSetSourceCreateArgs, dst:number=255) : PGN_126720_FusionSetSource => {
   return {
     ...PGN_126720_FusionSetSourceDefaults,
     dst,
@@ -5040,7 +5076,7 @@ export interface PGN_126720_FusionSetMuteCreateArgs {
 /**
  * @category PGN_126720_FusionSetMute
  */
-export const newPGN_126720_FusionSetMute = (fields: PGN_126720_FusionSetMuteCreateArgs, dst:number=255) : PGN_126720_FusionSetMute => {
+export const new126720_FusionSetMute = (fields: PGN_126720_FusionSetMuteCreateArgs, dst:number=255) : PGN_126720_FusionSetMute => {
   return {
     ...PGN_126720_FusionSetMuteDefaults,
     dst,
@@ -5109,7 +5145,7 @@ export interface PGN_126720_FusionSetZoneVolumeCreateArgs {
 /**
  * @category PGN_126720_FusionSetZoneVolume
  */
-export const newPGN_126720_FusionSetZoneVolume = (fields: PGN_126720_FusionSetZoneVolumeCreateArgs, dst:number=255) : PGN_126720_FusionSetZoneVolume => {
+export const new126720_FusionSetZoneVolume = (fields: PGN_126720_FusionSetZoneVolumeCreateArgs, dst:number=255) : PGN_126720_FusionSetZoneVolume => {
   return {
     ...PGN_126720_FusionSetZoneVolumeDefaults,
     dst,
@@ -5182,7 +5218,7 @@ export interface PGN_126720_FusionSetAllVolumesCreateArgs {
 /**
  * @category PGN_126720_FusionSetAllVolumes
  */
-export const newPGN_126720_FusionSetAllVolumes = (fields: PGN_126720_FusionSetAllVolumesCreateArgs, dst:number=255) : PGN_126720_FusionSetAllVolumes => {
+export const new126720_FusionSetAllVolumes = (fields: PGN_126720_FusionSetAllVolumesCreateArgs, dst:number=255) : PGN_126720_FusionSetAllVolumes => {
   return {
     ...PGN_126720_FusionSetAllVolumesDefaults,
     dst,
@@ -5256,7 +5292,7 @@ export interface PGN_126720_Seatalk1KeystrokeCreateArgs {
 /**
  * @category PGN_126720_Seatalk1Keystroke
  */
-export const newPGN_126720_Seatalk1Keystroke = (fields: PGN_126720_Seatalk1KeystrokeCreateArgs, dst:number=255) : PGN_126720_Seatalk1Keystroke => {
+export const new126720_Seatalk1Keystroke = (fields: PGN_126720_Seatalk1KeystrokeCreateArgs, dst:number=255) : PGN_126720_Seatalk1Keystroke => {
   return {
     ...PGN_126720_Seatalk1KeystrokeDefaults,
     dst,
@@ -5326,7 +5362,7 @@ export interface PGN_126720_Seatalk1DeviceIdentificationCreateArgs {
 /**
  * @category PGN_126720_Seatalk1DeviceIdentification
  */
-export const newPGN_126720_Seatalk1DeviceIdentification = (fields: PGN_126720_Seatalk1DeviceIdentificationCreateArgs, dst:number=255) : PGN_126720_Seatalk1DeviceIdentification => {
+export const new126720_Seatalk1DeviceIdentification = (fields: PGN_126720_Seatalk1DeviceIdentificationCreateArgs, dst:number=255) : PGN_126720_Seatalk1DeviceIdentification => {
   return {
     ...PGN_126720_Seatalk1DeviceIdentificationDefaults,
     dst,
@@ -5399,7 +5435,7 @@ export interface PGN_126720_Seatalk1DisplayBrightnessCreateArgs {
 /**
  * @category PGN_126720_Seatalk1DisplayBrightness
  */
-export const newPGN_126720_Seatalk1DisplayBrightness = (fields: PGN_126720_Seatalk1DisplayBrightnessCreateArgs, dst:number=255) : PGN_126720_Seatalk1DisplayBrightness => {
+export const new126720_Seatalk1DisplayBrightness = (fields: PGN_126720_Seatalk1DisplayBrightnessCreateArgs, dst:number=255) : PGN_126720_Seatalk1DisplayBrightness => {
   return {
     ...PGN_126720_Seatalk1DisplayBrightnessDefaults,
     dst,
@@ -5473,7 +5509,7 @@ export interface PGN_126720_Seatalk1DisplayColorCreateArgs {
 /**
  * @category PGN_126720_Seatalk1DisplayColor
  */
-export const newPGN_126720_Seatalk1DisplayColor = (fields: PGN_126720_Seatalk1DisplayColorCreateArgs, dst:number=255) : PGN_126720_Seatalk1DisplayColor => {
+export const new126720_Seatalk1DisplayColor = (fields: PGN_126720_Seatalk1DisplayColorCreateArgs, dst:number=255) : PGN_126720_Seatalk1DisplayColor => {
   return {
     ...PGN_126720_Seatalk1DisplayColorDefaults,
     dst,
@@ -5542,7 +5578,7 @@ export interface PGN_126720_AirmarAttitudeOffsetCreateArgs {
 /**
  * @category PGN_126720_AirmarAttitudeOffset
  */
-export const newPGN_126720_AirmarAttitudeOffset = (fields: PGN_126720_AirmarAttitudeOffsetCreateArgs, dst:number=255) : PGN_126720_AirmarAttitudeOffset => {
+export const new126720_AirmarAttitudeOffset = (fields: PGN_126720_AirmarAttitudeOffsetCreateArgs, dst:number=255) : PGN_126720_AirmarAttitudeOffset => {
   return {
     ...PGN_126720_AirmarAttitudeOffsetDefaults,
     dst,
@@ -5629,7 +5665,7 @@ export interface PGN_126720_AirmarCalibrateCompassCreateArgs {
 /**
  * @category PGN_126720_AirmarCalibrateCompass
  */
-export const newPGN_126720_AirmarCalibrateCompass = (fields: PGN_126720_AirmarCalibrateCompassCreateArgs, dst:number=255) : PGN_126720_AirmarCalibrateCompass => {
+export const new126720_AirmarCalibrateCompass = (fields: PGN_126720_AirmarCalibrateCompassCreateArgs, dst:number=255) : PGN_126720_AirmarCalibrateCompass => {
   return {
     ...PGN_126720_AirmarCalibrateCompassDefaults,
     dst,
@@ -5696,7 +5732,7 @@ export interface PGN_126720_AirmarTrueWindOptionsCreateArgs {
 /**
  * @category PGN_126720_AirmarTrueWindOptions
  */
-export const newPGN_126720_AirmarTrueWindOptions = (fields: PGN_126720_AirmarTrueWindOptionsCreateArgs, dst:number=255) : PGN_126720_AirmarTrueWindOptions => {
+export const new126720_AirmarTrueWindOptions = (fields: PGN_126720_AirmarTrueWindOptionsCreateArgs, dst:number=255) : PGN_126720_AirmarTrueWindOptions => {
   return {
     ...PGN_126720_AirmarTrueWindOptionsDefaults,
     dst,
@@ -5763,7 +5799,7 @@ export interface PGN_126720_AirmarSimulateModeCreateArgs {
 /**
  * @category PGN_126720_AirmarSimulateMode
  */
-export const newPGN_126720_AirmarSimulateMode = (fields: PGN_126720_AirmarSimulateModeCreateArgs, dst:number=255) : PGN_126720_AirmarSimulateMode => {
+export const new126720_AirmarSimulateMode = (fields: PGN_126720_AirmarSimulateModeCreateArgs, dst:number=255) : PGN_126720_AirmarSimulateMode => {
   return {
     ...PGN_126720_AirmarSimulateModeDefaults,
     dst,
@@ -5830,7 +5866,7 @@ export interface PGN_126720_AirmarCalibrateDepthCreateArgs {
 /**
  * @category PGN_126720_AirmarCalibrateDepth
  */
-export const newPGN_126720_AirmarCalibrateDepth = (fields: PGN_126720_AirmarCalibrateDepthCreateArgs, dst:number=255) : PGN_126720_AirmarCalibrateDepth => {
+export const new126720_AirmarCalibrateDepth = (fields: PGN_126720_AirmarCalibrateDepthCreateArgs, dst:number=255) : PGN_126720_AirmarCalibrateDepth => {
   return {
     ...PGN_126720_AirmarCalibrateDepthDefaults,
     dst,
@@ -5903,7 +5939,7 @@ export interface PGN_126720_AirmarCalibrateSpeedCreateArgs {
 /**
  * @category PGN_126720_AirmarCalibrateSpeed
  */
-export const newPGN_126720_AirmarCalibrateSpeed = (fields: PGN_126720_AirmarCalibrateSpeedCreateArgs, dst:number=255) : PGN_126720_AirmarCalibrateSpeed => {
+export const new126720_AirmarCalibrateSpeed = (fields: PGN_126720_AirmarCalibrateSpeedCreateArgs, dst:number=255) : PGN_126720_AirmarCalibrateSpeed => {
   return {
     ...PGN_126720_AirmarCalibrateSpeedDefaults,
     dst,
@@ -5972,7 +6008,7 @@ export interface PGN_126720_AirmarCalibrateTemperatureCreateArgs {
 /**
  * @category PGN_126720_AirmarCalibrateTemperature
  */
-export const newPGN_126720_AirmarCalibrateTemperature = (fields: PGN_126720_AirmarCalibrateTemperatureCreateArgs, dst:number=255) : PGN_126720_AirmarCalibrateTemperature => {
+export const new126720_AirmarCalibrateTemperature = (fields: PGN_126720_AirmarCalibrateTemperatureCreateArgs, dst:number=255) : PGN_126720_AirmarCalibrateTemperature => {
   return {
     ...PGN_126720_AirmarCalibrateTemperatureDefaults,
     dst,
@@ -6041,7 +6077,7 @@ export interface PGN_126720_AirmarSpeedFilterNoneCreateArgs {
 /**
  * @category PGN_126720_AirmarSpeedFilterNone
  */
-export const newPGN_126720_AirmarSpeedFilterNone = (fields: PGN_126720_AirmarSpeedFilterNoneCreateArgs, dst:number=255) : PGN_126720_AirmarSpeedFilterNone => {
+export const new126720_AirmarSpeedFilterNone = (fields: PGN_126720_AirmarSpeedFilterNoneCreateArgs, dst:number=255) : PGN_126720_AirmarSpeedFilterNone => {
   return {
     ...PGN_126720_AirmarSpeedFilterNoneDefaults,
     dst,
@@ -6113,7 +6149,7 @@ export interface PGN_126720_AirmarSpeedFilterIirCreateArgs {
 /**
  * @category PGN_126720_AirmarSpeedFilterIir
  */
-export const newPGN_126720_AirmarSpeedFilterIir = (fields: PGN_126720_AirmarSpeedFilterIirCreateArgs, dst:number=255) : PGN_126720_AirmarSpeedFilterIir => {
+export const new126720_AirmarSpeedFilterIir = (fields: PGN_126720_AirmarSpeedFilterIirCreateArgs, dst:number=255) : PGN_126720_AirmarSpeedFilterIir => {
   return {
     ...PGN_126720_AirmarSpeedFilterIirDefaults,
     dst,
@@ -6182,7 +6218,7 @@ export interface PGN_126720_AirmarTemperatureFilterNoneCreateArgs {
 /**
  * @category PGN_126720_AirmarTemperatureFilterNone
  */
-export const newPGN_126720_AirmarTemperatureFilterNone = (fields: PGN_126720_AirmarTemperatureFilterNoneCreateArgs, dst:number=255) : PGN_126720_AirmarTemperatureFilterNone => {
+export const new126720_AirmarTemperatureFilterNone = (fields: PGN_126720_AirmarTemperatureFilterNoneCreateArgs, dst:number=255) : PGN_126720_AirmarTemperatureFilterNone => {
   return {
     ...PGN_126720_AirmarTemperatureFilterNoneDefaults,
     dst,
@@ -6254,7 +6290,7 @@ export interface PGN_126720_AirmarTemperatureFilterIirCreateArgs {
 /**
  * @category PGN_126720_AirmarTemperatureFilterIir
  */
-export const newPGN_126720_AirmarTemperatureFilterIir = (fields: PGN_126720_AirmarTemperatureFilterIirCreateArgs, dst:number=255) : PGN_126720_AirmarTemperatureFilterIir => {
+export const new126720_AirmarTemperatureFilterIir = (fields: PGN_126720_AirmarTemperatureFilterIirCreateArgs, dst:number=255) : PGN_126720_AirmarTemperatureFilterIir => {
   return {
     ...PGN_126720_AirmarTemperatureFilterIirDefaults,
     dst,
@@ -6321,7 +6357,7 @@ export interface PGN_126720_AirmarNmea2000OptionsCreateArgs {
 /**
  * @category PGN_126720_AirmarNmea2000Options
  */
-export const newPGN_126720_AirmarNmea2000Options = (fields: PGN_126720_AirmarNmea2000OptionsCreateArgs, dst:number=255) : PGN_126720_AirmarNmea2000Options => {
+export const new126720_AirmarNmea2000Options = (fields: PGN_126720_AirmarNmea2000OptionsCreateArgs, dst:number=255) : PGN_126720_AirmarNmea2000Options => {
   return {
     ...PGN_126720_AirmarNmea2000OptionsDefaults,
     dst,
@@ -6383,7 +6419,7 @@ export interface PGN_126720_AirmarAddressableMultiFrameCreateArgs {
 /**
  * @category PGN_126720_AirmarAddressableMultiFrame
  */
-export const newPGN_126720_AirmarAddressableMultiFrame = (fields: PGN_126720_AirmarAddressableMultiFrameCreateArgs, dst:number=255) : PGN_126720_AirmarAddressableMultiFrame => {
+export const new126720_AirmarAddressableMultiFrame = (fields: PGN_126720_AirmarAddressableMultiFrameCreateArgs, dst:number=255) : PGN_126720_AirmarAddressableMultiFrame => {
   return {
     ...PGN_126720_AirmarAddressableMultiFrameDefaults,
     dst,
@@ -6451,7 +6487,7 @@ export interface PGN_126720_MaretronSlaveResponseCreateArgs {
 /**
  * @category PGN_126720_MaretronSlaveResponse
  */
-export const newPGN_126720_MaretronSlaveResponse = (fields: PGN_126720_MaretronSlaveResponseCreateArgs, dst:number=255) : PGN_126720_MaretronSlaveResponse => {
+export const new126720_MaretronSlaveResponse = (fields: PGN_126720_MaretronSlaveResponseCreateArgs, dst:number=255) : PGN_126720_MaretronSlaveResponse => {
   return {
     ...PGN_126720_MaretronSlaveResponseDefaults,
     dst,
@@ -6531,7 +6567,7 @@ export interface PGN_126720_GarminDayModeCreateArgs {
 /**
  * @category PGN_126720_GarminDayMode
  */
-export const newPGN_126720_GarminDayMode = (fields: PGN_126720_GarminDayModeCreateArgs, dst:number=255) : PGN_126720_GarminDayMode => {
+export const new126720_GarminDayMode = (fields: PGN_126720_GarminDayModeCreateArgs, dst:number=255) : PGN_126720_GarminDayMode => {
   return {
     ...PGN_126720_GarminDayModeDefaults,
     dst,
@@ -6612,7 +6648,7 @@ export interface PGN_126720_GarminNightModeCreateArgs {
 /**
  * @category PGN_126720_GarminNightMode
  */
-export const newPGN_126720_GarminNightMode = (fields: PGN_126720_GarminNightModeCreateArgs, dst:number=255) : PGN_126720_GarminNightMode => {
+export const new126720_GarminNightMode = (fields: PGN_126720_GarminNightModeCreateArgs, dst:number=255) : PGN_126720_GarminNightMode => {
   return {
     ...PGN_126720_GarminNightModeDefaults,
     dst,
@@ -6693,7 +6729,7 @@ export interface PGN_126720_GarminColorModeCreateArgs {
 /**
  * @category PGN_126720_GarminColorMode
  */
-export const newPGN_126720_GarminColorMode = (fields: PGN_126720_GarminColorModeCreateArgs, dst:number=255) : PGN_126720_GarminColorMode => {
+export const new126720_GarminColorMode = (fields: PGN_126720_GarminColorModeCreateArgs, dst:number=255) : PGN_126720_GarminColorMode => {
   return {
     ...PGN_126720_GarminColorModeDefaults,
     dst,
@@ -6753,7 +6789,7 @@ export const PGN_126983Defaults = {
 /**
  * @category PGN_126983
  */
-export const newPGN_126983 = (fields: PGN_126983Fields, dst:number=255) : PGN_126983 => {
+export const new126983 = (fields: PGN_126983Fields, dst:number=255) : PGN_126983 => {
   return {
     ...PGN_126983Defaults,
     dst,
@@ -6803,7 +6839,7 @@ export const PGN_126984Defaults = {
 /**
  * @category PGN_126984
  */
-export const newPGN_126984 = (fields: PGN_126984Fields, dst:number=255) : PGN_126984 => {
+export const new126984 = (fields: PGN_126984Fields, dst:number=255) : PGN_126984 => {
   return {
     ...PGN_126984Defaults,
     dst,
@@ -6853,7 +6889,7 @@ export const PGN_126985Defaults = {
 /**
  * @category PGN_126985
  */
-export const newPGN_126985 = (fields: PGN_126985Fields, dst:number=255) : PGN_126985 => {
+export const new126985 = (fields: PGN_126985Fields, dst:number=255) : PGN_126985 => {
   return {
     ...PGN_126985Defaults,
     dst,
@@ -6906,7 +6942,7 @@ export const PGN_126986Defaults = {
 /**
  * @category PGN_126986
  */
-export const newPGN_126986 = (fields: PGN_126986Fields, dst:number=255) : PGN_126986 => {
+export const new126986 = (fields: PGN_126986Fields, dst:number=255) : PGN_126986 => {
   return {
     ...PGN_126986Defaults,
     dst,
@@ -6960,7 +6996,7 @@ export const PGN_126987Defaults = {
 /**
  * @category PGN_126987
  */
-export const newPGN_126987 = (fields: PGN_126987Fields, dst:number=255) : PGN_126987 => {
+export const new126987 = (fields: PGN_126987Fields, dst:number=255) : PGN_126987 => {
   return {
     ...PGN_126987Defaults,
     dst,
@@ -7013,7 +7049,7 @@ export const PGN_126988Defaults = {
 /**
  * @category PGN_126988
  */
-export const newPGN_126988 = (fields: PGN_126988Fields, dst:number=255) : PGN_126988 => {
+export const new126988 = (fields: PGN_126988Fields, dst:number=255) : PGN_126988 => {
   return {
     ...PGN_126988Defaults,
     dst,
@@ -7058,7 +7094,7 @@ export const PGN_126992Defaults = {
 /**
  * @category PGN_126992
  */
-export const newPGN_126992 = (fields: PGN_126992Fields, dst:number=255) : PGN_126992 => {
+export const new126992 = (fields: PGN_126992Fields, dst:number=255) : PGN_126992 => {
   return {
     ...PGN_126992Defaults,
     dst,
@@ -7104,7 +7140,7 @@ export const PGN_126993Defaults = {
 /**
  * @category PGN_126993
  */
-export const newPGN_126993 = (fields: PGN_126993Fields, dst:number=255) : PGN_126993 => {
+export const new126993 = (fields: PGN_126993Fields, dst:number=255) : PGN_126993 => {
   return {
     ...PGN_126993Defaults,
     dst,
@@ -7152,7 +7188,7 @@ export const PGN_126996Defaults = {
 /**
  * @category PGN_126996
  */
-export const newPGN_126996 = (fields: PGN_126996Fields, dst:number=255) : PGN_126996 => {
+export const new126996 = (fields: PGN_126996Fields, dst:number=255) : PGN_126996 => {
   return {
     ...PGN_126996Defaults,
     dst,
@@ -7195,7 +7231,7 @@ export const PGN_126998Defaults = {
 /**
  * @category PGN_126998
  */
-export const newPGN_126998 = (fields: PGN_126998Fields, dst:number=255) : PGN_126998 => {
+export const new126998 = (fields: PGN_126998Fields, dst:number=255) : PGN_126998 => {
   return {
     ...PGN_126998Defaults,
     dst,
@@ -7262,7 +7298,7 @@ export const PGN_127233Defaults = {
 /**
  * @category PGN_127233
  */
-export const newPGN_127233 = (fields: PGN_127233Fields, dst:number=255) : PGN_127233 => {
+export const new127233 = (fields: PGN_127233Fields, dst:number=255) : PGN_127233 => {
   return {
     ...PGN_127233Defaults,
     dst,
@@ -7318,7 +7354,7 @@ export const PGN_127237Defaults = {
 /**
  * @category PGN_127237
  */
-export const newPGN_127237 = (fields: PGN_127237Fields, dst:number=255) : PGN_127237 => {
+export const new127237 = (fields: PGN_127237Fields, dst:number=255) : PGN_127237 => {
   return {
     ...PGN_127237Defaults,
     dst,
@@ -7362,7 +7398,7 @@ export const PGN_127245Defaults = {
 /**
  * @category PGN_127245
  */
-export const newPGN_127245 = (fields: PGN_127245Fields, dst:number=255) : PGN_127245 => {
+export const new127245 = (fields: PGN_127245Fields, dst:number=255) : PGN_127245 => {
   return {
     ...PGN_127245Defaults,
     dst,
@@ -7406,7 +7442,7 @@ export const PGN_127250Defaults = {
 /**
  * @category PGN_127250
  */
-export const newPGN_127250 = (fields: PGN_127250Fields, dst:number=255) : PGN_127250 => {
+export const new127250 = (fields: PGN_127250Fields, dst:number=255) : PGN_127250 => {
   return {
     ...PGN_127250Defaults,
     dst,
@@ -7447,7 +7483,7 @@ export const PGN_127251Defaults = {
 /**
  * @category PGN_127251
  */
-export const newPGN_127251 = (fields: PGN_127251Fields, dst:number=255) : PGN_127251 => {
+export const new127251 = (fields: PGN_127251Fields, dst:number=255) : PGN_127251 => {
   return {
     ...PGN_127251Defaults,
     dst,
@@ -7488,7 +7524,7 @@ export const PGN_127252Defaults = {
 /**
  * @category PGN_127252
  */
-export const newPGN_127252 = (fields: PGN_127252Fields, dst:number=255) : PGN_127252 => {
+export const new127252 = (fields: PGN_127252Fields, dst:number=255) : PGN_127252 => {
   return {
     ...PGN_127252Defaults,
     dst,
@@ -7531,7 +7567,7 @@ export const PGN_127257Defaults = {
 /**
  * @category PGN_127257
  */
-export const newPGN_127257 = (fields: PGN_127257Fields, dst:number=255) : PGN_127257 => {
+export const new127257 = (fields: PGN_127257Fields, dst:number=255) : PGN_127257 => {
   return {
     ...PGN_127257Defaults,
     dst,
@@ -7575,7 +7611,7 @@ export const PGN_127258Defaults = {
 /**
  * @category PGN_127258
  */
-export const newPGN_127258 = (fields: PGN_127258Fields, dst:number=255) : PGN_127258 => {
+export const new127258 = (fields: PGN_127258Fields, dst:number=255) : PGN_127258 => {
   return {
     ...PGN_127258Defaults,
     dst,
@@ -7618,7 +7654,7 @@ export const PGN_127488Defaults = {
 /**
  * @category PGN_127488
  */
-export const newPGN_127488 = (fields: PGN_127488Fields, dst:number=255) : PGN_127488 => {
+export const new127488 = (fields: PGN_127488Fields, dst:number=255) : PGN_127488 => {
   return {
     ...PGN_127488Defaults,
     dst,
@@ -7670,7 +7706,7 @@ export const PGN_127489Defaults = {
 /**
  * @category PGN_127489
  */
-export const newPGN_127489 = (fields: PGN_127489Fields, dst:number=255) : PGN_127489 => {
+export const new127489 = (fields: PGN_127489Fields, dst:number=255) : PGN_127489 => {
   return {
     ...PGN_127489Defaults,
     dst,
@@ -7718,7 +7754,7 @@ export const PGN_127490Defaults = {
 /**
  * @category PGN_127490
  */
-export const newPGN_127490 = (fields: PGN_127490Fields, dst:number=255) : PGN_127490 => {
+export const new127490 = (fields: PGN_127490Fields, dst:number=255) : PGN_127490 => {
   return {
     ...PGN_127490Defaults,
     dst,
@@ -7768,7 +7804,7 @@ export const PGN_127491Defaults = {
 /**
  * @category PGN_127491
  */
-export const newPGN_127491 = (fields: PGN_127491Fields, dst:number=255) : PGN_127491 => {
+export const new127491 = (fields: PGN_127491Fields, dst:number=255) : PGN_127491 => {
   return {
     ...PGN_127491Defaults,
     dst,
@@ -7813,7 +7849,7 @@ export const PGN_127493Defaults = {
 /**
  * @category PGN_127493
  */
-export const newPGN_127493 = (fields: PGN_127493Fields, dst:number=255) : PGN_127493 => {
+export const new127493 = (fields: PGN_127493Fields, dst:number=255) : PGN_127493 => {
   return {
     ...PGN_127493Defaults,
     dst,
@@ -7866,7 +7902,7 @@ export const PGN_127494Defaults = {
 /**
  * @category PGN_127494
  */
-export const newPGN_127494 = (fields: PGN_127494Fields, dst:number=255) : PGN_127494 => {
+export const new127494 = (fields: PGN_127494Fields, dst:number=255) : PGN_127494 => {
   return {
     ...PGN_127494Defaults,
     dst,
@@ -7922,7 +7958,7 @@ export const PGN_127495Defaults = {
 /**
  * @category PGN_127495
  */
-export const newPGN_127495 = (fields: PGN_127495Fields, dst:number=255) : PGN_127495 => {
+export const new127495 = (fields: PGN_127495Fields, dst:number=255) : PGN_127495 => {
   return {
     ...PGN_127495Defaults,
     dst,
@@ -7964,7 +8000,7 @@ export const PGN_127496Defaults = {
 /**
  * @category PGN_127496
  */
-export const newPGN_127496 = (fields: PGN_127496Fields, dst:number=255) : PGN_127496 => {
+export const new127496 = (fields: PGN_127496Fields, dst:number=255) : PGN_127496 => {
   return {
     ...PGN_127496Defaults,
     dst,
@@ -8007,7 +8043,7 @@ export const PGN_127497Defaults = {
 /**
  * @category PGN_127497
  */
-export const newPGN_127497 = (fields: PGN_127497Fields, dst:number=255) : PGN_127497 => {
+export const new127497 = (fields: PGN_127497Fields, dst:number=255) : PGN_127497 => {
   return {
     ...PGN_127497Defaults,
     dst,
@@ -8049,7 +8085,7 @@ export const PGN_127498Defaults = {
 /**
  * @category PGN_127498
  */
-export const newPGN_127498 = (fields: PGN_127498Fields, dst:number=255) : PGN_127498 => {
+export const new127498 = (fields: PGN_127498Fields, dst:number=255) : PGN_127498 => {
   return {
     ...PGN_127498Defaults,
     dst,
@@ -8095,7 +8131,7 @@ export const PGN_127500Defaults = {
 /**
  * @category PGN_127500
  */
-export const newPGN_127500 = (fields: PGN_127500Fields, dst:number=255) : PGN_127500 => {
+export const new127500 = (fields: PGN_127500Fields, dst:number=255) : PGN_127500 => {
   return {
     ...PGN_127500Defaults,
     dst,
@@ -8162,7 +8198,7 @@ export const PGN_127501Defaults = {
 /**
  * @category PGN_127501
  */
-export const newPGN_127501 = (fields: PGN_127501Fields, dst:number=255) : PGN_127501 => {
+export const new127501 = (fields: PGN_127501Fields, dst:number=255) : PGN_127501 => {
   return {
     ...PGN_127501Defaults,
     dst,
@@ -8229,7 +8265,7 @@ export const PGN_127502Defaults = {
 /**
  * @category PGN_127502
  */
-export const newPGN_127502 = (fields: PGN_127502Fields, dst:number=255) : PGN_127502 => {
+export const new127502 = (fields: PGN_127502Fields, dst:number=255) : PGN_127502 => {
   return {
     ...PGN_127502Defaults,
     dst,
@@ -8281,7 +8317,7 @@ export const PGN_127503Defaults = {
 /**
  * @category PGN_127503
  */
-export const newPGN_127503 = (fields: PGN_127503Fields, dst:number=255) : PGN_127503 => {
+export const new127503 = (fields: PGN_127503Fields, dst:number=255) : PGN_127503 => {
   return {
     ...PGN_127503Defaults,
     dst,
@@ -8333,7 +8369,7 @@ export const PGN_127504Defaults = {
 /**
  * @category PGN_127504
  */
-export const newPGN_127504 = (fields: PGN_127504Fields, dst:number=255) : PGN_127504 => {
+export const new127504 = (fields: PGN_127504Fields, dst:number=255) : PGN_127504 => {
   return {
     ...PGN_127504Defaults,
     dst,
@@ -8376,7 +8412,7 @@ export const PGN_127505Defaults = {
 /**
  * @category PGN_127505
  */
-export const newPGN_127505 = (fields: PGN_127505Fields, dst:number=255) : PGN_127505 => {
+export const new127505 = (fields: PGN_127505Fields, dst:number=255) : PGN_127505 => {
   return {
     ...PGN_127505Defaults,
     dst,
@@ -8422,7 +8458,7 @@ export const PGN_127506Defaults = {
 /**
  * @category PGN_127506
  */
-export const newPGN_127506 = (fields: PGN_127506Fields, dst:number=255) : PGN_127506 => {
+export const new127506 = (fields: PGN_127506Fields, dst:number=255) : PGN_127506 => {
   return {
     ...PGN_127506Defaults,
     dst,
@@ -8468,7 +8504,7 @@ export const PGN_127507Defaults = {
 /**
  * @category PGN_127507
  */
-export const newPGN_127507 = (fields: PGN_127507Fields, dst:number=255) : PGN_127507 => {
+export const new127507 = (fields: PGN_127507Fields, dst:number=255) : PGN_127507 => {
   return {
     ...PGN_127507Defaults,
     dst,
@@ -8511,7 +8547,7 @@ export const PGN_127508Defaults = {
 /**
  * @category PGN_127508
  */
-export const newPGN_127508 = (fields: PGN_127508Fields, dst:number=255) : PGN_127508 => {
+export const new127508 = (fields: PGN_127508Fields, dst:number=255) : PGN_127508 => {
   return {
     ...PGN_127508Defaults,
     dst,
@@ -8557,7 +8593,7 @@ export const PGN_127509Defaults = {
 /**
  * @category PGN_127509
  */
-export const newPGN_127509 = (fields: PGN_127509Fields, dst:number=255) : PGN_127509 => {
+export const new127509 = (fields: PGN_127509Fields, dst:number=255) : PGN_127509 => {
   return {
     ...PGN_127509Defaults,
     dst,
@@ -8606,7 +8642,7 @@ export const PGN_127510Defaults = {
 /**
  * @category PGN_127510
  */
-export const newPGN_127510 = (fields: PGN_127510Fields, dst:number=255) : PGN_127510 => {
+export const new127510 = (fields: PGN_127510Fields, dst:number=255) : PGN_127510 => {
   return {
     ...PGN_127510Defaults,
     dst,
@@ -8652,7 +8688,7 @@ export const PGN_127511Defaults = {
 /**
  * @category PGN_127511
  */
-export const newPGN_127511 = (fields: PGN_127511Fields, dst:number=255) : PGN_127511 => {
+export const new127511 = (fields: PGN_127511Fields, dst:number=255) : PGN_127511 => {
   return {
     ...PGN_127511Defaults,
     dst,
@@ -8694,7 +8730,7 @@ export const PGN_127512Defaults = {
 /**
  * @category PGN_127512
  */
-export const newPGN_127512 = (fields: PGN_127512Fields, dst:number=255) : PGN_127512 => {
+export const new127512 = (fields: PGN_127512Fields, dst:number=255) : PGN_127512 => {
   return {
     ...PGN_127512Defaults,
     dst,
@@ -8742,7 +8778,7 @@ export const PGN_127513Defaults = {
 /**
  * @category PGN_127513
  */
-export const newPGN_127513 = (fields: PGN_127513Fields, dst:number=255) : PGN_127513 => {
+export const new127513 = (fields: PGN_127513Fields, dst:number=255) : PGN_127513 => {
   return {
     ...PGN_127513Defaults,
     dst,
@@ -8786,7 +8822,7 @@ export const PGN_127514Defaults = {
 /**
  * @category PGN_127514
  */
-export const newPGN_127514 = (fields: PGN_127514Fields, dst:number=255) : PGN_127514 => {
+export const new127514 = (fields: PGN_127514Fields, dst:number=255) : PGN_127514 => {
   return {
     ...PGN_127514Defaults,
     dst,
@@ -8828,7 +8864,7 @@ export const PGN_127744Defaults = {
 /**
  * @category PGN_127744
  */
-export const newPGN_127744 = (fields: PGN_127744Fields, dst:number=255) : PGN_127744 => {
+export const new127744 = (fields: PGN_127744Fields, dst:number=255) : PGN_127744 => {
   return {
     ...PGN_127744Defaults,
     dst,
@@ -8870,7 +8906,7 @@ export const PGN_127745Defaults = {
 /**
  * @category PGN_127745
  */
-export const newPGN_127745 = (fields: PGN_127745Fields, dst:number=255) : PGN_127745 => {
+export const new127745 = (fields: PGN_127745Fields, dst:number=255) : PGN_127745 => {
   return {
     ...PGN_127745Defaults,
     dst,
@@ -8912,7 +8948,7 @@ export const PGN_127746Defaults = {
 /**
  * @category PGN_127746
  */
-export const newPGN_127746 = (fields: PGN_127746Fields, dst:number=255) : PGN_127746 => {
+export const new127746 = (fields: PGN_127746Fields, dst:number=255) : PGN_127746 => {
   return {
     ...PGN_127746Defaults,
     dst,
@@ -8955,7 +8991,7 @@ export const PGN_127747Defaults = {
 /**
  * @category PGN_127747
  */
-export const newPGN_127747 = (fields: PGN_127747Fields, dst:number=255) : PGN_127747 => {
+export const new127747 = (fields: PGN_127747Fields, dst:number=255) : PGN_127747 => {
   return {
     ...PGN_127747Defaults,
     dst,
@@ -8998,7 +9034,7 @@ export const PGN_127748Defaults = {
 /**
  * @category PGN_127748
  */
-export const newPGN_127748 = (fields: PGN_127748Fields, dst:number=255) : PGN_127748 => {
+export const new127748 = (fields: PGN_127748Fields, dst:number=255) : PGN_127748 => {
   return {
     ...PGN_127748Defaults,
     dst,
@@ -9041,7 +9077,7 @@ export const PGN_127749Defaults = {
 /**
  * @category PGN_127749
  */
-export const newPGN_127749 = (fields: PGN_127749Fields, dst:number=255) : PGN_127749 => {
+export const new127749 = (fields: PGN_127749Fields, dst:number=255) : PGN_127749 => {
   return {
     ...PGN_127749Defaults,
     dst,
@@ -9087,7 +9123,7 @@ export const PGN_127750Defaults = {
 /**
  * @category PGN_127750
  */
-export const newPGN_127750 = (fields: PGN_127750Fields, dst:number=255) : PGN_127750 => {
+export const new127750 = (fields: PGN_127750Fields, dst:number=255) : PGN_127750 => {
   return {
     ...PGN_127750Defaults,
     dst,
@@ -9130,7 +9166,7 @@ export const PGN_127751Defaults = {
 /**
  * @category PGN_127751
  */
-export const newPGN_127751 = (fields: PGN_127751Fields, dst:number=255) : PGN_127751 => {
+export const new127751 = (fields: PGN_127751Fields, dst:number=255) : PGN_127751 => {
   return {
     ...PGN_127751Defaults,
     dst,
@@ -9173,7 +9209,7 @@ export const PGN_128000Defaults = {
 /**
  * @category PGN_128000
  */
-export const newPGN_128000 = (fields: PGN_128000Fields, dst:number=255) : PGN_128000 => {
+export const new128000 = (fields: PGN_128000Fields, dst:number=255) : PGN_128000 => {
   return {
     ...PGN_128000Defaults,
     dst,
@@ -9218,7 +9254,7 @@ export const PGN_128001Defaults = {
 /**
  * @category PGN_128001
  */
-export const newPGN_128001 = (fields: PGN_128001Fields, dst:number=255) : PGN_128001 => {
+export const new128001 = (fields: PGN_128001Fields, dst:number=255) : PGN_128001 => {
   return {
     ...PGN_128001Defaults,
     dst,
@@ -9265,7 +9301,7 @@ export const PGN_128002Defaults = {
 /**
  * @category PGN_128002
  */
-export const newPGN_128002 = (fields: PGN_128002Fields, dst:number=255) : PGN_128002 => {
+export const new128002 = (fields: PGN_128002Fields, dst:number=255) : PGN_128002 => {
   return {
     ...PGN_128002Defaults,
     dst,
@@ -9312,7 +9348,7 @@ export const PGN_128003Defaults = {
 /**
  * @category PGN_128003
  */
-export const newPGN_128003 = (fields: PGN_128003Fields, dst:number=255) : PGN_128003 => {
+export const new128003 = (fields: PGN_128003Fields, dst:number=255) : PGN_128003 => {
   return {
     ...PGN_128003Defaults,
     dst,
@@ -9359,7 +9395,7 @@ export const PGN_128006Defaults = {
 /**
  * @category PGN_128006
  */
-export const newPGN_128006 = (fields: PGN_128006Fields, dst:number=255) : PGN_128006 => {
+export const new128006 = (fields: PGN_128006Fields, dst:number=255) : PGN_128006 => {
   return {
     ...PGN_128006Defaults,
     dst,
@@ -9403,7 +9439,7 @@ export const PGN_128007Defaults = {
 /**
  * @category PGN_128007
  */
-export const newPGN_128007 = (fields: PGN_128007Fields, dst:number=255) : PGN_128007 => {
+export const new128007 = (fields: PGN_128007Fields, dst:number=255) : PGN_128007 => {
   return {
     ...PGN_128007Defaults,
     dst,
@@ -9447,7 +9483,7 @@ export const PGN_128008Defaults = {
 /**
  * @category PGN_128008
  */
-export const newPGN_128008 = (fields: PGN_128008Fields, dst:number=255) : PGN_128008 => {
+export const new128008 = (fields: PGN_128008Fields, dst:number=255) : PGN_128008 => {
   return {
     ...PGN_128008Defaults,
     dst,
@@ -9491,7 +9527,7 @@ export const PGN_128259Defaults = {
 /**
  * @category PGN_128259
  */
-export const newPGN_128259 = (fields: PGN_128259Fields, dst:number=255) : PGN_128259 => {
+export const new128259 = (fields: PGN_128259Fields, dst:number=255) : PGN_128259 => {
   return {
     ...PGN_128259Defaults,
     dst,
@@ -9533,7 +9569,7 @@ export const PGN_128267Defaults = {
 /**
  * @category PGN_128267
  */
-export const newPGN_128267 = (fields: PGN_128267Fields, dst:number=255) : PGN_128267 => {
+export const new128267 = (fields: PGN_128267Fields, dst:number=255) : PGN_128267 => {
   return {
     ...PGN_128267Defaults,
     dst,
@@ -9575,7 +9611,7 @@ export const PGN_128275Defaults = {
 /**
  * @category PGN_128275
  */
-export const newPGN_128275 = (fields: PGN_128275Fields, dst:number=255) : PGN_128275 => {
+export const new128275 = (fields: PGN_128275Fields, dst:number=255) : PGN_128275 => {
   return {
     ...PGN_128275Defaults,
     dst,
@@ -9630,7 +9666,7 @@ export const PGN_128520Defaults = {
 /**
  * @category PGN_128520
  */
-export const newPGN_128520 = (fields: PGN_128520Fields, dst:number=255) : PGN_128520 => {
+export const new128520 = (fields: PGN_128520Fields, dst:number=255) : PGN_128520 => {
   return {
     ...PGN_128520Defaults,
     dst,
@@ -9702,7 +9738,7 @@ export const PGN_128538Defaults = {
 /**
  * @category PGN_128538
  */
-export const newPGN_128538 = (fields: PGN_128538Fields, dst:number=255) : PGN_128538 => {
+export const new128538 = (fields: PGN_128538Fields, dst:number=255) : PGN_128538 => {
   return {
     ...PGN_128538Defaults,
     dst,
@@ -9748,7 +9784,7 @@ export const PGN_128768Defaults = {
 /**
  * @category PGN_128768
  */
-export const newPGN_128768 = (fields: PGN_128768Fields, dst:number=255) : PGN_128768 => {
+export const new128768 = (fields: PGN_128768Fields, dst:number=255) : PGN_128768 => {
   return {
     ...PGN_128768Defaults,
     dst,
@@ -9794,7 +9830,7 @@ export const PGN_128769Defaults = {
 /**
  * @category PGN_128769
  */
-export const newPGN_128769 = (fields: PGN_128769Fields, dst:number=255) : PGN_128769 => {
+export const new128769 = (fields: PGN_128769Fields, dst:number=255) : PGN_128769 => {
   return {
     ...PGN_128769Defaults,
     dst,
@@ -9846,7 +9882,7 @@ export const PGN_128776Defaults = {
 /**
  * @category PGN_128776
  */
-export const newPGN_128776 = (fields: PGN_128776Fields, dst:number=255) : PGN_128776 => {
+export const new128776 = (fields: PGN_128776Fields, dst:number=255) : PGN_128776 => {
   return {
     ...PGN_128776Defaults,
     dst,
@@ -9894,7 +9930,7 @@ export const PGN_128777Defaults = {
 /**
  * @category PGN_128777
  */
-export const newPGN_128777 = (fields: PGN_128777Fields, dst:number=255) : PGN_128777 => {
+export const new128777 = (fields: PGN_128777Fields, dst:number=255) : PGN_128777 => {
   return {
     ...PGN_128777Defaults,
     dst,
@@ -9939,7 +9975,7 @@ export const PGN_128778Defaults = {
 /**
  * @category PGN_128778
  */
-export const newPGN_128778 = (fields: PGN_128778Fields, dst:number=255) : PGN_128778 => {
+export const new128778 = (fields: PGN_128778Fields, dst:number=255) : PGN_128778 => {
   return {
     ...PGN_128778Defaults,
     dst,
@@ -9985,7 +10021,7 @@ export const PGN_128780Defaults = {
 /**
  * @category PGN_128780
  */
-export const newPGN_128780 = (fields: PGN_128780Fields, dst:number=255) : PGN_128780 => {
+export const new128780 = (fields: PGN_128780Fields, dst:number=255) : PGN_128780 => {
   return {
     ...PGN_128780Defaults,
     dst,
@@ -10025,7 +10061,7 @@ export const PGN_129025Defaults = {
 /**
  * @category PGN_129025
  */
-export const newPGN_129025 = (fields: PGN_129025Fields, dst:number=255) : PGN_129025 => {
+export const new129025 = (fields: PGN_129025Fields, dst:number=255) : PGN_129025 => {
   return {
     ...PGN_129025Defaults,
     dst,
@@ -10069,7 +10105,7 @@ export const PGN_129026Defaults = {
 /**
  * @category PGN_129026
  */
-export const newPGN_129026 = (fields: PGN_129026Fields, dst:number=255) : PGN_129026 => {
+export const new129026 = (fields: PGN_129026Fields, dst:number=255) : PGN_129026 => {
   return {
     ...PGN_129026Defaults,
     dst,
@@ -10111,7 +10147,7 @@ export const PGN_129027Defaults = {
 /**
  * @category PGN_129027
  */
-export const newPGN_129027 = (fields: PGN_129027Fields, dst:number=255) : PGN_129027 => {
+export const new129027 = (fields: PGN_129027Fields, dst:number=255) : PGN_129027 => {
   return {
     ...PGN_129027Defaults,
     dst,
@@ -10156,7 +10192,7 @@ export const PGN_129028Defaults = {
 /**
  * @category PGN_129028
  */
-export const newPGN_129028 = (fields: PGN_129028Fields, dst:number=255) : PGN_129028 => {
+export const new129028 = (fields: PGN_129028Fields, dst:number=255) : PGN_129028 => {
   return {
     ...PGN_129028Defaults,
     dst,
@@ -10214,7 +10250,7 @@ export const PGN_129029Defaults = {
 /**
  * @category PGN_129029
  */
-export const newPGN_129029 = (fields: PGN_129029Fields, dst:number=255) : PGN_129029 => {
+export const new129029 = (fields: PGN_129029Fields, dst:number=255) : PGN_129029 => {
   return {
     ...PGN_129029Defaults,
     dst,
@@ -10255,7 +10291,7 @@ export const PGN_129033Defaults = {
 /**
  * @category PGN_129033
  */
-export const newPGN_129033 = (fields: PGN_129033Fields, dst:number=255) : PGN_129033 => {
+export const new129033 = (fields: PGN_129033Fields, dst:number=255) : PGN_129033 => {
   return {
     ...PGN_129033Defaults,
     dst,
@@ -10313,7 +10349,7 @@ export const PGN_129038Defaults = {
 /**
  * @category PGN_129038
  */
-export const newPGN_129038 = (fields: PGN_129038Fields, dst:number=255) : PGN_129038 => {
+export const new129038 = (fields: PGN_129038Fields, dst:number=255) : PGN_129038 => {
   return {
     ...PGN_129038Defaults,
     dst,
@@ -10374,7 +10410,7 @@ export const PGN_129039Defaults = {
 /**
  * @category PGN_129039
  */
-export const newPGN_129039 = (fields: PGN_129039Fields, dst:number=255) : PGN_129039 => {
+export const new129039 = (fields: PGN_129039Fields, dst:number=255) : PGN_129039 => {
   return {
     ...PGN_129039Defaults,
     dst,
@@ -10439,7 +10475,7 @@ export const PGN_129040Defaults = {
 /**
  * @category PGN_129040
  */
-export const newPGN_129040 = (fields: PGN_129040Fields, dst:number=255) : PGN_129040 => {
+export const new129040 = (fields: PGN_129040Fields, dst:number=255) : PGN_129040 => {
   return {
     ...PGN_129040Defaults,
     dst,
@@ -10500,7 +10536,7 @@ export const PGN_129041Defaults = {
 /**
  * @category PGN_129041
  */
-export const newPGN_129041 = (fields: PGN_129041Fields, dst:number=255) : PGN_129041 => {
+export const new129041 = (fields: PGN_129041Fields, dst:number=255) : PGN_129041 => {
   return {
     ...PGN_129041Defaults,
     dst,
@@ -10543,7 +10579,7 @@ export const PGN_129044Defaults = {
 /**
  * @category PGN_129044
  */
-export const newPGN_129044 = (fields: PGN_129044Fields, dst:number=255) : PGN_129044 => {
+export const new129044 = (fields: PGN_129044Fields, dst:number=255) : PGN_129044 => {
   return {
     ...PGN_129044Defaults,
     dst,
@@ -10591,7 +10627,7 @@ export const PGN_129045Defaults = {
 /**
  * @category PGN_129045
  */
-export const newPGN_129045 = (fields: PGN_129045Fields, dst:number=255) : PGN_129045 => {
+export const new129045 = (fields: PGN_129045Fields, dst:number=255) : PGN_129045 => {
   return {
     ...PGN_129045Defaults,
     dst,
@@ -10635,7 +10671,7 @@ export const PGN_129283Defaults = {
 /**
  * @category PGN_129283
  */
-export const newPGN_129283 = (fields: PGN_129283Fields, dst:number=255) : PGN_129283 => {
+export const new129283 = (fields: PGN_129283Fields, dst:number=255) : PGN_129283 => {
   return {
     ...PGN_129283Defaults,
     dst,
@@ -10688,7 +10724,7 @@ export const PGN_129284Defaults = {
 /**
  * @category PGN_129284
  */
-export const newPGN_129284 = (fields: PGN_129284Fields, dst:number=255) : PGN_129284 => {
+export const new129284 = (fields: PGN_129284Fields, dst:number=255) : PGN_129284 => {
   return {
     ...PGN_129284Defaults,
     dst,
@@ -10741,7 +10777,7 @@ export const PGN_129285Defaults = {
 /**
  * @category PGN_129285
  */
-export const newPGN_129285 = (fields: PGN_129285Fields, dst:number=255) : PGN_129285 => {
+export const new129285 = (fields: PGN_129285Fields, dst:number=255) : PGN_129285 => {
   return {
     ...PGN_129285Defaults,
     dst,
@@ -10785,7 +10821,7 @@ export const PGN_129291Defaults = {
 /**
  * @category PGN_129291
  */
-export const newPGN_129291 = (fields: PGN_129291Fields, dst:number=255) : PGN_129291 => {
+export const new129291 = (fields: PGN_129291Fields, dst:number=255) : PGN_129291 => {
   return {
     ...PGN_129291Defaults,
     dst,
@@ -10828,7 +10864,7 @@ export const PGN_129301Defaults = {
 /**
  * @category PGN_129301
  */
-export const newPGN_129301 = (fields: PGN_129301Fields, dst:number=255) : PGN_129301 => {
+export const new129301 = (fields: PGN_129301Fields, dst:number=255) : PGN_129301 => {
   return {
     ...PGN_129301Defaults,
     dst,
@@ -10876,7 +10912,7 @@ export const PGN_129302Defaults = {
 /**
  * @category PGN_129302
  */
-export const newPGN_129302 = (fields: PGN_129302Fields, dst:number=255) : PGN_129302 => {
+export const new129302 = (fields: PGN_129302Fields, dst:number=255) : PGN_129302 => {
   return {
     ...PGN_129302Defaults,
     dst,
@@ -10925,7 +10961,7 @@ export const PGN_129538Defaults = {
 /**
  * @category PGN_129538
  */
-export const newPGN_129538 = (fields: PGN_129538Fields, dst:number=255) : PGN_129538 => {
+export const new129538 = (fields: PGN_129538Fields, dst:number=255) : PGN_129538 => {
   return {
     ...PGN_129538Defaults,
     dst,
@@ -10970,7 +11006,7 @@ export const PGN_129539Defaults = {
 /**
  * @category PGN_129539
  */
-export const newPGN_129539 = (fields: PGN_129539Fields, dst:number=255) : PGN_129539 => {
+export const new129539 = (fields: PGN_129539Fields, dst:number=255) : PGN_129539 => {
   return {
     ...PGN_129539Defaults,
     dst,
@@ -11021,7 +11057,7 @@ export const PGN_129540Defaults = {
 /**
  * @category PGN_129540
  */
-export const newPGN_129540 = (fields: PGN_129540Fields, dst:number=255) : PGN_129540 => {
+export const new129540 = (fields: PGN_129540Fields, dst:number=255) : PGN_129540 => {
   return {
     ...PGN_129540Defaults,
     dst,
@@ -11073,7 +11109,7 @@ export const PGN_129541Defaults = {
 /**
  * @category PGN_129541
  */
-export const newPGN_129541 = (fields: PGN_129541Fields, dst:number=255) : PGN_129541 => {
+export const new129541 = (fields: PGN_129541Fields, dst:number=255) : PGN_129541 => {
   return {
     ...PGN_129541Defaults,
     dst,
@@ -11119,7 +11155,7 @@ export const PGN_129542Defaults = {
 /**
  * @category PGN_129542
  */
-export const newPGN_129542 = (fields: PGN_129542Fields, dst:number=255) : PGN_129542 => {
+export const new129542 = (fields: PGN_129542Fields, dst:number=255) : PGN_129542 => {
   return {
     ...PGN_129542Defaults,
     dst,
@@ -11167,7 +11203,7 @@ export const PGN_129545Defaults = {
 /**
  * @category PGN_129545
  */
-export const newPGN_129545 = (fields: PGN_129545Fields, dst:number=255) : PGN_129545 => {
+export const new129545 = (fields: PGN_129545Fields, dst:number=255) : PGN_129545 => {
   return {
     ...PGN_129545Defaults,
     dst,
@@ -11210,7 +11246,7 @@ export const PGN_129546Defaults = {
 /**
  * @category PGN_129546
  */
-export const newPGN_129546 = (fields: PGN_129546Fields, dst:number=255) : PGN_129546 => {
+export const new129546 = (fields: PGN_129546Fields, dst:number=255) : PGN_129546 => {
   return {
     ...PGN_129546Defaults,
     dst,
@@ -11256,7 +11292,7 @@ export const PGN_129547Defaults = {
 /**
  * @category PGN_129547
  */
-export const newPGN_129547 = (fields: PGN_129547Fields, dst:number=255) : PGN_129547 => {
+export const new129547 = (fields: PGN_129547Fields, dst:number=255) : PGN_129547 => {
   return {
     ...PGN_129547Defaults,
     dst,
@@ -11305,7 +11341,7 @@ export const PGN_129549Defaults = {
 /**
  * @category PGN_129549
  */
-export const newPGN_129549 = (fields: PGN_129549Fields, dst:number=255) : PGN_129549 => {
+export const new129549 = (fields: PGN_129549Fields, dst:number=255) : PGN_129549 => {
   return {
     ...PGN_129549Defaults,
     dst,
@@ -11350,7 +11386,7 @@ export const PGN_129550Defaults = {
 /**
  * @category PGN_129550
  */
-export const newPGN_129550 = (fields: PGN_129550Fields, dst:number=255) : PGN_129550 => {
+export const new129550 = (fields: PGN_129550Fields, dst:number=255) : PGN_129550 => {
   return {
     ...PGN_129550Defaults,
     dst,
@@ -11402,7 +11438,7 @@ export const PGN_129551Defaults = {
 /**
  * @category PGN_129551
  */
-export const newPGN_129551 = (fields: PGN_129551Fields, dst:number=255) : PGN_129551 => {
+export const new129551 = (fields: PGN_129551Fields, dst:number=255) : PGN_129551 => {
   return {
     ...PGN_129551Defaults,
     dst,
@@ -11456,7 +11492,7 @@ export const PGN_129556Defaults = {
 /**
  * @category PGN_129556
  */
-export const newPGN_129556 = (fields: PGN_129556Fields, dst:number=255) : PGN_129556 => {
+export const new129556 = (fields: PGN_129556Fields, dst:number=255) : PGN_129556 => {
   return {
     ...PGN_129556Defaults,
     dst,
@@ -11506,7 +11542,7 @@ export const PGN_129792Defaults = {
 /**
  * @category PGN_129792
  */
-export const newPGN_129792 = (fields: PGN_129792Fields, dst:number=255) : PGN_129792 => {
+export const new129792 = (fields: PGN_129792Fields, dst:number=255) : PGN_129792 => {
   return {
     ...PGN_129792Defaults,
     dst,
@@ -11558,7 +11594,7 @@ export const PGN_129793Defaults = {
 /**
  * @category PGN_129793
  */
-export const newPGN_129793 = (fields: PGN_129793Fields, dst:number=255) : PGN_129793 => {
+export const new129793 = (fields: PGN_129793Fields, dst:number=255) : PGN_129793 => {
   return {
     ...PGN_129793Defaults,
     dst,
@@ -11617,7 +11653,7 @@ export const PGN_129794Defaults = {
 /**
  * @category PGN_129794
  */
-export const newPGN_129794 = (fields: PGN_129794Fields, dst:number=255) : PGN_129794 => {
+export const new129794 = (fields: PGN_129794Fields, dst:number=255) : PGN_129794 => {
   return {
     ...PGN_129794Defaults,
     dst,
@@ -11667,7 +11703,7 @@ export const PGN_129795Defaults = {
 /**
  * @category PGN_129795
  */
-export const newPGN_129795 = (fields: PGN_129795Fields, dst:number=255) : PGN_129795 => {
+export const new129795 = (fields: PGN_129795Fields, dst:number=255) : PGN_129795 => {
   return {
     ...PGN_129795Defaults,
     dst,
@@ -11716,7 +11752,7 @@ export const PGN_129796Defaults = {
 /**
  * @category PGN_129796
  */
-export const newPGN_129796 = (fields: PGN_129796Fields, dst:number=255) : PGN_129796 => {
+export const new129796 = (fields: PGN_129796Fields, dst:number=255) : PGN_129796 => {
   return {
     ...PGN_129796Defaults,
     dst,
@@ -11762,7 +11798,7 @@ export const PGN_129797Defaults = {
 /**
  * @category PGN_129797
  */
-export const newPGN_129797 = (fields: PGN_129797Fields, dst:number=255) : PGN_129797 => {
+export const new129797 = (fields: PGN_129797Fields, dst:number=255) : PGN_129797 => {
   return {
     ...PGN_129797Defaults,
     dst,
@@ -11817,7 +11853,7 @@ export const PGN_129798Defaults = {
 /**
  * @category PGN_129798
  */
-export const newPGN_129798 = (fields: PGN_129798Fields, dst:number=255) : PGN_129798 => {
+export const new129798 = (fields: PGN_129798Fields, dst:number=255) : PGN_129798 => {
   return {
     ...PGN_129798Defaults,
     dst,
@@ -11863,7 +11899,7 @@ export const PGN_129799Defaults = {
 /**
  * @category PGN_129799
  */
-export const newPGN_129799 = (fields: PGN_129799Fields, dst:number=255) : PGN_129799 => {
+export const new129799 = (fields: PGN_129799Fields, dst:number=255) : PGN_129799 => {
   return {
     ...PGN_129799Defaults,
     dst,
@@ -11908,7 +11944,7 @@ export const PGN_129800Defaults = {
 /**
  * @category PGN_129800
  */
-export const newPGN_129800 = (fields: PGN_129800Fields, dst:number=255) : PGN_129800 => {
+export const new129800 = (fields: PGN_129800Fields, dst:number=255) : PGN_129800 => {
   return {
     ...PGN_129800Defaults,
     dst,
@@ -11957,7 +11993,7 @@ export const PGN_129801Defaults = {
 /**
  * @category PGN_129801
  */
-export const newPGN_129801 = (fields: PGN_129801Fields, dst:number=255) : PGN_129801 => {
+export const new129801 = (fields: PGN_129801Fields, dst:number=255) : PGN_129801 => {
   return {
     ...PGN_129801Defaults,
     dst,
@@ -12002,7 +12038,7 @@ export const PGN_129802Defaults = {
 /**
  * @category PGN_129802
  */
-export const newPGN_129802 = (fields: PGN_129802Fields, dst:number=255) : PGN_129802 => {
+export const new129802 = (fields: PGN_129802Fields, dst:number=255) : PGN_129802 => {
   return {
     ...PGN_129802Defaults,
     dst,
@@ -12062,7 +12098,7 @@ export const PGN_129803Defaults = {
 /**
  * @category PGN_129803
  */
-export const newPGN_129803 = (fields: PGN_129803Fields, dst:number=255) : PGN_129803 => {
+export const new129803 = (fields: PGN_129803Fields, dst:number=255) : PGN_129803 => {
   return {
     ...PGN_129803Defaults,
     dst,
@@ -12114,7 +12150,7 @@ export const PGN_129804Defaults = {
 /**
  * @category PGN_129804
  */
-export const newPGN_129804 = (fields: PGN_129804Fields, dst:number=255) : PGN_129804 => {
+export const new129804 = (fields: PGN_129804Fields, dst:number=255) : PGN_129804 => {
   return {
     ...PGN_129804Defaults,
     dst,
@@ -12164,7 +12200,7 @@ export const PGN_129805Defaults = {
 /**
  * @category PGN_129805
  */
-export const newPGN_129805 = (fields: PGN_129805Fields, dst:number=255) : PGN_129805 => {
+export const new129805 = (fields: PGN_129805Fields, dst:number=255) : PGN_129805 => {
   return {
     ...PGN_129805Defaults,
     dst,
@@ -12225,7 +12261,7 @@ export const PGN_129806Defaults = {
 /**
  * @category PGN_129806
  */
-export const newPGN_129806 = (fields: PGN_129806Fields, dst:number=255) : PGN_129806 => {
+export const new129806 = (fields: PGN_129806Fields, dst:number=255) : PGN_129806 => {
   return {
     ...PGN_129806Defaults,
     dst,
@@ -12282,7 +12318,7 @@ export const PGN_129807Defaults = {
 /**
  * @category PGN_129807
  */
-export const newPGN_129807 = (fields: PGN_129807Fields, dst:number=255) : PGN_129807 => {
+export const new129807 = (fields: PGN_129807Fields, dst:number=255) : PGN_129807 => {
   return {
     ...PGN_129807Defaults,
     dst,
@@ -12382,7 +12418,7 @@ export interface PGN_129808_DscDistressCallInformationCreateArgs {
 /**
  * @category PGN_129808_DscDistressCallInformation
  */
-export const newPGN_129808_DscDistressCallInformation = (fields: PGN_129808_DscDistressCallInformationCreateArgs, dst:number=255) : PGN_129808_DscDistressCallInformation => {
+export const new129808_DscDistressCallInformation = (fields: PGN_129808_DscDistressCallInformationCreateArgs, dst:number=255) : PGN_129808_DscDistressCallInformation => {
   return {
     ...PGN_129808_DscDistressCallInformationDefaults,
     dst,
@@ -12446,7 +12482,7 @@ export const PGN_129808Defaults = {
 /**
  * @category PGN_129808
  */
-export const newPGN_129808 = (fields: PGN_129808Fields, dst:number=255) : PGN_129808 => {
+export const new129808 = (fields: PGN_129808Fields, dst:number=255) : PGN_129808 => {
   return {
     ...PGN_129808Defaults,
     dst,
@@ -12491,7 +12527,7 @@ export const PGN_129809Defaults = {
 /**
  * @category PGN_129809
  */
-export const newPGN_129809 = (fields: PGN_129809Fields, dst:number=255) : PGN_129809 => {
+export const new129809 = (fields: PGN_129809Fields, dst:number=255) : PGN_129809 => {
   return {
     ...PGN_129809Defaults,
     dst,
@@ -12546,7 +12582,7 @@ export const PGN_129810Defaults = {
 /**
  * @category PGN_129810
  */
-export const newPGN_129810 = (fields: PGN_129810Fields, dst:number=255) : PGN_129810 => {
+export const new129810 = (fields: PGN_129810Fields, dst:number=255) : PGN_129810 => {
   return {
     ...PGN_129810Defaults,
     dst,
@@ -12599,7 +12635,7 @@ export const PGN_130052Defaults = {
 /**
  * @category PGN_130052
  */
-export const newPGN_130052 = (fields: PGN_130052Fields, dst:number=255) : PGN_130052 => {
+export const new130052 = (fields: PGN_130052Fields, dst:number=255) : PGN_130052 => {
   return {
     ...PGN_130052Defaults,
     dst,
@@ -12652,7 +12688,7 @@ export const PGN_130053Defaults = {
 /**
  * @category PGN_130053
  */
-export const newPGN_130053 = (fields: PGN_130053Fields, dst:number=255) : PGN_130053 => {
+export const new130053 = (fields: PGN_130053Fields, dst:number=255) : PGN_130053 => {
   return {
     ...PGN_130053Defaults,
     dst,
@@ -12695,7 +12731,7 @@ export const PGN_130054Defaults = {
 /**
  * @category PGN_130054
  */
-export const newPGN_130054 = (fields: PGN_130054Fields, dst:number=255) : PGN_130054 => {
+export const new130054 = (fields: PGN_130054Fields, dst:number=255) : PGN_130054 => {
   return {
     ...PGN_130054Defaults,
     dst,
@@ -12741,7 +12777,7 @@ export const PGN_130060Defaults = {
 /**
  * @category PGN_130060
  */
-export const newPGN_130060 = (fields: PGN_130060Fields, dst:number=255) : PGN_130060 => {
+export const new130060 = (fields: PGN_130060Fields, dst:number=255) : PGN_130060 => {
   return {
     ...PGN_130060Defaults,
     dst,
@@ -12790,7 +12826,7 @@ export const PGN_130061Defaults = {
 /**
  * @category PGN_130061
  */
-export const newPGN_130061 = (fields: PGN_130061Fields, dst:number=255) : PGN_130061 => {
+export const new130061 = (fields: PGN_130061Fields, dst:number=255) : PGN_130061 => {
   return {
     ...PGN_130061Defaults,
     dst,
@@ -12842,7 +12878,7 @@ export const PGN_130064Defaults = {
 /**
  * @category PGN_130064
  */
-export const newPGN_130064 = (fields: PGN_130064Fields, dst:number=255) : PGN_130064 => {
+export const new130064 = (fields: PGN_130064Fields, dst:number=255) : PGN_130064 => {
   return {
     ...PGN_130064Defaults,
     dst,
@@ -12891,7 +12927,7 @@ export const PGN_130065Defaults = {
 /**
  * @category PGN_130065
  */
-export const newPGN_130065 = (fields: PGN_130065Fields, dst:number=255) : PGN_130065 => {
+export const new130065 = (fields: PGN_130065Fields, dst:number=255) : PGN_130065 => {
   return {
     ...PGN_130065Defaults,
     dst,
@@ -12941,7 +12977,7 @@ export const PGN_130066Defaults = {
 /**
  * @category PGN_130066
  */
-export const newPGN_130066 = (fields: PGN_130066Fields, dst:number=255) : PGN_130066 => {
+export const new130066 = (fields: PGN_130066Fields, dst:number=255) : PGN_130066 => {
   return {
     ...PGN_130066Defaults,
     dst,
@@ -12990,7 +13026,7 @@ export const PGN_130067Defaults = {
 /**
  * @category PGN_130067
  */
-export const newPGN_130067 = (fields: PGN_130067Fields, dst:number=255) : PGN_130067 => {
+export const new130067 = (fields: PGN_130067Fields, dst:number=255) : PGN_130067 => {
   return {
     ...PGN_130067Defaults,
     dst,
@@ -13037,7 +13073,7 @@ export const PGN_130068Defaults = {
 /**
  * @category PGN_130068
  */
-export const newPGN_130068 = (fields: PGN_130068Fields, dst:number=255) : PGN_130068 => {
+export const new130068 = (fields: PGN_130068Fields, dst:number=255) : PGN_130068 => {
   return {
     ...PGN_130068Defaults,
     dst,
@@ -13086,7 +13122,7 @@ export const PGN_130069Defaults = {
 /**
  * @category PGN_130069
  */
-export const newPGN_130069 = (fields: PGN_130069Fields, dst:number=255) : PGN_130069 => {
+export const new130069 = (fields: PGN_130069Fields, dst:number=255) : PGN_130069 => {
   return {
     ...PGN_130069Defaults,
     dst,
@@ -13133,7 +13169,7 @@ export const PGN_130070Defaults = {
 /**
  * @category PGN_130070
  */
-export const newPGN_130070 = (fields: PGN_130070Fields, dst:number=255) : PGN_130070 => {
+export const new130070 = (fields: PGN_130070Fields, dst:number=255) : PGN_130070 => {
   return {
     ...PGN_130070Defaults,
     dst,
@@ -13179,7 +13215,7 @@ export const PGN_130071Defaults = {
 /**
  * @category PGN_130071
  */
-export const newPGN_130071 = (fields: PGN_130071Fields, dst:number=255) : PGN_130071 => {
+export const new130071 = (fields: PGN_130071Fields, dst:number=255) : PGN_130071 => {
   return {
     ...PGN_130071Defaults,
     dst,
@@ -13224,7 +13260,7 @@ export const PGN_130072Defaults = {
 /**
  * @category PGN_130072
  */
-export const newPGN_130072 = (fields: PGN_130072Fields, dst:number=255) : PGN_130072 => {
+export const new130072 = (fields: PGN_130072Fields, dst:number=255) : PGN_130072 => {
   return {
     ...PGN_130072Defaults,
     dst,
@@ -13271,7 +13307,7 @@ export const PGN_130073Defaults = {
 /**
  * @category PGN_130073
  */
-export const newPGN_130073 = (fields: PGN_130073Fields, dst:number=255) : PGN_130073 => {
+export const new130073 = (fields: PGN_130073Fields, dst:number=255) : PGN_130073 => {
   return {
     ...PGN_130073Defaults,
     dst,
@@ -13320,7 +13356,7 @@ export const PGN_130074Defaults = {
 /**
  * @category PGN_130074
  */
-export const newPGN_130074 = (fields: PGN_130074Fields, dst:number=255) : PGN_130074 => {
+export const new130074 = (fields: PGN_130074Fields, dst:number=255) : PGN_130074 => {
   return {
     ...PGN_130074Defaults,
     dst,
@@ -13363,7 +13399,7 @@ export const PGN_130306Defaults = {
 /**
  * @category PGN_130306
  */
-export const newPGN_130306 = (fields: PGN_130306Fields, dst:number=255) : PGN_130306 => {
+export const new130306 = (fields: PGN_130306Fields, dst:number=255) : PGN_130306 => {
   return {
     ...PGN_130306Defaults,
     dst,
@@ -13408,7 +13444,7 @@ export const PGN_130310Defaults = {
 /**
  * @category PGN_130310
  */
-export const newPGN_130310 = (fields: PGN_130310Fields, dst:number=255) : PGN_130310 => {
+export const new130310 = (fields: PGN_130310Fields, dst:number=255) : PGN_130310 => {
   return {
     ...PGN_130310Defaults,
     dst,
@@ -13454,7 +13490,7 @@ export const PGN_130311Defaults = {
 /**
  * @category PGN_130311
  */
-export const newPGN_130311 = (fields: PGN_130311Fields, dst:number=255) : PGN_130311 => {
+export const new130311 = (fields: PGN_130311Fields, dst:number=255) : PGN_130311 => {
   return {
     ...PGN_130311Defaults,
     dst,
@@ -13498,7 +13534,7 @@ export const PGN_130312Defaults = {
 /**
  * @category PGN_130312
  */
-export const newPGN_130312 = (fields: PGN_130312Fields, dst:number=255) : PGN_130312 => {
+export const new130312 = (fields: PGN_130312Fields, dst:number=255) : PGN_130312 => {
   return {
     ...PGN_130312Defaults,
     dst,
@@ -13542,7 +13578,7 @@ export const PGN_130313Defaults = {
 /**
  * @category PGN_130313
  */
-export const newPGN_130313 = (fields: PGN_130313Fields, dst:number=255) : PGN_130313 => {
+export const new130313 = (fields: PGN_130313Fields, dst:number=255) : PGN_130313 => {
   return {
     ...PGN_130313Defaults,
     dst,
@@ -13585,7 +13621,7 @@ export const PGN_130314Defaults = {
 /**
  * @category PGN_130314
  */
-export const newPGN_130314 = (fields: PGN_130314Fields, dst:number=255) : PGN_130314 => {
+export const new130314 = (fields: PGN_130314Fields, dst:number=255) : PGN_130314 => {
   return {
     ...PGN_130314Defaults,
     dst,
@@ -13628,7 +13664,7 @@ export const PGN_130315Defaults = {
 /**
  * @category PGN_130315
  */
-export const newPGN_130315 = (fields: PGN_130315Fields, dst:number=255) : PGN_130315 => {
+export const new130315 = (fields: PGN_130315Fields, dst:number=255) : PGN_130315 => {
   return {
     ...PGN_130315Defaults,
     dst,
@@ -13671,7 +13707,7 @@ export const PGN_130316Defaults = {
 /**
  * @category PGN_130316
  */
-export const newPGN_130316 = (fields: PGN_130316Fields, dst:number=255) : PGN_130316 => {
+export const new130316 = (fields: PGN_130316Fields, dst:number=255) : PGN_130316 => {
   return {
     ...PGN_130316Defaults,
     dst,
@@ -13720,7 +13756,7 @@ export const PGN_130320Defaults = {
 /**
  * @category PGN_130320
  */
-export const newPGN_130320 = (fields: PGN_130320Fields, dst:number=255) : PGN_130320 => {
+export const new130320 = (fields: PGN_130320Fields, dst:number=255) : PGN_130320 => {
   return {
     ...PGN_130320Defaults,
     dst,
@@ -13768,7 +13804,7 @@ export const PGN_130321Defaults = {
 /**
  * @category PGN_130321
  */
-export const newPGN_130321 = (fields: PGN_130321Fields, dst:number=255) : PGN_130321 => {
+export const new130321 = (fields: PGN_130321Fields, dst:number=255) : PGN_130321 => {
   return {
     ...PGN_130321Defaults,
     dst,
@@ -13819,7 +13855,7 @@ export const PGN_130322Defaults = {
 /**
  * @category PGN_130322
  */
-export const newPGN_130322 = (fields: PGN_130322Fields, dst:number=255) : PGN_130322 => {
+export const new130322 = (fields: PGN_130322Fields, dst:number=255) : PGN_130322 => {
   return {
     ...PGN_130322Defaults,
     dst,
@@ -13872,7 +13908,7 @@ export const PGN_130323Defaults = {
 /**
  * @category PGN_130323
  */
-export const newPGN_130323 = (fields: PGN_130323Fields, dst:number=255) : PGN_130323 => {
+export const new130323 = (fields: PGN_130323Fields, dst:number=255) : PGN_130323 => {
   return {
     ...PGN_130323Defaults,
     dst,
@@ -13928,7 +13964,7 @@ export const PGN_130324Defaults = {
 /**
  * @category PGN_130324
  */
-export const newPGN_130324 = (fields: PGN_130324Fields, dst:number=255) : PGN_130324 => {
+export const new130324 = (fields: PGN_130324Fields, dst:number=255) : PGN_130324 => {
   return {
     ...PGN_130324Defaults,
     dst,
@@ -13980,7 +14016,7 @@ export const PGN_130330Defaults = {
 /**
  * @category PGN_130330
  */
-export const newPGN_130330 = (fields: PGN_130330Fields, dst:number=255) : PGN_130330 => {
+export const new130330 = (fields: PGN_130330Fields, dst:number=255) : PGN_130330 => {
   return {
     ...PGN_130330Defaults,
     dst,
@@ -14024,7 +14060,7 @@ export const PGN_130560Defaults = {
 /**
  * @category PGN_130560
  */
-export const newPGN_130560 = (fields: PGN_130560Fields, dst:number=255) : PGN_130560 => {
+export const new130560 = (fields: PGN_130560Fields, dst:number=255) : PGN_130560 => {
   return {
     ...PGN_130560Defaults,
     dst,
@@ -14078,7 +14114,7 @@ export const PGN_130561Defaults = {
 /**
  * @category PGN_130561
  */
-export const newPGN_130561 = (fields: PGN_130561Fields, dst:number=255) : PGN_130561 => {
+export const new130561 = (fields: PGN_130561Fields, dst:number=255) : PGN_130561 => {
   return {
     ...PGN_130561Defaults,
     dst,
@@ -14132,7 +14168,7 @@ export const PGN_130562Defaults = {
 /**
  * @category PGN_130562
  */
-export const newPGN_130562 = (fields: PGN_130562Fields, dst:number=255) : PGN_130562 => {
+export const new130562 = (fields: PGN_130562Fields, dst:number=255) : PGN_130562 => {
   return {
     ...PGN_130562Defaults,
     dst,
@@ -14190,7 +14226,7 @@ export const PGN_130563Defaults = {
 /**
  * @category PGN_130563
  */
-export const newPGN_130563 = (fields: PGN_130563Fields, dst:number=255) : PGN_130563 => {
+export const new130563 = (fields: PGN_130563Fields, dst:number=255) : PGN_130563 => {
   return {
     ...PGN_130563Defaults,
     dst,
@@ -14237,7 +14273,7 @@ export const PGN_130564Defaults = {
 /**
  * @category PGN_130564
  */
-export const newPGN_130564 = (fields: PGN_130564Fields, dst:number=255) : PGN_130564 => {
+export const new130564 = (fields: PGN_130564Fields, dst:number=255) : PGN_130564 => {
   return {
     ...PGN_130564Defaults,
     dst,
@@ -14287,7 +14323,7 @@ export const PGN_130565Defaults = {
 /**
  * @category PGN_130565
  */
-export const newPGN_130565 = (fields: PGN_130565Fields, dst:number=255) : PGN_130565 => {
+export const new130565 = (fields: PGN_130565Fields, dst:number=255) : PGN_130565 => {
   return {
     ...PGN_130565Defaults,
     dst,
@@ -14332,7 +14368,7 @@ export const PGN_130566Defaults = {
 /**
  * @category PGN_130566
  */
-export const newPGN_130566 = (fields: PGN_130566Fields, dst:number=255) : PGN_130566 => {
+export const new130566 = (fields: PGN_130566Fields, dst:number=255) : PGN_130566 => {
   return {
     ...PGN_130566Defaults,
     dst,
@@ -14393,7 +14429,7 @@ export const PGN_130567Defaults = {
 /**
  * @category PGN_130567
  */
-export const newPGN_130567 = (fields: PGN_130567Fields, dst:number=255) : PGN_130567 => {
+export const new130567 = (fields: PGN_130567Fields, dst:number=255) : PGN_130567 => {
   return {
     ...PGN_130567Defaults,
     dst,
@@ -14448,7 +14484,7 @@ export const PGN_130569Defaults = {
 /**
  * @category PGN_130569
  */
-export const newPGN_130569 = (fields: PGN_130569Fields, dst:number=255) : PGN_130569 => {
+export const new130569 = (fields: PGN_130569Fields, dst:number=255) : PGN_130569 => {
   return {
     ...PGN_130569Defaults,
     dst,
@@ -14503,7 +14539,7 @@ export const PGN_130570Defaults = {
 /**
  * @category PGN_130570
  */
-export const newPGN_130570 = (fields: PGN_130570Fields, dst:number=255) : PGN_130570 => {
+export const new130570 = (fields: PGN_130570Fields, dst:number=255) : PGN_130570 => {
   return {
     ...PGN_130570Defaults,
     dst,
@@ -14555,7 +14591,7 @@ export const PGN_130571Defaults = {
 /**
  * @category PGN_130571
  */
-export const newPGN_130571 = (fields: PGN_130571Fields, dst:number=255) : PGN_130571 => {
+export const new130571 = (fields: PGN_130571Fields, dst:number=255) : PGN_130571 => {
   return {
     ...PGN_130571Defaults,
     dst,
@@ -14602,7 +14638,7 @@ export const PGN_130572Defaults = {
 /**
  * @category PGN_130572
  */
-export const newPGN_130572 = (fields: PGN_130572Fields, dst:number=255) : PGN_130572 => {
+export const new130572 = (fields: PGN_130572Fields, dst:number=255) : PGN_130572 => {
   return {
     ...PGN_130572Defaults,
     dst,
@@ -14655,7 +14691,7 @@ export const PGN_130573Defaults = {
 /**
  * @category PGN_130573
  */
-export const newPGN_130573 = (fields: PGN_130573Fields, dst:number=255) : PGN_130573 => {
+export const new130573 = (fields: PGN_130573Fields, dst:number=255) : PGN_130573 => {
   return {
     ...PGN_130573Defaults,
     dst,
@@ -14700,7 +14736,7 @@ export const PGN_130574Defaults = {
 /**
  * @category PGN_130574
  */
-export const newPGN_130574 = (fields: PGN_130574Fields, dst:number=255) : PGN_130574 => {
+export const new130574 = (fields: PGN_130574Fields, dst:number=255) : PGN_130574 => {
   return {
     ...PGN_130574Defaults,
     dst,
@@ -14741,7 +14777,7 @@ export const PGN_130576Defaults = {
 /**
  * @category PGN_130576
  */
-export const newPGN_130576 = (fields: PGN_130576Fields, dst:number=255) : PGN_130576 => {
+export const new130576 = (fields: PGN_130576Fields, dst:number=255) : PGN_130576 => {
   return {
     ...PGN_130576Defaults,
     dst,
@@ -14789,7 +14825,7 @@ export const PGN_130577Defaults = {
 /**
  * @category PGN_130577
  */
-export const newPGN_130577 = (fields: PGN_130577Fields, dst:number=255) : PGN_130577 => {
+export const new130577 = (fields: PGN_130577Fields, dst:number=255) : PGN_130577 => {
   return {
     ...PGN_130577Defaults,
     dst,
@@ -14833,7 +14869,7 @@ export const PGN_130578Defaults = {
 /**
  * @category PGN_130578
  */
-export const newPGN_130578 = (fields: PGN_130578Fields, dst:number=255) : PGN_130578 => {
+export const new130578 = (fields: PGN_130578Fields, dst:number=255) : PGN_130578 => {
   return {
     ...PGN_130578Defaults,
     dst,
@@ -14877,7 +14913,7 @@ export const PGN_130579Defaults = {
 /**
  * @category PGN_130579
  */
-export const newPGN_130579 = (fields: PGN_130579Fields, dst:number=255) : PGN_130579 => {
+export const new130579 = (fields: PGN_130579Fields, dst:number=255) : PGN_130579 => {
   return {
     ...PGN_130579Defaults,
     dst,
@@ -14919,7 +14955,7 @@ export const PGN_130580Defaults = {
 /**
  * @category PGN_130580
  */
-export const newPGN_130580 = (fields: PGN_130580Fields, dst:number=255) : PGN_130580 => {
+export const new130580 = (fields: PGN_130580Fields, dst:number=255) : PGN_130580 => {
   return {
     ...PGN_130580Defaults,
     dst,
@@ -14964,7 +15000,7 @@ export const PGN_130581Defaults = {
 /**
  * @category PGN_130581
  */
-export const newPGN_130581 = (fields: PGN_130581Fields, dst:number=255) : PGN_130581 => {
+export const new130581 = (fields: PGN_130581Fields, dst:number=255) : PGN_130581 => {
   return {
     ...PGN_130581Defaults,
     dst,
@@ -15009,7 +15045,7 @@ export const PGN_130582Defaults = {
 /**
  * @category PGN_130582
  */
-export const newPGN_130582 = (fields: PGN_130582Fields, dst:number=255) : PGN_130582 => {
+export const new130582 = (fields: PGN_130582Fields, dst:number=255) : PGN_130582 => {
   return {
     ...PGN_130582Defaults,
     dst,
@@ -15054,7 +15090,7 @@ export const PGN_130583Defaults = {
 /**
  * @category PGN_130583
  */
-export const newPGN_130583 = (fields: PGN_130583Fields, dst:number=255) : PGN_130583 => {
+export const new130583 = (fields: PGN_130583Fields, dst:number=255) : PGN_130583 => {
   return {
     ...PGN_130583Defaults,
     dst,
@@ -15101,7 +15137,7 @@ export const PGN_130584Defaults = {
 /**
  * @category PGN_130584
  */
-export const newPGN_130584 = (fields: PGN_130584Fields, dst:number=255) : PGN_130584 => {
+export const new130584 = (fields: PGN_130584Fields, dst:number=255) : PGN_130584 => {
   return {
     ...PGN_130584Defaults,
     dst,
@@ -15144,7 +15180,7 @@ export const PGN_130585Defaults = {
 /**
  * @category PGN_130585
  */
-export const newPGN_130585 = (fields: PGN_130585Fields, dst:number=255) : PGN_130585 => {
+export const new130585 = (fields: PGN_130585Fields, dst:number=255) : PGN_130585 => {
   return {
     ...PGN_130585Defaults,
     dst,
@@ -15195,7 +15231,7 @@ export const PGN_130586Defaults = {
 /**
  * @category PGN_130586
  */
-export const newPGN_130586 = (fields: PGN_130586Fields, dst:number=255) : PGN_130586 => {
+export const new130586 = (fields: PGN_130586Fields, dst:number=255) : PGN_130586 => {
   return {
     ...PGN_130586Defaults,
     dst,
@@ -15265,7 +15301,7 @@ export interface PGN_130816_SonichubInit2CreateArgs {
 /**
  * @category PGN_130816_SonichubInit2
  */
-export const newPGN_130816_SonichubInit2 = (fields: PGN_130816_SonichubInit2CreateArgs, dst:number=255) : PGN_130816_SonichubInit2 => {
+export const new130816_SonichubInit2 = (fields: PGN_130816_SonichubInit2CreateArgs, dst:number=255) : PGN_130816_SonichubInit2 => {
   return {
     ...PGN_130816_SonichubInit2Defaults,
     dst,
@@ -15344,7 +15380,7 @@ export interface PGN_130816_SonichubAmRadioCreateArgs {
 /**
  * @category PGN_130816_SonichubAmRadio
  */
-export const newPGN_130816_SonichubAmRadio = (fields: PGN_130816_SonichubAmRadioCreateArgs, dst:number=255) : PGN_130816_SonichubAmRadio => {
+export const new130816_SonichubAmRadio = (fields: PGN_130816_SonichubAmRadioCreateArgs, dst:number=255) : PGN_130816_SonichubAmRadio => {
   return {
     ...PGN_130816_SonichubAmRadioDefaults,
     dst,
@@ -15413,7 +15449,7 @@ export interface PGN_130816_SonichubZoneInfoCreateArgs {
 /**
  * @category PGN_130816_SonichubZoneInfo
  */
-export const newPGN_130816_SonichubZoneInfo = (fields: PGN_130816_SonichubZoneInfoCreateArgs, dst:number=255) : PGN_130816_SonichubZoneInfo => {
+export const new130816_SonichubZoneInfo = (fields: PGN_130816_SonichubZoneInfoCreateArgs, dst:number=255) : PGN_130816_SonichubZoneInfo => {
   return {
     ...PGN_130816_SonichubZoneInfoDefaults,
     dst,
@@ -15482,7 +15518,7 @@ export interface PGN_130816_SonichubSourceCreateArgs {
 /**
  * @category PGN_130816_SonichubSource
  */
-export const newPGN_130816_SonichubSource = (fields: PGN_130816_SonichubSourceCreateArgs, dst:number=255) : PGN_130816_SonichubSource => {
+export const new130816_SonichubSource = (fields: PGN_130816_SonichubSourceCreateArgs, dst:number=255) : PGN_130816_SonichubSource => {
   return {
     ...PGN_130816_SonichubSourceDefaults,
     dst,
@@ -15555,7 +15591,7 @@ export interface PGN_130816_SonichubSourceListCreateArgs {
 /**
  * @category PGN_130816_SonichubSourceList
  */
-export const newPGN_130816_SonichubSourceList = (fields: PGN_130816_SonichubSourceListCreateArgs, dst:number=255) : PGN_130816_SonichubSourceList => {
+export const new130816_SonichubSourceList = (fields: PGN_130816_SonichubSourceListCreateArgs, dst:number=255) : PGN_130816_SonichubSourceList => {
   return {
     ...PGN_130816_SonichubSourceListDefaults,
     dst,
@@ -15624,7 +15660,7 @@ export interface PGN_130816_SonichubControlCreateArgs {
 /**
  * @category PGN_130816_SonichubControl
  */
-export const newPGN_130816_SonichubControl = (fields: PGN_130816_SonichubControlCreateArgs, dst:number=255) : PGN_130816_SonichubControl => {
+export const new130816_SonichubControl = (fields: PGN_130816_SonichubControlCreateArgs, dst:number=255) : PGN_130816_SonichubControl => {
   return {
     ...PGN_130816_SonichubControlDefaults,
     dst,
@@ -15703,7 +15739,7 @@ export interface PGN_130816_SonichubFmRadioCreateArgs {
 /**
  * @category PGN_130816_SonichubFmRadio
  */
-export const newPGN_130816_SonichubFmRadio = (fields: PGN_130816_SonichubFmRadioCreateArgs, dst:number=255) : PGN_130816_SonichubFmRadio => {
+export const new130816_SonichubFmRadio = (fields: PGN_130816_SonichubFmRadioCreateArgs, dst:number=255) : PGN_130816_SonichubFmRadio => {
   return {
     ...PGN_130816_SonichubFmRadioDefaults,
     dst,
@@ -15782,7 +15818,7 @@ export interface PGN_130816_SonichubPlaylistCreateArgs {
 /**
  * @category PGN_130816_SonichubPlaylist
  */
-export const newPGN_130816_SonichubPlaylist = (fields: PGN_130816_SonichubPlaylistCreateArgs, dst:number=255) : PGN_130816_SonichubPlaylist => {
+export const new130816_SonichubPlaylist = (fields: PGN_130816_SonichubPlaylistCreateArgs, dst:number=255) : PGN_130816_SonichubPlaylist => {
   return {
     ...PGN_130816_SonichubPlaylistDefaults,
     dst,
@@ -15853,7 +15889,7 @@ export interface PGN_130816_SonichubTrackCreateArgs {
 /**
  * @category PGN_130816_SonichubTrack
  */
-export const newPGN_130816_SonichubTrack = (fields: PGN_130816_SonichubTrackCreateArgs, dst:number=255) : PGN_130816_SonichubTrack => {
+export const new130816_SonichubTrack = (fields: PGN_130816_SonichubTrackCreateArgs, dst:number=255) : PGN_130816_SonichubTrack => {
   return {
     ...PGN_130816_SonichubTrackDefaults,
     dst,
@@ -15924,7 +15960,7 @@ export interface PGN_130816_SonichubArtistCreateArgs {
 /**
  * @category PGN_130816_SonichubArtist
  */
-export const newPGN_130816_SonichubArtist = (fields: PGN_130816_SonichubArtistCreateArgs, dst:number=255) : PGN_130816_SonichubArtist => {
+export const new130816_SonichubArtist = (fields: PGN_130816_SonichubArtistCreateArgs, dst:number=255) : PGN_130816_SonichubArtist => {
   return {
     ...PGN_130816_SonichubArtistDefaults,
     dst,
@@ -15995,7 +16031,7 @@ export interface PGN_130816_SonichubAlbumCreateArgs {
 /**
  * @category PGN_130816_SonichubAlbum
  */
-export const newPGN_130816_SonichubAlbum = (fields: PGN_130816_SonichubAlbumCreateArgs, dst:number=255) : PGN_130816_SonichubAlbum => {
+export const new130816_SonichubAlbum = (fields: PGN_130816_SonichubAlbumCreateArgs, dst:number=255) : PGN_130816_SonichubAlbum => {
   return {
     ...PGN_130816_SonichubAlbumDefaults,
     dst,
@@ -16072,7 +16108,7 @@ export interface PGN_130816_SonichubMenuItemCreateArgs {
 /**
  * @category PGN_130816_SonichubMenuItem
  */
-export const newPGN_130816_SonichubMenuItem = (fields: PGN_130816_SonichubMenuItemCreateArgs, dst:number=255) : PGN_130816_SonichubMenuItem => {
+export const new130816_SonichubMenuItem = (fields: PGN_130816_SonichubMenuItemCreateArgs, dst:number=255) : PGN_130816_SonichubMenuItem => {
   return {
     ...PGN_130816_SonichubMenuItemDefaults,
     dst,
@@ -16141,7 +16177,7 @@ export interface PGN_130816_SonichubZonesCreateArgs {
 /**
  * @category PGN_130816_SonichubZones
  */
-export const newPGN_130816_SonichubZones = (fields: PGN_130816_SonichubZonesCreateArgs, dst:number=255) : PGN_130816_SonichubZones => {
+export const new130816_SonichubZones = (fields: PGN_130816_SonichubZonesCreateArgs, dst:number=255) : PGN_130816_SonichubZones => {
   return {
     ...PGN_130816_SonichubZonesDefaults,
     dst,
@@ -16212,7 +16248,7 @@ export interface PGN_130816_SonichubMaxVolumeCreateArgs {
 /**
  * @category PGN_130816_SonichubMaxVolume
  */
-export const newPGN_130816_SonichubMaxVolume = (fields: PGN_130816_SonichubMaxVolumeCreateArgs, dst:number=255) : PGN_130816_SonichubMaxVolume => {
+export const new130816_SonichubMaxVolume = (fields: PGN_130816_SonichubMaxVolumeCreateArgs, dst:number=255) : PGN_130816_SonichubMaxVolume => {
   return {
     ...PGN_130816_SonichubMaxVolumeDefaults,
     dst,
@@ -16283,7 +16319,7 @@ export interface PGN_130816_SonichubVolumeCreateArgs {
 /**
  * @category PGN_130816_SonichubVolume
  */
-export const newPGN_130816_SonichubVolume = (fields: PGN_130816_SonichubVolumeCreateArgs, dst:number=255) : PGN_130816_SonichubVolume => {
+export const new130816_SonichubVolume = (fields: PGN_130816_SonichubVolumeCreateArgs, dst:number=255) : PGN_130816_SonichubVolume => {
   return {
     ...PGN_130816_SonichubVolumeDefaults,
     dst,
@@ -16350,7 +16386,7 @@ export interface PGN_130816_SonichubInit1CreateArgs {
 /**
  * @category PGN_130816_SonichubInit1
  */
-export const newPGN_130816_SonichubInit1 = (fields: PGN_130816_SonichubInit1CreateArgs, dst:number=255) : PGN_130816_SonichubInit1 => {
+export const new130816_SonichubInit1 = (fields: PGN_130816_SonichubInit1CreateArgs, dst:number=255) : PGN_130816_SonichubInit1 => {
   return {
     ...PGN_130816_SonichubInit1Defaults,
     dst,
@@ -16419,7 +16455,7 @@ export interface PGN_130816_SonichubPositionCreateArgs {
 /**
  * @category PGN_130816_SonichubPosition
  */
-export const newPGN_130816_SonichubPosition = (fields: PGN_130816_SonichubPositionCreateArgs, dst:number=255) : PGN_130816_SonichubPosition => {
+export const new130816_SonichubPosition = (fields: PGN_130816_SonichubPositionCreateArgs, dst:number=255) : PGN_130816_SonichubPosition => {
   return {
     ...PGN_130816_SonichubPositionDefaults,
     dst,
@@ -16490,7 +16526,7 @@ export interface PGN_130816_SonichubInit3CreateArgs {
 /**
  * @category PGN_130816_SonichubInit3
  */
-export const newPGN_130816_SonichubInit3 = (fields: PGN_130816_SonichubInit3CreateArgs, dst:number=255) : PGN_130816_SonichubInit3 => {
+export const new130816_SonichubInit3 = (fields: PGN_130816_SonichubInit3CreateArgs, dst:number=255) : PGN_130816_SonichubInit3 => {
   return {
     ...PGN_130816_SonichubInit3Defaults,
     dst,
@@ -16567,7 +16603,7 @@ export interface PGN_130816_SimradTextMessageCreateArgs {
 /**
  * @category PGN_130816_SimradTextMessage
  */
-export const newPGN_130816_SimradTextMessage = (fields: PGN_130816_SimradTextMessageCreateArgs, dst:number=255) : PGN_130816_SimradTextMessage => {
+export const new130816_SimradTextMessage = (fields: PGN_130816_SimradTextMessageCreateArgs, dst:number=255) : PGN_130816_SimradTextMessage => {
   return {
     ...PGN_130816_SimradTextMessageDefaults,
     dst,
@@ -16637,7 +16673,7 @@ export interface PGN_130817_NavicoUnknownCreateArgs {
 /**
  * @category PGN_130817_NavicoUnknown
  */
-export const newPGN_130817_NavicoUnknown = (fields: PGN_130817_NavicoUnknownCreateArgs, dst:number=255) : PGN_130817_NavicoUnknown => {
+export const new130817_NavicoUnknown = (fields: PGN_130817_NavicoUnknownCreateArgs, dst:number=255) : PGN_130817_NavicoUnknown => {
   return {
     ...PGN_130817_NavicoUnknownDefaults,
     dst,
@@ -16713,7 +16749,7 @@ export interface PGN_130817_LowranceProductInformationCreateArgs {
 /**
  * @category PGN_130817_LowranceProductInformation
  */
-export const newPGN_130817_LowranceProductInformation = (fields: PGN_130817_LowranceProductInformationCreateArgs, dst:number=255) : PGN_130817_LowranceProductInformation => {
+export const new130817_LowranceProductInformation = (fields: PGN_130817_LowranceProductInformationCreateArgs, dst:number=255) : PGN_130817_LowranceProductInformation => {
   return {
     ...PGN_130817_LowranceProductInformationDefaults,
     dst,
@@ -16758,7 +16794,7 @@ export const PGN_130818Defaults = {
 /**
  * @category PGN_130818
  */
-export const newPGN_130818 = (fields: PGN_130818Fields, dst:number=255) : PGN_130818 => {
+export const new130818 = (fields: PGN_130818Fields, dst:number=255) : PGN_130818 => {
   return {
     ...PGN_130818Defaults,
     dst,
@@ -16799,7 +16835,7 @@ export const PGN_130819Defaults = {
 /**
  * @category PGN_130819
  */
-export const newPGN_130819 = (fields: PGN_130819Fields, dst:number=255) : PGN_130819 => {
+export const new130819 = (fields: PGN_130819Fields, dst:number=255) : PGN_130819 => {
   return {
     ...PGN_130819Defaults,
     dst,
@@ -16864,7 +16900,7 @@ export interface PGN_130820_SimnetReprogramStatusCreateArgs {
 /**
  * @category PGN_130820_SimnetReprogramStatus
  */
-export const newPGN_130820_SimnetReprogramStatus = (fields: PGN_130820_SimnetReprogramStatusCreateArgs, dst:number=255) : PGN_130820_SimnetReprogramStatus => {
+export const new130820_SimnetReprogramStatus = (fields: PGN_130820_SimnetReprogramStatusCreateArgs, dst:number=255) : PGN_130820_SimnetReprogramStatus => {
   return {
     ...PGN_130820_SimnetReprogramStatusDefaults,
     dst,
@@ -16934,7 +16970,7 @@ export interface PGN_130820_FurunoUnknown130820CreateArgs {
 /**
  * @category PGN_130820_FurunoUnknown130820
  */
-export const newPGN_130820_FurunoUnknown130820 = (fields: PGN_130820_FurunoUnknown130820CreateArgs, dst:number=255) : PGN_130820_FurunoUnknown130820 => {
+export const new130820_FurunoUnknown130820 = (fields: PGN_130820_FurunoUnknown130820CreateArgs, dst:number=255) : PGN_130820_FurunoUnknown130820 => {
   return {
     ...PGN_130820_FurunoUnknown130820Defaults,
     dst,
@@ -17007,7 +17043,7 @@ export interface PGN_130820_FusionVersionsCreateArgs {
 /**
  * @category PGN_130820_FusionVersions
  */
-export const newPGN_130820_FusionVersions = (fields: PGN_130820_FusionVersionsCreateArgs, dst:number=255) : PGN_130820_FusionVersions => {
+export const new130820_FusionVersions = (fields: PGN_130820_FusionVersionsCreateArgs, dst:number=255) : PGN_130820_FusionVersions => {
   return {
     ...PGN_130820_FusionVersionsDefaults,
     dst,
@@ -17080,7 +17116,7 @@ export interface PGN_130820_FusionSourceCreateArgs {
 /**
  * @category PGN_130820_FusionSource
  */
-export const newPGN_130820_FusionSource = (fields: PGN_130820_FusionSourceCreateArgs, dst:number=255) : PGN_130820_FusionSource => {
+export const new130820_FusionSource = (fields: PGN_130820_FusionSourceCreateArgs, dst:number=255) : PGN_130820_FusionSource => {
   return {
     ...PGN_130820_FusionSourceDefaults,
     dst,
@@ -17145,7 +17181,7 @@ export interface PGN_130820_FusionSourceCountCreateArgs {
 /**
  * @category PGN_130820_FusionSourceCount
  */
-export const newPGN_130820_FusionSourceCount = (fields: PGN_130820_FusionSourceCountCreateArgs, dst:number=255) : PGN_130820_FusionSourceCount => {
+export const new130820_FusionSourceCount = (fields: PGN_130820_FusionSourceCountCreateArgs, dst:number=255) : PGN_130820_FusionSourceCount => {
   return {
     ...PGN_130820_FusionSourceCountDefaults,
     dst,
@@ -17220,7 +17256,7 @@ export interface PGN_130820_FusionMediaCreateArgs {
 /**
  * @category PGN_130820_FusionMedia
  */
-export const newPGN_130820_FusionMedia = (fields: PGN_130820_FusionMediaCreateArgs, dst:number=255) : PGN_130820_FusionMedia => {
+export const new130820_FusionMedia = (fields: PGN_130820_FusionMediaCreateArgs, dst:number=255) : PGN_130820_FusionMedia => {
   return {
     ...PGN_130820_FusionMediaDefaults,
     dst,
@@ -17289,7 +17325,7 @@ export interface PGN_130820_FusionTrackNameCreateArgs {
 /**
  * @category PGN_130820_FusionTrackName
  */
-export const newPGN_130820_FusionTrackName = (fields: PGN_130820_FusionTrackNameCreateArgs, dst:number=255) : PGN_130820_FusionTrackName => {
+export const new130820_FusionTrackName = (fields: PGN_130820_FusionTrackNameCreateArgs, dst:number=255) : PGN_130820_FusionTrackName => {
   return {
     ...PGN_130820_FusionTrackNameDefaults,
     dst,
@@ -17358,7 +17394,7 @@ export interface PGN_130820_FusionArtistNameCreateArgs {
 /**
  * @category PGN_130820_FusionArtistName
  */
-export const newPGN_130820_FusionArtistName = (fields: PGN_130820_FusionArtistNameCreateArgs, dst:number=255) : PGN_130820_FusionArtistName => {
+export const new130820_FusionArtistName = (fields: PGN_130820_FusionArtistNameCreateArgs, dst:number=255) : PGN_130820_FusionArtistName => {
   return {
     ...PGN_130820_FusionArtistNameDefaults,
     dst,
@@ -17427,7 +17463,7 @@ export interface PGN_130820_FusionAlbumNameCreateArgs {
 /**
  * @category PGN_130820_FusionAlbumName
  */
-export const newPGN_130820_FusionAlbumName = (fields: PGN_130820_FusionAlbumNameCreateArgs, dst:number=255) : PGN_130820_FusionAlbumName => {
+export const new130820_FusionAlbumName = (fields: PGN_130820_FusionAlbumNameCreateArgs, dst:number=255) : PGN_130820_FusionAlbumName => {
   return {
     ...PGN_130820_FusionAlbumNameDefaults,
     dst,
@@ -17492,7 +17528,7 @@ export interface PGN_130820_FusionDeviceNameCreateArgs {
 /**
  * @category PGN_130820_FusionDeviceName
  */
-export const newPGN_130820_FusionDeviceName = (fields: PGN_130820_FusionDeviceNameCreateArgs, dst:number=255) : PGN_130820_FusionDeviceName => {
+export const new130820_FusionDeviceName = (fields: PGN_130820_FusionDeviceNameCreateArgs, dst:number=255) : PGN_130820_FusionDeviceName => {
   return {
     ...PGN_130820_FusionDeviceNameDefaults,
     dst,
@@ -17559,7 +17595,7 @@ export interface PGN_130820_FusionZoneNameCreateArgs {
 /**
  * @category PGN_130820_FusionZoneName
  */
-export const newPGN_130820_FusionZoneName = (fields: PGN_130820_FusionZoneNameCreateArgs, dst:number=255) : PGN_130820_FusionZoneName => {
+export const new130820_FusionZoneName = (fields: PGN_130820_FusionZoneNameCreateArgs, dst:number=255) : PGN_130820_FusionZoneName => {
   return {
     ...PGN_130820_FusionZoneNameDefaults,
     dst,
@@ -17626,7 +17662,7 @@ export interface PGN_130820_FusionTrackPositionCreateArgs {
 /**
  * @category PGN_130820_FusionTrackPosition
  */
-export const newPGN_130820_FusionTrackPosition = (fields: PGN_130820_FusionTrackPositionCreateArgs, dst:number=255) : PGN_130820_FusionTrackPosition => {
+export const new130820_FusionTrackPosition = (fields: PGN_130820_FusionTrackPositionCreateArgs, dst:number=255) : PGN_130820_FusionTrackPosition => {
   return {
     ...PGN_130820_FusionTrackPositionDefaults,
     dst,
@@ -17699,7 +17735,7 @@ export interface PGN_130820_FusionTunerCreateArgs {
 /**
  * @category PGN_130820_FusionTuner
  */
-export const newPGN_130820_FusionTuner = (fields: PGN_130820_FusionTunerCreateArgs, dst:number=255) : PGN_130820_FusionTuner => {
+export const new130820_FusionTuner = (fields: PGN_130820_FusionTunerCreateArgs, dst:number=255) : PGN_130820_FusionTuner => {
   return {
     ...PGN_130820_FusionTunerDefaults,
     dst,
@@ -17770,7 +17806,7 @@ export interface PGN_130820_FusionMarineTunerCreateArgs {
 /**
  * @category PGN_130820_FusionMarineTuner
  */
-export const newPGN_130820_FusionMarineTuner = (fields: PGN_130820_FusionMarineTunerCreateArgs, dst:number=255) : PGN_130820_FusionMarineTuner => {
+export const new130820_FusionMarineTuner = (fields: PGN_130820_FusionMarineTunerCreateArgs, dst:number=255) : PGN_130820_FusionMarineTuner => {
   return {
     ...PGN_130820_FusionMarineTunerDefaults,
     dst,
@@ -17837,7 +17873,7 @@ export interface PGN_130820_FusionMarineSquelchCreateArgs {
 /**
  * @category PGN_130820_FusionMarineSquelch
  */
-export const newPGN_130820_FusionMarineSquelch = (fields: PGN_130820_FusionMarineSquelchCreateArgs, dst:number=255) : PGN_130820_FusionMarineSquelch => {
+export const new130820_FusionMarineSquelch = (fields: PGN_130820_FusionMarineSquelchCreateArgs, dst:number=255) : PGN_130820_FusionMarineSquelch => {
   return {
     ...PGN_130820_FusionMarineSquelchDefaults,
     dst,
@@ -17904,7 +17940,7 @@ export interface PGN_130820_FusionMarineScanModeCreateArgs {
 /**
  * @category PGN_130820_FusionMarineScanMode
  */
-export const newPGN_130820_FusionMarineScanMode = (fields: PGN_130820_FusionMarineScanModeCreateArgs, dst:number=255) : PGN_130820_FusionMarineScanMode => {
+export const new130820_FusionMarineScanMode = (fields: PGN_130820_FusionMarineScanModeCreateArgs, dst:number=255) : PGN_130820_FusionMarineScanMode => {
   return {
     ...PGN_130820_FusionMarineScanModeDefaults,
     dst,
@@ -17977,7 +18013,7 @@ export interface PGN_130820_FusionMenuItemCreateArgs {
 /**
  * @category PGN_130820_FusionMenuItem
  */
-export const newPGN_130820_FusionMenuItem = (fields: PGN_130820_FusionMenuItemCreateArgs, dst:number=255) : PGN_130820_FusionMenuItem => {
+export const new130820_FusionMenuItem = (fields: PGN_130820_FusionMenuItemCreateArgs, dst:number=255) : PGN_130820_FusionMenuItem => {
   return {
     ...PGN_130820_FusionMenuItemDefaults,
     dst,
@@ -18044,7 +18080,7 @@ export interface PGN_130820_FusionAuxGainCreateArgs {
 /**
  * @category PGN_130820_FusionAuxGain
  */
-export const newPGN_130820_FusionAuxGain = (fields: PGN_130820_FusionAuxGainCreateArgs, dst:number=255) : PGN_130820_FusionAuxGain => {
+export const new130820_FusionAuxGain = (fields: PGN_130820_FusionAuxGainCreateArgs, dst:number=255) : PGN_130820_FusionAuxGain => {
   return {
     ...PGN_130820_FusionAuxGainDefaults,
     dst,
@@ -18112,7 +18148,7 @@ export interface PGN_130820_FusionUsbRepeatStatusCreateArgs {
 /**
  * @category PGN_130820_FusionUsbRepeatStatus
  */
-export const newPGN_130820_FusionUsbRepeatStatus = (fields: PGN_130820_FusionUsbRepeatStatusCreateArgs, dst:number=255) : PGN_130820_FusionUsbRepeatStatus => {
+export const new130820_FusionUsbRepeatStatus = (fields: PGN_130820_FusionUsbRepeatStatusCreateArgs, dst:number=255) : PGN_130820_FusionUsbRepeatStatus => {
   return {
     ...PGN_130820_FusionUsbRepeatStatusDefaults,
     dst,
@@ -18179,7 +18215,7 @@ export interface PGN_130820_FusionSettingCreateArgs {
 /**
  * @category PGN_130820_FusionSetting
  */
-export const newPGN_130820_FusionSetting = (fields: PGN_130820_FusionSettingCreateArgs, dst:number=255) : PGN_130820_FusionSetting => {
+export const new130820_FusionSetting = (fields: PGN_130820_FusionSettingCreateArgs, dst:number=255) : PGN_130820_FusionSetting => {
   return {
     ...PGN_130820_FusionSettingDefaults,
     dst,
@@ -18252,7 +18288,7 @@ export interface PGN_130820_FusionSettingsCreateArgs {
 /**
  * @category PGN_130820_FusionSettings
  */
-export const newPGN_130820_FusionSettings = (fields: PGN_130820_FusionSettingsCreateArgs, dst:number=255) : PGN_130820_FusionSettings => {
+export const new130820_FusionSettings = (fields: PGN_130820_FusionSettingsCreateArgs, dst:number=255) : PGN_130820_FusionSettings => {
   return {
     ...PGN_130820_FusionSettingsDefaults,
     dst,
@@ -18317,7 +18353,7 @@ export interface PGN_130820_FusionMuteCreateArgs {
 /**
  * @category PGN_130820_FusionMute
  */
-export const newPGN_130820_FusionMute = (fields: PGN_130820_FusionMuteCreateArgs, dst:number=255) : PGN_130820_FusionMute => {
+export const new130820_FusionMute = (fields: PGN_130820_FusionMuteCreateArgs, dst:number=255) : PGN_130820_FusionMute => {
   return {
     ...PGN_130820_FusionMuteDefaults,
     dst,
@@ -18384,7 +18420,7 @@ export interface PGN_130820_FusionBalanceCreateArgs {
 /**
  * @category PGN_130820_FusionBalance
  */
-export const newPGN_130820_FusionBalance = (fields: PGN_130820_FusionBalanceCreateArgs, dst:number=255) : PGN_130820_FusionBalance => {
+export const new130820_FusionBalance = (fields: PGN_130820_FusionBalanceCreateArgs, dst:number=255) : PGN_130820_FusionBalance => {
   return {
     ...PGN_130820_FusionBalanceDefaults,
     dst,
@@ -18451,7 +18487,7 @@ export interface PGN_130820_FusionLowPassFilterCreateArgs {
 /**
  * @category PGN_130820_FusionLowPassFilter
  */
-export const newPGN_130820_FusionLowPassFilter = (fields: PGN_130820_FusionLowPassFilterCreateArgs, dst:number=255) : PGN_130820_FusionLowPassFilter => {
+export const new130820_FusionLowPassFilter = (fields: PGN_130820_FusionLowPassFilterCreateArgs, dst:number=255) : PGN_130820_FusionLowPassFilter => {
   return {
     ...PGN_130820_FusionLowPassFilterDefaults,
     dst,
@@ -18522,7 +18558,7 @@ export interface PGN_130820_FusionSublevelsCreateArgs {
 /**
  * @category PGN_130820_FusionSublevels
  */
-export const newPGN_130820_FusionSublevels = (fields: PGN_130820_FusionSublevelsCreateArgs, dst:number=255) : PGN_130820_FusionSublevels => {
+export const new130820_FusionSublevels = (fields: PGN_130820_FusionSublevelsCreateArgs, dst:number=255) : PGN_130820_FusionSublevels => {
   return {
     ...PGN_130820_FusionSublevelsDefaults,
     dst,
@@ -18593,7 +18629,7 @@ export interface PGN_130820_FusionEqCreateArgs {
 /**
  * @category PGN_130820_FusionEq
  */
-export const newPGN_130820_FusionEq = (fields: PGN_130820_FusionEqCreateArgs, dst:number=255) : PGN_130820_FusionEq => {
+export const new130820_FusionEq = (fields: PGN_130820_FusionEqCreateArgs, dst:number=255) : PGN_130820_FusionEq => {
   return {
     ...PGN_130820_FusionEqDefaults,
     dst,
@@ -18664,7 +18700,7 @@ export interface PGN_130820_FusionVolumeLimitsCreateArgs {
 /**
  * @category PGN_130820_FusionVolumeLimits
  */
-export const newPGN_130820_FusionVolumeLimits = (fields: PGN_130820_FusionVolumeLimitsCreateArgs, dst:number=255) : PGN_130820_FusionVolumeLimits => {
+export const new130820_FusionVolumeLimits = (fields: PGN_130820_FusionVolumeLimitsCreateArgs, dst:number=255) : PGN_130820_FusionVolumeLimits => {
   return {
     ...PGN_130820_FusionVolumeLimitsDefaults,
     dst,
@@ -18735,7 +18771,7 @@ export interface PGN_130820_FusionVolumesCreateArgs {
 /**
  * @category PGN_130820_FusionVolumes
  */
-export const newPGN_130820_FusionVolumes = (fields: PGN_130820_FusionVolumesCreateArgs, dst:number=255) : PGN_130820_FusionVolumes => {
+export const new130820_FusionVolumes = (fields: PGN_130820_FusionVolumesCreateArgs, dst:number=255) : PGN_130820_FusionVolumes => {
   return {
     ...PGN_130820_FusionVolumesDefaults,
     dst,
@@ -18808,7 +18844,7 @@ export interface PGN_130820_FusionCapabilitiesCreateArgs {
 /**
  * @category PGN_130820_FusionCapabilities
  */
-export const newPGN_130820_FusionCapabilities = (fields: PGN_130820_FusionCapabilitiesCreateArgs, dst:number=255) : PGN_130820_FusionCapabilities => {
+export const new130820_FusionCapabilities = (fields: PGN_130820_FusionCapabilitiesCreateArgs, dst:number=255) : PGN_130820_FusionCapabilities => {
   return {
     ...PGN_130820_FusionCapabilitiesDefaults,
     dst,
@@ -18875,7 +18911,7 @@ export interface PGN_130820_FusionLineLevelControlCreateArgs {
 /**
  * @category PGN_130820_FusionLineLevelControl
  */
-export const newPGN_130820_FusionLineLevelControl = (fields: PGN_130820_FusionLineLevelControlCreateArgs, dst:number=255) : PGN_130820_FusionLineLevelControl => {
+export const new130820_FusionLineLevelControl = (fields: PGN_130820_FusionLineLevelControlCreateArgs, dst:number=255) : PGN_130820_FusionLineLevelControl => {
   return {
     ...PGN_130820_FusionLineLevelControlDefaults,
     dst,
@@ -18940,7 +18976,7 @@ export interface PGN_130820_FusionPowerStateCreateArgs {
 /**
  * @category PGN_130820_FusionPowerState
  */
-export const newPGN_130820_FusionPowerState = (fields: PGN_130820_FusionPowerStateCreateArgs, dst:number=255) : PGN_130820_FusionPowerState => {
+export const new130820_FusionPowerState = (fields: PGN_130820_FusionPowerStateCreateArgs, dst:number=255) : PGN_130820_FusionPowerState => {
   return {
     ...PGN_130820_FusionPowerStateDefaults,
     dst,
@@ -19013,7 +19049,7 @@ export interface PGN_130820_FusionSiriusxmCreateArgs {
 /**
  * @category PGN_130820_FusionSiriusxm
  */
-export const newPGN_130820_FusionSiriusxm = (fields: PGN_130820_FusionSiriusxmCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxm => {
+export const new130820_FusionSiriusxm = (fields: PGN_130820_FusionSiriusxmCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxm => {
   return {
     ...PGN_130820_FusionSiriusxmDefaults,
     dst,
@@ -19082,7 +19118,7 @@ export interface PGN_130820_FusionSiriusxmChannelCreateArgs {
 /**
  * @category PGN_130820_FusionSiriusxmChannel
  */
-export const newPGN_130820_FusionSiriusxmChannel = (fields: PGN_130820_FusionSiriusxmChannelCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmChannel => {
+export const new130820_FusionSiriusxmChannel = (fields: PGN_130820_FusionSiriusxmChannelCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmChannel => {
   return {
     ...PGN_130820_FusionSiriusxmChannelDefaults,
     dst,
@@ -19151,7 +19187,7 @@ export interface PGN_130820_FusionSiriusxmTitleCreateArgs {
 /**
  * @category PGN_130820_FusionSiriusxmTitle
  */
-export const newPGN_130820_FusionSiriusxmTitle = (fields: PGN_130820_FusionSiriusxmTitleCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmTitle => {
+export const new130820_FusionSiriusxmTitle = (fields: PGN_130820_FusionSiriusxmTitleCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmTitle => {
   return {
     ...PGN_130820_FusionSiriusxmTitleDefaults,
     dst,
@@ -19220,7 +19256,7 @@ export interface PGN_130820_FusionSiriusxmArtistCreateArgs {
 /**
  * @category PGN_130820_FusionSiriusxmArtist
  */
-export const newPGN_130820_FusionSiriusxmArtist = (fields: PGN_130820_FusionSiriusxmArtistCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmArtist => {
+export const new130820_FusionSiriusxmArtist = (fields: PGN_130820_FusionSiriusxmArtistCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmArtist => {
   return {
     ...PGN_130820_FusionSiriusxmArtistDefaults,
     dst,
@@ -19289,7 +19325,7 @@ export interface PGN_130820_FusionSiriusxmContentInfoCreateArgs {
 /**
  * @category PGN_130820_FusionSiriusxmContentInfo
  */
-export const newPGN_130820_FusionSiriusxmContentInfo = (fields: PGN_130820_FusionSiriusxmContentInfoCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmContentInfo => {
+export const new130820_FusionSiriusxmContentInfo = (fields: PGN_130820_FusionSiriusxmContentInfoCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmContentInfo => {
   return {
     ...PGN_130820_FusionSiriusxmContentInfoDefaults,
     dst,
@@ -19358,7 +19394,7 @@ export interface PGN_130820_FusionSiriusxmCategoryCreateArgs {
 /**
  * @category PGN_130820_FusionSiriusxmCategory
  */
-export const newPGN_130820_FusionSiriusxmCategory = (fields: PGN_130820_FusionSiriusxmCategoryCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmCategory => {
+export const new130820_FusionSiriusxmCategory = (fields: PGN_130820_FusionSiriusxmCategoryCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmCategory => {
   return {
     ...PGN_130820_FusionSiriusxmCategoryDefaults,
     dst,
@@ -19425,7 +19461,7 @@ export interface PGN_130820_FusionSiriusxmSignalCreateArgs {
 /**
  * @category PGN_130820_FusionSiriusxmSignal
  */
-export const newPGN_130820_FusionSiriusxmSignal = (fields: PGN_130820_FusionSiriusxmSignalCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmSignal => {
+export const new130820_FusionSiriusxmSignal = (fields: PGN_130820_FusionSiriusxmSignalCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmSignal => {
   return {
     ...PGN_130820_FusionSiriusxmSignalDefaults,
     dst,
@@ -19494,7 +19530,7 @@ export interface PGN_130820_FusionSiriusxmPresetsCreateArgs {
 /**
  * @category PGN_130820_FusionSiriusxmPresets
  */
-export const newPGN_130820_FusionSiriusxmPresets = (fields: PGN_130820_FusionSiriusxmPresetsCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmPresets => {
+export const new130820_FusionSiriusxmPresets = (fields: PGN_130820_FusionSiriusxmPresetsCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmPresets => {
   return {
     ...PGN_130820_FusionSiriusxmPresetsDefaults,
     dst,
@@ -19558,7 +19594,7 @@ export interface PGN_130821_NavicoAsciiDataCreateArgs {
 /**
  * @category PGN_130821_NavicoAsciiData
  */
-export const newPGN_130821_NavicoAsciiData = (fields: PGN_130821_NavicoAsciiDataCreateArgs, dst:number=255) : PGN_130821_NavicoAsciiData => {
+export const new130821_NavicoAsciiData = (fields: PGN_130821_NavicoAsciiDataCreateArgs, dst:number=255) : PGN_130821_NavicoAsciiData => {
   return {
     ...PGN_130821_NavicoAsciiDataDefaults,
     dst,
@@ -19638,7 +19674,7 @@ export interface PGN_130821_FurunoUnknown130821CreateArgs {
 /**
  * @category PGN_130821_FurunoUnknown130821
  */
-export const newPGN_130821_FurunoUnknown130821 = (fields: PGN_130821_FurunoUnknown130821CreateArgs, dst:number=255) : PGN_130821_FurunoUnknown130821 => {
+export const new130821_FurunoUnknown130821 = (fields: PGN_130821_FurunoUnknown130821CreateArgs, dst:number=255) : PGN_130821_FurunoUnknown130821 => {
   return {
     ...PGN_130821_FurunoUnknown130821Defaults,
     dst,
@@ -19681,7 +19717,7 @@ export const PGN_130822Defaults = {
 /**
  * @category PGN_130822
  */
-export const newPGN_130822 = (fields: PGN_130822Fields, dst:number=255) : PGN_130822 => {
+export const new130822 = (fields: PGN_130822Fields, dst:number=255) : PGN_130822 => {
   return {
     ...PGN_130822Defaults,
     dst,
@@ -19727,7 +19763,7 @@ export const PGN_130823Defaults = {
 /**
  * @category PGN_130823
  */
-export const newPGN_130823 = (fields: PGN_130823Fields, dst:number=255) : PGN_130823 => {
+export const new130823 = (fields: PGN_130823Fields, dst:number=255) : PGN_130823 => {
   return {
     ...PGN_130823Defaults,
     dst,
@@ -19798,7 +19834,7 @@ export interface PGN_130824_BGkeyValueDataCreateArgs {
 /**
  * @category PGN_130824_BGkeyValueData
  */
-export const newPGN_130824_BGkeyValueData = (fields: PGN_130824_BGkeyValueDataCreateArgs, dst:number=255) : PGN_130824_BGkeyValueData => {
+export const new130824_BGkeyValueData = (fields: PGN_130824_BGkeyValueDataCreateArgs, dst:number=255) : PGN_130824_BGkeyValueData => {
   return {
     ...PGN_130824_BGkeyValueDataDefaults,
     dst,
@@ -19868,7 +19904,7 @@ export interface PGN_130824_MaretronAnnunciatorCreateArgs {
 /**
  * @category PGN_130824_MaretronAnnunciator
  */
-export const newPGN_130824_MaretronAnnunciator = (fields: PGN_130824_MaretronAnnunciatorCreateArgs, dst:number=255) : PGN_130824_MaretronAnnunciator => {
+export const new130824_MaretronAnnunciator = (fields: PGN_130824_MaretronAnnunciatorCreateArgs, dst:number=255) : PGN_130824_MaretronAnnunciator => {
   return {
     ...PGN_130824_MaretronAnnunciatorDefaults,
     dst,
@@ -19911,7 +19947,7 @@ export const PGN_130825Defaults = {
 /**
  * @category PGN_130825
  */
-export const newPGN_130825 = (fields: PGN_130825Fields, dst:number=255) : PGN_130825 => {
+export const new130825 = (fields: PGN_130825Fields, dst:number=255) : PGN_130825 => {
   return {
     ...PGN_130825Defaults,
     dst,
@@ -19958,7 +19994,7 @@ export const PGN_130827Defaults = {
 /**
  * @category PGN_130827
  */
-export const newPGN_130827 = (fields: PGN_130827Fields, dst:number=255) : PGN_130827 => {
+export const new130827 = (fields: PGN_130827Fields, dst:number=255) : PGN_130827 => {
   return {
     ...PGN_130827Defaults,
     dst,
@@ -19999,7 +20035,7 @@ export const PGN_130828Defaults = {
 /**
  * @category PGN_130828
  */
-export const newPGN_130828 = (fields: PGN_130828Fields, dst:number=255) : PGN_130828 => {
+export const new130828 = (fields: PGN_130828Fields, dst:number=255) : PGN_130828 => {
   return {
     ...PGN_130828Defaults,
     dst,
@@ -20040,7 +20076,7 @@ export const PGN_130831Defaults = {
 /**
  * @category PGN_130831
  */
-export const newPGN_130831 = (fields: PGN_130831Fields, dst:number=255) : PGN_130831 => {
+export const new130831 = (fields: PGN_130831Fields, dst:number=255) : PGN_130831 => {
   return {
     ...PGN_130831Defaults,
     dst,
@@ -20081,7 +20117,7 @@ export const PGN_130832Defaults = {
 /**
  * @category PGN_130832
  */
-export const newPGN_130832 = (fields: PGN_130832Fields, dst:number=255) : PGN_130832 => {
+export const new130832 = (fields: PGN_130832Fields, dst:number=255) : PGN_130832 => {
   return {
     ...PGN_130832Defaults,
     dst,
@@ -20128,7 +20164,7 @@ export const PGN_130833Defaults = {
 /**
  * @category PGN_130833
  */
-export const newPGN_130833 = (fields: PGN_130833Fields, dst:number=255) : PGN_130833 => {
+export const new130833 = (fields: PGN_130833Fields, dst:number=255) : PGN_130833 => {
   return {
     ...PGN_130833Defaults,
     dst,
@@ -20169,7 +20205,7 @@ export const PGN_130834Defaults = {
 /**
  * @category PGN_130834
  */
-export const newPGN_130834 = (fields: PGN_130834Fields, dst:number=255) : PGN_130834 => {
+export const new130834 = (fields: PGN_130834Fields, dst:number=255) : PGN_130834 => {
   return {
     ...PGN_130834Defaults,
     dst,
@@ -20210,7 +20246,7 @@ export const PGN_130835Defaults = {
 /**
  * @category PGN_130835
  */
-export const newPGN_130835 = (fields: PGN_130835Fields, dst:number=255) : PGN_130835 => {
+export const new130835 = (fields: PGN_130835Fields, dst:number=255) : PGN_130835 => {
   return {
     ...PGN_130835Defaults,
     dst,
@@ -20287,7 +20323,7 @@ export interface PGN_130836_SimnetFluidLevelSensorConfigurationCreateArgs {
 /**
  * @category PGN_130836_SimnetFluidLevelSensorConfiguration
  */
-export const newPGN_130836_SimnetFluidLevelSensorConfiguration = (fields: PGN_130836_SimnetFluidLevelSensorConfigurationCreateArgs, dst:number=255) : PGN_130836_SimnetFluidLevelSensorConfiguration => {
+export const new130836_SimnetFluidLevelSensorConfiguration = (fields: PGN_130836_SimnetFluidLevelSensorConfigurationCreateArgs, dst:number=255) : PGN_130836_SimnetFluidLevelSensorConfiguration => {
   return {
     ...PGN_130836_SimnetFluidLevelSensorConfigurationDefaults,
     dst,
@@ -20365,7 +20401,7 @@ export interface PGN_130836_MaretronSwitchStatusCounterCreateArgs {
 /**
  * @category PGN_130836_MaretronSwitchStatusCounter
  */
-export const newPGN_130836_MaretronSwitchStatusCounter = (fields: PGN_130836_MaretronSwitchStatusCounterCreateArgs, dst:number=255) : PGN_130836_MaretronSwitchStatusCounter => {
+export const new130836_MaretronSwitchStatusCounter = (fields: PGN_130836_MaretronSwitchStatusCounterCreateArgs, dst:number=255) : PGN_130836_MaretronSwitchStatusCounter => {
   return {
     ...PGN_130836_MaretronSwitchStatusCounterDefaults,
     dst,
@@ -20425,7 +20461,7 @@ export interface PGN_130837_SimnetFuelFlowTurbineConfigurationCreateArgs {
 /**
  * @category PGN_130837_SimnetFuelFlowTurbineConfiguration
  */
-export const newPGN_130837_SimnetFuelFlowTurbineConfiguration = (fields: PGN_130837_SimnetFuelFlowTurbineConfigurationCreateArgs, dst:number=255) : PGN_130837_SimnetFuelFlowTurbineConfiguration => {
+export const new130837_SimnetFuelFlowTurbineConfiguration = (fields: PGN_130837_SimnetFuelFlowTurbineConfigurationCreateArgs, dst:number=255) : PGN_130837_SimnetFuelFlowTurbineConfiguration => {
   return {
     ...PGN_130837_SimnetFuelFlowTurbineConfigurationDefaults,
     dst,
@@ -20503,7 +20539,7 @@ export interface PGN_130837_MaretronSwitchStatusTimerCreateArgs {
 /**
  * @category PGN_130837_MaretronSwitchStatusTimer
  */
-export const newPGN_130837_MaretronSwitchStatusTimer = (fields: PGN_130837_MaretronSwitchStatusTimerCreateArgs, dst:number=255) : PGN_130837_MaretronSwitchStatusTimer => {
+export const new130837_MaretronSwitchStatusTimer = (fields: PGN_130837_MaretronSwitchStatusTimerCreateArgs, dst:number=255) : PGN_130837_MaretronSwitchStatusTimer => {
   return {
     ...PGN_130837_MaretronSwitchStatusTimerDefaults,
     dst,
@@ -20545,7 +20581,7 @@ export const PGN_130838Defaults = {
 /**
  * @category PGN_130838
  */
-export const newPGN_130838 = (fields: PGN_130838Fields, dst:number=255) : PGN_130838 => {
+export const new130838 = (fields: PGN_130838Fields, dst:number=255) : PGN_130838 => {
   return {
     ...PGN_130838Defaults,
     dst,
@@ -20586,7 +20622,7 @@ export const PGN_130839Defaults = {
 /**
  * @category PGN_130839
  */
-export const newPGN_130839 = (fields: PGN_130839Fields, dst:number=255) : PGN_130839 => {
+export const new130839 = (fields: PGN_130839Fields, dst:number=255) : PGN_130839 => {
   return {
     ...PGN_130839Defaults,
     dst,
@@ -20627,7 +20663,7 @@ export const PGN_130840Defaults = {
 /**
  * @category PGN_130840
  */
-export const newPGN_130840 = (fields: PGN_130840Fields, dst:number=255) : PGN_130840 => {
+export const new130840 = (fields: PGN_130840Fields, dst:number=255) : PGN_130840 => {
   return {
     ...PGN_130840Defaults,
     dst,
@@ -20698,7 +20734,7 @@ export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartACreateArgs {
 /**
  * @category PGN_130842_SimnetAisClassBstaticDataMsg24PartA
  */
-export const newPGN_130842_SimnetAisClassBstaticDataMsg24PartA = (fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartACreateArgs, dst:number=255) : PGN_130842_SimnetAisClassBstaticDataMsg24PartA => {
+export const new130842_SimnetAisClassBstaticDataMsg24PartA = (fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartACreateArgs, dst:number=255) : PGN_130842_SimnetAisClassBstaticDataMsg24PartA => {
   return {
     ...PGN_130842_SimnetAisClassBstaticDataMsg24PartADefaults,
     dst,
@@ -20776,7 +20812,7 @@ export interface PGN_130842_FurunoSixDegreesOfFreedomMovementCreateArgs {
 /**
  * @category PGN_130842_FurunoSixDegreesOfFreedomMovement
  */
-export const newPGN_130842_FurunoSixDegreesOfFreedomMovement = (fields: PGN_130842_FurunoSixDegreesOfFreedomMovementCreateArgs, dst:number=255) : PGN_130842_FurunoSixDegreesOfFreedomMovement => {
+export const new130842_FurunoSixDegreesOfFreedomMovement = (fields: PGN_130842_FurunoSixDegreesOfFreedomMovementCreateArgs, dst:number=255) : PGN_130842_FurunoSixDegreesOfFreedomMovement => {
   return {
     ...PGN_130842_FurunoSixDegreesOfFreedomMovementDefaults,
     dst,
@@ -20867,7 +20903,7 @@ export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartBCreateArgs {
 /**
  * @category PGN_130842_SimnetAisClassBstaticDataMsg24PartB
  */
-export const newPGN_130842_SimnetAisClassBstaticDataMsg24PartB = (fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartBCreateArgs, dst:number=255) : PGN_130842_SimnetAisClassBstaticDataMsg24PartB => {
+export const new130842_SimnetAisClassBstaticDataMsg24PartB = (fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartBCreateArgs, dst:number=255) : PGN_130842_SimnetAisClassBstaticDataMsg24PartB => {
   return {
     ...PGN_130842_SimnetAisClassBstaticDataMsg24PartBDefaults,
     dst,
@@ -20937,7 +20973,7 @@ export interface PGN_130843_FurunoHeelAngleRollInformationCreateArgs {
 /**
  * @category PGN_130843_FurunoHeelAngleRollInformation
  */
-export const newPGN_130843_FurunoHeelAngleRollInformation = (fields: PGN_130843_FurunoHeelAngleRollInformationCreateArgs, dst:number=255) : PGN_130843_FurunoHeelAngleRollInformation => {
+export const new130843_FurunoHeelAngleRollInformation = (fields: PGN_130843_FurunoHeelAngleRollInformationCreateArgs, dst:number=255) : PGN_130843_FurunoHeelAngleRollInformation => {
   return {
     ...PGN_130843_FurunoHeelAngleRollInformationDefaults,
     dst,
@@ -20997,7 +21033,7 @@ export interface PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageCreateArgs {
 /**
  * @category PGN_130843_SimnetSonarStatusFrequencyAndDspVoltage
  */
-export const newPGN_130843_SimnetSonarStatusFrequencyAndDspVoltage = (fields: PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageCreateArgs, dst:number=255) : PGN_130843_SimnetSonarStatusFrequencyAndDspVoltage => {
+export const new130843_SimnetSonarStatusFrequencyAndDspVoltage = (fields: PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageCreateArgs, dst:number=255) : PGN_130843_SimnetSonarStatusFrequencyAndDspVoltage => {
   return {
     ...PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageDefaults,
     dst,
@@ -21057,7 +21093,7 @@ export interface PGN_130845_FurunoMultiSatsInViewExtendedCreateArgs {
 /**
  * @category PGN_130845_FurunoMultiSatsInViewExtended
  */
-export const newPGN_130845_FurunoMultiSatsInViewExtended = (fields: PGN_130845_FurunoMultiSatsInViewExtendedCreateArgs, dst:number=255) : PGN_130845_FurunoMultiSatsInViewExtended => {
+export const new130845_FurunoMultiSatsInViewExtended = (fields: PGN_130845_FurunoMultiSatsInViewExtendedCreateArgs, dst:number=255) : PGN_130845_FurunoMultiSatsInViewExtended => {
   return {
     ...PGN_130845_FurunoMultiSatsInViewExtendedDefaults,
     dst,
@@ -21133,7 +21169,7 @@ export interface PGN_130845_SimnetKeyValueCreateArgs {
 /**
  * @category PGN_130845_SimnetKeyValue
  */
-export const newPGN_130845_SimnetKeyValue = (fields: PGN_130845_SimnetKeyValueCreateArgs, dst:number=255) : PGN_130845_SimnetKeyValue => {
+export const new130845_SimnetKeyValue = (fields: PGN_130845_SimnetKeyValueCreateArgs, dst:number=255) : PGN_130845_SimnetKeyValue => {
   return {
     ...PGN_130845_SimnetKeyValueDefaults,
     dst,
@@ -21209,7 +21245,7 @@ export interface PGN_130846_SimnetParameterSetCreateArgs {
 /**
  * @category PGN_130846_SimnetParameterSet
  */
-export const newPGN_130846_SimnetParameterSet = (fields: PGN_130846_SimnetParameterSetCreateArgs, dst:number=255) : PGN_130846_SimnetParameterSet => {
+export const new130846_SimnetParameterSet = (fields: PGN_130846_SimnetParameterSetCreateArgs, dst:number=255) : PGN_130846_SimnetParameterSet => {
   return {
     ...PGN_130846_SimnetParameterSetDefaults,
     dst,
@@ -21269,7 +21305,7 @@ export interface PGN_130846_FurunoMotionSensorStatusExtendedCreateArgs {
 /**
  * @category PGN_130846_FurunoMotionSensorStatusExtended
  */
-export const newPGN_130846_FurunoMotionSensorStatusExtended = (fields: PGN_130846_FurunoMotionSensorStatusExtendedCreateArgs, dst:number=255) : PGN_130846_FurunoMotionSensorStatusExtended => {
+export const new130846_FurunoMotionSensorStatusExtended = (fields: PGN_130846_FurunoMotionSensorStatusExtendedCreateArgs, dst:number=255) : PGN_130846_FurunoMotionSensorStatusExtended => {
   return {
     ...PGN_130846_FurunoMotionSensorStatusExtendedDefaults,
     dst,
@@ -21316,7 +21352,7 @@ export const PGN_130847Defaults = {
 /**
  * @category PGN_130847
  */
-export const newPGN_130847 = (fields: PGN_130847Fields, dst:number=255) : PGN_130847 => {
+export const new130847 = (fields: PGN_130847Fields, dst:number=255) : PGN_130847 => {
   return {
     ...PGN_130847Defaults,
     dst,
@@ -21363,7 +21399,7 @@ export const PGN_130848Defaults = {
 /**
  * @category PGN_130848
  */
-export const newPGN_130848 = (fields: PGN_130848Fields, dst:number=255) : PGN_130848 => {
+export const new130848 = (fields: PGN_130848Fields, dst:number=255) : PGN_130848 => {
   return {
     ...PGN_130848Defaults,
     dst,
@@ -21439,7 +21475,7 @@ export interface PGN_130850_SimnetApCommandCreateArgs {
 /**
  * @category PGN_130850_SimnetApCommand
  */
-export const newPGN_130850_SimnetApCommand = (fields: PGN_130850_SimnetApCommandCreateArgs, dst:number=255) : PGN_130850_SimnetApCommand => {
+export const new130850_SimnetApCommand = (fields: PGN_130850_SimnetApCommandCreateArgs, dst:number=255) : PGN_130850_SimnetApCommand => {
   return {
     ...PGN_130850_SimnetApCommandDefaults,
     dst,
@@ -21516,7 +21552,7 @@ export interface PGN_130850_SimnetEventCommandApCommandCreateArgs {
 /**
  * @category PGN_130850_SimnetEventCommandApCommand
  */
-export const newPGN_130850_SimnetEventCommandApCommand = (fields: PGN_130850_SimnetEventCommandApCommandCreateArgs, dst:number=255) : PGN_130850_SimnetEventCommandApCommand => {
+export const new130850_SimnetEventCommandApCommand = (fields: PGN_130850_SimnetEventCommandApCommandCreateArgs, dst:number=255) : PGN_130850_SimnetEventCommandApCommand => {
   return {
     ...PGN_130850_SimnetEventCommandApCommandDefaults,
     dst,
@@ -21595,7 +21631,7 @@ export interface PGN_130850_SimnetAlarmCreateArgs {
 /**
  * @category PGN_130850_SimnetAlarm
  */
-export const newPGN_130850_SimnetAlarm = (fields: PGN_130850_SimnetAlarmCreateArgs, dst:number=255) : PGN_130850_SimnetAlarm => {
+export const new130850_SimnetAlarm = (fields: PGN_130850_SimnetAlarmCreateArgs, dst:number=255) : PGN_130850_SimnetAlarm => {
   return {
     ...PGN_130850_SimnetAlarmDefaults,
     dst,
@@ -21645,7 +21681,7 @@ export const PGN_130851Defaults = {
 /**
  * @category PGN_130851
  */
-export const newPGN_130851 = (fields: PGN_130851Fields, dst:number=255) : PGN_130851 => {
+export const new130851 = (fields: PGN_130851Fields, dst:number=255) : PGN_130851 => {
   return {
     ...PGN_130851Defaults,
     dst,
@@ -21692,7 +21728,7 @@ export const PGN_130856Defaults = {
 /**
  * @category PGN_130856
  */
-export const newPGN_130856 = (fields: PGN_130856Fields, dst:number=255) : PGN_130856 => {
+export const new130856 = (fields: PGN_130856Fields, dst:number=255) : PGN_130856 => {
   return {
     ...PGN_130856Defaults,
     dst,
@@ -21741,7 +21777,7 @@ export const PGN_130860Defaults = {
 /**
  * @category PGN_130860
  */
-export const newPGN_130860 = (fields: PGN_130860Fields, dst:number=255) : PGN_130860 => {
+export const new130860 = (fields: PGN_130860Fields, dst:number=255) : PGN_130860 => {
   return {
     ...PGN_130860Defaults,
     dst,
@@ -21786,7 +21822,7 @@ export const PGN_130880Defaults = {
 /**
  * @category PGN_130880
  */
-export const newPGN_130880 = (fields: PGN_130880Fields, dst:number=255) : PGN_130880 => {
+export const new130880 = (fields: PGN_130880Fields, dst:number=255) : PGN_130880 => {
   return {
     ...PGN_130880Defaults,
     dst,
@@ -21831,7 +21867,7 @@ export const PGN_130881Defaults = {
 /**
  * @category PGN_130881
  */
-export const newPGN_130881 = (fields: PGN_130881Fields, dst:number=255) : PGN_130881 => {
+export const new130881 = (fields: PGN_130881Fields, dst:number=255) : PGN_130881 => {
   return {
     ...PGN_130881Defaults,
     dst,
@@ -21880,7 +21916,7 @@ export const PGN_130918Defaults = {
 /**
  * @category PGN_130918
  */
-export const newPGN_130918 = (fields: PGN_130918Fields, dst:number=255) : PGN_130918 => {
+export const new130918 = (fields: PGN_130918Fields, dst:number=255) : PGN_130918 => {
   return {
     ...PGN_130918Defaults,
     dst,
@@ -21926,7 +21962,7 @@ export const PGN_130944Defaults = {
 /**
  * @category PGN_130944
  */
-export const newPGN_130944 = (fields: PGN_130944Fields, dst:number=255) : PGN_130944 => {
+export const new130944 = (fields: PGN_130944Fields, dst:number=255) : PGN_130944 => {
   return {
     ...PGN_130944Defaults,
     dst,

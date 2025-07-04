@@ -4,22 +4,13 @@ import {
   PGN_65305_SimnetDeviceModeRequest,
   PGN_65305_SimnetDeviceModeRequestDefaults,
   PGN_61184_VictronBatteryRegister,
-  PGN_61184_VictronBatteryRegisterFields,
   PGN_61184_VictronBatteryRegisterDefaults,
   PGN_61184_VictronBatteryRegisterMatchFields,
-  PGNFields,
   SimnetDeviceModel,
   SimnetDeviceReport,
   ManufacturerCode,
   IndustryCode
 } from './index'
-
-const p: PGN_61184_VictronBatteryRegisterFields = {
-  manufacturerCode: 1,
-  industryCode: 2
-}
-
-const f: PGNFields = p
 
 import { getPGN } from './index'
 

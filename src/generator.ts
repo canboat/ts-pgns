@@ -269,7 +269,7 @@ export class PGN {
   }
 
   function outputPGN(pgn: Definition, isMulti: boolean) {
-    let hasMatchFields =
+    const hasMatchFields =
       isMulti && pgn.Fields.find((f) => f.Match !== undefined)
     let typeNameNoPGN = `${pgn.PGN}`
     //let typeNameNoPGN = `${pgn.PGN}_${pgn.Id.charAt(0).toUpperCase() + pgn.Id.slice(1)}`

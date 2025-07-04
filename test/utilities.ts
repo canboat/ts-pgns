@@ -43,7 +43,7 @@ describe('utilities tests', () => {
         {
           referenceStationType: 9,
           referenceStationId: 7
-          },
+        },
         {
           referenceStationType: 19,
           referenceStationId: 22

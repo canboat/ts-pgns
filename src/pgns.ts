@@ -88,10 +88,10 @@ export type N2K_FieldIndex = number
 export interface PGNFields {
 }
 
-/**
+/**'
  * @category PGN Definitions
  */
-export interface PGN {
+export interface PGNInterface {
   pgn: number
   prio: number
   src?: number
@@ -102,7 +102,7 @@ export interface PGN {
   fields: PGNFields
 }
 
-export class PGNClass {
+export class PGN {
   pgn: number
   prio: number
   src?: number
@@ -116,13 +116,11 @@ export class PGNClass {
     this.pgn = fields.pgn
     this.prio = fields.prio
     this.src = fields.src
-    this.dst = fields.dst
+    this.dst = fields.dst !== undefined ? fields.dst : 255
     this.timestamp = fields.timestamp
     this.fields = fields.fields
   }
-  
 }
-
 /**
   * PGN: 59392
   *
@@ -132,7 +130,7 @@ export class PGNClass {
   *
   * @category PGN_59392
  */
-export interface PGN_59392 extends PGN {
+export interface PGN_59392Interface extends PGNInterface {
  fields: PGN_59392Fields
 }
 
@@ -152,19 +150,20 @@ export interface PGN_59392Fields {
 export const PGN_59392Defaults = {
   pgn: 59392,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_59392
  */
-export const new59392 = (fields: PGN_59392Fields, dst:number=255) : PGN_59392 => {
-  return {
-    ...PGN_59392Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_59392  extends PGN implements PGN_59392Interface {
+  fields: PGN_59392Fields
+  
+  constructor(fields: PGN_59392Fields, dst:number=255) {
+    super(PGN_59392Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -176,7 +175,7 @@ export const new59392 = (fields: PGN_59392Fields, dst:number=255) : PGN_59392 =>
   *
   * @category PGN_59904
  */
-export interface PGN_59904 extends PGN {
+export interface PGN_59904Interface extends PGNInterface {
  fields: PGN_59904Fields
 }
 
@@ -193,19 +192,20 @@ export interface PGN_59904Fields {
 export const PGN_59904Defaults = {
   pgn: 59904,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_59904
  */
-export const new59904 = (fields: PGN_59904Fields, dst:number=255) : PGN_59904 => {
-  return {
-    ...PGN_59904Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_59904  extends PGN implements PGN_59904Interface {
+  fields: PGN_59904Fields
+  
+  constructor(fields: PGN_59904Fields, dst:number=255) {
+    super(PGN_59904Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -217,7 +217,7 @@ export const new59904 = (fields: PGN_59904Fields, dst:number=255) : PGN_59904 =>
   *
   * @category PGN_60160
  */
-export interface PGN_60160 extends PGN {
+export interface PGN_60160Interface extends PGNInterface {
  fields: PGN_60160Fields
 }
 
@@ -235,19 +235,20 @@ export interface PGN_60160Fields {
 export const PGN_60160Defaults = {
   pgn: 60160,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_60160
  */
-export const new60160 = (fields: PGN_60160Fields, dst:number=255) : PGN_60160 => {
-  return {
-    ...PGN_60160Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_60160  extends PGN implements PGN_60160Interface {
+  fields: PGN_60160Fields
+  
+  constructor(fields: PGN_60160Fields, dst:number=255) {
+    super(PGN_60160Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -261,7 +262,7 @@ export const new60160 = (fields: PGN_60160Fields, dst:number=255) : PGN_60160 =>
   *
   * @category PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend
  */
-export interface PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend extends PGN {
+export interface PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendInterface extends PGNInterface {
  fields: PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendFields
 }
 
@@ -282,7 +283,8 @@ export interface PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend
 export const PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendDefaults = {
   pgn: 60416,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -305,14 +307,13 @@ export interface PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend
 /**
  * @category PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend
  */
-export const new60416_IsoTransportProtocolConnectionManagementRequestToSend = (fields: PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendCreateArgs, dst:number=255) : PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend => {
-  return {
-    ...PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendDefaults,
-    dst,
-    fields: {
-      ...PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendMatchFields,
-      ...fields
-    }
+export class PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend  extends PGN implements PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendInterface {
+  fields: PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendFields
+  
+  constructor(fields: PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendCreateArgs, dst:number=255) {
+    super(PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendDefaults)
+    this.src = dst
+    this.fields = { ...PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendMatchFields, ...fields }
   }
 }
 /**
@@ -326,7 +327,7 @@ export const new60416_IsoTransportProtocolConnectionManagementRequestToSend = (f
   *
   * @category PGN_60416_IsoTransportProtocolConnectionManagementClearToSend
  */
-export interface PGN_60416_IsoTransportProtocolConnectionManagementClearToSend extends PGN {
+export interface PGN_60416_IsoTransportProtocolConnectionManagementClearToSendInterface extends PGNInterface {
  fields: PGN_60416_IsoTransportProtocolConnectionManagementClearToSendFields
 }
 
@@ -347,7 +348,8 @@ export interface PGN_60416_IsoTransportProtocolConnectionManagementClearToSendFi
 export const PGN_60416_IsoTransportProtocolConnectionManagementClearToSendDefaults = {
   pgn: 60416,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -370,14 +372,13 @@ export interface PGN_60416_IsoTransportProtocolConnectionManagementClearToSendCr
 /**
  * @category PGN_60416_IsoTransportProtocolConnectionManagementClearToSend
  */
-export const new60416_IsoTransportProtocolConnectionManagementClearToSend = (fields: PGN_60416_IsoTransportProtocolConnectionManagementClearToSendCreateArgs, dst:number=255) : PGN_60416_IsoTransportProtocolConnectionManagementClearToSend => {
-  return {
-    ...PGN_60416_IsoTransportProtocolConnectionManagementClearToSendDefaults,
-    dst,
-    fields: {
-      ...PGN_60416_IsoTransportProtocolConnectionManagementClearToSendMatchFields,
-      ...fields
-    }
+export class PGN_60416_IsoTransportProtocolConnectionManagementClearToSend  extends PGN implements PGN_60416_IsoTransportProtocolConnectionManagementClearToSendInterface {
+  fields: PGN_60416_IsoTransportProtocolConnectionManagementClearToSendFields
+  
+  constructor(fields: PGN_60416_IsoTransportProtocolConnectionManagementClearToSendCreateArgs, dst:number=255) {
+    super(PGN_60416_IsoTransportProtocolConnectionManagementClearToSendDefaults)
+    this.src = dst
+    this.fields = { ...PGN_60416_IsoTransportProtocolConnectionManagementClearToSendMatchFields, ...fields }
   }
 }
 /**
@@ -391,7 +392,7 @@ export const new60416_IsoTransportProtocolConnectionManagementClearToSend = (fie
   *
   * @category PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessage
  */
-export interface PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessage extends PGN {
+export interface PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageInterface extends PGNInterface {
  fields: PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageFields
 }
 
@@ -412,7 +413,8 @@ export interface PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageF
 export const PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageDefaults = {
   pgn: 60416,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -435,14 +437,13 @@ export interface PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageC
 /**
  * @category PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessage
  */
-export const new60416_IsoTransportProtocolConnectionManagementEndOfMessage = (fields: PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageCreateArgs, dst:number=255) : PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessage => {
-  return {
-    ...PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageDefaults,
-    dst,
-    fields: {
-      ...PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageMatchFields,
-      ...fields
-    }
+export class PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessage  extends PGN implements PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageInterface {
+  fields: PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageFields
+  
+  constructor(fields: PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageCreateArgs, dst:number=255) {
+    super(PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageDefaults)
+    this.src = dst
+    this.fields = { ...PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageMatchFields, ...fields }
   }
 }
 /**
@@ -456,7 +457,7 @@ export const new60416_IsoTransportProtocolConnectionManagementEndOfMessage = (fi
   *
   * @category PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce
  */
-export interface PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce extends PGN {
+export interface PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceInterface extends PGNInterface {
  fields: PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceFields
 }
 
@@ -477,7 +478,8 @@ export interface PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnno
 export const PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceDefaults = {
   pgn: 60416,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -500,14 +502,13 @@ export interface PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnno
 /**
  * @category PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce
  */
-export const new60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce = (fields: PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceCreateArgs, dst:number=255) : PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce => {
-  return {
-    ...PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceDefaults,
-    dst,
-    fields: {
-      ...PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceMatchFields,
-      ...fields
-    }
+export class PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce  extends PGN implements PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceInterface {
+  fields: PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceFields
+  
+  constructor(fields: PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceCreateArgs, dst:number=255) {
+    super(PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceDefaults)
+    this.src = dst
+    this.fields = { ...PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceMatchFields, ...fields }
   }
 }
 /**
@@ -521,7 +522,7 @@ export const new60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce 
   *
   * @category PGN_60416_IsoTransportProtocolConnectionManagementAbort
  */
-export interface PGN_60416_IsoTransportProtocolConnectionManagementAbort extends PGN {
+export interface PGN_60416_IsoTransportProtocolConnectionManagementAbortInterface extends PGNInterface {
  fields: PGN_60416_IsoTransportProtocolConnectionManagementAbortFields
 }
 
@@ -541,7 +542,8 @@ export interface PGN_60416_IsoTransportProtocolConnectionManagementAbortFields {
 export const PGN_60416_IsoTransportProtocolConnectionManagementAbortDefaults = {
   pgn: 60416,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -563,14 +565,13 @@ export interface PGN_60416_IsoTransportProtocolConnectionManagementAbortCreateAr
 /**
  * @category PGN_60416_IsoTransportProtocolConnectionManagementAbort
  */
-export const new60416_IsoTransportProtocolConnectionManagementAbort = (fields: PGN_60416_IsoTransportProtocolConnectionManagementAbortCreateArgs, dst:number=255) : PGN_60416_IsoTransportProtocolConnectionManagementAbort => {
-  return {
-    ...PGN_60416_IsoTransportProtocolConnectionManagementAbortDefaults,
-    dst,
-    fields: {
-      ...PGN_60416_IsoTransportProtocolConnectionManagementAbortMatchFields,
-      ...fields
-    }
+export class PGN_60416_IsoTransportProtocolConnectionManagementAbort  extends PGN implements PGN_60416_IsoTransportProtocolConnectionManagementAbortInterface {
+  fields: PGN_60416_IsoTransportProtocolConnectionManagementAbortFields
+  
+  constructor(fields: PGN_60416_IsoTransportProtocolConnectionManagementAbortCreateArgs, dst:number=255) {
+    super(PGN_60416_IsoTransportProtocolConnectionManagementAbortDefaults)
+    this.src = dst
+    this.fields = { ...PGN_60416_IsoTransportProtocolConnectionManagementAbortMatchFields, ...fields }
   }
 }
 /**
@@ -582,7 +583,7 @@ export const new60416_IsoTransportProtocolConnectionManagementAbort = (fields: P
   *
   * @category PGN_60928
  */
-export interface PGN_60928 extends PGN {
+export interface PGN_60928Interface extends PGNInterface {
  fields: PGN_60928Fields
 }
 
@@ -608,19 +609,20 @@ export interface PGN_60928Fields {
 export const PGN_60928Defaults = {
   pgn: 60928,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_60928
  */
-export const new60928 = (fields: PGN_60928Fields, dst:number=255) : PGN_60928 => {
-  return {
-    ...PGN_60928Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_60928  extends PGN implements PGN_60928Interface {
+  fields: PGN_60928Fields
+  
+  constructor(fields: PGN_60928Fields, dst:number=255) {
+    super(PGN_60928Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -634,7 +636,7 @@ export const new60928 = (fields: PGN_60928Fields, dst:number=255) : PGN_60928 =>
   *
   * @category PGN_61184_SeatalkWirelessKeypadLightControl
  */
-export interface PGN_61184_SeatalkWirelessKeypadLightControl extends PGN {
+export interface PGN_61184_SeatalkWirelessKeypadLightControlInterface extends PGNInterface {
  fields: PGN_61184_SeatalkWirelessKeypadLightControlFields
 }
 
@@ -658,7 +660,8 @@ export interface PGN_61184_SeatalkWirelessKeypadLightControlFields {
 export const PGN_61184_SeatalkWirelessKeypadLightControlDefaults = {
   pgn: 61184,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -684,14 +687,13 @@ export interface PGN_61184_SeatalkWirelessKeypadLightControlCreateArgs {
 /**
  * @category PGN_61184_SeatalkWirelessKeypadLightControl
  */
-export const new61184_SeatalkWirelessKeypadLightControl = (fields: PGN_61184_SeatalkWirelessKeypadLightControlCreateArgs, dst:number=255) : PGN_61184_SeatalkWirelessKeypadLightControl => {
-  return {
-    ...PGN_61184_SeatalkWirelessKeypadLightControlDefaults,
-    dst,
-    fields: {
-      ...PGN_61184_SeatalkWirelessKeypadLightControlMatchFields,
-      ...fields
-    }
+export class PGN_61184_SeatalkWirelessKeypadLightControl  extends PGN implements PGN_61184_SeatalkWirelessKeypadLightControlInterface {
+  fields: PGN_61184_SeatalkWirelessKeypadLightControlFields
+  
+  constructor(fields: PGN_61184_SeatalkWirelessKeypadLightControlCreateArgs, dst:number=255) {
+    super(PGN_61184_SeatalkWirelessKeypadLightControlDefaults)
+    this.src = dst
+    this.fields = { ...PGN_61184_SeatalkWirelessKeypadLightControlMatchFields, ...fields }
   }
 }
 /**
@@ -704,7 +706,7 @@ export const new61184_SeatalkWirelessKeypadLightControl = (fields: PGN_61184_Sea
   *
   * @category PGN_61184_SeatalkWirelessKeypadControl
  */
-export interface PGN_61184_SeatalkWirelessKeypadControl extends PGN {
+export interface PGN_61184_SeatalkWirelessKeypadControlInterface extends PGNInterface {
  fields: PGN_61184_SeatalkWirelessKeypadControlFields
 }
 
@@ -727,7 +729,8 @@ export interface PGN_61184_SeatalkWirelessKeypadControlFields {
 export const PGN_61184_SeatalkWirelessKeypadControlDefaults = {
   pgn: 61184,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -752,14 +755,13 @@ export interface PGN_61184_SeatalkWirelessKeypadControlCreateArgs {
 /**
  * @category PGN_61184_SeatalkWirelessKeypadControl
  */
-export const new61184_SeatalkWirelessKeypadControl = (fields: PGN_61184_SeatalkWirelessKeypadControlCreateArgs, dst:number=255) : PGN_61184_SeatalkWirelessKeypadControl => {
-  return {
-    ...PGN_61184_SeatalkWirelessKeypadControlDefaults,
-    dst,
-    fields: {
-      ...PGN_61184_SeatalkWirelessKeypadControlMatchFields,
-      ...fields
-    }
+export class PGN_61184_SeatalkWirelessKeypadControl  extends PGN implements PGN_61184_SeatalkWirelessKeypadControlInterface {
+  fields: PGN_61184_SeatalkWirelessKeypadControlFields
+  
+  constructor(fields: PGN_61184_SeatalkWirelessKeypadControlCreateArgs, dst:number=255) {
+    super(PGN_61184_SeatalkWirelessKeypadControlDefaults)
+    this.src = dst
+    this.fields = { ...PGN_61184_SeatalkWirelessKeypadControlMatchFields, ...fields }
   }
 }
 /**
@@ -772,14 +774,14 @@ export const new61184_SeatalkWirelessKeypadControl = (fields: PGN_61184_SeatalkW
   *
   * @category PGN_61184_VictronBatteryRegister
  */
-export interface PGN_61184_VictronBatteryRegisterInterface extends PGN {
+export interface PGN_61184_VictronBatteryRegisterInterface extends PGNInterface {
  fields: PGN_61184_VictronBatteryRegisterFields
 }
 
 /**
  * @category PGN_61184_VictronBatteryRegister
  */
-export interface PGN_61184_VictronBatteryRegisterFields extends PGNFields {
+export interface PGN_61184_VictronBatteryRegisterFields {
   manufacturerCode: enums.ManufacturerCode|number
   reserved?: number
   industryCode: enums.IndustryCode|number
@@ -814,31 +816,16 @@ export interface PGN_61184_VictronBatteryRegisterCreateArgs {
   payload?: N2K_Number
 }
 
-export class PGN_61184_VictronBatteryRegister  extends PGNClass implements PGN_61184_VictronBatteryRegisterInterface {
+/**
+ * @category PGN_61184_VictronBatteryRegister
+ */
+export class PGN_61184_VictronBatteryRegister  extends PGN implements PGN_61184_VictronBatteryRegisterInterface {
   fields: PGN_61184_VictronBatteryRegisterFields
   
   constructor(fields: PGN_61184_VictronBatteryRegisterCreateArgs, dst:number=255) {
     super(PGN_61184_VictronBatteryRegisterDefaults)
-    this.pgn = PGN_61184_VictronBatteryRegisterDefaults.pgn
-    this.prio = PGN_61184_VictronBatteryRegisterDefaults.prio
-    this.src = 255
-    this.dst = PGN_61184_VictronBatteryRegisterDefaults.dst
+    this.src = dst
     this.fields = { ...PGN_61184_VictronBatteryRegisterMatchFields, ...fields }
-  }
-}
-
-
-/**
- * @category PGN_61184_VictronBatteryRegister
- */
-export const new61184_VictronBatteryRegister = (fields: PGN_61184_VictronBatteryRegisterCreateArgs, dst:number=255) : PGN_61184_VictronBatteryRegister => {
-  return {
-    ...PGN_61184_VictronBatteryRegisterDefaults,
-    dst,
-    fields: {
-      ...PGN_61184_VictronBatteryRegisterMatchFields,
-      ...fields
-    }
   }
 }
 /**
@@ -848,7 +835,7 @@ export const new61184_VictronBatteryRegister = (fields: PGN_61184_VictronBattery
   *
   * @category PGN_65001
  */
-export interface PGN_65001 extends PGN {
+export interface PGN_65001Interface extends PGNInterface {
  fields: PGN_65001Fields
 }
 
@@ -868,19 +855,20 @@ export interface PGN_65001Fields {
 export const PGN_65001Defaults = {
   pgn: 65001,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65001
  */
-export const new65001 = (fields: PGN_65001Fields, dst:number=255) : PGN_65001 => {
-  return {
-    ...PGN_65001Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65001  extends PGN implements PGN_65001Interface {
+  fields: PGN_65001Fields
+  
+  constructor(fields: PGN_65001Fields, dst:number=255) {
+    super(PGN_65001Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -890,7 +878,7 @@ export const new65001 = (fields: PGN_65001Fields, dst:number=255) : PGN_65001 =>
   *
   * @category PGN_65002
  */
-export interface PGN_65002 extends PGN {
+export interface PGN_65002Interface extends PGNInterface {
  fields: PGN_65002Fields
 }
 
@@ -910,19 +898,20 @@ export interface PGN_65002Fields {
 export const PGN_65002Defaults = {
   pgn: 65002,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65002
  */
-export const new65002 = (fields: PGN_65002Fields, dst:number=255) : PGN_65002 => {
-  return {
-    ...PGN_65002Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65002  extends PGN implements PGN_65002Interface {
+  fields: PGN_65002Fields
+  
+  constructor(fields: PGN_65002Fields, dst:number=255) {
+    super(PGN_65002Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -932,7 +921,7 @@ export const new65002 = (fields: PGN_65002Fields, dst:number=255) : PGN_65002 =>
   *
   * @category PGN_65003
  */
-export interface PGN_65003 extends PGN {
+export interface PGN_65003Interface extends PGNInterface {
  fields: PGN_65003Fields
 }
 
@@ -952,19 +941,20 @@ export interface PGN_65003Fields {
 export const PGN_65003Defaults = {
   pgn: 65003,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65003
  */
-export const new65003 = (fields: PGN_65003Fields, dst:number=255) : PGN_65003 => {
-  return {
-    ...PGN_65003Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65003  extends PGN implements PGN_65003Interface {
+  fields: PGN_65003Fields
+  
+  constructor(fields: PGN_65003Fields, dst:number=255) {
+    super(PGN_65003Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -974,7 +964,7 @@ export const new65003 = (fields: PGN_65003Fields, dst:number=255) : PGN_65003 =>
   *
   * @category PGN_65004
  */
-export interface PGN_65004 extends PGN {
+export interface PGN_65004Interface extends PGNInterface {
  fields: PGN_65004Fields
 }
 
@@ -994,19 +984,20 @@ export interface PGN_65004Fields {
 export const PGN_65004Defaults = {
   pgn: 65004,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65004
  */
-export const new65004 = (fields: PGN_65004Fields, dst:number=255) : PGN_65004 => {
-  return {
-    ...PGN_65004Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65004  extends PGN implements PGN_65004Interface {
+  fields: PGN_65004Fields
+  
+  constructor(fields: PGN_65004Fields, dst:number=255) {
+    super(PGN_65004Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1016,7 +1007,7 @@ export const new65004 = (fields: PGN_65004Fields, dst:number=255) : PGN_65004 =>
   *
   * @category PGN_65005
  */
-export interface PGN_65005 extends PGN {
+export interface PGN_65005Interface extends PGNInterface {
  fields: PGN_65005Fields
 }
 
@@ -1034,19 +1025,20 @@ export interface PGN_65005Fields {
 export const PGN_65005Defaults = {
   pgn: 65005,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65005
  */
-export const new65005 = (fields: PGN_65005Fields, dst:number=255) : PGN_65005 => {
-  return {
-    ...PGN_65005Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65005  extends PGN implements PGN_65005Interface {
+  fields: PGN_65005Fields
+  
+  constructor(fields: PGN_65005Fields, dst:number=255) {
+    super(PGN_65005Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1056,7 +1048,7 @@ export const new65005 = (fields: PGN_65005Fields, dst:number=255) : PGN_65005 =>
   *
   * @category PGN_65006
  */
-export interface PGN_65006 extends PGN {
+export interface PGN_65006Interface extends PGNInterface {
  fields: PGN_65006Fields
 }
 
@@ -1076,19 +1068,20 @@ export interface PGN_65006Fields {
 export const PGN_65006Defaults = {
   pgn: 65006,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65006
  */
-export const new65006 = (fields: PGN_65006Fields, dst:number=255) : PGN_65006 => {
-  return {
-    ...PGN_65006Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65006  extends PGN implements PGN_65006Interface {
+  fields: PGN_65006Fields
+  
+  constructor(fields: PGN_65006Fields, dst:number=255) {
+    super(PGN_65006Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1098,7 +1091,7 @@ export const new65006 = (fields: PGN_65006Fields, dst:number=255) : PGN_65006 =>
   *
   * @category PGN_65007
  */
-export interface PGN_65007 extends PGN {
+export interface PGN_65007Interface extends PGNInterface {
  fields: PGN_65007Fields
 }
 
@@ -1116,19 +1109,20 @@ export interface PGN_65007Fields {
 export const PGN_65007Defaults = {
   pgn: 65007,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65007
  */
-export const new65007 = (fields: PGN_65007Fields, dst:number=255) : PGN_65007 => {
-  return {
-    ...PGN_65007Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65007  extends PGN implements PGN_65007Interface {
+  fields: PGN_65007Fields
+  
+  constructor(fields: PGN_65007Fields, dst:number=255) {
+    super(PGN_65007Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1138,7 +1132,7 @@ export const new65007 = (fields: PGN_65007Fields, dst:number=255) : PGN_65007 =>
   *
   * @category PGN_65008
  */
-export interface PGN_65008 extends PGN {
+export interface PGN_65008Interface extends PGNInterface {
  fields: PGN_65008Fields
 }
 
@@ -1158,19 +1152,20 @@ export interface PGN_65008Fields {
 export const PGN_65008Defaults = {
   pgn: 65008,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65008
  */
-export const new65008 = (fields: PGN_65008Fields, dst:number=255) : PGN_65008 => {
-  return {
-    ...PGN_65008Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65008  extends PGN implements PGN_65008Interface {
+  fields: PGN_65008Fields
+  
+  constructor(fields: PGN_65008Fields, dst:number=255) {
+    super(PGN_65008Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1180,7 +1175,7 @@ export const new65008 = (fields: PGN_65008Fields, dst:number=255) : PGN_65008 =>
   *
   * @category PGN_65009
  */
-export interface PGN_65009 extends PGN {
+export interface PGN_65009Interface extends PGNInterface {
  fields: PGN_65009Fields
 }
 
@@ -1200,19 +1195,20 @@ export interface PGN_65009Fields {
 export const PGN_65009Defaults = {
   pgn: 65009,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65009
  */
-export const new65009 = (fields: PGN_65009Fields, dst:number=255) : PGN_65009 => {
-  return {
-    ...PGN_65009Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65009  extends PGN implements PGN_65009Interface {
+  fields: PGN_65009Fields
+  
+  constructor(fields: PGN_65009Fields, dst:number=255) {
+    super(PGN_65009Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1222,7 +1218,7 @@ export const new65009 = (fields: PGN_65009Fields, dst:number=255) : PGN_65009 =>
   *
   * @category PGN_65010
  */
-export interface PGN_65010 extends PGN {
+export interface PGN_65010Interface extends PGNInterface {
  fields: PGN_65010Fields
 }
 
@@ -1240,19 +1236,20 @@ export interface PGN_65010Fields {
 export const PGN_65010Defaults = {
   pgn: 65010,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65010
  */
-export const new65010 = (fields: PGN_65010Fields, dst:number=255) : PGN_65010 => {
-  return {
-    ...PGN_65010Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65010  extends PGN implements PGN_65010Interface {
+  fields: PGN_65010Fields
+  
+  constructor(fields: PGN_65010Fields, dst:number=255) {
+    super(PGN_65010Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1262,7 +1259,7 @@ export const new65010 = (fields: PGN_65010Fields, dst:number=255) : PGN_65010 =>
   *
   * @category PGN_65011
  */
-export interface PGN_65011 extends PGN {
+export interface PGN_65011Interface extends PGNInterface {
  fields: PGN_65011Fields
 }
 
@@ -1282,19 +1279,20 @@ export interface PGN_65011Fields {
 export const PGN_65011Defaults = {
   pgn: 65011,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65011
  */
-export const new65011 = (fields: PGN_65011Fields, dst:number=255) : PGN_65011 => {
-  return {
-    ...PGN_65011Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65011  extends PGN implements PGN_65011Interface {
+  fields: PGN_65011Fields
+  
+  constructor(fields: PGN_65011Fields, dst:number=255) {
+    super(PGN_65011Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1304,7 +1302,7 @@ export const new65011 = (fields: PGN_65011Fields, dst:number=255) : PGN_65011 =>
   *
   * @category PGN_65012
  */
-export interface PGN_65012 extends PGN {
+export interface PGN_65012Interface extends PGNInterface {
  fields: PGN_65012Fields
 }
 
@@ -1324,19 +1322,20 @@ export interface PGN_65012Fields {
 export const PGN_65012Defaults = {
   pgn: 65012,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65012
  */
-export const new65012 = (fields: PGN_65012Fields, dst:number=255) : PGN_65012 => {
-  return {
-    ...PGN_65012Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65012  extends PGN implements PGN_65012Interface {
+  fields: PGN_65012Fields
+  
+  constructor(fields: PGN_65012Fields, dst:number=255) {
+    super(PGN_65012Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1346,7 +1345,7 @@ export const new65012 = (fields: PGN_65012Fields, dst:number=255) : PGN_65012 =>
   *
   * @category PGN_65013
  */
-export interface PGN_65013 extends PGN {
+export interface PGN_65013Interface extends PGNInterface {
  fields: PGN_65013Fields
 }
 
@@ -1364,19 +1363,20 @@ export interface PGN_65013Fields {
 export const PGN_65013Defaults = {
   pgn: 65013,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65013
  */
-export const new65013 = (fields: PGN_65013Fields, dst:number=255) : PGN_65013 => {
-  return {
-    ...PGN_65013Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65013  extends PGN implements PGN_65013Interface {
+  fields: PGN_65013Fields
+  
+  constructor(fields: PGN_65013Fields, dst:number=255) {
+    super(PGN_65013Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1386,7 +1386,7 @@ export const new65013 = (fields: PGN_65013Fields, dst:number=255) : PGN_65013 =>
   *
   * @category PGN_65014
  */
-export interface PGN_65014 extends PGN {
+export interface PGN_65014Interface extends PGNInterface {
  fields: PGN_65014Fields
 }
 
@@ -1406,19 +1406,20 @@ export interface PGN_65014Fields {
 export const PGN_65014Defaults = {
   pgn: 65014,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65014
  */
-export const new65014 = (fields: PGN_65014Fields, dst:number=255) : PGN_65014 => {
-  return {
-    ...PGN_65014Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65014  extends PGN implements PGN_65014Interface {
+  fields: PGN_65014Fields
+  
+  constructor(fields: PGN_65014Fields, dst:number=255) {
+    super(PGN_65014Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1428,7 +1429,7 @@ export const new65014 = (fields: PGN_65014Fields, dst:number=255) : PGN_65014 =>
   *
   * @category PGN_65015
  */
-export interface PGN_65015 extends PGN {
+export interface PGN_65015Interface extends PGNInterface {
  fields: PGN_65015Fields
 }
 
@@ -1448,19 +1449,20 @@ export interface PGN_65015Fields {
 export const PGN_65015Defaults = {
   pgn: 65015,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65015
  */
-export const new65015 = (fields: PGN_65015Fields, dst:number=255) : PGN_65015 => {
-  return {
-    ...PGN_65015Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65015  extends PGN implements PGN_65015Interface {
+  fields: PGN_65015Fields
+  
+  constructor(fields: PGN_65015Fields, dst:number=255) {
+    super(PGN_65015Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1470,7 +1472,7 @@ export const new65015 = (fields: PGN_65015Fields, dst:number=255) : PGN_65015 =>
   *
   * @category PGN_65016
  */
-export interface PGN_65016 extends PGN {
+export interface PGN_65016Interface extends PGNInterface {
  fields: PGN_65016Fields
 }
 
@@ -1488,19 +1490,20 @@ export interface PGN_65016Fields {
 export const PGN_65016Defaults = {
   pgn: 65016,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65016
  */
-export const new65016 = (fields: PGN_65016Fields, dst:number=255) : PGN_65016 => {
-  return {
-    ...PGN_65016Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65016  extends PGN implements PGN_65016Interface {
+  fields: PGN_65016Fields
+  
+  constructor(fields: PGN_65016Fields, dst:number=255) {
+    super(PGN_65016Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1510,7 +1513,7 @@ export const new65016 = (fields: PGN_65016Fields, dst:number=255) : PGN_65016 =>
   *
   * @category PGN_65017
  */
-export interface PGN_65017 extends PGN {
+export interface PGN_65017Interface extends PGNInterface {
  fields: PGN_65017Fields
 }
 
@@ -1530,19 +1533,20 @@ export interface PGN_65017Fields {
 export const PGN_65017Defaults = {
   pgn: 65017,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65017
  */
-export const new65017 = (fields: PGN_65017Fields, dst:number=255) : PGN_65017 => {
-  return {
-    ...PGN_65017Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65017  extends PGN implements PGN_65017Interface {
+  fields: PGN_65017Fields
+  
+  constructor(fields: PGN_65017Fields, dst:number=255) {
+    super(PGN_65017Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1552,7 +1556,7 @@ export const new65017 = (fields: PGN_65017Fields, dst:number=255) : PGN_65017 =>
   *
   * @category PGN_65018
  */
-export interface PGN_65018 extends PGN {
+export interface PGN_65018Interface extends PGNInterface {
  fields: PGN_65018Fields
 }
 
@@ -1570,19 +1574,20 @@ export interface PGN_65018Fields {
 export const PGN_65018Defaults = {
   pgn: 65018,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65018
  */
-export const new65018 = (fields: PGN_65018Fields, dst:number=255) : PGN_65018 => {
-  return {
-    ...PGN_65018Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65018  extends PGN implements PGN_65018Interface {
+  fields: PGN_65018Fields
+  
+  constructor(fields: PGN_65018Fields, dst:number=255) {
+    super(PGN_65018Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1592,7 +1597,7 @@ export const new65018 = (fields: PGN_65018Fields, dst:number=255) : PGN_65018 =>
   *
   * @category PGN_65019
  */
-export interface PGN_65019 extends PGN {
+export interface PGN_65019Interface extends PGNInterface {
  fields: PGN_65019Fields
 }
 
@@ -1612,19 +1617,20 @@ export interface PGN_65019Fields {
 export const PGN_65019Defaults = {
   pgn: 65019,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65019
  */
-export const new65019 = (fields: PGN_65019Fields, dst:number=255) : PGN_65019 => {
-  return {
-    ...PGN_65019Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65019  extends PGN implements PGN_65019Interface {
+  fields: PGN_65019Fields
+  
+  constructor(fields: PGN_65019Fields, dst:number=255) {
+    super(PGN_65019Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1634,7 +1640,7 @@ export const new65019 = (fields: PGN_65019Fields, dst:number=255) : PGN_65019 =>
   *
   * @category PGN_65020
  */
-export interface PGN_65020 extends PGN {
+export interface PGN_65020Interface extends PGNInterface {
  fields: PGN_65020Fields
 }
 
@@ -1652,19 +1658,20 @@ export interface PGN_65020Fields {
 export const PGN_65020Defaults = {
   pgn: 65020,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65020
  */
-export const new65020 = (fields: PGN_65020Fields, dst:number=255) : PGN_65020 => {
-  return {
-    ...PGN_65020Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65020  extends PGN implements PGN_65020Interface {
+  fields: PGN_65020Fields
+  
+  constructor(fields: PGN_65020Fields, dst:number=255) {
+    super(PGN_65020Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1674,7 +1681,7 @@ export const new65020 = (fields: PGN_65020Fields, dst:number=255) : PGN_65020 =>
   *
   * @category PGN_65021
  */
-export interface PGN_65021 extends PGN {
+export interface PGN_65021Interface extends PGNInterface {
  fields: PGN_65021Fields
 }
 
@@ -1694,19 +1701,20 @@ export interface PGN_65021Fields {
 export const PGN_65021Defaults = {
   pgn: 65021,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65021
  */
-export const new65021 = (fields: PGN_65021Fields, dst:number=255) : PGN_65021 => {
-  return {
-    ...PGN_65021Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65021  extends PGN implements PGN_65021Interface {
+  fields: PGN_65021Fields
+  
+  constructor(fields: PGN_65021Fields, dst:number=255) {
+    super(PGN_65021Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1716,7 +1724,7 @@ export const new65021 = (fields: PGN_65021Fields, dst:number=255) : PGN_65021 =>
   *
   * @category PGN_65022
  */
-export interface PGN_65022 extends PGN {
+export interface PGN_65022Interface extends PGNInterface {
  fields: PGN_65022Fields
 }
 
@@ -1736,19 +1744,20 @@ export interface PGN_65022Fields {
 export const PGN_65022Defaults = {
   pgn: 65022,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65022
  */
-export const new65022 = (fields: PGN_65022Fields, dst:number=255) : PGN_65022 => {
-  return {
-    ...PGN_65022Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65022  extends PGN implements PGN_65022Interface {
+  fields: PGN_65022Fields
+  
+  constructor(fields: PGN_65022Fields, dst:number=255) {
+    super(PGN_65022Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1758,7 +1767,7 @@ export const new65022 = (fields: PGN_65022Fields, dst:number=255) : PGN_65022 =>
   *
   * @category PGN_65023
  */
-export interface PGN_65023 extends PGN {
+export interface PGN_65023Interface extends PGNInterface {
  fields: PGN_65023Fields
 }
 
@@ -1776,19 +1785,20 @@ export interface PGN_65023Fields {
 export const PGN_65023Defaults = {
   pgn: 65023,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65023
  */
-export const new65023 = (fields: PGN_65023Fields, dst:number=255) : PGN_65023 => {
-  return {
-    ...PGN_65023Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65023  extends PGN implements PGN_65023Interface {
+  fields: PGN_65023Fields
+  
+  constructor(fields: PGN_65023Fields, dst:number=255) {
+    super(PGN_65023Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1798,7 +1808,7 @@ export const new65023 = (fields: PGN_65023Fields, dst:number=255) : PGN_65023 =>
   *
   * @category PGN_65024
  */
-export interface PGN_65024 extends PGN {
+export interface PGN_65024Interface extends PGNInterface {
  fields: PGN_65024Fields
 }
 
@@ -1818,19 +1828,20 @@ export interface PGN_65024Fields {
 export const PGN_65024Defaults = {
   pgn: 65024,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65024
  */
-export const new65024 = (fields: PGN_65024Fields, dst:number=255) : PGN_65024 => {
-  return {
-    ...PGN_65024Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65024  extends PGN implements PGN_65024Interface {
+  fields: PGN_65024Fields
+  
+  constructor(fields: PGN_65024Fields, dst:number=255) {
+    super(PGN_65024Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1840,7 +1851,7 @@ export const new65024 = (fields: PGN_65024Fields, dst:number=255) : PGN_65024 =>
   *
   * @category PGN_65025
  */
-export interface PGN_65025 extends PGN {
+export interface PGN_65025Interface extends PGNInterface {
  fields: PGN_65025Fields
 }
 
@@ -1860,19 +1871,20 @@ export interface PGN_65025Fields {
 export const PGN_65025Defaults = {
   pgn: 65025,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65025
  */
-export const new65025 = (fields: PGN_65025Fields, dst:number=255) : PGN_65025 => {
-  return {
-    ...PGN_65025Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65025  extends PGN implements PGN_65025Interface {
+  fields: PGN_65025Fields
+  
+  constructor(fields: PGN_65025Fields, dst:number=255) {
+    super(PGN_65025Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1882,7 +1894,7 @@ export const new65025 = (fields: PGN_65025Fields, dst:number=255) : PGN_65025 =>
   *
   * @category PGN_65026
  */
-export interface PGN_65026 extends PGN {
+export interface PGN_65026Interface extends PGNInterface {
  fields: PGN_65026Fields
 }
 
@@ -1900,19 +1912,20 @@ export interface PGN_65026Fields {
 export const PGN_65026Defaults = {
   pgn: 65026,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65026
  */
-export const new65026 = (fields: PGN_65026Fields, dst:number=255) : PGN_65026 => {
-  return {
-    ...PGN_65026Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65026  extends PGN implements PGN_65026Interface {
+  fields: PGN_65026Fields
+  
+  constructor(fields: PGN_65026Fields, dst:number=255) {
+    super(PGN_65026Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1922,7 +1935,7 @@ export const new65026 = (fields: PGN_65026Fields, dst:number=255) : PGN_65026 =>
   *
   * @category PGN_65027
  */
-export interface PGN_65027 extends PGN {
+export interface PGN_65027Interface extends PGNInterface {
  fields: PGN_65027Fields
 }
 
@@ -1942,19 +1955,20 @@ export interface PGN_65027Fields {
 export const PGN_65027Defaults = {
   pgn: 65027,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65027
  */
-export const new65027 = (fields: PGN_65027Fields, dst:number=255) : PGN_65027 => {
-  return {
-    ...PGN_65027Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65027  extends PGN implements PGN_65027Interface {
+  fields: PGN_65027Fields
+  
+  constructor(fields: PGN_65027Fields, dst:number=255) {
+    super(PGN_65027Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -1964,7 +1978,7 @@ export const new65027 = (fields: PGN_65027Fields, dst:number=255) : PGN_65027 =>
   *
   * @category PGN_65028
  */
-export interface PGN_65028 extends PGN {
+export interface PGN_65028Interface extends PGNInterface {
  fields: PGN_65028Fields
 }
 
@@ -1984,19 +1998,20 @@ export interface PGN_65028Fields {
 export const PGN_65028Defaults = {
   pgn: 65028,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65028
  */
-export const new65028 = (fields: PGN_65028Fields, dst:number=255) : PGN_65028 => {
-  return {
-    ...PGN_65028Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65028  extends PGN implements PGN_65028Interface {
+  fields: PGN_65028Fields
+  
+  constructor(fields: PGN_65028Fields, dst:number=255) {
+    super(PGN_65028Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -2006,7 +2021,7 @@ export const new65028 = (fields: PGN_65028Fields, dst:number=255) : PGN_65028 =>
   *
   * @category PGN_65029
  */
-export interface PGN_65029 extends PGN {
+export interface PGN_65029Interface extends PGNInterface {
  fields: PGN_65029Fields
 }
 
@@ -2024,19 +2039,20 @@ export interface PGN_65029Fields {
 export const PGN_65029Defaults = {
   pgn: 65029,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65029
  */
-export const new65029 = (fields: PGN_65029Fields, dst:number=255) : PGN_65029 => {
-  return {
-    ...PGN_65029Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65029  extends PGN implements PGN_65029Interface {
+  fields: PGN_65029Fields
+  
+  constructor(fields: PGN_65029Fields, dst:number=255) {
+    super(PGN_65029Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -2046,7 +2062,7 @@ export const new65029 = (fields: PGN_65029Fields, dst:number=255) : PGN_65029 =>
   *
   * @category PGN_65030
  */
-export interface PGN_65030 extends PGN {
+export interface PGN_65030Interface extends PGNInterface {
  fields: PGN_65030Fields
 }
 
@@ -2066,19 +2082,20 @@ export interface PGN_65030Fields {
 export const PGN_65030Defaults = {
   pgn: 65030,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65030
  */
-export const new65030 = (fields: PGN_65030Fields, dst:number=255) : PGN_65030 => {
-  return {
-    ...PGN_65030Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65030  extends PGN implements PGN_65030Interface {
+  fields: PGN_65030Fields
+  
+  constructor(fields: PGN_65030Fields, dst:number=255) {
+    super(PGN_65030Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -2090,7 +2107,7 @@ export const new65030 = (fields: PGN_65030Fields, dst:number=255) : PGN_65030 =>
   *
   * @category PGN_65240
  */
-export interface PGN_65240 extends PGN {
+export interface PGN_65240Interface extends PGNInterface {
  fields: PGN_65240Fields
 }
 
@@ -2117,19 +2134,20 @@ export interface PGN_65240Fields {
 export const PGN_65240Defaults = {
   pgn: 65240,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65240
  */
-export const new65240 = (fields: PGN_65240Fields, dst:number=255) : PGN_65240 => {
-  return {
-    ...PGN_65240Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65240  extends PGN implements PGN_65240Interface {
+  fields: PGN_65240Fields
+  
+  constructor(fields: PGN_65240Fields, dst:number=255) {
+    super(PGN_65240Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -2139,7 +2157,7 @@ export const new65240 = (fields: PGN_65240Fields, dst:number=255) : PGN_65240 =>
   *
   * @category PGN_65280
  */
-export interface PGN_65280 extends PGN {
+export interface PGN_65280Interface extends PGNInterface {
  fields: PGN_65280Fields
 }
 
@@ -2160,19 +2178,20 @@ export interface PGN_65280Fields {
 export const PGN_65280Defaults = {
   pgn: 65280,
   dst: 255,
-  prio: 2
+  prio: 2,
+  fields: []
 }
 
 /**
  * @category PGN_65280
  */
-export const new65280 = (fields: PGN_65280Fields, dst:number=255) : PGN_65280 => {
-  return {
-    ...PGN_65280Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65280  extends PGN implements PGN_65280Interface {
+  fields: PGN_65280Fields
+  
+  constructor(fields: PGN_65280Fields, dst:number=255) {
+    super(PGN_65280Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -2182,7 +2201,7 @@ export const new65280 = (fields: PGN_65280Fields, dst:number=255) : PGN_65280 =>
   *
   * @category PGN_65284
  */
-export interface PGN_65284 extends PGN {
+export interface PGN_65284Interface extends PGNInterface {
  fields: PGN_65284Fields
 }
 
@@ -2205,19 +2224,20 @@ export interface PGN_65284Fields {
 export const PGN_65284Defaults = {
   pgn: 65284,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_65284
  */
-export const new65284 = (fields: PGN_65284Fields, dst:number=255) : PGN_65284 => {
-  return {
-    ...PGN_65284Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65284  extends PGN implements PGN_65284Interface {
+  fields: PGN_65284Fields
+  
+  constructor(fields: PGN_65284Fields, dst:number=255) {
+    super(PGN_65284Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -2230,7 +2250,7 @@ export const new65284 = (fields: PGN_65284Fields, dst:number=255) : PGN_65284 =>
   *
   * @category PGN_65285_AirmarBootStateAcknowledgment
  */
-export interface PGN_65285_AirmarBootStateAcknowledgment extends PGN {
+export interface PGN_65285_AirmarBootStateAcknowledgmentInterface extends PGNInterface {
  fields: PGN_65285_AirmarBootStateAcknowledgmentFields
 }
 
@@ -2251,7 +2271,8 @@ export interface PGN_65285_AirmarBootStateAcknowledgmentFields {
 export const PGN_65285_AirmarBootStateAcknowledgmentDefaults = {
   pgn: 65285,
   dst: 255,
-  prio: 5
+  prio: 5,
+  fields: []
 }
 
 /**
@@ -2274,14 +2295,13 @@ export interface PGN_65285_AirmarBootStateAcknowledgmentCreateArgs {
 /**
  * @category PGN_65285_AirmarBootStateAcknowledgment
  */
-export const new65285_AirmarBootStateAcknowledgment = (fields: PGN_65285_AirmarBootStateAcknowledgmentCreateArgs, dst:number=255) : PGN_65285_AirmarBootStateAcknowledgment => {
-  return {
-    ...PGN_65285_AirmarBootStateAcknowledgmentDefaults,
-    dst,
-    fields: {
-      ...PGN_65285_AirmarBootStateAcknowledgmentMatchFields,
-      ...fields
-    }
+export class PGN_65285_AirmarBootStateAcknowledgment  extends PGN implements PGN_65285_AirmarBootStateAcknowledgmentInterface {
+  fields: PGN_65285_AirmarBootStateAcknowledgmentFields
+  
+  constructor(fields: PGN_65285_AirmarBootStateAcknowledgmentCreateArgs, dst:number=255) {
+    super(PGN_65285_AirmarBootStateAcknowledgmentDefaults)
+    this.src = dst
+    this.fields = { ...PGN_65285_AirmarBootStateAcknowledgmentMatchFields, ...fields }
   }
 }
 /**
@@ -2294,7 +2314,7 @@ export const new65285_AirmarBootStateAcknowledgment = (fields: PGN_65285_AirmarB
   *
   * @category PGN_65285_LowranceTemperature
  */
-export interface PGN_65285_LowranceTemperature extends PGN {
+export interface PGN_65285_LowranceTemperatureInterface extends PGNInterface {
  fields: PGN_65285_LowranceTemperatureFields
 }
 
@@ -2316,7 +2336,8 @@ export interface PGN_65285_LowranceTemperatureFields {
 export const PGN_65285_LowranceTemperatureDefaults = {
   pgn: 65285,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -2340,14 +2361,13 @@ export interface PGN_65285_LowranceTemperatureCreateArgs {
 /**
  * @category PGN_65285_LowranceTemperature
  */
-export const new65285_LowranceTemperature = (fields: PGN_65285_LowranceTemperatureCreateArgs, dst:number=255) : PGN_65285_LowranceTemperature => {
-  return {
-    ...PGN_65285_LowranceTemperatureDefaults,
-    dst,
-    fields: {
-      ...PGN_65285_LowranceTemperatureMatchFields,
-      ...fields
-    }
+export class PGN_65285_LowranceTemperature  extends PGN implements PGN_65285_LowranceTemperatureInterface {
+  fields: PGN_65285_LowranceTemperatureFields
+  
+  constructor(fields: PGN_65285_LowranceTemperatureCreateArgs, dst:number=255) {
+    super(PGN_65285_LowranceTemperatureDefaults)
+    this.src = dst
+    this.fields = { ...PGN_65285_LowranceTemperatureMatchFields, ...fields }
   }
 }
 /**
@@ -2360,7 +2380,7 @@ export const new65285_LowranceTemperature = (fields: PGN_65285_LowranceTemperatu
   *
   * @category PGN_65286_ChetcoDimmer
  */
-export interface PGN_65286_ChetcoDimmer extends PGN {
+export interface PGN_65286_ChetcoDimmerInterface extends PGNInterface {
  fields: PGN_65286_ChetcoDimmerFields
 }
 
@@ -2385,7 +2405,8 @@ export interface PGN_65286_ChetcoDimmerFields {
 export const PGN_65286_ChetcoDimmerDefaults = {
   pgn: 65286,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -2412,14 +2433,13 @@ export interface PGN_65286_ChetcoDimmerCreateArgs {
 /**
  * @category PGN_65286_ChetcoDimmer
  */
-export const new65286_ChetcoDimmer = (fields: PGN_65286_ChetcoDimmerCreateArgs, dst:number=255) : PGN_65286_ChetcoDimmer => {
-  return {
-    ...PGN_65286_ChetcoDimmerDefaults,
-    dst,
-    fields: {
-      ...PGN_65286_ChetcoDimmerMatchFields,
-      ...fields
-    }
+export class PGN_65286_ChetcoDimmer  extends PGN implements PGN_65286_ChetcoDimmerInterface {
+  fields: PGN_65286_ChetcoDimmerFields
+  
+  constructor(fields: PGN_65286_ChetcoDimmerCreateArgs, dst:number=255) {
+    super(PGN_65286_ChetcoDimmerDefaults)
+    this.src = dst
+    this.fields = { ...PGN_65286_ChetcoDimmerMatchFields, ...fields }
   }
 }
 /**
@@ -2432,7 +2452,7 @@ export const new65286_ChetcoDimmer = (fields: PGN_65286_ChetcoDimmerCreateArgs, 
   *
   * @category PGN_65286_AirmarBootStateRequest
  */
-export interface PGN_65286_AirmarBootStateRequest extends PGN {
+export interface PGN_65286_AirmarBootStateRequestInterface extends PGNInterface {
  fields: PGN_65286_AirmarBootStateRequestFields
 }
 
@@ -2452,7 +2472,8 @@ export interface PGN_65286_AirmarBootStateRequestFields {
 export const PGN_65286_AirmarBootStateRequestDefaults = {
   pgn: 65286,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -2474,14 +2495,13 @@ export interface PGN_65286_AirmarBootStateRequestCreateArgs {
 /**
  * @category PGN_65286_AirmarBootStateRequest
  */
-export const new65286_AirmarBootStateRequest = (fields: PGN_65286_AirmarBootStateRequestCreateArgs, dst:number=255) : PGN_65286_AirmarBootStateRequest => {
-  return {
-    ...PGN_65286_AirmarBootStateRequestDefaults,
-    dst,
-    fields: {
-      ...PGN_65286_AirmarBootStateRequestMatchFields,
-      ...fields
-    }
+export class PGN_65286_AirmarBootStateRequest  extends PGN implements PGN_65286_AirmarBootStateRequestInterface {
+  fields: PGN_65286_AirmarBootStateRequestFields
+  
+  constructor(fields: PGN_65286_AirmarBootStateRequestCreateArgs, dst:number=255) {
+    super(PGN_65286_AirmarBootStateRequestDefaults)
+    this.src = dst
+    this.fields = { ...PGN_65286_AirmarBootStateRequestMatchFields, ...fields }
   }
 }
 /**
@@ -2494,7 +2514,7 @@ export const new65286_AirmarBootStateRequest = (fields: PGN_65286_AirmarBootStat
   *
   * @category PGN_65287_AirmarAccessLevel
  */
-export interface PGN_65287_AirmarAccessLevel extends PGN {
+export interface PGN_65287_AirmarAccessLevelInterface extends PGNInterface {
  fields: PGN_65287_AirmarAccessLevelFields
 }
 
@@ -2517,7 +2537,8 @@ export interface PGN_65287_AirmarAccessLevelFields {
 export const PGN_65287_AirmarAccessLevelDefaults = {
   pgn: 65287,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -2542,14 +2563,13 @@ export interface PGN_65287_AirmarAccessLevelCreateArgs {
 /**
  * @category PGN_65287_AirmarAccessLevel
  */
-export const new65287_AirmarAccessLevel = (fields: PGN_65287_AirmarAccessLevelCreateArgs, dst:number=255) : PGN_65287_AirmarAccessLevel => {
-  return {
-    ...PGN_65287_AirmarAccessLevelDefaults,
-    dst,
-    fields: {
-      ...PGN_65287_AirmarAccessLevelMatchFields,
-      ...fields
-    }
+export class PGN_65287_AirmarAccessLevel  extends PGN implements PGN_65287_AirmarAccessLevelInterface {
+  fields: PGN_65287_AirmarAccessLevelFields
+  
+  constructor(fields: PGN_65287_AirmarAccessLevelCreateArgs, dst:number=255) {
+    super(PGN_65287_AirmarAccessLevelDefaults)
+    this.src = dst
+    this.fields = { ...PGN_65287_AirmarAccessLevelMatchFields, ...fields }
   }
 }
 /**
@@ -2562,7 +2582,7 @@ export const new65287_AirmarAccessLevel = (fields: PGN_65287_AirmarAccessLevelCr
   *
   * @category PGN_65287_SimnetConfigureTemperatureSensor
  */
-export interface PGN_65287_SimnetConfigureTemperatureSensor extends PGN {
+export interface PGN_65287_SimnetConfigureTemperatureSensorInterface extends PGNInterface {
  fields: PGN_65287_SimnetConfigureTemperatureSensorFields
 }
 
@@ -2582,7 +2602,8 @@ export interface PGN_65287_SimnetConfigureTemperatureSensorFields {
 export const PGN_65287_SimnetConfigureTemperatureSensorDefaults = {
   pgn: 65287,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -2604,14 +2625,13 @@ export interface PGN_65287_SimnetConfigureTemperatureSensorCreateArgs {
 /**
  * @category PGN_65287_SimnetConfigureTemperatureSensor
  */
-export const new65287_SimnetConfigureTemperatureSensor = (fields: PGN_65287_SimnetConfigureTemperatureSensorCreateArgs, dst:number=255) : PGN_65287_SimnetConfigureTemperatureSensor => {
-  return {
-    ...PGN_65287_SimnetConfigureTemperatureSensorDefaults,
-    dst,
-    fields: {
-      ...PGN_65287_SimnetConfigureTemperatureSensorMatchFields,
-      ...fields
-    }
+export class PGN_65287_SimnetConfigureTemperatureSensor  extends PGN implements PGN_65287_SimnetConfigureTemperatureSensorInterface {
+  fields: PGN_65287_SimnetConfigureTemperatureSensorFields
+  
+  constructor(fields: PGN_65287_SimnetConfigureTemperatureSensorCreateArgs, dst:number=255) {
+    super(PGN_65287_SimnetConfigureTemperatureSensorDefaults)
+    this.src = dst
+    this.fields = { ...PGN_65287_SimnetConfigureTemperatureSensorMatchFields, ...fields }
   }
 }
 /**
@@ -2621,7 +2641,7 @@ export const new65287_SimnetConfigureTemperatureSensor = (fields: PGN_65287_Simn
   *
   * @category PGN_65288
  */
-export interface PGN_65288 extends PGN {
+export interface PGN_65288Interface extends PGNInterface {
  fields: PGN_65288Fields
 }
 
@@ -2645,19 +2665,20 @@ export interface PGN_65288Fields {
 export const PGN_65288Defaults = {
   pgn: 65288,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_65288
  */
-export const new65288 = (fields: PGN_65288Fields, dst:number=255) : PGN_65288 => {
-  return {
-    ...PGN_65288Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65288  extends PGN implements PGN_65288Interface {
+  fields: PGN_65288Fields
+  
+  constructor(fields: PGN_65288Fields, dst:number=255) {
+    super(PGN_65288Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -2667,7 +2688,7 @@ export const new65288 = (fields: PGN_65288Fields, dst:number=255) : PGN_65288 =>
   *
   * @category PGN_65289
  */
-export interface PGN_65289 extends PGN {
+export interface PGN_65289Interface extends PGNInterface {
  fields: PGN_65289Fields
 }
 
@@ -2687,19 +2708,20 @@ export interface PGN_65289Fields {
 export const PGN_65289Defaults = {
   pgn: 65289,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65289
  */
-export const new65289 = (fields: PGN_65289Fields, dst:number=255) : PGN_65289 => {
-  return {
-    ...PGN_65289Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65289  extends PGN implements PGN_65289Interface {
+  fields: PGN_65289Fields
+  
+  constructor(fields: PGN_65289Fields, dst:number=255) {
+    super(PGN_65289Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -2709,7 +2731,7 @@ export const new65289 = (fields: PGN_65289Fields, dst:number=255) : PGN_65289 =>
   *
   * @category PGN_65290
  */
-export interface PGN_65290 extends PGN {
+export interface PGN_65290Interface extends PGNInterface {
  fields: PGN_65290Fields
 }
 
@@ -2729,19 +2751,20 @@ export interface PGN_65290Fields {
 export const PGN_65290Defaults = {
   pgn: 65290,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65290
  */
-export const new65290 = (fields: PGN_65290Fields, dst:number=255) : PGN_65290 => {
-  return {
-    ...PGN_65290Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65290  extends PGN implements PGN_65290Interface {
+  fields: PGN_65290Fields
+  
+  constructor(fields: PGN_65290Fields, dst:number=255) {
+    super(PGN_65290Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -2751,7 +2774,7 @@ export const new65290 = (fields: PGN_65290Fields, dst:number=255) : PGN_65290 =>
   *
   * @category PGN_65292
  */
-export interface PGN_65292 extends PGN {
+export interface PGN_65292Interface extends PGNInterface {
  fields: PGN_65292Fields
 }
 
@@ -2771,19 +2794,20 @@ export interface PGN_65292Fields {
 export const PGN_65292Defaults = {
   pgn: 65292,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65292
  */
-export const new65292 = (fields: PGN_65292Fields, dst:number=255) : PGN_65292 => {
-  return {
-    ...PGN_65292Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65292  extends PGN implements PGN_65292Interface {
+  fields: PGN_65292Fields
+  
+  constructor(fields: PGN_65292Fields, dst:number=255) {
+    super(PGN_65292Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -2796,7 +2820,7 @@ export const new65292 = (fields: PGN_65292Fields, dst:number=255) : PGN_65292 =>
   *
   * @category PGN_65293_SimnetLgc2000Configuration
  */
-export interface PGN_65293_SimnetLgc2000Configuration extends PGN {
+export interface PGN_65293_SimnetLgc2000ConfigurationInterface extends PGNInterface {
  fields: PGN_65293_SimnetLgc2000ConfigurationFields
 }
 
@@ -2816,7 +2840,8 @@ export interface PGN_65293_SimnetLgc2000ConfigurationFields {
 export const PGN_65293_SimnetLgc2000ConfigurationDefaults = {
   pgn: 65293,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -2838,14 +2863,13 @@ export interface PGN_65293_SimnetLgc2000ConfigurationCreateArgs {
 /**
  * @category PGN_65293_SimnetLgc2000Configuration
  */
-export const new65293_SimnetLgc2000Configuration = (fields: PGN_65293_SimnetLgc2000ConfigurationCreateArgs, dst:number=255) : PGN_65293_SimnetLgc2000Configuration => {
-  return {
-    ...PGN_65293_SimnetLgc2000ConfigurationDefaults,
-    dst,
-    fields: {
-      ...PGN_65293_SimnetLgc2000ConfigurationMatchFields,
-      ...fields
-    }
+export class PGN_65293_SimnetLgc2000Configuration  extends PGN implements PGN_65293_SimnetLgc2000ConfigurationInterface {
+  fields: PGN_65293_SimnetLgc2000ConfigurationFields
+  
+  constructor(fields: PGN_65293_SimnetLgc2000ConfigurationCreateArgs, dst:number=255) {
+    super(PGN_65293_SimnetLgc2000ConfigurationDefaults)
+    this.src = dst
+    this.fields = { ...PGN_65293_SimnetLgc2000ConfigurationMatchFields, ...fields }
   }
 }
 /**
@@ -2858,7 +2882,7 @@ export const new65293_SimnetLgc2000Configuration = (fields: PGN_65293_SimnetLgc2
   *
   * @category PGN_65293_DiverseYachtServicesLoadCell
  */
-export interface PGN_65293_DiverseYachtServicesLoadCell extends PGN {
+export interface PGN_65293_DiverseYachtServicesLoadCellInterface extends PGNInterface {
  fields: PGN_65293_DiverseYachtServicesLoadCellFields
 }
 
@@ -2880,7 +2904,8 @@ export interface PGN_65293_DiverseYachtServicesLoadCellFields {
 export const PGN_65293_DiverseYachtServicesLoadCellDefaults = {
   pgn: 65293,
   dst: 255,
-  prio: 2
+  prio: 2,
+  fields: []
 }
 
 /**
@@ -2904,14 +2929,13 @@ export interface PGN_65293_DiverseYachtServicesLoadCellCreateArgs {
 /**
  * @category PGN_65293_DiverseYachtServicesLoadCell
  */
-export const new65293_DiverseYachtServicesLoadCell = (fields: PGN_65293_DiverseYachtServicesLoadCellCreateArgs, dst:number=255) : PGN_65293_DiverseYachtServicesLoadCell => {
-  return {
-    ...PGN_65293_DiverseYachtServicesLoadCellDefaults,
-    dst,
-    fields: {
-      ...PGN_65293_DiverseYachtServicesLoadCellMatchFields,
-      ...fields
-    }
+export class PGN_65293_DiverseYachtServicesLoadCell  extends PGN implements PGN_65293_DiverseYachtServicesLoadCellInterface {
+  fields: PGN_65293_DiverseYachtServicesLoadCellFields
+  
+  constructor(fields: PGN_65293_DiverseYachtServicesLoadCellCreateArgs, dst:number=255) {
+    super(PGN_65293_DiverseYachtServicesLoadCellDefaults)
+    this.src = dst
+    this.fields = { ...PGN_65293_DiverseYachtServicesLoadCellMatchFields, ...fields }
   }
 }
 /**
@@ -2923,7 +2947,7 @@ export const new65293_DiverseYachtServicesLoadCell = (fields: PGN_65293_DiverseY
   *
   * @category PGN_65302
  */
-export interface PGN_65302 extends PGN {
+export interface PGN_65302Interface extends PGNInterface {
  fields: PGN_65302Fields
 }
 
@@ -2947,19 +2971,20 @@ export interface PGN_65302Fields {
 export const PGN_65302Defaults = {
   pgn: 65302,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_65302
  */
-export const new65302 = (fields: PGN_65302Fields, dst:number=255) : PGN_65302 => {
-  return {
-    ...PGN_65302Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65302  extends PGN implements PGN_65302Interface {
+  fields: PGN_65302Fields
+  
+  constructor(fields: PGN_65302Fields, dst:number=255) {
+    super(PGN_65302Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -2975,7 +3000,7 @@ export const new65302 = (fields: PGN_65302Fields, dst:number=255) : PGN_65302 =>
   *
   * @category PGN_65305_SimnetDeviceStatus
  */
-export interface PGN_65305_SimnetDeviceStatus extends PGN {
+export interface PGN_65305_SimnetDeviceStatusInterface extends PGNInterface {
  fields: PGN_65305_SimnetDeviceStatusFields
 }
 
@@ -2998,7 +3023,8 @@ export interface PGN_65305_SimnetDeviceStatusFields {
 export const PGN_65305_SimnetDeviceStatusDefaults = {
   pgn: 65305,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -3023,14 +3049,13 @@ export interface PGN_65305_SimnetDeviceStatusCreateArgs {
 /**
  * @category PGN_65305_SimnetDeviceStatus
  */
-export const new65305_SimnetDeviceStatus = (fields: PGN_65305_SimnetDeviceStatusCreateArgs, dst:number=255) : PGN_65305_SimnetDeviceStatus => {
-  return {
-    ...PGN_65305_SimnetDeviceStatusDefaults,
-    dst,
-    fields: {
-      ...PGN_65305_SimnetDeviceStatusMatchFields,
-      ...fields
-    }
+export class PGN_65305_SimnetDeviceStatus  extends PGN implements PGN_65305_SimnetDeviceStatusInterface {
+  fields: PGN_65305_SimnetDeviceStatusFields
+  
+  constructor(fields: PGN_65305_SimnetDeviceStatusCreateArgs, dst:number=255) {
+    super(PGN_65305_SimnetDeviceStatusDefaults)
+    this.src = dst
+    this.fields = { ...PGN_65305_SimnetDeviceStatusMatchFields, ...fields }
   }
 }
 /**
@@ -3046,7 +3071,7 @@ export const new65305_SimnetDeviceStatus = (fields: PGN_65305_SimnetDeviceStatus
   *
   * @category PGN_65305_SimnetDeviceStatusRequest
  */
-export interface PGN_65305_SimnetDeviceStatusRequest extends PGN {
+export interface PGN_65305_SimnetDeviceStatusRequestInterface extends PGNInterface {
  fields: PGN_65305_SimnetDeviceStatusRequestFields
 }
 
@@ -3068,7 +3093,8 @@ export interface PGN_65305_SimnetDeviceStatusRequestFields {
 export const PGN_65305_SimnetDeviceStatusRequestDefaults = {
   pgn: 65305,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -3092,14 +3118,13 @@ export interface PGN_65305_SimnetDeviceStatusRequestCreateArgs {
 /**
  * @category PGN_65305_SimnetDeviceStatusRequest
  */
-export const new65305_SimnetDeviceStatusRequest = (fields: PGN_65305_SimnetDeviceStatusRequestCreateArgs, dst:number=255) : PGN_65305_SimnetDeviceStatusRequest => {
-  return {
-    ...PGN_65305_SimnetDeviceStatusRequestDefaults,
-    dst,
-    fields: {
-      ...PGN_65305_SimnetDeviceStatusRequestMatchFields,
-      ...fields
-    }
+export class PGN_65305_SimnetDeviceStatusRequest  extends PGN implements PGN_65305_SimnetDeviceStatusRequestInterface {
+  fields: PGN_65305_SimnetDeviceStatusRequestFields
+  
+  constructor(fields: PGN_65305_SimnetDeviceStatusRequestCreateArgs, dst:number=255) {
+    super(PGN_65305_SimnetDeviceStatusRequestDefaults)
+    this.src = dst
+    this.fields = { ...PGN_65305_SimnetDeviceStatusRequestMatchFields, ...fields }
   }
 }
 /**
@@ -3115,7 +3140,7 @@ export const new65305_SimnetDeviceStatusRequest = (fields: PGN_65305_SimnetDevic
   *
   * @category PGN_65305_SimnetPilotMode
  */
-export interface PGN_65305_SimnetPilotMode extends PGN {
+export interface PGN_65305_SimnetPilotModeInterface extends PGNInterface {
  fields: PGN_65305_SimnetPilotModeFields
 }
 
@@ -3138,7 +3163,8 @@ export interface PGN_65305_SimnetPilotModeFields {
 export const PGN_65305_SimnetPilotModeDefaults = {
   pgn: 65305,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -3163,14 +3189,13 @@ export interface PGN_65305_SimnetPilotModeCreateArgs {
 /**
  * @category PGN_65305_SimnetPilotMode
  */
-export const new65305_SimnetPilotMode = (fields: PGN_65305_SimnetPilotModeCreateArgs, dst:number=255) : PGN_65305_SimnetPilotMode => {
-  return {
-    ...PGN_65305_SimnetPilotModeDefaults,
-    dst,
-    fields: {
-      ...PGN_65305_SimnetPilotModeMatchFields,
-      ...fields
-    }
+export class PGN_65305_SimnetPilotMode  extends PGN implements PGN_65305_SimnetPilotModeInterface {
+  fields: PGN_65305_SimnetPilotModeFields
+  
+  constructor(fields: PGN_65305_SimnetPilotModeCreateArgs, dst:number=255) {
+    super(PGN_65305_SimnetPilotModeDefaults)
+    this.src = dst
+    this.fields = { ...PGN_65305_SimnetPilotModeMatchFields, ...fields }
   }
 }
 /**
@@ -3186,7 +3211,7 @@ export const new65305_SimnetPilotMode = (fields: PGN_65305_SimnetPilotModeCreate
   *
   * @category PGN_65305_SimnetDeviceModeRequest
  */
-export interface PGN_65305_SimnetDeviceModeRequest extends PGN {
+export interface PGN_65305_SimnetDeviceModeRequestInterface extends PGNInterface {
  fields: PGN_65305_SimnetDeviceModeRequestFields
 }
 
@@ -3208,7 +3233,8 @@ export interface PGN_65305_SimnetDeviceModeRequestFields {
 export const PGN_65305_SimnetDeviceModeRequestDefaults = {
   pgn: 65305,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -3232,14 +3258,13 @@ export interface PGN_65305_SimnetDeviceModeRequestCreateArgs {
 /**
  * @category PGN_65305_SimnetDeviceModeRequest
  */
-export const new65305_SimnetDeviceModeRequest = (fields: PGN_65305_SimnetDeviceModeRequestCreateArgs, dst:number=255) : PGN_65305_SimnetDeviceModeRequest => {
-  return {
-    ...PGN_65305_SimnetDeviceModeRequestDefaults,
-    dst,
-    fields: {
-      ...PGN_65305_SimnetDeviceModeRequestMatchFields,
-      ...fields
-    }
+export class PGN_65305_SimnetDeviceModeRequest  extends PGN implements PGN_65305_SimnetDeviceModeRequestInterface {
+  fields: PGN_65305_SimnetDeviceModeRequestFields
+  
+  constructor(fields: PGN_65305_SimnetDeviceModeRequestCreateArgs, dst:number=255) {
+    super(PGN_65305_SimnetDeviceModeRequestDefaults)
+    this.src = dst
+    this.fields = { ...PGN_65305_SimnetDeviceModeRequestMatchFields, ...fields }
   }
 }
 /**
@@ -3255,7 +3280,7 @@ export const new65305_SimnetDeviceModeRequest = (fields: PGN_65305_SimnetDeviceM
   *
   * @category PGN_65305_SimnetSailingProcessorStatus
  */
-export interface PGN_65305_SimnetSailingProcessorStatus extends PGN {
+export interface PGN_65305_SimnetSailingProcessorStatusInterface extends PGNInterface {
  fields: PGN_65305_SimnetSailingProcessorStatusFields
 }
 
@@ -3277,7 +3302,8 @@ export interface PGN_65305_SimnetSailingProcessorStatusFields {
 export const PGN_65305_SimnetSailingProcessorStatusDefaults = {
   pgn: 65305,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -3301,14 +3327,13 @@ export interface PGN_65305_SimnetSailingProcessorStatusCreateArgs {
 /**
  * @category PGN_65305_SimnetSailingProcessorStatus
  */
-export const new65305_SimnetSailingProcessorStatus = (fields: PGN_65305_SimnetSailingProcessorStatusCreateArgs, dst:number=255) : PGN_65305_SimnetSailingProcessorStatus => {
-  return {
-    ...PGN_65305_SimnetSailingProcessorStatusDefaults,
-    dst,
-    fields: {
-      ...PGN_65305_SimnetSailingProcessorStatusMatchFields,
-      ...fields
-    }
+export class PGN_65305_SimnetSailingProcessorStatus  extends PGN implements PGN_65305_SimnetSailingProcessorStatusInterface {
+  fields: PGN_65305_SimnetSailingProcessorStatusFields
+  
+  constructor(fields: PGN_65305_SimnetSailingProcessorStatusCreateArgs, dst:number=255) {
+    super(PGN_65305_SimnetSailingProcessorStatusDefaults)
+    this.src = dst
+    this.fields = { ...PGN_65305_SimnetSailingProcessorStatusMatchFields, ...fields }
   }
 }
 /**
@@ -3318,7 +3343,7 @@ export const new65305_SimnetSailingProcessorStatus = (fields: PGN_65305_SimnetSa
   *
   * @category PGN_65309
  */
-export interface PGN_65309 extends PGN {
+export interface PGN_65309Interface extends PGNInterface {
  fields: PGN_65309Fields
 }
 
@@ -3341,19 +3366,20 @@ export interface PGN_65309Fields {
 export const PGN_65309Defaults = {
   pgn: 65309,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_65309
  */
-export const new65309 = (fields: PGN_65309Fields, dst:number=255) : PGN_65309 => {
-  return {
-    ...PGN_65309Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65309  extends PGN implements PGN_65309Interface {
+  fields: PGN_65309Fields
+  
+  constructor(fields: PGN_65309Fields, dst:number=255) {
+    super(PGN_65309Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -3363,7 +3389,7 @@ export const new65309 = (fields: PGN_65309Fields, dst:number=255) : PGN_65309 =>
   *
   * @category PGN_65312
  */
-export interface PGN_65312 extends PGN {
+export interface PGN_65312Interface extends PGNInterface {
  fields: PGN_65312Fields
 }
 
@@ -3385,19 +3411,20 @@ export interface PGN_65312Fields {
 export const PGN_65312Defaults = {
   pgn: 65312,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_65312
  */
-export const new65312 = (fields: PGN_65312Fields, dst:number=255) : PGN_65312 => {
-  return {
-    ...PGN_65312Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65312  extends PGN implements PGN_65312Interface {
+  fields: PGN_65312Fields
+  
+  constructor(fields: PGN_65312Fields, dst:number=255) {
+    super(PGN_65312Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -3409,7 +3436,7 @@ export const new65312 = (fields: PGN_65312Fields, dst:number=255) : PGN_65312 =>
   *
   * @category PGN_65340
  */
-export interface PGN_65340 extends PGN {
+export interface PGN_65340Interface extends PGNInterface {
  fields: PGN_65340Fields
 }
 
@@ -3434,19 +3461,20 @@ export interface PGN_65340Fields {
 export const PGN_65340Defaults = {
   pgn: 65340,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65340
  */
-export const new65340 = (fields: PGN_65340Fields, dst:number=255) : PGN_65340 => {
-  return {
-    ...PGN_65340Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65340  extends PGN implements PGN_65340Interface {
+  fields: PGN_65340Fields
+  
+  constructor(fields: PGN_65340Fields, dst:number=255) {
+    super(PGN_65340Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -3456,7 +3484,7 @@ export const new65340 = (fields: PGN_65340Fields, dst:number=255) : PGN_65340 =>
   *
   * @category PGN_65341
  */
-export interface PGN_65341 extends PGN {
+export interface PGN_65341Interface extends PGNInterface {
  fields: PGN_65341Fields
 }
 
@@ -3479,19 +3507,20 @@ export interface PGN_65341Fields {
 export const PGN_65341Defaults = {
   pgn: 65341,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_65341
  */
-export const new65341 = (fields: PGN_65341Fields, dst:number=255) : PGN_65341 => {
-  return {
-    ...PGN_65341Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65341  extends PGN implements PGN_65341Interface {
+  fields: PGN_65341Fields
+  
+  constructor(fields: PGN_65341Fields, dst:number=255) {
+    super(PGN_65341Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -3501,7 +3530,7 @@ export const new65341 = (fields: PGN_65341Fields, dst:number=255) : PGN_65341 =>
   *
   * @category PGN_65345
  */
-export interface PGN_65345 extends PGN {
+export interface PGN_65345Interface extends PGNInterface {
  fields: PGN_65345Fields
 }
 
@@ -3523,19 +3552,20 @@ export interface PGN_65345Fields {
 export const PGN_65345Defaults = {
   pgn: 65345,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65345
  */
-export const new65345 = (fields: PGN_65345Fields, dst:number=255) : PGN_65345 => {
-  return {
-    ...PGN_65345Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65345  extends PGN implements PGN_65345Interface {
+  fields: PGN_65345Fields
+  
+  constructor(fields: PGN_65345Fields, dst:number=255) {
+    super(PGN_65345Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -3545,7 +3575,7 @@ export const new65345 = (fields: PGN_65345Fields, dst:number=255) : PGN_65345 =>
   *
   * @category PGN_65350
  */
-export interface PGN_65350 extends PGN {
+export interface PGN_65350Interface extends PGNInterface {
  fields: PGN_65350Fields
 }
 
@@ -3566,19 +3596,20 @@ export interface PGN_65350Fields {
 export const PGN_65350Defaults = {
   pgn: 65350,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65350
  */
-export const new65350 = (fields: PGN_65350Fields, dst:number=255) : PGN_65350 => {
-  return {
-    ...PGN_65350Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65350  extends PGN implements PGN_65350Interface {
+  fields: PGN_65350Fields
+  
+  constructor(fields: PGN_65350Fields, dst:number=255) {
+    super(PGN_65350Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -3588,7 +3619,7 @@ export const new65350 = (fields: PGN_65350Fields, dst:number=255) : PGN_65350 =>
   *
   * @category PGN_65359
  */
-export interface PGN_65359 extends PGN {
+export interface PGN_65359Interface extends PGNInterface {
  fields: PGN_65359Fields
 }
 
@@ -3611,19 +3642,20 @@ export interface PGN_65359Fields {
 export const PGN_65359Defaults = {
   pgn: 65359,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_65359
  */
-export const new65359 = (fields: PGN_65359Fields, dst:number=255) : PGN_65359 => {
-  return {
-    ...PGN_65359Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65359  extends PGN implements PGN_65359Interface {
+  fields: PGN_65359Fields
+  
+  constructor(fields: PGN_65359Fields, dst:number=255) {
+    super(PGN_65359Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -3633,7 +3665,7 @@ export const new65359 = (fields: PGN_65359Fields, dst:number=255) : PGN_65359 =>
   *
   * @category PGN_65360
  */
-export interface PGN_65360 extends PGN {
+export interface PGN_65360Interface extends PGNInterface {
  fields: PGN_65360Fields
 }
 
@@ -3656,19 +3688,20 @@ export interface PGN_65360Fields {
 export const PGN_65360Defaults = {
   pgn: 65360,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_65360
  */
-export const new65360 = (fields: PGN_65360Fields, dst:number=255) : PGN_65360 => {
-  return {
-    ...PGN_65360Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65360  extends PGN implements PGN_65360Interface {
+  fields: PGN_65360Fields
+  
+  constructor(fields: PGN_65360Fields, dst:number=255) {
+    super(PGN_65360Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -3678,7 +3711,7 @@ export const new65360 = (fields: PGN_65360Fields, dst:number=255) : PGN_65360 =>
   *
   * @category PGN_65361
  */
-export interface PGN_65361 extends PGN {
+export interface PGN_65361Interface extends PGNInterface {
  fields: PGN_65361Fields
 }
 
@@ -3700,19 +3733,20 @@ export interface PGN_65361Fields {
 export const PGN_65361Defaults = {
   pgn: 65361,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65361
  */
-export const new65361 = (fields: PGN_65361Fields, dst:number=255) : PGN_65361 => {
-  return {
-    ...PGN_65361Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65361  extends PGN implements PGN_65361Interface {
+  fields: PGN_65361Fields
+  
+  constructor(fields: PGN_65361Fields, dst:number=255) {
+    super(PGN_65361Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -3722,7 +3756,7 @@ export const new65361 = (fields: PGN_65361Fields, dst:number=255) : PGN_65361 =>
   *
   * @category PGN_65371
  */
-export interface PGN_65371 extends PGN {
+export interface PGN_65371Interface extends PGNInterface {
  fields: PGN_65371Fields
 }
 
@@ -3749,19 +3783,20 @@ export interface PGN_65371Fields {
 export const PGN_65371Defaults = {
   pgn: 65371,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65371
  */
-export const new65371 = (fields: PGN_65371Fields, dst:number=255) : PGN_65371 => {
-  return {
-    ...PGN_65371Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65371  extends PGN implements PGN_65371Interface {
+  fields: PGN_65371Fields
+  
+  constructor(fields: PGN_65371Fields, dst:number=255) {
+    super(PGN_65371Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -3771,7 +3806,7 @@ export const new65371 = (fields: PGN_65371Fields, dst:number=255) : PGN_65371 =>
   *
   * @category PGN_65374
  */
-export interface PGN_65374 extends PGN {
+export interface PGN_65374Interface extends PGNInterface {
  fields: PGN_65374Fields
 }
 
@@ -3794,19 +3829,20 @@ export interface PGN_65374Fields {
 export const PGN_65374Defaults = {
   pgn: 65374,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65374
  */
-export const new65374 = (fields: PGN_65374Fields, dst:number=255) : PGN_65374 => {
-  return {
-    ...PGN_65374Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65374  extends PGN implements PGN_65374Interface {
+  fields: PGN_65374Fields
+  
+  constructor(fields: PGN_65374Fields, dst:number=255) {
+    super(PGN_65374Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -3816,7 +3852,7 @@ export const new65374 = (fields: PGN_65374Fields, dst:number=255) : PGN_65374 =>
   *
   * @category PGN_65379
  */
-export interface PGN_65379 extends PGN {
+export interface PGN_65379Interface extends PGNInterface {
  fields: PGN_65379Fields
 }
 
@@ -3839,19 +3875,20 @@ export interface PGN_65379Fields {
 export const PGN_65379Defaults = {
   pgn: 65379,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_65379
  */
-export const new65379 = (fields: PGN_65379Fields, dst:number=255) : PGN_65379 => {
-  return {
-    ...PGN_65379Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65379  extends PGN implements PGN_65379Interface {
+  fields: PGN_65379Fields
+  
+  constructor(fields: PGN_65379Fields, dst:number=255) {
+    super(PGN_65379Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -3861,7 +3898,7 @@ export const new65379 = (fields: PGN_65379Fields, dst:number=255) : PGN_65379 =>
   *
   * @category PGN_65408
  */
-export interface PGN_65408 extends PGN {
+export interface PGN_65408Interface extends PGNInterface {
  fields: PGN_65408Fields
 }
 
@@ -3883,19 +3920,20 @@ export interface PGN_65408Fields {
 export const PGN_65408Defaults = {
   pgn: 65408,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_65408
  */
-export const new65408 = (fields: PGN_65408Fields, dst:number=255) : PGN_65408 => {
-  return {
-    ...PGN_65408Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65408  extends PGN implements PGN_65408Interface {
+  fields: PGN_65408Fields
+  
+  constructor(fields: PGN_65408Fields, dst:number=255) {
+    super(PGN_65408Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -3905,7 +3943,7 @@ export const new65408 = (fields: PGN_65408Fields, dst:number=255) : PGN_65408 =>
   *
   * @category PGN_65409
  */
-export interface PGN_65409 extends PGN {
+export interface PGN_65409Interface extends PGNInterface {
  fields: PGN_65409Fields
 }
 
@@ -3928,19 +3966,20 @@ export interface PGN_65409Fields {
 export const PGN_65409Defaults = {
   pgn: 65409,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_65409
  */
-export const new65409 = (fields: PGN_65409Fields, dst:number=255) : PGN_65409 => {
-  return {
-    ...PGN_65409Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65409  extends PGN implements PGN_65409Interface {
+  fields: PGN_65409Fields
+  
+  constructor(fields: PGN_65409Fields, dst:number=255) {
+    super(PGN_65409Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -3950,7 +3989,7 @@ export const new65409 = (fields: PGN_65409Fields, dst:number=255) : PGN_65409 =>
   *
   * @category PGN_65410
  */
-export interface PGN_65410 extends PGN {
+export interface PGN_65410Interface extends PGNInterface {
  fields: PGN_65410Fields
 }
 
@@ -3973,19 +4012,20 @@ export interface PGN_65410Fields {
 export const PGN_65410Defaults = {
   pgn: 65410,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_65410
  */
-export const new65410 = (fields: PGN_65410Fields, dst:number=255) : PGN_65410 => {
-  return {
-    ...PGN_65410Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65410  extends PGN implements PGN_65410Interface {
+  fields: PGN_65410Fields
+  
+  constructor(fields: PGN_65410Fields, dst:number=255) {
+    super(PGN_65410Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -3997,7 +4037,7 @@ export const new65410 = (fields: PGN_65410Fields, dst:number=255) : PGN_65410 =>
   *
   * @category PGN_65420
  */
-export interface PGN_65420 extends PGN {
+export interface PGN_65420Interface extends PGNInterface {
  fields: PGN_65420Fields
 }
 
@@ -4022,19 +4062,20 @@ export interface PGN_65420Fields {
 export const PGN_65420Defaults = {
   pgn: 65420,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_65420
  */
-export const new65420 = (fields: PGN_65420Fields, dst:number=255) : PGN_65420 => {
-  return {
-    ...PGN_65420Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65420  extends PGN implements PGN_65420Interface {
+  fields: PGN_65420Fields
+  
+  constructor(fields: PGN_65420Fields, dst:number=255) {
+    super(PGN_65420Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -4044,7 +4085,7 @@ export const new65420 = (fields: PGN_65420Fields, dst:number=255) : PGN_65420 =>
   *
   * @category PGN_65480
  */
-export interface PGN_65480 extends PGN {
+export interface PGN_65480Interface extends PGNInterface {
  fields: PGN_65480Fields
 }
 
@@ -4064,19 +4105,20 @@ export interface PGN_65480Fields {
 export const PGN_65480Defaults = {
   pgn: 65480,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_65480
  */
-export const new65480 = (fields: PGN_65480Fields, dst:number=255) : PGN_65480 => {
-  return {
-    ...PGN_65480Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_65480  extends PGN implements PGN_65480Interface {
+  fields: PGN_65480Fields
+  
+  constructor(fields: PGN_65480Fields, dst:number=255) {
+    super(PGN_65480Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -4089,7 +4131,7 @@ export const new65480 = (fields: PGN_65480Fields, dst:number=255) : PGN_65480 =>
   *
   * @category PGN_126208_NmeaRequestGroupFunction
  */
-export interface PGN_126208_NmeaRequestGroupFunction extends PGN {
+export interface PGN_126208_NmeaRequestGroupFunctionInterface extends PGNInterface {
  fields: PGN_126208_NmeaRequestGroupFunctionFields
 }
 
@@ -4114,7 +4156,8 @@ export interface PGN_126208_NmeaRequestGroupFunctionFields {
 export const PGN_126208_NmeaRequestGroupFunctionDefaults = {
   pgn: 126208,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -4141,14 +4184,13 @@ export interface PGN_126208_NmeaRequestGroupFunctionCreateArgs {
 /**
  * @category PGN_126208_NmeaRequestGroupFunction
  */
-export const new126208_NmeaRequestGroupFunction = (fields: PGN_126208_NmeaRequestGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaRequestGroupFunction => {
-  return {
-    ...PGN_126208_NmeaRequestGroupFunctionDefaults,
-    dst,
-    fields: {
-      ...PGN_126208_NmeaRequestGroupFunctionMatchFields,
-      ...fields
-    }
+export class PGN_126208_NmeaRequestGroupFunction  extends PGN implements PGN_126208_NmeaRequestGroupFunctionInterface {
+  fields: PGN_126208_NmeaRequestGroupFunctionFields
+  
+  constructor(fields: PGN_126208_NmeaRequestGroupFunctionCreateArgs, dst:number=255) {
+    super(PGN_126208_NmeaRequestGroupFunctionDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126208_NmeaRequestGroupFunctionMatchFields, ...fields }
   }
 }
 /**
@@ -4162,7 +4204,7 @@ export const new126208_NmeaRequestGroupFunction = (fields: PGN_126208_NmeaReques
   *
   * @category PGN_126208_NmeaCommandGroupFunction
  */
-export interface PGN_126208_NmeaCommandGroupFunction extends PGN {
+export interface PGN_126208_NmeaCommandGroupFunctionInterface extends PGNInterface {
  fields: PGN_126208_NmeaCommandGroupFunctionFields
 }
 
@@ -4187,7 +4229,8 @@ export interface PGN_126208_NmeaCommandGroupFunctionFields {
 export const PGN_126208_NmeaCommandGroupFunctionDefaults = {
   pgn: 126208,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -4214,14 +4257,13 @@ export interface PGN_126208_NmeaCommandGroupFunctionCreateArgs {
 /**
  * @category PGN_126208_NmeaCommandGroupFunction
  */
-export const new126208_NmeaCommandGroupFunction = (fields: PGN_126208_NmeaCommandGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaCommandGroupFunction => {
-  return {
-    ...PGN_126208_NmeaCommandGroupFunctionDefaults,
-    dst,
-    fields: {
-      ...PGN_126208_NmeaCommandGroupFunctionMatchFields,
-      ...fields
-    }
+export class PGN_126208_NmeaCommandGroupFunction  extends PGN implements PGN_126208_NmeaCommandGroupFunctionInterface {
+  fields: PGN_126208_NmeaCommandGroupFunctionFields
+  
+  constructor(fields: PGN_126208_NmeaCommandGroupFunctionCreateArgs, dst:number=255) {
+    super(PGN_126208_NmeaCommandGroupFunctionDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126208_NmeaCommandGroupFunctionMatchFields, ...fields }
   }
 }
 /**
@@ -4235,7 +4277,7 @@ export const new126208_NmeaCommandGroupFunction = (fields: PGN_126208_NmeaComman
   *
   * @category PGN_126208_NmeaAcknowledgeGroupFunction
  */
-export interface PGN_126208_NmeaAcknowledgeGroupFunction extends PGN {
+export interface PGN_126208_NmeaAcknowledgeGroupFunctionInterface extends PGNInterface {
  fields: PGN_126208_NmeaAcknowledgeGroupFunctionFields
 }
 
@@ -4259,7 +4301,8 @@ export interface PGN_126208_NmeaAcknowledgeGroupFunctionFields {
 export const PGN_126208_NmeaAcknowledgeGroupFunctionDefaults = {
   pgn: 126208,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -4285,14 +4328,13 @@ export interface PGN_126208_NmeaAcknowledgeGroupFunctionCreateArgs {
 /**
  * @category PGN_126208_NmeaAcknowledgeGroupFunction
  */
-export const new126208_NmeaAcknowledgeGroupFunction = (fields: PGN_126208_NmeaAcknowledgeGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaAcknowledgeGroupFunction => {
-  return {
-    ...PGN_126208_NmeaAcknowledgeGroupFunctionDefaults,
-    dst,
-    fields: {
-      ...PGN_126208_NmeaAcknowledgeGroupFunctionMatchFields,
-      ...fields
-    }
+export class PGN_126208_NmeaAcknowledgeGroupFunction  extends PGN implements PGN_126208_NmeaAcknowledgeGroupFunctionInterface {
+  fields: PGN_126208_NmeaAcknowledgeGroupFunctionFields
+  
+  constructor(fields: PGN_126208_NmeaAcknowledgeGroupFunctionCreateArgs, dst:number=255) {
+    super(PGN_126208_NmeaAcknowledgeGroupFunctionDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126208_NmeaAcknowledgeGroupFunctionMatchFields, ...fields }
   }
 }
 /**
@@ -4306,7 +4348,7 @@ export const new126208_NmeaAcknowledgeGroupFunction = (fields: PGN_126208_NmeaAc
   *
   * @category PGN_126208_NmeaReadFieldsGroupFunction
  */
-export interface PGN_126208_NmeaReadFieldsGroupFunction extends PGN {
+export interface PGN_126208_NmeaReadFieldsGroupFunctionInterface extends PGNInterface {
  fields: PGN_126208_NmeaReadFieldsGroupFunctionFields
 }
 
@@ -4336,7 +4378,8 @@ export interface PGN_126208_NmeaReadFieldsGroupFunctionFields {
 export const PGN_126208_NmeaReadFieldsGroupFunctionDefaults = {
   pgn: 126208,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -4368,14 +4411,13 @@ export interface PGN_126208_NmeaReadFieldsGroupFunctionCreateArgs {
 /**
  * @category PGN_126208_NmeaReadFieldsGroupFunction
  */
-export const new126208_NmeaReadFieldsGroupFunction = (fields: PGN_126208_NmeaReadFieldsGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaReadFieldsGroupFunction => {
-  return {
-    ...PGN_126208_NmeaReadFieldsGroupFunctionDefaults,
-    dst,
-    fields: {
-      ...PGN_126208_NmeaReadFieldsGroupFunctionMatchFields,
-      ...fields
-    }
+export class PGN_126208_NmeaReadFieldsGroupFunction  extends PGN implements PGN_126208_NmeaReadFieldsGroupFunctionInterface {
+  fields: PGN_126208_NmeaReadFieldsGroupFunctionFields
+  
+  constructor(fields: PGN_126208_NmeaReadFieldsGroupFunctionCreateArgs, dst:number=255) {
+    super(PGN_126208_NmeaReadFieldsGroupFunctionDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126208_NmeaReadFieldsGroupFunctionMatchFields, ...fields }
   }
 }
 /**
@@ -4389,7 +4431,7 @@ export const new126208_NmeaReadFieldsGroupFunction = (fields: PGN_126208_NmeaRea
   *
   * @category PGN_126208_NmeaReadFieldsReplyGroupFunction
  */
-export interface PGN_126208_NmeaReadFieldsReplyGroupFunction extends PGN {
+export interface PGN_126208_NmeaReadFieldsReplyGroupFunctionInterface extends PGNInterface {
  fields: PGN_126208_NmeaReadFieldsReplyGroupFunctionFields
 }
 
@@ -4420,7 +4462,8 @@ export interface PGN_126208_NmeaReadFieldsReplyGroupFunctionFields {
 export const PGN_126208_NmeaReadFieldsReplyGroupFunctionDefaults = {
   pgn: 126208,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -4453,14 +4496,13 @@ export interface PGN_126208_NmeaReadFieldsReplyGroupFunctionCreateArgs {
 /**
  * @category PGN_126208_NmeaReadFieldsReplyGroupFunction
  */
-export const new126208_NmeaReadFieldsReplyGroupFunction = (fields: PGN_126208_NmeaReadFieldsReplyGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaReadFieldsReplyGroupFunction => {
-  return {
-    ...PGN_126208_NmeaReadFieldsReplyGroupFunctionDefaults,
-    dst,
-    fields: {
-      ...PGN_126208_NmeaReadFieldsReplyGroupFunctionMatchFields,
-      ...fields
-    }
+export class PGN_126208_NmeaReadFieldsReplyGroupFunction  extends PGN implements PGN_126208_NmeaReadFieldsReplyGroupFunctionInterface {
+  fields: PGN_126208_NmeaReadFieldsReplyGroupFunctionFields
+  
+  constructor(fields: PGN_126208_NmeaReadFieldsReplyGroupFunctionCreateArgs, dst:number=255) {
+    super(PGN_126208_NmeaReadFieldsReplyGroupFunctionDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126208_NmeaReadFieldsReplyGroupFunctionMatchFields, ...fields }
   }
 }
 /**
@@ -4474,7 +4516,7 @@ export const new126208_NmeaReadFieldsReplyGroupFunction = (fields: PGN_126208_Nm
   *
   * @category PGN_126208_NmeaWriteFieldsGroupFunction
  */
-export interface PGN_126208_NmeaWriteFieldsGroupFunction extends PGN {
+export interface PGN_126208_NmeaWriteFieldsGroupFunctionInterface extends PGNInterface {
  fields: PGN_126208_NmeaWriteFieldsGroupFunctionFields
 }
 
@@ -4505,7 +4547,8 @@ export interface PGN_126208_NmeaWriteFieldsGroupFunctionFields {
 export const PGN_126208_NmeaWriteFieldsGroupFunctionDefaults = {
   pgn: 126208,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -4538,14 +4581,13 @@ export interface PGN_126208_NmeaWriteFieldsGroupFunctionCreateArgs {
 /**
  * @category PGN_126208_NmeaWriteFieldsGroupFunction
  */
-export const new126208_NmeaWriteFieldsGroupFunction = (fields: PGN_126208_NmeaWriteFieldsGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaWriteFieldsGroupFunction => {
-  return {
-    ...PGN_126208_NmeaWriteFieldsGroupFunctionDefaults,
-    dst,
-    fields: {
-      ...PGN_126208_NmeaWriteFieldsGroupFunctionMatchFields,
-      ...fields
-    }
+export class PGN_126208_NmeaWriteFieldsGroupFunction  extends PGN implements PGN_126208_NmeaWriteFieldsGroupFunctionInterface {
+  fields: PGN_126208_NmeaWriteFieldsGroupFunctionFields
+  
+  constructor(fields: PGN_126208_NmeaWriteFieldsGroupFunctionCreateArgs, dst:number=255) {
+    super(PGN_126208_NmeaWriteFieldsGroupFunctionDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126208_NmeaWriteFieldsGroupFunctionMatchFields, ...fields }
   }
 }
 /**
@@ -4559,7 +4601,7 @@ export const new126208_NmeaWriteFieldsGroupFunction = (fields: PGN_126208_NmeaWr
   *
   * @category PGN_126208_NmeaWriteFieldsReplyGroupFunction
  */
-export interface PGN_126208_NmeaWriteFieldsReplyGroupFunction extends PGN {
+export interface PGN_126208_NmeaWriteFieldsReplyGroupFunctionInterface extends PGNInterface {
  fields: PGN_126208_NmeaWriteFieldsReplyGroupFunctionFields
 }
 
@@ -4590,7 +4632,8 @@ export interface PGN_126208_NmeaWriteFieldsReplyGroupFunctionFields {
 export const PGN_126208_NmeaWriteFieldsReplyGroupFunctionDefaults = {
   pgn: 126208,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -4623,14 +4666,13 @@ export interface PGN_126208_NmeaWriteFieldsReplyGroupFunctionCreateArgs {
 /**
  * @category PGN_126208_NmeaWriteFieldsReplyGroupFunction
  */
-export const new126208_NmeaWriteFieldsReplyGroupFunction = (fields: PGN_126208_NmeaWriteFieldsReplyGroupFunctionCreateArgs, dst:number=255) : PGN_126208_NmeaWriteFieldsReplyGroupFunction => {
-  return {
-    ...PGN_126208_NmeaWriteFieldsReplyGroupFunctionDefaults,
-    dst,
-    fields: {
-      ...PGN_126208_NmeaWriteFieldsReplyGroupFunctionMatchFields,
-      ...fields
-    }
+export class PGN_126208_NmeaWriteFieldsReplyGroupFunction  extends PGN implements PGN_126208_NmeaWriteFieldsReplyGroupFunctionInterface {
+  fields: PGN_126208_NmeaWriteFieldsReplyGroupFunctionFields
+  
+  constructor(fields: PGN_126208_NmeaWriteFieldsReplyGroupFunctionCreateArgs, dst:number=255) {
+    super(PGN_126208_NmeaWriteFieldsReplyGroupFunctionDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126208_NmeaWriteFieldsReplyGroupFunctionMatchFields, ...fields }
   }
 }
 /**
@@ -4640,7 +4682,7 @@ export const new126208_NmeaWriteFieldsReplyGroupFunction = (fields: PGN_126208_N
   *
   * @category PGN_126464
  */
-export interface PGN_126464 extends PGN {
+export interface PGN_126464Interface extends PGNInterface {
  fields: PGN_126464Fields
 }
 
@@ -4660,19 +4702,20 @@ export interface PGN_126464Fields {
 export const PGN_126464Defaults = {
   pgn: 126464,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_126464
  */
-export const new126464 = (fields: PGN_126464Fields, dst:number=255) : PGN_126464 => {
-  return {
-    ...PGN_126464Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_126464  extends PGN implements PGN_126464Interface {
+  fields: PGN_126464Fields
+  
+  constructor(fields: PGN_126464Fields, dst:number=255) {
+    super(PGN_126464Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -4687,7 +4730,7 @@ export const new126464 = (fields: PGN_126464Fields, dst:number=255) : PGN_126464
   *
   * @category PGN_126720_Seatalk1PilotMode
  */
-export interface PGN_126720_Seatalk1PilotMode extends PGN {
+export interface PGN_126720_Seatalk1PilotModeInterface extends PGNInterface {
  fields: PGN_126720_Seatalk1PilotModeFields
 }
 
@@ -4713,7 +4756,8 @@ export interface PGN_126720_Seatalk1PilotModeFields {
 export const PGN_126720_Seatalk1PilotModeDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -4741,14 +4785,13 @@ export interface PGN_126720_Seatalk1PilotModeCreateArgs {
 /**
  * @category PGN_126720_Seatalk1PilotMode
  */
-export const new126720_Seatalk1PilotMode = (fields: PGN_126720_Seatalk1PilotModeCreateArgs, dst:number=255) : PGN_126720_Seatalk1PilotMode => {
-  return {
-    ...PGN_126720_Seatalk1PilotModeDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_Seatalk1PilotModeMatchFields,
-      ...fields
-    }
+export class PGN_126720_Seatalk1PilotMode  extends PGN implements PGN_126720_Seatalk1PilotModeInterface {
+  fields: PGN_126720_Seatalk1PilotModeFields
+  
+  constructor(fields: PGN_126720_Seatalk1PilotModeCreateArgs, dst:number=255) {
+    super(PGN_126720_Seatalk1PilotModeDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_Seatalk1PilotModeMatchFields, ...fields }
   }
 }
 /**
@@ -4762,7 +4805,7 @@ export const new126720_Seatalk1PilotMode = (fields: PGN_126720_Seatalk1PilotMode
   *
   * @category PGN_126720_FusionMediaControl
  */
-export interface PGN_126720_FusionMediaControl extends PGN {
+export interface PGN_126720_FusionMediaControlInterface extends PGNInterface {
  fields: PGN_126720_FusionMediaControlFields
 }
 
@@ -4785,7 +4828,8 @@ export interface PGN_126720_FusionMediaControlFields {
 export const PGN_126720_FusionMediaControlDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -4810,14 +4854,13 @@ export interface PGN_126720_FusionMediaControlCreateArgs {
 /**
  * @category PGN_126720_FusionMediaControl
  */
-export const new126720_FusionMediaControl = (fields: PGN_126720_FusionMediaControlCreateArgs, dst:number=255) : PGN_126720_FusionMediaControl => {
-  return {
-    ...PGN_126720_FusionMediaControlDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_FusionMediaControlMatchFields,
-      ...fields
-    }
+export class PGN_126720_FusionMediaControl  extends PGN implements PGN_126720_FusionMediaControlInterface {
+  fields: PGN_126720_FusionMediaControlFields
+  
+  constructor(fields: PGN_126720_FusionMediaControlCreateArgs, dst:number=255) {
+    super(PGN_126720_FusionMediaControlDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_FusionMediaControlMatchFields, ...fields }
   }
 }
 /**
@@ -4831,7 +4874,7 @@ export const new126720_FusionMediaControl = (fields: PGN_126720_FusionMediaContr
   *
   * @category PGN_126720_FusionSiriusControl
  */
-export interface PGN_126720_FusionSiriusControl extends PGN {
+export interface PGN_126720_FusionSiriusControlInterface extends PGNInterface {
  fields: PGN_126720_FusionSiriusControlFields
 }
 
@@ -4854,7 +4897,8 @@ export interface PGN_126720_FusionSiriusControlFields {
 export const PGN_126720_FusionSiriusControlDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -4879,14 +4923,13 @@ export interface PGN_126720_FusionSiriusControlCreateArgs {
 /**
  * @category PGN_126720_FusionSiriusControl
  */
-export const new126720_FusionSiriusControl = (fields: PGN_126720_FusionSiriusControlCreateArgs, dst:number=255) : PGN_126720_FusionSiriusControl => {
-  return {
-    ...PGN_126720_FusionSiriusControlDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_FusionSiriusControlMatchFields,
-      ...fields
-    }
+export class PGN_126720_FusionSiriusControl  extends PGN implements PGN_126720_FusionSiriusControlInterface {
+  fields: PGN_126720_FusionSiriusControlFields
+  
+  constructor(fields: PGN_126720_FusionSiriusControlCreateArgs, dst:number=255) {
+    super(PGN_126720_FusionSiriusControlDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_FusionSiriusControlMatchFields, ...fields }
   }
 }
 /**
@@ -4900,7 +4943,7 @@ export const new126720_FusionSiriusControl = (fields: PGN_126720_FusionSiriusCon
   *
   * @category PGN_126720_FusionRequestStatus
  */
-export interface PGN_126720_FusionRequestStatus extends PGN {
+export interface PGN_126720_FusionRequestStatusInterface extends PGNInterface {
  fields: PGN_126720_FusionRequestStatusFields
 }
 
@@ -4921,7 +4964,8 @@ export interface PGN_126720_FusionRequestStatusFields {
 export const PGN_126720_FusionRequestStatusDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -4944,14 +4988,13 @@ export interface PGN_126720_FusionRequestStatusCreateArgs {
 /**
  * @category PGN_126720_FusionRequestStatus
  */
-export const new126720_FusionRequestStatus = (fields: PGN_126720_FusionRequestStatusCreateArgs, dst:number=255) : PGN_126720_FusionRequestStatus => {
-  return {
-    ...PGN_126720_FusionRequestStatusDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_FusionRequestStatusMatchFields,
-      ...fields
-    }
+export class PGN_126720_FusionRequestStatus  extends PGN implements PGN_126720_FusionRequestStatusInterface {
+  fields: PGN_126720_FusionRequestStatusFields
+  
+  constructor(fields: PGN_126720_FusionRequestStatusCreateArgs, dst:number=255) {
+    super(PGN_126720_FusionRequestStatusDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_FusionRequestStatusMatchFields, ...fields }
   }
 }
 /**
@@ -4965,7 +5008,7 @@ export const new126720_FusionRequestStatus = (fields: PGN_126720_FusionRequestSt
   *
   * @category PGN_126720_FusionSetSource
  */
-export interface PGN_126720_FusionSetSource extends PGN {
+export interface PGN_126720_FusionSetSourceInterface extends PGNInterface {
  fields: PGN_126720_FusionSetSourceFields
 }
 
@@ -4987,7 +5030,8 @@ export interface PGN_126720_FusionSetSourceFields {
 export const PGN_126720_FusionSetSourceDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -5011,14 +5055,13 @@ export interface PGN_126720_FusionSetSourceCreateArgs {
 /**
  * @category PGN_126720_FusionSetSource
  */
-export const new126720_FusionSetSource = (fields: PGN_126720_FusionSetSourceCreateArgs, dst:number=255) : PGN_126720_FusionSetSource => {
-  return {
-    ...PGN_126720_FusionSetSourceDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_FusionSetSourceMatchFields,
-      ...fields
-    }
+export class PGN_126720_FusionSetSource  extends PGN implements PGN_126720_FusionSetSourceInterface {
+  fields: PGN_126720_FusionSetSourceFields
+  
+  constructor(fields: PGN_126720_FusionSetSourceCreateArgs, dst:number=255) {
+    super(PGN_126720_FusionSetSourceDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_FusionSetSourceMatchFields, ...fields }
   }
 }
 /**
@@ -5032,7 +5075,7 @@ export const new126720_FusionSetSource = (fields: PGN_126720_FusionSetSourceCrea
   *
   * @category PGN_126720_FusionSetMute
  */
-export interface PGN_126720_FusionSetMute extends PGN {
+export interface PGN_126720_FusionSetMuteInterface extends PGNInterface {
  fields: PGN_126720_FusionSetMuteFields
 }
 
@@ -5053,7 +5096,8 @@ export interface PGN_126720_FusionSetMuteFields {
 export const PGN_126720_FusionSetMuteDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -5076,14 +5120,13 @@ export interface PGN_126720_FusionSetMuteCreateArgs {
 /**
  * @category PGN_126720_FusionSetMute
  */
-export const new126720_FusionSetMute = (fields: PGN_126720_FusionSetMuteCreateArgs, dst:number=255) : PGN_126720_FusionSetMute => {
-  return {
-    ...PGN_126720_FusionSetMuteDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_FusionSetMuteMatchFields,
-      ...fields
-    }
+export class PGN_126720_FusionSetMute  extends PGN implements PGN_126720_FusionSetMuteInterface {
+  fields: PGN_126720_FusionSetMuteFields
+  
+  constructor(fields: PGN_126720_FusionSetMuteCreateArgs, dst:number=255) {
+    super(PGN_126720_FusionSetMuteDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_FusionSetMuteMatchFields, ...fields }
   }
 }
 /**
@@ -5097,7 +5140,7 @@ export const new126720_FusionSetMute = (fields: PGN_126720_FusionSetMuteCreateAr
   *
   * @category PGN_126720_FusionSetZoneVolume
  */
-export interface PGN_126720_FusionSetZoneVolume extends PGN {
+export interface PGN_126720_FusionSetZoneVolumeInterface extends PGNInterface {
  fields: PGN_126720_FusionSetZoneVolumeFields
 }
 
@@ -5120,7 +5163,8 @@ export interface PGN_126720_FusionSetZoneVolumeFields {
 export const PGN_126720_FusionSetZoneVolumeDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -5145,14 +5189,13 @@ export interface PGN_126720_FusionSetZoneVolumeCreateArgs {
 /**
  * @category PGN_126720_FusionSetZoneVolume
  */
-export const new126720_FusionSetZoneVolume = (fields: PGN_126720_FusionSetZoneVolumeCreateArgs, dst:number=255) : PGN_126720_FusionSetZoneVolume => {
-  return {
-    ...PGN_126720_FusionSetZoneVolumeDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_FusionSetZoneVolumeMatchFields,
-      ...fields
-    }
+export class PGN_126720_FusionSetZoneVolume  extends PGN implements PGN_126720_FusionSetZoneVolumeInterface {
+  fields: PGN_126720_FusionSetZoneVolumeFields
+  
+  constructor(fields: PGN_126720_FusionSetZoneVolumeCreateArgs, dst:number=255) {
+    super(PGN_126720_FusionSetZoneVolumeDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_FusionSetZoneVolumeMatchFields, ...fields }
   }
 }
 /**
@@ -5166,7 +5209,7 @@ export const new126720_FusionSetZoneVolume = (fields: PGN_126720_FusionSetZoneVo
   *
   * @category PGN_126720_FusionSetAllVolumes
  */
-export interface PGN_126720_FusionSetAllVolumes extends PGN {
+export interface PGN_126720_FusionSetAllVolumesInterface extends PGNInterface {
  fields: PGN_126720_FusionSetAllVolumesFields
 }
 
@@ -5191,7 +5234,8 @@ export interface PGN_126720_FusionSetAllVolumesFields {
 export const PGN_126720_FusionSetAllVolumesDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -5218,14 +5262,13 @@ export interface PGN_126720_FusionSetAllVolumesCreateArgs {
 /**
  * @category PGN_126720_FusionSetAllVolumes
  */
-export const new126720_FusionSetAllVolumes = (fields: PGN_126720_FusionSetAllVolumesCreateArgs, dst:number=255) : PGN_126720_FusionSetAllVolumes => {
-  return {
-    ...PGN_126720_FusionSetAllVolumesDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_FusionSetAllVolumesMatchFields,
-      ...fields
-    }
+export class PGN_126720_FusionSetAllVolumes  extends PGN implements PGN_126720_FusionSetAllVolumesInterface {
+  fields: PGN_126720_FusionSetAllVolumesFields
+  
+  constructor(fields: PGN_126720_FusionSetAllVolumesCreateArgs, dst:number=255) {
+    super(PGN_126720_FusionSetAllVolumesDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_FusionSetAllVolumesMatchFields, ...fields }
   }
 }
 /**
@@ -5240,7 +5283,7 @@ export const new126720_FusionSetAllVolumes = (fields: PGN_126720_FusionSetAllVol
   *
   * @category PGN_126720_Seatalk1Keystroke
  */
-export interface PGN_126720_Seatalk1Keystroke extends PGN {
+export interface PGN_126720_Seatalk1KeystrokeInterface extends PGNInterface {
  fields: PGN_126720_Seatalk1KeystrokeFields
 }
 
@@ -5265,7 +5308,8 @@ export interface PGN_126720_Seatalk1KeystrokeFields {
 export const PGN_126720_Seatalk1KeystrokeDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -5292,14 +5336,13 @@ export interface PGN_126720_Seatalk1KeystrokeCreateArgs {
 /**
  * @category PGN_126720_Seatalk1Keystroke
  */
-export const new126720_Seatalk1Keystroke = (fields: PGN_126720_Seatalk1KeystrokeCreateArgs, dst:number=255) : PGN_126720_Seatalk1Keystroke => {
-  return {
-    ...PGN_126720_Seatalk1KeystrokeDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_Seatalk1KeystrokeMatchFields,
-      ...fields
-    }
+export class PGN_126720_Seatalk1Keystroke  extends PGN implements PGN_126720_Seatalk1KeystrokeInterface {
+  fields: PGN_126720_Seatalk1KeystrokeFields
+  
+  constructor(fields: PGN_126720_Seatalk1KeystrokeCreateArgs, dst:number=255) {
+    super(PGN_126720_Seatalk1KeystrokeDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_Seatalk1KeystrokeMatchFields, ...fields }
   }
 }
 /**
@@ -5314,7 +5357,7 @@ export const new126720_Seatalk1Keystroke = (fields: PGN_126720_Seatalk1Keystroke
   *
   * @category PGN_126720_Seatalk1DeviceIdentification
  */
-export interface PGN_126720_Seatalk1DeviceIdentification extends PGN {
+export interface PGN_126720_Seatalk1DeviceIdentificationInterface extends PGNInterface {
  fields: PGN_126720_Seatalk1DeviceIdentificationFields
 }
 
@@ -5337,7 +5380,8 @@ export interface PGN_126720_Seatalk1DeviceIdentificationFields {
 export const PGN_126720_Seatalk1DeviceIdentificationDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -5362,14 +5406,13 @@ export interface PGN_126720_Seatalk1DeviceIdentificationCreateArgs {
 /**
  * @category PGN_126720_Seatalk1DeviceIdentification
  */
-export const new126720_Seatalk1DeviceIdentification = (fields: PGN_126720_Seatalk1DeviceIdentificationCreateArgs, dst:number=255) : PGN_126720_Seatalk1DeviceIdentification => {
-  return {
-    ...PGN_126720_Seatalk1DeviceIdentificationDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_Seatalk1DeviceIdentificationMatchFields,
-      ...fields
-    }
+export class PGN_126720_Seatalk1DeviceIdentification  extends PGN implements PGN_126720_Seatalk1DeviceIdentificationInterface {
+  fields: PGN_126720_Seatalk1DeviceIdentificationFields
+  
+  constructor(fields: PGN_126720_Seatalk1DeviceIdentificationCreateArgs, dst:number=255) {
+    super(PGN_126720_Seatalk1DeviceIdentificationDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_Seatalk1DeviceIdentificationMatchFields, ...fields }
   }
 }
 /**
@@ -5383,7 +5426,7 @@ export const new126720_Seatalk1DeviceIdentification = (fields: PGN_126720_Seatal
   *
   * @category PGN_126720_Seatalk1DisplayBrightness
  */
-export interface PGN_126720_Seatalk1DisplayBrightness extends PGN {
+export interface PGN_126720_Seatalk1DisplayBrightnessInterface extends PGNInterface {
  fields: PGN_126720_Seatalk1DisplayBrightnessFields
 }
 
@@ -5408,7 +5451,8 @@ export interface PGN_126720_Seatalk1DisplayBrightnessFields {
 export const PGN_126720_Seatalk1DisplayBrightnessDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -5435,14 +5479,13 @@ export interface PGN_126720_Seatalk1DisplayBrightnessCreateArgs {
 /**
  * @category PGN_126720_Seatalk1DisplayBrightness
  */
-export const new126720_Seatalk1DisplayBrightness = (fields: PGN_126720_Seatalk1DisplayBrightnessCreateArgs, dst:number=255) : PGN_126720_Seatalk1DisplayBrightness => {
-  return {
-    ...PGN_126720_Seatalk1DisplayBrightnessDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_Seatalk1DisplayBrightnessMatchFields,
-      ...fields
-    }
+export class PGN_126720_Seatalk1DisplayBrightness  extends PGN implements PGN_126720_Seatalk1DisplayBrightnessInterface {
+  fields: PGN_126720_Seatalk1DisplayBrightnessFields
+  
+  constructor(fields: PGN_126720_Seatalk1DisplayBrightnessCreateArgs, dst:number=255) {
+    super(PGN_126720_Seatalk1DisplayBrightnessDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_Seatalk1DisplayBrightnessMatchFields, ...fields }
   }
 }
 /**
@@ -5457,7 +5500,7 @@ export const new126720_Seatalk1DisplayBrightness = (fields: PGN_126720_Seatalk1D
   *
   * @category PGN_126720_Seatalk1DisplayColor
  */
-export interface PGN_126720_Seatalk1DisplayColor extends PGN {
+export interface PGN_126720_Seatalk1DisplayColorInterface extends PGNInterface {
  fields: PGN_126720_Seatalk1DisplayColorFields
 }
 
@@ -5482,7 +5525,8 @@ export interface PGN_126720_Seatalk1DisplayColorFields {
 export const PGN_126720_Seatalk1DisplayColorDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -5509,14 +5553,13 @@ export interface PGN_126720_Seatalk1DisplayColorCreateArgs {
 /**
  * @category PGN_126720_Seatalk1DisplayColor
  */
-export const new126720_Seatalk1DisplayColor = (fields: PGN_126720_Seatalk1DisplayColorCreateArgs, dst:number=255) : PGN_126720_Seatalk1DisplayColor => {
-  return {
-    ...PGN_126720_Seatalk1DisplayColorDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_Seatalk1DisplayColorMatchFields,
-      ...fields
-    }
+export class PGN_126720_Seatalk1DisplayColor  extends PGN implements PGN_126720_Seatalk1DisplayColorInterface {
+  fields: PGN_126720_Seatalk1DisplayColorFields
+  
+  constructor(fields: PGN_126720_Seatalk1DisplayColorCreateArgs, dst:number=255) {
+    super(PGN_126720_Seatalk1DisplayColorDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_Seatalk1DisplayColorMatchFields, ...fields }
   }
 }
 /**
@@ -5530,7 +5573,7 @@ export const new126720_Seatalk1DisplayColor = (fields: PGN_126720_Seatalk1Displa
   *
   * @category PGN_126720_AirmarAttitudeOffset
  */
-export interface PGN_126720_AirmarAttitudeOffset extends PGN {
+export interface PGN_126720_AirmarAttitudeOffsetInterface extends PGNInterface {
  fields: PGN_126720_AirmarAttitudeOffsetFields
 }
 
@@ -5553,7 +5596,8 @@ export interface PGN_126720_AirmarAttitudeOffsetFields {
 export const PGN_126720_AirmarAttitudeOffsetDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -5578,14 +5622,13 @@ export interface PGN_126720_AirmarAttitudeOffsetCreateArgs {
 /**
  * @category PGN_126720_AirmarAttitudeOffset
  */
-export const new126720_AirmarAttitudeOffset = (fields: PGN_126720_AirmarAttitudeOffsetCreateArgs, dst:number=255) : PGN_126720_AirmarAttitudeOffset => {
-  return {
-    ...PGN_126720_AirmarAttitudeOffsetDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_AirmarAttitudeOffsetMatchFields,
-      ...fields
-    }
+export class PGN_126720_AirmarAttitudeOffset  extends PGN implements PGN_126720_AirmarAttitudeOffsetInterface {
+  fields: PGN_126720_AirmarAttitudeOffsetFields
+  
+  constructor(fields: PGN_126720_AirmarAttitudeOffsetCreateArgs, dst:number=255) {
+    super(PGN_126720_AirmarAttitudeOffsetDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_AirmarAttitudeOffsetMatchFields, ...fields }
   }
 }
 /**
@@ -5599,7 +5642,7 @@ export const new126720_AirmarAttitudeOffset = (fields: PGN_126720_AirmarAttitude
   *
   * @category PGN_126720_AirmarCalibrateCompass
  */
-export interface PGN_126720_AirmarCalibrateCompass extends PGN {
+export interface PGN_126720_AirmarCalibrateCompassInterface extends PGNInterface {
  fields: PGN_126720_AirmarCalibrateCompassFields
 }
 
@@ -5631,7 +5674,8 @@ export interface PGN_126720_AirmarCalibrateCompassFields {
 export const PGN_126720_AirmarCalibrateCompassDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -5665,14 +5709,13 @@ export interface PGN_126720_AirmarCalibrateCompassCreateArgs {
 /**
  * @category PGN_126720_AirmarCalibrateCompass
  */
-export const new126720_AirmarCalibrateCompass = (fields: PGN_126720_AirmarCalibrateCompassCreateArgs, dst:number=255) : PGN_126720_AirmarCalibrateCompass => {
-  return {
-    ...PGN_126720_AirmarCalibrateCompassDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_AirmarCalibrateCompassMatchFields,
-      ...fields
-    }
+export class PGN_126720_AirmarCalibrateCompass  extends PGN implements PGN_126720_AirmarCalibrateCompassInterface {
+  fields: PGN_126720_AirmarCalibrateCompassFields
+  
+  constructor(fields: PGN_126720_AirmarCalibrateCompassCreateArgs, dst:number=255) {
+    super(PGN_126720_AirmarCalibrateCompassDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_AirmarCalibrateCompassMatchFields, ...fields }
   }
 }
 /**
@@ -5686,7 +5729,7 @@ export const new126720_AirmarCalibrateCompass = (fields: PGN_126720_AirmarCalibr
   *
   * @category PGN_126720_AirmarTrueWindOptions
  */
-export interface PGN_126720_AirmarTrueWindOptions extends PGN {
+export interface PGN_126720_AirmarTrueWindOptionsInterface extends PGNInterface {
  fields: PGN_126720_AirmarTrueWindOptionsFields
 }
 
@@ -5708,7 +5751,8 @@ export interface PGN_126720_AirmarTrueWindOptionsFields {
 export const PGN_126720_AirmarTrueWindOptionsDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -5732,14 +5776,13 @@ export interface PGN_126720_AirmarTrueWindOptionsCreateArgs {
 /**
  * @category PGN_126720_AirmarTrueWindOptions
  */
-export const new126720_AirmarTrueWindOptions = (fields: PGN_126720_AirmarTrueWindOptionsCreateArgs, dst:number=255) : PGN_126720_AirmarTrueWindOptions => {
-  return {
-    ...PGN_126720_AirmarTrueWindOptionsDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_AirmarTrueWindOptionsMatchFields,
-      ...fields
-    }
+export class PGN_126720_AirmarTrueWindOptions  extends PGN implements PGN_126720_AirmarTrueWindOptionsInterface {
+  fields: PGN_126720_AirmarTrueWindOptionsFields
+  
+  constructor(fields: PGN_126720_AirmarTrueWindOptionsCreateArgs, dst:number=255) {
+    super(PGN_126720_AirmarTrueWindOptionsDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_AirmarTrueWindOptionsMatchFields, ...fields }
   }
 }
 /**
@@ -5753,7 +5796,7 @@ export const new126720_AirmarTrueWindOptions = (fields: PGN_126720_AirmarTrueWin
   *
   * @category PGN_126720_AirmarSimulateMode
  */
-export interface PGN_126720_AirmarSimulateMode extends PGN {
+export interface PGN_126720_AirmarSimulateModeInterface extends PGNInterface {
  fields: PGN_126720_AirmarSimulateModeFields
 }
 
@@ -5775,7 +5818,8 @@ export interface PGN_126720_AirmarSimulateModeFields {
 export const PGN_126720_AirmarSimulateModeDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -5799,14 +5843,13 @@ export interface PGN_126720_AirmarSimulateModeCreateArgs {
 /**
  * @category PGN_126720_AirmarSimulateMode
  */
-export const new126720_AirmarSimulateMode = (fields: PGN_126720_AirmarSimulateModeCreateArgs, dst:number=255) : PGN_126720_AirmarSimulateMode => {
-  return {
-    ...PGN_126720_AirmarSimulateModeDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_AirmarSimulateModeMatchFields,
-      ...fields
-    }
+export class PGN_126720_AirmarSimulateMode  extends PGN implements PGN_126720_AirmarSimulateModeInterface {
+  fields: PGN_126720_AirmarSimulateModeFields
+  
+  constructor(fields: PGN_126720_AirmarSimulateModeCreateArgs, dst:number=255) {
+    super(PGN_126720_AirmarSimulateModeDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_AirmarSimulateModeMatchFields, ...fields }
   }
 }
 /**
@@ -5820,7 +5863,7 @@ export const new126720_AirmarSimulateMode = (fields: PGN_126720_AirmarSimulateMo
   *
   * @category PGN_126720_AirmarCalibrateDepth
  */
-export interface PGN_126720_AirmarCalibrateDepth extends PGN {
+export interface PGN_126720_AirmarCalibrateDepthInterface extends PGNInterface {
  fields: PGN_126720_AirmarCalibrateDepthFields
 }
 
@@ -5842,7 +5885,8 @@ export interface PGN_126720_AirmarCalibrateDepthFields {
 export const PGN_126720_AirmarCalibrateDepthDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -5866,14 +5910,13 @@ export interface PGN_126720_AirmarCalibrateDepthCreateArgs {
 /**
  * @category PGN_126720_AirmarCalibrateDepth
  */
-export const new126720_AirmarCalibrateDepth = (fields: PGN_126720_AirmarCalibrateDepthCreateArgs, dst:number=255) : PGN_126720_AirmarCalibrateDepth => {
-  return {
-    ...PGN_126720_AirmarCalibrateDepthDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_AirmarCalibrateDepthMatchFields,
-      ...fields
-    }
+export class PGN_126720_AirmarCalibrateDepth  extends PGN implements PGN_126720_AirmarCalibrateDepthInterface {
+  fields: PGN_126720_AirmarCalibrateDepthFields
+  
+  constructor(fields: PGN_126720_AirmarCalibrateDepthCreateArgs, dst:number=255) {
+    super(PGN_126720_AirmarCalibrateDepthDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_AirmarCalibrateDepthMatchFields, ...fields }
   }
 }
 /**
@@ -5887,7 +5930,7 @@ export const new126720_AirmarCalibrateDepth = (fields: PGN_126720_AirmarCalibrat
   *
   * @category PGN_126720_AirmarCalibrateSpeed
  */
-export interface PGN_126720_AirmarCalibrateSpeed extends PGN {
+export interface PGN_126720_AirmarCalibrateSpeedInterface extends PGNInterface {
  fields: PGN_126720_AirmarCalibrateSpeedFields
 }
 
@@ -5912,7 +5955,8 @@ export interface PGN_126720_AirmarCalibrateSpeedFields {
 export const PGN_126720_AirmarCalibrateSpeedDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -5939,14 +5983,13 @@ export interface PGN_126720_AirmarCalibrateSpeedCreateArgs {
 /**
  * @category PGN_126720_AirmarCalibrateSpeed
  */
-export const new126720_AirmarCalibrateSpeed = (fields: PGN_126720_AirmarCalibrateSpeedCreateArgs, dst:number=255) : PGN_126720_AirmarCalibrateSpeed => {
-  return {
-    ...PGN_126720_AirmarCalibrateSpeedDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_AirmarCalibrateSpeedMatchFields,
-      ...fields
-    }
+export class PGN_126720_AirmarCalibrateSpeed  extends PGN implements PGN_126720_AirmarCalibrateSpeedInterface {
+  fields: PGN_126720_AirmarCalibrateSpeedFields
+  
+  constructor(fields: PGN_126720_AirmarCalibrateSpeedCreateArgs, dst:number=255) {
+    super(PGN_126720_AirmarCalibrateSpeedDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_AirmarCalibrateSpeedMatchFields, ...fields }
   }
 }
 /**
@@ -5960,7 +6003,7 @@ export const new126720_AirmarCalibrateSpeed = (fields: PGN_126720_AirmarCalibrat
   *
   * @category PGN_126720_AirmarCalibrateTemperature
  */
-export interface PGN_126720_AirmarCalibrateTemperature extends PGN {
+export interface PGN_126720_AirmarCalibrateTemperatureInterface extends PGNInterface {
  fields: PGN_126720_AirmarCalibrateTemperatureFields
 }
 
@@ -5983,7 +6026,8 @@ export interface PGN_126720_AirmarCalibrateTemperatureFields {
 export const PGN_126720_AirmarCalibrateTemperatureDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -6008,14 +6052,13 @@ export interface PGN_126720_AirmarCalibrateTemperatureCreateArgs {
 /**
  * @category PGN_126720_AirmarCalibrateTemperature
  */
-export const new126720_AirmarCalibrateTemperature = (fields: PGN_126720_AirmarCalibrateTemperatureCreateArgs, dst:number=255) : PGN_126720_AirmarCalibrateTemperature => {
-  return {
-    ...PGN_126720_AirmarCalibrateTemperatureDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_AirmarCalibrateTemperatureMatchFields,
-      ...fields
-    }
+export class PGN_126720_AirmarCalibrateTemperature  extends PGN implements PGN_126720_AirmarCalibrateTemperatureInterface {
+  fields: PGN_126720_AirmarCalibrateTemperatureFields
+  
+  constructor(fields: PGN_126720_AirmarCalibrateTemperatureCreateArgs, dst:number=255) {
+    super(PGN_126720_AirmarCalibrateTemperatureDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_AirmarCalibrateTemperatureMatchFields, ...fields }
   }
 }
 /**
@@ -6029,7 +6072,7 @@ export const new126720_AirmarCalibrateTemperature = (fields: PGN_126720_AirmarCa
   *
   * @category PGN_126720_AirmarSpeedFilterNone
  */
-export interface PGN_126720_AirmarSpeedFilterNone extends PGN {
+export interface PGN_126720_AirmarSpeedFilterNoneInterface extends PGNInterface {
  fields: PGN_126720_AirmarSpeedFilterNoneFields
 }
 
@@ -6052,7 +6095,8 @@ export interface PGN_126720_AirmarSpeedFilterNoneFields {
 export const PGN_126720_AirmarSpeedFilterNoneDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -6077,14 +6121,13 @@ export interface PGN_126720_AirmarSpeedFilterNoneCreateArgs {
 /**
  * @category PGN_126720_AirmarSpeedFilterNone
  */
-export const new126720_AirmarSpeedFilterNone = (fields: PGN_126720_AirmarSpeedFilterNoneCreateArgs, dst:number=255) : PGN_126720_AirmarSpeedFilterNone => {
-  return {
-    ...PGN_126720_AirmarSpeedFilterNoneDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_AirmarSpeedFilterNoneMatchFields,
-      ...fields
-    }
+export class PGN_126720_AirmarSpeedFilterNone  extends PGN implements PGN_126720_AirmarSpeedFilterNoneInterface {
+  fields: PGN_126720_AirmarSpeedFilterNoneFields
+  
+  constructor(fields: PGN_126720_AirmarSpeedFilterNoneCreateArgs, dst:number=255) {
+    super(PGN_126720_AirmarSpeedFilterNoneDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_AirmarSpeedFilterNoneMatchFields, ...fields }
   }
 }
 /**
@@ -6099,7 +6142,7 @@ export const new126720_AirmarSpeedFilterNone = (fields: PGN_126720_AirmarSpeedFi
   *
   * @category PGN_126720_AirmarSpeedFilterIir
  */
-export interface PGN_126720_AirmarSpeedFilterIir extends PGN {
+export interface PGN_126720_AirmarSpeedFilterIirInterface extends PGNInterface {
  fields: PGN_126720_AirmarSpeedFilterIirFields
 }
 
@@ -6123,7 +6166,8 @@ export interface PGN_126720_AirmarSpeedFilterIirFields {
 export const PGN_126720_AirmarSpeedFilterIirDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -6149,14 +6193,13 @@ export interface PGN_126720_AirmarSpeedFilterIirCreateArgs {
 /**
  * @category PGN_126720_AirmarSpeedFilterIir
  */
-export const new126720_AirmarSpeedFilterIir = (fields: PGN_126720_AirmarSpeedFilterIirCreateArgs, dst:number=255) : PGN_126720_AirmarSpeedFilterIir => {
-  return {
-    ...PGN_126720_AirmarSpeedFilterIirDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_AirmarSpeedFilterIirMatchFields,
-      ...fields
-    }
+export class PGN_126720_AirmarSpeedFilterIir  extends PGN implements PGN_126720_AirmarSpeedFilterIirInterface {
+  fields: PGN_126720_AirmarSpeedFilterIirFields
+  
+  constructor(fields: PGN_126720_AirmarSpeedFilterIirCreateArgs, dst:number=255) {
+    super(PGN_126720_AirmarSpeedFilterIirDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_AirmarSpeedFilterIirMatchFields, ...fields }
   }
 }
 /**
@@ -6170,7 +6213,7 @@ export const new126720_AirmarSpeedFilterIir = (fields: PGN_126720_AirmarSpeedFil
   *
   * @category PGN_126720_AirmarTemperatureFilterNone
  */
-export interface PGN_126720_AirmarTemperatureFilterNone extends PGN {
+export interface PGN_126720_AirmarTemperatureFilterNoneInterface extends PGNInterface {
  fields: PGN_126720_AirmarTemperatureFilterNoneFields
 }
 
@@ -6193,7 +6236,8 @@ export interface PGN_126720_AirmarTemperatureFilterNoneFields {
 export const PGN_126720_AirmarTemperatureFilterNoneDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -6218,14 +6262,13 @@ export interface PGN_126720_AirmarTemperatureFilterNoneCreateArgs {
 /**
  * @category PGN_126720_AirmarTemperatureFilterNone
  */
-export const new126720_AirmarTemperatureFilterNone = (fields: PGN_126720_AirmarTemperatureFilterNoneCreateArgs, dst:number=255) : PGN_126720_AirmarTemperatureFilterNone => {
-  return {
-    ...PGN_126720_AirmarTemperatureFilterNoneDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_AirmarTemperatureFilterNoneMatchFields,
-      ...fields
-    }
+export class PGN_126720_AirmarTemperatureFilterNone  extends PGN implements PGN_126720_AirmarTemperatureFilterNoneInterface {
+  fields: PGN_126720_AirmarTemperatureFilterNoneFields
+  
+  constructor(fields: PGN_126720_AirmarTemperatureFilterNoneCreateArgs, dst:number=255) {
+    super(PGN_126720_AirmarTemperatureFilterNoneDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_AirmarTemperatureFilterNoneMatchFields, ...fields }
   }
 }
 /**
@@ -6240,7 +6283,7 @@ export const new126720_AirmarTemperatureFilterNone = (fields: PGN_126720_AirmarT
   *
   * @category PGN_126720_AirmarTemperatureFilterIir
  */
-export interface PGN_126720_AirmarTemperatureFilterIir extends PGN {
+export interface PGN_126720_AirmarTemperatureFilterIirInterface extends PGNInterface {
  fields: PGN_126720_AirmarTemperatureFilterIirFields
 }
 
@@ -6264,7 +6307,8 @@ export interface PGN_126720_AirmarTemperatureFilterIirFields {
 export const PGN_126720_AirmarTemperatureFilterIirDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -6290,14 +6334,13 @@ export interface PGN_126720_AirmarTemperatureFilterIirCreateArgs {
 /**
  * @category PGN_126720_AirmarTemperatureFilterIir
  */
-export const new126720_AirmarTemperatureFilterIir = (fields: PGN_126720_AirmarTemperatureFilterIirCreateArgs, dst:number=255) : PGN_126720_AirmarTemperatureFilterIir => {
-  return {
-    ...PGN_126720_AirmarTemperatureFilterIirDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_AirmarTemperatureFilterIirMatchFields,
-      ...fields
-    }
+export class PGN_126720_AirmarTemperatureFilterIir  extends PGN implements PGN_126720_AirmarTemperatureFilterIirInterface {
+  fields: PGN_126720_AirmarTemperatureFilterIirFields
+  
+  constructor(fields: PGN_126720_AirmarTemperatureFilterIirCreateArgs, dst:number=255) {
+    super(PGN_126720_AirmarTemperatureFilterIirDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_AirmarTemperatureFilterIirMatchFields, ...fields }
   }
 }
 /**
@@ -6311,7 +6354,7 @@ export const new126720_AirmarTemperatureFilterIir = (fields: PGN_126720_AirmarTe
   *
   * @category PGN_126720_AirmarNmea2000Options
  */
-export interface PGN_126720_AirmarNmea2000Options extends PGN {
+export interface PGN_126720_AirmarNmea2000OptionsInterface extends PGNInterface {
  fields: PGN_126720_AirmarNmea2000OptionsFields
 }
 
@@ -6333,7 +6376,8 @@ export interface PGN_126720_AirmarNmea2000OptionsFields {
 export const PGN_126720_AirmarNmea2000OptionsDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -6357,14 +6401,13 @@ export interface PGN_126720_AirmarNmea2000OptionsCreateArgs {
 /**
  * @category PGN_126720_AirmarNmea2000Options
  */
-export const new126720_AirmarNmea2000Options = (fields: PGN_126720_AirmarNmea2000OptionsCreateArgs, dst:number=255) : PGN_126720_AirmarNmea2000Options => {
-  return {
-    ...PGN_126720_AirmarNmea2000OptionsDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_AirmarNmea2000OptionsMatchFields,
-      ...fields
-    }
+export class PGN_126720_AirmarNmea2000Options  extends PGN implements PGN_126720_AirmarNmea2000OptionsInterface {
+  fields: PGN_126720_AirmarNmea2000OptionsFields
+  
+  constructor(fields: PGN_126720_AirmarNmea2000OptionsCreateArgs, dst:number=255) {
+    super(PGN_126720_AirmarNmea2000OptionsDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_AirmarNmea2000OptionsMatchFields, ...fields }
   }
 }
 /**
@@ -6377,7 +6420,7 @@ export const new126720_AirmarNmea2000Options = (fields: PGN_126720_AirmarNmea200
   *
   * @category PGN_126720_AirmarAddressableMultiFrame
  */
-export interface PGN_126720_AirmarAddressableMultiFrame extends PGN {
+export interface PGN_126720_AirmarAddressableMultiFrameInterface extends PGNInterface {
  fields: PGN_126720_AirmarAddressableMultiFrameFields
 }
 
@@ -6397,7 +6440,8 @@ export interface PGN_126720_AirmarAddressableMultiFrameFields {
 export const PGN_126720_AirmarAddressableMultiFrameDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -6419,14 +6463,13 @@ export interface PGN_126720_AirmarAddressableMultiFrameCreateArgs {
 /**
  * @category PGN_126720_AirmarAddressableMultiFrame
  */
-export const new126720_AirmarAddressableMultiFrame = (fields: PGN_126720_AirmarAddressableMultiFrameCreateArgs, dst:number=255) : PGN_126720_AirmarAddressableMultiFrame => {
-  return {
-    ...PGN_126720_AirmarAddressableMultiFrameDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_AirmarAddressableMultiFrameMatchFields,
-      ...fields
-    }
+export class PGN_126720_AirmarAddressableMultiFrame  extends PGN implements PGN_126720_AirmarAddressableMultiFrameInterface {
+  fields: PGN_126720_AirmarAddressableMultiFrameFields
+  
+  constructor(fields: PGN_126720_AirmarAddressableMultiFrameCreateArgs, dst:number=255) {
+    super(PGN_126720_AirmarAddressableMultiFrameDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_AirmarAddressableMultiFrameMatchFields, ...fields }
   }
 }
 /**
@@ -6439,7 +6482,7 @@ export const new126720_AirmarAddressableMultiFrame = (fields: PGN_126720_AirmarA
   *
   * @category PGN_126720_MaretronSlaveResponse
  */
-export interface PGN_126720_MaretronSlaveResponse extends PGN {
+export interface PGN_126720_MaretronSlaveResponseInterface extends PGNInterface {
  fields: PGN_126720_MaretronSlaveResponseFields
 }
 
@@ -6462,7 +6505,8 @@ export interface PGN_126720_MaretronSlaveResponseFields {
 export const PGN_126720_MaretronSlaveResponseDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -6487,14 +6531,13 @@ export interface PGN_126720_MaretronSlaveResponseCreateArgs {
 /**
  * @category PGN_126720_MaretronSlaveResponse
  */
-export const new126720_MaretronSlaveResponse = (fields: PGN_126720_MaretronSlaveResponseCreateArgs, dst:number=255) : PGN_126720_MaretronSlaveResponse => {
-  return {
-    ...PGN_126720_MaretronSlaveResponseDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_MaretronSlaveResponseMatchFields,
-      ...fields
-    }
+export class PGN_126720_MaretronSlaveResponse  extends PGN implements PGN_126720_MaretronSlaveResponseInterface {
+  fields: PGN_126720_MaretronSlaveResponseFields
+  
+  constructor(fields: PGN_126720_MaretronSlaveResponseCreateArgs, dst:number=255) {
+    super(PGN_126720_MaretronSlaveResponseDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_MaretronSlaveResponseMatchFields, ...fields }
   }
 }
 /**
@@ -6511,7 +6554,7 @@ export const new126720_MaretronSlaveResponse = (fields: PGN_126720_MaretronSlave
   *
   * @category PGN_126720_GarminDayMode
  */
-export interface PGN_126720_GarminDayMode extends PGN {
+export interface PGN_126720_GarminDayModeInterface extends PGNInterface {
  fields: PGN_126720_GarminDayModeFields
 }
 
@@ -6538,7 +6581,8 @@ export interface PGN_126720_GarminDayModeFields {
 export const PGN_126720_GarminDayModeDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -6567,14 +6611,13 @@ export interface PGN_126720_GarminDayModeCreateArgs {
 /**
  * @category PGN_126720_GarminDayMode
  */
-export const new126720_GarminDayMode = (fields: PGN_126720_GarminDayModeCreateArgs, dst:number=255) : PGN_126720_GarminDayMode => {
-  return {
-    ...PGN_126720_GarminDayModeDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_GarminDayModeMatchFields,
-      ...fields
-    }
+export class PGN_126720_GarminDayMode  extends PGN implements PGN_126720_GarminDayModeInterface {
+  fields: PGN_126720_GarminDayModeFields
+  
+  constructor(fields: PGN_126720_GarminDayModeCreateArgs, dst:number=255) {
+    super(PGN_126720_GarminDayModeDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_GarminDayModeMatchFields, ...fields }
   }
 }
 /**
@@ -6592,7 +6635,7 @@ export const new126720_GarminDayMode = (fields: PGN_126720_GarminDayModeCreateAr
   *
   * @category PGN_126720_GarminNightMode
  */
-export interface PGN_126720_GarminNightMode extends PGN {
+export interface PGN_126720_GarminNightModeInterface extends PGNInterface {
  fields: PGN_126720_GarminNightModeFields
 }
 
@@ -6619,7 +6662,8 @@ export interface PGN_126720_GarminNightModeFields {
 export const PGN_126720_GarminNightModeDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -6648,14 +6692,13 @@ export interface PGN_126720_GarminNightModeCreateArgs {
 /**
  * @category PGN_126720_GarminNightMode
  */
-export const new126720_GarminNightMode = (fields: PGN_126720_GarminNightModeCreateArgs, dst:number=255) : PGN_126720_GarminNightMode => {
-  return {
-    ...PGN_126720_GarminNightModeDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_GarminNightModeMatchFields,
-      ...fields
-    }
+export class PGN_126720_GarminNightMode  extends PGN implements PGN_126720_GarminNightModeInterface {
+  fields: PGN_126720_GarminNightModeFields
+  
+  constructor(fields: PGN_126720_GarminNightModeCreateArgs, dst:number=255) {
+    super(PGN_126720_GarminNightModeDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_GarminNightModeMatchFields, ...fields }
   }
 }
 /**
@@ -6673,7 +6716,7 @@ export const new126720_GarminNightMode = (fields: PGN_126720_GarminNightModeCrea
   *
   * @category PGN_126720_GarminColorMode
  */
-export interface PGN_126720_GarminColorMode extends PGN {
+export interface PGN_126720_GarminColorModeInterface extends PGNInterface {
  fields: PGN_126720_GarminColorModeFields
 }
 
@@ -6700,7 +6743,8 @@ export interface PGN_126720_GarminColorModeFields {
 export const PGN_126720_GarminColorModeDefaults = {
   pgn: 126720,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -6729,14 +6773,13 @@ export interface PGN_126720_GarminColorModeCreateArgs {
 /**
  * @category PGN_126720_GarminColorMode
  */
-export const new126720_GarminColorMode = (fields: PGN_126720_GarminColorModeCreateArgs, dst:number=255) : PGN_126720_GarminColorMode => {
-  return {
-    ...PGN_126720_GarminColorModeDefaults,
-    dst,
-    fields: {
-      ...PGN_126720_GarminColorModeMatchFields,
-      ...fields
-    }
+export class PGN_126720_GarminColorMode  extends PGN implements PGN_126720_GarminColorModeInterface {
+  fields: PGN_126720_GarminColorModeFields
+  
+  constructor(fields: PGN_126720_GarminColorModeCreateArgs, dst:number=255) {
+    super(PGN_126720_GarminColorModeDefaults)
+    this.src = dst
+    this.fields = { ...PGN_126720_GarminColorModeMatchFields, ...fields }
   }
 }
 /**
@@ -6746,7 +6789,7 @@ export const new126720_GarminColorMode = (fields: PGN_126720_GarminColorModeCrea
   *
   * @category PGN_126983
  */
-export interface PGN_126983 extends PGN {
+export interface PGN_126983Interface extends PGNInterface {
  fields: PGN_126983Fields
 }
 
@@ -6783,19 +6826,20 @@ export interface PGN_126983Fields {
 export const PGN_126983Defaults = {
   pgn: 126983,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_126983
  */
-export const new126983 = (fields: PGN_126983Fields, dst:number=255) : PGN_126983 => {
-  return {
-    ...PGN_126983Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_126983  extends PGN implements PGN_126983Interface {
+  fields: PGN_126983Fields
+  
+  constructor(fields: PGN_126983Fields, dst:number=255) {
+    super(PGN_126983Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -6805,7 +6849,7 @@ export const new126983 = (fields: PGN_126983Fields, dst:number=255) : PGN_126983
   *
   * @category PGN_126984
  */
-export interface PGN_126984 extends PGN {
+export interface PGN_126984Interface extends PGNInterface {
  fields: PGN_126984Fields
 }
 
@@ -6833,19 +6877,20 @@ export interface PGN_126984Fields {
 export const PGN_126984Defaults = {
   pgn: 126984,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_126984
  */
-export const new126984 = (fields: PGN_126984Fields, dst:number=255) : PGN_126984 => {
-  return {
-    ...PGN_126984Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_126984  extends PGN implements PGN_126984Interface {
+  fields: PGN_126984Fields
+  
+  constructor(fields: PGN_126984Fields, dst:number=255) {
+    super(PGN_126984Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -6855,7 +6900,7 @@ export const new126984 = (fields: PGN_126984Fields, dst:number=255) : PGN_126984
   *
   * @category PGN_126985
  */
-export interface PGN_126985 extends PGN {
+export interface PGN_126985Interface extends PGNInterface {
  fields: PGN_126985Fields
 }
 
@@ -6883,19 +6928,20 @@ export interface PGN_126985Fields {
 export const PGN_126985Defaults = {
   pgn: 126985,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_126985
  */
-export const new126985 = (fields: PGN_126985Fields, dst:number=255) : PGN_126985 => {
-  return {
-    ...PGN_126985Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_126985  extends PGN implements PGN_126985Interface {
+  fields: PGN_126985Fields
+  
+  constructor(fields: PGN_126985Fields, dst:number=255) {
+    super(PGN_126985Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -6905,7 +6951,7 @@ export const new126985 = (fields: PGN_126985Fields, dst:number=255) : PGN_126985
   *
   * @category PGN_126986
  */
-export interface PGN_126986 extends PGN {
+export interface PGN_126986Interface extends PGNInterface {
  fields: PGN_126986Fields
 }
 
@@ -6936,19 +6982,20 @@ export interface PGN_126986Fields {
 export const PGN_126986Defaults = {
   pgn: 126986,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_126986
  */
-export const new126986 = (fields: PGN_126986Fields, dst:number=255) : PGN_126986 => {
-  return {
-    ...PGN_126986Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_126986  extends PGN implements PGN_126986Interface {
+  fields: PGN_126986Fields
+  
+  constructor(fields: PGN_126986Fields, dst:number=255) {
+    super(PGN_126986Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -6958,7 +7005,7 @@ export const new126986 = (fields: PGN_126986Fields, dst:number=255) : PGN_126986
   *
   * @category PGN_126987
  */
-export interface PGN_126987 extends PGN {
+export interface PGN_126987Interface extends PGNInterface {
  fields: PGN_126987Fields
 }
 
@@ -6990,19 +7037,20 @@ export interface PGN_126987Fields {
 export const PGN_126987Defaults = {
   pgn: 126987,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_126987
  */
-export const new126987 = (fields: PGN_126987Fields, dst:number=255) : PGN_126987 => {
-  return {
-    ...PGN_126987Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_126987  extends PGN implements PGN_126987Interface {
+  fields: PGN_126987Fields
+  
+  constructor(fields: PGN_126987Fields, dst:number=255) {
+    super(PGN_126987Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -7012,7 +7060,7 @@ export const new126987 = (fields: PGN_126987Fields, dst:number=255) : PGN_126987
   *
   * @category PGN_126988
  */
-export interface PGN_126988 extends PGN {
+export interface PGN_126988Interface extends PGNInterface {
  fields: PGN_126988Fields
 }
 
@@ -7043,19 +7091,20 @@ export interface PGN_126988Fields {
 export const PGN_126988Defaults = {
   pgn: 126988,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_126988
  */
-export const new126988 = (fields: PGN_126988Fields, dst:number=255) : PGN_126988 => {
-  return {
-    ...PGN_126988Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_126988  extends PGN implements PGN_126988Interface {
+  fields: PGN_126988Fields
+  
+  constructor(fields: PGN_126988Fields, dst:number=255) {
+    super(PGN_126988Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -7067,7 +7116,7 @@ export const new126988 = (fields: PGN_126988Fields, dst:number=255) : PGN_126988
   *
   * @category PGN_126992
  */
-export interface PGN_126992 extends PGN {
+export interface PGN_126992Interface extends PGNInterface {
  fields: PGN_126992Fields
 }
 
@@ -7088,19 +7137,20 @@ export interface PGN_126992Fields {
 export const PGN_126992Defaults = {
   pgn: 126992,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_126992
  */
-export const new126992 = (fields: PGN_126992Fields, dst:number=255) : PGN_126992 => {
-  return {
-    ...PGN_126992Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_126992  extends PGN implements PGN_126992Interface {
+  fields: PGN_126992Fields
+  
+  constructor(fields: PGN_126992Fields, dst:number=255) {
+    super(PGN_126992Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -7112,7 +7162,7 @@ export const new126992 = (fields: PGN_126992Fields, dst:number=255) : PGN_126992
   *
   * @category PGN_126993
  */
-export interface PGN_126993 extends PGN {
+export interface PGN_126993Interface extends PGNInterface {
  fields: PGN_126993Fields
 }
 
@@ -7134,19 +7184,20 @@ export interface PGN_126993Fields {
 export const PGN_126993Defaults = {
   pgn: 126993,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_126993
  */
-export const new126993 = (fields: PGN_126993Fields, dst:number=255) : PGN_126993 => {
-  return {
-    ...PGN_126993Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_126993  extends PGN implements PGN_126993Interface {
+  fields: PGN_126993Fields
+  
+  constructor(fields: PGN_126993Fields, dst:number=255) {
+    super(PGN_126993Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -7158,7 +7209,7 @@ export const new126993 = (fields: PGN_126993Fields, dst:number=255) : PGN_126993
   *
   * @category PGN_126996
  */
-export interface PGN_126996 extends PGN {
+export interface PGN_126996Interface extends PGNInterface {
  fields: PGN_126996Fields
 }
 
@@ -7182,19 +7233,20 @@ export interface PGN_126996Fields {
 export const PGN_126996Defaults = {
   pgn: 126996,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_126996
  */
-export const new126996 = (fields: PGN_126996Fields, dst:number=255) : PGN_126996 => {
-  return {
-    ...PGN_126996Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_126996  extends PGN implements PGN_126996Interface {
+  fields: PGN_126996Fields
+  
+  constructor(fields: PGN_126996Fields, dst:number=255) {
+    super(PGN_126996Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -7206,7 +7258,7 @@ export const new126996 = (fields: PGN_126996Fields, dst:number=255) : PGN_126996
   *
   * @category PGN_126998
  */
-export interface PGN_126998 extends PGN {
+export interface PGN_126998Interface extends PGNInterface {
  fields: PGN_126998Fields
 }
 
@@ -7225,19 +7277,20 @@ export interface PGN_126998Fields {
 export const PGN_126998Defaults = {
   pgn: 126998,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_126998
  */
-export const new126998 = (fields: PGN_126998Fields, dst:number=255) : PGN_126998 => {
-  return {
-    ...PGN_126998Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_126998  extends PGN implements PGN_126998Interface {
+  fields: PGN_126998Fields
+  
+  constructor(fields: PGN_126998Fields, dst:number=255) {
+    super(PGN_126998Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -7258,7 +7311,7 @@ The Default update rate of this PGN is autonomous, as it is dependant upon notif
   *
   * @category PGN_127233
  */
-export interface PGN_127233 extends PGN {
+export interface PGN_127233Interface extends PGNInterface {
  fields: PGN_127233Fields
 }
 
@@ -7292,19 +7345,20 @@ export interface PGN_127233Fields {
 export const PGN_127233Defaults = {
   pgn: 127233,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_127233
  */
-export const new127233 = (fields: PGN_127233Fields, dst:number=255) : PGN_127233 => {
-  return {
-    ...PGN_127233Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127233  extends PGN implements PGN_127233Interface {
+  fields: PGN_127233Fields
+  
+  constructor(fields: PGN_127233Fields, dst:number=255) {
+    super(PGN_127233Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -7314,7 +7368,7 @@ export const new127233 = (fields: PGN_127233Fields, dst:number=255) : PGN_127233
   *
   * @category PGN_127237
  */
-export interface PGN_127237 extends PGN {
+export interface PGN_127237Interface extends PGNInterface {
  fields: PGN_127237Fields
 }
 
@@ -7348,19 +7402,20 @@ export interface PGN_127237Fields {
 export const PGN_127237Defaults = {
   pgn: 127237,
   dst: 255,
-  prio: 2
+  prio: 2,
+  fields: []
 }
 
 /**
  * @category PGN_127237
  */
-export const new127237 = (fields: PGN_127237Fields, dst:number=255) : PGN_127237 => {
-  return {
-    ...PGN_127237Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127237  extends PGN implements PGN_127237Interface {
+  fields: PGN_127237Fields
+  
+  constructor(fields: PGN_127237Fields, dst:number=255) {
+    super(PGN_127237Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -7370,7 +7425,7 @@ export const new127237 = (fields: PGN_127237Fields, dst:number=255) : PGN_127237
   *
   * @category PGN_127245
  */
-export interface PGN_127245 extends PGN {
+export interface PGN_127245Interface extends PGNInterface {
  fields: PGN_127245Fields
 }
 
@@ -7392,19 +7447,20 @@ export interface PGN_127245Fields {
 export const PGN_127245Defaults = {
   pgn: 127245,
   dst: 255,
-  prio: 2
+  prio: 2,
+  fields: []
 }
 
 /**
  * @category PGN_127245
  */
-export const new127245 = (fields: PGN_127245Fields, dst:number=255) : PGN_127245 => {
-  return {
-    ...PGN_127245Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127245  extends PGN implements PGN_127245Interface {
+  fields: PGN_127245Fields
+  
+  constructor(fields: PGN_127245Fields, dst:number=255) {
+    super(PGN_127245Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -7414,7 +7470,7 @@ export const new127245 = (fields: PGN_127245Fields, dst:number=255) : PGN_127245
   *
   * @category PGN_127250
  */
-export interface PGN_127250 extends PGN {
+export interface PGN_127250Interface extends PGNInterface {
  fields: PGN_127250Fields
 }
 
@@ -7436,19 +7492,20 @@ export interface PGN_127250Fields {
 export const PGN_127250Defaults = {
   pgn: 127250,
   dst: 255,
-  prio: 2
+  prio: 2,
+  fields: []
 }
 
 /**
  * @category PGN_127250
  */
-export const new127250 = (fields: PGN_127250Fields, dst:number=255) : PGN_127250 => {
-  return {
-    ...PGN_127250Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127250  extends PGN implements PGN_127250Interface {
+  fields: PGN_127250Fields
+  
+  constructor(fields: PGN_127250Fields, dst:number=255) {
+    super(PGN_127250Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -7458,7 +7515,7 @@ export const new127250 = (fields: PGN_127250Fields, dst:number=255) : PGN_127250
   *
   * @category PGN_127251
  */
-export interface PGN_127251 extends PGN {
+export interface PGN_127251Interface extends PGNInterface {
  fields: PGN_127251Fields
 }
 
@@ -7477,19 +7534,20 @@ export interface PGN_127251Fields {
 export const PGN_127251Defaults = {
   pgn: 127251,
   dst: 255,
-  prio: 2
+  prio: 2,
+  fields: []
 }
 
 /**
  * @category PGN_127251
  */
-export const new127251 = (fields: PGN_127251Fields, dst:number=255) : PGN_127251 => {
-  return {
-    ...PGN_127251Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127251  extends PGN implements PGN_127251Interface {
+  fields: PGN_127251Fields
+  
+  constructor(fields: PGN_127251Fields, dst:number=255) {
+    super(PGN_127251Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -7499,7 +7557,7 @@ export const new127251 = (fields: PGN_127251Fields, dst:number=255) : PGN_127251
   *
   * @category PGN_127252
  */
-export interface PGN_127252 extends PGN {
+export interface PGN_127252Interface extends PGNInterface {
  fields: PGN_127252Fields
 }
 
@@ -7518,19 +7576,20 @@ export interface PGN_127252Fields {
 export const PGN_127252Defaults = {
   pgn: 127252,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_127252
  */
-export const new127252 = (fields: PGN_127252Fields, dst:number=255) : PGN_127252 => {
-  return {
-    ...PGN_127252Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127252  extends PGN implements PGN_127252Interface {
+  fields: PGN_127252Fields
+  
+  constructor(fields: PGN_127252Fields, dst:number=255) {
+    super(PGN_127252Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -7540,7 +7599,7 @@ export const new127252 = (fields: PGN_127252Fields, dst:number=255) : PGN_127252
   *
   * @category PGN_127257
  */
-export interface PGN_127257 extends PGN {
+export interface PGN_127257Interface extends PGNInterface {
  fields: PGN_127257Fields
 }
 
@@ -7561,19 +7620,20 @@ export interface PGN_127257Fields {
 export const PGN_127257Defaults = {
   pgn: 127257,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_127257
  */
-export const new127257 = (fields: PGN_127257Fields, dst:number=255) : PGN_127257 => {
-  return {
-    ...PGN_127257Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127257  extends PGN implements PGN_127257Interface {
+  fields: PGN_127257Fields
+  
+  constructor(fields: PGN_127257Fields, dst:number=255) {
+    super(PGN_127257Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -7583,7 +7643,7 @@ export const new127257 = (fields: PGN_127257Fields, dst:number=255) : PGN_127257
   *
   * @category PGN_127258
  */
-export interface PGN_127258 extends PGN {
+export interface PGN_127258Interface extends PGNInterface {
  fields: PGN_127258Fields
 }
 
@@ -7605,19 +7665,20 @@ export interface PGN_127258Fields {
 export const PGN_127258Defaults = {
   pgn: 127258,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_127258
  */
-export const new127258 = (fields: PGN_127258Fields, dst:number=255) : PGN_127258 => {
-  return {
-    ...PGN_127258Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127258  extends PGN implements PGN_127258Interface {
+  fields: PGN_127258Fields
+  
+  constructor(fields: PGN_127258Fields, dst:number=255) {
+    super(PGN_127258Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -7627,7 +7688,7 @@ export const new127258 = (fields: PGN_127258Fields, dst:number=255) : PGN_127258
   *
   * @category PGN_127488
  */
-export interface PGN_127488 extends PGN {
+export interface PGN_127488Interface extends PGNInterface {
  fields: PGN_127488Fields
 }
 
@@ -7648,19 +7709,20 @@ export interface PGN_127488Fields {
 export const PGN_127488Defaults = {
   pgn: 127488,
   dst: 255,
-  prio: 2
+  prio: 2,
+  fields: []
 }
 
 /**
  * @category PGN_127488
  */
-export const new127488 = (fields: PGN_127488Fields, dst:number=255) : PGN_127488 => {
-  return {
-    ...PGN_127488Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127488  extends PGN implements PGN_127488Interface {
+  fields: PGN_127488Fields
+  
+  constructor(fields: PGN_127488Fields, dst:number=255) {
+    super(PGN_127488Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -7670,7 +7732,7 @@ export const new127488 = (fields: PGN_127488Fields, dst:number=255) : PGN_127488
   *
   * @category PGN_127489
  */
-export interface PGN_127489 extends PGN {
+export interface PGN_127489Interface extends PGNInterface {
  fields: PGN_127489Fields
 }
 
@@ -7700,19 +7762,20 @@ export interface PGN_127489Fields {
 export const PGN_127489Defaults = {
   pgn: 127489,
   dst: 255,
-  prio: 2
+  prio: 2,
+  fields: []
 }
 
 /**
  * @category PGN_127489
  */
-export const new127489 = (fields: PGN_127489Fields, dst:number=255) : PGN_127489 => {
-  return {
-    ...PGN_127489Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127489  extends PGN implements PGN_127489Interface {
+  fields: PGN_127489Fields
+  
+  constructor(fields: PGN_127489Fields, dst:number=255) {
+    super(PGN_127489Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -7724,7 +7787,7 @@ export const new127489 = (fields: PGN_127489Fields, dst:number=255) : PGN_127489
   *
   * @category PGN_127490
  */
-export interface PGN_127490 extends PGN {
+export interface PGN_127490Interface extends PGNInterface {
  fields: PGN_127490Fields
 }
 
@@ -7748,19 +7811,20 @@ export interface PGN_127490Fields {
 export const PGN_127490Defaults = {
   pgn: 127490,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_127490
  */
-export const new127490 = (fields: PGN_127490Fields, dst:number=255) : PGN_127490 => {
-  return {
-    ...PGN_127490Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127490  extends PGN implements PGN_127490Interface {
+  fields: PGN_127490Fields
+  
+  constructor(fields: PGN_127490Fields, dst:number=255) {
+    super(PGN_127490Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -7772,7 +7836,7 @@ export const new127490 = (fields: PGN_127490Fields, dst:number=255) : PGN_127490
   *
   * @category PGN_127491
  */
-export interface PGN_127491 extends PGN {
+export interface PGN_127491Interface extends PGNInterface {
  fields: PGN_127491Fields
 }
 
@@ -7798,19 +7862,20 @@ export interface PGN_127491Fields {
 export const PGN_127491Defaults = {
   pgn: 127491,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_127491
  */
-export const new127491 = (fields: PGN_127491Fields, dst:number=255) : PGN_127491 => {
-  return {
-    ...PGN_127491Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127491  extends PGN implements PGN_127491Interface {
+  fields: PGN_127491Fields
+  
+  constructor(fields: PGN_127491Fields, dst:number=255) {
+    super(PGN_127491Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -7820,7 +7885,7 @@ export const new127491 = (fields: PGN_127491Fields, dst:number=255) : PGN_127491
   *
   * @category PGN_127493
  */
-export interface PGN_127493 extends PGN {
+export interface PGN_127493Interface extends PGNInterface {
  fields: PGN_127493Fields
 }
 
@@ -7843,19 +7908,20 @@ export interface PGN_127493Fields {
 export const PGN_127493Defaults = {
   pgn: 127493,
   dst: 255,
-  prio: 2
+  prio: 2,
+  fields: []
 }
 
 /**
  * @category PGN_127493
  */
-export const new127493 = (fields: PGN_127493Fields, dst:number=255) : PGN_127493 => {
-  return {
-    ...PGN_127493Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127493  extends PGN implements PGN_127493Interface {
+  fields: PGN_127493Fields
+  
+  constructor(fields: PGN_127493Fields, dst:number=255) {
+    super(PGN_127493Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -7867,7 +7933,7 @@ export const new127493 = (fields: PGN_127493Fields, dst:number=255) : PGN_127493
   *
   * @category PGN_127494
  */
-export interface PGN_127494 extends PGN {
+export interface PGN_127494Interface extends PGNInterface {
  fields: PGN_127494Fields
 }
 
@@ -7896,19 +7962,20 @@ export interface PGN_127494Fields {
 export const PGN_127494Defaults = {
   pgn: 127494,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_127494
  */
-export const new127494 = (fields: PGN_127494Fields, dst:number=255) : PGN_127494 => {
-  return {
-    ...PGN_127494Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127494  extends PGN implements PGN_127494Interface {
+  fields: PGN_127494Fields
+  
+  constructor(fields: PGN_127494Fields, dst:number=255) {
+    super(PGN_127494Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -7920,7 +7987,7 @@ export const new127494 = (fields: PGN_127494Fields, dst:number=255) : PGN_127494
   *
   * @category PGN_127495
  */
-export interface PGN_127495 extends PGN {
+export interface PGN_127495Interface extends PGNInterface {
  fields: PGN_127495Fields
 }
 
@@ -7952,19 +8019,20 @@ export interface PGN_127495Fields {
 export const PGN_127495Defaults = {
   pgn: 127495,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_127495
  */
-export const new127495 = (fields: PGN_127495Fields, dst:number=255) : PGN_127495 => {
-  return {
-    ...PGN_127495Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127495  extends PGN implements PGN_127495Interface {
+  fields: PGN_127495Fields
+  
+  constructor(fields: PGN_127495Fields, dst:number=255) {
+    super(PGN_127495Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -7974,7 +8042,7 @@ export const new127495 = (fields: PGN_127495Fields, dst:number=255) : PGN_127495
   *
   * @category PGN_127496
  */
-export interface PGN_127496 extends PGN {
+export interface PGN_127496Interface extends PGNInterface {
  fields: PGN_127496Fields
 }
 
@@ -7994,19 +8062,20 @@ export interface PGN_127496Fields {
 export const PGN_127496Defaults = {
   pgn: 127496,
   dst: 255,
-  prio: 5
+  prio: 5,
+  fields: []
 }
 
 /**
  * @category PGN_127496
  */
-export const new127496 = (fields: PGN_127496Fields, dst:number=255) : PGN_127496 => {
-  return {
-    ...PGN_127496Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127496  extends PGN implements PGN_127496Interface {
+  fields: PGN_127496Fields
+  
+  constructor(fields: PGN_127496Fields, dst:number=255) {
+    super(PGN_127496Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -8016,7 +8085,7 @@ export const new127496 = (fields: PGN_127496Fields, dst:number=255) : PGN_127496
   *
   * @category PGN_127497
  */
-export interface PGN_127497 extends PGN {
+export interface PGN_127497Interface extends PGNInterface {
  fields: PGN_127497Fields
 }
 
@@ -8037,19 +8106,20 @@ export interface PGN_127497Fields {
 export const PGN_127497Defaults = {
   pgn: 127497,
   dst: 255,
-  prio: 5
+  prio: 5,
+  fields: []
 }
 
 /**
  * @category PGN_127497
  */
-export const new127497 = (fields: PGN_127497Fields, dst:number=255) : PGN_127497 => {
-  return {
-    ...PGN_127497Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127497  extends PGN implements PGN_127497Interface {
+  fields: PGN_127497Fields
+  
+  constructor(fields: PGN_127497Fields, dst:number=255) {
+    super(PGN_127497Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -8059,7 +8129,7 @@ export const new127497 = (fields: PGN_127497Fields, dst:number=255) : PGN_127497
   *
   * @category PGN_127498
  */
-export interface PGN_127498 extends PGN {
+export interface PGN_127498Interface extends PGNInterface {
  fields: PGN_127498Fields
 }
 
@@ -8079,19 +8149,20 @@ export interface PGN_127498Fields {
 export const PGN_127498Defaults = {
   pgn: 127498,
   dst: 255,
-  prio: 5
+  prio: 5,
+  fields: []
 }
 
 /**
  * @category PGN_127498
  */
-export const new127498 = (fields: PGN_127498Fields, dst:number=255) : PGN_127498 => {
-  return {
-    ...PGN_127498Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127498  extends PGN implements PGN_127498Interface {
+  fields: PGN_127498Fields
+  
+  constructor(fields: PGN_127498Fields, dst:number=255) {
+    super(PGN_127498Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -8101,7 +8172,7 @@ export const new127498 = (fields: PGN_127498Fields, dst:number=255) : PGN_127498
   *
   * @category PGN_127500
  */
-export interface PGN_127500 extends PGN {
+export interface PGN_127500Interface extends PGNInterface {
  fields: PGN_127500Fields
 }
 
@@ -8125,19 +8196,20 @@ export interface PGN_127500Fields {
 export const PGN_127500Defaults = {
   pgn: 127500,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_127500
  */
-export const new127500 = (fields: PGN_127500Fields, dst:number=255) : PGN_127500 => {
-  return {
-    ...PGN_127500Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127500  extends PGN implements PGN_127500Interface {
+  fields: PGN_127500Fields
+  
+  constructor(fields: PGN_127500Fields, dst:number=255) {
+    super(PGN_127500Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -8147,7 +8219,7 @@ export const new127500 = (fields: PGN_127500Fields, dst:number=255) : PGN_127500
   *
   * @category PGN_127501
  */
-export interface PGN_127501 extends PGN {
+export interface PGN_127501Interface extends PGNInterface {
  fields: PGN_127501Fields
 }
 
@@ -8192,19 +8264,20 @@ export interface PGN_127501Fields {
 export const PGN_127501Defaults = {
   pgn: 127501,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_127501
  */
-export const new127501 = (fields: PGN_127501Fields, dst:number=255) : PGN_127501 => {
-  return {
-    ...PGN_127501Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127501  extends PGN implements PGN_127501Interface {
+  fields: PGN_127501Fields
+  
+  constructor(fields: PGN_127501Fields, dst:number=255) {
+    super(PGN_127501Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -8214,7 +8287,7 @@ export const new127501 = (fields: PGN_127501Fields, dst:number=255) : PGN_127501
   *
   * @category PGN_127502
  */
-export interface PGN_127502 extends PGN {
+export interface PGN_127502Interface extends PGNInterface {
  fields: PGN_127502Fields
 }
 
@@ -8259,19 +8332,20 @@ export interface PGN_127502Fields {
 export const PGN_127502Defaults = {
   pgn: 127502,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_127502
  */
-export const new127502 = (fields: PGN_127502Fields, dst:number=255) : PGN_127502 => {
-  return {
-    ...PGN_127502Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127502  extends PGN implements PGN_127502Interface {
+  fields: PGN_127502Fields
+  
+  constructor(fields: PGN_127502Fields, dst:number=255) {
+    super(PGN_127502Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -8281,7 +8355,7 @@ export const new127502 = (fields: PGN_127502Fields, dst:number=255) : PGN_127502
   *
   * @category PGN_127503
  */
-export interface PGN_127503 extends PGN {
+export interface PGN_127503Interface extends PGNInterface {
  fields: PGN_127503Fields
 }
 
@@ -8311,19 +8385,20 @@ export interface PGN_127503Fields {
 export const PGN_127503Defaults = {
   pgn: 127503,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_127503
  */
-export const new127503 = (fields: PGN_127503Fields, dst:number=255) : PGN_127503 => {
-  return {
-    ...PGN_127503Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127503  extends PGN implements PGN_127503Interface {
+  fields: PGN_127503Fields
+  
+  constructor(fields: PGN_127503Fields, dst:number=255) {
+    super(PGN_127503Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -8333,7 +8408,7 @@ export const new127503 = (fields: PGN_127503Fields, dst:number=255) : PGN_127503
   *
   * @category PGN_127504
  */
-export interface PGN_127504 extends PGN {
+export interface PGN_127504Interface extends PGNInterface {
  fields: PGN_127504Fields
 }
 
@@ -8363,19 +8438,20 @@ export interface PGN_127504Fields {
 export const PGN_127504Defaults = {
   pgn: 127504,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_127504
  */
-export const new127504 = (fields: PGN_127504Fields, dst:number=255) : PGN_127504 => {
-  return {
-    ...PGN_127504Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127504  extends PGN implements PGN_127504Interface {
+  fields: PGN_127504Fields
+  
+  constructor(fields: PGN_127504Fields, dst:number=255) {
+    super(PGN_127504Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -8385,7 +8461,7 @@ export const new127504 = (fields: PGN_127504Fields, dst:number=255) : PGN_127504
   *
   * @category PGN_127505
  */
-export interface PGN_127505 extends PGN {
+export interface PGN_127505Interface extends PGNInterface {
  fields: PGN_127505Fields
 }
 
@@ -8406,19 +8482,20 @@ export interface PGN_127505Fields {
 export const PGN_127505Defaults = {
   pgn: 127505,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_127505
  */
-export const new127505 = (fields: PGN_127505Fields, dst:number=255) : PGN_127505 => {
-  return {
-    ...PGN_127505Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127505  extends PGN implements PGN_127505Interface {
+  fields: PGN_127505Fields
+  
+  constructor(fields: PGN_127505Fields, dst:number=255) {
+    super(PGN_127505Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -8428,7 +8505,7 @@ export const new127505 = (fields: PGN_127505Fields, dst:number=255) : PGN_127505
   *
   * @category PGN_127506
  */
-export interface PGN_127506 extends PGN {
+export interface PGN_127506Interface extends PGNInterface {
  fields: PGN_127506Fields
 }
 
@@ -8452,19 +8529,20 @@ export interface PGN_127506Fields {
 export const PGN_127506Defaults = {
   pgn: 127506,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_127506
  */
-export const new127506 = (fields: PGN_127506Fields, dst:number=255) : PGN_127506 => {
-  return {
-    ...PGN_127506Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127506  extends PGN implements PGN_127506Interface {
+  fields: PGN_127506Fields
+  
+  constructor(fields: PGN_127506Fields, dst:number=255) {
+    super(PGN_127506Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -8474,7 +8552,7 @@ export const new127506 = (fields: PGN_127506Fields, dst:number=255) : PGN_127506
   *
   * @category PGN_127507
  */
-export interface PGN_127507 extends PGN {
+export interface PGN_127507Interface extends PGNInterface {
  fields: PGN_127507Fields
 }
 
@@ -8498,19 +8576,20 @@ export interface PGN_127507Fields {
 export const PGN_127507Defaults = {
   pgn: 127507,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_127507
  */
-export const new127507 = (fields: PGN_127507Fields, dst:number=255) : PGN_127507 => {
-  return {
-    ...PGN_127507Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127507  extends PGN implements PGN_127507Interface {
+  fields: PGN_127507Fields
+  
+  constructor(fields: PGN_127507Fields, dst:number=255) {
+    super(PGN_127507Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -8520,7 +8599,7 @@ export const new127507 = (fields: PGN_127507Fields, dst:number=255) : PGN_127507
   *
   * @category PGN_127508
  */
-export interface PGN_127508 extends PGN {
+export interface PGN_127508Interface extends PGNInterface {
  fields: PGN_127508Fields
 }
 
@@ -8541,19 +8620,20 @@ export interface PGN_127508Fields {
 export const PGN_127508Defaults = {
   pgn: 127508,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_127508
  */
-export const new127508 = (fields: PGN_127508Fields, dst:number=255) : PGN_127508 => {
-  return {
-    ...PGN_127508Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127508  extends PGN implements PGN_127508Interface {
+  fields: PGN_127508Fields
+  
+  constructor(fields: PGN_127508Fields, dst:number=255) {
+    super(PGN_127508Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -8565,7 +8645,7 @@ export const new127508 = (fields: PGN_127508Fields, dst:number=255) : PGN_127508
   *
   * @category PGN_127509
  */
-export interface PGN_127509 extends PGN {
+export interface PGN_127509Interface extends PGNInterface {
  fields: PGN_127509Fields
 }
 
@@ -8587,19 +8667,20 @@ export interface PGN_127509Fields {
 export const PGN_127509Defaults = {
   pgn: 127509,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_127509
  */
-export const new127509 = (fields: PGN_127509Fields, dst:number=255) : PGN_127509 => {
-  return {
-    ...PGN_127509Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127509  extends PGN implements PGN_127509Interface {
+  fields: PGN_127509Fields
+  
+  constructor(fields: PGN_127509Fields, dst:number=255) {
+    super(PGN_127509Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -8609,7 +8690,7 @@ export const new127509 = (fields: PGN_127509Fields, dst:number=255) : PGN_127509
   *
   * @category PGN_127510
  */
-export interface PGN_127510 extends PGN {
+export interface PGN_127510Interface extends PGNInterface {
  fields: PGN_127510Fields
 }
 
@@ -8636,19 +8717,20 @@ export interface PGN_127510Fields {
 export const PGN_127510Defaults = {
   pgn: 127510,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_127510
  */
-export const new127510 = (fields: PGN_127510Fields, dst:number=255) : PGN_127510 => {
-  return {
-    ...PGN_127510Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127510  extends PGN implements PGN_127510Interface {
+  fields: PGN_127510Fields
+  
+  constructor(fields: PGN_127510Fields, dst:number=255) {
+    super(PGN_127510Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -8658,7 +8740,7 @@ export const new127510 = (fields: PGN_127510Fields, dst:number=255) : PGN_127510
   *
   * @category PGN_127511
  */
-export interface PGN_127511 extends PGN {
+export interface PGN_127511Interface extends PGNInterface {
  fields: PGN_127511Fields
 }
 
@@ -8682,19 +8764,20 @@ export interface PGN_127511Fields {
 export const PGN_127511Defaults = {
   pgn: 127511,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_127511
  */
-export const new127511 = (fields: PGN_127511Fields, dst:number=255) : PGN_127511 => {
-  return {
-    ...PGN_127511Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127511  extends PGN implements PGN_127511Interface {
+  fields: PGN_127511Fields
+  
+  constructor(fields: PGN_127511Fields, dst:number=255) {
+    super(PGN_127511Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -8704,7 +8787,7 @@ export const new127511 = (fields: PGN_127511Fields, dst:number=255) : PGN_127511
   *
   * @category PGN_127512
  */
-export interface PGN_127512 extends PGN {
+export interface PGN_127512Interface extends PGNInterface {
  fields: PGN_127512Fields
 }
 
@@ -8724,19 +8807,20 @@ export interface PGN_127512Fields {
 export const PGN_127512Defaults = {
   pgn: 127512,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_127512
  */
-export const new127512 = (fields: PGN_127512Fields, dst:number=255) : PGN_127512 => {
-  return {
-    ...PGN_127512Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127512  extends PGN implements PGN_127512Interface {
+  fields: PGN_127512Fields
+  
+  constructor(fields: PGN_127512Fields, dst:number=255) {
+    super(PGN_127512Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -8746,7 +8830,7 @@ export const new127512 = (fields: PGN_127512Fields, dst:number=255) : PGN_127512
   *
   * @category PGN_127513
  */
-export interface PGN_127513 extends PGN {
+export interface PGN_127513Interface extends PGNInterface {
  fields: PGN_127513Fields
 }
 
@@ -8772,19 +8856,20 @@ export interface PGN_127513Fields {
 export const PGN_127513Defaults = {
   pgn: 127513,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_127513
  */
-export const new127513 = (fields: PGN_127513Fields, dst:number=255) : PGN_127513 => {
-  return {
-    ...PGN_127513Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127513  extends PGN implements PGN_127513Interface {
+  fields: PGN_127513Fields
+  
+  constructor(fields: PGN_127513Fields, dst:number=255) {
+    super(PGN_127513Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -8794,7 +8879,7 @@ export const new127513 = (fields: PGN_127513Fields, dst:number=255) : PGN_127513
   *
   * @category PGN_127514
  */
-export interface PGN_127514 extends PGN {
+export interface PGN_127514Interface extends PGNInterface {
  fields: PGN_127514Fields
 }
 
@@ -8816,19 +8901,20 @@ export interface PGN_127514Fields {
 export const PGN_127514Defaults = {
   pgn: 127514,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_127514
  */
-export const new127514 = (fields: PGN_127514Fields, dst:number=255) : PGN_127514 => {
-  return {
-    ...PGN_127514Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127514  extends PGN implements PGN_127514Interface {
+  fields: PGN_127514Fields
+  
+  constructor(fields: PGN_127514Fields, dst:number=255) {
+    super(PGN_127514Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -8838,7 +8924,7 @@ export const new127514 = (fields: PGN_127514Fields, dst:number=255) : PGN_127514
   *
   * @category PGN_127744
  */
-export interface PGN_127744 extends PGN {
+export interface PGN_127744Interface extends PGNInterface {
  fields: PGN_127744Fields
 }
 
@@ -8858,19 +8944,20 @@ export interface PGN_127744Fields {
 export const PGN_127744Defaults = {
   pgn: 127744,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_127744
  */
-export const new127744 = (fields: PGN_127744Fields, dst:number=255) : PGN_127744 => {
-  return {
-    ...PGN_127744Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127744  extends PGN implements PGN_127744Interface {
+  fields: PGN_127744Fields
+  
+  constructor(fields: PGN_127744Fields, dst:number=255) {
+    super(PGN_127744Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -8880,7 +8967,7 @@ export const new127744 = (fields: PGN_127744Fields, dst:number=255) : PGN_127744
   *
   * @category PGN_127745
  */
-export interface PGN_127745 extends PGN {
+export interface PGN_127745Interface extends PGNInterface {
  fields: PGN_127745Fields
 }
 
@@ -8900,19 +8987,20 @@ export interface PGN_127745Fields {
 export const PGN_127745Defaults = {
   pgn: 127745,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_127745
  */
-export const new127745 = (fields: PGN_127745Fields, dst:number=255) : PGN_127745 => {
-  return {
-    ...PGN_127745Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127745  extends PGN implements PGN_127745Interface {
+  fields: PGN_127745Fields
+  
+  constructor(fields: PGN_127745Fields, dst:number=255) {
+    super(PGN_127745Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -8922,7 +9010,7 @@ export const new127745 = (fields: PGN_127745Fields, dst:number=255) : PGN_127745
   *
   * @category PGN_127746
  */
-export interface PGN_127746 extends PGN {
+export interface PGN_127746Interface extends PGNInterface {
  fields: PGN_127746Fields
 }
 
@@ -8942,19 +9030,20 @@ export interface PGN_127746Fields {
 export const PGN_127746Defaults = {
   pgn: 127746,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_127746
  */
-export const new127746 = (fields: PGN_127746Fields, dst:number=255) : PGN_127746 => {
-  return {
-    ...PGN_127746Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127746  extends PGN implements PGN_127746Interface {
+  fields: PGN_127746Fields
+  
+  constructor(fields: PGN_127746Fields, dst:number=255) {
+    super(PGN_127746Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -8964,7 +9053,7 @@ export const new127746 = (fields: PGN_127746Fields, dst:number=255) : PGN_127746
   *
   * @category PGN_127747
  */
-export interface PGN_127747 extends PGN {
+export interface PGN_127747Interface extends PGNInterface {
  fields: PGN_127747Fields
 }
 
@@ -8985,19 +9074,20 @@ export interface PGN_127747Fields {
 export const PGN_127747Defaults = {
   pgn: 127747,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_127747
  */
-export const new127747 = (fields: PGN_127747Fields, dst:number=255) : PGN_127747 => {
-  return {
-    ...PGN_127747Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127747  extends PGN implements PGN_127747Interface {
+  fields: PGN_127747Fields
+  
+  constructor(fields: PGN_127747Fields, dst:number=255) {
+    super(PGN_127747Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -9007,7 +9097,7 @@ export const new127747 = (fields: PGN_127747Fields, dst:number=255) : PGN_127747
   *
   * @category PGN_127748
  */
-export interface PGN_127748 extends PGN {
+export interface PGN_127748Interface extends PGNInterface {
  fields: PGN_127748Fields
 }
 
@@ -9028,19 +9118,20 @@ export interface PGN_127748Fields {
 export const PGN_127748Defaults = {
   pgn: 127748,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_127748
  */
-export const new127748 = (fields: PGN_127748Fields, dst:number=255) : PGN_127748 => {
-  return {
-    ...PGN_127748Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127748  extends PGN implements PGN_127748Interface {
+  fields: PGN_127748Fields
+  
+  constructor(fields: PGN_127748Fields, dst:number=255) {
+    super(PGN_127748Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -9050,7 +9141,7 @@ export const new127748 = (fields: PGN_127748Fields, dst:number=255) : PGN_127748
   *
   * @category PGN_127749
  */
-export interface PGN_127749 extends PGN {
+export interface PGN_127749Interface extends PGNInterface {
  fields: PGN_127749Fields
 }
 
@@ -9071,19 +9162,20 @@ export interface PGN_127749Fields {
 export const PGN_127749Defaults = {
   pgn: 127749,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_127749
  */
-export const new127749 = (fields: PGN_127749Fields, dst:number=255) : PGN_127749 => {
-  return {
-    ...PGN_127749Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127749  extends PGN implements PGN_127749Interface {
+  fields: PGN_127749Fields
+  
+  constructor(fields: PGN_127749Fields, dst:number=255) {
+    super(PGN_127749Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -9093,7 +9185,7 @@ export const new127749 = (fields: PGN_127749Fields, dst:number=255) : PGN_127749
   *
   * @category PGN_127750
  */
-export interface PGN_127750 extends PGN {
+export interface PGN_127750Interface extends PGNInterface {
  fields: PGN_127750Fields
 }
 
@@ -9117,19 +9209,20 @@ export interface PGN_127750Fields {
 export const PGN_127750Defaults = {
   pgn: 127750,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_127750
  */
-export const new127750 = (fields: PGN_127750Fields, dst:number=255) : PGN_127750 => {
-  return {
-    ...PGN_127750Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127750  extends PGN implements PGN_127750Interface {
+  fields: PGN_127750Fields
+  
+  constructor(fields: PGN_127750Fields, dst:number=255) {
+    super(PGN_127750Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -9139,7 +9232,7 @@ export const new127750 = (fields: PGN_127750Fields, dst:number=255) : PGN_127750
   *
   * @category PGN_127751
  */
-export interface PGN_127751 extends PGN {
+export interface PGN_127751Interface extends PGNInterface {
  fields: PGN_127751Fields
 }
 
@@ -9160,19 +9253,20 @@ export interface PGN_127751Fields {
 export const PGN_127751Defaults = {
   pgn: 127751,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_127751
  */
-export const new127751 = (fields: PGN_127751Fields, dst:number=255) : PGN_127751 => {
-  return {
-    ...PGN_127751Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_127751  extends PGN implements PGN_127751Interface {
+  fields: PGN_127751Fields
+  
+  constructor(fields: PGN_127751Fields, dst:number=255) {
+    super(PGN_127751Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -9184,7 +9278,7 @@ export const new127751 = (fields: PGN_127751Fields, dst:number=255) : PGN_127751
   *
   * @category PGN_128000
  */
-export interface PGN_128000 extends PGN {
+export interface PGN_128000Interface extends PGNInterface {
  fields: PGN_128000Fields
 }
 
@@ -9203,19 +9297,20 @@ export interface PGN_128000Fields {
 export const PGN_128000Defaults = {
   pgn: 128000,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_128000
  */
-export const new128000 = (fields: PGN_128000Fields, dst:number=255) : PGN_128000 => {
-  return {
-    ...PGN_128000Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_128000  extends PGN implements PGN_128000Interface {
+  fields: PGN_128000Fields
+  
+  constructor(fields: PGN_128000Fields, dst:number=255) {
+    super(PGN_128000Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -9227,7 +9322,7 @@ export const new128000 = (fields: PGN_128000Fields, dst:number=255) : PGN_128000
   *
   * @category PGN_128001
  */
-export interface PGN_128001 extends PGN {
+export interface PGN_128001Interface extends PGNInterface {
  fields: PGN_128001Fields
 }
 
@@ -9248,19 +9343,20 @@ export interface PGN_128001Fields {
 export const PGN_128001Defaults = {
   pgn: 128001,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_128001
  */
-export const new128001 = (fields: PGN_128001Fields, dst:number=255) : PGN_128001 => {
-  return {
-    ...PGN_128001Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_128001  extends PGN implements PGN_128001Interface {
+  fields: PGN_128001Fields
+  
+  constructor(fields: PGN_128001Fields, dst:number=255) {
+    super(PGN_128001Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -9272,7 +9368,7 @@ export const new128001 = (fields: PGN_128001Fields, dst:number=255) : PGN_128001
   *
   * @category PGN_128002
  */
-export interface PGN_128002 extends PGN {
+export interface PGN_128002Interface extends PGNInterface {
  fields: PGN_128002Fields
 }
 
@@ -9295,19 +9391,20 @@ export interface PGN_128002Fields {
 export const PGN_128002Defaults = {
   pgn: 128002,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_128002
  */
-export const new128002 = (fields: PGN_128002Fields, dst:number=255) : PGN_128002 => {
-  return {
-    ...PGN_128002Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_128002  extends PGN implements PGN_128002Interface {
+  fields: PGN_128002Fields
+  
+  constructor(fields: PGN_128002Fields, dst:number=255) {
+    super(PGN_128002Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -9319,7 +9416,7 @@ export const new128002 = (fields: PGN_128002Fields, dst:number=255) : PGN_128002
   *
   * @category PGN_128003
  */
-export interface PGN_128003 extends PGN {
+export interface PGN_128003Interface extends PGNInterface {
  fields: PGN_128003Fields
 }
 
@@ -9342,19 +9439,20 @@ export interface PGN_128003Fields {
 export const PGN_128003Defaults = {
   pgn: 128003,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_128003
  */
-export const new128003 = (fields: PGN_128003Fields, dst:number=255) : PGN_128003 => {
-  return {
-    ...PGN_128003Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_128003  extends PGN implements PGN_128003Interface {
+  fields: PGN_128003Fields
+  
+  constructor(fields: PGN_128003Fields, dst:number=255) {
+    super(PGN_128003Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -9364,7 +9462,7 @@ export const new128003 = (fields: PGN_128003Fields, dst:number=255) : PGN_128003
   *
   * @category PGN_128006
  */
-export interface PGN_128006 extends PGN {
+export interface PGN_128006Interface extends PGNInterface {
  fields: PGN_128006Fields
 }
 
@@ -9389,19 +9487,20 @@ export interface PGN_128006Fields {
 export const PGN_128006Defaults = {
   pgn: 128006,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_128006
  */
-export const new128006 = (fields: PGN_128006Fields, dst:number=255) : PGN_128006 => {
-  return {
-    ...PGN_128006Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_128006  extends PGN implements PGN_128006Interface {
+  fields: PGN_128006Fields
+  
+  constructor(fields: PGN_128006Fields, dst:number=255) {
+    super(PGN_128006Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -9411,7 +9510,7 @@ export const new128006 = (fields: PGN_128006Fields, dst:number=255) : PGN_128006
   *
   * @category PGN_128007
  */
-export interface PGN_128007 extends PGN {
+export interface PGN_128007Interface extends PGNInterface {
  fields: PGN_128007Fields
 }
 
@@ -9433,19 +9532,20 @@ export interface PGN_128007Fields {
 export const PGN_128007Defaults = {
   pgn: 128007,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_128007
  */
-export const new128007 = (fields: PGN_128007Fields, dst:number=255) : PGN_128007 => {
-  return {
-    ...PGN_128007Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_128007  extends PGN implements PGN_128007Interface {
+  fields: PGN_128007Fields
+  
+  constructor(fields: PGN_128007Fields, dst:number=255) {
+    super(PGN_128007Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -9455,7 +9555,7 @@ export const new128007 = (fields: PGN_128007Fields, dst:number=255) : PGN_128007
   *
   * @category PGN_128008
  */
-export interface PGN_128008 extends PGN {
+export interface PGN_128008Interface extends PGNInterface {
  fields: PGN_128008Fields
 }
 
@@ -9477,19 +9577,20 @@ export interface PGN_128008Fields {
 export const PGN_128008Defaults = {
   pgn: 128008,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_128008
  */
-export const new128008 = (fields: PGN_128008Fields, dst:number=255) : PGN_128008 => {
-  return {
-    ...PGN_128008Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_128008  extends PGN implements PGN_128008Interface {
+  fields: PGN_128008Fields
+  
+  constructor(fields: PGN_128008Fields, dst:number=255) {
+    super(PGN_128008Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -9499,7 +9600,7 @@ export const new128008 = (fields: PGN_128008Fields, dst:number=255) : PGN_128008
   *
   * @category PGN_128259
  */
-export interface PGN_128259 extends PGN {
+export interface PGN_128259Interface extends PGNInterface {
  fields: PGN_128259Fields
 }
 
@@ -9521,19 +9622,20 @@ export interface PGN_128259Fields {
 export const PGN_128259Defaults = {
   pgn: 128259,
   dst: 255,
-  prio: 2
+  prio: 2,
+  fields: []
 }
 
 /**
  * @category PGN_128259
  */
-export const new128259 = (fields: PGN_128259Fields, dst:number=255) : PGN_128259 => {
-  return {
-    ...PGN_128259Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_128259  extends PGN implements PGN_128259Interface {
+  fields: PGN_128259Fields
+  
+  constructor(fields: PGN_128259Fields, dst:number=255) {
+    super(PGN_128259Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -9543,7 +9645,7 @@ export const new128259 = (fields: PGN_128259Fields, dst:number=255) : PGN_128259
   *
   * @category PGN_128267
  */
-export interface PGN_128267 extends PGN {
+export interface PGN_128267Interface extends PGNInterface {
  fields: PGN_128267Fields
 }
 
@@ -9563,19 +9665,20 @@ export interface PGN_128267Fields {
 export const PGN_128267Defaults = {
   pgn: 128267,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_128267
  */
-export const new128267 = (fields: PGN_128267Fields, dst:number=255) : PGN_128267 => {
-  return {
-    ...PGN_128267Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_128267  extends PGN implements PGN_128267Interface {
+  fields: PGN_128267Fields
+  
+  constructor(fields: PGN_128267Fields, dst:number=255) {
+    super(PGN_128267Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -9585,7 +9688,7 @@ export const new128267 = (fields: PGN_128267Fields, dst:number=255) : PGN_128267
   *
   * @category PGN_128275
  */
-export interface PGN_128275 extends PGN {
+export interface PGN_128275Interface extends PGNInterface {
  fields: PGN_128275Fields
 }
 
@@ -9605,19 +9708,20 @@ export interface PGN_128275Fields {
 export const PGN_128275Defaults = {
   pgn: 128275,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_128275
  */
-export const new128275 = (fields: PGN_128275Fields, dst:number=255) : PGN_128275 => {
-  return {
-    ...PGN_128275Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_128275  extends PGN implements PGN_128275Interface {
+  fields: PGN_128275Fields
+  
+  constructor(fields: PGN_128275Fields, dst:number=255) {
+    super(PGN_128275Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -9627,7 +9731,7 @@ export const new128275 = (fields: PGN_128275Fields, dst:number=255) : PGN_128275
   *
   * @category PGN_128520
  */
-export interface PGN_128520 extends PGN {
+export interface PGN_128520Interface extends PGNInterface {
  fields: PGN_128520Fields
 }
 
@@ -9660,19 +9764,20 @@ export interface PGN_128520Fields {
 export const PGN_128520Defaults = {
   pgn: 128520,
   dst: 255,
-  prio: 2
+  prio: 2,
+  fields: []
 }
 
 /**
  * @category PGN_128520
  */
-export const new128520 = (fields: PGN_128520Fields, dst:number=255) : PGN_128520 => {
-  return {
-    ...PGN_128520Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_128520  extends PGN implements PGN_128520Interface {
+  fields: PGN_128520Fields
+  
+  constructor(fields: PGN_128520Fields, dst:number=255) {
+    super(PGN_128520Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -9684,7 +9789,7 @@ export const new128520 = (fields: PGN_128520Fields, dst:number=255) : PGN_128520
   *
   * @category PGN_128538
  */
-export interface PGN_128538 extends PGN {
+export interface PGN_128538Interface extends PGNInterface {
  fields: PGN_128538Fields
 }
 
@@ -9732,19 +9837,20 @@ export interface PGN_128538Fields {
 export const PGN_128538Defaults = {
   pgn: 128538,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_128538
  */
-export const new128538 = (fields: PGN_128538Fields, dst:number=255) : PGN_128538 => {
-  return {
-    ...PGN_128538Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_128538  extends PGN implements PGN_128538Interface {
+  fields: PGN_128538Fields
+  
+  constructor(fields: PGN_128538Fields, dst:number=255) {
+    super(PGN_128538Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -9756,7 +9862,7 @@ export const new128538 = (fields: PGN_128538Fields, dst:number=255) : PGN_128538
   *
   * @category PGN_128768
  */
-export interface PGN_128768 extends PGN {
+export interface PGN_128768Interface extends PGNInterface {
  fields: PGN_128768Fields
 }
 
@@ -9778,19 +9884,20 @@ export interface PGN_128768Fields {
 export const PGN_128768Defaults = {
   pgn: 128768,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_128768
  */
-export const new128768 = (fields: PGN_128768Fields, dst:number=255) : PGN_128768 => {
-  return {
-    ...PGN_128768Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_128768  extends PGN implements PGN_128768Interface {
+  fields: PGN_128768Fields
+  
+  constructor(fields: PGN_128768Fields, dst:number=255) {
+    super(PGN_128768Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -9802,7 +9909,7 @@ export const new128768 = (fields: PGN_128768Fields, dst:number=255) : PGN_128768
   *
   * @category PGN_128769
  */
-export interface PGN_128769 extends PGN {
+export interface PGN_128769Interface extends PGNInterface {
  fields: PGN_128769Fields
 }
 
@@ -9824,19 +9931,20 @@ export interface PGN_128769Fields {
 export const PGN_128769Defaults = {
   pgn: 128769,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_128769
  */
-export const new128769 = (fields: PGN_128769Fields, dst:number=255) : PGN_128769 => {
-  return {
-    ...PGN_128769Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_128769  extends PGN implements PGN_128769Interface {
+  fields: PGN_128769Fields
+  
+  constructor(fields: PGN_128769Fields, dst:number=255) {
+    super(PGN_128769Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -9846,7 +9954,7 @@ export const new128769 = (fields: PGN_128769Fields, dst:number=255) : PGN_128769
   *
   * @category PGN_128776
  */
-export interface PGN_128776 extends PGN {
+export interface PGN_128776Interface extends PGNInterface {
  fields: PGN_128776Fields
 }
 
@@ -9876,19 +9984,20 @@ export interface PGN_128776Fields {
 export const PGN_128776Defaults = {
   pgn: 128776,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_128776
  */
-export const new128776 = (fields: PGN_128776Fields, dst:number=255) : PGN_128776 => {
-  return {
-    ...PGN_128776Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_128776  extends PGN implements PGN_128776Interface {
+  fields: PGN_128776Fields
+  
+  constructor(fields: PGN_128776Fields, dst:number=255) {
+    super(PGN_128776Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -9898,7 +10007,7 @@ export const new128776 = (fields: PGN_128776Fields, dst:number=255) : PGN_128776
   *
   * @category PGN_128777
  */
-export interface PGN_128777 extends PGN {
+export interface PGN_128777Interface extends PGNInterface {
  fields: PGN_128777Fields
 }
 
@@ -9924,19 +10033,20 @@ export interface PGN_128777Fields {
 export const PGN_128777Defaults = {
   pgn: 128777,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_128777
  */
-export const new128777 = (fields: PGN_128777Fields, dst:number=255) : PGN_128777 => {
-  return {
-    ...PGN_128777Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_128777  extends PGN implements PGN_128777Interface {
+  fields: PGN_128777Fields
+  
+  constructor(fields: PGN_128777Fields, dst:number=255) {
+    super(PGN_128777Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -9946,7 +10056,7 @@ export const new128777 = (fields: PGN_128777Fields, dst:number=255) : PGN_128777
   *
   * @category PGN_128778
  */
-export interface PGN_128778 extends PGN {
+export interface PGN_128778Interface extends PGNInterface {
  fields: PGN_128778Fields
 }
 
@@ -9969,19 +10079,20 @@ export interface PGN_128778Fields {
 export const PGN_128778Defaults = {
   pgn: 128778,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_128778
  */
-export const new128778 = (fields: PGN_128778Fields, dst:number=255) : PGN_128778 => {
-  return {
-    ...PGN_128778Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_128778  extends PGN implements PGN_128778Interface {
+  fields: PGN_128778Fields
+  
+  constructor(fields: PGN_128778Fields, dst:number=255) {
+    super(PGN_128778Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -9993,7 +10104,7 @@ export const new128778 = (fields: PGN_128778Fields, dst:number=255) : PGN_128778
   *
   * @category PGN_128780
  */
-export interface PGN_128780 extends PGN {
+export interface PGN_128780Interface extends PGNInterface {
  fields: PGN_128780Fields
 }
 
@@ -10015,19 +10126,20 @@ export interface PGN_128780Fields {
 export const PGN_128780Defaults = {
   pgn: 128780,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_128780
  */
-export const new128780 = (fields: PGN_128780Fields, dst:number=255) : PGN_128780 => {
-  return {
-    ...PGN_128780Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_128780  extends PGN implements PGN_128780Interface {
+  fields: PGN_128780Fields
+  
+  constructor(fields: PGN_128780Fields, dst:number=255) {
+    super(PGN_128780Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -10037,7 +10149,7 @@ export const new128780 = (fields: PGN_128780Fields, dst:number=255) : PGN_128780
   *
   * @category PGN_129025
  */
-export interface PGN_129025 extends PGN {
+export interface PGN_129025Interface extends PGNInterface {
  fields: PGN_129025Fields
 }
 
@@ -10055,19 +10167,20 @@ export interface PGN_129025Fields {
 export const PGN_129025Defaults = {
   pgn: 129025,
   dst: 255,
-  prio: 2
+  prio: 2,
+  fields: []
 }
 
 /**
  * @category PGN_129025
  */
-export const new129025 = (fields: PGN_129025Fields, dst:number=255) : PGN_129025 => {
-  return {
-    ...PGN_129025Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129025  extends PGN implements PGN_129025Interface {
+  fields: PGN_129025Fields
+  
+  constructor(fields: PGN_129025Fields, dst:number=255) {
+    super(PGN_129025Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -10077,7 +10190,7 @@ export const new129025 = (fields: PGN_129025Fields, dst:number=255) : PGN_129025
   *
   * @category PGN_129026
  */
-export interface PGN_129026 extends PGN {
+export interface PGN_129026Interface extends PGNInterface {
  fields: PGN_129026Fields
 }
 
@@ -10099,19 +10212,20 @@ export interface PGN_129026Fields {
 export const PGN_129026Defaults = {
   pgn: 129026,
   dst: 255,
-  prio: 2
+  prio: 2,
+  fields: []
 }
 
 /**
  * @category PGN_129026
  */
-export const new129026 = (fields: PGN_129026Fields, dst:number=255) : PGN_129026 => {
-  return {
-    ...PGN_129026Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129026  extends PGN implements PGN_129026Interface {
+  fields: PGN_129026Fields
+  
+  constructor(fields: PGN_129026Fields, dst:number=255) {
+    super(PGN_129026Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -10121,7 +10235,7 @@ export const new129026 = (fields: PGN_129026Fields, dst:number=255) : PGN_129026
   *
   * @category PGN_129027
  */
-export interface PGN_129027 extends PGN {
+export interface PGN_129027Interface extends PGNInterface {
  fields: PGN_129027Fields
 }
 
@@ -10141,19 +10255,20 @@ export interface PGN_129027Fields {
 export const PGN_129027Defaults = {
   pgn: 129027,
   dst: 255,
-  prio: 2
+  prio: 2,
+  fields: []
 }
 
 /**
  * @category PGN_129027
  */
-export const new129027 = (fields: PGN_129027Fields, dst:number=255) : PGN_129027 => {
-  return {
-    ...PGN_129027Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129027  extends PGN implements PGN_129027Interface {
+  fields: PGN_129027Fields
+  
+  constructor(fields: PGN_129027Fields, dst:number=255) {
+    super(PGN_129027Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -10163,7 +10278,7 @@ export const new129027 = (fields: PGN_129027Fields, dst:number=255) : PGN_129027
   *
   * @category PGN_129028
  */
-export interface PGN_129028 extends PGN {
+export interface PGN_129028Interface extends PGNInterface {
  fields: PGN_129028Fields
 }
 
@@ -10186,19 +10301,20 @@ export interface PGN_129028Fields {
 export const PGN_129028Defaults = {
   pgn: 129028,
   dst: 255,
-  prio: 2
+  prio: 2,
+  fields: []
 }
 
 /**
  * @category PGN_129028
  */
-export const new129028 = (fields: PGN_129028Fields, dst:number=255) : PGN_129028 => {
-  return {
-    ...PGN_129028Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129028  extends PGN implements PGN_129028Interface {
+  fields: PGN_129028Fields
+  
+  constructor(fields: PGN_129028Fields, dst:number=255) {
+    super(PGN_129028Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -10208,7 +10324,7 @@ export const new129028 = (fields: PGN_129028Fields, dst:number=255) : PGN_129028
   *
   * @category PGN_129029
  */
-export interface PGN_129029 extends PGN {
+export interface PGN_129029Interface extends PGNInterface {
  fields: PGN_129029Fields
 }
 
@@ -10244,19 +10360,20 @@ export interface PGN_129029Fields {
 export const PGN_129029Defaults = {
   pgn: 129029,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_129029
  */
-export const new129029 = (fields: PGN_129029Fields, dst:number=255) : PGN_129029 => {
-  return {
-    ...PGN_129029Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129029  extends PGN implements PGN_129029Interface {
+  fields: PGN_129029Fields
+  
+  constructor(fields: PGN_129029Fields, dst:number=255) {
+    super(PGN_129029Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -10266,7 +10383,7 @@ export const new129029 = (fields: PGN_129029Fields, dst:number=255) : PGN_129029
   *
   * @category PGN_129033
  */
-export interface PGN_129033 extends PGN {
+export interface PGN_129033Interface extends PGNInterface {
  fields: PGN_129033Fields
 }
 
@@ -10285,19 +10402,20 @@ export interface PGN_129033Fields {
 export const PGN_129033Defaults = {
   pgn: 129033,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_129033
  */
-export const new129033 = (fields: PGN_129033Fields, dst:number=255) : PGN_129033 => {
-  return {
-    ...PGN_129033Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129033  extends PGN implements PGN_129033Interface {
+  fields: PGN_129033Fields
+  
+  constructor(fields: PGN_129033Fields, dst:number=255) {
+    super(PGN_129033Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -10307,7 +10425,7 @@ export const new129033 = (fields: PGN_129033Fields, dst:number=255) : PGN_129033
   *
   * @category PGN_129038
  */
-export interface PGN_129038 extends PGN {
+export interface PGN_129038Interface extends PGNInterface {
  fields: PGN_129038Fields
 }
 
@@ -10343,19 +10461,20 @@ export interface PGN_129038Fields {
 export const PGN_129038Defaults = {
   pgn: 129038,
   dst: 255,
-  prio: 4
+  prio: 4,
+  fields: []
 }
 
 /**
  * @category PGN_129038
  */
-export const new129038 = (fields: PGN_129038Fields, dst:number=255) : PGN_129038 => {
-  return {
-    ...PGN_129038Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129038  extends PGN implements PGN_129038Interface {
+  fields: PGN_129038Fields
+  
+  constructor(fields: PGN_129038Fields, dst:number=255) {
+    super(PGN_129038Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -10365,7 +10484,7 @@ export const new129038 = (fields: PGN_129038Fields, dst:number=255) : PGN_129038
   *
   * @category PGN_129039
  */
-export interface PGN_129039 extends PGN {
+export interface PGN_129039Interface extends PGNInterface {
  fields: PGN_129039Fields
 }
 
@@ -10404,19 +10523,20 @@ export interface PGN_129039Fields {
 export const PGN_129039Defaults = {
   pgn: 129039,
   dst: 255,
-  prio: 4
+  prio: 4,
+  fields: []
 }
 
 /**
  * @category PGN_129039
  */
-export const new129039 = (fields: PGN_129039Fields, dst:number=255) : PGN_129039 => {
-  return {
-    ...PGN_129039Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129039  extends PGN implements PGN_129039Interface {
+  fields: PGN_129039Fields
+  
+  constructor(fields: PGN_129039Fields, dst:number=255) {
+    super(PGN_129039Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -10426,7 +10546,7 @@ export const new129039 = (fields: PGN_129039Fields, dst:number=255) : PGN_129039
   *
   * @category PGN_129040
  */
-export interface PGN_129040 extends PGN {
+export interface PGN_129040Interface extends PGNInterface {
  fields: PGN_129040Fields
 }
 
@@ -10469,19 +10589,20 @@ export interface PGN_129040Fields {
 export const PGN_129040Defaults = {
   pgn: 129040,
   dst: 255,
-  prio: 4
+  prio: 4,
+  fields: []
 }
 
 /**
  * @category PGN_129040
  */
-export const new129040 = (fields: PGN_129040Fields, dst:number=255) : PGN_129040 => {
-  return {
-    ...PGN_129040Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129040  extends PGN implements PGN_129040Interface {
+  fields: PGN_129040Fields
+  
+  constructor(fields: PGN_129040Fields, dst:number=255) {
+    super(PGN_129040Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -10491,7 +10612,7 @@ export const new129040 = (fields: PGN_129040Fields, dst:number=255) : PGN_129040
   *
   * @category PGN_129041
  */
-export interface PGN_129041 extends PGN {
+export interface PGN_129041Interface extends PGNInterface {
  fields: PGN_129041Fields
 }
 
@@ -10530,19 +10651,20 @@ export interface PGN_129041Fields {
 export const PGN_129041Defaults = {
   pgn: 129041,
   dst: 255,
-  prio: 4
+  prio: 4,
+  fields: []
 }
 
 /**
  * @category PGN_129041
  */
-export const new129041 = (fields: PGN_129041Fields, dst:number=255) : PGN_129041 => {
-  return {
-    ...PGN_129041Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129041  extends PGN implements PGN_129041Interface {
+  fields: PGN_129041Fields
+  
+  constructor(fields: PGN_129041Fields, dst:number=255) {
+    super(PGN_129041Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -10552,7 +10674,7 @@ export const new129041 = (fields: PGN_129041Fields, dst:number=255) : PGN_129041
   *
   * @category PGN_129044
  */
-export interface PGN_129044 extends PGN {
+export interface PGN_129044Interface extends PGNInterface {
  fields: PGN_129044Fields
 }
 
@@ -10573,19 +10695,20 @@ export interface PGN_129044Fields {
 export const PGN_129044Defaults = {
   pgn: 129044,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_129044
  */
-export const new129044 = (fields: PGN_129044Fields, dst:number=255) : PGN_129044 => {
-  return {
-    ...PGN_129044Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129044  extends PGN implements PGN_129044Interface {
+  fields: PGN_129044Fields
+  
+  constructor(fields: PGN_129044Fields, dst:number=255) {
+    super(PGN_129044Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -10595,7 +10718,7 @@ export const new129044 = (fields: PGN_129044Fields, dst:number=255) : PGN_129044
   *
   * @category PGN_129045
  */
-export interface PGN_129045 extends PGN {
+export interface PGN_129045Interface extends PGNInterface {
  fields: PGN_129045Fields
 }
 
@@ -10621,19 +10744,20 @@ export interface PGN_129045Fields {
 export const PGN_129045Defaults = {
   pgn: 129045,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_129045
  */
-export const new129045 = (fields: PGN_129045Fields, dst:number=255) : PGN_129045 => {
-  return {
-    ...PGN_129045Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129045  extends PGN implements PGN_129045Interface {
+  fields: PGN_129045Fields
+  
+  constructor(fields: PGN_129045Fields, dst:number=255) {
+    super(PGN_129045Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -10643,7 +10767,7 @@ export const new129045 = (fields: PGN_129045Fields, dst:number=255) : PGN_129045
   *
   * @category PGN_129283
  */
-export interface PGN_129283 extends PGN {
+export interface PGN_129283Interface extends PGNInterface {
  fields: PGN_129283Fields
 }
 
@@ -10665,19 +10789,20 @@ export interface PGN_129283Fields {
 export const PGN_129283Defaults = {
   pgn: 129283,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_129283
  */
-export const new129283 = (fields: PGN_129283Fields, dst:number=255) : PGN_129283 => {
-  return {
-    ...PGN_129283Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129283  extends PGN implements PGN_129283Interface {
+  fields: PGN_129283Fields
+  
+  constructor(fields: PGN_129283Fields, dst:number=255) {
+    super(PGN_129283Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -10687,7 +10812,7 @@ export const new129283 = (fields: PGN_129283Fields, dst:number=255) : PGN_129283
   *
   * @category PGN_129284
  */
-export interface PGN_129284 extends PGN {
+export interface PGN_129284Interface extends PGNInterface {
  fields: PGN_129284Fields
 }
 
@@ -10718,19 +10843,20 @@ export interface PGN_129284Fields {
 export const PGN_129284Defaults = {
   pgn: 129284,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_129284
  */
-export const new129284 = (fields: PGN_129284Fields, dst:number=255) : PGN_129284 => {
-  return {
-    ...PGN_129284Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129284  extends PGN implements PGN_129284Interface {
+  fields: PGN_129284Fields
+  
+  constructor(fields: PGN_129284Fields, dst:number=255) {
+    super(PGN_129284Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -10740,7 +10866,7 @@ export const new129284 = (fields: PGN_129284Fields, dst:number=255) : PGN_129284
   *
   * @category PGN_129285
  */
-export interface PGN_129285 extends PGN {
+export interface PGN_129285Interface extends PGNInterface {
  fields: PGN_129285Fields
 }
 
@@ -10771,19 +10897,20 @@ export interface PGN_129285Fields {
 export const PGN_129285Defaults = {
   pgn: 129285,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_129285
  */
-export const new129285 = (fields: PGN_129285Fields, dst:number=255) : PGN_129285 => {
-  return {
-    ...PGN_129285Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129285  extends PGN implements PGN_129285Interface {
+  fields: PGN_129285Fields
+  
+  constructor(fields: PGN_129285Fields, dst:number=255) {
+    super(PGN_129285Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -10793,7 +10920,7 @@ export const new129285 = (fields: PGN_129285Fields, dst:number=255) : PGN_129285
   *
   * @category PGN_129291
  */
-export interface PGN_129291 extends PGN {
+export interface PGN_129291Interface extends PGNInterface {
  fields: PGN_129291Fields
 }
 
@@ -10815,19 +10942,20 @@ export interface PGN_129291Fields {
 export const PGN_129291Defaults = {
   pgn: 129291,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_129291
  */
-export const new129291 = (fields: PGN_129291Fields, dst:number=255) : PGN_129291 => {
-  return {
-    ...PGN_129291Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129291  extends PGN implements PGN_129291Interface {
+  fields: PGN_129291Fields
+  
+  constructor(fields: PGN_129291Fields, dst:number=255) {
+    super(PGN_129291Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -10837,7 +10965,7 @@ export const new129291 = (fields: PGN_129291Fields, dst:number=255) : PGN_129291
   *
   * @category PGN_129301
  */
-export interface PGN_129301 extends PGN {
+export interface PGN_129301Interface extends PGNInterface {
  fields: PGN_129301Fields
 }
 
@@ -10858,19 +10986,20 @@ export interface PGN_129301Fields {
 export const PGN_129301Defaults = {
   pgn: 129301,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_129301
  */
-export const new129301 = (fields: PGN_129301Fields, dst:number=255) : PGN_129301 => {
-  return {
-    ...PGN_129301Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129301  extends PGN implements PGN_129301Interface {
+  fields: PGN_129301Fields
+  
+  constructor(fields: PGN_129301Fields, dst:number=255) {
+    super(PGN_129301Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -10880,7 +11009,7 @@ export const new129301 = (fields: PGN_129301Fields, dst:number=255) : PGN_129301
   *
   * @category PGN_129302
  */
-export interface PGN_129302 extends PGN {
+export interface PGN_129302Interface extends PGNInterface {
  fields: PGN_129302Fields
 }
 
@@ -10906,19 +11035,20 @@ export interface PGN_129302Fields {
 export const PGN_129302Defaults = {
   pgn: 129302,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_129302
  */
-export const new129302 = (fields: PGN_129302Fields, dst:number=255) : PGN_129302 => {
-  return {
-    ...PGN_129302Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129302  extends PGN implements PGN_129302Interface {
+  fields: PGN_129302Fields
+  
+  constructor(fields: PGN_129302Fields, dst:number=255) {
+    super(PGN_129302Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -10928,7 +11058,7 @@ export const new129302 = (fields: PGN_129302Fields, dst:number=255) : PGN_129302
   *
   * @category PGN_129538
  */
-export interface PGN_129538 extends PGN {
+export interface PGN_129538Interface extends PGNInterface {
  fields: PGN_129538Fields
 }
 
@@ -10955,19 +11085,20 @@ export interface PGN_129538Fields {
 export const PGN_129538Defaults = {
   pgn: 129538,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_129538
  */
-export const new129538 = (fields: PGN_129538Fields, dst:number=255) : PGN_129538 => {
-  return {
-    ...PGN_129538Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129538  extends PGN implements PGN_129538Interface {
+  fields: PGN_129538Fields
+  
+  constructor(fields: PGN_129538Fields, dst:number=255) {
+    super(PGN_129538Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -10977,7 +11108,7 @@ export const new129538 = (fields: PGN_129538Fields, dst:number=255) : PGN_129538
   *
   * @category PGN_129539
  */
-export interface PGN_129539 extends PGN {
+export interface PGN_129539Interface extends PGNInterface {
  fields: PGN_129539Fields
 }
 
@@ -11000,19 +11131,20 @@ export interface PGN_129539Fields {
 export const PGN_129539Defaults = {
   pgn: 129539,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_129539
  */
-export const new129539 = (fields: PGN_129539Fields, dst:number=255) : PGN_129539 => {
-  return {
-    ...PGN_129539Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129539  extends PGN implements PGN_129539Interface {
+  fields: PGN_129539Fields
+  
+  constructor(fields: PGN_129539Fields, dst:number=255) {
+    super(PGN_129539Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -11022,7 +11154,7 @@ export const new129539 = (fields: PGN_129539Fields, dst:number=255) : PGN_129539
   *
   * @category PGN_129540
  */
-export interface PGN_129540 extends PGN {
+export interface PGN_129540Interface extends PGNInterface {
  fields: PGN_129540Fields
 }
 
@@ -11051,19 +11183,20 @@ export interface PGN_129540Fields {
 export const PGN_129540Defaults = {
   pgn: 129540,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_129540
  */
-export const new129540 = (fields: PGN_129540Fields, dst:number=255) : PGN_129540 => {
-  return {
-    ...PGN_129540Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129540  extends PGN implements PGN_129540Interface {
+  fields: PGN_129540Fields
+  
+  constructor(fields: PGN_129540Fields, dst:number=255) {
+    super(PGN_129540Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -11073,7 +11206,7 @@ export const new129540 = (fields: PGN_129540Fields, dst:number=255) : PGN_129540
   *
   * @category PGN_129541
  */
-export interface PGN_129541 extends PGN {
+export interface PGN_129541Interface extends PGNInterface {
  fields: PGN_129541Fields
 }
 
@@ -11103,19 +11236,20 @@ export interface PGN_129541Fields {
 export const PGN_129541Defaults = {
   pgn: 129541,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_129541
  */
-export const new129541 = (fields: PGN_129541Fields, dst:number=255) : PGN_129541 => {
-  return {
-    ...PGN_129541Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129541  extends PGN implements PGN_129541Interface {
+  fields: PGN_129541Fields
+  
+  constructor(fields: PGN_129541Fields, dst:number=255) {
+    super(PGN_129541Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -11125,7 +11259,7 @@ export const new129541 = (fields: PGN_129541Fields, dst:number=255) : PGN_129541
   *
   * @category PGN_129542
  */
-export interface PGN_129542 extends PGN {
+export interface PGN_129542Interface extends PGNInterface {
  fields: PGN_129542Fields
 }
 
@@ -11149,19 +11283,20 @@ export interface PGN_129542Fields {
 export const PGN_129542Defaults = {
   pgn: 129542,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_129542
  */
-export const new129542 = (fields: PGN_129542Fields, dst:number=255) : PGN_129542 => {
-  return {
-    ...PGN_129542Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129542  extends PGN implements PGN_129542Interface {
+  fields: PGN_129542Fields
+  
+  constructor(fields: PGN_129542Fields, dst:number=255) {
+    super(PGN_129542Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -11171,7 +11306,7 @@ export const new129542 = (fields: PGN_129542Fields, dst:number=255) : PGN_129542
   *
   * @category PGN_129545
  */
-export interface PGN_129545 extends PGN {
+export interface PGN_129545Interface extends PGNInterface {
  fields: PGN_129545Fields
 }
 
@@ -11197,19 +11332,20 @@ export interface PGN_129545Fields {
 export const PGN_129545Defaults = {
   pgn: 129545,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_129545
  */
-export const new129545 = (fields: PGN_129545Fields, dst:number=255) : PGN_129545 => {
-  return {
-    ...PGN_129545Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129545  extends PGN implements PGN_129545Interface {
+  fields: PGN_129545Fields
+  
+  constructor(fields: PGN_129545Fields, dst:number=255) {
+    super(PGN_129545Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -11219,7 +11355,7 @@ export const new129545 = (fields: PGN_129545Fields, dst:number=255) : PGN_129545
   *
   * @category PGN_129546
  */
-export interface PGN_129546 extends PGN {
+export interface PGN_129546Interface extends PGNInterface {
  fields: PGN_129546Fields
 }
 
@@ -11240,19 +11376,20 @@ export interface PGN_129546Fields {
 export const PGN_129546Defaults = {
   pgn: 129546,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_129546
  */
-export const new129546 = (fields: PGN_129546Fields, dst:number=255) : PGN_129546 => {
-  return {
-    ...PGN_129546Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129546  extends PGN implements PGN_129546Interface {
+  fields: PGN_129546Fields
+  
+  constructor(fields: PGN_129546Fields, dst:number=255) {
+    super(PGN_129546Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -11262,7 +11399,7 @@ export const new129546 = (fields: PGN_129546Fields, dst:number=255) : PGN_129546
   *
   * @category PGN_129547
  */
-export interface PGN_129547 extends PGN {
+export interface PGN_129547Interface extends PGNInterface {
  fields: PGN_129547Fields
 }
 
@@ -11286,19 +11423,20 @@ export interface PGN_129547Fields {
 export const PGN_129547Defaults = {
   pgn: 129547,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_129547
  */
-export const new129547 = (fields: PGN_129547Fields, dst:number=255) : PGN_129547 => {
-  return {
-    ...PGN_129547Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129547  extends PGN implements PGN_129547Interface {
+  fields: PGN_129547Fields
+  
+  constructor(fields: PGN_129547Fields, dst:number=255) {
+    super(PGN_129547Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -11308,7 +11446,7 @@ export const new129547 = (fields: PGN_129547Fields, dst:number=255) : PGN_129547
   *
   * @category PGN_129549
  */
-export interface PGN_129549 extends PGN {
+export interface PGN_129549Interface extends PGNInterface {
  fields: PGN_129549Fields
 }
 
@@ -11335,19 +11473,20 @@ export interface PGN_129549Fields {
 export const PGN_129549Defaults = {
   pgn: 129549,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_129549
  */
-export const new129549 = (fields: PGN_129549Fields, dst:number=255) : PGN_129549 => {
-  return {
-    ...PGN_129549Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129549  extends PGN implements PGN_129549Interface {
+  fields: PGN_129549Fields
+  
+  constructor(fields: PGN_129549Fields, dst:number=255) {
+    super(PGN_129549Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -11357,7 +11496,7 @@ export const new129549 = (fields: PGN_129549Fields, dst:number=255) : PGN_129549
   *
   * @category PGN_129550
  */
-export interface PGN_129550 extends PGN {
+export interface PGN_129550Interface extends PGNInterface {
  fields: PGN_129550Fields
 }
 
@@ -11380,19 +11519,20 @@ export interface PGN_129550Fields {
 export const PGN_129550Defaults = {
   pgn: 129550,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_129550
  */
-export const new129550 = (fields: PGN_129550Fields, dst:number=255) : PGN_129550 => {
-  return {
-    ...PGN_129550Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129550  extends PGN implements PGN_129550Interface {
+  fields: PGN_129550Fields
+  
+  constructor(fields: PGN_129550Fields, dst:number=255) {
+    super(PGN_129550Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -11402,7 +11542,7 @@ export const new129550 = (fields: PGN_129550Fields, dst:number=255) : PGN_129550
   *
   * @category PGN_129551
  */
-export interface PGN_129551 extends PGN {
+export interface PGN_129551Interface extends PGNInterface {
  fields: PGN_129551Fields
 }
 
@@ -11432,19 +11572,20 @@ export interface PGN_129551Fields {
 export const PGN_129551Defaults = {
   pgn: 129551,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_129551
  */
-export const new129551 = (fields: PGN_129551Fields, dst:number=255) : PGN_129551 => {
-  return {
-    ...PGN_129551Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129551  extends PGN implements PGN_129551Interface {
+  fields: PGN_129551Fields
+  
+  constructor(fields: PGN_129551Fields, dst:number=255) {
+    super(PGN_129551Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -11456,7 +11597,7 @@ export const new129551 = (fields: PGN_129551Fields, dst:number=255) : PGN_129551
   *
   * @category PGN_129556
  */
-export interface PGN_129556 extends PGN {
+export interface PGN_129556Interface extends PGNInterface {
  fields: PGN_129556Fields
 }
 
@@ -11486,19 +11627,20 @@ export interface PGN_129556Fields {
 export const PGN_129556Defaults = {
   pgn: 129556,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_129556
  */
-export const new129556 = (fields: PGN_129556Fields, dst:number=255) : PGN_129556 => {
-  return {
-    ...PGN_129556Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129556  extends PGN implements PGN_129556Interface {
+  fields: PGN_129556Fields
+  
+  constructor(fields: PGN_129556Fields, dst:number=255) {
+    super(PGN_129556Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -11508,7 +11650,7 @@ export const new129556 = (fields: PGN_129556Fields, dst:number=255) : PGN_129556
   *
   * @category PGN_129792
  */
-export interface PGN_129792 extends PGN {
+export interface PGN_129792Interface extends PGNInterface {
  fields: PGN_129792Fields
 }
 
@@ -11536,19 +11678,20 @@ export interface PGN_129792Fields {
 export const PGN_129792Defaults = {
   pgn: 129792,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_129792
  */
-export const new129792 = (fields: PGN_129792Fields, dst:number=255) : PGN_129792 => {
-  return {
-    ...PGN_129792Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129792  extends PGN implements PGN_129792Interface {
+  fields: PGN_129792Fields
+  
+  constructor(fields: PGN_129792Fields, dst:number=255) {
+    super(PGN_129792Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -11558,7 +11701,7 @@ export const new129792 = (fields: PGN_129792Fields, dst:number=255) : PGN_129792
   *
   * @category PGN_129793
  */
-export interface PGN_129793 extends PGN {
+export interface PGN_129793Interface extends PGNInterface {
  fields: PGN_129793Fields
 }
 
@@ -11588,19 +11731,20 @@ export interface PGN_129793Fields {
 export const PGN_129793Defaults = {
   pgn: 129793,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_129793
  */
-export const new129793 = (fields: PGN_129793Fields, dst:number=255) : PGN_129793 => {
-  return {
-    ...PGN_129793Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129793  extends PGN implements PGN_129793Interface {
+  fields: PGN_129793Fields
+  
+  constructor(fields: PGN_129793Fields, dst:number=255) {
+    super(PGN_129793Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -11610,7 +11754,7 @@ export const new129793 = (fields: PGN_129793Fields, dst:number=255) : PGN_129793
   *
   * @category PGN_129794
  */
-export interface PGN_129794 extends PGN {
+export interface PGN_129794Interface extends PGNInterface {
  fields: PGN_129794Fields
 }
 
@@ -11647,19 +11791,20 @@ export interface PGN_129794Fields {
 export const PGN_129794Defaults = {
   pgn: 129794,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_129794
  */
-export const new129794 = (fields: PGN_129794Fields, dst:number=255) : PGN_129794 => {
-  return {
-    ...PGN_129794Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129794  extends PGN implements PGN_129794Interface {
+  fields: PGN_129794Fields
+  
+  constructor(fields: PGN_129794Fields, dst:number=255) {
+    super(PGN_129794Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -11669,7 +11814,7 @@ export const new129794 = (fields: PGN_129794Fields, dst:number=255) : PGN_129794
   *
   * @category PGN_129795
  */
-export interface PGN_129795 extends PGN {
+export interface PGN_129795Interface extends PGNInterface {
  fields: PGN_129795Fields
 }
 
@@ -11697,19 +11842,20 @@ export interface PGN_129795Fields {
 export const PGN_129795Defaults = {
   pgn: 129795,
   dst: 255,
-  prio: 5
+  prio: 5,
+  fields: []
 }
 
 /**
  * @category PGN_129795
  */
-export const new129795 = (fields: PGN_129795Fields, dst:number=255) : PGN_129795 => {
-  return {
-    ...PGN_129795Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129795  extends PGN implements PGN_129795Interface {
+  fields: PGN_129795Fields
+  
+  constructor(fields: PGN_129795Fields, dst:number=255) {
+    super(PGN_129795Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -11719,7 +11865,7 @@ export const new129795 = (fields: PGN_129795Fields, dst:number=255) : PGN_129795
   *
   * @category PGN_129796
  */
-export interface PGN_129796 extends PGN {
+export interface PGN_129796Interface extends PGNInterface {
  fields: PGN_129796Fields
 }
 
@@ -11746,19 +11892,20 @@ export interface PGN_129796Fields {
 export const PGN_129796Defaults = {
   pgn: 129796,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_129796
  */
-export const new129796 = (fields: PGN_129796Fields, dst:number=255) : PGN_129796 => {
-  return {
-    ...PGN_129796Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129796  extends PGN implements PGN_129796Interface {
+  fields: PGN_129796Fields
+  
+  constructor(fields: PGN_129796Fields, dst:number=255) {
+    super(PGN_129796Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -11768,7 +11915,7 @@ export const new129796 = (fields: PGN_129796Fields, dst:number=255) : PGN_129796
   *
   * @category PGN_129797
  */
-export interface PGN_129797 extends PGN {
+export interface PGN_129797Interface extends PGNInterface {
  fields: PGN_129797Fields
 }
 
@@ -11792,19 +11939,20 @@ export interface PGN_129797Fields {
 export const PGN_129797Defaults = {
   pgn: 129797,
   dst: 255,
-  prio: 5
+  prio: 5,
+  fields: []
 }
 
 /**
  * @category PGN_129797
  */
-export const new129797 = (fields: PGN_129797Fields, dst:number=255) : PGN_129797 => {
-  return {
-    ...PGN_129797Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129797  extends PGN implements PGN_129797Interface {
+  fields: PGN_129797Fields
+  
+  constructor(fields: PGN_129797Fields, dst:number=255) {
+    super(PGN_129797Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -11814,7 +11962,7 @@ export const new129797 = (fields: PGN_129797Fields, dst:number=255) : PGN_129797
   *
   * @category PGN_129798
  */
-export interface PGN_129798 extends PGN {
+export interface PGN_129798Interface extends PGNInterface {
  fields: PGN_129798Fields
 }
 
@@ -11847,19 +11995,20 @@ export interface PGN_129798Fields {
 export const PGN_129798Defaults = {
   pgn: 129798,
   dst: 255,
-  prio: 4
+  prio: 4,
+  fields: []
 }
 
 /**
  * @category PGN_129798
  */
-export const new129798 = (fields: PGN_129798Fields, dst:number=255) : PGN_129798 => {
-  return {
-    ...PGN_129798Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129798  extends PGN implements PGN_129798Interface {
+  fields: PGN_129798Fields
+  
+  constructor(fields: PGN_129798Fields, dst:number=255) {
+    super(PGN_129798Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -11871,7 +12020,7 @@ export const new129798 = (fields: PGN_129798Fields, dst:number=255) : PGN_129798
   *
   * @category PGN_129799
  */
-export interface PGN_129799 extends PGN {
+export interface PGN_129799Interface extends PGNInterface {
  fields: PGN_129799Fields
 }
 
@@ -11893,19 +12042,20 @@ export interface PGN_129799Fields {
 export const PGN_129799Defaults = {
   pgn: 129799,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_129799
  */
-export const new129799 = (fields: PGN_129799Fields, dst:number=255) : PGN_129799 => {
-  return {
-    ...PGN_129799Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129799  extends PGN implements PGN_129799Interface {
+  fields: PGN_129799Fields
+  
+  constructor(fields: PGN_129799Fields, dst:number=255) {
+    super(PGN_129799Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -11915,7 +12065,7 @@ export const new129799 = (fields: PGN_129799Fields, dst:number=255) : PGN_129799
   *
   * @category PGN_129800
  */
-export interface PGN_129800 extends PGN {
+export interface PGN_129800Interface extends PGNInterface {
  fields: PGN_129800Fields
 }
 
@@ -11938,19 +12088,20 @@ export interface PGN_129800Fields {
 export const PGN_129800Defaults = {
   pgn: 129800,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_129800
  */
-export const new129800 = (fields: PGN_129800Fields, dst:number=255) : PGN_129800 => {
-  return {
-    ...PGN_129800Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129800  extends PGN implements PGN_129800Interface {
+  fields: PGN_129800Fields
+  
+  constructor(fields: PGN_129800Fields, dst:number=255) {
+    super(PGN_129800Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -11960,7 +12111,7 @@ export const new129800 = (fields: PGN_129800Fields, dst:number=255) : PGN_129800
   *
   * @category PGN_129801
  */
-export interface PGN_129801 extends PGN {
+export interface PGN_129801Interface extends PGNInterface {
  fields: PGN_129801Fields
 }
 
@@ -11987,19 +12138,20 @@ export interface PGN_129801Fields {
 export const PGN_129801Defaults = {
   pgn: 129801,
   dst: 255,
-  prio: 5
+  prio: 5,
+  fields: []
 }
 
 /**
  * @category PGN_129801
  */
-export const new129801 = (fields: PGN_129801Fields, dst:number=255) : PGN_129801 => {
-  return {
-    ...PGN_129801Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129801  extends PGN implements PGN_129801Interface {
+  fields: PGN_129801Fields
+  
+  constructor(fields: PGN_129801Fields, dst:number=255) {
+    super(PGN_129801Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -12009,7 +12161,7 @@ export const new129801 = (fields: PGN_129801Fields, dst:number=255) : PGN_129801
   *
   * @category PGN_129802
  */
-export interface PGN_129802 extends PGN {
+export interface PGN_129802Interface extends PGNInterface {
  fields: PGN_129802Fields
 }
 
@@ -12032,19 +12184,20 @@ export interface PGN_129802Fields {
 export const PGN_129802Defaults = {
   pgn: 129802,
   dst: 255,
-  prio: 5
+  prio: 5,
+  fields: []
 }
 
 /**
  * @category PGN_129802
  */
-export const new129802 = (fields: PGN_129802Fields, dst:number=255) : PGN_129802 => {
-  return {
-    ...PGN_129802Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129802  extends PGN implements PGN_129802Interface {
+  fields: PGN_129802Fields
+  
+  constructor(fields: PGN_129802Fields, dst:number=255) {
+    super(PGN_129802Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -12054,7 +12207,7 @@ export const new129802 = (fields: PGN_129802Fields, dst:number=255) : PGN_129802
   *
   * @category PGN_129803
  */
-export interface PGN_129803 extends PGN {
+export interface PGN_129803Interface extends PGNInterface {
  fields: PGN_129803Fields
 }
 
@@ -12092,19 +12245,20 @@ export interface PGN_129803Fields {
 export const PGN_129803Defaults = {
   pgn: 129803,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_129803
  */
-export const new129803 = (fields: PGN_129803Fields, dst:number=255) : PGN_129803 => {
-  return {
-    ...PGN_129803Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129803  extends PGN implements PGN_129803Interface {
+  fields: PGN_129803Fields
+  
+  constructor(fields: PGN_129803Fields, dst:number=255) {
+    super(PGN_129803Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -12114,7 +12268,7 @@ export const new129803 = (fields: PGN_129803Fields, dst:number=255) : PGN_129803
   *
   * @category PGN_129804
  */
-export interface PGN_129804 extends PGN {
+export interface PGN_129804Interface extends PGNInterface {
  fields: PGN_129804Fields
 }
 
@@ -12144,19 +12298,20 @@ export interface PGN_129804Fields {
 export const PGN_129804Defaults = {
   pgn: 129804,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_129804
  */
-export const new129804 = (fields: PGN_129804Fields, dst:number=255) : PGN_129804 => {
-  return {
-    ...PGN_129804Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129804  extends PGN implements PGN_129804Interface {
+  fields: PGN_129804Fields
+  
+  constructor(fields: PGN_129804Fields, dst:number=255) {
+    super(PGN_129804Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -12166,7 +12321,7 @@ export const new129804 = (fields: PGN_129804Fields, dst:number=255) : PGN_129804
   *
   * @category PGN_129805
  */
-export interface PGN_129805 extends PGN {
+export interface PGN_129805Interface extends PGNInterface {
  fields: PGN_129805Fields
 }
 
@@ -12194,19 +12349,20 @@ export interface PGN_129805Fields {
 export const PGN_129805Defaults = {
   pgn: 129805,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_129805
  */
-export const new129805 = (fields: PGN_129805Fields, dst:number=255) : PGN_129805 => {
-  return {
-    ...PGN_129805Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129805  extends PGN implements PGN_129805Interface {
+  fields: PGN_129805Fields
+  
+  constructor(fields: PGN_129805Fields, dst:number=255) {
+    super(PGN_129805Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -12216,7 +12372,7 @@ export const new129805 = (fields: PGN_129805Fields, dst:number=255) : PGN_129805
   *
   * @category PGN_129806
  */
-export interface PGN_129806 extends PGN {
+export interface PGN_129806Interface extends PGNInterface {
  fields: PGN_129806Fields
 }
 
@@ -12255,19 +12411,20 @@ export interface PGN_129806Fields {
 export const PGN_129806Defaults = {
   pgn: 129806,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_129806
  */
-export const new129806 = (fields: PGN_129806Fields, dst:number=255) : PGN_129806 => {
-  return {
-    ...PGN_129806Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129806  extends PGN implements PGN_129806Interface {
+  fields: PGN_129806Fields
+  
+  constructor(fields: PGN_129806Fields, dst:number=255) {
+    super(PGN_129806Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -12277,7 +12434,7 @@ export const new129806 = (fields: PGN_129806Fields, dst:number=255) : PGN_129806
   *
   * @category PGN_129807
  */
-export interface PGN_129807 extends PGN {
+export interface PGN_129807Interface extends PGNInterface {
  fields: PGN_129807Fields
 }
 
@@ -12312,19 +12469,20 @@ export interface PGN_129807Fields {
 export const PGN_129807Defaults = {
   pgn: 129807,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_129807
  */
-export const new129807 = (fields: PGN_129807Fields, dst:number=255) : PGN_129807 => {
-  return {
-    ...PGN_129807Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129807  extends PGN implements PGN_129807Interface {
+  fields: PGN_129807Fields
+  
+  constructor(fields: PGN_129807Fields, dst:number=255) {
+    super(PGN_129807Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -12336,7 +12494,7 @@ export const new129807 = (fields: PGN_129807Fields, dst:number=255) : PGN_129807
   *
   * @category PGN_129808_DscDistressCallInformation
  */
-export interface PGN_129808_DscDistressCallInformation extends PGN {
+export interface PGN_129808_DscDistressCallInformationInterface extends PGNInterface {
  fields: PGN_129808_DscDistressCallInformationFields
 }
 
@@ -12376,7 +12534,8 @@ export interface PGN_129808_DscDistressCallInformationFields {
 export const PGN_129808_DscDistressCallInformationDefaults = {
   pgn: 129808,
   dst: 255,
-  prio: 4
+  prio: 4,
+  fields: []
 }
 
 /**
@@ -12418,14 +12577,13 @@ export interface PGN_129808_DscDistressCallInformationCreateArgs {
 /**
  * @category PGN_129808_DscDistressCallInformation
  */
-export const new129808_DscDistressCallInformation = (fields: PGN_129808_DscDistressCallInformationCreateArgs, dst:number=255) : PGN_129808_DscDistressCallInformation => {
-  return {
-    ...PGN_129808_DscDistressCallInformationDefaults,
-    dst,
-    fields: {
-      ...PGN_129808_DscDistressCallInformationMatchFields,
-      ...fields
-    }
+export class PGN_129808_DscDistressCallInformation  extends PGN implements PGN_129808_DscDistressCallInformationInterface {
+  fields: PGN_129808_DscDistressCallInformationFields
+  
+  constructor(fields: PGN_129808_DscDistressCallInformationCreateArgs, dst:number=255) {
+    super(PGN_129808_DscDistressCallInformationDefaults)
+    this.src = dst
+    this.fields = { ...PGN_129808_DscDistressCallInformationMatchFields, ...fields }
   }
 }
 /**
@@ -12436,7 +12594,7 @@ export const new129808_DscDistressCallInformation = (fields: PGN_129808_DscDistr
   *
   * @category PGN_129808
  */
-export interface PGN_129808 extends PGN {
+export interface PGN_129808Interface extends PGNInterface {
  fields: PGN_129808Fields
 }
 
@@ -12476,19 +12634,20 @@ export interface PGN_129808Fields {
 export const PGN_129808Defaults = {
   pgn: 129808,
   dst: 255,
-  prio: 4
+  prio: 4,
+  fields: []
 }
 
 /**
  * @category PGN_129808
  */
-export const new129808 = (fields: PGN_129808Fields, dst:number=255) : PGN_129808 => {
-  return {
-    ...PGN_129808Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129808  extends PGN implements PGN_129808Interface {
+  fields: PGN_129808Fields
+  
+  constructor(fields: PGN_129808Fields, dst:number=255) {
+    super(PGN_129808Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -12498,7 +12657,7 @@ export const new129808 = (fields: PGN_129808Fields, dst:number=255) : PGN_129808
   *
   * @category PGN_129809
  */
-export interface PGN_129809 extends PGN {
+export interface PGN_129809Interface extends PGNInterface {
  fields: PGN_129809Fields
 }
 
@@ -12521,19 +12680,20 @@ export interface PGN_129809Fields {
 export const PGN_129809Defaults = {
   pgn: 129809,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_129809
  */
-export const new129809 = (fields: PGN_129809Fields, dst:number=255) : PGN_129809 => {
-  return {
-    ...PGN_129809Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129809  extends PGN implements PGN_129809Interface {
+  fields: PGN_129809Fields
+  
+  constructor(fields: PGN_129809Fields, dst:number=255) {
+    super(PGN_129809Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -12543,7 +12703,7 @@ export const new129809 = (fields: PGN_129809Fields, dst:number=255) : PGN_129809
   *
   * @category PGN_129810
  */
-export interface PGN_129810 extends PGN {
+export interface PGN_129810Interface extends PGNInterface {
  fields: PGN_129810Fields
 }
 
@@ -12576,19 +12736,20 @@ export interface PGN_129810Fields {
 export const PGN_129810Defaults = {
   pgn: 129810,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_129810
  */
-export const new129810 = (fields: PGN_129810Fields, dst:number=255) : PGN_129810 => {
-  return {
-    ...PGN_129810Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_129810  extends PGN implements PGN_129810Interface {
+  fields: PGN_129810Fields
+  
+  constructor(fields: PGN_129810Fields, dst:number=255) {
+    super(PGN_129810Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -12598,7 +12759,7 @@ export const new129810 = (fields: PGN_129810Fields, dst:number=255) : PGN_129810
   *
   * @category PGN_130052
  */
-export interface PGN_130052 extends PGN {
+export interface PGN_130052Interface extends PGNInterface {
  fields: PGN_130052Fields
 }
 
@@ -12629,19 +12790,20 @@ export interface PGN_130052Fields {
 export const PGN_130052Defaults = {
   pgn: 130052,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130052
  */
-export const new130052 = (fields: PGN_130052Fields, dst:number=255) : PGN_130052 => {
-  return {
-    ...PGN_130052Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130052  extends PGN implements PGN_130052Interface {
+  fields: PGN_130052Fields
+  
+  constructor(fields: PGN_130052Fields, dst:number=255) {
+    super(PGN_130052Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -12651,7 +12813,7 @@ export const new130052 = (fields: PGN_130052Fields, dst:number=255) : PGN_130052
   *
   * @category PGN_130053
  */
-export interface PGN_130053 extends PGN {
+export interface PGN_130053Interface extends PGNInterface {
  fields: PGN_130053Fields
 }
 
@@ -12682,19 +12844,20 @@ export interface PGN_130053Fields {
 export const PGN_130053Defaults = {
   pgn: 130053,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130053
  */
-export const new130053 = (fields: PGN_130053Fields, dst:number=255) : PGN_130053 => {
-  return {
-    ...PGN_130053Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130053  extends PGN implements PGN_130053Interface {
+  fields: PGN_130053Fields
+  
+  constructor(fields: PGN_130053Fields, dst:number=255) {
+    super(PGN_130053Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -12704,7 +12867,7 @@ export const new130053 = (fields: PGN_130053Fields, dst:number=255) : PGN_130053
   *
   * @category PGN_130054
  */
-export interface PGN_130054 extends PGN {
+export interface PGN_130054Interface extends PGNInterface {
  fields: PGN_130054Fields
 }
 
@@ -12725,19 +12888,20 @@ export interface PGN_130054Fields {
 export const PGN_130054Defaults = {
   pgn: 130054,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130054
  */
-export const new130054 = (fields: PGN_130054Fields, dst:number=255) : PGN_130054 => {
-  return {
-    ...PGN_130054Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130054  extends PGN implements PGN_130054Interface {
+  fields: PGN_130054Fields
+  
+  constructor(fields: PGN_130054Fields, dst:number=255) {
+    super(PGN_130054Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -12747,7 +12911,7 @@ export const new130054 = (fields: PGN_130054Fields, dst:number=255) : PGN_130054
   *
   * @category PGN_130060
  */
-export interface PGN_130060 extends PGN {
+export interface PGN_130060Interface extends PGNInterface {
  fields: PGN_130060Fields
 }
 
@@ -12771,19 +12935,20 @@ export interface PGN_130060Fields {
 export const PGN_130060Defaults = {
   pgn: 130060,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130060
  */
-export const new130060 = (fields: PGN_130060Fields, dst:number=255) : PGN_130060 => {
-  return {
-    ...PGN_130060Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130060  extends PGN implements PGN_130060Interface {
+  fields: PGN_130060Fields
+  
+  constructor(fields: PGN_130060Fields, dst:number=255) {
+    super(PGN_130060Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -12793,7 +12958,7 @@ export const new130060 = (fields: PGN_130060Fields, dst:number=255) : PGN_130060
   *
   * @category PGN_130061
  */
-export interface PGN_130061 extends PGN {
+export interface PGN_130061Interface extends PGNInterface {
  fields: PGN_130061Fields
 }
 
@@ -12820,19 +12985,20 @@ export interface PGN_130061Fields {
 export const PGN_130061Defaults = {
   pgn: 130061,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130061
  */
-export const new130061 = (fields: PGN_130061Fields, dst:number=255) : PGN_130061 => {
-  return {
-    ...PGN_130061Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130061  extends PGN implements PGN_130061Interface {
+  fields: PGN_130061Fields
+  
+  constructor(fields: PGN_130061Fields, dst:number=255) {
+    super(PGN_130061Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -12842,7 +13008,7 @@ export const new130061 = (fields: PGN_130061Fields, dst:number=255) : PGN_130061
   *
   * @category PGN_130064
  */
-export interface PGN_130064 extends PGN {
+export interface PGN_130064Interface extends PGNInterface {
  fields: PGN_130064Fields
 }
 
@@ -12872,19 +13038,20 @@ export interface PGN_130064Fields {
 export const PGN_130064Defaults = {
   pgn: 130064,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_130064
  */
-export const new130064 = (fields: PGN_130064Fields, dst:number=255) : PGN_130064 => {
-  return {
-    ...PGN_130064Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130064  extends PGN implements PGN_130064Interface {
+  fields: PGN_130064Fields
+  
+  constructor(fields: PGN_130064Fields, dst:number=255) {
+    super(PGN_130064Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -12894,7 +13061,7 @@ export const new130064 = (fields: PGN_130064Fields, dst:number=255) : PGN_130064
   *
   * @category PGN_130065
  */
-export interface PGN_130065 extends PGN {
+export interface PGN_130065Interface extends PGNInterface {
  fields: PGN_130065Fields
 }
 
@@ -12921,19 +13088,20 @@ export interface PGN_130065Fields {
 export const PGN_130065Defaults = {
   pgn: 130065,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_130065
  */
-export const new130065 = (fields: PGN_130065Fields, dst:number=255) : PGN_130065 => {
-  return {
-    ...PGN_130065Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130065  extends PGN implements PGN_130065Interface {
+  fields: PGN_130065Fields
+  
+  constructor(fields: PGN_130065Fields, dst:number=255) {
+    super(PGN_130065Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -12943,7 +13111,7 @@ export const new130065 = (fields: PGN_130065Fields, dst:number=255) : PGN_130065
   *
   * @category PGN_130066
  */
-export interface PGN_130066 extends PGN {
+export interface PGN_130066Interface extends PGNInterface {
  fields: PGN_130066Fields
 }
 
@@ -12971,19 +13139,20 @@ export interface PGN_130066Fields {
 export const PGN_130066Defaults = {
   pgn: 130066,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_130066
  */
-export const new130066 = (fields: PGN_130066Fields, dst:number=255) : PGN_130066 => {
-  return {
-    ...PGN_130066Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130066  extends PGN implements PGN_130066Interface {
+  fields: PGN_130066Fields
+  
+  constructor(fields: PGN_130066Fields, dst:number=255) {
+    super(PGN_130066Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -12993,7 +13162,7 @@ export const new130066 = (fields: PGN_130066Fields, dst:number=255) : PGN_130066
   *
   * @category PGN_130067
  */
-export interface PGN_130067 extends PGN {
+export interface PGN_130067Interface extends PGNInterface {
  fields: PGN_130067Fields
 }
 
@@ -13020,19 +13189,20 @@ export interface PGN_130067Fields {
 export const PGN_130067Defaults = {
   pgn: 130067,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_130067
  */
-export const new130067 = (fields: PGN_130067Fields, dst:number=255) : PGN_130067 => {
-  return {
-    ...PGN_130067Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130067  extends PGN implements PGN_130067Interface {
+  fields: PGN_130067Fields
+  
+  constructor(fields: PGN_130067Fields, dst:number=255) {
+    super(PGN_130067Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -13042,7 +13212,7 @@ export const new130067 = (fields: PGN_130067Fields, dst:number=255) : PGN_130067
   *
   * @category PGN_130068
  */
-export interface PGN_130068 extends PGN {
+export interface PGN_130068Interface extends PGNInterface {
  fields: PGN_130068Fields
 }
 
@@ -13067,19 +13237,20 @@ export interface PGN_130068Fields {
 export const PGN_130068Defaults = {
   pgn: 130068,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_130068
  */
-export const new130068 = (fields: PGN_130068Fields, dst:number=255) : PGN_130068 => {
-  return {
-    ...PGN_130068Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130068  extends PGN implements PGN_130068Interface {
+  fields: PGN_130068Fields
+  
+  constructor(fields: PGN_130068Fields, dst:number=255) {
+    super(PGN_130068Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -13089,7 +13260,7 @@ export const new130068 = (fields: PGN_130068Fields, dst:number=255) : PGN_130068
   *
   * @category PGN_130069
  */
-export interface PGN_130069 extends PGN {
+export interface PGN_130069Interface extends PGNInterface {
  fields: PGN_130069Fields
 }
 
@@ -13116,19 +13287,20 @@ export interface PGN_130069Fields {
 export const PGN_130069Defaults = {
   pgn: 130069,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_130069
  */
-export const new130069 = (fields: PGN_130069Fields, dst:number=255) : PGN_130069 => {
-  return {
-    ...PGN_130069Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130069  extends PGN implements PGN_130069Interface {
+  fields: PGN_130069Fields
+  
+  constructor(fields: PGN_130069Fields, dst:number=255) {
+    super(PGN_130069Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -13138,7 +13310,7 @@ export const new130069 = (fields: PGN_130069Fields, dst:number=255) : PGN_130069
   *
   * @category PGN_130070
  */
-export interface PGN_130070 extends PGN {
+export interface PGN_130070Interface extends PGNInterface {
  fields: PGN_130070Fields
 }
 
@@ -13163,19 +13335,20 @@ export interface PGN_130070Fields {
 export const PGN_130070Defaults = {
   pgn: 130070,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_130070
  */
-export const new130070 = (fields: PGN_130070Fields, dst:number=255) : PGN_130070 => {
-  return {
-    ...PGN_130070Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130070  extends PGN implements PGN_130070Interface {
+  fields: PGN_130070Fields
+  
+  constructor(fields: PGN_130070Fields, dst:number=255) {
+    super(PGN_130070Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -13185,7 +13358,7 @@ export const new130070 = (fields: PGN_130070Fields, dst:number=255) : PGN_130070
   *
   * @category PGN_130071
  */
-export interface PGN_130071 extends PGN {
+export interface PGN_130071Interface extends PGNInterface {
  fields: PGN_130071Fields
 }
 
@@ -13209,19 +13382,20 @@ export interface PGN_130071Fields {
 export const PGN_130071Defaults = {
   pgn: 130071,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_130071
  */
-export const new130071 = (fields: PGN_130071Fields, dst:number=255) : PGN_130071 => {
-  return {
-    ...PGN_130071Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130071  extends PGN implements PGN_130071Interface {
+  fields: PGN_130071Fields
+  
+  constructor(fields: PGN_130071Fields, dst:number=255) {
+    super(PGN_130071Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -13231,7 +13405,7 @@ export const new130071 = (fields: PGN_130071Fields, dst:number=255) : PGN_130071
   *
   * @category PGN_130072
  */
-export interface PGN_130072 extends PGN {
+export interface PGN_130072Interface extends PGNInterface {
  fields: PGN_130072Fields
 }
 
@@ -13254,19 +13428,20 @@ export interface PGN_130072Fields {
 export const PGN_130072Defaults = {
   pgn: 130072,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_130072
  */
-export const new130072 = (fields: PGN_130072Fields, dst:number=255) : PGN_130072 => {
-  return {
-    ...PGN_130072Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130072  extends PGN implements PGN_130072Interface {
+  fields: PGN_130072Fields
+  
+  constructor(fields: PGN_130072Fields, dst:number=255) {
+    super(PGN_130072Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -13276,7 +13451,7 @@ export const new130072 = (fields: PGN_130072Fields, dst:number=255) : PGN_130072
   *
   * @category PGN_130073
  */
-export interface PGN_130073 extends PGN {
+export interface PGN_130073Interface extends PGNInterface {
  fields: PGN_130073Fields
 }
 
@@ -13301,19 +13476,20 @@ export interface PGN_130073Fields {
 export const PGN_130073Defaults = {
   pgn: 130073,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_130073
  */
-export const new130073 = (fields: PGN_130073Fields, dst:number=255) : PGN_130073 => {
-  return {
-    ...PGN_130073Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130073  extends PGN implements PGN_130073Interface {
+  fields: PGN_130073Fields
+  
+  constructor(fields: PGN_130073Fields, dst:number=255) {
+    super(PGN_130073Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -13323,7 +13499,7 @@ export const new130073 = (fields: PGN_130073Fields, dst:number=255) : PGN_130073
   *
   * @category PGN_130074
  */
-export interface PGN_130074 extends PGN {
+export interface PGN_130074Interface extends PGNInterface {
  fields: PGN_130074Fields
 }
 
@@ -13350,19 +13526,20 @@ export interface PGN_130074Fields {
 export const PGN_130074Defaults = {
   pgn: 130074,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_130074
  */
-export const new130074 = (fields: PGN_130074Fields, dst:number=255) : PGN_130074 => {
-  return {
-    ...PGN_130074Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130074  extends PGN implements PGN_130074Interface {
+  fields: PGN_130074Fields
+  
+  constructor(fields: PGN_130074Fields, dst:number=255) {
+    super(PGN_130074Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -13372,7 +13549,7 @@ export const new130074 = (fields: PGN_130074Fields, dst:number=255) : PGN_130074
   *
   * @category PGN_130306
  */
-export interface PGN_130306 extends PGN {
+export interface PGN_130306Interface extends PGNInterface {
  fields: PGN_130306Fields
 }
 
@@ -13393,19 +13570,20 @@ export interface PGN_130306Fields {
 export const PGN_130306Defaults = {
   pgn: 130306,
   dst: 255,
-  prio: 2
+  prio: 2,
+  fields: []
 }
 
 /**
  * @category PGN_130306
  */
-export const new130306 = (fields: PGN_130306Fields, dst:number=255) : PGN_130306 => {
-  return {
-    ...PGN_130306Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130306  extends PGN implements PGN_130306Interface {
+  fields: PGN_130306Fields
+  
+  constructor(fields: PGN_130306Fields, dst:number=255) {
+    super(PGN_130306Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -13417,7 +13595,7 @@ export const new130306 = (fields: PGN_130306Fields, dst:number=255) : PGN_130306
   *
   * @category PGN_130310
  */
-export interface PGN_130310 extends PGN {
+export interface PGN_130310Interface extends PGNInterface {
  fields: PGN_130310Fields
 }
 
@@ -13438,19 +13616,20 @@ export interface PGN_130310Fields {
 export const PGN_130310Defaults = {
   pgn: 130310,
   dst: 255,
-  prio: 5
+  prio: 5,
+  fields: []
 }
 
 /**
  * @category PGN_130310
  */
-export const new130310 = (fields: PGN_130310Fields, dst:number=255) : PGN_130310 => {
-  return {
-    ...PGN_130310Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130310  extends PGN implements PGN_130310Interface {
+  fields: PGN_130310Fields
+  
+  constructor(fields: PGN_130310Fields, dst:number=255) {
+    super(PGN_130310Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -13462,7 +13641,7 @@ export const new130310 = (fields: PGN_130310Fields, dst:number=255) : PGN_130310
   *
   * @category PGN_130311
  */
-export interface PGN_130311 extends PGN {
+export interface PGN_130311Interface extends PGNInterface {
  fields: PGN_130311Fields
 }
 
@@ -13484,19 +13663,20 @@ export interface PGN_130311Fields {
 export const PGN_130311Defaults = {
   pgn: 130311,
   dst: 255,
-  prio: 5
+  prio: 5,
+  fields: []
 }
 
 /**
  * @category PGN_130311
  */
-export const new130311 = (fields: PGN_130311Fields, dst:number=255) : PGN_130311 => {
-  return {
-    ...PGN_130311Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130311  extends PGN implements PGN_130311Interface {
+  fields: PGN_130311Fields
+  
+  constructor(fields: PGN_130311Fields, dst:number=255) {
+    super(PGN_130311Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -13506,7 +13686,7 @@ export const new130311 = (fields: PGN_130311Fields, dst:number=255) : PGN_130311
   *
   * @category PGN_130312
  */
-export interface PGN_130312 extends PGN {
+export interface PGN_130312Interface extends PGNInterface {
  fields: PGN_130312Fields
 }
 
@@ -13528,19 +13708,20 @@ export interface PGN_130312Fields {
 export const PGN_130312Defaults = {
   pgn: 130312,
   dst: 255,
-  prio: 5
+  prio: 5,
+  fields: []
 }
 
 /**
  * @category PGN_130312
  */
-export const new130312 = (fields: PGN_130312Fields, dst:number=255) : PGN_130312 => {
-  return {
-    ...PGN_130312Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130312  extends PGN implements PGN_130312Interface {
+  fields: PGN_130312Fields
+  
+  constructor(fields: PGN_130312Fields, dst:number=255) {
+    super(PGN_130312Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -13550,7 +13731,7 @@ export const new130312 = (fields: PGN_130312Fields, dst:number=255) : PGN_130312
   *
   * @category PGN_130313
  */
-export interface PGN_130313 extends PGN {
+export interface PGN_130313Interface extends PGNInterface {
  fields: PGN_130313Fields
 }
 
@@ -13572,19 +13753,20 @@ export interface PGN_130313Fields {
 export const PGN_130313Defaults = {
   pgn: 130313,
   dst: 255,
-  prio: 5
+  prio: 5,
+  fields: []
 }
 
 /**
  * @category PGN_130313
  */
-export const new130313 = (fields: PGN_130313Fields, dst:number=255) : PGN_130313 => {
-  return {
-    ...PGN_130313Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130313  extends PGN implements PGN_130313Interface {
+  fields: PGN_130313Fields
+  
+  constructor(fields: PGN_130313Fields, dst:number=255) {
+    super(PGN_130313Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -13594,7 +13776,7 @@ export const new130313 = (fields: PGN_130313Fields, dst:number=255) : PGN_130313
   *
   * @category PGN_130314
  */
-export interface PGN_130314 extends PGN {
+export interface PGN_130314Interface extends PGNInterface {
  fields: PGN_130314Fields
 }
 
@@ -13615,19 +13797,20 @@ export interface PGN_130314Fields {
 export const PGN_130314Defaults = {
   pgn: 130314,
   dst: 255,
-  prio: 5
+  prio: 5,
+  fields: []
 }
 
 /**
  * @category PGN_130314
  */
-export const new130314 = (fields: PGN_130314Fields, dst:number=255) : PGN_130314 => {
-  return {
-    ...PGN_130314Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130314  extends PGN implements PGN_130314Interface {
+  fields: PGN_130314Fields
+  
+  constructor(fields: PGN_130314Fields, dst:number=255) {
+    super(PGN_130314Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -13637,7 +13820,7 @@ export const new130314 = (fields: PGN_130314Fields, dst:number=255) : PGN_130314
   *
   * @category PGN_130315
  */
-export interface PGN_130315 extends PGN {
+export interface PGN_130315Interface extends PGNInterface {
  fields: PGN_130315Fields
 }
 
@@ -13658,19 +13841,20 @@ export interface PGN_130315Fields {
 export const PGN_130315Defaults = {
   pgn: 130315,
   dst: 255,
-  prio: 5
+  prio: 5,
+  fields: []
 }
 
 /**
  * @category PGN_130315
  */
-export const new130315 = (fields: PGN_130315Fields, dst:number=255) : PGN_130315 => {
-  return {
-    ...PGN_130315Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130315  extends PGN implements PGN_130315Interface {
+  fields: PGN_130315Fields
+  
+  constructor(fields: PGN_130315Fields, dst:number=255) {
+    super(PGN_130315Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -13680,7 +13864,7 @@ export const new130315 = (fields: PGN_130315Fields, dst:number=255) : PGN_130315
   *
   * @category PGN_130316
  */
-export interface PGN_130316 extends PGN {
+export interface PGN_130316Interface extends PGNInterface {
  fields: PGN_130316Fields
 }
 
@@ -13701,19 +13885,20 @@ export interface PGN_130316Fields {
 export const PGN_130316Defaults = {
   pgn: 130316,
   dst: 255,
-  prio: 5
+  prio: 5,
+  fields: []
 }
 
 /**
  * @category PGN_130316
  */
-export const new130316 = (fields: PGN_130316Fields, dst:number=255) : PGN_130316 => {
-  return {
-    ...PGN_130316Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130316  extends PGN implements PGN_130316Interface {
+  fields: PGN_130316Fields
+  
+  constructor(fields: PGN_130316Fields, dst:number=255) {
+    super(PGN_130316Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -13723,7 +13908,7 @@ export const new130316 = (fields: PGN_130316Fields, dst:number=255) : PGN_130316
   *
   * @category PGN_130320
  */
-export interface PGN_130320 extends PGN {
+export interface PGN_130320Interface extends PGNInterface {
  fields: PGN_130320Fields
 }
 
@@ -13750,19 +13935,20 @@ export interface PGN_130320Fields {
 export const PGN_130320Defaults = {
   pgn: 130320,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_130320
  */
-export const new130320 = (fields: PGN_130320Fields, dst:number=255) : PGN_130320 => {
-  return {
-    ...PGN_130320Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130320  extends PGN implements PGN_130320Interface {
+  fields: PGN_130320Fields
+  
+  constructor(fields: PGN_130320Fields, dst:number=255) {
+    super(PGN_130320Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -13772,7 +13958,7 @@ export const new130320 = (fields: PGN_130320Fields, dst:number=255) : PGN_130320
   *
   * @category PGN_130321
  */
-export interface PGN_130321 extends PGN {
+export interface PGN_130321Interface extends PGNInterface {
  fields: PGN_130321Fields
 }
 
@@ -13798,19 +13984,20 @@ export interface PGN_130321Fields {
 export const PGN_130321Defaults = {
   pgn: 130321,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_130321
  */
-export const new130321 = (fields: PGN_130321Fields, dst:number=255) : PGN_130321 => {
-  return {
-    ...PGN_130321Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130321  extends PGN implements PGN_130321Interface {
+  fields: PGN_130321Fields
+  
+  constructor(fields: PGN_130321Fields, dst:number=255) {
+    super(PGN_130321Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -13820,7 +14007,7 @@ export const new130321 = (fields: PGN_130321Fields, dst:number=255) : PGN_130321
   *
   * @category PGN_130322
  */
-export interface PGN_130322 extends PGN {
+export interface PGN_130322Interface extends PGNInterface {
  fields: PGN_130322Fields
 }
 
@@ -13849,19 +14036,20 @@ export interface PGN_130322Fields {
 export const PGN_130322Defaults = {
   pgn: 130322,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_130322
  */
-export const new130322 = (fields: PGN_130322Fields, dst:number=255) : PGN_130322 => {
-  return {
-    ...PGN_130322Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130322  extends PGN implements PGN_130322Interface {
+  fields: PGN_130322Fields
+  
+  constructor(fields: PGN_130322Fields, dst:number=255) {
+    super(PGN_130322Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -13871,7 +14059,7 @@ export const new130322 = (fields: PGN_130322Fields, dst:number=255) : PGN_130322
   *
   * @category PGN_130323
  */
-export interface PGN_130323 extends PGN {
+export interface PGN_130323Interface extends PGNInterface {
  fields: PGN_130323Fields
 }
 
@@ -13902,19 +14090,20 @@ export interface PGN_130323Fields {
 export const PGN_130323Defaults = {
   pgn: 130323,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_130323
  */
-export const new130323 = (fields: PGN_130323Fields, dst:number=255) : PGN_130323 => {
-  return {
-    ...PGN_130323Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130323  extends PGN implements PGN_130323Interface {
+  fields: PGN_130323Fields
+  
+  constructor(fields: PGN_130323Fields, dst:number=255) {
+    super(PGN_130323Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -13924,7 +14113,7 @@ export const new130323 = (fields: PGN_130323Fields, dst:number=255) : PGN_130323
   *
   * @category PGN_130324
  */
-export interface PGN_130324 extends PGN {
+export interface PGN_130324Interface extends PGNInterface {
  fields: PGN_130324Fields
 }
 
@@ -13958,19 +14147,20 @@ export interface PGN_130324Fields {
 export const PGN_130324Defaults = {
   pgn: 130324,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
  * @category PGN_130324
  */
-export const new130324 = (fields: PGN_130324Fields, dst:number=255) : PGN_130324 => {
-  return {
-    ...PGN_130324Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130324  extends PGN implements PGN_130324Interface {
+  fields: PGN_130324Fields
+  
+  constructor(fields: PGN_130324Fields, dst:number=255) {
+    super(PGN_130324Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -13982,7 +14172,7 @@ export const new130324 = (fields: PGN_130324Fields, dst:number=255) : PGN_130324
   *
   * @category PGN_130330
  */
-export interface PGN_130330 extends PGN {
+export interface PGN_130330Interface extends PGNInterface {
  fields: PGN_130330Fields
 }
 
@@ -14010,19 +14200,20 @@ export interface PGN_130330Fields {
 export const PGN_130330Defaults = {
   pgn: 130330,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_130330
  */
-export const new130330 = (fields: PGN_130330Fields, dst:number=255) : PGN_130330 => {
-  return {
-    ...PGN_130330Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130330  extends PGN implements PGN_130330Interface {
+  fields: PGN_130330Fields
+  
+  constructor(fields: PGN_130330Fields, dst:number=255) {
+    super(PGN_130330Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -14032,7 +14223,7 @@ export const new130330 = (fields: PGN_130330Fields, dst:number=255) : PGN_130330
   *
   * @category PGN_130560
  */
-export interface PGN_130560 extends PGN {
+export interface PGN_130560Interface extends PGNInterface {
  fields: PGN_130560Fields
 }
 
@@ -14054,19 +14245,20 @@ export interface PGN_130560Fields {
 export const PGN_130560Defaults = {
   pgn: 130560,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130560
  */
-export const new130560 = (fields: PGN_130560Fields, dst:number=255) : PGN_130560 => {
-  return {
-    ...PGN_130560Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130560  extends PGN implements PGN_130560Interface {
+  fields: PGN_130560Fields
+  
+  constructor(fields: PGN_130560Fields, dst:number=255) {
+    super(PGN_130560Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -14078,7 +14270,7 @@ export const new130560 = (fields: PGN_130560Fields, dst:number=255) : PGN_130560
   *
   * @category PGN_130561
  */
-export interface PGN_130561 extends PGN {
+export interface PGN_130561Interface extends PGNInterface {
  fields: PGN_130561Fields
 }
 
@@ -14108,19 +14300,20 @@ export interface PGN_130561Fields {
 export const PGN_130561Defaults = {
   pgn: 130561,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130561
  */
-export const new130561 = (fields: PGN_130561Fields, dst:number=255) : PGN_130561 => {
-  return {
-    ...PGN_130561Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130561  extends PGN implements PGN_130561Interface {
+  fields: PGN_130561Fields
+  
+  constructor(fields: PGN_130561Fields, dst:number=255) {
+    super(PGN_130561Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -14132,7 +14325,7 @@ export const new130561 = (fields: PGN_130561Fields, dst:number=255) : PGN_130561
   *
   * @category PGN_130562
  */
-export interface PGN_130562 extends PGN {
+export interface PGN_130562Interface extends PGNInterface {
  fields: PGN_130562Fields
 }
 
@@ -14162,19 +14355,20 @@ export interface PGN_130562Fields {
 export const PGN_130562Defaults = {
   pgn: 130562,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130562
  */
-export const new130562 = (fields: PGN_130562Fields, dst:number=255) : PGN_130562 => {
-  return {
-    ...PGN_130562Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130562  extends PGN implements PGN_130562Interface {
+  fields: PGN_130562Fields
+  
+  constructor(fields: PGN_130562Fields, dst:number=255) {
+    super(PGN_130562Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -14186,7 +14380,7 @@ export const new130562 = (fields: PGN_130562Fields, dst:number=255) : PGN_130562
   *
   * @category PGN_130563
  */
-export interface PGN_130563 extends PGN {
+export interface PGN_130563Interface extends PGNInterface {
  fields: PGN_130563Fields
 }
 
@@ -14220,19 +14414,20 @@ export interface PGN_130563Fields {
 export const PGN_130563Defaults = {
   pgn: 130563,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130563
  */
-export const new130563 = (fields: PGN_130563Fields, dst:number=255) : PGN_130563 => {
-  return {
-    ...PGN_130563Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130563  extends PGN implements PGN_130563Interface {
+  fields: PGN_130563Fields
+  
+  constructor(fields: PGN_130563Fields, dst:number=255) {
+    super(PGN_130563Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -14244,7 +14439,7 @@ export const new130563 = (fields: PGN_130563Fields, dst:number=255) : PGN_130563
   *
   * @category PGN_130564
  */
-export interface PGN_130564 extends PGN {
+export interface PGN_130564Interface extends PGNInterface {
  fields: PGN_130564Fields
 }
 
@@ -14267,19 +14462,20 @@ export interface PGN_130564Fields {
 export const PGN_130564Defaults = {
   pgn: 130564,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130564
  */
-export const new130564 = (fields: PGN_130564Fields, dst:number=255) : PGN_130564 => {
-  return {
-    ...PGN_130564Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130564  extends PGN implements PGN_130564Interface {
+  fields: PGN_130564Fields
+  
+  constructor(fields: PGN_130564Fields, dst:number=255) {
+    super(PGN_130564Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -14291,7 +14487,7 @@ export const new130564 = (fields: PGN_130564Fields, dst:number=255) : PGN_130564
   *
   * @category PGN_130565
  */
-export interface PGN_130565 extends PGN {
+export interface PGN_130565Interface extends PGNInterface {
  fields: PGN_130565Fields
 }
 
@@ -14317,19 +14513,20 @@ export interface PGN_130565Fields {
 export const PGN_130565Defaults = {
   pgn: 130565,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130565
  */
-export const new130565 = (fields: PGN_130565Fields, dst:number=255) : PGN_130565 => {
-  return {
-    ...PGN_130565Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130565  extends PGN implements PGN_130565Interface {
+  fields: PGN_130565Fields
+  
+  constructor(fields: PGN_130565Fields, dst:number=255) {
+    super(PGN_130565Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -14341,7 +14538,7 @@ export const new130565 = (fields: PGN_130565Fields, dst:number=255) : PGN_130565
   *
   * @category PGN_130566
  */
-export interface PGN_130566 extends PGN {
+export interface PGN_130566Interface extends PGNInterface {
  fields: PGN_130566Fields
 }
 
@@ -14362,19 +14559,20 @@ export interface PGN_130566Fields {
 export const PGN_130566Defaults = {
   pgn: 130566,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130566
  */
-export const new130566 = (fields: PGN_130566Fields, dst:number=255) : PGN_130566 => {
-  return {
-    ...PGN_130566Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130566  extends PGN implements PGN_130566Interface {
+  fields: PGN_130566Fields
+  
+  constructor(fields: PGN_130566Fields, dst:number=255) {
+    super(PGN_130566Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -14384,7 +14582,7 @@ export const new130566 = (fields: PGN_130566Fields, dst:number=255) : PGN_130566
   *
   * @category PGN_130567
  */
-export interface PGN_130567 extends PGN {
+export interface PGN_130567Interface extends PGNInterface {
  fields: PGN_130567Fields
 }
 
@@ -14423,19 +14621,20 @@ export interface PGN_130567Fields {
 export const PGN_130567Defaults = {
   pgn: 130567,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130567
  */
-export const new130567 = (fields: PGN_130567Fields, dst:number=255) : PGN_130567 => {
-  return {
-    ...PGN_130567Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130567  extends PGN implements PGN_130567Interface {
+  fields: PGN_130567Fields
+  
+  constructor(fields: PGN_130567Fields, dst:number=255) {
+    super(PGN_130567Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -14445,7 +14644,7 @@ export const new130567 = (fields: PGN_130567Fields, dst:number=255) : PGN_130567
   *
   * @category PGN_130569
  */
-export interface PGN_130569 extends PGN {
+export interface PGN_130569Interface extends PGNInterface {
  fields: PGN_130569Fields
 }
 
@@ -14478,19 +14677,20 @@ export interface PGN_130569Fields {
 export const PGN_130569Defaults = {
   pgn: 130569,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130569
  */
-export const new130569 = (fields: PGN_130569Fields, dst:number=255) : PGN_130569 => {
-  return {
-    ...PGN_130569Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130569  extends PGN implements PGN_130569Interface {
+  fields: PGN_130569Fields
+  
+  constructor(fields: PGN_130569Fields, dst:number=255) {
+    super(PGN_130569Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -14500,7 +14700,7 @@ export const new130569 = (fields: PGN_130569Fields, dst:number=255) : PGN_130569
   *
   * @category PGN_130570
  */
-export interface PGN_130570 extends PGN {
+export interface PGN_130570Interface extends PGNInterface {
  fields: PGN_130570Fields
 }
 
@@ -14533,19 +14733,20 @@ export interface PGN_130570Fields {
 export const PGN_130570Defaults = {
   pgn: 130570,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130570
  */
-export const new130570 = (fields: PGN_130570Fields, dst:number=255) : PGN_130570 => {
-  return {
-    ...PGN_130570Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130570  extends PGN implements PGN_130570Interface {
+  fields: PGN_130570Fields
+  
+  constructor(fields: PGN_130570Fields, dst:number=255) {
+    super(PGN_130570Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -14555,7 +14756,7 @@ export const new130570 = (fields: PGN_130570Fields, dst:number=255) : PGN_130570
   *
   * @category PGN_130571
  */
-export interface PGN_130571 extends PGN {
+export interface PGN_130571Interface extends PGNInterface {
  fields: PGN_130571Fields
 }
 
@@ -14585,19 +14786,20 @@ export interface PGN_130571Fields {
 export const PGN_130571Defaults = {
   pgn: 130571,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130571
  */
-export const new130571 = (fields: PGN_130571Fields, dst:number=255) : PGN_130571 => {
-  return {
-    ...PGN_130571Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130571  extends PGN implements PGN_130571Interface {
+  fields: PGN_130571Fields
+  
+  constructor(fields: PGN_130571Fields, dst:number=255) {
+    super(PGN_130571Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -14607,7 +14809,7 @@ export const new130571 = (fields: PGN_130571Fields, dst:number=255) : PGN_130571
   *
   * @category PGN_130572
  */
-export interface PGN_130572 extends PGN {
+export interface PGN_130572Interface extends PGNInterface {
  fields: PGN_130572Fields
 }
 
@@ -14632,19 +14834,20 @@ export interface PGN_130572Fields {
 export const PGN_130572Defaults = {
   pgn: 130572,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130572
  */
-export const new130572 = (fields: PGN_130572Fields, dst:number=255) : PGN_130572 => {
-  return {
-    ...PGN_130572Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130572  extends PGN implements PGN_130572Interface {
+  fields: PGN_130572Fields
+  
+  constructor(fields: PGN_130572Fields, dst:number=255) {
+    super(PGN_130572Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -14654,7 +14857,7 @@ export const new130572 = (fields: PGN_130572Fields, dst:number=255) : PGN_130572
   *
   * @category PGN_130573
  */
-export interface PGN_130573 extends PGN {
+export interface PGN_130573Interface extends PGNInterface {
  fields: PGN_130573Fields
 }
 
@@ -14685,19 +14888,20 @@ export interface PGN_130573Fields {
 export const PGN_130573Defaults = {
   pgn: 130573,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130573
  */
-export const new130573 = (fields: PGN_130573Fields, dst:number=255) : PGN_130573 => {
-  return {
-    ...PGN_130573Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130573  extends PGN implements PGN_130573Interface {
+  fields: PGN_130573Fields
+  
+  constructor(fields: PGN_130573Fields, dst:number=255) {
+    super(PGN_130573Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -14707,7 +14911,7 @@ export const new130573 = (fields: PGN_130573Fields, dst:number=255) : PGN_130573
   *
   * @category PGN_130574
  */
-export interface PGN_130574 extends PGN {
+export interface PGN_130574Interface extends PGNInterface {
  fields: PGN_130574Fields
 }
 
@@ -14730,19 +14934,20 @@ export interface PGN_130574Fields {
 export const PGN_130574Defaults = {
   pgn: 130574,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130574
  */
-export const new130574 = (fields: PGN_130574Fields, dst:number=255) : PGN_130574 => {
-  return {
-    ...PGN_130574Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130574  extends PGN implements PGN_130574Interface {
+  fields: PGN_130574Fields
+  
+  constructor(fields: PGN_130574Fields, dst:number=255) {
+    super(PGN_130574Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -14752,7 +14957,7 @@ export const new130574 = (fields: PGN_130574Fields, dst:number=255) : PGN_130574
   *
   * @category PGN_130576
  */
-export interface PGN_130576 extends PGN {
+export interface PGN_130576Interface extends PGNInterface {
  fields: PGN_130576Fields
 }
 
@@ -14771,19 +14976,20 @@ export interface PGN_130576Fields {
 export const PGN_130576Defaults = {
   pgn: 130576,
   dst: 255,
-  prio: 2
+  prio: 2,
+  fields: []
 }
 
 /**
  * @category PGN_130576
  */
-export const new130576 = (fields: PGN_130576Fields, dst:number=255) : PGN_130576 => {
-  return {
-    ...PGN_130576Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130576  extends PGN implements PGN_130576Interface {
+  fields: PGN_130576Fields
+  
+  constructor(fields: PGN_130576Fields, dst:number=255) {
+    super(PGN_130576Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -14793,7 +14999,7 @@ export const new130576 = (fields: PGN_130576Fields, dst:number=255) : PGN_130576
   *
   * @category PGN_130577
  */
-export interface PGN_130577 extends PGN {
+export interface PGN_130577Interface extends PGNInterface {
  fields: PGN_130577Fields
 }
 
@@ -14819,19 +15025,20 @@ export interface PGN_130577Fields {
 export const PGN_130577Defaults = {
   pgn: 130577,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130577
  */
-export const new130577 = (fields: PGN_130577Fields, dst:number=255) : PGN_130577 => {
-  return {
-    ...PGN_130577Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130577  extends PGN implements PGN_130577Interface {
+  fields: PGN_130577Fields
+  
+  constructor(fields: PGN_130577Fields, dst:number=255) {
+    super(PGN_130577Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -14841,7 +15048,7 @@ export const new130577 = (fields: PGN_130577Fields, dst:number=255) : PGN_130577
   *
   * @category PGN_130578
  */
-export interface PGN_130578 extends PGN {
+export interface PGN_130578Interface extends PGNInterface {
  fields: PGN_130578Fields
 }
 
@@ -14863,19 +15070,20 @@ export interface PGN_130578Fields {
 export const PGN_130578Defaults = {
   pgn: 130578,
   dst: 255,
-  prio: 2
+  prio: 2,
+  fields: []
 }
 
 /**
  * @category PGN_130578
  */
-export const new130578 = (fields: PGN_130578Fields, dst:number=255) : PGN_130578 => {
-  return {
-    ...PGN_130578Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130578  extends PGN implements PGN_130578Interface {
+  fields: PGN_130578Fields
+  
+  constructor(fields: PGN_130578Fields, dst:number=255) {
+    super(PGN_130578Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -14885,7 +15093,7 @@ export const new130578 = (fields: PGN_130578Fields, dst:number=255) : PGN_130578
   *
   * @category PGN_130579
  */
-export interface PGN_130579 extends PGN {
+export interface PGN_130579Interface extends PGNInterface {
  fields: PGN_130579Fields
 }
 
@@ -14907,19 +15115,20 @@ export interface PGN_130579Fields {
 export const PGN_130579Defaults = {
   pgn: 130579,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130579
  */
-export const new130579 = (fields: PGN_130579Fields, dst:number=255) : PGN_130579 => {
-  return {
-    ...PGN_130579Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130579  extends PGN implements PGN_130579Interface {
+  fields: PGN_130579Fields
+  
+  constructor(fields: PGN_130579Fields, dst:number=255) {
+    super(PGN_130579Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -14929,7 +15138,7 @@ export const new130579 = (fields: PGN_130579Fields, dst:number=255) : PGN_130579
   *
   * @category PGN_130580
  */
-export interface PGN_130580 extends PGN {
+export interface PGN_130580Interface extends PGNInterface {
  fields: PGN_130580Fields
 }
 
@@ -14949,19 +15158,20 @@ export interface PGN_130580Fields {
 export const PGN_130580Defaults = {
   pgn: 130580,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130580
  */
-export const new130580 = (fields: PGN_130580Fields, dst:number=255) : PGN_130580 => {
-  return {
-    ...PGN_130580Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130580  extends PGN implements PGN_130580Interface {
+  fields: PGN_130580Fields
+  
+  constructor(fields: PGN_130580Fields, dst:number=255) {
+    super(PGN_130580Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -14971,7 +15181,7 @@ export const new130580 = (fields: PGN_130580Fields, dst:number=255) : PGN_130580
   *
   * @category PGN_130581
  */
-export interface PGN_130581 extends PGN {
+export interface PGN_130581Interface extends PGNInterface {
  fields: PGN_130581Fields
 }
 
@@ -14994,19 +15204,20 @@ export interface PGN_130581Fields {
 export const PGN_130581Defaults = {
   pgn: 130581,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130581
  */
-export const new130581 = (fields: PGN_130581Fields, dst:number=255) : PGN_130581 => {
-  return {
-    ...PGN_130581Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130581  extends PGN implements PGN_130581Interface {
+  fields: PGN_130581Fields
+  
+  constructor(fields: PGN_130581Fields, dst:number=255) {
+    super(PGN_130581Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -15016,7 +15227,7 @@ export const new130581 = (fields: PGN_130581Fields, dst:number=255) : PGN_130581
   *
   * @category PGN_130582
  */
-export interface PGN_130582 extends PGN {
+export interface PGN_130582Interface extends PGNInterface {
  fields: PGN_130582Fields
 }
 
@@ -15039,19 +15250,20 @@ export interface PGN_130582Fields {
 export const PGN_130582Defaults = {
   pgn: 130582,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130582
  */
-export const new130582 = (fields: PGN_130582Fields, dst:number=255) : PGN_130582 => {
-  return {
-    ...PGN_130582Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130582  extends PGN implements PGN_130582Interface {
+  fields: PGN_130582Fields
+  
+  constructor(fields: PGN_130582Fields, dst:number=255) {
+    super(PGN_130582Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -15061,7 +15273,7 @@ export const new130582 = (fields: PGN_130582Fields, dst:number=255) : PGN_130582
   *
   * @category PGN_130583
  */
-export interface PGN_130583 extends PGN {
+export interface PGN_130583Interface extends PGNInterface {
  fields: PGN_130583Fields
 }
 
@@ -15084,19 +15296,20 @@ export interface PGN_130583Fields {
 export const PGN_130583Defaults = {
   pgn: 130583,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130583
  */
-export const new130583 = (fields: PGN_130583Fields, dst:number=255) : PGN_130583 => {
-  return {
-    ...PGN_130583Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130583  extends PGN implements PGN_130583Interface {
+  fields: PGN_130583Fields
+  
+  constructor(fields: PGN_130583Fields, dst:number=255) {
+    super(PGN_130583Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -15106,7 +15319,7 @@ export const new130583 = (fields: PGN_130583Fields, dst:number=255) : PGN_130583
   *
   * @category PGN_130584
  */
-export interface PGN_130584 extends PGN {
+export interface PGN_130584Interface extends PGNInterface {
  fields: PGN_130584Fields
 }
 
@@ -15131,19 +15344,20 @@ export interface PGN_130584Fields {
 export const PGN_130584Defaults = {
   pgn: 130584,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130584
  */
-export const new130584 = (fields: PGN_130584Fields, dst:number=255) : PGN_130584 => {
-  return {
-    ...PGN_130584Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130584  extends PGN implements PGN_130584Interface {
+  fields: PGN_130584Fields
+  
+  constructor(fields: PGN_130584Fields, dst:number=255) {
+    super(PGN_130584Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -15153,7 +15367,7 @@ export const new130584 = (fields: PGN_130584Fields, dst:number=255) : PGN_130584
   *
   * @category PGN_130585
  */
-export interface PGN_130585 extends PGN {
+export interface PGN_130585Interface extends PGNInterface {
  fields: PGN_130585Fields
 }
 
@@ -15174,19 +15388,20 @@ export interface PGN_130585Fields {
 export const PGN_130585Defaults = {
   pgn: 130585,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130585
  */
-export const new130585 = (fields: PGN_130585Fields, dst:number=255) : PGN_130585 => {
-  return {
-    ...PGN_130585Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130585  extends PGN implements PGN_130585Interface {
+  fields: PGN_130585Fields
+  
+  constructor(fields: PGN_130585Fields, dst:number=255) {
+    super(PGN_130585Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -15196,7 +15411,7 @@ export const new130585 = (fields: PGN_130585Fields, dst:number=255) : PGN_130585
   *
   * @category PGN_130586
  */
-export interface PGN_130586 extends PGN {
+export interface PGN_130586Interface extends PGNInterface {
  fields: PGN_130586Fields
 }
 
@@ -15225,19 +15440,20 @@ export interface PGN_130586Fields {
 export const PGN_130586Defaults = {
   pgn: 130586,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130586
  */
-export const new130586 = (fields: PGN_130586Fields, dst:number=255) : PGN_130586 => {
-  return {
-    ...PGN_130586Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130586  extends PGN implements PGN_130586Interface {
+  fields: PGN_130586Fields
+  
+  constructor(fields: PGN_130586Fields, dst:number=255) {
+    super(PGN_130586Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -15251,7 +15467,7 @@ export const new130586 = (fields: PGN_130586Fields, dst:number=255) : PGN_130586
   *
   * @category PGN_130816_SonichubInit2
  */
-export interface PGN_130816_SonichubInit2 extends PGN {
+export interface PGN_130816_SonichubInit2Interface extends PGNInterface {
  fields: PGN_130816_SonichubInit2Fields
 }
 
@@ -15275,7 +15491,8 @@ export interface PGN_130816_SonichubInit2Fields {
 export const PGN_130816_SonichubInit2Defaults = {
   pgn: 130816,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -15301,14 +15518,13 @@ export interface PGN_130816_SonichubInit2CreateArgs {
 /**
  * @category PGN_130816_SonichubInit2
  */
-export const new130816_SonichubInit2 = (fields: PGN_130816_SonichubInit2CreateArgs, dst:number=255) : PGN_130816_SonichubInit2 => {
-  return {
-    ...PGN_130816_SonichubInit2Defaults,
-    dst,
-    fields: {
-      ...PGN_130816_SonichubInit2MatchFields,
-      ...fields
-    }
+export class PGN_130816_SonichubInit2  extends PGN implements PGN_130816_SonichubInit2Interface {
+  fields: PGN_130816_SonichubInit2Fields
+  
+  constructor(fields: PGN_130816_SonichubInit2CreateArgs, dst:number=255) {
+    super(PGN_130816_SonichubInit2Defaults)
+    this.src = dst
+    this.fields = { ...PGN_130816_SonichubInit2MatchFields, ...fields }
   }
 }
 /**
@@ -15322,7 +15538,7 @@ export const new130816_SonichubInit2 = (fields: PGN_130816_SonichubInit2CreateAr
   *
   * @category PGN_130816_SonichubAmRadio
  */
-export interface PGN_130816_SonichubAmRadio extends PGN {
+export interface PGN_130816_SonichubAmRadioInterface extends PGNInterface {
  fields: PGN_130816_SonichubAmRadioFields
 }
 
@@ -15350,7 +15566,8 @@ export interface PGN_130816_SonichubAmRadioFields {
 export const PGN_130816_SonichubAmRadioDefaults = {
   pgn: 130816,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -15380,14 +15597,13 @@ export interface PGN_130816_SonichubAmRadioCreateArgs {
 /**
  * @category PGN_130816_SonichubAmRadio
  */
-export const new130816_SonichubAmRadio = (fields: PGN_130816_SonichubAmRadioCreateArgs, dst:number=255) : PGN_130816_SonichubAmRadio => {
-  return {
-    ...PGN_130816_SonichubAmRadioDefaults,
-    dst,
-    fields: {
-      ...PGN_130816_SonichubAmRadioMatchFields,
-      ...fields
-    }
+export class PGN_130816_SonichubAmRadio  extends PGN implements PGN_130816_SonichubAmRadioInterface {
+  fields: PGN_130816_SonichubAmRadioFields
+  
+  constructor(fields: PGN_130816_SonichubAmRadioCreateArgs, dst:number=255) {
+    super(PGN_130816_SonichubAmRadioDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130816_SonichubAmRadioMatchFields, ...fields }
   }
 }
 /**
@@ -15401,7 +15617,7 @@ export const new130816_SonichubAmRadio = (fields: PGN_130816_SonichubAmRadioCrea
   *
   * @category PGN_130816_SonichubZoneInfo
  */
-export interface PGN_130816_SonichubZoneInfo extends PGN {
+export interface PGN_130816_SonichubZoneInfoInterface extends PGNInterface {
  fields: PGN_130816_SonichubZoneInfoFields
 }
 
@@ -15424,7 +15640,8 @@ export interface PGN_130816_SonichubZoneInfoFields {
 export const PGN_130816_SonichubZoneInfoDefaults = {
   pgn: 130816,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -15449,14 +15666,13 @@ export interface PGN_130816_SonichubZoneInfoCreateArgs {
 /**
  * @category PGN_130816_SonichubZoneInfo
  */
-export const new130816_SonichubZoneInfo = (fields: PGN_130816_SonichubZoneInfoCreateArgs, dst:number=255) : PGN_130816_SonichubZoneInfo => {
-  return {
-    ...PGN_130816_SonichubZoneInfoDefaults,
-    dst,
-    fields: {
-      ...PGN_130816_SonichubZoneInfoMatchFields,
-      ...fields
-    }
+export class PGN_130816_SonichubZoneInfo  extends PGN implements PGN_130816_SonichubZoneInfoInterface {
+  fields: PGN_130816_SonichubZoneInfoFields
+  
+  constructor(fields: PGN_130816_SonichubZoneInfoCreateArgs, dst:number=255) {
+    super(PGN_130816_SonichubZoneInfoDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130816_SonichubZoneInfoMatchFields, ...fields }
   }
 }
 /**
@@ -15470,7 +15686,7 @@ export const new130816_SonichubZoneInfo = (fields: PGN_130816_SonichubZoneInfoCr
   *
   * @category PGN_130816_SonichubSource
  */
-export interface PGN_130816_SonichubSource extends PGN {
+export interface PGN_130816_SonichubSourceInterface extends PGNInterface {
  fields: PGN_130816_SonichubSourceFields
 }
 
@@ -15493,7 +15709,8 @@ export interface PGN_130816_SonichubSourceFields {
 export const PGN_130816_SonichubSourceDefaults = {
   pgn: 130816,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -15518,14 +15735,13 @@ export interface PGN_130816_SonichubSourceCreateArgs {
 /**
  * @category PGN_130816_SonichubSource
  */
-export const new130816_SonichubSource = (fields: PGN_130816_SonichubSourceCreateArgs, dst:number=255) : PGN_130816_SonichubSource => {
-  return {
-    ...PGN_130816_SonichubSourceDefaults,
-    dst,
-    fields: {
-      ...PGN_130816_SonichubSourceMatchFields,
-      ...fields
-    }
+export class PGN_130816_SonichubSource  extends PGN implements PGN_130816_SonichubSourceInterface {
+  fields: PGN_130816_SonichubSourceFields
+  
+  constructor(fields: PGN_130816_SonichubSourceCreateArgs, dst:number=255) {
+    super(PGN_130816_SonichubSourceDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130816_SonichubSourceMatchFields, ...fields }
   }
 }
 /**
@@ -15539,7 +15755,7 @@ export const new130816_SonichubSource = (fields: PGN_130816_SonichubSourceCreate
   *
   * @category PGN_130816_SonichubSourceList
  */
-export interface PGN_130816_SonichubSourceList extends PGN {
+export interface PGN_130816_SonichubSourceListInterface extends PGNInterface {
  fields: PGN_130816_SonichubSourceListFields
 }
 
@@ -15564,7 +15780,8 @@ export interface PGN_130816_SonichubSourceListFields {
 export const PGN_130816_SonichubSourceListDefaults = {
   pgn: 130816,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -15591,14 +15808,13 @@ export interface PGN_130816_SonichubSourceListCreateArgs {
 /**
  * @category PGN_130816_SonichubSourceList
  */
-export const new130816_SonichubSourceList = (fields: PGN_130816_SonichubSourceListCreateArgs, dst:number=255) : PGN_130816_SonichubSourceList => {
-  return {
-    ...PGN_130816_SonichubSourceListDefaults,
-    dst,
-    fields: {
-      ...PGN_130816_SonichubSourceListMatchFields,
-      ...fields
-    }
+export class PGN_130816_SonichubSourceList  extends PGN implements PGN_130816_SonichubSourceListInterface {
+  fields: PGN_130816_SonichubSourceListFields
+  
+  constructor(fields: PGN_130816_SonichubSourceListCreateArgs, dst:number=255) {
+    super(PGN_130816_SonichubSourceListDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130816_SonichubSourceListMatchFields, ...fields }
   }
 }
 /**
@@ -15612,7 +15828,7 @@ export const new130816_SonichubSourceList = (fields: PGN_130816_SonichubSourceLi
   *
   * @category PGN_130816_SonichubControl
  */
-export interface PGN_130816_SonichubControl extends PGN {
+export interface PGN_130816_SonichubControlInterface extends PGNInterface {
  fields: PGN_130816_SonichubControlFields
 }
 
@@ -15635,7 +15851,8 @@ export interface PGN_130816_SonichubControlFields {
 export const PGN_130816_SonichubControlDefaults = {
   pgn: 130816,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -15660,14 +15877,13 @@ export interface PGN_130816_SonichubControlCreateArgs {
 /**
  * @category PGN_130816_SonichubControl
  */
-export const new130816_SonichubControl = (fields: PGN_130816_SonichubControlCreateArgs, dst:number=255) : PGN_130816_SonichubControl => {
-  return {
-    ...PGN_130816_SonichubControlDefaults,
-    dst,
-    fields: {
-      ...PGN_130816_SonichubControlMatchFields,
-      ...fields
-    }
+export class PGN_130816_SonichubControl  extends PGN implements PGN_130816_SonichubControlInterface {
+  fields: PGN_130816_SonichubControlFields
+  
+  constructor(fields: PGN_130816_SonichubControlCreateArgs, dst:number=255) {
+    super(PGN_130816_SonichubControlDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130816_SonichubControlMatchFields, ...fields }
   }
 }
 /**
@@ -15681,7 +15897,7 @@ export const new130816_SonichubControl = (fields: PGN_130816_SonichubControlCrea
   *
   * @category PGN_130816_SonichubFmRadio
  */
-export interface PGN_130816_SonichubFmRadio extends PGN {
+export interface PGN_130816_SonichubFmRadioInterface extends PGNInterface {
  fields: PGN_130816_SonichubFmRadioFields
 }
 
@@ -15709,7 +15925,8 @@ export interface PGN_130816_SonichubFmRadioFields {
 export const PGN_130816_SonichubFmRadioDefaults = {
   pgn: 130816,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -15739,14 +15956,13 @@ export interface PGN_130816_SonichubFmRadioCreateArgs {
 /**
  * @category PGN_130816_SonichubFmRadio
  */
-export const new130816_SonichubFmRadio = (fields: PGN_130816_SonichubFmRadioCreateArgs, dst:number=255) : PGN_130816_SonichubFmRadio => {
-  return {
-    ...PGN_130816_SonichubFmRadioDefaults,
-    dst,
-    fields: {
-      ...PGN_130816_SonichubFmRadioMatchFields,
-      ...fields
-    }
+export class PGN_130816_SonichubFmRadio  extends PGN implements PGN_130816_SonichubFmRadioInterface {
+  fields: PGN_130816_SonichubFmRadioFields
+  
+  constructor(fields: PGN_130816_SonichubFmRadioCreateArgs, dst:number=255) {
+    super(PGN_130816_SonichubFmRadioDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130816_SonichubFmRadioMatchFields, ...fields }
   }
 }
 /**
@@ -15760,7 +15976,7 @@ export const new130816_SonichubFmRadio = (fields: PGN_130816_SonichubFmRadioCrea
   *
   * @category PGN_130816_SonichubPlaylist
  */
-export interface PGN_130816_SonichubPlaylist extends PGN {
+export interface PGN_130816_SonichubPlaylistInterface extends PGNInterface {
  fields: PGN_130816_SonichubPlaylistFields
 }
 
@@ -15788,7 +16004,8 @@ export interface PGN_130816_SonichubPlaylistFields {
 export const PGN_130816_SonichubPlaylistDefaults = {
   pgn: 130816,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -15818,14 +16035,13 @@ export interface PGN_130816_SonichubPlaylistCreateArgs {
 /**
  * @category PGN_130816_SonichubPlaylist
  */
-export const new130816_SonichubPlaylist = (fields: PGN_130816_SonichubPlaylistCreateArgs, dst:number=255) : PGN_130816_SonichubPlaylist => {
-  return {
-    ...PGN_130816_SonichubPlaylistDefaults,
-    dst,
-    fields: {
-      ...PGN_130816_SonichubPlaylistMatchFields,
-      ...fields
-    }
+export class PGN_130816_SonichubPlaylist  extends PGN implements PGN_130816_SonichubPlaylistInterface {
+  fields: PGN_130816_SonichubPlaylistFields
+  
+  constructor(fields: PGN_130816_SonichubPlaylistCreateArgs, dst:number=255) {
+    super(PGN_130816_SonichubPlaylistDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130816_SonichubPlaylistMatchFields, ...fields }
   }
 }
 /**
@@ -15839,7 +16055,7 @@ export const new130816_SonichubPlaylist = (fields: PGN_130816_SonichubPlaylistCr
   *
   * @category PGN_130816_SonichubTrack
  */
-export interface PGN_130816_SonichubTrack extends PGN {
+export interface PGN_130816_SonichubTrackInterface extends PGNInterface {
  fields: PGN_130816_SonichubTrackFields
 }
 
@@ -15863,7 +16079,8 @@ export interface PGN_130816_SonichubTrackFields {
 export const PGN_130816_SonichubTrackDefaults = {
   pgn: 130816,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -15889,14 +16106,13 @@ export interface PGN_130816_SonichubTrackCreateArgs {
 /**
  * @category PGN_130816_SonichubTrack
  */
-export const new130816_SonichubTrack = (fields: PGN_130816_SonichubTrackCreateArgs, dst:number=255) : PGN_130816_SonichubTrack => {
-  return {
-    ...PGN_130816_SonichubTrackDefaults,
-    dst,
-    fields: {
-      ...PGN_130816_SonichubTrackMatchFields,
-      ...fields
-    }
+export class PGN_130816_SonichubTrack  extends PGN implements PGN_130816_SonichubTrackInterface {
+  fields: PGN_130816_SonichubTrackFields
+  
+  constructor(fields: PGN_130816_SonichubTrackCreateArgs, dst:number=255) {
+    super(PGN_130816_SonichubTrackDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130816_SonichubTrackMatchFields, ...fields }
   }
 }
 /**
@@ -15910,7 +16126,7 @@ export const new130816_SonichubTrack = (fields: PGN_130816_SonichubTrackCreateAr
   *
   * @category PGN_130816_SonichubArtist
  */
-export interface PGN_130816_SonichubArtist extends PGN {
+export interface PGN_130816_SonichubArtistInterface extends PGNInterface {
  fields: PGN_130816_SonichubArtistFields
 }
 
@@ -15934,7 +16150,8 @@ export interface PGN_130816_SonichubArtistFields {
 export const PGN_130816_SonichubArtistDefaults = {
   pgn: 130816,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -15960,14 +16177,13 @@ export interface PGN_130816_SonichubArtistCreateArgs {
 /**
  * @category PGN_130816_SonichubArtist
  */
-export const new130816_SonichubArtist = (fields: PGN_130816_SonichubArtistCreateArgs, dst:number=255) : PGN_130816_SonichubArtist => {
-  return {
-    ...PGN_130816_SonichubArtistDefaults,
-    dst,
-    fields: {
-      ...PGN_130816_SonichubArtistMatchFields,
-      ...fields
-    }
+export class PGN_130816_SonichubArtist  extends PGN implements PGN_130816_SonichubArtistInterface {
+  fields: PGN_130816_SonichubArtistFields
+  
+  constructor(fields: PGN_130816_SonichubArtistCreateArgs, dst:number=255) {
+    super(PGN_130816_SonichubArtistDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130816_SonichubArtistMatchFields, ...fields }
   }
 }
 /**
@@ -15981,7 +16197,7 @@ export const new130816_SonichubArtist = (fields: PGN_130816_SonichubArtistCreate
   *
   * @category PGN_130816_SonichubAlbum
  */
-export interface PGN_130816_SonichubAlbum extends PGN {
+export interface PGN_130816_SonichubAlbumInterface extends PGNInterface {
  fields: PGN_130816_SonichubAlbumFields
 }
 
@@ -16005,7 +16221,8 @@ export interface PGN_130816_SonichubAlbumFields {
 export const PGN_130816_SonichubAlbumDefaults = {
   pgn: 130816,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -16031,14 +16248,13 @@ export interface PGN_130816_SonichubAlbumCreateArgs {
 /**
  * @category PGN_130816_SonichubAlbum
  */
-export const new130816_SonichubAlbum = (fields: PGN_130816_SonichubAlbumCreateArgs, dst:number=255) : PGN_130816_SonichubAlbum => {
-  return {
-    ...PGN_130816_SonichubAlbumDefaults,
-    dst,
-    fields: {
-      ...PGN_130816_SonichubAlbumMatchFields,
-      ...fields
-    }
+export class PGN_130816_SonichubAlbum  extends PGN implements PGN_130816_SonichubAlbumInterface {
+  fields: PGN_130816_SonichubAlbumFields
+  
+  constructor(fields: PGN_130816_SonichubAlbumCreateArgs, dst:number=255) {
+    super(PGN_130816_SonichubAlbumDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130816_SonichubAlbumMatchFields, ...fields }
   }
 }
 /**
@@ -16052,7 +16268,7 @@ export const new130816_SonichubAlbum = (fields: PGN_130816_SonichubAlbumCreateAr
   *
   * @category PGN_130816_SonichubMenuItem
  */
-export interface PGN_130816_SonichubMenuItem extends PGN {
+export interface PGN_130816_SonichubMenuItemInterface extends PGNInterface {
  fields: PGN_130816_SonichubMenuItemFields
 }
 
@@ -16079,7 +16295,8 @@ export interface PGN_130816_SonichubMenuItemFields {
 export const PGN_130816_SonichubMenuItemDefaults = {
   pgn: 130816,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -16108,14 +16325,13 @@ export interface PGN_130816_SonichubMenuItemCreateArgs {
 /**
  * @category PGN_130816_SonichubMenuItem
  */
-export const new130816_SonichubMenuItem = (fields: PGN_130816_SonichubMenuItemCreateArgs, dst:number=255) : PGN_130816_SonichubMenuItem => {
-  return {
-    ...PGN_130816_SonichubMenuItemDefaults,
-    dst,
-    fields: {
-      ...PGN_130816_SonichubMenuItemMatchFields,
-      ...fields
-    }
+export class PGN_130816_SonichubMenuItem  extends PGN implements PGN_130816_SonichubMenuItemInterface {
+  fields: PGN_130816_SonichubMenuItemFields
+  
+  constructor(fields: PGN_130816_SonichubMenuItemCreateArgs, dst:number=255) {
+    super(PGN_130816_SonichubMenuItemDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130816_SonichubMenuItemMatchFields, ...fields }
   }
 }
 /**
@@ -16129,7 +16345,7 @@ export const new130816_SonichubMenuItem = (fields: PGN_130816_SonichubMenuItemCr
   *
   * @category PGN_130816_SonichubZones
  */
-export interface PGN_130816_SonichubZones extends PGN {
+export interface PGN_130816_SonichubZonesInterface extends PGNInterface {
  fields: PGN_130816_SonichubZonesFields
 }
 
@@ -16152,7 +16368,8 @@ export interface PGN_130816_SonichubZonesFields {
 export const PGN_130816_SonichubZonesDefaults = {
   pgn: 130816,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -16177,14 +16394,13 @@ export interface PGN_130816_SonichubZonesCreateArgs {
 /**
  * @category PGN_130816_SonichubZones
  */
-export const new130816_SonichubZones = (fields: PGN_130816_SonichubZonesCreateArgs, dst:number=255) : PGN_130816_SonichubZones => {
-  return {
-    ...PGN_130816_SonichubZonesDefaults,
-    dst,
-    fields: {
-      ...PGN_130816_SonichubZonesMatchFields,
-      ...fields
-    }
+export class PGN_130816_SonichubZones  extends PGN implements PGN_130816_SonichubZonesInterface {
+  fields: PGN_130816_SonichubZonesFields
+  
+  constructor(fields: PGN_130816_SonichubZonesCreateArgs, dst:number=255) {
+    super(PGN_130816_SonichubZonesDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130816_SonichubZonesMatchFields, ...fields }
   }
 }
 /**
@@ -16198,7 +16414,7 @@ export const new130816_SonichubZones = (fields: PGN_130816_SonichubZonesCreateAr
   *
   * @category PGN_130816_SonichubMaxVolume
  */
-export interface PGN_130816_SonichubMaxVolume extends PGN {
+export interface PGN_130816_SonichubMaxVolumeInterface extends PGNInterface {
  fields: PGN_130816_SonichubMaxVolumeFields
 }
 
@@ -16222,7 +16438,8 @@ export interface PGN_130816_SonichubMaxVolumeFields {
 export const PGN_130816_SonichubMaxVolumeDefaults = {
   pgn: 130816,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -16248,14 +16465,13 @@ export interface PGN_130816_SonichubMaxVolumeCreateArgs {
 /**
  * @category PGN_130816_SonichubMaxVolume
  */
-export const new130816_SonichubMaxVolume = (fields: PGN_130816_SonichubMaxVolumeCreateArgs, dst:number=255) : PGN_130816_SonichubMaxVolume => {
-  return {
-    ...PGN_130816_SonichubMaxVolumeDefaults,
-    dst,
-    fields: {
-      ...PGN_130816_SonichubMaxVolumeMatchFields,
-      ...fields
-    }
+export class PGN_130816_SonichubMaxVolume  extends PGN implements PGN_130816_SonichubMaxVolumeInterface {
+  fields: PGN_130816_SonichubMaxVolumeFields
+  
+  constructor(fields: PGN_130816_SonichubMaxVolumeCreateArgs, dst:number=255) {
+    super(PGN_130816_SonichubMaxVolumeDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130816_SonichubMaxVolumeMatchFields, ...fields }
   }
 }
 /**
@@ -16269,7 +16485,7 @@ export const new130816_SonichubMaxVolume = (fields: PGN_130816_SonichubMaxVolume
   *
   * @category PGN_130816_SonichubVolume
  */
-export interface PGN_130816_SonichubVolume extends PGN {
+export interface PGN_130816_SonichubVolumeInterface extends PGNInterface {
  fields: PGN_130816_SonichubVolumeFields
 }
 
@@ -16293,7 +16509,8 @@ export interface PGN_130816_SonichubVolumeFields {
 export const PGN_130816_SonichubVolumeDefaults = {
   pgn: 130816,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -16319,14 +16536,13 @@ export interface PGN_130816_SonichubVolumeCreateArgs {
 /**
  * @category PGN_130816_SonichubVolume
  */
-export const new130816_SonichubVolume = (fields: PGN_130816_SonichubVolumeCreateArgs, dst:number=255) : PGN_130816_SonichubVolume => {
-  return {
-    ...PGN_130816_SonichubVolumeDefaults,
-    dst,
-    fields: {
-      ...PGN_130816_SonichubVolumeMatchFields,
-      ...fields
-    }
+export class PGN_130816_SonichubVolume  extends PGN implements PGN_130816_SonichubVolumeInterface {
+  fields: PGN_130816_SonichubVolumeFields
+  
+  constructor(fields: PGN_130816_SonichubVolumeCreateArgs, dst:number=255) {
+    super(PGN_130816_SonichubVolumeDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130816_SonichubVolumeMatchFields, ...fields }
   }
 }
 /**
@@ -16340,7 +16556,7 @@ export const new130816_SonichubVolume = (fields: PGN_130816_SonichubVolumeCreate
   *
   * @category PGN_130816_SonichubInit1
  */
-export interface PGN_130816_SonichubInit1 extends PGN {
+export interface PGN_130816_SonichubInit1Interface extends PGNInterface {
  fields: PGN_130816_SonichubInit1Fields
 }
 
@@ -16362,7 +16578,8 @@ export interface PGN_130816_SonichubInit1Fields {
 export const PGN_130816_SonichubInit1Defaults = {
   pgn: 130816,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -16386,14 +16603,13 @@ export interface PGN_130816_SonichubInit1CreateArgs {
 /**
  * @category PGN_130816_SonichubInit1
  */
-export const new130816_SonichubInit1 = (fields: PGN_130816_SonichubInit1CreateArgs, dst:number=255) : PGN_130816_SonichubInit1 => {
-  return {
-    ...PGN_130816_SonichubInit1Defaults,
-    dst,
-    fields: {
-      ...PGN_130816_SonichubInit1MatchFields,
-      ...fields
-    }
+export class PGN_130816_SonichubInit1  extends PGN implements PGN_130816_SonichubInit1Interface {
+  fields: PGN_130816_SonichubInit1Fields
+  
+  constructor(fields: PGN_130816_SonichubInit1CreateArgs, dst:number=255) {
+    super(PGN_130816_SonichubInit1Defaults)
+    this.src = dst
+    this.fields = { ...PGN_130816_SonichubInit1MatchFields, ...fields }
   }
 }
 /**
@@ -16407,7 +16623,7 @@ export const new130816_SonichubInit1 = (fields: PGN_130816_SonichubInit1CreateAr
   *
   * @category PGN_130816_SonichubPosition
  */
-export interface PGN_130816_SonichubPosition extends PGN {
+export interface PGN_130816_SonichubPositionInterface extends PGNInterface {
  fields: PGN_130816_SonichubPositionFields
 }
 
@@ -16430,7 +16646,8 @@ export interface PGN_130816_SonichubPositionFields {
 export const PGN_130816_SonichubPositionDefaults = {
   pgn: 130816,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -16455,14 +16672,13 @@ export interface PGN_130816_SonichubPositionCreateArgs {
 /**
  * @category PGN_130816_SonichubPosition
  */
-export const new130816_SonichubPosition = (fields: PGN_130816_SonichubPositionCreateArgs, dst:number=255) : PGN_130816_SonichubPosition => {
-  return {
-    ...PGN_130816_SonichubPositionDefaults,
-    dst,
-    fields: {
-      ...PGN_130816_SonichubPositionMatchFields,
-      ...fields
-    }
+export class PGN_130816_SonichubPosition  extends PGN implements PGN_130816_SonichubPositionInterface {
+  fields: PGN_130816_SonichubPositionFields
+  
+  constructor(fields: PGN_130816_SonichubPositionCreateArgs, dst:number=255) {
+    super(PGN_130816_SonichubPositionDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130816_SonichubPositionMatchFields, ...fields }
   }
 }
 /**
@@ -16476,7 +16692,7 @@ export const new130816_SonichubPosition = (fields: PGN_130816_SonichubPositionCr
   *
   * @category PGN_130816_SonichubInit3
  */
-export interface PGN_130816_SonichubInit3 extends PGN {
+export interface PGN_130816_SonichubInit3Interface extends PGNInterface {
  fields: PGN_130816_SonichubInit3Fields
 }
 
@@ -16500,7 +16716,8 @@ export interface PGN_130816_SonichubInit3Fields {
 export const PGN_130816_SonichubInit3Defaults = {
   pgn: 130816,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -16526,14 +16743,13 @@ export interface PGN_130816_SonichubInit3CreateArgs {
 /**
  * @category PGN_130816_SonichubInit3
  */
-export const new130816_SonichubInit3 = (fields: PGN_130816_SonichubInit3CreateArgs, dst:number=255) : PGN_130816_SonichubInit3 => {
-  return {
-    ...PGN_130816_SonichubInit3Defaults,
-    dst,
-    fields: {
-      ...PGN_130816_SonichubInit3MatchFields,
-      ...fields
-    }
+export class PGN_130816_SonichubInit3  extends PGN implements PGN_130816_SonichubInit3Interface {
+  fields: PGN_130816_SonichubInit3Fields
+  
+  constructor(fields: PGN_130816_SonichubInit3CreateArgs, dst:number=255) {
+    super(PGN_130816_SonichubInit3Defaults)
+    this.src = dst
+    this.fields = { ...PGN_130816_SonichubInit3MatchFields, ...fields }
   }
 }
 /**
@@ -16547,7 +16763,7 @@ export const new130816_SonichubInit3 = (fields: PGN_130816_SonichubInit3CreateAr
   *
   * @category PGN_130816_SimradTextMessage
  */
-export interface PGN_130816_SimradTextMessage extends PGN {
+export interface PGN_130816_SimradTextMessageInterface extends PGNInterface {
  fields: PGN_130816_SimradTextMessageFields
 }
 
@@ -16574,7 +16790,8 @@ export interface PGN_130816_SimradTextMessageFields {
 export const PGN_130816_SimradTextMessageDefaults = {
   pgn: 130816,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -16603,14 +16820,13 @@ export interface PGN_130816_SimradTextMessageCreateArgs {
 /**
  * @category PGN_130816_SimradTextMessage
  */
-export const new130816_SimradTextMessage = (fields: PGN_130816_SimradTextMessageCreateArgs, dst:number=255) : PGN_130816_SimradTextMessage => {
-  return {
-    ...PGN_130816_SimradTextMessageDefaults,
-    dst,
-    fields: {
-      ...PGN_130816_SimradTextMessageMatchFields,
-      ...fields
-    }
+export class PGN_130816_SimradTextMessage  extends PGN implements PGN_130816_SimradTextMessageInterface {
+  fields: PGN_130816_SimradTextMessageFields
+  
+  constructor(fields: PGN_130816_SimradTextMessageCreateArgs, dst:number=255) {
+    super(PGN_130816_SimradTextMessageDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130816_SimradTextMessageMatchFields, ...fields }
   }
 }
 /**
@@ -16623,7 +16839,7 @@ export const new130816_SimradTextMessage = (fields: PGN_130816_SimradTextMessage
   *
   * @category PGN_130817_NavicoUnknown
  */
-export interface PGN_130817_NavicoUnknown extends PGN {
+export interface PGN_130817_NavicoUnknownInterface extends PGNInterface {
  fields: PGN_130817_NavicoUnknownFields
 }
 
@@ -16647,7 +16863,8 @@ export interface PGN_130817_NavicoUnknownFields {
 export const PGN_130817_NavicoUnknownDefaults = {
   pgn: 130817,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -16673,14 +16890,13 @@ export interface PGN_130817_NavicoUnknownCreateArgs {
 /**
  * @category PGN_130817_NavicoUnknown
  */
-export const new130817_NavicoUnknown = (fields: PGN_130817_NavicoUnknownCreateArgs, dst:number=255) : PGN_130817_NavicoUnknown => {
-  return {
-    ...PGN_130817_NavicoUnknownDefaults,
-    dst,
-    fields: {
-      ...PGN_130817_NavicoUnknownMatchFields,
-      ...fields
-    }
+export class PGN_130817_NavicoUnknown  extends PGN implements PGN_130817_NavicoUnknownInterface {
+  fields: PGN_130817_NavicoUnknownFields
+  
+  constructor(fields: PGN_130817_NavicoUnknownCreateArgs, dst:number=255) {
+    super(PGN_130817_NavicoUnknownDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130817_NavicoUnknownMatchFields, ...fields }
   }
 }
 /**
@@ -16693,7 +16909,7 @@ export const new130817_NavicoUnknown = (fields: PGN_130817_NavicoUnknownCreateAr
   *
   * @category PGN_130817_LowranceProductInformation
  */
-export interface PGN_130817_LowranceProductInformation extends PGN {
+export interface PGN_130817_LowranceProductInformationInterface extends PGNInterface {
  fields: PGN_130817_LowranceProductInformationFields
 }
 
@@ -16720,7 +16936,8 @@ export interface PGN_130817_LowranceProductInformationFields {
 export const PGN_130817_LowranceProductInformationDefaults = {
   pgn: 130817,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -16749,14 +16966,13 @@ export interface PGN_130817_LowranceProductInformationCreateArgs {
 /**
  * @category PGN_130817_LowranceProductInformation
  */
-export const new130817_LowranceProductInformation = (fields: PGN_130817_LowranceProductInformationCreateArgs, dst:number=255) : PGN_130817_LowranceProductInformation => {
-  return {
-    ...PGN_130817_LowranceProductInformationDefaults,
-    dst,
-    fields: {
-      ...PGN_130817_LowranceProductInformationMatchFields,
-      ...fields
-    }
+export class PGN_130817_LowranceProductInformation  extends PGN implements PGN_130817_LowranceProductInformationInterface {
+  fields: PGN_130817_LowranceProductInformationFields
+  
+  constructor(fields: PGN_130817_LowranceProductInformationCreateArgs, dst:number=255) {
+    super(PGN_130817_LowranceProductInformationDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130817_LowranceProductInformationMatchFields, ...fields }
   }
 }
 /**
@@ -16766,7 +16982,7 @@ export const new130817_LowranceProductInformation = (fields: PGN_130817_Lowrance
   *
   * @category PGN_130818
  */
-export interface PGN_130818 extends PGN {
+export interface PGN_130818Interface extends PGNInterface {
  fields: PGN_130818Fields
 }
 
@@ -16788,19 +17004,20 @@ export interface PGN_130818Fields {
 export const PGN_130818Defaults = {
   pgn: 130818,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_130818
  */
-export const new130818 = (fields: PGN_130818Fields, dst:number=255) : PGN_130818 => {
-  return {
-    ...PGN_130818Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130818  extends PGN implements PGN_130818Interface {
+  fields: PGN_130818Fields
+  
+  constructor(fields: PGN_130818Fields, dst:number=255) {
+    super(PGN_130818Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -16810,7 +17027,7 @@ export const new130818 = (fields: PGN_130818Fields, dst:number=255) : PGN_130818
   *
   * @category PGN_130819
  */
-export interface PGN_130819 extends PGN {
+export interface PGN_130819Interface extends PGNInterface {
  fields: PGN_130819Fields
 }
 
@@ -16829,19 +17046,20 @@ export interface PGN_130819Fields {
 export const PGN_130819Defaults = {
   pgn: 130819,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_130819
  */
-export const new130819 = (fields: PGN_130819Fields, dst:number=255) : PGN_130819 => {
-  return {
-    ...PGN_130819Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130819  extends PGN implements PGN_130819Interface {
+  fields: PGN_130819Fields
+  
+  constructor(fields: PGN_130819Fields, dst:number=255) {
+    super(PGN_130819Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -16854,7 +17072,7 @@ export const new130819 = (fields: PGN_130819Fields, dst:number=255) : PGN_130819
   *
   * @category PGN_130820_SimnetReprogramStatus
  */
-export interface PGN_130820_SimnetReprogramStatus extends PGN {
+export interface PGN_130820_SimnetReprogramStatusInterface extends PGNInterface {
  fields: PGN_130820_SimnetReprogramStatusFields
 }
 
@@ -16876,7 +17094,8 @@ export interface PGN_130820_SimnetReprogramStatusFields {
 export const PGN_130820_SimnetReprogramStatusDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -16900,14 +17119,13 @@ export interface PGN_130820_SimnetReprogramStatusCreateArgs {
 /**
  * @category PGN_130820_SimnetReprogramStatus
  */
-export const new130820_SimnetReprogramStatus = (fields: PGN_130820_SimnetReprogramStatusCreateArgs, dst:number=255) : PGN_130820_SimnetReprogramStatus => {
-  return {
-    ...PGN_130820_SimnetReprogramStatusDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_SimnetReprogramStatusMatchFields,
-      ...fields
-    }
+export class PGN_130820_SimnetReprogramStatus  extends PGN implements PGN_130820_SimnetReprogramStatusInterface {
+  fields: PGN_130820_SimnetReprogramStatusFields
+  
+  constructor(fields: PGN_130820_SimnetReprogramStatusCreateArgs, dst:number=255) {
+    super(PGN_130820_SimnetReprogramStatusDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_SimnetReprogramStatusMatchFields, ...fields }
   }
 }
 /**
@@ -16920,7 +17138,7 @@ export const new130820_SimnetReprogramStatus = (fields: PGN_130820_SimnetReprogr
   *
   * @category PGN_130820_FurunoUnknown130820
  */
-export interface PGN_130820_FurunoUnknown130820 extends PGN {
+export interface PGN_130820_FurunoUnknown130820Interface extends PGNInterface {
  fields: PGN_130820_FurunoUnknown130820Fields
 }
 
@@ -16944,7 +17162,8 @@ export interface PGN_130820_FurunoUnknown130820Fields {
 export const PGN_130820_FurunoUnknown130820Defaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -16970,14 +17189,13 @@ export interface PGN_130820_FurunoUnknown130820CreateArgs {
 /**
  * @category PGN_130820_FurunoUnknown130820
  */
-export const new130820_FurunoUnknown130820 = (fields: PGN_130820_FurunoUnknown130820CreateArgs, dst:number=255) : PGN_130820_FurunoUnknown130820 => {
-  return {
-    ...PGN_130820_FurunoUnknown130820Defaults,
-    dst,
-    fields: {
-      ...PGN_130820_FurunoUnknown130820MatchFields,
-      ...fields
-    }
+export class PGN_130820_FurunoUnknown130820  extends PGN implements PGN_130820_FurunoUnknown130820Interface {
+  fields: PGN_130820_FurunoUnknown130820Fields
+  
+  constructor(fields: PGN_130820_FurunoUnknown130820CreateArgs, dst:number=255) {
+    super(PGN_130820_FurunoUnknown130820Defaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FurunoUnknown130820MatchFields, ...fields }
   }
 }
 /**
@@ -16991,7 +17209,7 @@ export const new130820_FurunoUnknown130820 = (fields: PGN_130820_FurunoUnknown13
   *
   * @category PGN_130820_FusionVersions
  */
-export interface PGN_130820_FusionVersions extends PGN {
+export interface PGN_130820_FusionVersionsInterface extends PGNInterface {
  fields: PGN_130820_FusionVersionsFields
 }
 
@@ -17016,7 +17234,8 @@ export interface PGN_130820_FusionVersionsFields {
 export const PGN_130820_FusionVersionsDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -17043,14 +17262,13 @@ export interface PGN_130820_FusionVersionsCreateArgs {
 /**
  * @category PGN_130820_FusionVersions
  */
-export const new130820_FusionVersions = (fields: PGN_130820_FusionVersionsCreateArgs, dst:number=255) : PGN_130820_FusionVersions => {
-  return {
-    ...PGN_130820_FusionVersionsDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionVersionsMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionVersions  extends PGN implements PGN_130820_FusionVersionsInterface {
+  fields: PGN_130820_FusionVersionsFields
+  
+  constructor(fields: PGN_130820_FusionVersionsCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionVersionsDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionVersionsMatchFields, ...fields }
   }
 }
 /**
@@ -17064,7 +17282,7 @@ export const new130820_FusionVersions = (fields: PGN_130820_FusionVersionsCreate
   *
   * @category PGN_130820_FusionSource
  */
-export interface PGN_130820_FusionSource extends PGN {
+export interface PGN_130820_FusionSourceInterface extends PGNInterface {
  fields: PGN_130820_FusionSourceFields
 }
 
@@ -17089,7 +17307,8 @@ export interface PGN_130820_FusionSourceFields {
 export const PGN_130820_FusionSourceDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -17116,14 +17335,13 @@ export interface PGN_130820_FusionSourceCreateArgs {
 /**
  * @category PGN_130820_FusionSource
  */
-export const new130820_FusionSource = (fields: PGN_130820_FusionSourceCreateArgs, dst:number=255) : PGN_130820_FusionSource => {
-  return {
-    ...PGN_130820_FusionSourceDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionSourceMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionSource  extends PGN implements PGN_130820_FusionSourceInterface {
+  fields: PGN_130820_FusionSourceFields
+  
+  constructor(fields: PGN_130820_FusionSourceCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionSourceDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionSourceMatchFields, ...fields }
   }
 }
 /**
@@ -17137,7 +17355,7 @@ export const new130820_FusionSource = (fields: PGN_130820_FusionSourceCreateArgs
   *
   * @category PGN_130820_FusionSourceCount
  */
-export interface PGN_130820_FusionSourceCount extends PGN {
+export interface PGN_130820_FusionSourceCountInterface extends PGNInterface {
  fields: PGN_130820_FusionSourceCountFields
 }
 
@@ -17158,7 +17376,8 @@ export interface PGN_130820_FusionSourceCountFields {
 export const PGN_130820_FusionSourceCountDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -17181,14 +17400,13 @@ export interface PGN_130820_FusionSourceCountCreateArgs {
 /**
  * @category PGN_130820_FusionSourceCount
  */
-export const new130820_FusionSourceCount = (fields: PGN_130820_FusionSourceCountCreateArgs, dst:number=255) : PGN_130820_FusionSourceCount => {
-  return {
-    ...PGN_130820_FusionSourceCountDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionSourceCountMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionSourceCount  extends PGN implements PGN_130820_FusionSourceCountInterface {
+  fields: PGN_130820_FusionSourceCountFields
+  
+  constructor(fields: PGN_130820_FusionSourceCountCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionSourceCountDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionSourceCountMatchFields, ...fields }
   }
 }
 /**
@@ -17202,7 +17420,7 @@ export const new130820_FusionSourceCount = (fields: PGN_130820_FusionSourceCount
   *
   * @category PGN_130820_FusionMedia
  */
-export interface PGN_130820_FusionMedia extends PGN {
+export interface PGN_130820_FusionMediaInterface extends PGNInterface {
  fields: PGN_130820_FusionMediaFields
 }
 
@@ -17228,7 +17446,8 @@ export interface PGN_130820_FusionMediaFields {
 export const PGN_130820_FusionMediaDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -17256,14 +17475,13 @@ export interface PGN_130820_FusionMediaCreateArgs {
 /**
  * @category PGN_130820_FusionMedia
  */
-export const new130820_FusionMedia = (fields: PGN_130820_FusionMediaCreateArgs, dst:number=255) : PGN_130820_FusionMedia => {
-  return {
-    ...PGN_130820_FusionMediaDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionMediaMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionMedia  extends PGN implements PGN_130820_FusionMediaInterface {
+  fields: PGN_130820_FusionMediaFields
+  
+  constructor(fields: PGN_130820_FusionMediaCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionMediaDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionMediaMatchFields, ...fields }
   }
 }
 /**
@@ -17277,7 +17495,7 @@ export const new130820_FusionMedia = (fields: PGN_130820_FusionMediaCreateArgs, 
   *
   * @category PGN_130820_FusionTrackName
  */
-export interface PGN_130820_FusionTrackName extends PGN {
+export interface PGN_130820_FusionTrackNameInterface extends PGNInterface {
  fields: PGN_130820_FusionTrackNameFields
 }
 
@@ -17300,7 +17518,8 @@ export interface PGN_130820_FusionTrackNameFields {
 export const PGN_130820_FusionTrackNameDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -17325,14 +17544,13 @@ export interface PGN_130820_FusionTrackNameCreateArgs {
 /**
  * @category PGN_130820_FusionTrackName
  */
-export const new130820_FusionTrackName = (fields: PGN_130820_FusionTrackNameCreateArgs, dst:number=255) : PGN_130820_FusionTrackName => {
-  return {
-    ...PGN_130820_FusionTrackNameDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionTrackNameMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionTrackName  extends PGN implements PGN_130820_FusionTrackNameInterface {
+  fields: PGN_130820_FusionTrackNameFields
+  
+  constructor(fields: PGN_130820_FusionTrackNameCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionTrackNameDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionTrackNameMatchFields, ...fields }
   }
 }
 /**
@@ -17346,7 +17564,7 @@ export const new130820_FusionTrackName = (fields: PGN_130820_FusionTrackNameCrea
   *
   * @category PGN_130820_FusionArtistName
  */
-export interface PGN_130820_FusionArtistName extends PGN {
+export interface PGN_130820_FusionArtistNameInterface extends PGNInterface {
  fields: PGN_130820_FusionArtistNameFields
 }
 
@@ -17369,7 +17587,8 @@ export interface PGN_130820_FusionArtistNameFields {
 export const PGN_130820_FusionArtistNameDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -17394,14 +17613,13 @@ export interface PGN_130820_FusionArtistNameCreateArgs {
 /**
  * @category PGN_130820_FusionArtistName
  */
-export const new130820_FusionArtistName = (fields: PGN_130820_FusionArtistNameCreateArgs, dst:number=255) : PGN_130820_FusionArtistName => {
-  return {
-    ...PGN_130820_FusionArtistNameDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionArtistNameMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionArtistName  extends PGN implements PGN_130820_FusionArtistNameInterface {
+  fields: PGN_130820_FusionArtistNameFields
+  
+  constructor(fields: PGN_130820_FusionArtistNameCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionArtistNameDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionArtistNameMatchFields, ...fields }
   }
 }
 /**
@@ -17415,7 +17633,7 @@ export const new130820_FusionArtistName = (fields: PGN_130820_FusionArtistNameCr
   *
   * @category PGN_130820_FusionAlbumName
  */
-export interface PGN_130820_FusionAlbumName extends PGN {
+export interface PGN_130820_FusionAlbumNameInterface extends PGNInterface {
  fields: PGN_130820_FusionAlbumNameFields
 }
 
@@ -17438,7 +17656,8 @@ export interface PGN_130820_FusionAlbumNameFields {
 export const PGN_130820_FusionAlbumNameDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -17463,14 +17682,13 @@ export interface PGN_130820_FusionAlbumNameCreateArgs {
 /**
  * @category PGN_130820_FusionAlbumName
  */
-export const new130820_FusionAlbumName = (fields: PGN_130820_FusionAlbumNameCreateArgs, dst:number=255) : PGN_130820_FusionAlbumName => {
-  return {
-    ...PGN_130820_FusionAlbumNameDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionAlbumNameMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionAlbumName  extends PGN implements PGN_130820_FusionAlbumNameInterface {
+  fields: PGN_130820_FusionAlbumNameFields
+  
+  constructor(fields: PGN_130820_FusionAlbumNameCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionAlbumNameDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionAlbumNameMatchFields, ...fields }
   }
 }
 /**
@@ -17484,7 +17702,7 @@ export const new130820_FusionAlbumName = (fields: PGN_130820_FusionAlbumNameCrea
   *
   * @category PGN_130820_FusionDeviceName
  */
-export interface PGN_130820_FusionDeviceName extends PGN {
+export interface PGN_130820_FusionDeviceNameInterface extends PGNInterface {
  fields: PGN_130820_FusionDeviceNameFields
 }
 
@@ -17505,7 +17723,8 @@ export interface PGN_130820_FusionDeviceNameFields {
 export const PGN_130820_FusionDeviceNameDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -17528,14 +17747,13 @@ export interface PGN_130820_FusionDeviceNameCreateArgs {
 /**
  * @category PGN_130820_FusionDeviceName
  */
-export const new130820_FusionDeviceName = (fields: PGN_130820_FusionDeviceNameCreateArgs, dst:number=255) : PGN_130820_FusionDeviceName => {
-  return {
-    ...PGN_130820_FusionDeviceNameDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionDeviceNameMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionDeviceName  extends PGN implements PGN_130820_FusionDeviceNameInterface {
+  fields: PGN_130820_FusionDeviceNameFields
+  
+  constructor(fields: PGN_130820_FusionDeviceNameCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionDeviceNameDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionDeviceNameMatchFields, ...fields }
   }
 }
 /**
@@ -17549,7 +17767,7 @@ export const new130820_FusionDeviceName = (fields: PGN_130820_FusionDeviceNameCr
   *
   * @category PGN_130820_FusionZoneName
  */
-export interface PGN_130820_FusionZoneName extends PGN {
+export interface PGN_130820_FusionZoneNameInterface extends PGNInterface {
  fields: PGN_130820_FusionZoneNameFields
 }
 
@@ -17571,7 +17789,8 @@ export interface PGN_130820_FusionZoneNameFields {
 export const PGN_130820_FusionZoneNameDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -17595,14 +17814,13 @@ export interface PGN_130820_FusionZoneNameCreateArgs {
 /**
  * @category PGN_130820_FusionZoneName
  */
-export const new130820_FusionZoneName = (fields: PGN_130820_FusionZoneNameCreateArgs, dst:number=255) : PGN_130820_FusionZoneName => {
-  return {
-    ...PGN_130820_FusionZoneNameDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionZoneNameMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionZoneName  extends PGN implements PGN_130820_FusionZoneNameInterface {
+  fields: PGN_130820_FusionZoneNameFields
+  
+  constructor(fields: PGN_130820_FusionZoneNameCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionZoneNameDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionZoneNameMatchFields, ...fields }
   }
 }
 /**
@@ -17616,7 +17834,7 @@ export const new130820_FusionZoneName = (fields: PGN_130820_FusionZoneNameCreate
   *
   * @category PGN_130820_FusionTrackPosition
  */
-export interface PGN_130820_FusionTrackPosition extends PGN {
+export interface PGN_130820_FusionTrackPositionInterface extends PGNInterface {
  fields: PGN_130820_FusionTrackPositionFields
 }
 
@@ -17638,7 +17856,8 @@ export interface PGN_130820_FusionTrackPositionFields {
 export const PGN_130820_FusionTrackPositionDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -17662,14 +17881,13 @@ export interface PGN_130820_FusionTrackPositionCreateArgs {
 /**
  * @category PGN_130820_FusionTrackPosition
  */
-export const new130820_FusionTrackPosition = (fields: PGN_130820_FusionTrackPositionCreateArgs, dst:number=255) : PGN_130820_FusionTrackPosition => {
-  return {
-    ...PGN_130820_FusionTrackPositionDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionTrackPositionMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionTrackPosition  extends PGN implements PGN_130820_FusionTrackPositionInterface {
+  fields: PGN_130820_FusionTrackPositionFields
+  
+  constructor(fields: PGN_130820_FusionTrackPositionCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionTrackPositionDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionTrackPositionMatchFields, ...fields }
   }
 }
 /**
@@ -17683,7 +17901,7 @@ export const new130820_FusionTrackPosition = (fields: PGN_130820_FusionTrackPosi
   *
   * @category PGN_130820_FusionTuner
  */
-export interface PGN_130820_FusionTuner extends PGN {
+export interface PGN_130820_FusionTunerInterface extends PGNInterface {
  fields: PGN_130820_FusionTunerFields
 }
 
@@ -17708,7 +17926,8 @@ export interface PGN_130820_FusionTunerFields {
 export const PGN_130820_FusionTunerDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -17735,14 +17954,13 @@ export interface PGN_130820_FusionTunerCreateArgs {
 /**
  * @category PGN_130820_FusionTuner
  */
-export const new130820_FusionTuner = (fields: PGN_130820_FusionTunerCreateArgs, dst:number=255) : PGN_130820_FusionTuner => {
-  return {
-    ...PGN_130820_FusionTunerDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionTunerMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionTuner  extends PGN implements PGN_130820_FusionTunerInterface {
+  fields: PGN_130820_FusionTunerFields
+  
+  constructor(fields: PGN_130820_FusionTunerCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionTunerDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionTunerMatchFields, ...fields }
   }
 }
 /**
@@ -17756,7 +17974,7 @@ export const new130820_FusionTuner = (fields: PGN_130820_FusionTunerCreateArgs, 
   *
   * @category PGN_130820_FusionMarineTuner
  */
-export interface PGN_130820_FusionMarineTuner extends PGN {
+export interface PGN_130820_FusionMarineTunerInterface extends PGNInterface {
  fields: PGN_130820_FusionMarineTunerFields
 }
 
@@ -17780,7 +17998,8 @@ export interface PGN_130820_FusionMarineTunerFields {
 export const PGN_130820_FusionMarineTunerDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -17806,14 +18025,13 @@ export interface PGN_130820_FusionMarineTunerCreateArgs {
 /**
  * @category PGN_130820_FusionMarineTuner
  */
-export const new130820_FusionMarineTuner = (fields: PGN_130820_FusionMarineTunerCreateArgs, dst:number=255) : PGN_130820_FusionMarineTuner => {
-  return {
-    ...PGN_130820_FusionMarineTunerDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionMarineTunerMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionMarineTuner  extends PGN implements PGN_130820_FusionMarineTunerInterface {
+  fields: PGN_130820_FusionMarineTunerFields
+  
+  constructor(fields: PGN_130820_FusionMarineTunerCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionMarineTunerDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionMarineTunerMatchFields, ...fields }
   }
 }
 /**
@@ -17827,7 +18045,7 @@ export const new130820_FusionMarineTuner = (fields: PGN_130820_FusionMarineTuner
   *
   * @category PGN_130820_FusionMarineSquelch
  */
-export interface PGN_130820_FusionMarineSquelch extends PGN {
+export interface PGN_130820_FusionMarineSquelchInterface extends PGNInterface {
  fields: PGN_130820_FusionMarineSquelchFields
 }
 
@@ -17849,7 +18067,8 @@ export interface PGN_130820_FusionMarineSquelchFields {
 export const PGN_130820_FusionMarineSquelchDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -17873,14 +18092,13 @@ export interface PGN_130820_FusionMarineSquelchCreateArgs {
 /**
  * @category PGN_130820_FusionMarineSquelch
  */
-export const new130820_FusionMarineSquelch = (fields: PGN_130820_FusionMarineSquelchCreateArgs, dst:number=255) : PGN_130820_FusionMarineSquelch => {
-  return {
-    ...PGN_130820_FusionMarineSquelchDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionMarineSquelchMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionMarineSquelch  extends PGN implements PGN_130820_FusionMarineSquelchInterface {
+  fields: PGN_130820_FusionMarineSquelchFields
+  
+  constructor(fields: PGN_130820_FusionMarineSquelchCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionMarineSquelchDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionMarineSquelchMatchFields, ...fields }
   }
 }
 /**
@@ -17894,7 +18112,7 @@ export const new130820_FusionMarineSquelch = (fields: PGN_130820_FusionMarineSqu
   *
   * @category PGN_130820_FusionMarineScanMode
  */
-export interface PGN_130820_FusionMarineScanMode extends PGN {
+export interface PGN_130820_FusionMarineScanModeInterface extends PGNInterface {
  fields: PGN_130820_FusionMarineScanModeFields
 }
 
@@ -17916,7 +18134,8 @@ export interface PGN_130820_FusionMarineScanModeFields {
 export const PGN_130820_FusionMarineScanModeDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -17940,14 +18159,13 @@ export interface PGN_130820_FusionMarineScanModeCreateArgs {
 /**
  * @category PGN_130820_FusionMarineScanMode
  */
-export const new130820_FusionMarineScanMode = (fields: PGN_130820_FusionMarineScanModeCreateArgs, dst:number=255) : PGN_130820_FusionMarineScanMode => {
-  return {
-    ...PGN_130820_FusionMarineScanModeDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionMarineScanModeMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionMarineScanMode  extends PGN implements PGN_130820_FusionMarineScanModeInterface {
+  fields: PGN_130820_FusionMarineScanModeFields
+  
+  constructor(fields: PGN_130820_FusionMarineScanModeCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionMarineScanModeDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionMarineScanModeMatchFields, ...fields }
   }
 }
 /**
@@ -17961,7 +18179,7 @@ export const new130820_FusionMarineScanMode = (fields: PGN_130820_FusionMarineSc
   *
   * @category PGN_130820_FusionMenuItem
  */
-export interface PGN_130820_FusionMenuItem extends PGN {
+export interface PGN_130820_FusionMenuItemInterface extends PGNInterface {
  fields: PGN_130820_FusionMenuItemFields
 }
 
@@ -17986,7 +18204,8 @@ export interface PGN_130820_FusionMenuItemFields {
 export const PGN_130820_FusionMenuItemDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -18013,14 +18232,13 @@ export interface PGN_130820_FusionMenuItemCreateArgs {
 /**
  * @category PGN_130820_FusionMenuItem
  */
-export const new130820_FusionMenuItem = (fields: PGN_130820_FusionMenuItemCreateArgs, dst:number=255) : PGN_130820_FusionMenuItem => {
-  return {
-    ...PGN_130820_FusionMenuItemDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionMenuItemMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionMenuItem  extends PGN implements PGN_130820_FusionMenuItemInterface {
+  fields: PGN_130820_FusionMenuItemFields
+  
+  constructor(fields: PGN_130820_FusionMenuItemCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionMenuItemDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionMenuItemMatchFields, ...fields }
   }
 }
 /**
@@ -18034,7 +18252,7 @@ export const new130820_FusionMenuItem = (fields: PGN_130820_FusionMenuItemCreate
   *
   * @category PGN_130820_FusionAuxGain
  */
-export interface PGN_130820_FusionAuxGain extends PGN {
+export interface PGN_130820_FusionAuxGainInterface extends PGNInterface {
  fields: PGN_130820_FusionAuxGainFields
 }
 
@@ -18056,7 +18274,8 @@ export interface PGN_130820_FusionAuxGainFields {
 export const PGN_130820_FusionAuxGainDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -18080,14 +18299,13 @@ export interface PGN_130820_FusionAuxGainCreateArgs {
 /**
  * @category PGN_130820_FusionAuxGain
  */
-export const new130820_FusionAuxGain = (fields: PGN_130820_FusionAuxGainCreateArgs, dst:number=255) : PGN_130820_FusionAuxGain => {
-  return {
-    ...PGN_130820_FusionAuxGainDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionAuxGainMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionAuxGain  extends PGN implements PGN_130820_FusionAuxGainInterface {
+  fields: PGN_130820_FusionAuxGainFields
+  
+  constructor(fields: PGN_130820_FusionAuxGainCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionAuxGainDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionAuxGainMatchFields, ...fields }
   }
 }
 /**
@@ -18102,7 +18320,7 @@ export const new130820_FusionAuxGain = (fields: PGN_130820_FusionAuxGainCreateAr
   *
   * @category PGN_130820_FusionUsbRepeatStatus
  */
-export interface PGN_130820_FusionUsbRepeatStatus extends PGN {
+export interface PGN_130820_FusionUsbRepeatStatusInterface extends PGNInterface {
  fields: PGN_130820_FusionUsbRepeatStatusFields
 }
 
@@ -18124,7 +18342,8 @@ export interface PGN_130820_FusionUsbRepeatStatusFields {
 export const PGN_130820_FusionUsbRepeatStatusDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -18148,14 +18367,13 @@ export interface PGN_130820_FusionUsbRepeatStatusCreateArgs {
 /**
  * @category PGN_130820_FusionUsbRepeatStatus
  */
-export const new130820_FusionUsbRepeatStatus = (fields: PGN_130820_FusionUsbRepeatStatusCreateArgs, dst:number=255) : PGN_130820_FusionUsbRepeatStatus => {
-  return {
-    ...PGN_130820_FusionUsbRepeatStatusDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionUsbRepeatStatusMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionUsbRepeatStatus  extends PGN implements PGN_130820_FusionUsbRepeatStatusInterface {
+  fields: PGN_130820_FusionUsbRepeatStatusFields
+  
+  constructor(fields: PGN_130820_FusionUsbRepeatStatusCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionUsbRepeatStatusDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionUsbRepeatStatusMatchFields, ...fields }
   }
 }
 /**
@@ -18169,7 +18387,7 @@ export const new130820_FusionUsbRepeatStatus = (fields: PGN_130820_FusionUsbRepe
   *
   * @category PGN_130820_FusionSetting
  */
-export interface PGN_130820_FusionSetting extends PGN {
+export interface PGN_130820_FusionSettingInterface extends PGNInterface {
  fields: PGN_130820_FusionSettingFields
 }
 
@@ -18191,7 +18409,8 @@ export interface PGN_130820_FusionSettingFields {
 export const PGN_130820_FusionSettingDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -18215,14 +18434,13 @@ export interface PGN_130820_FusionSettingCreateArgs {
 /**
  * @category PGN_130820_FusionSetting
  */
-export const new130820_FusionSetting = (fields: PGN_130820_FusionSettingCreateArgs, dst:number=255) : PGN_130820_FusionSetting => {
-  return {
-    ...PGN_130820_FusionSettingDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionSettingMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionSetting  extends PGN implements PGN_130820_FusionSettingInterface {
+  fields: PGN_130820_FusionSettingFields
+  
+  constructor(fields: PGN_130820_FusionSettingCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionSettingDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionSettingMatchFields, ...fields }
   }
 }
 /**
@@ -18236,7 +18454,7 @@ export const new130820_FusionSetting = (fields: PGN_130820_FusionSettingCreateAr
   *
   * @category PGN_130820_FusionSettings
  */
-export interface PGN_130820_FusionSettings extends PGN {
+export interface PGN_130820_FusionSettingsInterface extends PGNInterface {
  fields: PGN_130820_FusionSettingsFields
 }
 
@@ -18261,7 +18479,8 @@ export interface PGN_130820_FusionSettingsFields {
 export const PGN_130820_FusionSettingsDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -18288,14 +18507,13 @@ export interface PGN_130820_FusionSettingsCreateArgs {
 /**
  * @category PGN_130820_FusionSettings
  */
-export const new130820_FusionSettings = (fields: PGN_130820_FusionSettingsCreateArgs, dst:number=255) : PGN_130820_FusionSettings => {
-  return {
-    ...PGN_130820_FusionSettingsDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionSettingsMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionSettings  extends PGN implements PGN_130820_FusionSettingsInterface {
+  fields: PGN_130820_FusionSettingsFields
+  
+  constructor(fields: PGN_130820_FusionSettingsCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionSettingsDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionSettingsMatchFields, ...fields }
   }
 }
 /**
@@ -18309,7 +18527,7 @@ export const new130820_FusionSettings = (fields: PGN_130820_FusionSettingsCreate
   *
   * @category PGN_130820_FusionMute
  */
-export interface PGN_130820_FusionMute extends PGN {
+export interface PGN_130820_FusionMuteInterface extends PGNInterface {
  fields: PGN_130820_FusionMuteFields
 }
 
@@ -18330,7 +18548,8 @@ export interface PGN_130820_FusionMuteFields {
 export const PGN_130820_FusionMuteDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -18353,14 +18572,13 @@ export interface PGN_130820_FusionMuteCreateArgs {
 /**
  * @category PGN_130820_FusionMute
  */
-export const new130820_FusionMute = (fields: PGN_130820_FusionMuteCreateArgs, dst:number=255) : PGN_130820_FusionMute => {
-  return {
-    ...PGN_130820_FusionMuteDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionMuteMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionMute  extends PGN implements PGN_130820_FusionMuteInterface {
+  fields: PGN_130820_FusionMuteFields
+  
+  constructor(fields: PGN_130820_FusionMuteCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionMuteDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionMuteMatchFields, ...fields }
   }
 }
 /**
@@ -18374,7 +18592,7 @@ export const new130820_FusionMute = (fields: PGN_130820_FusionMuteCreateArgs, ds
   *
   * @category PGN_130820_FusionBalance
  */
-export interface PGN_130820_FusionBalance extends PGN {
+export interface PGN_130820_FusionBalanceInterface extends PGNInterface {
  fields: PGN_130820_FusionBalanceFields
 }
 
@@ -18396,7 +18614,8 @@ export interface PGN_130820_FusionBalanceFields {
 export const PGN_130820_FusionBalanceDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -18420,14 +18639,13 @@ export interface PGN_130820_FusionBalanceCreateArgs {
 /**
  * @category PGN_130820_FusionBalance
  */
-export const new130820_FusionBalance = (fields: PGN_130820_FusionBalanceCreateArgs, dst:number=255) : PGN_130820_FusionBalance => {
-  return {
-    ...PGN_130820_FusionBalanceDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionBalanceMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionBalance  extends PGN implements PGN_130820_FusionBalanceInterface {
+  fields: PGN_130820_FusionBalanceFields
+  
+  constructor(fields: PGN_130820_FusionBalanceCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionBalanceDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionBalanceMatchFields, ...fields }
   }
 }
 /**
@@ -18441,7 +18659,7 @@ export const new130820_FusionBalance = (fields: PGN_130820_FusionBalanceCreateAr
   *
   * @category PGN_130820_FusionLowPassFilter
  */
-export interface PGN_130820_FusionLowPassFilter extends PGN {
+export interface PGN_130820_FusionLowPassFilterInterface extends PGNInterface {
  fields: PGN_130820_FusionLowPassFilterFields
 }
 
@@ -18463,7 +18681,8 @@ export interface PGN_130820_FusionLowPassFilterFields {
 export const PGN_130820_FusionLowPassFilterDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -18487,14 +18706,13 @@ export interface PGN_130820_FusionLowPassFilterCreateArgs {
 /**
  * @category PGN_130820_FusionLowPassFilter
  */
-export const new130820_FusionLowPassFilter = (fields: PGN_130820_FusionLowPassFilterCreateArgs, dst:number=255) : PGN_130820_FusionLowPassFilter => {
-  return {
-    ...PGN_130820_FusionLowPassFilterDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionLowPassFilterMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionLowPassFilter  extends PGN implements PGN_130820_FusionLowPassFilterInterface {
+  fields: PGN_130820_FusionLowPassFilterFields
+  
+  constructor(fields: PGN_130820_FusionLowPassFilterCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionLowPassFilterDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionLowPassFilterMatchFields, ...fields }
   }
 }
 /**
@@ -18508,7 +18726,7 @@ export const new130820_FusionLowPassFilter = (fields: PGN_130820_FusionLowPassFi
   *
   * @category PGN_130820_FusionSublevels
  */
-export interface PGN_130820_FusionSublevels extends PGN {
+export interface PGN_130820_FusionSublevelsInterface extends PGNInterface {
  fields: PGN_130820_FusionSublevelsFields
 }
 
@@ -18532,7 +18750,8 @@ export interface PGN_130820_FusionSublevelsFields {
 export const PGN_130820_FusionSublevelsDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -18558,14 +18777,13 @@ export interface PGN_130820_FusionSublevelsCreateArgs {
 /**
  * @category PGN_130820_FusionSublevels
  */
-export const new130820_FusionSublevels = (fields: PGN_130820_FusionSublevelsCreateArgs, dst:number=255) : PGN_130820_FusionSublevels => {
-  return {
-    ...PGN_130820_FusionSublevelsDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionSublevelsMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionSublevels  extends PGN implements PGN_130820_FusionSublevelsInterface {
+  fields: PGN_130820_FusionSublevelsFields
+  
+  constructor(fields: PGN_130820_FusionSublevelsCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionSublevelsDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionSublevelsMatchFields, ...fields }
   }
 }
 /**
@@ -18579,7 +18797,7 @@ export const new130820_FusionSublevels = (fields: PGN_130820_FusionSublevelsCrea
   *
   * @category PGN_130820_FusionEq
  */
-export interface PGN_130820_FusionEq extends PGN {
+export interface PGN_130820_FusionEqInterface extends PGNInterface {
  fields: PGN_130820_FusionEqFields
 }
 
@@ -18603,7 +18821,8 @@ export interface PGN_130820_FusionEqFields {
 export const PGN_130820_FusionEqDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -18629,14 +18848,13 @@ export interface PGN_130820_FusionEqCreateArgs {
 /**
  * @category PGN_130820_FusionEq
  */
-export const new130820_FusionEq = (fields: PGN_130820_FusionEqCreateArgs, dst:number=255) : PGN_130820_FusionEq => {
-  return {
-    ...PGN_130820_FusionEqDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionEqMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionEq  extends PGN implements PGN_130820_FusionEqInterface {
+  fields: PGN_130820_FusionEqFields
+  
+  constructor(fields: PGN_130820_FusionEqCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionEqDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionEqMatchFields, ...fields }
   }
 }
 /**
@@ -18650,7 +18868,7 @@ export const new130820_FusionEq = (fields: PGN_130820_FusionEqCreateArgs, dst:nu
   *
   * @category PGN_130820_FusionVolumeLimits
  */
-export interface PGN_130820_FusionVolumeLimits extends PGN {
+export interface PGN_130820_FusionVolumeLimitsInterface extends PGNInterface {
  fields: PGN_130820_FusionVolumeLimitsFields
 }
 
@@ -18674,7 +18892,8 @@ export interface PGN_130820_FusionVolumeLimitsFields {
 export const PGN_130820_FusionVolumeLimitsDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -18700,14 +18919,13 @@ export interface PGN_130820_FusionVolumeLimitsCreateArgs {
 /**
  * @category PGN_130820_FusionVolumeLimits
  */
-export const new130820_FusionVolumeLimits = (fields: PGN_130820_FusionVolumeLimitsCreateArgs, dst:number=255) : PGN_130820_FusionVolumeLimits => {
-  return {
-    ...PGN_130820_FusionVolumeLimitsDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionVolumeLimitsMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionVolumeLimits  extends PGN implements PGN_130820_FusionVolumeLimitsInterface {
+  fields: PGN_130820_FusionVolumeLimitsFields
+  
+  constructor(fields: PGN_130820_FusionVolumeLimitsCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionVolumeLimitsDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionVolumeLimitsMatchFields, ...fields }
   }
 }
 /**
@@ -18721,7 +18939,7 @@ export const new130820_FusionVolumeLimits = (fields: PGN_130820_FusionVolumeLimi
   *
   * @category PGN_130820_FusionVolumes
  */
-export interface PGN_130820_FusionVolumes extends PGN {
+export interface PGN_130820_FusionVolumesInterface extends PGNInterface {
  fields: PGN_130820_FusionVolumesFields
 }
 
@@ -18745,7 +18963,8 @@ export interface PGN_130820_FusionVolumesFields {
 export const PGN_130820_FusionVolumesDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -18771,14 +18990,13 @@ export interface PGN_130820_FusionVolumesCreateArgs {
 /**
  * @category PGN_130820_FusionVolumes
  */
-export const new130820_FusionVolumes = (fields: PGN_130820_FusionVolumesCreateArgs, dst:number=255) : PGN_130820_FusionVolumes => {
-  return {
-    ...PGN_130820_FusionVolumesDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionVolumesMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionVolumes  extends PGN implements PGN_130820_FusionVolumesInterface {
+  fields: PGN_130820_FusionVolumesFields
+  
+  constructor(fields: PGN_130820_FusionVolumesCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionVolumesDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionVolumesMatchFields, ...fields }
   }
 }
 /**
@@ -18792,7 +19010,7 @@ export const new130820_FusionVolumes = (fields: PGN_130820_FusionVolumesCreateAr
   *
   * @category PGN_130820_FusionCapabilities
  */
-export interface PGN_130820_FusionCapabilities extends PGN {
+export interface PGN_130820_FusionCapabilitiesInterface extends PGNInterface {
  fields: PGN_130820_FusionCapabilitiesFields
 }
 
@@ -18817,7 +19035,8 @@ export interface PGN_130820_FusionCapabilitiesFields {
 export const PGN_130820_FusionCapabilitiesDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -18844,14 +19063,13 @@ export interface PGN_130820_FusionCapabilitiesCreateArgs {
 /**
  * @category PGN_130820_FusionCapabilities
  */
-export const new130820_FusionCapabilities = (fields: PGN_130820_FusionCapabilitiesCreateArgs, dst:number=255) : PGN_130820_FusionCapabilities => {
-  return {
-    ...PGN_130820_FusionCapabilitiesDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionCapabilitiesMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionCapabilities  extends PGN implements PGN_130820_FusionCapabilitiesInterface {
+  fields: PGN_130820_FusionCapabilitiesFields
+  
+  constructor(fields: PGN_130820_FusionCapabilitiesCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionCapabilitiesDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionCapabilitiesMatchFields, ...fields }
   }
 }
 /**
@@ -18865,7 +19083,7 @@ export const new130820_FusionCapabilities = (fields: PGN_130820_FusionCapabiliti
   *
   * @category PGN_130820_FusionLineLevelControl
  */
-export interface PGN_130820_FusionLineLevelControl extends PGN {
+export interface PGN_130820_FusionLineLevelControlInterface extends PGNInterface {
  fields: PGN_130820_FusionLineLevelControlFields
 }
 
@@ -18887,7 +19105,8 @@ export interface PGN_130820_FusionLineLevelControlFields {
 export const PGN_130820_FusionLineLevelControlDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -18911,14 +19130,13 @@ export interface PGN_130820_FusionLineLevelControlCreateArgs {
 /**
  * @category PGN_130820_FusionLineLevelControl
  */
-export const new130820_FusionLineLevelControl = (fields: PGN_130820_FusionLineLevelControlCreateArgs, dst:number=255) : PGN_130820_FusionLineLevelControl => {
-  return {
-    ...PGN_130820_FusionLineLevelControlDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionLineLevelControlMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionLineLevelControl  extends PGN implements PGN_130820_FusionLineLevelControlInterface {
+  fields: PGN_130820_FusionLineLevelControlFields
+  
+  constructor(fields: PGN_130820_FusionLineLevelControlCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionLineLevelControlDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionLineLevelControlMatchFields, ...fields }
   }
 }
 /**
@@ -18932,7 +19150,7 @@ export const new130820_FusionLineLevelControl = (fields: PGN_130820_FusionLineLe
   *
   * @category PGN_130820_FusionPowerState
  */
-export interface PGN_130820_FusionPowerState extends PGN {
+export interface PGN_130820_FusionPowerStateInterface extends PGNInterface {
  fields: PGN_130820_FusionPowerStateFields
 }
 
@@ -18953,7 +19171,8 @@ export interface PGN_130820_FusionPowerStateFields {
 export const PGN_130820_FusionPowerStateDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -18976,14 +19195,13 @@ export interface PGN_130820_FusionPowerStateCreateArgs {
 /**
  * @category PGN_130820_FusionPowerState
  */
-export const new130820_FusionPowerState = (fields: PGN_130820_FusionPowerStateCreateArgs, dst:number=255) : PGN_130820_FusionPowerState => {
-  return {
-    ...PGN_130820_FusionPowerStateDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionPowerStateMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionPowerState  extends PGN implements PGN_130820_FusionPowerStateInterface {
+  fields: PGN_130820_FusionPowerStateFields
+  
+  constructor(fields: PGN_130820_FusionPowerStateCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionPowerStateDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionPowerStateMatchFields, ...fields }
   }
 }
 /**
@@ -18997,7 +19215,7 @@ export const new130820_FusionPowerState = (fields: PGN_130820_FusionPowerStateCr
   *
   * @category PGN_130820_FusionSiriusxm
  */
-export interface PGN_130820_FusionSiriusxm extends PGN {
+export interface PGN_130820_FusionSiriusxmInterface extends PGNInterface {
  fields: PGN_130820_FusionSiriusxmFields
 }
 
@@ -19022,7 +19240,8 @@ export interface PGN_130820_FusionSiriusxmFields {
 export const PGN_130820_FusionSiriusxmDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -19049,14 +19268,13 @@ export interface PGN_130820_FusionSiriusxmCreateArgs {
 /**
  * @category PGN_130820_FusionSiriusxm
  */
-export const new130820_FusionSiriusxm = (fields: PGN_130820_FusionSiriusxmCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxm => {
-  return {
-    ...PGN_130820_FusionSiriusxmDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionSiriusxmMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionSiriusxm  extends PGN implements PGN_130820_FusionSiriusxmInterface {
+  fields: PGN_130820_FusionSiriusxmFields
+  
+  constructor(fields: PGN_130820_FusionSiriusxmCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionSiriusxmDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionSiriusxmMatchFields, ...fields }
   }
 }
 /**
@@ -19070,7 +19288,7 @@ export const new130820_FusionSiriusxm = (fields: PGN_130820_FusionSiriusxmCreate
   *
   * @category PGN_130820_FusionSiriusxmChannel
  */
-export interface PGN_130820_FusionSiriusxmChannel extends PGN {
+export interface PGN_130820_FusionSiriusxmChannelInterface extends PGNInterface {
  fields: PGN_130820_FusionSiriusxmChannelFields
 }
 
@@ -19093,7 +19311,8 @@ export interface PGN_130820_FusionSiriusxmChannelFields {
 export const PGN_130820_FusionSiriusxmChannelDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -19118,14 +19337,13 @@ export interface PGN_130820_FusionSiriusxmChannelCreateArgs {
 /**
  * @category PGN_130820_FusionSiriusxmChannel
  */
-export const new130820_FusionSiriusxmChannel = (fields: PGN_130820_FusionSiriusxmChannelCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmChannel => {
-  return {
-    ...PGN_130820_FusionSiriusxmChannelDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionSiriusxmChannelMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionSiriusxmChannel  extends PGN implements PGN_130820_FusionSiriusxmChannelInterface {
+  fields: PGN_130820_FusionSiriusxmChannelFields
+  
+  constructor(fields: PGN_130820_FusionSiriusxmChannelCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionSiriusxmChannelDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionSiriusxmChannelMatchFields, ...fields }
   }
 }
 /**
@@ -19139,7 +19357,7 @@ export const new130820_FusionSiriusxmChannel = (fields: PGN_130820_FusionSiriusx
   *
   * @category PGN_130820_FusionSiriusxmTitle
  */
-export interface PGN_130820_FusionSiriusxmTitle extends PGN {
+export interface PGN_130820_FusionSiriusxmTitleInterface extends PGNInterface {
  fields: PGN_130820_FusionSiriusxmTitleFields
 }
 
@@ -19162,7 +19380,8 @@ export interface PGN_130820_FusionSiriusxmTitleFields {
 export const PGN_130820_FusionSiriusxmTitleDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -19187,14 +19406,13 @@ export interface PGN_130820_FusionSiriusxmTitleCreateArgs {
 /**
  * @category PGN_130820_FusionSiriusxmTitle
  */
-export const new130820_FusionSiriusxmTitle = (fields: PGN_130820_FusionSiriusxmTitleCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmTitle => {
-  return {
-    ...PGN_130820_FusionSiriusxmTitleDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionSiriusxmTitleMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionSiriusxmTitle  extends PGN implements PGN_130820_FusionSiriusxmTitleInterface {
+  fields: PGN_130820_FusionSiriusxmTitleFields
+  
+  constructor(fields: PGN_130820_FusionSiriusxmTitleCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionSiriusxmTitleDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionSiriusxmTitleMatchFields, ...fields }
   }
 }
 /**
@@ -19208,7 +19426,7 @@ export const new130820_FusionSiriusxmTitle = (fields: PGN_130820_FusionSiriusxmT
   *
   * @category PGN_130820_FusionSiriusxmArtist
  */
-export interface PGN_130820_FusionSiriusxmArtist extends PGN {
+export interface PGN_130820_FusionSiriusxmArtistInterface extends PGNInterface {
  fields: PGN_130820_FusionSiriusxmArtistFields
 }
 
@@ -19231,7 +19449,8 @@ export interface PGN_130820_FusionSiriusxmArtistFields {
 export const PGN_130820_FusionSiriusxmArtistDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -19256,14 +19475,13 @@ export interface PGN_130820_FusionSiriusxmArtistCreateArgs {
 /**
  * @category PGN_130820_FusionSiriusxmArtist
  */
-export const new130820_FusionSiriusxmArtist = (fields: PGN_130820_FusionSiriusxmArtistCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmArtist => {
-  return {
-    ...PGN_130820_FusionSiriusxmArtistDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionSiriusxmArtistMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionSiriusxmArtist  extends PGN implements PGN_130820_FusionSiriusxmArtistInterface {
+  fields: PGN_130820_FusionSiriusxmArtistFields
+  
+  constructor(fields: PGN_130820_FusionSiriusxmArtistCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionSiriusxmArtistDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionSiriusxmArtistMatchFields, ...fields }
   }
 }
 /**
@@ -19277,7 +19495,7 @@ export const new130820_FusionSiriusxmArtist = (fields: PGN_130820_FusionSiriusxm
   *
   * @category PGN_130820_FusionSiriusxmContentInfo
  */
-export interface PGN_130820_FusionSiriusxmContentInfo extends PGN {
+export interface PGN_130820_FusionSiriusxmContentInfoInterface extends PGNInterface {
  fields: PGN_130820_FusionSiriusxmContentInfoFields
 }
 
@@ -19300,7 +19518,8 @@ export interface PGN_130820_FusionSiriusxmContentInfoFields {
 export const PGN_130820_FusionSiriusxmContentInfoDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -19325,14 +19544,13 @@ export interface PGN_130820_FusionSiriusxmContentInfoCreateArgs {
 /**
  * @category PGN_130820_FusionSiriusxmContentInfo
  */
-export const new130820_FusionSiriusxmContentInfo = (fields: PGN_130820_FusionSiriusxmContentInfoCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmContentInfo => {
-  return {
-    ...PGN_130820_FusionSiriusxmContentInfoDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionSiriusxmContentInfoMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionSiriusxmContentInfo  extends PGN implements PGN_130820_FusionSiriusxmContentInfoInterface {
+  fields: PGN_130820_FusionSiriusxmContentInfoFields
+  
+  constructor(fields: PGN_130820_FusionSiriusxmContentInfoCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionSiriusxmContentInfoDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionSiriusxmContentInfoMatchFields, ...fields }
   }
 }
 /**
@@ -19346,7 +19564,7 @@ export const new130820_FusionSiriusxmContentInfo = (fields: PGN_130820_FusionSir
   *
   * @category PGN_130820_FusionSiriusxmCategory
  */
-export interface PGN_130820_FusionSiriusxmCategory extends PGN {
+export interface PGN_130820_FusionSiriusxmCategoryInterface extends PGNInterface {
  fields: PGN_130820_FusionSiriusxmCategoryFields
 }
 
@@ -19369,7 +19587,8 @@ export interface PGN_130820_FusionSiriusxmCategoryFields {
 export const PGN_130820_FusionSiriusxmCategoryDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -19394,14 +19613,13 @@ export interface PGN_130820_FusionSiriusxmCategoryCreateArgs {
 /**
  * @category PGN_130820_FusionSiriusxmCategory
  */
-export const new130820_FusionSiriusxmCategory = (fields: PGN_130820_FusionSiriusxmCategoryCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmCategory => {
-  return {
-    ...PGN_130820_FusionSiriusxmCategoryDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionSiriusxmCategoryMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionSiriusxmCategory  extends PGN implements PGN_130820_FusionSiriusxmCategoryInterface {
+  fields: PGN_130820_FusionSiriusxmCategoryFields
+  
+  constructor(fields: PGN_130820_FusionSiriusxmCategoryCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionSiriusxmCategoryDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionSiriusxmCategoryMatchFields, ...fields }
   }
 }
 /**
@@ -19415,7 +19633,7 @@ export const new130820_FusionSiriusxmCategory = (fields: PGN_130820_FusionSirius
   *
   * @category PGN_130820_FusionSiriusxmSignal
  */
-export interface PGN_130820_FusionSiriusxmSignal extends PGN {
+export interface PGN_130820_FusionSiriusxmSignalInterface extends PGNInterface {
  fields: PGN_130820_FusionSiriusxmSignalFields
 }
 
@@ -19437,7 +19655,8 @@ export interface PGN_130820_FusionSiriusxmSignalFields {
 export const PGN_130820_FusionSiriusxmSignalDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -19461,14 +19680,13 @@ export interface PGN_130820_FusionSiriusxmSignalCreateArgs {
 /**
  * @category PGN_130820_FusionSiriusxmSignal
  */
-export const new130820_FusionSiriusxmSignal = (fields: PGN_130820_FusionSiriusxmSignalCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmSignal => {
-  return {
-    ...PGN_130820_FusionSiriusxmSignalDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionSiriusxmSignalMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionSiriusxmSignal  extends PGN implements PGN_130820_FusionSiriusxmSignalInterface {
+  fields: PGN_130820_FusionSiriusxmSignalFields
+  
+  constructor(fields: PGN_130820_FusionSiriusxmSignalCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionSiriusxmSignalDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionSiriusxmSignalMatchFields, ...fields }
   }
 }
 /**
@@ -19482,7 +19700,7 @@ export const new130820_FusionSiriusxmSignal = (fields: PGN_130820_FusionSiriusxm
   *
   * @category PGN_130820_FusionSiriusxmPresets
  */
-export interface PGN_130820_FusionSiriusxmPresets extends PGN {
+export interface PGN_130820_FusionSiriusxmPresetsInterface extends PGNInterface {
  fields: PGN_130820_FusionSiriusxmPresetsFields
 }
 
@@ -19505,7 +19723,8 @@ export interface PGN_130820_FusionSiriusxmPresetsFields {
 export const PGN_130820_FusionSiriusxmPresetsDefaults = {
   pgn: 130820,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -19530,14 +19749,13 @@ export interface PGN_130820_FusionSiriusxmPresetsCreateArgs {
 /**
  * @category PGN_130820_FusionSiriusxmPresets
  */
-export const new130820_FusionSiriusxmPresets = (fields: PGN_130820_FusionSiriusxmPresetsCreateArgs, dst:number=255) : PGN_130820_FusionSiriusxmPresets => {
-  return {
-    ...PGN_130820_FusionSiriusxmPresetsDefaults,
-    dst,
-    fields: {
-      ...PGN_130820_FusionSiriusxmPresetsMatchFields,
-      ...fields
-    }
+export class PGN_130820_FusionSiriusxmPresets  extends PGN implements PGN_130820_FusionSiriusxmPresetsInterface {
+  fields: PGN_130820_FusionSiriusxmPresetsFields
+  
+  constructor(fields: PGN_130820_FusionSiriusxmPresetsCreateArgs, dst:number=255) {
+    super(PGN_130820_FusionSiriusxmPresetsDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130820_FusionSiriusxmPresetsMatchFields, ...fields }
   }
 }
 /**
@@ -19550,7 +19768,7 @@ export const new130820_FusionSiriusxmPresets = (fields: PGN_130820_FusionSiriusx
   *
   * @category PGN_130821_NavicoAsciiData
  */
-export interface PGN_130821_NavicoAsciiData extends PGN {
+export interface PGN_130821_NavicoAsciiDataInterface extends PGNInterface {
  fields: PGN_130821_NavicoAsciiDataFields
 }
 
@@ -19571,7 +19789,8 @@ export interface PGN_130821_NavicoAsciiDataFields {
 export const PGN_130821_NavicoAsciiDataDefaults = {
   pgn: 130821,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -19594,14 +19813,13 @@ export interface PGN_130821_NavicoAsciiDataCreateArgs {
 /**
  * @category PGN_130821_NavicoAsciiData
  */
-export const new130821_NavicoAsciiData = (fields: PGN_130821_NavicoAsciiDataCreateArgs, dst:number=255) : PGN_130821_NavicoAsciiData => {
-  return {
-    ...PGN_130821_NavicoAsciiDataDefaults,
-    dst,
-    fields: {
-      ...PGN_130821_NavicoAsciiDataMatchFields,
-      ...fields
-    }
+export class PGN_130821_NavicoAsciiData  extends PGN implements PGN_130821_NavicoAsciiDataInterface {
+  fields: PGN_130821_NavicoAsciiDataFields
+  
+  constructor(fields: PGN_130821_NavicoAsciiDataCreateArgs, dst:number=255) {
+    super(PGN_130821_NavicoAsciiDataDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130821_NavicoAsciiDataMatchFields, ...fields }
   }
 }
 /**
@@ -19614,7 +19832,7 @@ export const new130821_NavicoAsciiData = (fields: PGN_130821_NavicoAsciiDataCrea
   *
   * @category PGN_130821_FurunoUnknown130821
  */
-export interface PGN_130821_FurunoUnknown130821 extends PGN {
+export interface PGN_130821_FurunoUnknown130821Interface extends PGNInterface {
  fields: PGN_130821_FurunoUnknown130821Fields
 }
 
@@ -19643,7 +19861,8 @@ export interface PGN_130821_FurunoUnknown130821Fields {
 export const PGN_130821_FurunoUnknown130821Defaults = {
   pgn: 130821,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -19674,14 +19893,13 @@ export interface PGN_130821_FurunoUnknown130821CreateArgs {
 /**
  * @category PGN_130821_FurunoUnknown130821
  */
-export const new130821_FurunoUnknown130821 = (fields: PGN_130821_FurunoUnknown130821CreateArgs, dst:number=255) : PGN_130821_FurunoUnknown130821 => {
-  return {
-    ...PGN_130821_FurunoUnknown130821Defaults,
-    dst,
-    fields: {
-      ...PGN_130821_FurunoUnknown130821MatchFields,
-      ...fields
-    }
+export class PGN_130821_FurunoUnknown130821  extends PGN implements PGN_130821_FurunoUnknown130821Interface {
+  fields: PGN_130821_FurunoUnknown130821Fields
+  
+  constructor(fields: PGN_130821_FurunoUnknown130821CreateArgs, dst:number=255) {
+    super(PGN_130821_FurunoUnknown130821Defaults)
+    this.src = dst
+    this.fields = { ...PGN_130821_FurunoUnknown130821MatchFields, ...fields }
   }
 }
 /**
@@ -19691,7 +19909,7 @@ export const new130821_FurunoUnknown130821 = (fields: PGN_130821_FurunoUnknown13
   *
   * @category PGN_130822
  */
-export interface PGN_130822 extends PGN {
+export interface PGN_130822Interface extends PGNInterface {
  fields: PGN_130822Fields
 }
 
@@ -19711,19 +19929,20 @@ export interface PGN_130822Fields {
 export const PGN_130822Defaults = {
   pgn: 130822,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130822
  */
-export const new130822 = (fields: PGN_130822Fields, dst:number=255) : PGN_130822 => {
-  return {
-    ...PGN_130822Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130822  extends PGN implements PGN_130822Interface {
+  fields: PGN_130822Fields
+  
+  constructor(fields: PGN_130822Fields, dst:number=255) {
+    super(PGN_130822Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -19733,7 +19952,7 @@ export const new130822 = (fields: PGN_130822Fields, dst:number=255) : PGN_130822
   *
   * @category PGN_130823
  */
-export interface PGN_130823 extends PGN {
+export interface PGN_130823Interface extends PGNInterface {
  fields: PGN_130823Fields
 }
 
@@ -19757,19 +19976,20 @@ export interface PGN_130823Fields {
 export const PGN_130823Defaults = {
   pgn: 130823,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130823
  */
-export const new130823 = (fields: PGN_130823Fields, dst:number=255) : PGN_130823 => {
-  return {
-    ...PGN_130823Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130823  extends PGN implements PGN_130823Interface {
+  fields: PGN_130823Fields
+  
+  constructor(fields: PGN_130823Fields, dst:number=255) {
+    super(PGN_130823Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -19784,7 +20004,7 @@ export const new130823 = (fields: PGN_130823Fields, dst:number=255) : PGN_130823
   *
   * @category PGN_130824_BGkeyValueData
  */
-export interface PGN_130824_BGkeyValueData extends PGN {
+export interface PGN_130824_BGkeyValueDataInterface extends PGNInterface {
  fields: PGN_130824_BGkeyValueDataFields
 }
 
@@ -19808,7 +20028,8 @@ export interface PGN_130824_BGkeyValueDataFields {
 export const PGN_130824_BGkeyValueDataDefaults = {
   pgn: 130824,
   dst: 255,
-  prio: 2
+  prio: 2,
+  fields: []
 }
 
 /**
@@ -19834,14 +20055,13 @@ export interface PGN_130824_BGkeyValueDataCreateArgs {
 /**
  * @category PGN_130824_BGkeyValueData
  */
-export const new130824_BGkeyValueData = (fields: PGN_130824_BGkeyValueDataCreateArgs, dst:number=255) : PGN_130824_BGkeyValueData => {
-  return {
-    ...PGN_130824_BGkeyValueDataDefaults,
-    dst,
-    fields: {
-      ...PGN_130824_BGkeyValueDataMatchFields,
-      ...fields
-    }
+export class PGN_130824_BGkeyValueData  extends PGN implements PGN_130824_BGkeyValueDataInterface {
+  fields: PGN_130824_BGkeyValueDataFields
+  
+  constructor(fields: PGN_130824_BGkeyValueDataCreateArgs, dst:number=255) {
+    super(PGN_130824_BGkeyValueDataDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130824_BGkeyValueDataMatchFields, ...fields }
   }
 }
 /**
@@ -19854,7 +20074,7 @@ export const new130824_BGkeyValueData = (fields: PGN_130824_BGkeyValueDataCreate
   *
   * @category PGN_130824_MaretronAnnunciator
  */
-export interface PGN_130824_MaretronAnnunciator extends PGN {
+export interface PGN_130824_MaretronAnnunciatorInterface extends PGNInterface {
  fields: PGN_130824_MaretronAnnunciatorFields
 }
 
@@ -19878,7 +20098,8 @@ export interface PGN_130824_MaretronAnnunciatorFields {
 export const PGN_130824_MaretronAnnunciatorDefaults = {
   pgn: 130824,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
@@ -19904,14 +20125,13 @@ export interface PGN_130824_MaretronAnnunciatorCreateArgs {
 /**
  * @category PGN_130824_MaretronAnnunciator
  */
-export const new130824_MaretronAnnunciator = (fields: PGN_130824_MaretronAnnunciatorCreateArgs, dst:number=255) : PGN_130824_MaretronAnnunciator => {
-  return {
-    ...PGN_130824_MaretronAnnunciatorDefaults,
-    dst,
-    fields: {
-      ...PGN_130824_MaretronAnnunciatorMatchFields,
-      ...fields
-    }
+export class PGN_130824_MaretronAnnunciator  extends PGN implements PGN_130824_MaretronAnnunciatorInterface {
+  fields: PGN_130824_MaretronAnnunciatorFields
+  
+  constructor(fields: PGN_130824_MaretronAnnunciatorCreateArgs, dst:number=255) {
+    super(PGN_130824_MaretronAnnunciatorDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130824_MaretronAnnunciatorMatchFields, ...fields }
   }
 }
 /**
@@ -19921,7 +20141,7 @@ export const new130824_MaretronAnnunciator = (fields: PGN_130824_MaretronAnnunci
   *
   * @category PGN_130825
  */
-export interface PGN_130825 extends PGN {
+export interface PGN_130825Interface extends PGNInterface {
  fields: PGN_130825Fields
 }
 
@@ -19941,19 +20161,20 @@ export interface PGN_130825Fields {
 export const PGN_130825Defaults = {
   pgn: 130825,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130825
  */
-export const new130825 = (fields: PGN_130825Fields, dst:number=255) : PGN_130825 => {
-  return {
-    ...PGN_130825Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130825  extends PGN implements PGN_130825Interface {
+  fields: PGN_130825Fields
+  
+  constructor(fields: PGN_130825Fields, dst:number=255) {
+    super(PGN_130825Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -19963,7 +20184,7 @@ export const new130825 = (fields: PGN_130825Fields, dst:number=255) : PGN_130825
   *
   * @category PGN_130827
  */
-export interface PGN_130827 extends PGN {
+export interface PGN_130827Interface extends PGNInterface {
  fields: PGN_130827Fields
 }
 
@@ -19988,19 +20209,20 @@ export interface PGN_130827Fields {
 export const PGN_130827Defaults = {
   pgn: 130827,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130827
  */
-export const new130827 = (fields: PGN_130827Fields, dst:number=255) : PGN_130827 => {
-  return {
-    ...PGN_130827Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130827  extends PGN implements PGN_130827Interface {
+  fields: PGN_130827Fields
+  
+  constructor(fields: PGN_130827Fields, dst:number=255) {
+    super(PGN_130827Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -20010,7 +20232,7 @@ export const new130827 = (fields: PGN_130827Fields, dst:number=255) : PGN_130827
   *
   * @category PGN_130828
  */
-export interface PGN_130828 extends PGN {
+export interface PGN_130828Interface extends PGNInterface {
  fields: PGN_130828Fields
 }
 
@@ -20029,19 +20251,20 @@ export interface PGN_130828Fields {
 export const PGN_130828Defaults = {
   pgn: 130828,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130828
  */
-export const new130828 = (fields: PGN_130828Fields, dst:number=255) : PGN_130828 => {
-  return {
-    ...PGN_130828Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130828  extends PGN implements PGN_130828Interface {
+  fields: PGN_130828Fields
+  
+  constructor(fields: PGN_130828Fields, dst:number=255) {
+    super(PGN_130828Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -20051,7 +20274,7 @@ export const new130828 = (fields: PGN_130828Fields, dst:number=255) : PGN_130828
   *
   * @category PGN_130831
  */
-export interface PGN_130831 extends PGN {
+export interface PGN_130831Interface extends PGNInterface {
  fields: PGN_130831Fields
 }
 
@@ -20070,19 +20293,20 @@ export interface PGN_130831Fields {
 export const PGN_130831Defaults = {
   pgn: 130831,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130831
  */
-export const new130831 = (fields: PGN_130831Fields, dst:number=255) : PGN_130831 => {
-  return {
-    ...PGN_130831Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130831  extends PGN implements PGN_130831Interface {
+  fields: PGN_130831Fields
+  
+  constructor(fields: PGN_130831Fields, dst:number=255) {
+    super(PGN_130831Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -20092,7 +20316,7 @@ export const new130831 = (fields: PGN_130831Fields, dst:number=255) : PGN_130831
   *
   * @category PGN_130832
  */
-export interface PGN_130832 extends PGN {
+export interface PGN_130832Interface extends PGNInterface {
  fields: PGN_130832Fields
 }
 
@@ -20111,19 +20335,20 @@ export interface PGN_130832Fields {
 export const PGN_130832Defaults = {
   pgn: 130832,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130832
  */
-export const new130832 = (fields: PGN_130832Fields, dst:number=255) : PGN_130832 => {
-  return {
-    ...PGN_130832Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130832  extends PGN implements PGN_130832Interface {
+  fields: PGN_130832Fields
+  
+  constructor(fields: PGN_130832Fields, dst:number=255) {
+    super(PGN_130832Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -20133,7 +20358,7 @@ export const new130832 = (fields: PGN_130832Fields, dst:number=255) : PGN_130832
   *
   * @category PGN_130833
  */
-export interface PGN_130833 extends PGN {
+export interface PGN_130833Interface extends PGNInterface {
  fields: PGN_130833Fields
 }
 
@@ -20158,19 +20383,20 @@ export interface PGN_130833Fields {
 export const PGN_130833Defaults = {
   pgn: 130833,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130833
  */
-export const new130833 = (fields: PGN_130833Fields, dst:number=255) : PGN_130833 => {
-  return {
-    ...PGN_130833Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130833  extends PGN implements PGN_130833Interface {
+  fields: PGN_130833Fields
+  
+  constructor(fields: PGN_130833Fields, dst:number=255) {
+    super(PGN_130833Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -20180,7 +20406,7 @@ export const new130833 = (fields: PGN_130833Fields, dst:number=255) : PGN_130833
   *
   * @category PGN_130834
  */
-export interface PGN_130834 extends PGN {
+export interface PGN_130834Interface extends PGNInterface {
  fields: PGN_130834Fields
 }
 
@@ -20199,19 +20425,20 @@ export interface PGN_130834Fields {
 export const PGN_130834Defaults = {
   pgn: 130834,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130834
  */
-export const new130834 = (fields: PGN_130834Fields, dst:number=255) : PGN_130834 => {
-  return {
-    ...PGN_130834Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130834  extends PGN implements PGN_130834Interface {
+  fields: PGN_130834Fields
+  
+  constructor(fields: PGN_130834Fields, dst:number=255) {
+    super(PGN_130834Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -20221,7 +20448,7 @@ export const new130834 = (fields: PGN_130834Fields, dst:number=255) : PGN_130834
   *
   * @category PGN_130835
  */
-export interface PGN_130835 extends PGN {
+export interface PGN_130835Interface extends PGNInterface {
  fields: PGN_130835Fields
 }
 
@@ -20240,19 +20467,20 @@ export interface PGN_130835Fields {
 export const PGN_130835Defaults = {
   pgn: 130835,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130835
  */
-export const new130835 = (fields: PGN_130835Fields, dst:number=255) : PGN_130835 => {
-  return {
-    ...PGN_130835Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130835  extends PGN implements PGN_130835Interface {
+  fields: PGN_130835Fields
+  
+  constructor(fields: PGN_130835Fields, dst:number=255) {
+    super(PGN_130835Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -20265,7 +20493,7 @@ export const new130835 = (fields: PGN_130835Fields, dst:number=255) : PGN_130835
   *
   * @category PGN_130836_SimnetFluidLevelSensorConfiguration
  */
-export interface PGN_130836_SimnetFluidLevelSensorConfiguration extends PGN {
+export interface PGN_130836_SimnetFluidLevelSensorConfigurationInterface extends PGNInterface {
  fields: PGN_130836_SimnetFluidLevelSensorConfigurationFields
 }
 
@@ -20293,7 +20521,8 @@ export interface PGN_130836_SimnetFluidLevelSensorConfigurationFields {
 export const PGN_130836_SimnetFluidLevelSensorConfigurationDefaults = {
   pgn: 130836,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -20323,14 +20552,13 @@ export interface PGN_130836_SimnetFluidLevelSensorConfigurationCreateArgs {
 /**
  * @category PGN_130836_SimnetFluidLevelSensorConfiguration
  */
-export const new130836_SimnetFluidLevelSensorConfiguration = (fields: PGN_130836_SimnetFluidLevelSensorConfigurationCreateArgs, dst:number=255) : PGN_130836_SimnetFluidLevelSensorConfiguration => {
-  return {
-    ...PGN_130836_SimnetFluidLevelSensorConfigurationDefaults,
-    dst,
-    fields: {
-      ...PGN_130836_SimnetFluidLevelSensorConfigurationMatchFields,
-      ...fields
-    }
+export class PGN_130836_SimnetFluidLevelSensorConfiguration  extends PGN implements PGN_130836_SimnetFluidLevelSensorConfigurationInterface {
+  fields: PGN_130836_SimnetFluidLevelSensorConfigurationFields
+  
+  constructor(fields: PGN_130836_SimnetFluidLevelSensorConfigurationCreateArgs, dst:number=255) {
+    super(PGN_130836_SimnetFluidLevelSensorConfigurationDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130836_SimnetFluidLevelSensorConfigurationMatchFields, ...fields }
   }
 }
 /**
@@ -20343,7 +20571,7 @@ export const new130836_SimnetFluidLevelSensorConfiguration = (fields: PGN_130836
   *
   * @category PGN_130836_MaretronSwitchStatusCounter
  */
-export interface PGN_130836_MaretronSwitchStatusCounter extends PGN {
+export interface PGN_130836_MaretronSwitchStatusCounterInterface extends PGNInterface {
  fields: PGN_130836_MaretronSwitchStatusCounterFields
 }
 
@@ -20371,7 +20599,8 @@ export interface PGN_130836_MaretronSwitchStatusCounterFields {
 export const PGN_130836_MaretronSwitchStatusCounterDefaults = {
   pgn: 130836,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
@@ -20401,14 +20630,13 @@ export interface PGN_130836_MaretronSwitchStatusCounterCreateArgs {
 /**
  * @category PGN_130836_MaretronSwitchStatusCounter
  */
-export const new130836_MaretronSwitchStatusCounter = (fields: PGN_130836_MaretronSwitchStatusCounterCreateArgs, dst:number=255) : PGN_130836_MaretronSwitchStatusCounter => {
-  return {
-    ...PGN_130836_MaretronSwitchStatusCounterDefaults,
-    dst,
-    fields: {
-      ...PGN_130836_MaretronSwitchStatusCounterMatchFields,
-      ...fields
-    }
+export class PGN_130836_MaretronSwitchStatusCounter  extends PGN implements PGN_130836_MaretronSwitchStatusCounterInterface {
+  fields: PGN_130836_MaretronSwitchStatusCounterFields
+  
+  constructor(fields: PGN_130836_MaretronSwitchStatusCounterCreateArgs, dst:number=255) {
+    super(PGN_130836_MaretronSwitchStatusCounterDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130836_MaretronSwitchStatusCounterMatchFields, ...fields }
   }
 }
 /**
@@ -20421,7 +20649,7 @@ export const new130836_MaretronSwitchStatusCounter = (fields: PGN_130836_Maretro
   *
   * @category PGN_130837_SimnetFuelFlowTurbineConfiguration
  */
-export interface PGN_130837_SimnetFuelFlowTurbineConfiguration extends PGN {
+export interface PGN_130837_SimnetFuelFlowTurbineConfigurationInterface extends PGNInterface {
  fields: PGN_130837_SimnetFuelFlowTurbineConfigurationFields
 }
 
@@ -20440,7 +20668,8 @@ export interface PGN_130837_SimnetFuelFlowTurbineConfigurationFields {
 export const PGN_130837_SimnetFuelFlowTurbineConfigurationDefaults = {
   pgn: 130837,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -20461,14 +20690,13 @@ export interface PGN_130837_SimnetFuelFlowTurbineConfigurationCreateArgs {
 /**
  * @category PGN_130837_SimnetFuelFlowTurbineConfiguration
  */
-export const new130837_SimnetFuelFlowTurbineConfiguration = (fields: PGN_130837_SimnetFuelFlowTurbineConfigurationCreateArgs, dst:number=255) : PGN_130837_SimnetFuelFlowTurbineConfiguration => {
-  return {
-    ...PGN_130837_SimnetFuelFlowTurbineConfigurationDefaults,
-    dst,
-    fields: {
-      ...PGN_130837_SimnetFuelFlowTurbineConfigurationMatchFields,
-      ...fields
-    }
+export class PGN_130837_SimnetFuelFlowTurbineConfiguration  extends PGN implements PGN_130837_SimnetFuelFlowTurbineConfigurationInterface {
+  fields: PGN_130837_SimnetFuelFlowTurbineConfigurationFields
+  
+  constructor(fields: PGN_130837_SimnetFuelFlowTurbineConfigurationCreateArgs, dst:number=255) {
+    super(PGN_130837_SimnetFuelFlowTurbineConfigurationDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130837_SimnetFuelFlowTurbineConfigurationMatchFields, ...fields }
   }
 }
 /**
@@ -20481,7 +20709,7 @@ export const new130837_SimnetFuelFlowTurbineConfiguration = (fields: PGN_130837_
   *
   * @category PGN_130837_MaretronSwitchStatusTimer
  */
-export interface PGN_130837_MaretronSwitchStatusTimer extends PGN {
+export interface PGN_130837_MaretronSwitchStatusTimerInterface extends PGNInterface {
  fields: PGN_130837_MaretronSwitchStatusTimerFields
 }
 
@@ -20509,7 +20737,8 @@ export interface PGN_130837_MaretronSwitchStatusTimerFields {
 export const PGN_130837_MaretronSwitchStatusTimerDefaults = {
   pgn: 130837,
   dst: 255,
-  prio: 6
+  prio: 6,
+  fields: []
 }
 
 /**
@@ -20539,14 +20768,13 @@ export interface PGN_130837_MaretronSwitchStatusTimerCreateArgs {
 /**
  * @category PGN_130837_MaretronSwitchStatusTimer
  */
-export const new130837_MaretronSwitchStatusTimer = (fields: PGN_130837_MaretronSwitchStatusTimerCreateArgs, dst:number=255) : PGN_130837_MaretronSwitchStatusTimer => {
-  return {
-    ...PGN_130837_MaretronSwitchStatusTimerDefaults,
-    dst,
-    fields: {
-      ...PGN_130837_MaretronSwitchStatusTimerMatchFields,
-      ...fields
-    }
+export class PGN_130837_MaretronSwitchStatusTimer  extends PGN implements PGN_130837_MaretronSwitchStatusTimerInterface {
+  fields: PGN_130837_MaretronSwitchStatusTimerFields
+  
+  constructor(fields: PGN_130837_MaretronSwitchStatusTimerCreateArgs, dst:number=255) {
+    super(PGN_130837_MaretronSwitchStatusTimerDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130837_MaretronSwitchStatusTimerMatchFields, ...fields }
   }
 }
 /**
@@ -20556,7 +20784,7 @@ export const new130837_MaretronSwitchStatusTimer = (fields: PGN_130837_MaretronS
   *
   * @category PGN_130838
  */
-export interface PGN_130838 extends PGN {
+export interface PGN_130838Interface extends PGNInterface {
  fields: PGN_130838Fields
 }
 
@@ -20575,19 +20803,20 @@ export interface PGN_130838Fields {
 export const PGN_130838Defaults = {
   pgn: 130838,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130838
  */
-export const new130838 = (fields: PGN_130838Fields, dst:number=255) : PGN_130838 => {
-  return {
-    ...PGN_130838Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130838  extends PGN implements PGN_130838Interface {
+  fields: PGN_130838Fields
+  
+  constructor(fields: PGN_130838Fields, dst:number=255) {
+    super(PGN_130838Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -20597,7 +20826,7 @@ export const new130838 = (fields: PGN_130838Fields, dst:number=255) : PGN_130838
   *
   * @category PGN_130839
  */
-export interface PGN_130839 extends PGN {
+export interface PGN_130839Interface extends PGNInterface {
  fields: PGN_130839Fields
 }
 
@@ -20616,19 +20845,20 @@ export interface PGN_130839Fields {
 export const PGN_130839Defaults = {
   pgn: 130839,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130839
  */
-export const new130839 = (fields: PGN_130839Fields, dst:number=255) : PGN_130839 => {
-  return {
-    ...PGN_130839Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130839  extends PGN implements PGN_130839Interface {
+  fields: PGN_130839Fields
+  
+  constructor(fields: PGN_130839Fields, dst:number=255) {
+    super(PGN_130839Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -20638,7 +20868,7 @@ export const new130839 = (fields: PGN_130839Fields, dst:number=255) : PGN_130839
   *
   * @category PGN_130840
  */
-export interface PGN_130840 extends PGN {
+export interface PGN_130840Interface extends PGNInterface {
  fields: PGN_130840Fields
 }
 
@@ -20657,19 +20887,20 @@ export interface PGN_130840Fields {
 export const PGN_130840Defaults = {
   pgn: 130840,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130840
  */
-export const new130840 = (fields: PGN_130840Fields, dst:number=255) : PGN_130840 => {
-  return {
-    ...PGN_130840Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130840  extends PGN implements PGN_130840Interface {
+  fields: PGN_130840Fields
+  
+  constructor(fields: PGN_130840Fields, dst:number=255) {
+    super(PGN_130840Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -20682,7 +20913,7 @@ export const new130840 = (fields: PGN_130840Fields, dst:number=255) : PGN_130840
   *
   * @category PGN_130842_SimnetAisClassBstaticDataMsg24PartA
  */
-export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartA extends PGN {
+export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartAInterface extends PGNInterface {
  fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartAFields
 }
 
@@ -20707,7 +20938,8 @@ export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartAFields {
 export const PGN_130842_SimnetAisClassBstaticDataMsg24PartADefaults = {
   pgn: 130842,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -20734,14 +20966,13 @@ export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartACreateArgs {
 /**
  * @category PGN_130842_SimnetAisClassBstaticDataMsg24PartA
  */
-export const new130842_SimnetAisClassBstaticDataMsg24PartA = (fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartACreateArgs, dst:number=255) : PGN_130842_SimnetAisClassBstaticDataMsg24PartA => {
-  return {
-    ...PGN_130842_SimnetAisClassBstaticDataMsg24PartADefaults,
-    dst,
-    fields: {
-      ...PGN_130842_SimnetAisClassBstaticDataMsg24PartAMatchFields,
-      ...fields
-    }
+export class PGN_130842_SimnetAisClassBstaticDataMsg24PartA  extends PGN implements PGN_130842_SimnetAisClassBstaticDataMsg24PartAInterface {
+  fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartAFields
+  
+  constructor(fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartACreateArgs, dst:number=255) {
+    super(PGN_130842_SimnetAisClassBstaticDataMsg24PartADefaults)
+    this.src = dst
+    this.fields = { ...PGN_130842_SimnetAisClassBstaticDataMsg24PartAMatchFields, ...fields }
   }
 }
 /**
@@ -20754,7 +20985,7 @@ export const new130842_SimnetAisClassBstaticDataMsg24PartA = (fields: PGN_130842
   *
   * @category PGN_130842_FurunoSixDegreesOfFreedomMovement
  */
-export interface PGN_130842_FurunoSixDegreesOfFreedomMovement extends PGN {
+export interface PGN_130842_FurunoSixDegreesOfFreedomMovementInterface extends PGNInterface {
  fields: PGN_130842_FurunoSixDegreesOfFreedomMovementFields
 }
 
@@ -20782,7 +21013,8 @@ export interface PGN_130842_FurunoSixDegreesOfFreedomMovementFields {
 export const PGN_130842_FurunoSixDegreesOfFreedomMovementDefaults = {
   pgn: 130842,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -20812,14 +21044,13 @@ export interface PGN_130842_FurunoSixDegreesOfFreedomMovementCreateArgs {
 /**
  * @category PGN_130842_FurunoSixDegreesOfFreedomMovement
  */
-export const new130842_FurunoSixDegreesOfFreedomMovement = (fields: PGN_130842_FurunoSixDegreesOfFreedomMovementCreateArgs, dst:number=255) : PGN_130842_FurunoSixDegreesOfFreedomMovement => {
-  return {
-    ...PGN_130842_FurunoSixDegreesOfFreedomMovementDefaults,
-    dst,
-    fields: {
-      ...PGN_130842_FurunoSixDegreesOfFreedomMovementMatchFields,
-      ...fields
-    }
+export class PGN_130842_FurunoSixDegreesOfFreedomMovement  extends PGN implements PGN_130842_FurunoSixDegreesOfFreedomMovementInterface {
+  fields: PGN_130842_FurunoSixDegreesOfFreedomMovementFields
+  
+  constructor(fields: PGN_130842_FurunoSixDegreesOfFreedomMovementCreateArgs, dst:number=255) {
+    super(PGN_130842_FurunoSixDegreesOfFreedomMovementDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130842_FurunoSixDegreesOfFreedomMovementMatchFields, ...fields }
   }
 }
 /**
@@ -20833,7 +21064,7 @@ export const new130842_FurunoSixDegreesOfFreedomMovement = (fields: PGN_130842_F
   *
   * @category PGN_130842_SimnetAisClassBstaticDataMsg24PartB
  */
-export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartB extends PGN {
+export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartBInterface extends PGNInterface {
  fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartBFields
 }
 
@@ -20867,7 +21098,8 @@ export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartBFields {
 export const PGN_130842_SimnetAisClassBstaticDataMsg24PartBDefaults = {
   pgn: 130842,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -20903,14 +21135,13 @@ export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartBCreateArgs {
 /**
  * @category PGN_130842_SimnetAisClassBstaticDataMsg24PartB
  */
-export const new130842_SimnetAisClassBstaticDataMsg24PartB = (fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartBCreateArgs, dst:number=255) : PGN_130842_SimnetAisClassBstaticDataMsg24PartB => {
-  return {
-    ...PGN_130842_SimnetAisClassBstaticDataMsg24PartBDefaults,
-    dst,
-    fields: {
-      ...PGN_130842_SimnetAisClassBstaticDataMsg24PartBMatchFields,
-      ...fields
-    }
+export class PGN_130842_SimnetAisClassBstaticDataMsg24PartB  extends PGN implements PGN_130842_SimnetAisClassBstaticDataMsg24PartBInterface {
+  fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartBFields
+  
+  constructor(fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartBCreateArgs, dst:number=255) {
+    super(PGN_130842_SimnetAisClassBstaticDataMsg24PartBDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130842_SimnetAisClassBstaticDataMsg24PartBMatchFields, ...fields }
   }
 }
 /**
@@ -20923,7 +21154,7 @@ export const new130842_SimnetAisClassBstaticDataMsg24PartB = (fields: PGN_130842
   *
   * @category PGN_130843_FurunoHeelAngleRollInformation
  */
-export interface PGN_130843_FurunoHeelAngleRollInformation extends PGN {
+export interface PGN_130843_FurunoHeelAngleRollInformationInterface extends PGNInterface {
  fields: PGN_130843_FurunoHeelAngleRollInformationFields
 }
 
@@ -20947,7 +21178,8 @@ export interface PGN_130843_FurunoHeelAngleRollInformationFields {
 export const PGN_130843_FurunoHeelAngleRollInformationDefaults = {
   pgn: 130843,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -20973,14 +21205,13 @@ export interface PGN_130843_FurunoHeelAngleRollInformationCreateArgs {
 /**
  * @category PGN_130843_FurunoHeelAngleRollInformation
  */
-export const new130843_FurunoHeelAngleRollInformation = (fields: PGN_130843_FurunoHeelAngleRollInformationCreateArgs, dst:number=255) : PGN_130843_FurunoHeelAngleRollInformation => {
-  return {
-    ...PGN_130843_FurunoHeelAngleRollInformationDefaults,
-    dst,
-    fields: {
-      ...PGN_130843_FurunoHeelAngleRollInformationMatchFields,
-      ...fields
-    }
+export class PGN_130843_FurunoHeelAngleRollInformation  extends PGN implements PGN_130843_FurunoHeelAngleRollInformationInterface {
+  fields: PGN_130843_FurunoHeelAngleRollInformationFields
+  
+  constructor(fields: PGN_130843_FurunoHeelAngleRollInformationCreateArgs, dst:number=255) {
+    super(PGN_130843_FurunoHeelAngleRollInformationDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130843_FurunoHeelAngleRollInformationMatchFields, ...fields }
   }
 }
 /**
@@ -20993,7 +21224,7 @@ export const new130843_FurunoHeelAngleRollInformation = (fields: PGN_130843_Furu
   *
   * @category PGN_130843_SimnetSonarStatusFrequencyAndDspVoltage
  */
-export interface PGN_130843_SimnetSonarStatusFrequencyAndDspVoltage extends PGN {
+export interface PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageInterface extends PGNInterface {
  fields: PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageFields
 }
 
@@ -21012,7 +21243,8 @@ export interface PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageFields {
 export const PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageDefaults = {
   pgn: 130843,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -21033,14 +21265,13 @@ export interface PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageCreateArgs {
 /**
  * @category PGN_130843_SimnetSonarStatusFrequencyAndDspVoltage
  */
-export const new130843_SimnetSonarStatusFrequencyAndDspVoltage = (fields: PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageCreateArgs, dst:number=255) : PGN_130843_SimnetSonarStatusFrequencyAndDspVoltage => {
-  return {
-    ...PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageDefaults,
-    dst,
-    fields: {
-      ...PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageMatchFields,
-      ...fields
-    }
+export class PGN_130843_SimnetSonarStatusFrequencyAndDspVoltage  extends PGN implements PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageInterface {
+  fields: PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageFields
+  
+  constructor(fields: PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageCreateArgs, dst:number=255) {
+    super(PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageMatchFields, ...fields }
   }
 }
 /**
@@ -21053,7 +21284,7 @@ export const new130843_SimnetSonarStatusFrequencyAndDspVoltage = (fields: PGN_13
   *
   * @category PGN_130845_FurunoMultiSatsInViewExtended
  */
-export interface PGN_130845_FurunoMultiSatsInViewExtended extends PGN {
+export interface PGN_130845_FurunoMultiSatsInViewExtendedInterface extends PGNInterface {
  fields: PGN_130845_FurunoMultiSatsInViewExtendedFields
 }
 
@@ -21072,7 +21303,8 @@ export interface PGN_130845_FurunoMultiSatsInViewExtendedFields {
 export const PGN_130845_FurunoMultiSatsInViewExtendedDefaults = {
   pgn: 130845,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -21093,14 +21325,13 @@ export interface PGN_130845_FurunoMultiSatsInViewExtendedCreateArgs {
 /**
  * @category PGN_130845_FurunoMultiSatsInViewExtended
  */
-export const new130845_FurunoMultiSatsInViewExtended = (fields: PGN_130845_FurunoMultiSatsInViewExtendedCreateArgs, dst:number=255) : PGN_130845_FurunoMultiSatsInViewExtended => {
-  return {
-    ...PGN_130845_FurunoMultiSatsInViewExtendedDefaults,
-    dst,
-    fields: {
-      ...PGN_130845_FurunoMultiSatsInViewExtendedMatchFields,
-      ...fields
-    }
+export class PGN_130845_FurunoMultiSatsInViewExtended  extends PGN implements PGN_130845_FurunoMultiSatsInViewExtendedInterface {
+  fields: PGN_130845_FurunoMultiSatsInViewExtendedFields
+  
+  constructor(fields: PGN_130845_FurunoMultiSatsInViewExtendedCreateArgs, dst:number=255) {
+    super(PGN_130845_FurunoMultiSatsInViewExtendedDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130845_FurunoMultiSatsInViewExtendedMatchFields, ...fields }
   }
 }
 /**
@@ -21113,7 +21344,7 @@ export const new130845_FurunoMultiSatsInViewExtended = (fields: PGN_130845_Furun
   *
   * @category PGN_130845_SimnetKeyValue
  */
-export interface PGN_130845_SimnetKeyValue extends PGN {
+export interface PGN_130845_SimnetKeyValueInterface extends PGNInterface {
  fields: PGN_130845_SimnetKeyValueFields
 }
 
@@ -21140,7 +21371,8 @@ export interface PGN_130845_SimnetKeyValueFields {
 export const PGN_130845_SimnetKeyValueDefaults = {
   pgn: 130845,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -21169,14 +21401,13 @@ export interface PGN_130845_SimnetKeyValueCreateArgs {
 /**
  * @category PGN_130845_SimnetKeyValue
  */
-export const new130845_SimnetKeyValue = (fields: PGN_130845_SimnetKeyValueCreateArgs, dst:number=255) : PGN_130845_SimnetKeyValue => {
-  return {
-    ...PGN_130845_SimnetKeyValueDefaults,
-    dst,
-    fields: {
-      ...PGN_130845_SimnetKeyValueMatchFields,
-      ...fields
-    }
+export class PGN_130845_SimnetKeyValue  extends PGN implements PGN_130845_SimnetKeyValueInterface {
+  fields: PGN_130845_SimnetKeyValueFields
+  
+  constructor(fields: PGN_130845_SimnetKeyValueCreateArgs, dst:number=255) {
+    super(PGN_130845_SimnetKeyValueDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130845_SimnetKeyValueMatchFields, ...fields }
   }
 }
 /**
@@ -21189,7 +21420,7 @@ export const new130845_SimnetKeyValue = (fields: PGN_130845_SimnetKeyValueCreate
   *
   * @category PGN_130846_SimnetParameterSet
  */
-export interface PGN_130846_SimnetParameterSet extends PGN {
+export interface PGN_130846_SimnetParameterSetInterface extends PGNInterface {
  fields: PGN_130846_SimnetParameterSetFields
 }
 
@@ -21216,7 +21447,8 @@ export interface PGN_130846_SimnetParameterSetFields {
 export const PGN_130846_SimnetParameterSetDefaults = {
   pgn: 130846,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -21245,14 +21477,13 @@ export interface PGN_130846_SimnetParameterSetCreateArgs {
 /**
  * @category PGN_130846_SimnetParameterSet
  */
-export const new130846_SimnetParameterSet = (fields: PGN_130846_SimnetParameterSetCreateArgs, dst:number=255) : PGN_130846_SimnetParameterSet => {
-  return {
-    ...PGN_130846_SimnetParameterSetDefaults,
-    dst,
-    fields: {
-      ...PGN_130846_SimnetParameterSetMatchFields,
-      ...fields
-    }
+export class PGN_130846_SimnetParameterSet  extends PGN implements PGN_130846_SimnetParameterSetInterface {
+  fields: PGN_130846_SimnetParameterSetFields
+  
+  constructor(fields: PGN_130846_SimnetParameterSetCreateArgs, dst:number=255) {
+    super(PGN_130846_SimnetParameterSetDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130846_SimnetParameterSetMatchFields, ...fields }
   }
 }
 /**
@@ -21265,7 +21496,7 @@ export const new130846_SimnetParameterSet = (fields: PGN_130846_SimnetParameterS
   *
   * @category PGN_130846_FurunoMotionSensorStatusExtended
  */
-export interface PGN_130846_FurunoMotionSensorStatusExtended extends PGN {
+export interface PGN_130846_FurunoMotionSensorStatusExtendedInterface extends PGNInterface {
  fields: PGN_130846_FurunoMotionSensorStatusExtendedFields
 }
 
@@ -21284,7 +21515,8 @@ export interface PGN_130846_FurunoMotionSensorStatusExtendedFields {
 export const PGN_130846_FurunoMotionSensorStatusExtendedDefaults = {
   pgn: 130846,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
@@ -21305,14 +21537,13 @@ export interface PGN_130846_FurunoMotionSensorStatusExtendedCreateArgs {
 /**
  * @category PGN_130846_FurunoMotionSensorStatusExtended
  */
-export const new130846_FurunoMotionSensorStatusExtended = (fields: PGN_130846_FurunoMotionSensorStatusExtendedCreateArgs, dst:number=255) : PGN_130846_FurunoMotionSensorStatusExtended => {
-  return {
-    ...PGN_130846_FurunoMotionSensorStatusExtendedDefaults,
-    dst,
-    fields: {
-      ...PGN_130846_FurunoMotionSensorStatusExtendedMatchFields,
-      ...fields
-    }
+export class PGN_130846_FurunoMotionSensorStatusExtended  extends PGN implements PGN_130846_FurunoMotionSensorStatusExtendedInterface {
+  fields: PGN_130846_FurunoMotionSensorStatusExtendedFields
+  
+  constructor(fields: PGN_130846_FurunoMotionSensorStatusExtendedCreateArgs, dst:number=255) {
+    super(PGN_130846_FurunoMotionSensorStatusExtendedDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130846_FurunoMotionSensorStatusExtendedMatchFields, ...fields }
   }
 }
 /**
@@ -21322,7 +21553,7 @@ export const new130846_FurunoMotionSensorStatusExtended = (fields: PGN_130846_Fu
   *
   * @category PGN_130847
  */
-export interface PGN_130847 extends PGN {
+export interface PGN_130847Interface extends PGNInterface {
  fields: PGN_130847Fields
 }
 
@@ -21346,19 +21577,20 @@ export interface PGN_130847Fields {
 export const PGN_130847Defaults = {
   pgn: 130847,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130847
  */
-export const new130847 = (fields: PGN_130847Fields, dst:number=255) : PGN_130847 => {
-  return {
-    ...PGN_130847Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130847  extends PGN implements PGN_130847Interface {
+  fields: PGN_130847Fields
+  
+  constructor(fields: PGN_130847Fields, dst:number=255) {
+    super(PGN_130847Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -21368,7 +21600,7 @@ export const new130847 = (fields: PGN_130847Fields, dst:number=255) : PGN_130847
   *
   * @category PGN_130848
  */
-export interface PGN_130848 extends PGN {
+export interface PGN_130848Interface extends PGNInterface {
  fields: PGN_130848Fields
 }
 
@@ -21393,19 +21625,20 @@ export interface PGN_130848Fields {
 export const PGN_130848Defaults = {
   pgn: 130848,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_130848
  */
-export const new130848 = (fields: PGN_130848Fields, dst:number=255) : PGN_130848 => {
-  return {
-    ...PGN_130848Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130848  extends PGN implements PGN_130848Interface {
+  fields: PGN_130848Fields
+  
+  constructor(fields: PGN_130848Fields, dst:number=255) {
+    super(PGN_130848Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -21419,7 +21652,7 @@ export const new130848 = (fields: PGN_130848Fields, dst:number=255) : PGN_130848
   *
   * @category PGN_130850_SimnetApCommand
  */
-export interface PGN_130850_SimnetApCommand extends PGN {
+export interface PGN_130850_SimnetApCommandInterface extends PGNInterface {
  fields: PGN_130850_SimnetApCommandFields
 }
 
@@ -21446,7 +21679,8 @@ export interface PGN_130850_SimnetApCommandFields {
 export const PGN_130850_SimnetApCommandDefaults = {
   pgn: 130850,
   dst: 255,
-  prio: 2
+  prio: 2,
+  fields: []
 }
 
 /**
@@ -21475,14 +21709,13 @@ export interface PGN_130850_SimnetApCommandCreateArgs {
 /**
  * @category PGN_130850_SimnetApCommand
  */
-export const new130850_SimnetApCommand = (fields: PGN_130850_SimnetApCommandCreateArgs, dst:number=255) : PGN_130850_SimnetApCommand => {
-  return {
-    ...PGN_130850_SimnetApCommandDefaults,
-    dst,
-    fields: {
-      ...PGN_130850_SimnetApCommandMatchFields,
-      ...fields
-    }
+export class PGN_130850_SimnetApCommand  extends PGN implements PGN_130850_SimnetApCommandInterface {
+  fields: PGN_130850_SimnetApCommandFields
+  
+  constructor(fields: PGN_130850_SimnetApCommandCreateArgs, dst:number=255) {
+    super(PGN_130850_SimnetApCommandDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130850_SimnetApCommandMatchFields, ...fields }
   }
 }
 /**
@@ -21496,7 +21729,7 @@ export const new130850_SimnetApCommand = (fields: PGN_130850_SimnetApCommandCrea
   *
   * @category PGN_130850_SimnetEventCommandApCommand
  */
-export interface PGN_130850_SimnetEventCommandApCommand extends PGN {
+export interface PGN_130850_SimnetEventCommandApCommandInterface extends PGNInterface {
  fields: PGN_130850_SimnetEventCommandApCommandFields
 }
 
@@ -21523,7 +21756,8 @@ export interface PGN_130850_SimnetEventCommandApCommandFields {
 export const PGN_130850_SimnetEventCommandApCommandDefaults = {
   pgn: 130850,
   dst: 255,
-  prio: 2
+  prio: 2,
+  fields: []
 }
 
 /**
@@ -21552,14 +21786,13 @@ export interface PGN_130850_SimnetEventCommandApCommandCreateArgs {
 /**
  * @category PGN_130850_SimnetEventCommandApCommand
  */
-export const new130850_SimnetEventCommandApCommand = (fields: PGN_130850_SimnetEventCommandApCommandCreateArgs, dst:number=255) : PGN_130850_SimnetEventCommandApCommand => {
-  return {
-    ...PGN_130850_SimnetEventCommandApCommandDefaults,
-    dst,
-    fields: {
-      ...PGN_130850_SimnetEventCommandApCommandMatchFields,
-      ...fields
-    }
+export class PGN_130850_SimnetEventCommandApCommand  extends PGN implements PGN_130850_SimnetEventCommandApCommandInterface {
+  fields: PGN_130850_SimnetEventCommandApCommandFields
+  
+  constructor(fields: PGN_130850_SimnetEventCommandApCommandCreateArgs, dst:number=255) {
+    super(PGN_130850_SimnetEventCommandApCommandDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130850_SimnetEventCommandApCommandMatchFields, ...fields }
   }
 }
 /**
@@ -21575,7 +21808,7 @@ export const new130850_SimnetEventCommandApCommand = (fields: PGN_130850_SimnetE
   *
   * @category PGN_130850_SimnetAlarm
  */
-export interface PGN_130850_SimnetAlarm extends PGN {
+export interface PGN_130850_SimnetAlarmInterface extends PGNInterface {
  fields: PGN_130850_SimnetAlarmFields
 }
 
@@ -21602,7 +21835,8 @@ export interface PGN_130850_SimnetAlarmFields {
 export const PGN_130850_SimnetAlarmDefaults = {
   pgn: 130850,
   dst: 255,
-  prio: 2
+  prio: 2,
+  fields: []
 }
 
 /**
@@ -21631,14 +21865,13 @@ export interface PGN_130850_SimnetAlarmCreateArgs {
 /**
  * @category PGN_130850_SimnetAlarm
  */
-export const new130850_SimnetAlarm = (fields: PGN_130850_SimnetAlarmCreateArgs, dst:number=255) : PGN_130850_SimnetAlarm => {
-  return {
-    ...PGN_130850_SimnetAlarmDefaults,
-    dst,
-    fields: {
-      ...PGN_130850_SimnetAlarmMatchFields,
-      ...fields
-    }
+export class PGN_130850_SimnetAlarm  extends PGN implements PGN_130850_SimnetAlarmInterface {
+  fields: PGN_130850_SimnetAlarmFields
+  
+  constructor(fields: PGN_130850_SimnetAlarmCreateArgs, dst:number=255) {
+    super(PGN_130850_SimnetAlarmDefaults)
+    this.src = dst
+    this.fields = { ...PGN_130850_SimnetAlarmMatchFields, ...fields }
   }
 }
 /**
@@ -21648,7 +21881,7 @@ export const new130850_SimnetAlarm = (fields: PGN_130850_SimnetAlarmCreateArgs, 
   *
   * @category PGN_130851
  */
-export interface PGN_130851 extends PGN {
+export interface PGN_130851Interface extends PGNInterface {
  fields: PGN_130851Fields
 }
 
@@ -21675,19 +21908,20 @@ export interface PGN_130851Fields {
 export const PGN_130851Defaults = {
   pgn: 130851,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_130851
  */
-export const new130851 = (fields: PGN_130851Fields, dst:number=255) : PGN_130851 => {
-  return {
-    ...PGN_130851Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130851  extends PGN implements PGN_130851Interface {
+  fields: PGN_130851Fields
+  
+  constructor(fields: PGN_130851Fields, dst:number=255) {
+    super(PGN_130851Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -21699,7 +21933,7 @@ export const new130851 = (fields: PGN_130851Fields, dst:number=255) : PGN_130851
   *
   * @category PGN_130856
  */
-export interface PGN_130856 extends PGN {
+export interface PGN_130856Interface extends PGNInterface {
  fields: PGN_130856Fields
 }
 
@@ -21722,19 +21956,20 @@ export interface PGN_130856Fields {
 export const PGN_130856Defaults = {
   pgn: 130856,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130856
  */
-export const new130856 = (fields: PGN_130856Fields, dst:number=255) : PGN_130856 => {
-  return {
-    ...PGN_130856Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130856  extends PGN implements PGN_130856Interface {
+  fields: PGN_130856Fields
+  
+  constructor(fields: PGN_130856Fields, dst:number=255) {
+    super(PGN_130856Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -21746,7 +21981,7 @@ export const new130856 = (fields: PGN_130856Fields, dst:number=255) : PGN_130856
   *
   * @category PGN_130860
  */
-export interface PGN_130860 extends PGN {
+export interface PGN_130860Interface extends PGNInterface {
  fields: PGN_130860Fields
 }
 
@@ -21771,19 +22006,20 @@ export interface PGN_130860Fields {
 export const PGN_130860Defaults = {
   pgn: 130860,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_130860
  */
-export const new130860 = (fields: PGN_130860Fields, dst:number=255) : PGN_130860 => {
-  return {
-    ...PGN_130860Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130860  extends PGN implements PGN_130860Interface {
+  fields: PGN_130860Fields
+  
+  constructor(fields: PGN_130860Fields, dst:number=255) {
+    super(PGN_130860Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -21793,7 +22029,7 @@ export const new130860 = (fields: PGN_130860Fields, dst:number=255) : PGN_130860
   *
   * @category PGN_130880
  */
-export interface PGN_130880 extends PGN {
+export interface PGN_130880Interface extends PGNInterface {
  fields: PGN_130880Fields
 }
 
@@ -21816,19 +22052,20 @@ export interface PGN_130880Fields {
 export const PGN_130880Defaults = {
   pgn: 130880,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130880
  */
-export const new130880 = (fields: PGN_130880Fields, dst:number=255) : PGN_130880 => {
-  return {
-    ...PGN_130880Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130880  extends PGN implements PGN_130880Interface {
+  fields: PGN_130880Fields
+  
+  constructor(fields: PGN_130880Fields, dst:number=255) {
+    super(PGN_130880Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -21838,7 +22075,7 @@ export const new130880 = (fields: PGN_130880Fields, dst:number=255) : PGN_130880
   *
   * @category PGN_130881
  */
-export interface PGN_130881 extends PGN {
+export interface PGN_130881Interface extends PGNInterface {
  fields: PGN_130881Fields
 }
 
@@ -21861,19 +22098,20 @@ export interface PGN_130881Fields {
 export const PGN_130881Defaults = {
   pgn: 130881,
   dst: 255,
-  prio: 3
+  prio: 3,
+  fields: []
 }
 
 /**
  * @category PGN_130881
  */
-export const new130881 = (fields: PGN_130881Fields, dst:number=255) : PGN_130881 => {
-  return {
-    ...PGN_130881Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130881  extends PGN implements PGN_130881Interface {
+  fields: PGN_130881Fields
+  
+  constructor(fields: PGN_130881Fields, dst:number=255) {
+    super(PGN_130881Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -21883,7 +22121,7 @@ export const new130881 = (fields: PGN_130881Fields, dst:number=255) : PGN_130881
   *
   * @category PGN_130918
  */
-export interface PGN_130918 extends PGN {
+export interface PGN_130918Interface extends PGNInterface {
  fields: PGN_130918Fields
 }
 
@@ -21910,19 +22148,20 @@ export interface PGN_130918Fields {
 export const PGN_130918Defaults = {
   pgn: 130918,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_130918
  */
-export const new130918 = (fields: PGN_130918Fields, dst:number=255) : PGN_130918 => {
-  return {
-    ...PGN_130918Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130918  extends PGN implements PGN_130918Interface {
+  fields: PGN_130918Fields
+  
+  constructor(fields: PGN_130918Fields, dst:number=255) {
+    super(PGN_130918Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }
 /**
@@ -21932,7 +22171,7 @@ export const new130918 = (fields: PGN_130918Fields, dst:number=255) : PGN_130918
   *
   * @category PGN_130944
  */
-export interface PGN_130944 extends PGN {
+export interface PGN_130944Interface extends PGNInterface {
  fields: PGN_130944Fields
 }
 
@@ -21956,18 +22195,19 @@ export interface PGN_130944Fields {
 export const PGN_130944Defaults = {
   pgn: 130944,
   dst: 255,
-  prio: 7
+  prio: 7,
+  fields: []
 }
 
 /**
  * @category PGN_130944
  */
-export const new130944 = (fields: PGN_130944Fields, dst:number=255) : PGN_130944 => {
-  return {
-    ...PGN_130944Defaults,
-    dst,
-    fields: {
-      ...fields
-    }
+export class PGN_130944  extends PGN implements PGN_130944Interface {
+  fields: PGN_130944Fields
+  
+  constructor(fields: PGN_130944Fields, dst:number=255) {
+    super(PGN_130944Defaults)
+    this.src = dst
+    this.fields = fields
   }
 }

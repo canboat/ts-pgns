@@ -144,19 +144,39 @@ if (argv.pgns) {
   console.log('export interface PGNFields {')
   console.log('}\n')
 
-  console.log('/**')
-  console.log(` * @category PGN Definitions`)
-  console.log(' */')
-  console.log('export interface PGN {')
-  console.log('  pgn: number')
-  console.log('  prio: number')
-  console.log('  src?: number')
-  console.log('  dst: number')
-  console.log('  timestamp?: string')
-  console.log('  input?: string[]')
-  console.log('  description?: string')
-  console.log('  fields: PGNFields')
-  console.log('}\n')
+  console.log(`/**'
+ * @category PGN Definitions
+ */
+export interface PGNInterface {
+  pgn: number
+  prio: number
+  src?: number
+  dst: number
+  timestamp?: string
+  input?: string[]
+  description?: string
+  fields: PGNFields
+}\n`)
+
+  console.log(`export class PGN {
+  pgn: number
+  prio: number
+  src?: number
+  dst: number
+  timestamp?: string
+  input?: string[]
+  description?: string
+  fields: PGNFields
+  
+  constructor(fields:PGN) {
+    this.pgn = fields.pgn
+    this.prio = fields.prio
+    this.src = fields.src
+    this.dst = fields.dst !== undefined ? fields.dst : 255
+    this.timestamp = fields.timestamp
+    this.fields = fields.fields
+  }
+}`)
 
   /*
     function getMatchFields(pgn: Definition) : Field[] {
@@ -247,16 +267,16 @@ if (argv.pgns) {
   }
 
   function outputPGN(pgn: Definition, isMulti: boolean) {
-    let hasMatchFields = isMulti && pgn.Fields.find((f) => f.Match !== undefined)
+    let hasMatchFields =
+      isMulti && pgn.Fields.find((f) => f.Match !== undefined)
     let typeNameNoPGN = `${pgn.PGN}`
     //let typeNameNoPGN = `${pgn.PGN}_${pgn.Id.charAt(0).toUpperCase() + pgn.Id.slice(1)}`
 
-    
-   if ( hasMatchFields ) {
-        typeNameNoPGN = `${typeNameNoPGN}_${camelCase(pgn.Id, { pascalCase: true })}`
-   }
-    
-      /*
+    if (hasMatchFields) {
+      typeNameNoPGN = `${typeNameNoPGN}_${camelCase(pgn.Id, { pascalCase: true })}`
+    }
+
+    /*
       pgn.Fields.forEach((field: Field) => {
         if (field.Match && field.LookupEnumeration !== 'INDUSTRY_CODE') {
           const desc = field.Description
@@ -269,11 +289,10 @@ if (argv.pgns) {
 
     const typeName = `PGN_${typeNameNoPGN}`
 
-
     const category = () => {
-      console.log('/**')
-      console.log(` * @category ${typeName}`)
-      console.log(' */')
+      console.log(`/**
+ * @category ${typeName}
+ */`)
     }
 
     console.log('/**')
@@ -298,40 +317,45 @@ if (argv.pgns) {
     console.log(`  * @category ${typeName}`)
     console.log(' */')
 
-    console.log(`export interface ${typeName} extends PGN {`)
+    console.log(`export interface ${typeName}Interface extends PGNInterface {`)
     console.log(` fields: ${typeName}Fields`)
     console.log('}\n')
 
     category()
     console.log(`export interface ${typeName}Fields {`)
-    pgn.Fields.forEach((field: Field, idx: number) => {
-      if (
-        pgn.RepeatingFieldSet1StartField !== undefined &&
-        idx + 1 >= pgn.RepeatingFieldSet1StartField &&
-        idx + 1 < pgn.RepeatingFieldSet1StartField + pgn.RepeatingFieldSet1Size!
-      ) {
-        return
+    const outputFields = () => {
+      pgn.Fields.forEach((field: Field, idx: number) => {
+        if (
+          pgn.RepeatingFieldSet1StartField !== undefined &&
+            idx + 1 >= pgn.RepeatingFieldSet1StartField &&
+            idx + 1 < pgn.RepeatingFieldSet1StartField + pgn.RepeatingFieldSet1Size!
+        ) {
+          return
+        }
+        console.log(`  ${getFieldString(field)}`)
+      })
+      if (pgn.RepeatingFieldSet1Size !== undefined) {
+        console.log(`  list: {`)
+        for (let i = 0; i < pgn.RepeatingFieldSet1Size; i++) {
+          const field = pgn.Fields[i + pgn.RepeatingFieldSet1StartField! - 1]
+          console.log(`    ${getFieldString(field)}`)
+        }
+        console.log('  }[]')
       }
-      console.log(`  ${getFieldString(field)}`)
-    })
-    if (pgn.RepeatingFieldSet1Size !== undefined) {
-      console.log(`  list: {`)
-      for (let i = 0; i < pgn.RepeatingFieldSet1Size; i++) {
-        const field = pgn.Fields[i + pgn.RepeatingFieldSet1StartField! - 1]
-        console.log(`    ${getFieldString(field)}`)
+      if (pgn.RepeatingFieldSet2Size !== undefined) {
+        console.log(`  list2: any[]`)
       }
-      console.log('  }[]')
     }
-    if (pgn.RepeatingFieldSet2Size !== undefined) {
-      console.log(`  list2: any[]`)
-    }
+    outputFields()
     console.log('}\n')
+
 
     category()
     console.log(`export const ${typeName}Defaults = {`)
     console.log(`  pgn: ${pgn.PGN},`)
     console.log(`  dst: 255,`)
-    console.log(`  prio: ${pgn.Priority !== undefined ? pgn.Priority : 3}`)
+    console.log(`  prio: ${pgn.Priority !== undefined ? pgn.Priority : 3},`)
+    console.log(`  fields: []`)
     console.log('}\n')
 
     if (hasMatchFields) {
@@ -392,6 +416,22 @@ if (argv.pgns) {
     const createArgs = hasMatchFields ? 'CreateArgs' : 'Fields'
 
     category()
+    console.log(`export class ${typeName}  extends PGN implements ${typeName}Interface {
+  fields: ${typeName}Fields
+  
+  constructor(fields: ${typeName}${createArgs}, dst:number=255) {
+    super(${typeName}Defaults)
+    this.src = dst`)
+
+    if ( hasMatchFields ) {
+      console.log(`    this.fields = { ...${typeName}MatchFields, ...fields }`)
+    } else {
+      console.log(`    this.fields = fields`)
+    }
+    console.log(`  }
+}`)
+
+    /*
     console.log(
       `export const new${typeNameNoPGN} = (fields: ${typeName}${createArgs}, dst:number=255) : ${typeName} => {`
     )
@@ -406,6 +446,9 @@ if (argv.pgns) {
     console.log('    }')
     console.log('  }')
     console.log('}')
+    */
+
+    
   }
 }
 

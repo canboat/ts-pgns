@@ -32,6 +32,7 @@ jobs:
         with:
           fail-if-changed: true
           files: |
+            docs
             src
 
       - name: Run step only when any of the above files change.

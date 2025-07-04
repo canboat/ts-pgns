@@ -1,10 +1,9 @@
 import { expect, assert } from 'chai'
 import {
-  newPGN_61184_VictronBatteryRegister,
   PGN_129029,
-  PGN_129029Defaults,
   ManufacturerCode,
-  IndustryCode
+  IndustryCode,
+  PGN_61184_VictronBatteryRegister
 } from '../dist/index'
 import { findMatchingDefinition, mapCamelCaseKeys } from '../dist/utilities'
 
@@ -12,7 +11,7 @@ import { findMatchingDefinition, mapCamelCaseKeys } from '../dist/utilities'
 
 describe('utilities tests', () => {
   it(`findMatchingDefinition works`, (done) => {
-    const pgn = newPGN_61184_VictronBatteryRegister({
+    const pgn = new PGN_61184_VictronBatteryRegister({
       registerId: 1,
       payload: 100
     })
@@ -28,32 +27,29 @@ describe('utilities tests', () => {
   })
 
   it(`findMatchingDefinition works`, (done) => {
-    const pgn: PGN_129029 = {
-      ...PGN_129029Defaults,
-      fields: {
-        date: 'date',
-        time: 'time',
-        latitude: 1,
-        longitude: 2,
-        gnssType: 3,
-        method: 4,
-        integrity: 5,
-        numberOfSvs: 6,
-        hdop: 7,
-        geoidalSeparation: 8,
-        referenceStations: 2,
-        list: [
-          {
-            referenceStationType: 9,
-            referenceStationId: 7
-          },
-          {
-            referenceStationType: 19,
-            referenceStationId: 22
-          }
-        ]
-      }
-    }
+    const pgn = new PGN_129029({
+      date: 'date',
+      time: 'time',
+      latitude: 1,
+      longitude: 2,
+      gnssType: 3,
+      method: 4,
+      integrity: 5,
+      numberOfSvs: 6,
+      hdop: 7,
+      geoidalSeparation: 8,
+      referenceStations: 2,
+      list: [
+        {
+          referenceStationType: 9,
+          referenceStationId: 7
+        },
+        {
+          referenceStationType: 19,
+          referenceStationId: 22
+        }
+      ]
+    })
 
     try {
       const mapped = mapCamelCaseKeys(pgn)

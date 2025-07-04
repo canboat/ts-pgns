@@ -3,7 +3,9 @@
 import {
   PGN_65305_SimnetDeviceModeRequest,
   PGN_65305_SimnetDeviceModeRequestDefaults,
-  newPGN_61184_VictronBatteryRegister,
+  PGN_61184_VictronBatteryRegister,
+  PGN_61184_VictronBatteryRegisterDefaults,
+  PGN_61184_VictronBatteryRegisterMatchFields,
   SimnetDeviceModel,
   SimnetDeviceReport,
   ManufacturerCode,
@@ -51,8 +53,29 @@ if (pgn !== undefined) {
   const inter: number | undefined = pgn[0].TransmissionInterval
   console.log(inter)
 }
-const battery = newPGN_61184_VictronBatteryRegister({
-  registerId: 1,
-  payload: 100
-})
+
+const battery = new PGN_61184_VictronBatteryRegister(
+  {
+    registerId: 1,
+    payload: 100
+  },
+  212
+)
 console.log(battery)
+console.log(battery instanceof PGN_61184_VictronBatteryRegister)
+
+console.log((battery as any)['fields'])
+
+function myfunc(): PGN_61184_VictronBatteryRegister {
+  return {
+    ...PGN_61184_VictronBatteryRegisterDefaults,
+    fields: {
+      ...PGN_61184_VictronBatteryRegisterMatchFields,
+      registerId: 1
+    }
+  }
+}
+
+const m = myfunc()
+console.log(m instanceof PGN_61184_VictronBatteryRegister)
+console.log(m.fields.manufacturerCode)

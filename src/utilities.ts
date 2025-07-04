@@ -13,7 +13,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
-*/
+ */
 
 import { PGN } from './pgns'
 import canboat from '../canboat.json'
@@ -26,6 +26,16 @@ import {
   FieldTypeEnumeration
 } from './definition'
 
+/**
+ * @category PGN Definition Access
+ */
+export type PGNMap = {
+  [key: number]: Definition[]
+}
+
+/**
+ * @category Utilities
+ */
 export const mapCamelCaseKeys = (pgn: PGN) => {
   const def = findMatchingDefinition(pgn)
 
@@ -88,6 +98,9 @@ export const mapCamelCaseKeys = (pgn: PGN) => {
   return res
 }
 
+/**
+ * @category PGN Definition Access
+ */
 export const findMatchingDefinition = (pgn: PGN): Definition => {
   let defs = getPGN(pgn.pgn)
   if (defs === undefined) {
@@ -142,14 +155,23 @@ const getNumericValue = (field: Field, value: any) => {
   }
 }
 
+/**
+ * @category PGN Definition Access
+ */
 export const getEnumerations = (): Enumeration[] => {
   return canboat.LookupEnumerations
 }
 
+/**
+ * @category PGN Definition Access
+ */
 export const getEnumeration = (enumName: string): Enumeration | undefined => {
   return getEnumerations().find((e) => e.Name === enumName)
 }
 
+/**
+ * @category PGN Definition Access
+ */
 export const getEnumerationValue = (
   enumName: string,
   value: string
@@ -163,10 +185,16 @@ export const getEnumerationValue = (
   }
 }
 
+/**
+ * @category PGN Definition Access
+ */
 export const getBitEnumerations = (): BitEnumeration[] => {
   return canboat.LookupBitEnumerations
 }
 
+/**
+ * @category PGN Definition Access
+ */
 export const getFieldTypeEnumerations = (): FieldTypeEnumeration[] => {
   return canboat.LookupFieldTypeEnumerations
 }

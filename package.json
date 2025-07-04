@@ -10,15 +10,16 @@
     "release": "git tag -d v$npm_package_version; npm run changelog && git add CHANGELOG.md && git commit -m 'chore: update changelog' && git tag v$npm_package_version && git push --tags && git push",
     "build": "tsc -b",
     "watch": "tsc --watch",
-    "prepublishOnly": "npm run build",
     "prettier": "prettier --write .",
     "lint": "eslint --fix",
     "ci-lint": "eslint && prettier --check .",
-    "ci-test": "npm run build && npm run test && npm run ci-lint",
+    "ci-test": "npm run build:all && npm run test && npm run ci-lint",
     "format": "npm run prettier && npm run lint",
     "generate:enums": "node dist/generator.js --enums > src/enums.ts",
     "generate:pgns": "node dist/generator.js --pgns > src/pgns.ts",
-    "generate": "npm run generate:enums && npm run generate:pgns"
+    "generate": "npm run generate:enums && npm run generate:pgns",
+    "build:docs": "typedoc",
+    "build:all": "npm run build && npm run build:docs"
   },
   "author": "Scott Bender <scott@scottbender.net>",
   "license": "Apache-2.0",
@@ -44,6 +45,8 @@
     "mocha": "^11.7.1",
     "prettier": "^3.6.2",
     "tsx": "^4.20.3",
+    "typedoc": "^0.28.7",
+    "typedoc-theme-hierarchy": "^6.0.0",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.35.0"
   }

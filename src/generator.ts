@@ -22,7 +22,7 @@ import minimist from 'minimist'
 import pgns from '../canboat.json'
 
 const argv = minimist(process.argv.slice(2), {
-  boolean: ['enums', 'pgns'],
+  boolean: ['enums', 'pgns', "categories"],
   alias: { h: 'help' }
 })
 
@@ -48,8 +48,15 @@ function organizePGNs() {
 organizePGNs()
 
 if (argv.enums) {
+  const category = () => {
+      console.log('/**')
+      console.log(` * @category Enumerations`)
+      console.log(' */')
+  }
+  
   pgns.LookupEnumerations.forEach((en: any) => {
     const done: { [key: string]: number } = {}
+    category()
     console.log(`export enum ${enumName(en.Name)} {`)
     en.EnumValues.forEach((v: any) => {
       const name = enumName(v.Name)
@@ -64,6 +71,7 @@ if (argv.enums) {
 
   pgns.LookupIndirectEnumerations.forEach((en: any) => {
     const done: { [key: string]: number } = {}
+    category()
     console.log(`export enum ${enumName(en.Name)} {`)
     en.EnumValues.forEach((v: any) => {
       const name = enumName(v.Name)
@@ -78,6 +86,7 @@ if (argv.enums) {
 
   pgns.LookupBitEnumerations.forEach((en: any) => {
     const done: { [key: string]: number } = {}
+    category()
     console.log(`export enum ${enumName(en.Name)} {`)
     en.EnumBitValues.forEach((v: any) => {
       const name = enumName(v.Name)
@@ -119,6 +128,9 @@ if (argv.pgns) {
         break
     }
 
+    console.log('/**')
+    console.log(` * @category Field Types`)
+    console.log(' */')    
     console.log(
       `export type N2K_${camelCase(ft.Name, { pascalCase: true })} = ${type}`
     )
@@ -126,9 +138,15 @@ if (argv.pgns) {
 
   console.log('')
 
+  console.log('/**')
+  console.log(` * @category PGN Definitions`)
+  console.log(' */')
   console.log('export interface PGNFields {')
   console.log('}\n')
 
+  console.log('/**')
+  console.log(` * @category PGN Definitions`)
+  console.log(' */')  
   console.log('export interface PGN {')
   console.log('  pgn: number')
   console.log('  prio: number')
@@ -229,23 +247,7 @@ if (argv.pgns) {
   }
 
   function outputPGN(pgn: Definition, isMulti: boolean) {
-    console.log('/*')
-    console.log(`  PGN: ${pgn.PGN}`)
-    console.log(`  Description: ${pgn.Description}`)
-    if (pgn.Explanation) {
-      console.log(`  Explanation: ${pgn.Explanation}`)
-    }
-    if (isMulti) {
-      pgn.Fields.forEach((field: Field) => {
-        if (field.Match) {
-          console.log(
-            `  Match: ${field.Name} == ${field.Description || field.Match}`
-          )
-        }
-      })
-    }
-    console.log('*/')
-
+    
     let typeName = `PGN_${pgn.PGN}`
 
     let hasMatchFields = false
@@ -267,7 +269,40 @@ if (argv.pgns) {
       */
     }
 
-    console.log(`export interface ${typeName}Fields extends PGNFields {`)
+    const category = () => {
+      console.log('/**')
+      console.log(` * @category ${typeName}`)
+      console.log(' */')
+    }
+
+    console.log('/**')
+    console.log(`  * PGN: ${pgn.PGN}`)
+    console.log('  *')
+    console.log(`  * Description: ${pgn.Description}`)
+    if (pgn.Explanation) {
+      console.log('  *')
+      console.log(`  * Explanation: ${pgn.Explanation}`)
+    }
+    if (isMulti) {
+      console.log('  *')
+      pgn.Fields.forEach((field: Field) => {
+        if (field.Match) {
+          console.log(
+            `  * Match: ${field.Name} == ${field.Description || field.Match}<br>`
+          )
+        }
+      })
+    }
+    console.log('  *')
+    console.log(`  * @category ${typeName}`)
+    console.log(' */')
+    
+    console.log(`export interface ${typeName} extends PGN {`)
+    console.log(` fields: ${typeName}Fields`)
+    console.log('}\n')
+
+    category()
+    console.log(`export interface ${typeName}Fields {`)
     pgn.Fields.forEach((field: Field, idx: number) => {
       if (
         pgn.RepeatingFieldSet1StartField !== undefined &&
@@ -291,10 +326,7 @@ if (argv.pgns) {
     }
     console.log('}\n')
 
-    console.log(`export interface ${typeName} extends PGN {`)
-    console.log(` fields: ${typeName}Fields`)
-    console.log('}\n')
-
+    category()
     console.log(`export const ${typeName}Defaults = {`)
     console.log(`  pgn: ${pgn.PGN},`)
     console.log(`  dst: 255,`)
@@ -302,6 +334,7 @@ if (argv.pgns) {
     console.log('}\n')
 
     if (hasMatchFields) {
+      category()
       console.log(`export const ${typeName}MatchFields = {`)
       pgn.Fields.forEach((field: Field) => {
         if (field.Match) {
@@ -326,6 +359,7 @@ if (argv.pgns) {
       })
       console.log('}\n')
 
+      category()      
       console.log(`export interface ${typeName}CreateArgs {`)
       pgn.Fields.forEach((field: Field, idx) => {
         if (!field.Match) {
@@ -356,6 +390,7 @@ if (argv.pgns) {
 
     const createArgs = hasMatchFields ? 'CreateArgs' : 'Fields'
 
+    category()    
     console.log(
       `export const new${typeName} = (fields: ${typeName}${createArgs}, dst:number=255) : ${typeName} => {`
     )

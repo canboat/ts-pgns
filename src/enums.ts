@@ -1,3 +1,6 @@
+/**
+ * @category Enumerations
+ */
 export enum LightingCommand {
   Idle = 'Idle',
   DetectDevices = 'Detect Devices',
@@ -6,6 +9,9 @@ export enum LightingCommand {
   PoweringUp = 'Powering Up',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum IndustryCode {
   Global = 'Global',
   Highway = 'Highway',
@@ -15,6 +21,9 @@ export enum IndustryCode {
   Industrial = 'Industrial',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum ManufacturerCode {
   ArksEnterprisesInc = 'ARKS Enterprises, Inc.',
   FwMurphyenovationControls = 'FW Murphy/Enovation Controls',
@@ -301,6 +310,9 @@ export enum ManufacturerCode {
   FariaInstruments = 'Faria Instruments',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AisMessageId {
   ScheduledClassAPositionReport = 'Scheduled Class A position report',
   AssignedScheduledClassAPositionReport = 'Assigned scheduled Class A position report',
@@ -331,6 +343,9 @@ export enum AisMessageId {
   PositionReportForLongRangeApplications = 'Position report for long range applications',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum ShipType {
   Unavailable = 'Unavailable',
   WingInGround = 'Wing In Ground',
@@ -389,6 +404,9 @@ export enum ShipType {
   OthernoAdditionalInformation = 'Other (no additional information)',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum DeviceClass {
   ReservedFor2000Use = 'Reserved for 2000 Use',
   SystemTools = 'System tools',
@@ -410,6 +428,9 @@ export enum DeviceClass {
   Entertainment = 'Entertainment',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum RepeatIndicator {
   Initial = 'Initial',
   FirstRetransmission = 'First retransmission',
@@ -417,12 +438,18 @@ export enum RepeatIndicator {
   FinalRetransmission = 'Final retransmission',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum TxRxMode {
   TxAtxBRxArxB = 'Tx A/Tx B, Rx A/Rx B',
   TxARxArxB = 'Tx A, Rx A/Rx B',
   TxBRxArxB = 'Tx B, Rx A/Rx B',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum StationType {
   AllTypesOfMobileStation = 'All types of mobile station',
   AllTypesOfClassBMobileStation = 'All types of Class B mobile station',
@@ -435,6 +462,9 @@ export enum StationType {
   RegionalUse9 = 'Regional use 9',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum ReportingInterval {
   AsGivenByTheAutonomousMode = 'As given by the autonomous mode',
   _10Min = '10 min',
@@ -450,6 +480,9 @@ export enum ReportingInterval {
   NextLongerReportingInterval = 'Next longer reporting interval',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AisTransceiver {
   ChannelAVdlReception = 'Channel A VDL reception',
   ChannelBVdlReception = 'Channel B VDL reception',
@@ -459,11 +492,17 @@ export enum AisTransceiver {
   Reserved = 'Reserved',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AisAssignedMode {
   AutonomousAndContinuous = 'Autonomous and continuous',
   AssignedMode = 'Assigned mode',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AtonType {
   DefaultTypeOfAtoNNotSpecified = 'Default: Type of AtoN not specified',
   ReferencePoint = 'Reference point',
@@ -499,6 +538,9 @@ export enum AtonType {
   FloatingAtoNLightVessellanbyrigs = 'Floating AtoN: light vessel/LANBY/rigs',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AisSpecialManeuver {
   NotAvailable = 'Not available',
   NotEngagedInSpecialManeuver = 'Not engaged in special maneuver',
@@ -506,6 +548,9 @@ export enum AisSpecialManeuver {
   Reserved = 'Reserved',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum PositionFixDevice {
   DefaultUndefined = 'Default: undefined',
   Gps = 'GPS',
@@ -518,6 +563,9 @@ export enum PositionFixDevice {
   Galileo = 'Galileo',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum Gns {
   Gps = 'GPS',
   Glonass = 'GLONASS',
@@ -530,32 +578,50 @@ export enum Gns {
   Galileo = 'Galileo',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum EngineInstance {
   SingleEngineOrDualEnginePort = 'Single Engine or Dual Engine Port',
   DualEngineStarboard = 'Dual Engine Starboard',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum GearStatus {
   Forward = 'Forward',
   Neutral = 'Neutral',
   Reverse = 'Reverse',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum Direction {
   Forward = 'Forward',
   Reverse = 'Reverse',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum PositionAccuracy {
   Low = 'Low',
   High = 'High',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum RaimFlag {
   NotInUse = 'not in use',
   InUse = 'in use',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum TimeStamp {
   NotAvailable = 'Not available',
   ManualInputMode = 'Manual input mode',
@@ -563,6 +629,9 @@ export enum TimeStamp {
   PositioningSystemIsInoperative = 'Positioning system is inoperative',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum GnsMethod {
   NoGnss = 'no GNSS',
   GnssFix = 'GNSS fix',
@@ -575,6 +644,9 @@ export enum GnsMethod {
   SimulateMode = 'Simulate mode',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum GnsIntegrity {
   NoIntegrityChecking = 'No integrity checking',
   Safe = 'Safe',
@@ -582,6 +654,9 @@ export enum GnsIntegrity {
   Unsafe = 'Unsafe',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SystemTime {
   Gps = 'GPS',
   Glonass = 'GLONASS',
@@ -591,6 +666,9 @@ export enum SystemTime {
   LocalCrystalClock = 'Local Crystal clock',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum MagneticVariation {
   Manual = 'Manual',
   AutomaticChart = 'Automatic Chart',
@@ -603,6 +681,9 @@ export enum MagneticVariation {
   Wmm2020 = 'WMM 2020',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum ResidualMode {
   Autonomous = 'Autonomous',
   DifferentialEnhanced = 'Differential enhanced',
@@ -611,6 +692,9 @@ export enum ResidualMode {
   Manual = 'Manual',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum WindReference {
   TruegroundReferencedToNorth = 'True (ground referenced to North)',
   MagneticgroundReferencedToMagneticNorth = 'Magnetic (ground referenced to Magnetic North)',
@@ -619,6 +703,9 @@ export enum WindReference {
   TruewaterReferenced = 'True (water referenced)',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum WaterReference {
   PaddleWheel = 'Paddle wheel',
   PitotTube = 'Pitot tube',
@@ -627,21 +714,33 @@ export enum WaterReference {
   ElectroMagnetic = 'Electro Magnetic',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum YesNo {
   No = 'No',
   Yes = 'Yes',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum OkWarning {
   Ok = 'OK',
   Warning = 'Warning',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum OffOn {
   Off = 'Off',
   On = 'On',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum OffOnControl {
   Off = 'Off',
   On = 'On',
@@ -649,18 +748,27 @@ export enum OffOnControl {
   TakeNoActionnoChange = 'Take no action (no change)',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum DirectionReference {
   True = 'True',
   Magnetic = 'Magnetic',
   Error = 'Error',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum DirectionRudder {
   NoOrder = 'No Order',
   MoveToStarboard = 'Move to starboard',
   MoveToPort = 'Move to port',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum NavStatus {
   UnderWayUsingEngine = 'Under way using engine',
   AtAnchor = 'At anchor',
@@ -678,12 +786,18 @@ export enum NavStatus {
   AisSart = 'AIS-SART',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum PowerFactor {
   Leading = 'Leading',
   Lagging = 'Lagging',
   Error = 'Error',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum TemperatureSource {
   SeaTemperature = 'Sea Temperature',
   OutsideTemperature = 'Outside Temperature',
@@ -703,11 +817,17 @@ export enum TemperatureSource {
   ShaftSealTemperature = 'Shaft Seal Temperature',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum HumiditySource {
   Inside = 'Inside',
   Outside = 'Outside',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum PressureSource {
   Atmospheric = 'Atmospheric',
   Water = 'Water',
@@ -720,6 +840,9 @@ export enum PressureSource {
   Fuel = 'Fuel',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum DscFormat {
   GeographicalArea = 'Geographical area',
   Distress = 'Distress',
@@ -730,6 +853,9 @@ export enum DscFormat {
   IndividualStationAutomatic = 'Individual station automatic',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum DscCategory {
   Routine = 'Routine',
   Safety = 'Safety',
@@ -737,6 +863,9 @@ export enum DscCategory {
   Distress = 'Distress',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum DscNature {
   Fire = 'Fire',
   Flooding = 'Flooding',
@@ -752,6 +881,9 @@ export enum DscNature {
   EpirbEmission = 'EPIRB emission',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum DscFirstTelecommand {
   F3Eg3EAllModesTp = 'F3E/G3E All modes TP',
   F3Eg3EDuplexTp = 'F3E/G3E duplex TP',
@@ -769,6 +901,9 @@ export enum DscFirstTelecommand {
   NoInformation = 'No information',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum DscSecondTelecommand {
   NoReasonGiven = 'No reason given',
   CongestionAtMsc = 'Congestion at MSC',
@@ -787,6 +922,9 @@ export enum DscSecondTelecommand {
   NoInformation = 'No information',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum DscExpansionData {
   EnhancedPosition = 'Enhanced position',
   SourceAndDatumOfPosition = 'Source and datum of position',
@@ -797,12 +935,18 @@ export enum DscExpansionData {
   NumberOfPersonsOnBoard = 'Number of persons on board',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SeatalkAlarmStatus {
   AlarmConditionNotMet = 'Alarm condition not met',
   AlarmConditionMetAndNotSilenced = 'Alarm condition met and not silenced',
   AlarmConditionMetAndSilenced = 'Alarm condition met and silenced',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SeatalkAlarmId {
   NoAlarm = 'No Alarm',
   ShallowDepth = 'Shallow Depth',
@@ -912,6 +1056,9 @@ export enum SeatalkAlarmId {
   NoFix = 'No Fix',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SeatalkAlarmGroup {
   Instrument = 'Instrument',
   Autopilot = 'Autopilot',
@@ -920,6 +1067,9 @@ export enum SeatalkAlarmGroup {
   Ais = 'AIS',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SeatalkPilotMode {
   Standby = 'Standby',
   Auto = 'Auto',
@@ -927,6 +1077,9 @@ export enum SeatalkPilotMode {
   Track = 'Track',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum EntertainmentZone {
   AllZones = 'All zones',
   Zone1 = 'Zone 1',
@@ -935,6 +1088,9 @@ export enum EntertainmentZone {
   Zone4 = 'Zone 4',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum EntertainmentSource {
   VesselAlarm = 'Vessel alarm',
   Am = 'AM',
@@ -963,6 +1119,9 @@ export enum EntertainmentSource {
   Video = 'Video',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum EntertainmentPlayStatus {
   Play = 'Play',
   Pause = 'Pause',
@@ -991,24 +1150,36 @@ export enum EntertainmentPlayStatus {
   SlowMotion125X = 'Slow motion .125x',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum EntertainmentRepeatStatus {
   Off = 'Off',
   One = 'One',
   All = 'All',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum EntertainmentShuffleStatus {
   Off = 'Off',
   PlayQueue = 'Play queue',
   All = 'All',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum EntertainmentLikeStatus {
   None = 'None',
   ThumbsUp = 'Thumbs up',
   ThumbsDown = 'Thumbs down',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum EntertainmentType {
   File = 'File',
   PlaylistName = 'Playlist Name',
@@ -1023,6 +1194,9 @@ export enum EntertainmentType {
   ContentInfo = 'Content Info',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum EntertainmentGroup {
   File = 'File',
   PlaylistName = 'Playlist Name',
@@ -1037,6 +1211,9 @@ export enum EntertainmentGroup {
   ContentInfo = 'Content Info',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum EntertainmentChannel {
   AllChannels = 'All channels',
   StereoFullRange = 'Stereo full range',
@@ -1053,6 +1230,9 @@ export enum EntertainmentChannel {
   SurroundRight = 'Surround right',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum EntertainmentEq {
   Flat = 'Flat',
   Rock = 'Rock',
@@ -1067,6 +1247,9 @@ export enum EntertainmentEq {
   Custom = 'Custom',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum EntertainmentFilter {
   FullRange = 'Full range',
   HighPass = 'High pass',
@@ -1075,6 +1258,9 @@ export enum EntertainmentFilter {
   NotchFilter = 'Notch filter',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AlertType {
   EmergencyAlarm = 'Emergency Alarm',
   Alarm = 'Alarm',
@@ -1082,11 +1268,17 @@ export enum AlertType {
   Caution = 'Caution',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AlertCategory {
   Navigational = 'Navigational',
   Technical = 'Technical',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AlertTriggerCondition {
   Manual = 'Manual',
   Auto = 'Auto',
@@ -1094,6 +1286,9 @@ export enum AlertTriggerCondition {
   Disabled = 'Disabled',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AlertThresholdStatus {
   Normal = 'Normal',
   ThresholdExceeded = 'Threshold Exceeded',
@@ -1103,6 +1298,9 @@ export enum AlertThresholdStatus {
   AwaitingAcknowledge = 'Awaiting Acknowledge',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AlertState {
   Disabled = 'Disabled',
   Normal = 'Normal',
@@ -1112,6 +1310,9 @@ export enum AlertState {
   AwaitingAcknowledge = 'Awaiting Acknowledge',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AlertLanguageId {
   Englishus = 'English (US)',
   Englishuk = 'English (UK)',
@@ -1135,6 +1336,9 @@ export enum AlertLanguageId {
   Swedish = 'Swedish',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AlertResponseCommand {
   Acknowledge = 'Acknowledge',
   TemporarySilence = 'Temporary Silence',
@@ -1142,6 +1346,9 @@ export enum AlertResponseCommand {
   TestCommandOn = 'Test Command on',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum ConverterState {
   Off = 'Off',
   LowPowerMode = 'Low Power Mode',
@@ -1156,6 +1363,9 @@ export enum ConverterState {
   Assisting = 'Assisting',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum ThrusterDirectionControl {
   Off = 'Off',
   Ready = 'Ready',
@@ -1163,12 +1373,18 @@ export enum ThrusterDirectionControl {
   ToStarboard = 'To Starboard',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum ThrusterRetractControl {
   Off = 'Off',
   Extend = 'Extend',
   Retract = 'Retract',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum ThrusterMotorType {
   _12Vdc = '12VDC',
   _24Vdc = '24VDC',
@@ -1177,18 +1393,27 @@ export enum ThrusterMotorType {
   Hydraulic = 'Hydraulic',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum BootState {
   InStartupMonitor = 'in Startup Monitor',
   RunningBootloader = 'running Bootloader',
   RunningApplication = 'running Application',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AccessLevel {
   Locked = 'Locked',
   UnlockedLevel1 = 'unlocked level 1',
   UnlockedLevel2 = 'unlocked level 2',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum TransmissionInterval {
   Acknowledge = 'Acknowledge',
   TransmitIntervalpriorityNotSupported = 'Transmit Interval/Priority not supported',
@@ -1197,6 +1422,9 @@ export enum TransmissionInterval {
   NotSupported = 'Not supported',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum ParameterField {
   Acknowledge = 'Acknowledge',
   InvalidParameterField = 'Invalid parameter field',
@@ -1207,11 +1435,17 @@ export enum ParameterField {
   ReadOrWriteNotSupported = 'Read or Write not supported',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum PgnListFunction {
   TransmitPgnList = 'Transmit PGN list',
   ReceivePgnList = 'Receive PGN list',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum FusionCommand {
   Play = 'Play',
   Pause = 'Pause',
@@ -1219,16 +1453,25 @@ export enum FusionCommand {
   Prev = 'Prev',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum FusionSiriusCommand {
   Next = 'Next',
   Prev = 'Prev',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum FusionMuteCommand {
   MuteOn = 'Mute On',
   MuteOff = 'Mute Off',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SeatalkKeystroke {
   Auto = 'Auto',
   Standby = 'Standby',
@@ -1242,11 +1485,17 @@ export enum SeatalkKeystroke {
   Track = 'Track',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SeatalkDeviceId {
   S100 = 'S100',
   CourseComputer = 'Course Computer',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SeatalkNetworkGroup {
   None = 'None',
   Helm1 = 'Helm 1',
@@ -1261,6 +1510,9 @@ export enum SeatalkNetworkGroup {
   Group5 = 'Group 5',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SeatalkDisplayColor {
   Day1 = 'Day 1',
   Day2 = 'Day 2',
@@ -1268,6 +1520,9 @@ export enum SeatalkDisplayColor {
   Inverse = 'Inverse',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AirmarCalibrateFunction {
   NormalcancelCalibration = 'Normal/cancel calibration',
   EnterCalibrationMode = 'Enter calibration mode',
@@ -1277,6 +1532,9 @@ export enum AirmarCalibrateFunction {
   ResetDampingToDefaults = 'Reset damping to defaults',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AirmarCalibrateStatus {
   Queried = 'Queried',
   Passed = 'Passed',
@@ -1286,45 +1544,69 @@ export enum AirmarCalibrateStatus {
   InProgress = 'In progress',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AirmarTemperatureInstance {
   DeviceSensor = 'Device Sensor',
   OnboardWaterSensor = 'Onboard Water Sensor',
   OptionalWaterSensor = 'Optional Water Sensor',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AirmarFilter {
   NoFilter = 'No filter',
   BasicIirFilter = 'Basic IIR filter',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum ControllerState {
   ErrorActive = 'Error Active',
   ErrorPassive = 'Error Passive',
   BusOff = 'Bus Off',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum EquipmentStatus {
   Operational = 'Operational',
   Fault = 'Fault',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum MobStatus {
   MobEmitterActivated = 'MOB Emitter Activated',
   ManualOnBoardMobButtonActivation = 'Manual on-board MOB Button Activation',
   TestMode = 'Test mode',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum LowBattery {
   Good = 'Good',
   Low = 'Low',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum TurnMode {
   RudderLimitControlled = 'Rudder limit controlled',
   TurnRateControlled = 'Turn rate controlled',
   RadiusControlled = 'Radius controlled',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum Acceptability {
   BadLevel = 'Bad level',
   BadFrequency = 'Bad frequency',
@@ -1332,17 +1614,26 @@ export enum Acceptability {
   Good = 'Good',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum Line {
   Line1 = 'Line 1',
   Line2 = 'Line 2',
   Line3 = 'Line 3',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum Waveform {
   SineWave = 'Sine wave',
   ModifiedSineWave = 'Modified sine wave',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum TankType {
   Fuel = 'Fuel',
   Water = 'Water',
@@ -1352,6 +1643,9 @@ export enum TankType {
   BlackWater = 'Black water',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum DcSource {
   Battery = 'Battery',
   Alternator = 'Alternator',
@@ -1360,6 +1654,9 @@ export enum DcSource {
   WindGenerator = 'Wind generator',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum ChargerState {
   NotCharging = 'Not charging',
   Bulk = 'Bulk',
@@ -1373,6 +1670,9 @@ export enum ChargerState {
   Fault = 'Fault',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum ChargingAlgorithm {
   Trickle = 'Trickle',
   ConstantVoltageConstantCurrent = 'Constant voltage / Constant current',
@@ -1380,6 +1680,9 @@ export enum ChargingAlgorithm {
   _3Stage = '3 stage',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum ChargerMode {
   Standalone = 'Standalone',
   Primary = 'Primary',
@@ -1387,6 +1690,9 @@ export enum ChargerMode {
   Echo = 'Echo',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum InverterState {
   Invert = 'Invert',
   AcPassthru = 'AC passthru',
@@ -1395,12 +1701,18 @@ export enum InverterState {
   Disabled = 'Disabled',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum BatteryType {
   Flooded = 'Flooded',
   Gel = 'Gel',
   Agm = 'AGM',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum BatteryVoltage {
   _6V = '6V',
   _12V = '12V',
@@ -1411,6 +1723,9 @@ export enum BatteryVoltage {
   _48V = '48V',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum BatteryChemistry {
   Pblead = 'Pb (Lead)',
   Li = 'Li',
@@ -1419,12 +1734,18 @@ export enum BatteryChemistry {
   NiMh = 'NiMH',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum GoodWarningError {
   Good = 'Good',
   Warning = 'Warning',
   Error = 'Error',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum Tracking {
   Cancelled = 'Cancelled',
   Acquiring = 'Acquiring',
@@ -1432,69 +1753,108 @@ export enum Tracking {
   Lost = 'Lost',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum TargetAcquisition {
   Manual = 'Manual',
   Automatic = 'Automatic',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum WindlassDirection {
   Off = 'Off',
   Down = 'Down',
   Up = 'Up',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SpeedType {
   SingleSpeed = 'Single speed',
   DualSpeed = 'Dual speed',
   ProportionalSpeed = 'Proportional speed',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum WindlassMotion {
   WindlassStopped = 'Windlass stopped',
   DeploymentOccurring = 'Deployment occurring',
   RetrievalOccurring = 'Retrieval occurring',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum RodeType {
   ChainPresentlyDetected = 'Chain presently detected',
   RopePresentlyDetected = 'Rope presently detected',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum DockingStatus {
   NotDocked = 'Not docked',
   FullyDocked = 'Fully docked',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AisType {
   Sotdma = 'SOTDMA',
   Cs = 'CS',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AisBand {
   Top525KHzOfMarineBand = 'Top 525 kHz of marine band',
   EntireMarineBand = 'Entire marine band',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AisMode {
   Autonomous = 'Autonomous',
   Assigned = 'Assigned',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AisCommunicationState {
   Sotdma = 'SOTDMA',
   Itdma = 'ITDMA',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum Available {
   Available = 'Available',
   NotAvailable = 'Not available',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum BearingMode {
   GreatCircle = 'Great Circle',
   Rhumbline = 'Rhumbline',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum MarkType {
   Collision = 'Collision',
   TurningPoint = 'Turning point',
@@ -1503,6 +1863,9 @@ export enum MarkType {
   Waypoint = 'Waypoint',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum GnssMode {
   _1D = '1D',
   _2D = '2D',
@@ -1510,17 +1873,26 @@ export enum GnssMode {
   Auto = 'Auto',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum RangeResidualMode {
   RangeResidualsWereUsedToCalculateData = 'Range residuals were used to calculate data',
   RangeResidualsWereCalculatedAfterThePosition = 'Range residuals were calculated after the position',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum DgnssMode {
   None = 'None',
   SbasIfAvailable = 'SBAS if available',
   Sbas = 'SBAS',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SatelliteStatus {
   NotTracked = 'Not tracked',
   Tracked = 'Tracked',
@@ -1530,6 +1902,9 @@ export enum SatelliteStatus {
   UsedPlusdiff = 'Used+Diff',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AisVersion {
   ItuRM13711 = 'ITU-R M.1371-1',
   ItuRM13713 = 'ITU-R M.1371-3',
@@ -1537,11 +1912,17 @@ export enum AisVersion {
   ItuRM1371FutureEdition = 'ITU-R M.1371 future edition',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum Tide {
   Falling = 'Falling',
   Rising = 'Rising',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum WatermakerState {
   Stopped = 'Stopped',
   Starting = 'Starting',
@@ -1553,6 +1934,9 @@ export enum WatermakerState {
   Manual = 'Manual',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum EntertainmentIdType {
   Group = 'Group',
   File = 'File',
@@ -1560,12 +1944,18 @@ export enum EntertainmentIdType {
   EncryptedFile = 'Encrypted file',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum EntertainmentDefaultSettings {
   SaveCurrentSettingsAsUserDefault = 'Save current settings as user default',
   LoadUserDefault = 'Load user default',
   LoadManufacturerDefault = 'Load manufacturer default',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum EntertainmentRegions {
   Usa = 'USA',
   Europe = 'Europe',
@@ -1577,22 +1967,34 @@ export enum EntertainmentRegions {
   Japan = 'Japan',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum VideoProtocols {
   Pal = 'PAL',
   Ntsc = 'NTSC',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum EntertainmentVolumeControl {
   Up = 'Up',
   Down = 'Down',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum BluetoothStatus {
   Connected = 'Connected',
   NotConnected = 'Not connected',
   NotPaired = 'Not paired',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum BluetoothSourceStatus {
   Reserved = 'Reserved',
   Connected = 'Connected',
@@ -1600,6 +2002,9 @@ export enum BluetoothSourceStatus {
   NotConnected = 'Not connected',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SonichubCommand {
   Init2 = 'Init #2',
   AmRadio = 'AM Radio',
@@ -1621,6 +2026,9 @@ export enum SonichubCommand {
   Init3 = 'Init #3',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SimnetApMode {
   Heading = 'Heading',
   Wind = 'Wind',
@@ -1628,12 +2036,18 @@ export enum SimnetApMode {
   NoDrift = 'No Drift',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SimnetDeviceModel {
   Ac = 'AC',
   OtherDevice = 'Other device',
   Nac = 'NAC',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SimnetDeviceReport {
   Status = 'Status',
   SendStatus = 'Send Status',
@@ -1642,26 +2056,41 @@ export enum SimnetDeviceReport {
   SailingProcessorStatus = 'Sailing Processor Status',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SimnetApStatus {
   Manual = 'Manual',
   Automatic = 'Automatic',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SimnetCommand {
   Text = 'Text',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SimnetEventCommand {
   Alarm = 'Alarm',
   ApCommand = 'AP command',
   Autopilot = 'Autopilot',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SimnetNightMode {
   Day = 'Day',
   Night = 'Night',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SimnetNightModeColor {
   Red = 'Red',
   Green = 'Green',
@@ -1669,6 +2098,9 @@ export enum SimnetNightModeColor {
   White = 'White',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SimnetDisplayGroup {
   Default = 'Default',
   Group1 = 'Group 1',
@@ -1679,16 +2111,25 @@ export enum SimnetDisplayGroup {
   Group6 = 'Group 6',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SimnetHourDisplay {
   _24Hour = '24 hour',
   _12Hour = '12 hour',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SimnetTimeFormat {
   Mmddyyyy = 'MM/dd/yyyy',
   Ddmmyyyy = 'dd/MM/yyyy',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SimnetBacklightLevel {
   _10min = '10% (Min)',
   DayMode = 'Day mode',
@@ -1704,6 +2145,9 @@ export enum SimnetBacklightLevel {
   _100max = '100% (Max)',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SimnetApEvents {
   Standby = 'Standby',
   AutoMode = 'Auto mode',
@@ -1724,6 +2168,9 @@ export enum SimnetApEvents {
   PingStarboardEnd = 'Ping starboard end',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SimnetDirection {
   Port = 'Port',
   Starboard = 'Starboard',
@@ -1731,11 +2178,17 @@ export enum SimnetDirection {
   RightRudderstarboard = 'Right rudder (starboard)',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SimnetAlarm {
   LowBoatSpeed = 'Low boat speed',
   WindDataMissing = 'Wind data missing',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum FusionMessageId {
   RequestStatus = 'Request Status',
   Source = 'Source',
@@ -1764,6 +2217,9 @@ export enum FusionMessageId {
   ZoneName = 'Zone Name',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum FusionPlayStatus {
   Invalid = 'Invalid',
   Playing = 'Playing',
@@ -1773,6 +2229,9 @@ export enum FusionPlayStatus {
   SkipRewind = 'Skip Rewind',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum FusionSourceType {
   Am = 'AM',
   Fm = 'FM',
@@ -1794,6 +2253,9 @@ export enum FusionSourceType {
   Unknown = 'Unknown',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum FusionSiriusComState {
   Unknown = 'Unknown',
   Off = 'Off',
@@ -1801,6 +2263,9 @@ export enum FusionSiriusComState {
   On = 'On',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum FusionSiriusAlert {
   Unknown = 'Unknown',
   None = 'None',
@@ -1809,12 +2274,18 @@ export enum FusionSiriusAlert {
   SubscriptionUpdate = 'Subscription Update',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum FusionSiriusTuningMode {
   Normal = 'Normal',
   Category = 'Category',
   Preset = 'Preset',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum FusionStatusMessageId {
   Unknown = 'Unknown',
   ApiVersion = 'API Version',
@@ -1864,11 +2335,17 @@ export enum FusionStatusMessageId {
   ZoneName = 'Zone Name',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SonichubControl {
   Set = 'Set',
   Ack = 'Ack',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SonichubSource {
   Am = 'AM',
   Fm = 'FM',
@@ -1879,6 +2356,9 @@ export enum SonichubSource {
   Mic = 'Mic',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum IsoControl {
   Ack = 'ACK',
   Nak = 'NAK',
@@ -1886,6 +2366,9 @@ export enum IsoControl {
   AddressBusy = 'Address Busy',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum IsoCommand {
   Ack = 'ACK',
   Rts = 'RTS',
@@ -1895,6 +2378,9 @@ export enum IsoCommand {
   Abort = 'Abort',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum GroupFunction {
   Request = 'Request',
   Command = 'Command',
@@ -1905,6 +2391,9 @@ export enum GroupFunction {
   WriteFieldsReply = 'Write Fields Reply',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AirmarCommand {
   AttitudeOffsets = 'Attitude Offsets',
   CalibrateCompass = 'Calibrate Compass',
@@ -1918,6 +2407,9 @@ export enum AirmarCommand {
   Nmea2000Options = 'NMEA 2000 options',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AirmarDepthQualityFactor {
   DepthUnlocked = 'Depth unlocked',
   Quality10 = 'Quality 10%',
@@ -1932,6 +2424,9 @@ export enum AirmarDepthQualityFactor {
   Quality100 = 'Quality 100%',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum PgnErrorCode {
   Acknowledge = 'Acknowledge',
   PgnNotSupported = 'PGN not supported',
@@ -1942,16 +2437,25 @@ export enum PgnErrorCode {
   ReadOrWriteNotSupported = 'Read or Write not supported',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AirmarTransmissionInterval {
   MeasureInterval = 'Measure interval',
   RequestedByUser = 'Requested by user',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum MobPositionSource {
   PositionEstimatedByTheVessel = 'Position estimated by the vessel',
   PositionReportedByMobEmitter = 'Position reported by MOB emitter',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SteeringMode {
   MainSteering = 'Main Steering',
   NonFollowUpDevice = 'Non-Follow-Up Device',
@@ -1961,11 +2465,17 @@ export enum SteeringMode {
   TrackControl = 'Track Control',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum FusionRadioSource {
   Am = 'AM',
   Fm = 'FM',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum FusionSetting {
   AlphaSearchThreshold = 'Alpha Search Threshold',
   IPodSubtitles = 'iPod Subtitles',
@@ -2047,17 +2557,26 @@ export enum FusionSetting {
   NullSetting = 'Null Setting',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum FusionRepeatStatus {
   Off = 'Off',
   Onetrack = 'One/track',
   Allalbum = 'All/album',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AirmarPostControl {
   ReportPreviousValues = 'Report previous values',
   GenerateNewValues = 'Generate new values',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AirmarPostId {
   FormatCode = 'Format Code',
   FactoryEeprom = 'Factory EEPROM',
@@ -2069,23 +2588,35 @@ export enum AirmarPostId {
   BatteryVoltageSensor = 'Battery voltage sensor',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SonichubTuning {
   SeekingUp = 'Seeking up',
   Tuned = 'Tuned',
   SeekingDown = 'Seeking down',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SonichubPlaylist {
   Report = 'Report',
   NextSong = 'Next song',
   PreviousSong = 'Previous song',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum FusionPowerState {
   On = 'On',
   Off = 'Off',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum Priority {
   _0 = '0',
   _1 = '1',
@@ -2099,12 +2630,18 @@ export enum Priority {
   ResetToDefault = 'Reset to default',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum DeviceTempState {
   Cold = 'Cold',
   Warm = 'Warm',
   Hot = 'Hot',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum BandgDecimals {
   _0 = '0',
   _1 = '1',
@@ -2114,12 +2651,18 @@ export enum BandgDecimals {
   Auto = 'Auto',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum GarminColorMode {
   Day = 'Day',
   Night = 'Night',
   Color = 'Color',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum GarminColor {
   DayFullColor = 'Day full color',
   DayHighContrast = 'Day high contrast',
@@ -2128,6 +2671,9 @@ export enum GarminColor {
   NightGreenblack = 'Night green/black',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum GarminBacklightLevel {
   _0 = '0%',
   _5 = '5%',
@@ -2152,6 +2698,9 @@ export enum GarminBacklightLevel {
   _100 = '100%',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SeatalkPilotMode16 {
   Standby = 'Standby',
   AutoCompassCommanded = 'Auto, compass commanded',
@@ -2160,6 +2709,9 @@ export enum SeatalkPilotMode16 {
   NoDriftCogReferencedinTrackCourseChanges = 'No Drift, COG referenced (In track, course changes)',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum StationHealth {
   NotWorking = 'Not Working',
   Unmonitored = 'Unmonitored',
@@ -2168,6 +2720,9 @@ export enum StationHealth {
   TestMode = 'Test Mode',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SerialBitRate {
   _25 = '25',
   _50 = '50',
@@ -2184,11 +2739,17 @@ export enum SerialBitRate {
   _57600 = '57600',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SerialDetectionMode {
   AutoBitRate = 'Auto bit rate',
   ManualBitRate = 'Manual bit rate',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum DifferentialSource {
   Auto = 'Auto',
   Loran = 'Loran',
@@ -2200,12 +2761,18 @@ export enum DifferentialSource {
   Satellite = 'Satellite',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum DifferentialMode {
   Manual = 'Manual',
   AutoPower = 'Auto Power',
   AutoRange = 'Auto Range',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum WpPositionResolution {
   MoreThan01Min = 'more than 0.1 min',
   _00101Min = '<0.01 .. 0.1] min',
@@ -2214,22 +2781,34 @@ export enum WpPositionResolution {
   _000001Min = '<0 .. 0.0001] min',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum WpIdentificationMethod {
   WaypointsInWpList = 'Waypoints in WP list',
   WaypointsEmbeddedInRoute = 'Waypoints embedded in route',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum WpRouteStatus {
   Active = 'Active',
   Inactive = 'Inactive',
   Deleted = 'Deleted',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum WpNavigationMethod {
   GreatCircle = 'Great Circle',
   RhumbLine = 'Rhumb Line',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum InverterMode {
   Standalone = 'Standalone',
   SeriesMaster = 'Series Master',
@@ -2238,17 +2817,26 @@ export enum InverterMode {
   ParallelSlave = 'Parallel Slave',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum CertificationLevel {
   LevelA = 'Level A',
   LevelB = 'Level B',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AgsMode {
   Off = 'Off',
   On = 'On',
   Automatic = 'Automatic',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AgsOperatingState {
   QuietTime = 'Quiet time',
   AutoOn = 'Auto on',
@@ -2262,6 +2850,9 @@ export enum AgsOperatingState {
   NotOperating = 'Not operating',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AgsGeneratingState {
   Preheating = 'Preheating',
   StartDelay = 'Start delay',
@@ -2277,6 +2868,9 @@ export enum AgsGeneratingState {
   CrankDelaty = 'Crank delaty',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AgsOnReason {
   NotOn = 'Not on',
   DcVoltageLow = 'DC voltage low',
@@ -2291,6 +2885,9 @@ export enum AgsOnReason {
   UnableToStop = 'Unable to stop',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AgsOffReason {
   NotOff = 'Not off',
   DcVoltageHigh = 'DC voltage high',
@@ -2313,6 +2910,9 @@ export enum AgsOffReason {
   UnableToStart = 'Unable to start',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum TelephoneMode {
   F3Eg3ESimplexTelephone = 'F3E/G3E simplex, telephone',
   F3Eg3EDuplexTelephone = 'F3E/G3E duplex, telephone',
@@ -2327,33 +2927,51 @@ export enum TelephoneMode {
   F1Cf2Cf3CFaxMachine = 'F1C/F2C/F3C, FAX machine',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum PowerMode {
   High = 'High',
   Low = 'Low',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum BroadcastIndicator {
   BroadcastGeoAreaMessage = 'Broadcast geo area message',
   AddressedMessage = 'Addressed message',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum Bandwidth {
   Default = 'Default',
   _125KHz = '12.5 kHz',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum FloodState {
   Flood = 'Flood',
   Slack = 'Slack',
   Ebb = 'Ebb',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum AcLine {
   Line1 = 'Line 1',
   Line2 = 'Line 2',
   Line3 = 'Line 3',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum ZoneSize {
   _1Nm = '1 nm',
   _2Nm = '2 nm',
@@ -2363,6 +2981,9 @@ export enum ZoneSize {
   _6Nm = '6 nm',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum DeviceFunction {
   Diagnostic = 'Diagnostic',
   BusTrafficLogger = 'Bus Traffic Logger',
@@ -2467,6 +3088,9 @@ export enum DeviceFunction {
   MultimediaController = 'Multimedia Controller',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum StationStatus {
   StationInUse = 'Station in use',
   LowSnr = 'Low SNR',
@@ -2474,6 +3098,9 @@ export enum StationStatus {
   Blink = 'Blink',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum EngineStatus1 {
   CheckEngine = 'Check Engine',
   OverTemperature = 'Over Temperature',
@@ -2493,6 +3120,9 @@ export enum EngineStatus1 {
   EmergencyStop = 'Emergency Stop',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum EngineStatus2 {
   WarningLevel1 = 'Warning Level 1',
   WarningLevel2 = 'Warning Level 2',
@@ -2504,6 +3134,9 @@ export enum EngineStatus2 {
   EngineShuttingDown = 'Engine Shutting Down',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum EntertainmentPlayStatusBitfield {
   Play = 'Play',
   Pause = 'Pause',
@@ -2533,6 +3166,9 @@ export enum EntertainmentPlayStatusBitfield {
   SourceRenaming = 'Source renaming',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum EntertainmentGroupBitfield {
   File = 'File',
   PlaylistName = 'Playlist Name',
@@ -2547,11 +3183,17 @@ export enum EntertainmentGroupBitfield {
   ContentInfo = 'Content Info',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum ThrusterControlEvents {
   AnotherDeviceControllingThruster = 'Another device controlling thruster',
   BoatSpeedTooFastToSafelyUseThruster = 'Boat speed too fast to safely use thruster',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum ThrusterMotorEvents {
   MotorOverTemperatureCutout = 'Motor over temperature cutout',
   MotorOverCurrentCutout = 'Motor over current cutout',
@@ -2561,10 +3203,16 @@ export enum ThrusterMotorEvents {
   ManufacturerDefined = 'Manufacturer defined',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum WindlassControl {
   AnotherDeviceControllingWindlass = 'Another device controlling windlass',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum WindlassOperation {
   SystemError = 'System error',
   SensorError = 'Sensor error',
@@ -2573,6 +3221,9 @@ export enum WindlassOperation {
   EndOfRodeReached = 'End of rode reached',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum WindlassMonitoring {
   ControllerUnderVoltageCutOut = 'Controller under voltage cut-out',
   ControllerOverCurrentCutOut = 'Controller over current cut-out',
@@ -2580,6 +3231,9 @@ export enum WindlassMonitoring {
   ManufacturerDefined = 'Manufacturer defined',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SimnetApModeBitfield {
   Standby = 'Standby',
   Heading = 'Heading',
@@ -2588,6 +3242,9 @@ export enum SimnetApModeBitfield {
   Wind = 'Wind',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum SimnetAlertBitfield {
   NoGpsFix = 'No GPS fix',
   NoActiveAutopilotControlUnit = 'No active autopilot control unit',
@@ -2620,16 +3277,25 @@ export enum SimnetAlertBitfield {
   WindSensorBatteryLow = 'Wind sensor battery low',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum EntertainmentRepeatBitfield {
   Song = 'Song',
   PlayQueue = 'Play queue',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum EntertainmentShuffleBitfield {
   PlayQueue = 'Play queue',
   All = 'All',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum WpChange {
   ChangeInMainDatapositionName = 'Change in main data (Position, Name)',
   ChangeInSupplementaryParametersorNewAdded = 'Change in supplementary parameters (or new added)',
@@ -2638,7 +3304,11 @@ export enum WpChange {
   OtherNotSpecifiedChanged = 'Other not specified changed',
 }
 
+/**
+ * @category Enumerations
+ */
 export enum WpCriticalParameters {
   NavigationMethod = 'Navigation Method',
   XteLimit = 'XTE Limit',
 }
+

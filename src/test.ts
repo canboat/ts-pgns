@@ -7,7 +7,7 @@ import {
   SimnetDeviceModel,
   SimnetDeviceReport,
   ManufacturerCode,
-  IndustryCode
+  IndustryCode,
 } from './index'
 
 import { getPGN } from './index'

@@ -1,6 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as enums from './enums'
 
+import {isMatch} from './utilities'
+
+const pgnIdToClass: {[key:string]: any} = {}
+
+export const getPGNClass = (id: string) => {
+  return pgnIdToClass[id]
+}
 /**
  * @category Field Types
  */
@@ -164,10 +171,14 @@ export class PGN_59392 extends PGN implements PGN_59392Interface {
 
   constructor(fields: PGN_59392Fields, dst: number = 255) {
     super(PGN_59392Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['isoAcknowledgement'] = (fields:any, dst:number) => new PGN_59392(fields, dst)
+
+
 /**
  * PGN: 59904
  *
@@ -206,10 +217,14 @@ export class PGN_59904 extends PGN implements PGN_59904Interface {
 
   constructor(fields: PGN_59904Fields, dst: number = 255) {
     super(PGN_59904Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['isoRequest'] = (fields:any, dst:number) => new PGN_59904(fields, dst)
+
+
 /**
  * PGN: 60160
  *
@@ -249,10 +264,14 @@ export class PGN_60160 extends PGN implements PGN_60160Interface {
 
   constructor(fields: PGN_60160Fields, dst: number = 255) {
     super(PGN_60160Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['isoTransportProtocolDataTransfer'] = (fields:any, dst:number) => new PGN_60160(fields, dst)
+
+
 /**
  * PGN: 60416
  *
@@ -314,10 +333,17 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend ext
 
   constructor(fields: PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendCreateArgs, dst: number = 255) {
     super(PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendMatchFields)
 }
+}
+pgnIdToClass['isoTransportProtocolConnectionManagementRequestToSend'] = (fields:any, dst:number) => new PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend(fields, dst)
+
+
 /**
  * PGN: 60416
  *
@@ -379,10 +405,17 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementClearToSend exten
 
   constructor(fields: PGN_60416_IsoTransportProtocolConnectionManagementClearToSendCreateArgs, dst: number = 255) {
     super(PGN_60416_IsoTransportProtocolConnectionManagementClearToSendDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_60416_IsoTransportProtocolConnectionManagementClearToSendMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_60416_IsoTransportProtocolConnectionManagementClearToSendMatchFields)
 }
+}
+pgnIdToClass['isoTransportProtocolConnectionManagementClearToSend'] = (fields:any, dst:number) => new PGN_60416_IsoTransportProtocolConnectionManagementClearToSend(fields, dst)
+
+
 /**
  * PGN: 60416
  *
@@ -444,10 +477,17 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessage exte
 
   constructor(fields: PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageCreateArgs, dst: number = 255) {
     super(PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageMatchFields)
 }
+}
+pgnIdToClass['isoTransportProtocolConnectionManagementEndOfMessage'] = (fields:any, dst:number) => new PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessage(fields, dst)
+
+
 /**
  * PGN: 60416
  *
@@ -509,10 +549,17 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce
 
   constructor(fields: PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceCreateArgs, dst: number = 255) {
     super(PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceMatchFields)
 }
+}
+pgnIdToClass['isoTransportProtocolConnectionManagementBroadcastAnnounce'] = (fields:any, dst:number) => new PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce(fields, dst)
+
+
 /**
  * PGN: 60416
  *
@@ -572,10 +619,17 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementAbort extends PGN
 
   constructor(fields: PGN_60416_IsoTransportProtocolConnectionManagementAbortCreateArgs, dst: number = 255) {
     super(PGN_60416_IsoTransportProtocolConnectionManagementAbortDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_60416_IsoTransportProtocolConnectionManagementAbortMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_60416_IsoTransportProtocolConnectionManagementAbortMatchFields)
 }
+}
+pgnIdToClass['isoTransportProtocolConnectionManagementAbort'] = (fields:any, dst:number) => new PGN_60416_IsoTransportProtocolConnectionManagementAbort(fields, dst)
+
+
 /**
  * PGN: 60928
  *
@@ -623,10 +677,14 @@ export class PGN_60928 extends PGN implements PGN_60928Interface {
 
   constructor(fields: PGN_60928Fields, dst: number = 255) {
     super(PGN_60928Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['isoAddressClaim'] = (fields:any, dst:number) => new PGN_60928(fields, dst)
+
+
 /**
  * PGN: 61184
  *
@@ -694,10 +752,17 @@ export class PGN_61184_SeatalkWirelessKeypadLightControl extends PGN implements 
 
   constructor(fields: PGN_61184_SeatalkWirelessKeypadLightControlCreateArgs, dst: number = 255) {
     super(PGN_61184_SeatalkWirelessKeypadLightControlDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_61184_SeatalkWirelessKeypadLightControlMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_61184_SeatalkWirelessKeypadLightControlMatchFields)
 }
+}
+pgnIdToClass['seatalkWirelessKeypadLightControl'] = (fields:any, dst:number) => new PGN_61184_SeatalkWirelessKeypadLightControl(fields, dst)
+
+
 /**
  * PGN: 61184
  *
@@ -762,10 +827,17 @@ export class PGN_61184_SeatalkWirelessKeypadControl extends PGN implements PGN_6
 
   constructor(fields: PGN_61184_SeatalkWirelessKeypadControlCreateArgs, dst: number = 255) {
     super(PGN_61184_SeatalkWirelessKeypadControlDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_61184_SeatalkWirelessKeypadControlMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_61184_SeatalkWirelessKeypadControlMatchFields)
 }
+}
+pgnIdToClass['seatalkWirelessKeypadControl'] = (fields:any, dst:number) => new PGN_61184_SeatalkWirelessKeypadControl(fields, dst)
+
+
 /**
  * PGN: 61184
  *
@@ -826,10 +898,17 @@ export class PGN_61184_VictronBatteryRegister extends PGN implements PGN_61184_V
 
   constructor(fields: PGN_61184_VictronBatteryRegisterCreateArgs, dst: number = 255) {
     super(PGN_61184_VictronBatteryRegisterDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_61184_VictronBatteryRegisterMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_61184_VictronBatteryRegisterMatchFields)
 }
+}
+pgnIdToClass['victronBatteryRegister'] = (fields:any, dst:number) => new PGN_61184_VictronBatteryRegister(fields, dst)
+
+
 /**
  * PGN: 65001
  *
@@ -869,10 +948,14 @@ export class PGN_65001 extends PGN implements PGN_65001Interface {
 
   constructor(fields: PGN_65001Fields, dst: number = 255) {
     super(PGN_65001Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['bus1PhaseCBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65001(fields, dst)
+
+
 /**
  * PGN: 65002
  *
@@ -912,10 +995,14 @@ export class PGN_65002 extends PGN implements PGN_65002Interface {
 
   constructor(fields: PGN_65002Fields, dst: number = 255) {
     super(PGN_65002Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['bus1PhaseBBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65002(fields, dst)
+
+
 /**
  * PGN: 65003
  *
@@ -955,10 +1042,14 @@ export class PGN_65003 extends PGN implements PGN_65003Interface {
 
   constructor(fields: PGN_65003Fields, dst: number = 255) {
     super(PGN_65003Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['bus1PhaseABasicAcQuantities'] = (fields:any, dst:number) => new PGN_65003(fields, dst)
+
+
 /**
  * PGN: 65004
  *
@@ -998,10 +1089,14 @@ export class PGN_65004 extends PGN implements PGN_65004Interface {
 
   constructor(fields: PGN_65004Fields, dst: number = 255) {
     super(PGN_65004Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['bus1AverageBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65004(fields, dst)
+
+
 /**
  * PGN: 65005
  *
@@ -1039,10 +1134,14 @@ export class PGN_65005 extends PGN implements PGN_65005Interface {
 
   constructor(fields: PGN_65005Fields, dst: number = 255) {
     super(PGN_65005Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['utilityTotalAcEnergy'] = (fields:any, dst:number) => new PGN_65005(fields, dst)
+
+
 /**
  * PGN: 65006
  *
@@ -1082,10 +1181,14 @@ export class PGN_65006 extends PGN implements PGN_65006Interface {
 
   constructor(fields: PGN_65006Fields, dst: number = 255) {
     super(PGN_65006Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['utilityPhaseCAcReactivePower'] = (fields:any, dst:number) => new PGN_65006(fields, dst)
+
+
 /**
  * PGN: 65007
  *
@@ -1123,10 +1226,14 @@ export class PGN_65007 extends PGN implements PGN_65007Interface {
 
   constructor(fields: PGN_65007Fields, dst: number = 255) {
     super(PGN_65007Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['utilityPhaseCAcPower'] = (fields:any, dst:number) => new PGN_65007(fields, dst)
+
+
 /**
  * PGN: 65008
  *
@@ -1166,10 +1273,14 @@ export class PGN_65008 extends PGN implements PGN_65008Interface {
 
   constructor(fields: PGN_65008Fields, dst: number = 255) {
     super(PGN_65008Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['utilityPhaseCBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65008(fields, dst)
+
+
 /**
  * PGN: 65009
  *
@@ -1209,10 +1320,14 @@ export class PGN_65009 extends PGN implements PGN_65009Interface {
 
   constructor(fields: PGN_65009Fields, dst: number = 255) {
     super(PGN_65009Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['utilityPhaseBAcReactivePower'] = (fields:any, dst:number) => new PGN_65009(fields, dst)
+
+
 /**
  * PGN: 65010
  *
@@ -1250,10 +1365,14 @@ export class PGN_65010 extends PGN implements PGN_65010Interface {
 
   constructor(fields: PGN_65010Fields, dst: number = 255) {
     super(PGN_65010Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['utilityPhaseBAcPower'] = (fields:any, dst:number) => new PGN_65010(fields, dst)
+
+
 /**
  * PGN: 65011
  *
@@ -1293,10 +1412,14 @@ export class PGN_65011 extends PGN implements PGN_65011Interface {
 
   constructor(fields: PGN_65011Fields, dst: number = 255) {
     super(PGN_65011Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['utilityPhaseBBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65011(fields, dst)
+
+
 /**
  * PGN: 65012
  *
@@ -1336,10 +1459,14 @@ export class PGN_65012 extends PGN implements PGN_65012Interface {
 
   constructor(fields: PGN_65012Fields, dst: number = 255) {
     super(PGN_65012Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['utilityPhaseAAcReactivePower'] = (fields:any, dst:number) => new PGN_65012(fields, dst)
+
+
 /**
  * PGN: 65013
  *
@@ -1377,10 +1504,14 @@ export class PGN_65013 extends PGN implements PGN_65013Interface {
 
   constructor(fields: PGN_65013Fields, dst: number = 255) {
     super(PGN_65013Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['utilityPhaseAAcPower'] = (fields:any, dst:number) => new PGN_65013(fields, dst)
+
+
 /**
  * PGN: 65014
  *
@@ -1420,10 +1551,14 @@ export class PGN_65014 extends PGN implements PGN_65014Interface {
 
   constructor(fields: PGN_65014Fields, dst: number = 255) {
     super(PGN_65014Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['utilityPhaseABasicAcQuantities'] = (fields:any, dst:number) => new PGN_65014(fields, dst)
+
+
 /**
  * PGN: 65015
  *
@@ -1463,10 +1598,14 @@ export class PGN_65015 extends PGN implements PGN_65015Interface {
 
   constructor(fields: PGN_65015Fields, dst: number = 255) {
     super(PGN_65015Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['utilityTotalAcReactivePower'] = (fields:any, dst:number) => new PGN_65015(fields, dst)
+
+
 /**
  * PGN: 65016
  *
@@ -1504,10 +1643,14 @@ export class PGN_65016 extends PGN implements PGN_65016Interface {
 
   constructor(fields: PGN_65016Fields, dst: number = 255) {
     super(PGN_65016Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['utilityTotalAcPower'] = (fields:any, dst:number) => new PGN_65016(fields, dst)
+
+
 /**
  * PGN: 65017
  *
@@ -1547,10 +1690,14 @@ export class PGN_65017 extends PGN implements PGN_65017Interface {
 
   constructor(fields: PGN_65017Fields, dst: number = 255) {
     super(PGN_65017Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['utilityAverageBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65017(fields, dst)
+
+
 /**
  * PGN: 65018
  *
@@ -1588,10 +1735,14 @@ export class PGN_65018 extends PGN implements PGN_65018Interface {
 
   constructor(fields: PGN_65018Fields, dst: number = 255) {
     super(PGN_65018Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['generatorTotalAcEnergy'] = (fields:any, dst:number) => new PGN_65018(fields, dst)
+
+
 /**
  * PGN: 65019
  *
@@ -1631,10 +1782,14 @@ export class PGN_65019 extends PGN implements PGN_65019Interface {
 
   constructor(fields: PGN_65019Fields, dst: number = 255) {
     super(PGN_65019Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['generatorPhaseCAcReactivePower'] = (fields:any, dst:number) => new PGN_65019(fields, dst)
+
+
 /**
  * PGN: 65020
  *
@@ -1672,10 +1827,14 @@ export class PGN_65020 extends PGN implements PGN_65020Interface {
 
   constructor(fields: PGN_65020Fields, dst: number = 255) {
     super(PGN_65020Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['generatorPhaseCAcPower'] = (fields:any, dst:number) => new PGN_65020(fields, dst)
+
+
 /**
  * PGN: 65021
  *
@@ -1715,10 +1874,14 @@ export class PGN_65021 extends PGN implements PGN_65021Interface {
 
   constructor(fields: PGN_65021Fields, dst: number = 255) {
     super(PGN_65021Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['generatorPhaseCBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65021(fields, dst)
+
+
 /**
  * PGN: 65022
  *
@@ -1758,10 +1921,14 @@ export class PGN_65022 extends PGN implements PGN_65022Interface {
 
   constructor(fields: PGN_65022Fields, dst: number = 255) {
     super(PGN_65022Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['generatorPhaseBAcReactivePower'] = (fields:any, dst:number) => new PGN_65022(fields, dst)
+
+
 /**
  * PGN: 65023
  *
@@ -1799,10 +1966,14 @@ export class PGN_65023 extends PGN implements PGN_65023Interface {
 
   constructor(fields: PGN_65023Fields, dst: number = 255) {
     super(PGN_65023Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['generatorPhaseBAcPower'] = (fields:any, dst:number) => new PGN_65023(fields, dst)
+
+
 /**
  * PGN: 65024
  *
@@ -1842,10 +2013,14 @@ export class PGN_65024 extends PGN implements PGN_65024Interface {
 
   constructor(fields: PGN_65024Fields, dst: number = 255) {
     super(PGN_65024Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['generatorPhaseBBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65024(fields, dst)
+
+
 /**
  * PGN: 65025
  *
@@ -1885,10 +2060,14 @@ export class PGN_65025 extends PGN implements PGN_65025Interface {
 
   constructor(fields: PGN_65025Fields, dst: number = 255) {
     super(PGN_65025Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['generatorPhaseAAcReactivePower'] = (fields:any, dst:number) => new PGN_65025(fields, dst)
+
+
 /**
  * PGN: 65026
  *
@@ -1926,10 +2105,14 @@ export class PGN_65026 extends PGN implements PGN_65026Interface {
 
   constructor(fields: PGN_65026Fields, dst: number = 255) {
     super(PGN_65026Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['generatorPhaseAAcPower'] = (fields:any, dst:number) => new PGN_65026(fields, dst)
+
+
 /**
  * PGN: 65027
  *
@@ -1969,10 +2152,14 @@ export class PGN_65027 extends PGN implements PGN_65027Interface {
 
   constructor(fields: PGN_65027Fields, dst: number = 255) {
     super(PGN_65027Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['generatorPhaseABasicAcQuantities'] = (fields:any, dst:number) => new PGN_65027(fields, dst)
+
+
 /**
  * PGN: 65028
  *
@@ -2012,10 +2199,14 @@ export class PGN_65028 extends PGN implements PGN_65028Interface {
 
   constructor(fields: PGN_65028Fields, dst: number = 255) {
     super(PGN_65028Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['generatorTotalAcReactivePower'] = (fields:any, dst:number) => new PGN_65028(fields, dst)
+
+
 /**
  * PGN: 65029
  *
@@ -2053,10 +2244,14 @@ export class PGN_65029 extends PGN implements PGN_65029Interface {
 
   constructor(fields: PGN_65029Fields, dst: number = 255) {
     super(PGN_65029Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['generatorTotalAcPower'] = (fields:any, dst:number) => new PGN_65029(fields, dst)
+
+
 /**
  * PGN: 65030
  *
@@ -2096,10 +2291,14 @@ export class PGN_65030 extends PGN implements PGN_65030Interface {
 
   constructor(fields: PGN_65030Fields, dst: number = 255) {
     super(PGN_65030Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['generatorAverageBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65030(fields, dst)
+
+
 /**
  * PGN: 65240
  *
@@ -2148,10 +2347,14 @@ export class PGN_65240 extends PGN implements PGN_65240Interface {
 
   constructor(fields: PGN_65240Fields, dst: number = 255) {
     super(PGN_65240Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['isoCommandedAddress'] = (fields:any, dst:number) => new PGN_65240(fields, dst)
+
+
 /**
  * PGN: 65280
  *
@@ -2192,10 +2395,14 @@ export class PGN_65280 extends PGN implements PGN_65280Interface {
 
   constructor(fields: PGN_65280Fields, dst: number = 255) {
     super(PGN_65280Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['furunoHeave'] = (fields:any, dst:number) => new PGN_65280(fields, dst)
+
+
 /**
  * PGN: 65284
  *
@@ -2238,10 +2445,14 @@ export class PGN_65284 extends PGN implements PGN_65284Interface {
 
   constructor(fields: PGN_65284Fields, dst: number = 255) {
     super(PGN_65284Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['maretronProprietaryDcBreakerCurrent'] = (fields:any, dst:number) => new PGN_65284(fields, dst)
+
+
 /**
  * PGN: 65285
  *
@@ -2302,10 +2513,17 @@ export class PGN_65285_AirmarBootStateAcknowledgment extends PGN implements PGN_
 
   constructor(fields: PGN_65285_AirmarBootStateAcknowledgmentCreateArgs, dst: number = 255) {
     super(PGN_65285_AirmarBootStateAcknowledgmentDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_65285_AirmarBootStateAcknowledgmentMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_65285_AirmarBootStateAcknowledgmentMatchFields)
 }
+}
+pgnIdToClass['airmarBootStateAcknowledgment'] = (fields:any, dst:number) => new PGN_65285_AirmarBootStateAcknowledgment(fields, dst)
+
+
 /**
  * PGN: 65285
  *
@@ -2368,10 +2586,17 @@ export class PGN_65285_LowranceTemperature extends PGN implements PGN_65285_Lowr
 
   constructor(fields: PGN_65285_LowranceTemperatureCreateArgs, dst: number = 255) {
     super(PGN_65285_LowranceTemperatureDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_65285_LowranceTemperatureMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_65285_LowranceTemperatureMatchFields)
 }
+}
+pgnIdToClass['lowranceTemperature'] = (fields:any, dst:number) => new PGN_65285_LowranceTemperature(fields, dst)
+
+
 /**
  * PGN: 65286
  *
@@ -2440,10 +2665,17 @@ export class PGN_65286_ChetcoDimmer extends PGN implements PGN_65286_ChetcoDimme
 
   constructor(fields: PGN_65286_ChetcoDimmerCreateArgs, dst: number = 255) {
     super(PGN_65286_ChetcoDimmerDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_65286_ChetcoDimmerMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_65286_ChetcoDimmerMatchFields)
 }
+}
+pgnIdToClass['chetcoDimmer'] = (fields:any, dst:number) => new PGN_65286_ChetcoDimmer(fields, dst)
+
+
 /**
  * PGN: 65286
  *
@@ -2502,10 +2734,17 @@ export class PGN_65286_AirmarBootStateRequest extends PGN implements PGN_65286_A
 
   constructor(fields: PGN_65286_AirmarBootStateRequestCreateArgs, dst: number = 255) {
     super(PGN_65286_AirmarBootStateRequestDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_65286_AirmarBootStateRequestMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_65286_AirmarBootStateRequestMatchFields)
 }
+}
+pgnIdToClass['airmarBootStateRequest'] = (fields:any, dst:number) => new PGN_65286_AirmarBootStateRequest(fields, dst)
+
+
 /**
  * PGN: 65287
  *
@@ -2570,10 +2809,17 @@ export class PGN_65287_AirmarAccessLevel extends PGN implements PGN_65287_Airmar
 
   constructor(fields: PGN_65287_AirmarAccessLevelCreateArgs, dst: number = 255) {
     super(PGN_65287_AirmarAccessLevelDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_65287_AirmarAccessLevelMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_65287_AirmarAccessLevelMatchFields)
 }
+}
+pgnIdToClass['airmarAccessLevel'] = (fields:any, dst:number) => new PGN_65287_AirmarAccessLevel(fields, dst)
+
+
 /**
  * PGN: 65287
  *
@@ -2632,10 +2878,17 @@ export class PGN_65287_SimnetConfigureTemperatureSensor extends PGN implements P
 
   constructor(fields: PGN_65287_SimnetConfigureTemperatureSensorCreateArgs, dst: number = 255) {
     super(PGN_65287_SimnetConfigureTemperatureSensorDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_65287_SimnetConfigureTemperatureSensorMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_65287_SimnetConfigureTemperatureSensorMatchFields)
 }
+}
+pgnIdToClass['simnetConfigureTemperatureSensor'] = (fields:any, dst:number) => new PGN_65287_SimnetConfigureTemperatureSensor(fields, dst)
+
+
 /**
  * PGN: 65288
  *
@@ -2679,10 +2932,14 @@ export class PGN_65288 extends PGN implements PGN_65288Interface {
 
   constructor(fields: PGN_65288Fields, dst: number = 255) {
     super(PGN_65288Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['seatalkAlarm'] = (fields:any, dst:number) => new PGN_65288(fields, dst)
+
+
 /**
  * PGN: 65289
  *
@@ -2722,10 +2979,14 @@ export class PGN_65289 extends PGN implements PGN_65289Interface {
 
   constructor(fields: PGN_65289Fields, dst: number = 255) {
     super(PGN_65289Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['simnetTrimTabSensorCalibration'] = (fields:any, dst:number) => new PGN_65289(fields, dst)
+
+
 /**
  * PGN: 65290
  *
@@ -2765,10 +3026,14 @@ export class PGN_65290 extends PGN implements PGN_65290Interface {
 
   constructor(fields: PGN_65290Fields, dst: number = 255) {
     super(PGN_65290Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['simnetPaddleWheelSpeedConfiguration'] = (fields:any, dst:number) => new PGN_65290(fields, dst)
+
+
 /**
  * PGN: 65292
  *
@@ -2808,10 +3073,14 @@ export class PGN_65292 extends PGN implements PGN_65292Interface {
 
   constructor(fields: PGN_65292Fields, dst: number = 255) {
     super(PGN_65292Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['simnetClearFluidLevelWarnings'] = (fields:any, dst:number) => new PGN_65292(fields, dst)
+
+
 /**
  * PGN: 65293
  *
@@ -2870,10 +3139,17 @@ export class PGN_65293_SimnetLgc2000Configuration extends PGN implements PGN_652
 
   constructor(fields: PGN_65293_SimnetLgc2000ConfigurationCreateArgs, dst: number = 255) {
     super(PGN_65293_SimnetLgc2000ConfigurationDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_65293_SimnetLgc2000ConfigurationMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_65293_SimnetLgc2000ConfigurationMatchFields)
 }
+}
+pgnIdToClass['simnetLgc2000Configuration'] = (fields:any, dst:number) => new PGN_65293_SimnetLgc2000Configuration(fields, dst)
+
+
 /**
  * PGN: 65293
  *
@@ -2936,10 +3212,17 @@ export class PGN_65293_DiverseYachtServicesLoadCell extends PGN implements PGN_6
 
   constructor(fields: PGN_65293_DiverseYachtServicesLoadCellCreateArgs, dst: number = 255) {
     super(PGN_65293_DiverseYachtServicesLoadCellDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_65293_DiverseYachtServicesLoadCellMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_65293_DiverseYachtServicesLoadCellMatchFields)
 }
+}
+pgnIdToClass['diverseYachtServicesLoadCell'] = (fields:any, dst:number) => new PGN_65293_DiverseYachtServicesLoadCell(fields, dst)
+
+
 /**
  * PGN: 65302
  *
@@ -2985,10 +3268,14 @@ export class PGN_65302 extends PGN implements PGN_65302Interface {
 
   constructor(fields: PGN_65302Fields, dst: number = 255) {
     super(PGN_65302Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['simnetApUnknown1'] = (fields:any, dst:number) => new PGN_65302(fields, dst)
+
+
 /**
  * PGN: 65305
  *
@@ -3056,10 +3343,17 @@ export class PGN_65305_SimnetDeviceStatus extends PGN implements PGN_65305_Simne
 
   constructor(fields: PGN_65305_SimnetDeviceStatusCreateArgs, dst: number = 255) {
     super(PGN_65305_SimnetDeviceStatusDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_65305_SimnetDeviceStatusMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_65305_SimnetDeviceStatusMatchFields)
 }
+}
+pgnIdToClass['simnetDeviceStatus'] = (fields:any, dst:number) => new PGN_65305_SimnetDeviceStatus(fields, dst)
+
+
 /**
  * PGN: 65305
  *
@@ -3125,10 +3419,17 @@ export class PGN_65305_SimnetDeviceStatusRequest extends PGN implements PGN_6530
 
   constructor(fields: PGN_65305_SimnetDeviceStatusRequestCreateArgs, dst: number = 255) {
     super(PGN_65305_SimnetDeviceStatusRequestDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_65305_SimnetDeviceStatusRequestMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_65305_SimnetDeviceStatusRequestMatchFields)
 }
+}
+pgnIdToClass['simnetDeviceStatusRequest'] = (fields:any, dst:number) => new PGN_65305_SimnetDeviceStatusRequest(fields, dst)
+
+
 /**
  * PGN: 65305
  *
@@ -3196,10 +3497,17 @@ export class PGN_65305_SimnetPilotMode extends PGN implements PGN_65305_SimnetPi
 
   constructor(fields: PGN_65305_SimnetPilotModeCreateArgs, dst: number = 255) {
     super(PGN_65305_SimnetPilotModeDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_65305_SimnetPilotModeMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_65305_SimnetPilotModeMatchFields)
 }
+}
+pgnIdToClass['simnetPilotMode'] = (fields:any, dst:number) => new PGN_65305_SimnetPilotMode(fields, dst)
+
+
 /**
  * PGN: 65305
  *
@@ -3265,10 +3573,17 @@ export class PGN_65305_SimnetDeviceModeRequest extends PGN implements PGN_65305_
 
   constructor(fields: PGN_65305_SimnetDeviceModeRequestCreateArgs, dst: number = 255) {
     super(PGN_65305_SimnetDeviceModeRequestDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_65305_SimnetDeviceModeRequestMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_65305_SimnetDeviceModeRequestMatchFields)
 }
+}
+pgnIdToClass['simnetDeviceModeRequest'] = (fields:any, dst:number) => new PGN_65305_SimnetDeviceModeRequest(fields, dst)
+
+
 /**
  * PGN: 65305
  *
@@ -3334,10 +3649,17 @@ export class PGN_65305_SimnetSailingProcessorStatus extends PGN implements PGN_6
 
   constructor(fields: PGN_65305_SimnetSailingProcessorStatusCreateArgs, dst: number = 255) {
     super(PGN_65305_SimnetSailingProcessorStatusDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_65305_SimnetSailingProcessorStatusMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_65305_SimnetSailingProcessorStatusMatchFields)
 }
+}
+pgnIdToClass['simnetSailingProcessorStatus'] = (fields:any, dst:number) => new PGN_65305_SimnetSailingProcessorStatus(fields, dst)
+
+
 /**
  * PGN: 65309
  *
@@ -3380,10 +3702,14 @@ export class PGN_65309 extends PGN implements PGN_65309Interface {
 
   constructor(fields: PGN_65309Fields, dst: number = 255) {
     super(PGN_65309Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['navicoWirelessBatteryStatus'] = (fields:any, dst:number) => new PGN_65309(fields, dst)
+
+
 /**
  * PGN: 65312
  *
@@ -3425,10 +3751,14 @@ export class PGN_65312 extends PGN implements PGN_65312Interface {
 
   constructor(fields: PGN_65312Fields, dst: number = 255) {
     super(PGN_65312Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['navicoWirelessSignalStatus'] = (fields:any, dst:number) => new PGN_65312(fields, dst)
+
+
 /**
  * PGN: 65340
  *
@@ -3475,10 +3805,14 @@ export class PGN_65340 extends PGN implements PGN_65340Interface {
 
   constructor(fields: PGN_65340Fields, dst: number = 255) {
     super(PGN_65340Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['simnetApUnknown2'] = (fields:any, dst:number) => new PGN_65340(fields, dst)
+
+
 /**
  * PGN: 65341
  *
@@ -3521,10 +3855,14 @@ export class PGN_65341 extends PGN implements PGN_65341Interface {
 
   constructor(fields: PGN_65341Fields, dst: number = 255) {
     super(PGN_65341Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['simnetAutopilotAngle'] = (fields:any, dst:number) => new PGN_65341(fields, dst)
+
+
 /**
  * PGN: 65345
  *
@@ -3566,10 +3904,14 @@ export class PGN_65345 extends PGN implements PGN_65345Interface {
 
   constructor(fields: PGN_65345Fields, dst: number = 255) {
     super(PGN_65345Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['seatalkPilotWindDatum'] = (fields:any, dst:number) => new PGN_65345(fields, dst)
+
+
 /**
  * PGN: 65350
  *
@@ -3610,10 +3952,14 @@ export class PGN_65350 extends PGN implements PGN_65350Interface {
 
   constructor(fields: PGN_65350Fields, dst: number = 255) {
     super(PGN_65350Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['simnetMagneticField'] = (fields:any, dst:number) => new PGN_65350(fields, dst)
+
+
 /**
  * PGN: 65359
  *
@@ -3656,10 +4002,14 @@ export class PGN_65359 extends PGN implements PGN_65359Interface {
 
   constructor(fields: PGN_65359Fields, dst: number = 255) {
     super(PGN_65359Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['seatalkPilotHeading'] = (fields:any, dst:number) => new PGN_65359(fields, dst)
+
+
 /**
  * PGN: 65360
  *
@@ -3702,10 +4052,14 @@ export class PGN_65360 extends PGN implements PGN_65360Interface {
 
   constructor(fields: PGN_65360Fields, dst: number = 255) {
     super(PGN_65360Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['seatalkPilotLockedHeading'] = (fields:any, dst:number) => new PGN_65360(fields, dst)
+
+
 /**
  * PGN: 65361
  *
@@ -3747,10 +4101,14 @@ export class PGN_65361 extends PGN implements PGN_65361Interface {
 
   constructor(fields: PGN_65361Fields, dst: number = 255) {
     super(PGN_65361Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['seatalkSilenceAlarm'] = (fields:any, dst:number) => new PGN_65361(fields, dst)
+
+
 /**
  * PGN: 65371
  *
@@ -3797,10 +4155,14 @@ export class PGN_65371 extends PGN implements PGN_65371Interface {
 
   constructor(fields: PGN_65371Fields, dst: number = 255) {
     super(PGN_65371Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['seatalkKeypadMessage'] = (fields:any, dst:number) => new PGN_65371(fields, dst)
+
+
 /**
  * PGN: 65374
  *
@@ -3843,10 +4205,14 @@ export class PGN_65374 extends PGN implements PGN_65374Interface {
 
   constructor(fields: PGN_65374Fields, dst: number = 255) {
     super(PGN_65374Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['seatalkKeypadHeartbeat'] = (fields:any, dst:number) => new PGN_65374(fields, dst)
+
+
 /**
  * PGN: 65379
  *
@@ -3889,10 +4255,14 @@ export class PGN_65379 extends PGN implements PGN_65379Interface {
 
   constructor(fields: PGN_65379Fields, dst: number = 255) {
     super(PGN_65379Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['seatalkPilotMode'] = (fields:any, dst:number) => new PGN_65379(fields, dst)
+
+
 /**
  * PGN: 65408
  *
@@ -3934,10 +4304,14 @@ export class PGN_65408 extends PGN implements PGN_65408Interface {
 
   constructor(fields: PGN_65408Fields, dst: number = 255) {
     super(PGN_65408Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['airmarDepthQualityFactor'] = (fields:any, dst:number) => new PGN_65408(fields, dst)
+
+
 /**
  * PGN: 65409
  *
@@ -3980,10 +4354,14 @@ export class PGN_65409 extends PGN implements PGN_65409Interface {
 
   constructor(fields: PGN_65409Fields, dst: number = 255) {
     super(PGN_65409Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['airmarSpeedPulseCount'] = (fields:any, dst:number) => new PGN_65409(fields, dst)
+
+
 /**
  * PGN: 65410
  *
@@ -4026,10 +4404,14 @@ export class PGN_65410 extends PGN implements PGN_65410Interface {
 
   constructor(fields: PGN_65410Fields, dst: number = 255) {
     super(PGN_65410Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['airmarDeviceInformation'] = (fields:any, dst:number) => new PGN_65410(fields, dst)
+
+
 /**
  * PGN: 65420
  *
@@ -4076,10 +4458,14 @@ export class PGN_65420 extends PGN implements PGN_65420Interface {
 
   constructor(fields: PGN_65420Fields, dst: number = 255) {
     super(PGN_65420Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['simnetApUnknown3'] = (fields:any, dst:number) => new PGN_65420(fields, dst)
+
+
 /**
  * PGN: 65480
  *
@@ -4119,10 +4505,14 @@ export class PGN_65480 extends PGN implements PGN_65480Interface {
 
   constructor(fields: PGN_65480Fields, dst: number = 255) {
     super(PGN_65480Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['simnetAutopilotMode'] = (fields:any, dst:number) => new PGN_65480(fields, dst)
+
+
 /**
  * PGN: 126208
  *
@@ -4191,10 +4581,17 @@ export class PGN_126208_NmeaRequestGroupFunction extends PGN implements PGN_1262
 
   constructor(fields: PGN_126208_NmeaRequestGroupFunctionCreateArgs, dst: number = 255) {
     super(PGN_126208_NmeaRequestGroupFunctionDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126208_NmeaRequestGroupFunctionMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126208_NmeaRequestGroupFunctionMatchFields)
 }
+}
+pgnIdToClass['nmeaRequestGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaRequestGroupFunction(fields, dst)
+
+
 /**
  * PGN: 126208
  *
@@ -4264,10 +4661,17 @@ export class PGN_126208_NmeaCommandGroupFunction extends PGN implements PGN_1262
 
   constructor(fields: PGN_126208_NmeaCommandGroupFunctionCreateArgs, dst: number = 255) {
     super(PGN_126208_NmeaCommandGroupFunctionDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126208_NmeaCommandGroupFunctionMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126208_NmeaCommandGroupFunctionMatchFields)
 }
+}
+pgnIdToClass['nmeaCommandGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaCommandGroupFunction(fields, dst)
+
+
 /**
  * PGN: 126208
  *
@@ -4335,10 +4739,17 @@ export class PGN_126208_NmeaAcknowledgeGroupFunction extends PGN implements PGN_
 
   constructor(fields: PGN_126208_NmeaAcknowledgeGroupFunctionCreateArgs, dst: number = 255) {
     super(PGN_126208_NmeaAcknowledgeGroupFunctionDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126208_NmeaAcknowledgeGroupFunctionMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126208_NmeaAcknowledgeGroupFunctionMatchFields)
 }
+}
+pgnIdToClass['nmeaAcknowledgeGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaAcknowledgeGroupFunction(fields, dst)
+
+
 /**
  * PGN: 126208
  *
@@ -4418,10 +4829,17 @@ export class PGN_126208_NmeaReadFieldsGroupFunction extends PGN implements PGN_1
 
   constructor(fields: PGN_126208_NmeaReadFieldsGroupFunctionCreateArgs, dst: number = 255) {
     super(PGN_126208_NmeaReadFieldsGroupFunctionDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126208_NmeaReadFieldsGroupFunctionMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126208_NmeaReadFieldsGroupFunctionMatchFields)
 }
+}
+pgnIdToClass['nmeaReadFieldsGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaReadFieldsGroupFunction(fields, dst)
+
+
 /**
  * PGN: 126208
  *
@@ -4503,10 +4921,17 @@ export class PGN_126208_NmeaReadFieldsReplyGroupFunction extends PGN implements 
 
   constructor(fields: PGN_126208_NmeaReadFieldsReplyGroupFunctionCreateArgs, dst: number = 255) {
     super(PGN_126208_NmeaReadFieldsReplyGroupFunctionDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126208_NmeaReadFieldsReplyGroupFunctionMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126208_NmeaReadFieldsReplyGroupFunctionMatchFields)
 }
+}
+pgnIdToClass['nmeaReadFieldsReplyGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaReadFieldsReplyGroupFunction(fields, dst)
+
+
 /**
  * PGN: 126208
  *
@@ -4588,10 +5013,17 @@ export class PGN_126208_NmeaWriteFieldsGroupFunction extends PGN implements PGN_
 
   constructor(fields: PGN_126208_NmeaWriteFieldsGroupFunctionCreateArgs, dst: number = 255) {
     super(PGN_126208_NmeaWriteFieldsGroupFunctionDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126208_NmeaWriteFieldsGroupFunctionMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126208_NmeaWriteFieldsGroupFunctionMatchFields)
 }
+}
+pgnIdToClass['nmeaWriteFieldsGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaWriteFieldsGroupFunction(fields, dst)
+
+
 /**
  * PGN: 126208
  *
@@ -4673,10 +5105,17 @@ export class PGN_126208_NmeaWriteFieldsReplyGroupFunction extends PGN implements
 
   constructor(fields: PGN_126208_NmeaWriteFieldsReplyGroupFunctionCreateArgs, dst: number = 255) {
     super(PGN_126208_NmeaWriteFieldsReplyGroupFunctionDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126208_NmeaWriteFieldsReplyGroupFunctionMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126208_NmeaWriteFieldsReplyGroupFunctionMatchFields)
 }
+}
+pgnIdToClass['nmeaWriteFieldsReplyGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaWriteFieldsReplyGroupFunction(fields, dst)
+
+
 /**
  * PGN: 126464
  *
@@ -4716,10 +5155,14 @@ export class PGN_126464 extends PGN implements PGN_126464Interface {
 
   constructor(fields: PGN_126464Fields, dst: number = 255) {
     super(PGN_126464Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['pgnListTransmitAndReceive'] = (fields:any, dst:number) => new PGN_126464(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -4792,10 +5235,17 @@ export class PGN_126720_Seatalk1PilotMode extends PGN implements PGN_126720_Seat
 
   constructor(fields: PGN_126720_Seatalk1PilotModeCreateArgs, dst: number = 255) {
     super(PGN_126720_Seatalk1PilotModeDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_Seatalk1PilotModeMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_Seatalk1PilotModeMatchFields)
 }
+}
+pgnIdToClass['seatalk1PilotMode'] = (fields:any, dst:number) => new PGN_126720_Seatalk1PilotMode(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -4861,10 +5311,17 @@ export class PGN_126720_FusionMediaControl extends PGN implements PGN_126720_Fus
 
   constructor(fields: PGN_126720_FusionMediaControlCreateArgs, dst: number = 255) {
     super(PGN_126720_FusionMediaControlDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_FusionMediaControlMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_FusionMediaControlMatchFields)
 }
+}
+pgnIdToClass['fusionMediaControl'] = (fields:any, dst:number) => new PGN_126720_FusionMediaControl(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -4930,10 +5387,17 @@ export class PGN_126720_FusionSiriusControl extends PGN implements PGN_126720_Fu
 
   constructor(fields: PGN_126720_FusionSiriusControlCreateArgs, dst: number = 255) {
     super(PGN_126720_FusionSiriusControlDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_FusionSiriusControlMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_FusionSiriusControlMatchFields)
 }
+}
+pgnIdToClass['fusionSiriusControl'] = (fields:any, dst:number) => new PGN_126720_FusionSiriusControl(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -4995,10 +5459,17 @@ export class PGN_126720_FusionRequestStatus extends PGN implements PGN_126720_Fu
 
   constructor(fields: PGN_126720_FusionRequestStatusCreateArgs, dst: number = 255) {
     super(PGN_126720_FusionRequestStatusDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_FusionRequestStatusMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_FusionRequestStatusMatchFields)
 }
+}
+pgnIdToClass['fusionRequestStatus'] = (fields:any, dst:number) => new PGN_126720_FusionRequestStatus(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -5062,10 +5533,17 @@ export class PGN_126720_FusionSetSource extends PGN implements PGN_126720_Fusion
 
   constructor(fields: PGN_126720_FusionSetSourceCreateArgs, dst: number = 255) {
     super(PGN_126720_FusionSetSourceDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_FusionSetSourceMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_FusionSetSourceMatchFields)
 }
+}
+pgnIdToClass['fusionSetSource'] = (fields:any, dst:number) => new PGN_126720_FusionSetSource(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -5127,10 +5605,17 @@ export class PGN_126720_FusionSetMute extends PGN implements PGN_126720_FusionSe
 
   constructor(fields: PGN_126720_FusionSetMuteCreateArgs, dst: number = 255) {
     super(PGN_126720_FusionSetMuteDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_FusionSetMuteMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_FusionSetMuteMatchFields)
 }
+}
+pgnIdToClass['fusionSetMute'] = (fields:any, dst:number) => new PGN_126720_FusionSetMute(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -5196,10 +5681,17 @@ export class PGN_126720_FusionSetZoneVolume extends PGN implements PGN_126720_Fu
 
   constructor(fields: PGN_126720_FusionSetZoneVolumeCreateArgs, dst: number = 255) {
     super(PGN_126720_FusionSetZoneVolumeDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_FusionSetZoneVolumeMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_FusionSetZoneVolumeMatchFields)
 }
+}
+pgnIdToClass['fusionSetZoneVolume'] = (fields:any, dst:number) => new PGN_126720_FusionSetZoneVolume(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -5269,10 +5761,17 @@ export class PGN_126720_FusionSetAllVolumes extends PGN implements PGN_126720_Fu
 
   constructor(fields: PGN_126720_FusionSetAllVolumesCreateArgs, dst: number = 255) {
     super(PGN_126720_FusionSetAllVolumesDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_FusionSetAllVolumesMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_FusionSetAllVolumesMatchFields)
 }
+}
+pgnIdToClass['fusionSetAllVolumes'] = (fields:any, dst:number) => new PGN_126720_FusionSetAllVolumes(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -5343,10 +5842,17 @@ export class PGN_126720_Seatalk1Keystroke extends PGN implements PGN_126720_Seat
 
   constructor(fields: PGN_126720_Seatalk1KeystrokeCreateArgs, dst: number = 255) {
     super(PGN_126720_Seatalk1KeystrokeDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_Seatalk1KeystrokeMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_Seatalk1KeystrokeMatchFields)
 }
+}
+pgnIdToClass['seatalk1Keystroke'] = (fields:any, dst:number) => new PGN_126720_Seatalk1Keystroke(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -5413,10 +5919,17 @@ export class PGN_126720_Seatalk1DeviceIdentification extends PGN implements PGN_
 
   constructor(fields: PGN_126720_Seatalk1DeviceIdentificationCreateArgs, dst: number = 255) {
     super(PGN_126720_Seatalk1DeviceIdentificationDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_Seatalk1DeviceIdentificationMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_Seatalk1DeviceIdentificationMatchFields)
 }
+}
+pgnIdToClass['seatalk1DeviceIdentification'] = (fields:any, dst:number) => new PGN_126720_Seatalk1DeviceIdentification(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -5486,10 +5999,17 @@ export class PGN_126720_Seatalk1DisplayBrightness extends PGN implements PGN_126
 
   constructor(fields: PGN_126720_Seatalk1DisplayBrightnessCreateArgs, dst: number = 255) {
     super(PGN_126720_Seatalk1DisplayBrightnessDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_Seatalk1DisplayBrightnessMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_Seatalk1DisplayBrightnessMatchFields)
 }
+}
+pgnIdToClass['seatalk1DisplayBrightness'] = (fields:any, dst:number) => new PGN_126720_Seatalk1DisplayBrightness(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -5560,10 +6080,17 @@ export class PGN_126720_Seatalk1DisplayColor extends PGN implements PGN_126720_S
 
   constructor(fields: PGN_126720_Seatalk1DisplayColorCreateArgs, dst: number = 255) {
     super(PGN_126720_Seatalk1DisplayColorDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_Seatalk1DisplayColorMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_Seatalk1DisplayColorMatchFields)
 }
+}
+pgnIdToClass['seatalk1DisplayColor'] = (fields:any, dst:number) => new PGN_126720_Seatalk1DisplayColor(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -5629,10 +6156,17 @@ export class PGN_126720_AirmarAttitudeOffset extends PGN implements PGN_126720_A
 
   constructor(fields: PGN_126720_AirmarAttitudeOffsetCreateArgs, dst: number = 255) {
     super(PGN_126720_AirmarAttitudeOffsetDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_AirmarAttitudeOffsetMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_AirmarAttitudeOffsetMatchFields)
 }
+}
+pgnIdToClass['airmarAttitudeOffset'] = (fields:any, dst:number) => new PGN_126720_AirmarAttitudeOffset(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -5716,10 +6250,17 @@ export class PGN_126720_AirmarCalibrateCompass extends PGN implements PGN_126720
 
   constructor(fields: PGN_126720_AirmarCalibrateCompassCreateArgs, dst: number = 255) {
     super(PGN_126720_AirmarCalibrateCompassDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_AirmarCalibrateCompassMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_AirmarCalibrateCompassMatchFields)
 }
+}
+pgnIdToClass['airmarCalibrateCompass'] = (fields:any, dst:number) => new PGN_126720_AirmarCalibrateCompass(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -5783,10 +6324,17 @@ export class PGN_126720_AirmarTrueWindOptions extends PGN implements PGN_126720_
 
   constructor(fields: PGN_126720_AirmarTrueWindOptionsCreateArgs, dst: number = 255) {
     super(PGN_126720_AirmarTrueWindOptionsDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_AirmarTrueWindOptionsMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_AirmarTrueWindOptionsMatchFields)
 }
+}
+pgnIdToClass['airmarTrueWindOptions'] = (fields:any, dst:number) => new PGN_126720_AirmarTrueWindOptions(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -5850,10 +6398,17 @@ export class PGN_126720_AirmarSimulateMode extends PGN implements PGN_126720_Air
 
   constructor(fields: PGN_126720_AirmarSimulateModeCreateArgs, dst: number = 255) {
     super(PGN_126720_AirmarSimulateModeDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_AirmarSimulateModeMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_AirmarSimulateModeMatchFields)
 }
+}
+pgnIdToClass['airmarSimulateMode'] = (fields:any, dst:number) => new PGN_126720_AirmarSimulateMode(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -5917,10 +6472,17 @@ export class PGN_126720_AirmarCalibrateDepth extends PGN implements PGN_126720_A
 
   constructor(fields: PGN_126720_AirmarCalibrateDepthCreateArgs, dst: number = 255) {
     super(PGN_126720_AirmarCalibrateDepthDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_AirmarCalibrateDepthMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_AirmarCalibrateDepthMatchFields)
 }
+}
+pgnIdToClass['airmarCalibrateDepth'] = (fields:any, dst:number) => new PGN_126720_AirmarCalibrateDepth(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -5990,10 +6552,17 @@ export class PGN_126720_AirmarCalibrateSpeed extends PGN implements PGN_126720_A
 
   constructor(fields: PGN_126720_AirmarCalibrateSpeedCreateArgs, dst: number = 255) {
     super(PGN_126720_AirmarCalibrateSpeedDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_AirmarCalibrateSpeedMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_AirmarCalibrateSpeedMatchFields)
 }
+}
+pgnIdToClass['airmarCalibrateSpeed'] = (fields:any, dst:number) => new PGN_126720_AirmarCalibrateSpeed(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -6059,10 +6628,17 @@ export class PGN_126720_AirmarCalibrateTemperature extends PGN implements PGN_12
 
   constructor(fields: PGN_126720_AirmarCalibrateTemperatureCreateArgs, dst: number = 255) {
     super(PGN_126720_AirmarCalibrateTemperatureDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_AirmarCalibrateTemperatureMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_AirmarCalibrateTemperatureMatchFields)
 }
+}
+pgnIdToClass['airmarCalibrateTemperature'] = (fields:any, dst:number) => new PGN_126720_AirmarCalibrateTemperature(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -6128,10 +6704,17 @@ export class PGN_126720_AirmarSpeedFilterNone extends PGN implements PGN_126720_
 
   constructor(fields: PGN_126720_AirmarSpeedFilterNoneCreateArgs, dst: number = 255) {
     super(PGN_126720_AirmarSpeedFilterNoneDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_AirmarSpeedFilterNoneMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_AirmarSpeedFilterNoneMatchFields)
 }
+}
+pgnIdToClass['airmarSpeedFilterNone'] = (fields:any, dst:number) => new PGN_126720_AirmarSpeedFilterNone(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -6200,10 +6783,17 @@ export class PGN_126720_AirmarSpeedFilterIir extends PGN implements PGN_126720_A
 
   constructor(fields: PGN_126720_AirmarSpeedFilterIirCreateArgs, dst: number = 255) {
     super(PGN_126720_AirmarSpeedFilterIirDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_AirmarSpeedFilterIirMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_AirmarSpeedFilterIirMatchFields)
 }
+}
+pgnIdToClass['airmarSpeedFilterIir'] = (fields:any, dst:number) => new PGN_126720_AirmarSpeedFilterIir(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -6269,10 +6859,17 @@ export class PGN_126720_AirmarTemperatureFilterNone extends PGN implements PGN_1
 
   constructor(fields: PGN_126720_AirmarTemperatureFilterNoneCreateArgs, dst: number = 255) {
     super(PGN_126720_AirmarTemperatureFilterNoneDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_AirmarTemperatureFilterNoneMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_AirmarTemperatureFilterNoneMatchFields)
 }
+}
+pgnIdToClass['airmarTemperatureFilterNone'] = (fields:any, dst:number) => new PGN_126720_AirmarTemperatureFilterNone(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -6341,10 +6938,17 @@ export class PGN_126720_AirmarTemperatureFilterIir extends PGN implements PGN_12
 
   constructor(fields: PGN_126720_AirmarTemperatureFilterIirCreateArgs, dst: number = 255) {
     super(PGN_126720_AirmarTemperatureFilterIirDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_AirmarTemperatureFilterIirMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_AirmarTemperatureFilterIirMatchFields)
 }
+}
+pgnIdToClass['airmarTemperatureFilterIir'] = (fields:any, dst:number) => new PGN_126720_AirmarTemperatureFilterIir(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -6408,10 +7012,17 @@ export class PGN_126720_AirmarNmea2000Options extends PGN implements PGN_126720_
 
   constructor(fields: PGN_126720_AirmarNmea2000OptionsCreateArgs, dst: number = 255) {
     super(PGN_126720_AirmarNmea2000OptionsDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_AirmarNmea2000OptionsMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_AirmarNmea2000OptionsMatchFields)
 }
+}
+pgnIdToClass['airmarNmea2000Options'] = (fields:any, dst:number) => new PGN_126720_AirmarNmea2000Options(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -6470,10 +7081,17 @@ export class PGN_126720_AirmarAddressableMultiFrame extends PGN implements PGN_1
 
   constructor(fields: PGN_126720_AirmarAddressableMultiFrameCreateArgs, dst: number = 255) {
     super(PGN_126720_AirmarAddressableMultiFrameDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_AirmarAddressableMultiFrameMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_AirmarAddressableMultiFrameMatchFields)
 }
+}
+pgnIdToClass['airmarAddressableMultiFrame'] = (fields:any, dst:number) => new PGN_126720_AirmarAddressableMultiFrame(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -6538,10 +7156,17 @@ export class PGN_126720_MaretronSlaveResponse extends PGN implements PGN_126720_
 
   constructor(fields: PGN_126720_MaretronSlaveResponseCreateArgs, dst: number = 255) {
     super(PGN_126720_MaretronSlaveResponseDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_MaretronSlaveResponseMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_MaretronSlaveResponseMatchFields)
 }
+}
+pgnIdToClass['maretronSlaveResponse'] = (fields:any, dst:number) => new PGN_126720_MaretronSlaveResponse(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -6618,10 +7243,17 @@ export class PGN_126720_GarminDayMode extends PGN implements PGN_126720_GarminDa
 
   constructor(fields: PGN_126720_GarminDayModeCreateArgs, dst: number = 255) {
     super(PGN_126720_GarminDayModeDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_GarminDayModeMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_GarminDayModeMatchFields)
 }
+}
+pgnIdToClass['garminDayMode'] = (fields:any, dst:number) => new PGN_126720_GarminDayMode(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -6699,10 +7331,17 @@ export class PGN_126720_GarminNightMode extends PGN implements PGN_126720_Garmin
 
   constructor(fields: PGN_126720_GarminNightModeCreateArgs, dst: number = 255) {
     super(PGN_126720_GarminNightModeDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_GarminNightModeMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_GarminNightModeMatchFields)
 }
+}
+pgnIdToClass['garminNightMode'] = (fields:any, dst:number) => new PGN_126720_GarminNightMode(fields, dst)
+
+
 /**
  * PGN: 126720
  *
@@ -6780,10 +7419,17 @@ export class PGN_126720_GarminColorMode extends PGN implements PGN_126720_Garmin
 
   constructor(fields: PGN_126720_GarminColorModeCreateArgs, dst: number = 255) {
     super(PGN_126720_GarminColorModeDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_126720_GarminColorModeMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_126720_GarminColorModeMatchFields)
 }
+}
+pgnIdToClass['garminColorMode'] = (fields:any, dst:number) => new PGN_126720_GarminColorMode(fields, dst)
+
+
 /**
  * PGN: 126983
  *
@@ -6840,10 +7486,14 @@ export class PGN_126983 extends PGN implements PGN_126983Interface {
 
   constructor(fields: PGN_126983Fields, dst: number = 255) {
     super(PGN_126983Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['alert'] = (fields:any, dst:number) => new PGN_126983(fields, dst)
+
+
 /**
  * PGN: 126984
  *
@@ -6891,10 +7541,14 @@ export class PGN_126984 extends PGN implements PGN_126984Interface {
 
   constructor(fields: PGN_126984Fields, dst: number = 255) {
     super(PGN_126984Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['alertResponse'] = (fields:any, dst:number) => new PGN_126984(fields, dst)
+
+
 /**
  * PGN: 126985
  *
@@ -6942,10 +7596,14 @@ export class PGN_126985 extends PGN implements PGN_126985Interface {
 
   constructor(fields: PGN_126985Fields, dst: number = 255) {
     super(PGN_126985Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['alertText'] = (fields:any, dst:number) => new PGN_126985(fields, dst)
+
+
 /**
  * PGN: 126986
  *
@@ -6996,10 +7654,14 @@ export class PGN_126986 extends PGN implements PGN_126986Interface {
 
   constructor(fields: PGN_126986Fields, dst: number = 255) {
     super(PGN_126986Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['alertConfiguration'] = (fields:any, dst:number) => new PGN_126986(fields, dst)
+
+
 /**
  * PGN: 126987
  *
@@ -7051,10 +7713,14 @@ export class PGN_126987 extends PGN implements PGN_126987Interface {
 
   constructor(fields: PGN_126987Fields, dst: number = 255) {
     super(PGN_126987Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['alertThreshold'] = (fields:any, dst:number) => new PGN_126987(fields, dst)
+
+
 /**
  * PGN: 126988
  *
@@ -7105,10 +7771,14 @@ export class PGN_126988 extends PGN implements PGN_126988Interface {
 
   constructor(fields: PGN_126988Fields, dst: number = 255) {
     super(PGN_126988Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['alertValue'] = (fields:any, dst:number) => new PGN_126988(fields, dst)
+
+
 /**
  * PGN: 126992
  *
@@ -7151,10 +7821,14 @@ export class PGN_126992 extends PGN implements PGN_126992Interface {
 
   constructor(fields: PGN_126992Fields, dst: number = 255) {
     super(PGN_126992Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['systemTime'] = (fields:any, dst:number) => new PGN_126992(fields, dst)
+
+
 /**
  * PGN: 126993
  *
@@ -7198,10 +7872,14 @@ export class PGN_126993 extends PGN implements PGN_126993Interface {
 
   constructor(fields: PGN_126993Fields, dst: number = 255) {
     super(PGN_126993Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['heartbeat'] = (fields:any, dst:number) => new PGN_126993(fields, dst)
+
+
 /**
  * PGN: 126996
  *
@@ -7247,10 +7925,14 @@ export class PGN_126996 extends PGN implements PGN_126996Interface {
 
   constructor(fields: PGN_126996Fields, dst: number = 255) {
     super(PGN_126996Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['productInformation'] = (fields:any, dst:number) => new PGN_126996(fields, dst)
+
+
 /**
  * PGN: 126998
  *
@@ -7291,10 +7973,14 @@ export class PGN_126998 extends PGN implements PGN_126998Interface {
 
   constructor(fields: PGN_126998Fields, dst: number = 255) {
     super(PGN_126998Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['configurationInformation'] = (fields:any, dst:number) => new PGN_126998(fields, dst)
+
+
 /**
  * PGN: 127233
  *
@@ -7359,10 +8045,14 @@ export class PGN_127233 extends PGN implements PGN_127233Interface {
 
   constructor(fields: PGN_127233Fields, dst: number = 255) {
     super(PGN_127233Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['manOverboardNotification'] = (fields:any, dst:number) => new PGN_127233(fields, dst)
+
+
 /**
  * PGN: 127237
  *
@@ -7416,10 +8106,14 @@ export class PGN_127237 extends PGN implements PGN_127237Interface {
 
   constructor(fields: PGN_127237Fields, dst: number = 255) {
     super(PGN_127237Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['headingTrackControl'] = (fields:any, dst:number) => new PGN_127237(fields, dst)
+
+
 /**
  * PGN: 127245
  *
@@ -7461,10 +8155,14 @@ export class PGN_127245 extends PGN implements PGN_127245Interface {
 
   constructor(fields: PGN_127245Fields, dst: number = 255) {
     super(PGN_127245Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['rudder'] = (fields:any, dst:number) => new PGN_127245(fields, dst)
+
+
 /**
  * PGN: 127250
  *
@@ -7506,10 +8204,14 @@ export class PGN_127250 extends PGN implements PGN_127250Interface {
 
   constructor(fields: PGN_127250Fields, dst: number = 255) {
     super(PGN_127250Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['vesselHeading'] = (fields:any, dst:number) => new PGN_127250(fields, dst)
+
+
 /**
  * PGN: 127251
  *
@@ -7548,10 +8250,14 @@ export class PGN_127251 extends PGN implements PGN_127251Interface {
 
   constructor(fields: PGN_127251Fields, dst: number = 255) {
     super(PGN_127251Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['rateOfTurn'] = (fields:any, dst:number) => new PGN_127251(fields, dst)
+
+
 /**
  * PGN: 127252
  *
@@ -7590,10 +8296,14 @@ export class PGN_127252 extends PGN implements PGN_127252Interface {
 
   constructor(fields: PGN_127252Fields, dst: number = 255) {
     super(PGN_127252Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['heave'] = (fields:any, dst:number) => new PGN_127252(fields, dst)
+
+
 /**
  * PGN: 127257
  *
@@ -7634,10 +8344,14 @@ export class PGN_127257 extends PGN implements PGN_127257Interface {
 
   constructor(fields: PGN_127257Fields, dst: number = 255) {
     super(PGN_127257Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['attitude'] = (fields:any, dst:number) => new PGN_127257(fields, dst)
+
+
 /**
  * PGN: 127258
  *
@@ -7679,10 +8393,14 @@ export class PGN_127258 extends PGN implements PGN_127258Interface {
 
   constructor(fields: PGN_127258Fields, dst: number = 255) {
     super(PGN_127258Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['magneticVariation'] = (fields:any, dst:number) => new PGN_127258(fields, dst)
+
+
 /**
  * PGN: 127488
  *
@@ -7723,10 +8441,14 @@ export class PGN_127488 extends PGN implements PGN_127488Interface {
 
   constructor(fields: PGN_127488Fields, dst: number = 255) {
     super(PGN_127488Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['engineParametersRapidUpdate'] = (fields:any, dst:number) => new PGN_127488(fields, dst)
+
+
 /**
  * PGN: 127489
  *
@@ -7776,10 +8498,14 @@ export class PGN_127489 extends PGN implements PGN_127489Interface {
 
   constructor(fields: PGN_127489Fields, dst: number = 255) {
     super(PGN_127489Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['engineParametersDynamic'] = (fields:any, dst:number) => new PGN_127489(fields, dst)
+
+
 /**
  * PGN: 127490
  *
@@ -7825,10 +8551,14 @@ export class PGN_127490 extends PGN implements PGN_127490Interface {
 
   constructor(fields: PGN_127490Fields, dst: number = 255) {
     super(PGN_127490Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['electricDriveStatusDynamic'] = (fields:any, dst:number) => new PGN_127490(fields, dst)
+
+
 /**
  * PGN: 127491
  *
@@ -7876,10 +8606,14 @@ export class PGN_127491 extends PGN implements PGN_127491Interface {
 
   constructor(fields: PGN_127491Fields, dst: number = 255) {
     super(PGN_127491Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['electricEnergyStorageStatusDynamic'] = (fields:any, dst:number) => new PGN_127491(fields, dst)
+
+
 /**
  * PGN: 127493
  *
@@ -7922,10 +8656,14 @@ export class PGN_127493 extends PGN implements PGN_127493Interface {
 
   constructor(fields: PGN_127493Fields, dst: number = 255) {
     super(PGN_127493Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['transmissionParametersDynamic'] = (fields:any, dst:number) => new PGN_127493(fields, dst)
+
+
 /**
  * PGN: 127494
  *
@@ -7976,10 +8714,14 @@ export class PGN_127494 extends PGN implements PGN_127494Interface {
 
   constructor(fields: PGN_127494Fields, dst: number = 255) {
     super(PGN_127494Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['electricDriveInformation'] = (fields:any, dst:number) => new PGN_127494(fields, dst)
+
+
 /**
  * PGN: 127495
  *
@@ -8033,10 +8775,14 @@ export class PGN_127495 extends PGN implements PGN_127495Interface {
 
   constructor(fields: PGN_127495Fields, dst: number = 255) {
     super(PGN_127495Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['electricEnergyStorageInformation'] = (fields:any, dst:number) => new PGN_127495(fields, dst)
+
+
 /**
  * PGN: 127496
  *
@@ -8076,10 +8822,14 @@ export class PGN_127496 extends PGN implements PGN_127496Interface {
 
   constructor(fields: PGN_127496Fields, dst: number = 255) {
     super(PGN_127496Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['tripParametersVessel'] = (fields:any, dst:number) => new PGN_127496(fields, dst)
+
+
 /**
  * PGN: 127497
  *
@@ -8120,10 +8870,14 @@ export class PGN_127497 extends PGN implements PGN_127497Interface {
 
   constructor(fields: PGN_127497Fields, dst: number = 255) {
     super(PGN_127497Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['tripParametersEngine'] = (fields:any, dst:number) => new PGN_127497(fields, dst)
+
+
 /**
  * PGN: 127498
  *
@@ -8163,10 +8917,14 @@ export class PGN_127498 extends PGN implements PGN_127498Interface {
 
   constructor(fields: PGN_127498Fields, dst: number = 255) {
     super(PGN_127498Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['engineParametersStatic'] = (fields:any, dst:number) => new PGN_127498(fields, dst)
+
+
 /**
  * PGN: 127500
  *
@@ -8210,10 +8968,14 @@ export class PGN_127500 extends PGN implements PGN_127500Interface {
 
   constructor(fields: PGN_127500Fields, dst: number = 255) {
     super(PGN_127500Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['loadControllerConnectionStateControl'] = (fields:any, dst:number) => new PGN_127500(fields, dst)
+
+
 /**
  * PGN: 127501
  *
@@ -8278,10 +9040,14 @@ export class PGN_127501 extends PGN implements PGN_127501Interface {
 
   constructor(fields: PGN_127501Fields, dst: number = 255) {
     super(PGN_127501Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['binarySwitchBankStatus'] = (fields:any, dst:number) => new PGN_127501(fields, dst)
+
+
 /**
  * PGN: 127502
  *
@@ -8346,10 +9112,14 @@ export class PGN_127502 extends PGN implements PGN_127502Interface {
 
   constructor(fields: PGN_127502Fields, dst: number = 255) {
     super(PGN_127502Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['switchBankControl'] = (fields:any, dst:number) => new PGN_127502(fields, dst)
+
+
 /**
  * PGN: 127503
  *
@@ -8399,10 +9169,14 @@ export class PGN_127503 extends PGN implements PGN_127503Interface {
 
   constructor(fields: PGN_127503Fields, dst: number = 255) {
     super(PGN_127503Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['acInputStatus'] = (fields:any, dst:number) => new PGN_127503(fields, dst)
+
+
 /**
  * PGN: 127504
  *
@@ -8452,10 +9226,14 @@ export class PGN_127504 extends PGN implements PGN_127504Interface {
 
   constructor(fields: PGN_127504Fields, dst: number = 255) {
     super(PGN_127504Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['acOutputStatus'] = (fields:any, dst:number) => new PGN_127504(fields, dst)
+
+
 /**
  * PGN: 127505
  *
@@ -8496,10 +9274,14 @@ export class PGN_127505 extends PGN implements PGN_127505Interface {
 
   constructor(fields: PGN_127505Fields, dst: number = 255) {
     super(PGN_127505Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['fluidLevel'] = (fields:any, dst:number) => new PGN_127505(fields, dst)
+
+
 /**
  * PGN: 127506
  *
@@ -8543,10 +9325,14 @@ export class PGN_127506 extends PGN implements PGN_127506Interface {
 
   constructor(fields: PGN_127506Fields, dst: number = 255) {
     super(PGN_127506Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['dcDetailedStatus'] = (fields:any, dst:number) => new PGN_127506(fields, dst)
+
+
 /**
  * PGN: 127507
  *
@@ -8590,10 +9376,14 @@ export class PGN_127507 extends PGN implements PGN_127507Interface {
 
   constructor(fields: PGN_127507Fields, dst: number = 255) {
     super(PGN_127507Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['chargerStatus'] = (fields:any, dst:number) => new PGN_127507(fields, dst)
+
+
 /**
  * PGN: 127508
  *
@@ -8634,10 +9424,14 @@ export class PGN_127508 extends PGN implements PGN_127508Interface {
 
   constructor(fields: PGN_127508Fields, dst: number = 255) {
     super(PGN_127508Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['batteryStatus'] = (fields:any, dst:number) => new PGN_127508(fields, dst)
+
+
 /**
  * PGN: 127509
  *
@@ -8681,10 +9475,14 @@ export class PGN_127509 extends PGN implements PGN_127509Interface {
 
   constructor(fields: PGN_127509Fields, dst: number = 255) {
     super(PGN_127509Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['inverterStatus'] = (fields:any, dst:number) => new PGN_127509(fields, dst)
+
+
 /**
  * PGN: 127510
  *
@@ -8731,10 +9529,14 @@ export class PGN_127510 extends PGN implements PGN_127510Interface {
 
   constructor(fields: PGN_127510Fields, dst: number = 255) {
     super(PGN_127510Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['chargerConfigurationStatus'] = (fields:any, dst:number) => new PGN_127510(fields, dst)
+
+
 /**
  * PGN: 127511
  *
@@ -8778,10 +9580,14 @@ export class PGN_127511 extends PGN implements PGN_127511Interface {
 
   constructor(fields: PGN_127511Fields, dst: number = 255) {
     super(PGN_127511Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['inverterConfigurationStatus'] = (fields:any, dst:number) => new PGN_127511(fields, dst)
+
+
 /**
  * PGN: 127512
  *
@@ -8821,10 +9627,14 @@ export class PGN_127512 extends PGN implements PGN_127512Interface {
 
   constructor(fields: PGN_127512Fields, dst: number = 255) {
     super(PGN_127512Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['agsConfigurationStatus'] = (fields:any, dst:number) => new PGN_127512(fields, dst)
+
+
 /**
  * PGN: 127513
  *
@@ -8870,10 +9680,14 @@ export class PGN_127513 extends PGN implements PGN_127513Interface {
 
   constructor(fields: PGN_127513Fields, dst: number = 255) {
     super(PGN_127513Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['batteryConfigurationStatus'] = (fields:any, dst:number) => new PGN_127513(fields, dst)
+
+
 /**
  * PGN: 127514
  *
@@ -8915,10 +9729,14 @@ export class PGN_127514 extends PGN implements PGN_127514Interface {
 
   constructor(fields: PGN_127514Fields, dst: number = 255) {
     super(PGN_127514Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['agsStatus'] = (fields:any, dst:number) => new PGN_127514(fields, dst)
+
+
 /**
  * PGN: 127744
  *
@@ -8958,10 +9776,14 @@ export class PGN_127744 extends PGN implements PGN_127744Interface {
 
   constructor(fields: PGN_127744Fields, dst: number = 255) {
     super(PGN_127744Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['acPowerCurrentPhaseA'] = (fields:any, dst:number) => new PGN_127744(fields, dst)
+
+
 /**
  * PGN: 127745
  *
@@ -9001,10 +9823,14 @@ export class PGN_127745 extends PGN implements PGN_127745Interface {
 
   constructor(fields: PGN_127745Fields, dst: number = 255) {
     super(PGN_127745Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['acPowerCurrentPhaseB'] = (fields:any, dst:number) => new PGN_127745(fields, dst)
+
+
 /**
  * PGN: 127746
  *
@@ -9044,10 +9870,14 @@ export class PGN_127746 extends PGN implements PGN_127746Interface {
 
   constructor(fields: PGN_127746Fields, dst: number = 255) {
     super(PGN_127746Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['acPowerCurrentPhaseC'] = (fields:any, dst:number) => new PGN_127746(fields, dst)
+
+
 /**
  * PGN: 127747
  *
@@ -9088,10 +9918,14 @@ export class PGN_127747 extends PGN implements PGN_127747Interface {
 
   constructor(fields: PGN_127747Fields, dst: number = 255) {
     super(PGN_127747Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['acVoltageFrequencyPhaseA'] = (fields:any, dst:number) => new PGN_127747(fields, dst)
+
+
 /**
  * PGN: 127748
  *
@@ -9132,10 +9966,14 @@ export class PGN_127748 extends PGN implements PGN_127748Interface {
 
   constructor(fields: PGN_127748Fields, dst: number = 255) {
     super(PGN_127748Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['acVoltageFrequencyPhaseB'] = (fields:any, dst:number) => new PGN_127748(fields, dst)
+
+
 /**
  * PGN: 127749
  *
@@ -9176,10 +10014,14 @@ export class PGN_127749 extends PGN implements PGN_127749Interface {
 
   constructor(fields: PGN_127749Fields, dst: number = 255) {
     super(PGN_127749Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['acVoltageFrequencyPhaseC'] = (fields:any, dst:number) => new PGN_127749(fields, dst)
+
+
 /**
  * PGN: 127750
  *
@@ -9223,10 +10065,14 @@ export class PGN_127750 extends PGN implements PGN_127750Interface {
 
   constructor(fields: PGN_127750Fields, dst: number = 255) {
     super(PGN_127750Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['converterStatus'] = (fields:any, dst:number) => new PGN_127750(fields, dst)
+
+
 /**
  * PGN: 127751
  *
@@ -9267,10 +10113,14 @@ export class PGN_127751 extends PGN implements PGN_127751Interface {
 
   constructor(fields: PGN_127751Fields, dst: number = 255) {
     super(PGN_127751Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['dcVoltageCurrent'] = (fields:any, dst:number) => new PGN_127751(fields, dst)
+
+
 /**
  * PGN: 128000
  *
@@ -9311,10 +10161,14 @@ export class PGN_128000 extends PGN implements PGN_128000Interface {
 
   constructor(fields: PGN_128000Fields, dst: number = 255) {
     super(PGN_128000Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['leewayAngle'] = (fields:any, dst:number) => new PGN_128000(fields, dst)
+
+
 /**
  * PGN: 128001
  *
@@ -9357,10 +10211,14 @@ export class PGN_128001 extends PGN implements PGN_128001Interface {
 
   constructor(fields: PGN_128001Fields, dst: number = 255) {
     super(PGN_128001Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['vesselAcceleration'] = (fields:any, dst:number) => new PGN_128001(fields, dst)
+
+
 /**
  * PGN: 128002
  *
@@ -9405,10 +10263,14 @@ export class PGN_128002 extends PGN implements PGN_128002Interface {
 
   constructor(fields: PGN_128002Fields, dst: number = 255) {
     super(PGN_128002Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['electricDriveStatusRapidUpdate'] = (fields:any, dst:number) => new PGN_128002(fields, dst)
+
+
 /**
  * PGN: 128003
  *
@@ -9453,10 +10315,14 @@ export class PGN_128003 extends PGN implements PGN_128003Interface {
 
   constructor(fields: PGN_128003Fields, dst: number = 255) {
     super(PGN_128003Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['electricEnergyStorageStatusRapidUpdate'] = (fields:any, dst:number) => new PGN_128003(fields, dst)
+
+
 /**
  * PGN: 128006
  *
@@ -9501,10 +10367,14 @@ export class PGN_128006 extends PGN implements PGN_128006Interface {
 
   constructor(fields: PGN_128006Fields, dst: number = 255) {
     super(PGN_128006Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['thrusterControlStatus'] = (fields:any, dst:number) => new PGN_128006(fields, dst)
+
+
 /**
  * PGN: 128007
  *
@@ -9546,10 +10416,14 @@ export class PGN_128007 extends PGN implements PGN_128007Interface {
 
   constructor(fields: PGN_128007Fields, dst: number = 255) {
     super(PGN_128007Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['thrusterInformation'] = (fields:any, dst:number) => new PGN_128007(fields, dst)
+
+
 /**
  * PGN: 128008
  *
@@ -9591,10 +10465,14 @@ export class PGN_128008 extends PGN implements PGN_128008Interface {
 
   constructor(fields: PGN_128008Fields, dst: number = 255) {
     super(PGN_128008Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['thrusterMotorStatus'] = (fields:any, dst:number) => new PGN_128008(fields, dst)
+
+
 /**
  * PGN: 128259
  *
@@ -9636,10 +10514,14 @@ export class PGN_128259 extends PGN implements PGN_128259Interface {
 
   constructor(fields: PGN_128259Fields, dst: number = 255) {
     super(PGN_128259Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['speed'] = (fields:any, dst:number) => new PGN_128259(fields, dst)
+
+
 /**
  * PGN: 128267
  *
@@ -9679,10 +10561,14 @@ export class PGN_128267 extends PGN implements PGN_128267Interface {
 
   constructor(fields: PGN_128267Fields, dst: number = 255) {
     super(PGN_128267Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['waterDepth'] = (fields:any, dst:number) => new PGN_128267(fields, dst)
+
+
 /**
  * PGN: 128275
  *
@@ -9722,10 +10608,14 @@ export class PGN_128275 extends PGN implements PGN_128275Interface {
 
   constructor(fields: PGN_128275Fields, dst: number = 255) {
     super(PGN_128275Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['distanceLog'] = (fields:any, dst:number) => new PGN_128275(fields, dst)
+
+
 /**
  * PGN: 128520
  *
@@ -9778,10 +10668,14 @@ export class PGN_128520 extends PGN implements PGN_128520Interface {
 
   constructor(fields: PGN_128520Fields, dst: number = 255) {
     super(PGN_128520Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['trackedTargetData'] = (fields:any, dst:number) => new PGN_128520(fields, dst)
+
+
 /**
  * PGN: 128538
  *
@@ -9851,10 +10745,14 @@ export class PGN_128538 extends PGN implements PGN_128538Interface {
 
   constructor(fields: PGN_128538Fields, dst: number = 255) {
     super(PGN_128538Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['elevatorCarStatus'] = (fields:any, dst:number) => new PGN_128538(fields, dst)
+
+
 /**
  * PGN: 128768
  *
@@ -9898,10 +10796,14 @@ export class PGN_128768 extends PGN implements PGN_128768Interface {
 
   constructor(fields: PGN_128768Fields, dst: number = 255) {
     super(PGN_128768Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['elevatorMotorControl'] = (fields:any, dst:number) => new PGN_128768(fields, dst)
+
+
 /**
  * PGN: 128769
  *
@@ -9945,10 +10847,14 @@ export class PGN_128769 extends PGN implements PGN_128769Interface {
 
   constructor(fields: PGN_128769Fields, dst: number = 255) {
     super(PGN_128769Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['elevatorDeckPushButton'] = (fields:any, dst:number) => new PGN_128769(fields, dst)
+
+
 /**
  * PGN: 128776
  *
@@ -9998,10 +10904,14 @@ export class PGN_128776 extends PGN implements PGN_128776Interface {
 
   constructor(fields: PGN_128776Fields, dst: number = 255) {
     super(PGN_128776Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['windlassControlStatus'] = (fields:any, dst:number) => new PGN_128776(fields, dst)
+
+
 /**
  * PGN: 128777
  *
@@ -10047,10 +10957,14 @@ export class PGN_128777 extends PGN implements PGN_128777Interface {
 
   constructor(fields: PGN_128777Fields, dst: number = 255) {
     super(PGN_128777Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['anchorWindlassOperatingStatus'] = (fields:any, dst:number) => new PGN_128777(fields, dst)
+
+
 /**
  * PGN: 128778
  *
@@ -10093,10 +11007,14 @@ export class PGN_128778 extends PGN implements PGN_128778Interface {
 
   constructor(fields: PGN_128778Fields, dst: number = 255) {
     super(PGN_128778Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['anchorWindlassMonitoringStatus'] = (fields:any, dst:number) => new PGN_128778(fields, dst)
+
+
 /**
  * PGN: 128780
  *
@@ -10140,10 +11058,14 @@ export class PGN_128780 extends PGN implements PGN_128780Interface {
 
   constructor(fields: PGN_128780Fields, dst: number = 255) {
     super(PGN_128780Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['linearActuatorControlStatus'] = (fields:any, dst:number) => new PGN_128780(fields, dst)
+
+
 /**
  * PGN: 129025
  *
@@ -10181,10 +11103,14 @@ export class PGN_129025 extends PGN implements PGN_129025Interface {
 
   constructor(fields: PGN_129025Fields, dst: number = 255) {
     super(PGN_129025Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['positionRapidUpdate'] = (fields:any, dst:number) => new PGN_129025(fields, dst)
+
+
 /**
  * PGN: 129026
  *
@@ -10226,10 +11152,14 @@ export class PGN_129026 extends PGN implements PGN_129026Interface {
 
   constructor(fields: PGN_129026Fields, dst: number = 255) {
     super(PGN_129026Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['cogSogRapidUpdate'] = (fields:any, dst:number) => new PGN_129026(fields, dst)
+
+
 /**
  * PGN: 129027
  *
@@ -10269,10 +11199,14 @@ export class PGN_129027 extends PGN implements PGN_129027Interface {
 
   constructor(fields: PGN_129027Fields, dst: number = 255) {
     super(PGN_129027Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['positionDeltaRapidUpdate'] = (fields:any, dst:number) => new PGN_129027(fields, dst)
+
+
 /**
  * PGN: 129028
  *
@@ -10315,10 +11249,14 @@ export class PGN_129028 extends PGN implements PGN_129028Interface {
 
   constructor(fields: PGN_129028Fields, dst: number = 255) {
     super(PGN_129028Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['altitudeDeltaRapidUpdate'] = (fields:any, dst:number) => new PGN_129028(fields, dst)
+
+
 /**
  * PGN: 129029
  *
@@ -10374,10 +11312,14 @@ export class PGN_129029 extends PGN implements PGN_129029Interface {
 
   constructor(fields: PGN_129029Fields, dst: number = 255) {
     super(PGN_129029Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['gnssPositionData'] = (fields:any, dst:number) => new PGN_129029(fields, dst)
+
+
 /**
  * PGN: 129033
  *
@@ -10416,10 +11358,14 @@ export class PGN_129033 extends PGN implements PGN_129033Interface {
 
   constructor(fields: PGN_129033Fields, dst: number = 255) {
     super(PGN_129033Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['timeDate'] = (fields:any, dst:number) => new PGN_129033(fields, dst)
+
+
 /**
  * PGN: 129038
  *
@@ -10475,10 +11421,14 @@ export class PGN_129038 extends PGN implements PGN_129038Interface {
 
   constructor(fields: PGN_129038Fields, dst: number = 255) {
     super(PGN_129038Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['aisClassAPositionReport'] = (fields:any, dst:number) => new PGN_129038(fields, dst)
+
+
 /**
  * PGN: 129039
  *
@@ -10537,10 +11487,14 @@ export class PGN_129039 extends PGN implements PGN_129039Interface {
 
   constructor(fields: PGN_129039Fields, dst: number = 255) {
     super(PGN_129039Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['aisClassBPositionReport'] = (fields:any, dst:number) => new PGN_129039(fields, dst)
+
+
 /**
  * PGN: 129040
  *
@@ -10603,10 +11557,14 @@ export class PGN_129040 extends PGN implements PGN_129040Interface {
 
   constructor(fields: PGN_129040Fields, dst: number = 255) {
     super(PGN_129040Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['aisClassBExtendedPositionReport'] = (fields:any, dst:number) => new PGN_129040(fields, dst)
+
+
 /**
  * PGN: 129041
  *
@@ -10665,10 +11623,14 @@ export class PGN_129041 extends PGN implements PGN_129041Interface {
 
   constructor(fields: PGN_129041Fields, dst: number = 255) {
     super(PGN_129041Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['aisAidsToNavigationAtonReport'] = (fields:any, dst:number) => new PGN_129041(fields, dst)
+
+
 /**
  * PGN: 129044
  *
@@ -10709,10 +11671,14 @@ export class PGN_129044 extends PGN implements PGN_129044Interface {
 
   constructor(fields: PGN_129044Fields, dst: number = 255) {
     super(PGN_129044Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['datum'] = (fields:any, dst:number) => new PGN_129044(fields, dst)
+
+
 /**
  * PGN: 129045
  *
@@ -10758,10 +11724,14 @@ export class PGN_129045 extends PGN implements PGN_129045Interface {
 
   constructor(fields: PGN_129045Fields, dst: number = 255) {
     super(PGN_129045Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['userDatum'] = (fields:any, dst:number) => new PGN_129045(fields, dst)
+
+
 /**
  * PGN: 129283
  *
@@ -10803,10 +11773,14 @@ export class PGN_129283 extends PGN implements PGN_129283Interface {
 
   constructor(fields: PGN_129283Fields, dst: number = 255) {
     super(PGN_129283Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['crossTrackError'] = (fields:any, dst:number) => new PGN_129283(fields, dst)
+
+
 /**
  * PGN: 129284
  *
@@ -10857,10 +11831,14 @@ export class PGN_129284 extends PGN implements PGN_129284Interface {
 
   constructor(fields: PGN_129284Fields, dst: number = 255) {
     super(PGN_129284Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['navigationData'] = (fields:any, dst:number) => new PGN_129284(fields, dst)
+
+
 /**
  * PGN: 129285
  *
@@ -10911,10 +11889,14 @@ export class PGN_129285 extends PGN implements PGN_129285Interface {
 
   constructor(fields: PGN_129285Fields, dst: number = 255) {
     super(PGN_129285Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['navigationRouteWpInformation'] = (fields:any, dst:number) => new PGN_129285(fields, dst)
+
+
 /**
  * PGN: 129291
  *
@@ -10956,10 +11938,14 @@ export class PGN_129291 extends PGN implements PGN_129291Interface {
 
   constructor(fields: PGN_129291Fields, dst: number = 255) {
     super(PGN_129291Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['setDriftRapidUpdate'] = (fields:any, dst:number) => new PGN_129291(fields, dst)
+
+
 /**
  * PGN: 129301
  *
@@ -11000,10 +11986,14 @@ export class PGN_129301 extends PGN implements PGN_129301Interface {
 
   constructor(fields: PGN_129301Fields, dst: number = 255) {
     super(PGN_129301Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['navigationRouteTimeToFromMark'] = (fields:any, dst:number) => new PGN_129301(fields, dst)
+
+
 /**
  * PGN: 129302
  *
@@ -11049,10 +12039,14 @@ export class PGN_129302 extends PGN implements PGN_129302Interface {
 
   constructor(fields: PGN_129302Fields, dst: number = 255) {
     super(PGN_129302Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['bearingAndDistanceBetweenTwoMarks'] = (fields:any, dst:number) => new PGN_129302(fields, dst)
+
+
 /**
  * PGN: 129538
  *
@@ -11099,10 +12093,14 @@ export class PGN_129538 extends PGN implements PGN_129538Interface {
 
   constructor(fields: PGN_129538Fields, dst: number = 255) {
     super(PGN_129538Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['gnssControlStatus'] = (fields:any, dst:number) => new PGN_129538(fields, dst)
+
+
 /**
  * PGN: 129539
  *
@@ -11145,10 +12143,14 @@ export class PGN_129539 extends PGN implements PGN_129539Interface {
 
   constructor(fields: PGN_129539Fields, dst: number = 255) {
     super(PGN_129539Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['gnssDops'] = (fields:any, dst:number) => new PGN_129539(fields, dst)
+
+
 /**
  * PGN: 129540
  *
@@ -11197,10 +12199,14 @@ export class PGN_129540 extends PGN implements PGN_129540Interface {
 
   constructor(fields: PGN_129540Fields, dst: number = 255) {
     super(PGN_129540Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['gnssSatsInView'] = (fields:any, dst:number) => new PGN_129540(fields, dst)
+
+
 /**
  * PGN: 129541
  *
@@ -11250,10 +12256,14 @@ export class PGN_129541 extends PGN implements PGN_129541Interface {
 
   constructor(fields: PGN_129541Fields, dst: number = 255) {
     super(PGN_129541Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['gpsAlmanacData'] = (fields:any, dst:number) => new PGN_129541(fields, dst)
+
+
 /**
  * PGN: 129542
  *
@@ -11297,10 +12307,14 @@ export class PGN_129542 extends PGN implements PGN_129542Interface {
 
   constructor(fields: PGN_129542Fields, dst: number = 255) {
     super(PGN_129542Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['gnssPseudorangeNoiseStatistics'] = (fields:any, dst:number) => new PGN_129542(fields, dst)
+
+
 /**
  * PGN: 129545
  *
@@ -11346,10 +12360,14 @@ export class PGN_129545 extends PGN implements PGN_129545Interface {
 
   constructor(fields: PGN_129545Fields, dst: number = 255) {
     super(PGN_129545Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['gnssRaimOutput'] = (fields:any, dst:number) => new PGN_129545(fields, dst)
+
+
 /**
  * PGN: 129546
  *
@@ -11390,10 +12408,14 @@ export class PGN_129546 extends PGN implements PGN_129546Interface {
 
   constructor(fields: PGN_129546Fields, dst: number = 255) {
     super(PGN_129546Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['gnssRaimSettings'] = (fields:any, dst:number) => new PGN_129546(fields, dst)
+
+
 /**
  * PGN: 129547
  *
@@ -11437,10 +12459,14 @@ export class PGN_129547 extends PGN implements PGN_129547Interface {
 
   constructor(fields: PGN_129547Fields, dst: number = 255) {
     super(PGN_129547Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['gnssPseudorangeErrorStatistics'] = (fields:any, dst:number) => new PGN_129547(fields, dst)
+
+
 /**
  * PGN: 129549
  *
@@ -11487,10 +12513,14 @@ export class PGN_129549 extends PGN implements PGN_129549Interface {
 
   constructor(fields: PGN_129549Fields, dst: number = 255) {
     super(PGN_129549Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['dgnssCorrections'] = (fields:any, dst:number) => new PGN_129549(fields, dst)
+
+
 /**
  * PGN: 129550
  *
@@ -11533,10 +12563,14 @@ export class PGN_129550 extends PGN implements PGN_129550Interface {
 
   constructor(fields: PGN_129550Fields, dst: number = 255) {
     super(PGN_129550Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['gnssDifferentialCorrectionReceiverInterface'] = (fields:any, dst:number) => new PGN_129550(fields, dst)
+
+
 /**
  * PGN: 129551
  *
@@ -11586,10 +12620,14 @@ export class PGN_129551 extends PGN implements PGN_129551Interface {
 
   constructor(fields: PGN_129551Fields, dst: number = 255) {
     super(PGN_129551Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['gnssDifferentialCorrectionReceiverSignal'] = (fields:any, dst:number) => new PGN_129551(fields, dst)
+
+
 /**
  * PGN: 129556
  *
@@ -11641,10 +12679,14 @@ export class PGN_129556 extends PGN implements PGN_129556Interface {
 
   constructor(fields: PGN_129556Fields, dst: number = 255) {
     super(PGN_129556Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['glonassAlmanacData'] = (fields:any, dst:number) => new PGN_129556(fields, dst)
+
+
 /**
  * PGN: 129792
  *
@@ -11692,10 +12734,14 @@ export class PGN_129792 extends PGN implements PGN_129792Interface {
 
   constructor(fields: PGN_129792Fields, dst: number = 255) {
     super(PGN_129792Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['aisDgnssBroadcastBinaryMessage'] = (fields:any, dst:number) => new PGN_129792(fields, dst)
+
+
 /**
  * PGN: 129793
  *
@@ -11745,10 +12791,14 @@ export class PGN_129793 extends PGN implements PGN_129793Interface {
 
   constructor(fields: PGN_129793Fields, dst: number = 255) {
     super(PGN_129793Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['aisUtcAndDateReport'] = (fields:any, dst:number) => new PGN_129793(fields, dst)
+
+
 /**
  * PGN: 129794
  *
@@ -11805,10 +12855,14 @@ export class PGN_129794 extends PGN implements PGN_129794Interface {
 
   constructor(fields: PGN_129794Fields, dst: number = 255) {
     super(PGN_129794Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['aisClassAStaticAndVoyageRelatedData'] = (fields:any, dst:number) => new PGN_129794(fields, dst)
+
+
 /**
  * PGN: 129795
  *
@@ -11856,10 +12910,14 @@ export class PGN_129795 extends PGN implements PGN_129795Interface {
 
   constructor(fields: PGN_129795Fields, dst: number = 255) {
     super(PGN_129795Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['aisAddressedBinaryMessage'] = (fields:any, dst:number) => new PGN_129795(fields, dst)
+
+
 /**
  * PGN: 129796
  *
@@ -11906,10 +12964,14 @@ export class PGN_129796 extends PGN implements PGN_129796Interface {
 
   constructor(fields: PGN_129796Fields, dst: number = 255) {
     super(PGN_129796Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['aisAcknowledge'] = (fields:any, dst:number) => new PGN_129796(fields, dst)
+
+
 /**
  * PGN: 129797
  *
@@ -11953,10 +13015,14 @@ export class PGN_129797 extends PGN implements PGN_129797Interface {
 
   constructor(fields: PGN_129797Fields, dst: number = 255) {
     super(PGN_129797Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['aisBinaryBroadcastMessage'] = (fields:any, dst:number) => new PGN_129797(fields, dst)
+
+
 /**
  * PGN: 129798
  *
@@ -12009,10 +13075,14 @@ export class PGN_129798 extends PGN implements PGN_129798Interface {
 
   constructor(fields: PGN_129798Fields, dst: number = 255) {
     super(PGN_129798Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['aisSarAircraftPositionReport'] = (fields:any, dst:number) => new PGN_129798(fields, dst)
+
+
 /**
  * PGN: 129799
  *
@@ -12056,10 +13126,14 @@ export class PGN_129799 extends PGN implements PGN_129799Interface {
 
   constructor(fields: PGN_129799Fields, dst: number = 255) {
     super(PGN_129799Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['radioFrequencyModePower'] = (fields:any, dst:number) => new PGN_129799(fields, dst)
+
+
 /**
  * PGN: 129800
  *
@@ -12102,10 +13176,14 @@ export class PGN_129800 extends PGN implements PGN_129800Interface {
 
   constructor(fields: PGN_129800Fields, dst: number = 255) {
     super(PGN_129800Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['aisUtcDateInquiry'] = (fields:any, dst:number) => new PGN_129800(fields, dst)
+
+
 /**
  * PGN: 129801
  *
@@ -12152,10 +13230,14 @@ export class PGN_129801 extends PGN implements PGN_129801Interface {
 
   constructor(fields: PGN_129801Fields, dst: number = 255) {
     super(PGN_129801Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['aisAddressedSafetyRelatedMessage'] = (fields:any, dst:number) => new PGN_129801(fields, dst)
+
+
 /**
  * PGN: 129802
  *
@@ -12198,10 +13280,14 @@ export class PGN_129802 extends PGN implements PGN_129802Interface {
 
   constructor(fields: PGN_129802Fields, dst: number = 255) {
     super(PGN_129802Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['aisSafetyRelatedBroadcastMessage'] = (fields:any, dst:number) => new PGN_129802(fields, dst)
+
+
 /**
  * PGN: 129803
  *
@@ -12259,10 +13345,14 @@ export class PGN_129803 extends PGN implements PGN_129803Interface {
 
   constructor(fields: PGN_129803Fields, dst: number = 255) {
     super(PGN_129803Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['aisInterrogation'] = (fields:any, dst:number) => new PGN_129803(fields, dst)
+
+
 /**
  * PGN: 129804
  *
@@ -12312,10 +13402,14 @@ export class PGN_129804 extends PGN implements PGN_129804Interface {
 
   constructor(fields: PGN_129804Fields, dst: number = 255) {
     super(PGN_129804Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['aisAssignmentModeCommand'] = (fields:any, dst:number) => new PGN_129804(fields, dst)
+
+
 /**
  * PGN: 129805
  *
@@ -12363,10 +13457,14 @@ export class PGN_129805 extends PGN implements PGN_129805Interface {
 
   constructor(fields: PGN_129805Fields, dst: number = 255) {
     super(PGN_129805Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['aisDataLinkManagementMessage'] = (fields:any, dst:number) => new PGN_129805(fields, dst)
+
+
 /**
  * PGN: 129806
  *
@@ -12425,10 +13523,14 @@ export class PGN_129806 extends PGN implements PGN_129806Interface {
 
   constructor(fields: PGN_129806Fields, dst: number = 255) {
     super(PGN_129806Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['aisChannelManagement'] = (fields:any, dst:number) => new PGN_129806(fields, dst)
+
+
 /**
  * PGN: 129807
  *
@@ -12483,10 +13585,14 @@ export class PGN_129807 extends PGN implements PGN_129807Interface {
 
   constructor(fields: PGN_129807Fields, dst: number = 255) {
     super(PGN_129807Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['aisClassBGroupAssignment'] = (fields:any, dst:number) => new PGN_129807(fields, dst)
+
+
 /**
  * PGN: 129808
  *
@@ -12584,10 +13690,17 @@ export class PGN_129808_DscDistressCallInformation extends PGN implements PGN_12
 
   constructor(fields: PGN_129808_DscDistressCallInformationCreateArgs, dst: number = 255) {
     super(PGN_129808_DscDistressCallInformationDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_129808_DscDistressCallInformationMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_129808_DscDistressCallInformationMatchFields)
 }
+}
+pgnIdToClass['dscDistressCallInformation'] = (fields:any, dst:number) => new PGN_129808_DscDistressCallInformation(fields, dst)
+
+
 /**
  * PGN: 129808
  *
@@ -12648,10 +13761,14 @@ export class PGN_129808 extends PGN implements PGN_129808Interface {
 
   constructor(fields: PGN_129808Fields, dst: number = 255) {
     super(PGN_129808Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['dscCallInformation'] = (fields:any, dst:number) => new PGN_129808(fields, dst)
+
+
 /**
  * PGN: 129809
  *
@@ -12694,10 +13811,14 @@ export class PGN_129809 extends PGN implements PGN_129809Interface {
 
   constructor(fields: PGN_129809Fields, dst: number = 255) {
     super(PGN_129809Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['aisClassBStaticDataMsg24PartA'] = (fields:any, dst:number) => new PGN_129809(fields, dst)
+
+
 /**
  * PGN: 129810
  *
@@ -12750,10 +13871,14 @@ export class PGN_129810 extends PGN implements PGN_129810Interface {
 
   constructor(fields: PGN_129810Fields, dst: number = 255) {
     super(PGN_129810Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['aisClassBStaticDataMsg24PartB'] = (fields:any, dst:number) => new PGN_129810(fields, dst)
+
+
 /**
  * PGN: 130052
  *
@@ -12804,10 +13929,14 @@ export class PGN_130052 extends PGN implements PGN_130052Interface {
 
   constructor(fields: PGN_130052Fields, dst: number = 255) {
     super(PGN_130052Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['loranCTdData'] = (fields:any, dst:number) => new PGN_130052(fields, dst)
+
+
 /**
  * PGN: 130053
  *
@@ -12858,10 +13987,14 @@ export class PGN_130053 extends PGN implements PGN_130053Interface {
 
   constructor(fields: PGN_130053Fields, dst: number = 255) {
     super(PGN_130053Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['loranCRangeData'] = (fields:any, dst:number) => new PGN_130053(fields, dst)
+
+
 /**
  * PGN: 130054
  *
@@ -12902,10 +14035,14 @@ export class PGN_130054 extends PGN implements PGN_130054Interface {
 
   constructor(fields: PGN_130054Fields, dst: number = 255) {
     super(PGN_130054Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['loranCSignalData'] = (fields:any, dst:number) => new PGN_130054(fields, dst)
+
+
 /**
  * PGN: 130060
  *
@@ -12949,10 +14086,14 @@ export class PGN_130060 extends PGN implements PGN_130060Interface {
 
   constructor(fields: PGN_130060Fields, dst: number = 255) {
     super(PGN_130060Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['label'] = (fields:any, dst:number) => new PGN_130060(fields, dst)
+
+
 /**
  * PGN: 130061
  *
@@ -12999,10 +14140,14 @@ export class PGN_130061 extends PGN implements PGN_130061Interface {
 
   constructor(fields: PGN_130061Fields, dst: number = 255) {
     super(PGN_130061Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['channelSourceConfiguration'] = (fields:any, dst:number) => new PGN_130061(fields, dst)
+
+
 /**
  * PGN: 130064
  *
@@ -13052,10 +14197,14 @@ export class PGN_130064 extends PGN implements PGN_130064Interface {
 
   constructor(fields: PGN_130064Fields, dst: number = 255) {
     super(PGN_130064Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['routeAndWpServiceDatabaseList'] = (fields:any, dst:number) => new PGN_130064(fields, dst)
+
+
 /**
  * PGN: 130065
  *
@@ -13102,10 +14251,14 @@ export class PGN_130065 extends PGN implements PGN_130065Interface {
 
   constructor(fields: PGN_130065Fields, dst: number = 255) {
     super(PGN_130065Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['routeAndWpServiceRouteList'] = (fields:any, dst:number) => new PGN_130065(fields, dst)
+
+
 /**
  * PGN: 130066
  *
@@ -13153,10 +14306,14 @@ export class PGN_130066 extends PGN implements PGN_130066Interface {
 
   constructor(fields: PGN_130066Fields, dst: number = 255) {
     super(PGN_130066Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['routeAndWpServiceRouteWpListAttributes'] = (fields:any, dst:number) => new PGN_130066(fields, dst)
+
+
 /**
  * PGN: 130067
  *
@@ -13203,10 +14360,14 @@ export class PGN_130067 extends PGN implements PGN_130067Interface {
 
   constructor(fields: PGN_130067Fields, dst: number = 255) {
     super(PGN_130067Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['routeAndWpServiceRouteWpNamePosition'] = (fields:any, dst:number) => new PGN_130067(fields, dst)
+
+
 /**
  * PGN: 130068
  *
@@ -13251,10 +14412,14 @@ export class PGN_130068 extends PGN implements PGN_130068Interface {
 
   constructor(fields: PGN_130068Fields, dst: number = 255) {
     super(PGN_130068Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['routeAndWpServiceRouteWpName'] = (fields:any, dst:number) => new PGN_130068(fields, dst)
+
+
 /**
  * PGN: 130069
  *
@@ -13301,10 +14466,14 @@ export class PGN_130069 extends PGN implements PGN_130069Interface {
 
   constructor(fields: PGN_130069Fields, dst: number = 255) {
     super(PGN_130069Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['routeAndWpServiceXteLimitNavigationMethod'] = (fields:any, dst:number) => new PGN_130069(fields, dst)
+
+
 /**
  * PGN: 130070
  *
@@ -13349,10 +14518,14 @@ export class PGN_130070 extends PGN implements PGN_130070Interface {
 
   constructor(fields: PGN_130070Fields, dst: number = 255) {
     super(PGN_130070Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['routeAndWpServiceWpComment'] = (fields:any, dst:number) => new PGN_130070(fields, dst)
+
+
 /**
  * PGN: 130071
  *
@@ -13396,10 +14569,14 @@ export class PGN_130071 extends PGN implements PGN_130071Interface {
 
   constructor(fields: PGN_130071Fields, dst: number = 255) {
     super(PGN_130071Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['routeAndWpServiceRouteComment'] = (fields:any, dst:number) => new PGN_130071(fields, dst)
+
+
 /**
  * PGN: 130072
  *
@@ -13442,10 +14619,14 @@ export class PGN_130072 extends PGN implements PGN_130072Interface {
 
   constructor(fields: PGN_130072Fields, dst: number = 255) {
     super(PGN_130072Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['routeAndWpServiceDatabaseComment'] = (fields:any, dst:number) => new PGN_130072(fields, dst)
+
+
 /**
  * PGN: 130073
  *
@@ -13490,10 +14671,14 @@ export class PGN_130073 extends PGN implements PGN_130073Interface {
 
   constructor(fields: PGN_130073Fields, dst: number = 255) {
     super(PGN_130073Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['routeAndWpServiceRadiusOfTurn'] = (fields:any, dst:number) => new PGN_130073(fields, dst)
+
+
 /**
  * PGN: 130074
  *
@@ -13540,10 +14725,14 @@ export class PGN_130074 extends PGN implements PGN_130074Interface {
 
   constructor(fields: PGN_130074Fields, dst: number = 255) {
     super(PGN_130074Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['routeAndWpServiceWpListWpNamePosition'] = (fields:any, dst:number) => new PGN_130074(fields, dst)
+
+
 /**
  * PGN: 130306
  *
@@ -13584,10 +14773,14 @@ export class PGN_130306 extends PGN implements PGN_130306Interface {
 
   constructor(fields: PGN_130306Fields, dst: number = 255) {
     super(PGN_130306Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['windData'] = (fields:any, dst:number) => new PGN_130306(fields, dst)
+
+
 /**
  * PGN: 130310
  *
@@ -13630,10 +14823,14 @@ export class PGN_130310 extends PGN implements PGN_130310Interface {
 
   constructor(fields: PGN_130310Fields, dst: number = 255) {
     super(PGN_130310Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['environmentalParametersObsolete'] = (fields:any, dst:number) => new PGN_130310(fields, dst)
+
+
 /**
  * PGN: 130311
  *
@@ -13677,10 +14874,14 @@ export class PGN_130311 extends PGN implements PGN_130311Interface {
 
   constructor(fields: PGN_130311Fields, dst: number = 255) {
     super(PGN_130311Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['environmentalParameters'] = (fields:any, dst:number) => new PGN_130311(fields, dst)
+
+
 /**
  * PGN: 130312
  *
@@ -13722,10 +14923,14 @@ export class PGN_130312 extends PGN implements PGN_130312Interface {
 
   constructor(fields: PGN_130312Fields, dst: number = 255) {
     super(PGN_130312Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['temperature'] = (fields:any, dst:number) => new PGN_130312(fields, dst)
+
+
 /**
  * PGN: 130313
  *
@@ -13767,10 +14972,14 @@ export class PGN_130313 extends PGN implements PGN_130313Interface {
 
   constructor(fields: PGN_130313Fields, dst: number = 255) {
     super(PGN_130313Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['humidity'] = (fields:any, dst:number) => new PGN_130313(fields, dst)
+
+
 /**
  * PGN: 130314
  *
@@ -13811,10 +15020,14 @@ export class PGN_130314 extends PGN implements PGN_130314Interface {
 
   constructor(fields: PGN_130314Fields, dst: number = 255) {
     super(PGN_130314Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['actualPressure'] = (fields:any, dst:number) => new PGN_130314(fields, dst)
+
+
 /**
  * PGN: 130315
  *
@@ -13855,10 +15068,14 @@ export class PGN_130315 extends PGN implements PGN_130315Interface {
 
   constructor(fields: PGN_130315Fields, dst: number = 255) {
     super(PGN_130315Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['setPressure'] = (fields:any, dst:number) => new PGN_130315(fields, dst)
+
+
 /**
  * PGN: 130316
  *
@@ -13899,10 +15116,14 @@ export class PGN_130316 extends PGN implements PGN_130316Interface {
 
   constructor(fields: PGN_130316Fields, dst: number = 255) {
     super(PGN_130316Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['temperatureExtendedRange'] = (fields:any, dst:number) => new PGN_130316(fields, dst)
+
+
 /**
  * PGN: 130320
  *
@@ -13949,10 +15170,14 @@ export class PGN_130320 extends PGN implements PGN_130320Interface {
 
   constructor(fields: PGN_130320Fields, dst: number = 255) {
     super(PGN_130320Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['tideStationData'] = (fields:any, dst:number) => new PGN_130320(fields, dst)
+
+
 /**
  * PGN: 130321
  *
@@ -13998,10 +15223,14 @@ export class PGN_130321 extends PGN implements PGN_130321Interface {
 
   constructor(fields: PGN_130321Fields, dst: number = 255) {
     super(PGN_130321Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['salinityStationData'] = (fields:any, dst:number) => new PGN_130321(fields, dst)
+
+
 /**
  * PGN: 130322
  *
@@ -14050,10 +15279,14 @@ export class PGN_130322 extends PGN implements PGN_130322Interface {
 
   constructor(fields: PGN_130322Fields, dst: number = 255) {
     super(PGN_130322Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['currentStationData'] = (fields:any, dst:number) => new PGN_130322(fields, dst)
+
+
 /**
  * PGN: 130323
  *
@@ -14104,10 +15337,14 @@ export class PGN_130323 extends PGN implements PGN_130323Interface {
 
   constructor(fields: PGN_130323Fields, dst: number = 255) {
     super(PGN_130323Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['meteorologicalStationData'] = (fields:any, dst:number) => new PGN_130323(fields, dst)
+
+
 /**
  * PGN: 130324
  *
@@ -14161,10 +15398,14 @@ export class PGN_130324 extends PGN implements PGN_130324Interface {
 
   constructor(fields: PGN_130324Fields, dst: number = 255) {
     super(PGN_130324Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['mooredBuoyStationData'] = (fields:any, dst:number) => new PGN_130324(fields, dst)
+
+
 /**
  * PGN: 130330
  *
@@ -14214,10 +15455,14 @@ export class PGN_130330 extends PGN implements PGN_130330Interface {
 
   constructor(fields: PGN_130330Fields, dst: number = 255) {
     super(PGN_130330Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['lightingSystemSettings'] = (fields:any, dst:number) => new PGN_130330(fields, dst)
+
+
 /**
  * PGN: 130560
  *
@@ -14259,10 +15504,14 @@ export class PGN_130560 extends PGN implements PGN_130560Interface {
 
   constructor(fields: PGN_130560Fields, dst: number = 255) {
     super(PGN_130560Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['payloadMass'] = (fields:any, dst:number) => new PGN_130560(fields, dst)
+
+
 /**
  * PGN: 130561
  *
@@ -14314,10 +15563,14 @@ export class PGN_130561 extends PGN implements PGN_130561Interface {
 
   constructor(fields: PGN_130561Fields, dst: number = 255) {
     super(PGN_130561Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['lightingZone'] = (fields:any, dst:number) => new PGN_130561(fields, dst)
+
+
 /**
  * PGN: 130562
  *
@@ -14369,10 +15622,14 @@ export class PGN_130562 extends PGN implements PGN_130562Interface {
 
   constructor(fields: PGN_130562Fields, dst: number = 255) {
     super(PGN_130562Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['lightingScene'] = (fields:any, dst:number) => new PGN_130562(fields, dst)
+
+
 /**
  * PGN: 130563
  *
@@ -14428,10 +15685,14 @@ export class PGN_130563 extends PGN implements PGN_130563Interface {
 
   constructor(fields: PGN_130563Fields, dst: number = 255) {
     super(PGN_130563Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['lightingDevice'] = (fields:any, dst:number) => new PGN_130563(fields, dst)
+
+
 /**
  * PGN: 130564
  *
@@ -14476,10 +15737,14 @@ export class PGN_130564 extends PGN implements PGN_130564Interface {
 
   constructor(fields: PGN_130564Fields, dst: number = 255) {
     super(PGN_130564Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['lightingDeviceEnumeration'] = (fields:any, dst:number) => new PGN_130564(fields, dst)
+
+
 /**
  * PGN: 130565
  *
@@ -14527,10 +15792,14 @@ export class PGN_130565 extends PGN implements PGN_130565Interface {
 
   constructor(fields: PGN_130565Fields, dst: number = 255) {
     super(PGN_130565Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['lightingColorSequence'] = (fields:any, dst:number) => new PGN_130565(fields, dst)
+
+
 /**
  * PGN: 130566
  *
@@ -14573,10 +15842,14 @@ export class PGN_130566 extends PGN implements PGN_130566Interface {
 
   constructor(fields: PGN_130566Fields, dst: number = 255) {
     super(PGN_130566Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['lightingProgram'] = (fields:any, dst:number) => new PGN_130566(fields, dst)
+
+
 /**
  * PGN: 130567
  *
@@ -14635,10 +15908,14 @@ export class PGN_130567 extends PGN implements PGN_130567Interface {
 
   constructor(fields: PGN_130567Fields, dst: number = 255) {
     super(PGN_130567Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['watermakerInputSettingAndStatus'] = (fields:any, dst:number) => new PGN_130567(fields, dst)
+
+
 /**
  * PGN: 130569
  *
@@ -14691,10 +15968,14 @@ export class PGN_130569 extends PGN implements PGN_130569Interface {
 
   constructor(fields: PGN_130569Fields, dst: number = 255) {
     super(PGN_130569Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['currentStatusAndFile'] = (fields:any, dst:number) => new PGN_130569(fields, dst)
+
+
 /**
  * PGN: 130570
  *
@@ -14747,10 +16028,14 @@ export class PGN_130570 extends PGN implements PGN_130570Interface {
 
   constructor(fields: PGN_130570Fields, dst: number = 255) {
     super(PGN_130570Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['libraryDataFile'] = (fields:any, dst:number) => new PGN_130570(fields, dst)
+
+
 /**
  * PGN: 130571
  *
@@ -14800,10 +16085,14 @@ export class PGN_130571 extends PGN implements PGN_130571Interface {
 
   constructor(fields: PGN_130571Fields, dst: number = 255) {
     super(PGN_130571Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['libraryDataGroup'] = (fields:any, dst:number) => new PGN_130571(fields, dst)
+
+
 /**
  * PGN: 130572
  *
@@ -14848,10 +16137,14 @@ export class PGN_130572 extends PGN implements PGN_130572Interface {
 
   constructor(fields: PGN_130572Fields, dst: number = 255) {
     super(PGN_130572Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['libraryDataSearch'] = (fields:any, dst:number) => new PGN_130572(fields, dst)
+
+
 /**
  * PGN: 130573
  *
@@ -14902,10 +16195,14 @@ export class PGN_130573 extends PGN implements PGN_130573Interface {
 
   constructor(fields: PGN_130573Fields, dst: number = 255) {
     super(PGN_130573Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['supportedSourceData'] = (fields:any, dst:number) => new PGN_130573(fields, dst)
+
+
 /**
  * PGN: 130574
  *
@@ -14948,10 +16245,14 @@ export class PGN_130574 extends PGN implements PGN_130574Interface {
 
   constructor(fields: PGN_130574Fields, dst: number = 255) {
     super(PGN_130574Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['supportedZoneData'] = (fields:any, dst:number) => new PGN_130574(fields, dst)
+
+
 /**
  * PGN: 130576
  *
@@ -14990,10 +16291,14 @@ export class PGN_130576 extends PGN implements PGN_130576Interface {
 
   constructor(fields: PGN_130576Fields, dst: number = 255) {
     super(PGN_130576Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['smallCraftStatus'] = (fields:any, dst:number) => new PGN_130576(fields, dst)
+
+
 /**
  * PGN: 130577
  *
@@ -15039,10 +16344,14 @@ export class PGN_130577 extends PGN implements PGN_130577Interface {
 
   constructor(fields: PGN_130577Fields, dst: number = 255) {
     super(PGN_130577Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['directionData'] = (fields:any, dst:number) => new PGN_130577(fields, dst)
+
+
 /**
  * PGN: 130578
  *
@@ -15084,10 +16393,14 @@ export class PGN_130578 extends PGN implements PGN_130578Interface {
 
   constructor(fields: PGN_130578Fields, dst: number = 255) {
     super(PGN_130578Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['vesselSpeedComponents'] = (fields:any, dst:number) => new PGN_130578(fields, dst)
+
+
 /**
  * PGN: 130579
  *
@@ -15129,10 +16442,14 @@ export class PGN_130579 extends PGN implements PGN_130579Interface {
 
   constructor(fields: PGN_130579Fields, dst: number = 255) {
     super(PGN_130579Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['systemConfiguration'] = (fields:any, dst:number) => new PGN_130579(fields, dst)
+
+
 /**
  * PGN: 130580
  *
@@ -15172,10 +16489,14 @@ export class PGN_130580 extends PGN implements PGN_130580Interface {
 
   constructor(fields: PGN_130580Fields, dst: number = 255) {
     super(PGN_130580Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['systemConfigurationDeprecated'] = (fields:any, dst:number) => new PGN_130580(fields, dst)
+
+
 /**
  * PGN: 130581
  *
@@ -15218,10 +16539,14 @@ export class PGN_130581 extends PGN implements PGN_130581Interface {
 
   constructor(fields: PGN_130581Fields, dst: number = 255) {
     super(PGN_130581Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['zoneConfigurationDeprecated'] = (fields:any, dst:number) => new PGN_130581(fields, dst)
+
+
 /**
  * PGN: 130582
  *
@@ -15264,10 +16589,14 @@ export class PGN_130582 extends PGN implements PGN_130582Interface {
 
   constructor(fields: PGN_130582Fields, dst: number = 255) {
     super(PGN_130582Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['zoneVolume'] = (fields:any, dst:number) => new PGN_130582(fields, dst)
+
+
 /**
  * PGN: 130583
  *
@@ -15310,10 +16639,14 @@ export class PGN_130583 extends PGN implements PGN_130583Interface {
 
   constructor(fields: PGN_130583Fields, dst: number = 255) {
     super(PGN_130583Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['availableAudioEqPresets'] = (fields:any, dst:number) => new PGN_130583(fields, dst)
+
+
 /**
  * PGN: 130584
  *
@@ -15358,10 +16691,14 @@ export class PGN_130584 extends PGN implements PGN_130584Interface {
 
   constructor(fields: PGN_130584Fields, dst: number = 255) {
     super(PGN_130584Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['availableBluetoothAddresses'] = (fields:any, dst:number) => new PGN_130584(fields, dst)
+
+
 /**
  * PGN: 130585
  *
@@ -15402,10 +16739,14 @@ export class PGN_130585 extends PGN implements PGN_130585Interface {
 
   constructor(fields: PGN_130585Fields, dst: number = 255) {
     super(PGN_130585Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['bluetoothSourceStatus'] = (fields:any, dst:number) => new PGN_130585(fields, dst)
+
+
 /**
  * PGN: 130586
  *
@@ -15454,10 +16795,14 @@ export class PGN_130586 extends PGN implements PGN_130586Interface {
 
   constructor(fields: PGN_130586Fields, dst: number = 255) {
     super(PGN_130586Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['zoneConfiguration'] = (fields:any, dst:number) => new PGN_130586(fields, dst)
+
+
 /**
  * PGN: 130816
  *
@@ -15525,10 +16870,17 @@ export class PGN_130816_SonichubInit2 extends PGN implements PGN_130816_Sonichub
 
   constructor(fields: PGN_130816_SonichubInit2CreateArgs, dst: number = 255) {
     super(PGN_130816_SonichubInit2Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130816_SonichubInit2MatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130816_SonichubInit2MatchFields)
 }
+}
+pgnIdToClass['sonichubInit2'] = (fields:any, dst:number) => new PGN_130816_SonichubInit2(fields, dst)
+
+
 /**
  * PGN: 130816
  *
@@ -15604,10 +16956,17 @@ export class PGN_130816_SonichubAmRadio extends PGN implements PGN_130816_Sonich
 
   constructor(fields: PGN_130816_SonichubAmRadioCreateArgs, dst: number = 255) {
     super(PGN_130816_SonichubAmRadioDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130816_SonichubAmRadioMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130816_SonichubAmRadioMatchFields)
 }
+}
+pgnIdToClass['sonichubAmRadio'] = (fields:any, dst:number) => new PGN_130816_SonichubAmRadio(fields, dst)
+
+
 /**
  * PGN: 130816
  *
@@ -15673,10 +17032,17 @@ export class PGN_130816_SonichubZoneInfo extends PGN implements PGN_130816_Sonic
 
   constructor(fields: PGN_130816_SonichubZoneInfoCreateArgs, dst: number = 255) {
     super(PGN_130816_SonichubZoneInfoDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130816_SonichubZoneInfoMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130816_SonichubZoneInfoMatchFields)
 }
+}
+pgnIdToClass['sonichubZoneInfo'] = (fields:any, dst:number) => new PGN_130816_SonichubZoneInfo(fields, dst)
+
+
 /**
  * PGN: 130816
  *
@@ -15742,10 +17108,17 @@ export class PGN_130816_SonichubSource extends PGN implements PGN_130816_Sonichu
 
   constructor(fields: PGN_130816_SonichubSourceCreateArgs, dst: number = 255) {
     super(PGN_130816_SonichubSourceDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130816_SonichubSourceMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130816_SonichubSourceMatchFields)
 }
+}
+pgnIdToClass['sonichubSource'] = (fields:any, dst:number) => new PGN_130816_SonichubSource(fields, dst)
+
+
 /**
  * PGN: 130816
  *
@@ -15815,10 +17188,17 @@ export class PGN_130816_SonichubSourceList extends PGN implements PGN_130816_Son
 
   constructor(fields: PGN_130816_SonichubSourceListCreateArgs, dst: number = 255) {
     super(PGN_130816_SonichubSourceListDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130816_SonichubSourceListMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130816_SonichubSourceListMatchFields)
 }
+}
+pgnIdToClass['sonichubSourceList'] = (fields:any, dst:number) => new PGN_130816_SonichubSourceList(fields, dst)
+
+
 /**
  * PGN: 130816
  *
@@ -15884,10 +17264,17 @@ export class PGN_130816_SonichubControl extends PGN implements PGN_130816_Sonich
 
   constructor(fields: PGN_130816_SonichubControlCreateArgs, dst: number = 255) {
     super(PGN_130816_SonichubControlDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130816_SonichubControlMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130816_SonichubControlMatchFields)
 }
+}
+pgnIdToClass['sonichubControl'] = (fields:any, dst:number) => new PGN_130816_SonichubControl(fields, dst)
+
+
 /**
  * PGN: 130816
  *
@@ -15963,10 +17350,17 @@ export class PGN_130816_SonichubFmRadio extends PGN implements PGN_130816_Sonich
 
   constructor(fields: PGN_130816_SonichubFmRadioCreateArgs, dst: number = 255) {
     super(PGN_130816_SonichubFmRadioDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130816_SonichubFmRadioMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130816_SonichubFmRadioMatchFields)
 }
+}
+pgnIdToClass['sonichubFmRadio'] = (fields:any, dst:number) => new PGN_130816_SonichubFmRadio(fields, dst)
+
+
 /**
  * PGN: 130816
  *
@@ -16042,10 +17436,17 @@ export class PGN_130816_SonichubPlaylist extends PGN implements PGN_130816_Sonic
 
   constructor(fields: PGN_130816_SonichubPlaylistCreateArgs, dst: number = 255) {
     super(PGN_130816_SonichubPlaylistDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130816_SonichubPlaylistMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130816_SonichubPlaylistMatchFields)
 }
+}
+pgnIdToClass['sonichubPlaylist'] = (fields:any, dst:number) => new PGN_130816_SonichubPlaylist(fields, dst)
+
+
 /**
  * PGN: 130816
  *
@@ -16113,10 +17514,17 @@ export class PGN_130816_SonichubTrack extends PGN implements PGN_130816_Sonichub
 
   constructor(fields: PGN_130816_SonichubTrackCreateArgs, dst: number = 255) {
     super(PGN_130816_SonichubTrackDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130816_SonichubTrackMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130816_SonichubTrackMatchFields)
 }
+}
+pgnIdToClass['sonichubTrack'] = (fields:any, dst:number) => new PGN_130816_SonichubTrack(fields, dst)
+
+
 /**
  * PGN: 130816
  *
@@ -16184,10 +17592,17 @@ export class PGN_130816_SonichubArtist extends PGN implements PGN_130816_Sonichu
 
   constructor(fields: PGN_130816_SonichubArtistCreateArgs, dst: number = 255) {
     super(PGN_130816_SonichubArtistDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130816_SonichubArtistMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130816_SonichubArtistMatchFields)
 }
+}
+pgnIdToClass['sonichubArtist'] = (fields:any, dst:number) => new PGN_130816_SonichubArtist(fields, dst)
+
+
 /**
  * PGN: 130816
  *
@@ -16255,10 +17670,17 @@ export class PGN_130816_SonichubAlbum extends PGN implements PGN_130816_Sonichub
 
   constructor(fields: PGN_130816_SonichubAlbumCreateArgs, dst: number = 255) {
     super(PGN_130816_SonichubAlbumDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130816_SonichubAlbumMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130816_SonichubAlbumMatchFields)
 }
+}
+pgnIdToClass['sonichubAlbum'] = (fields:any, dst:number) => new PGN_130816_SonichubAlbum(fields, dst)
+
+
 /**
  * PGN: 130816
  *
@@ -16332,10 +17754,17 @@ export class PGN_130816_SonichubMenuItem extends PGN implements PGN_130816_Sonic
 
   constructor(fields: PGN_130816_SonichubMenuItemCreateArgs, dst: number = 255) {
     super(PGN_130816_SonichubMenuItemDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130816_SonichubMenuItemMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130816_SonichubMenuItemMatchFields)
 }
+}
+pgnIdToClass['sonichubMenuItem'] = (fields:any, dst:number) => new PGN_130816_SonichubMenuItem(fields, dst)
+
+
 /**
  * PGN: 130816
  *
@@ -16401,10 +17830,17 @@ export class PGN_130816_SonichubZones extends PGN implements PGN_130816_Sonichub
 
   constructor(fields: PGN_130816_SonichubZonesCreateArgs, dst: number = 255) {
     super(PGN_130816_SonichubZonesDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130816_SonichubZonesMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130816_SonichubZonesMatchFields)
 }
+}
+pgnIdToClass['sonichubZones'] = (fields:any, dst:number) => new PGN_130816_SonichubZones(fields, dst)
+
+
 /**
  * PGN: 130816
  *
@@ -16472,10 +17908,17 @@ export class PGN_130816_SonichubMaxVolume extends PGN implements PGN_130816_Soni
 
   constructor(fields: PGN_130816_SonichubMaxVolumeCreateArgs, dst: number = 255) {
     super(PGN_130816_SonichubMaxVolumeDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130816_SonichubMaxVolumeMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130816_SonichubMaxVolumeMatchFields)
 }
+}
+pgnIdToClass['sonichubMaxVolume'] = (fields:any, dst:number) => new PGN_130816_SonichubMaxVolume(fields, dst)
+
+
 /**
  * PGN: 130816
  *
@@ -16543,10 +17986,17 @@ export class PGN_130816_SonichubVolume extends PGN implements PGN_130816_Sonichu
 
   constructor(fields: PGN_130816_SonichubVolumeCreateArgs, dst: number = 255) {
     super(PGN_130816_SonichubVolumeDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130816_SonichubVolumeMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130816_SonichubVolumeMatchFields)
 }
+}
+pgnIdToClass['sonichubVolume'] = (fields:any, dst:number) => new PGN_130816_SonichubVolume(fields, dst)
+
+
 /**
  * PGN: 130816
  *
@@ -16610,10 +18060,17 @@ export class PGN_130816_SonichubInit1 extends PGN implements PGN_130816_Sonichub
 
   constructor(fields: PGN_130816_SonichubInit1CreateArgs, dst: number = 255) {
     super(PGN_130816_SonichubInit1Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130816_SonichubInit1MatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130816_SonichubInit1MatchFields)
 }
+}
+pgnIdToClass['sonichubInit1'] = (fields:any, dst:number) => new PGN_130816_SonichubInit1(fields, dst)
+
+
 /**
  * PGN: 130816
  *
@@ -16679,10 +18136,17 @@ export class PGN_130816_SonichubPosition extends PGN implements PGN_130816_Sonic
 
   constructor(fields: PGN_130816_SonichubPositionCreateArgs, dst: number = 255) {
     super(PGN_130816_SonichubPositionDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130816_SonichubPositionMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130816_SonichubPositionMatchFields)
 }
+}
+pgnIdToClass['sonichubPosition'] = (fields:any, dst:number) => new PGN_130816_SonichubPosition(fields, dst)
+
+
 /**
  * PGN: 130816
  *
@@ -16750,10 +18214,17 @@ export class PGN_130816_SonichubInit3 extends PGN implements PGN_130816_Sonichub
 
   constructor(fields: PGN_130816_SonichubInit3CreateArgs, dst: number = 255) {
     super(PGN_130816_SonichubInit3Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130816_SonichubInit3MatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130816_SonichubInit3MatchFields)
 }
+}
+pgnIdToClass['sonichubInit3'] = (fields:any, dst:number) => new PGN_130816_SonichubInit3(fields, dst)
+
+
 /**
  * PGN: 130816
  *
@@ -16827,10 +18298,17 @@ export class PGN_130816_SimradTextMessage extends PGN implements PGN_130816_Simr
 
   constructor(fields: PGN_130816_SimradTextMessageCreateArgs, dst: number = 255) {
     super(PGN_130816_SimradTextMessageDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130816_SimradTextMessageMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130816_SimradTextMessageMatchFields)
 }
+}
+pgnIdToClass['simradTextMessage'] = (fields:any, dst:number) => new PGN_130816_SimradTextMessage(fields, dst)
+
+
 /**
  * PGN: 130817
  *
@@ -16897,10 +18375,17 @@ export class PGN_130817_NavicoUnknown extends PGN implements PGN_130817_NavicoUn
 
   constructor(fields: PGN_130817_NavicoUnknownCreateArgs, dst: number = 255) {
     super(PGN_130817_NavicoUnknownDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130817_NavicoUnknownMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130817_NavicoUnknownMatchFields)
 }
+}
+pgnIdToClass['navicoUnknown'] = (fields:any, dst:number) => new PGN_130817_NavicoUnknown(fields, dst)
+
+
 /**
  * PGN: 130817
  *
@@ -16973,10 +18458,17 @@ export class PGN_130817_LowranceProductInformation extends PGN implements PGN_13
 
   constructor(fields: PGN_130817_LowranceProductInformationCreateArgs, dst: number = 255) {
     super(PGN_130817_LowranceProductInformationDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130817_LowranceProductInformationMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130817_LowranceProductInformationMatchFields)
 }
+}
+pgnIdToClass['lowranceProductInformation'] = (fields:any, dst:number) => new PGN_130817_LowranceProductInformation(fields, dst)
+
+
 /**
  * PGN: 130818
  *
@@ -17018,10 +18510,14 @@ export class PGN_130818 extends PGN implements PGN_130818Interface {
 
   constructor(fields: PGN_130818Fields, dst: number = 255) {
     super(PGN_130818Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['simnetReprogramData'] = (fields:any, dst:number) => new PGN_130818(fields, dst)
+
+
 /**
  * PGN: 130819
  *
@@ -17060,10 +18556,14 @@ export class PGN_130819 extends PGN implements PGN_130819Interface {
 
   constructor(fields: PGN_130819Fields, dst: number = 255) {
     super(PGN_130819Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['simnetRequestReprogram'] = (fields:any, dst:number) => new PGN_130819(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -17126,10 +18626,17 @@ export class PGN_130820_SimnetReprogramStatus extends PGN implements PGN_130820_
 
   constructor(fields: PGN_130820_SimnetReprogramStatusCreateArgs, dst: number = 255) {
     super(PGN_130820_SimnetReprogramStatusDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_SimnetReprogramStatusMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_SimnetReprogramStatusMatchFields)
 }
+}
+pgnIdToClass['simnetReprogramStatus'] = (fields:any, dst:number) => new PGN_130820_SimnetReprogramStatus(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -17196,10 +18703,17 @@ export class PGN_130820_FurunoUnknown130820 extends PGN implements PGN_130820_Fu
 
   constructor(fields: PGN_130820_FurunoUnknown130820CreateArgs, dst: number = 255) {
     super(PGN_130820_FurunoUnknown130820Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FurunoUnknown130820MatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FurunoUnknown130820MatchFields)
 }
+}
+pgnIdToClass['furunoUnknown130820'] = (fields:any, dst:number) => new PGN_130820_FurunoUnknown130820(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -17269,10 +18783,17 @@ export class PGN_130820_FusionVersions extends PGN implements PGN_130820_FusionV
 
   constructor(fields: PGN_130820_FusionVersionsCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionVersionsDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionVersionsMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionVersionsMatchFields)
 }
+}
+pgnIdToClass['fusionVersions'] = (fields:any, dst:number) => new PGN_130820_FusionVersions(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -17342,10 +18863,17 @@ export class PGN_130820_FusionSource extends PGN implements PGN_130820_FusionSou
 
   constructor(fields: PGN_130820_FusionSourceCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionSourceDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionSourceMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionSourceMatchFields)
 }
+}
+pgnIdToClass['fusionSource'] = (fields:any, dst:number) => new PGN_130820_FusionSource(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -17407,10 +18935,17 @@ export class PGN_130820_FusionSourceCount extends PGN implements PGN_130820_Fusi
 
   constructor(fields: PGN_130820_FusionSourceCountCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionSourceCountDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionSourceCountMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionSourceCountMatchFields)
 }
+}
+pgnIdToClass['fusionSourceCount'] = (fields:any, dst:number) => new PGN_130820_FusionSourceCount(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -17482,10 +19017,17 @@ export class PGN_130820_FusionMedia extends PGN implements PGN_130820_FusionMedi
 
   constructor(fields: PGN_130820_FusionMediaCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionMediaDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionMediaMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionMediaMatchFields)
 }
+}
+pgnIdToClass['fusionMedia'] = (fields:any, dst:number) => new PGN_130820_FusionMedia(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -17551,10 +19093,17 @@ export class PGN_130820_FusionTrackName extends PGN implements PGN_130820_Fusion
 
   constructor(fields: PGN_130820_FusionTrackNameCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionTrackNameDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionTrackNameMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionTrackNameMatchFields)
 }
+}
+pgnIdToClass['fusionTrackName'] = (fields:any, dst:number) => new PGN_130820_FusionTrackName(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -17620,10 +19169,17 @@ export class PGN_130820_FusionArtistName extends PGN implements PGN_130820_Fusio
 
   constructor(fields: PGN_130820_FusionArtistNameCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionArtistNameDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionArtistNameMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionArtistNameMatchFields)
 }
+}
+pgnIdToClass['fusionArtistName'] = (fields:any, dst:number) => new PGN_130820_FusionArtistName(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -17689,10 +19245,17 @@ export class PGN_130820_FusionAlbumName extends PGN implements PGN_130820_Fusion
 
   constructor(fields: PGN_130820_FusionAlbumNameCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionAlbumNameDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionAlbumNameMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionAlbumNameMatchFields)
 }
+}
+pgnIdToClass['fusionAlbumName'] = (fields:any, dst:number) => new PGN_130820_FusionAlbumName(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -17754,10 +19317,17 @@ export class PGN_130820_FusionDeviceName extends PGN implements PGN_130820_Fusio
 
   constructor(fields: PGN_130820_FusionDeviceNameCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionDeviceNameDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionDeviceNameMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionDeviceNameMatchFields)
 }
+}
+pgnIdToClass['fusionDeviceName'] = (fields:any, dst:number) => new PGN_130820_FusionDeviceName(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -17821,10 +19391,17 @@ export class PGN_130820_FusionZoneName extends PGN implements PGN_130820_FusionZ
 
   constructor(fields: PGN_130820_FusionZoneNameCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionZoneNameDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionZoneNameMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionZoneNameMatchFields)
 }
+}
+pgnIdToClass['fusionZoneName'] = (fields:any, dst:number) => new PGN_130820_FusionZoneName(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -17888,10 +19465,17 @@ export class PGN_130820_FusionTrackPosition extends PGN implements PGN_130820_Fu
 
   constructor(fields: PGN_130820_FusionTrackPositionCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionTrackPositionDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionTrackPositionMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionTrackPositionMatchFields)
 }
+}
+pgnIdToClass['fusionTrackPosition'] = (fields:any, dst:number) => new PGN_130820_FusionTrackPosition(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -17961,10 +19545,17 @@ export class PGN_130820_FusionTuner extends PGN implements PGN_130820_FusionTune
 
   constructor(fields: PGN_130820_FusionTunerCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionTunerDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionTunerMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionTunerMatchFields)
 }
+}
+pgnIdToClass['fusionTuner'] = (fields:any, dst:number) => new PGN_130820_FusionTuner(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -18032,10 +19623,17 @@ export class PGN_130820_FusionMarineTuner extends PGN implements PGN_130820_Fusi
 
   constructor(fields: PGN_130820_FusionMarineTunerCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionMarineTunerDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionMarineTunerMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionMarineTunerMatchFields)
 }
+}
+pgnIdToClass['fusionMarineTuner'] = (fields:any, dst:number) => new PGN_130820_FusionMarineTuner(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -18099,10 +19697,17 @@ export class PGN_130820_FusionMarineSquelch extends PGN implements PGN_130820_Fu
 
   constructor(fields: PGN_130820_FusionMarineSquelchCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionMarineSquelchDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionMarineSquelchMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionMarineSquelchMatchFields)
 }
+}
+pgnIdToClass['fusionMarineSquelch'] = (fields:any, dst:number) => new PGN_130820_FusionMarineSquelch(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -18166,10 +19771,17 @@ export class PGN_130820_FusionMarineScanMode extends PGN implements PGN_130820_F
 
   constructor(fields: PGN_130820_FusionMarineScanModeCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionMarineScanModeDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionMarineScanModeMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionMarineScanModeMatchFields)
 }
+}
+pgnIdToClass['fusionMarineScanMode'] = (fields:any, dst:number) => new PGN_130820_FusionMarineScanMode(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -18239,10 +19851,17 @@ export class PGN_130820_FusionMenuItem extends PGN implements PGN_130820_FusionM
 
   constructor(fields: PGN_130820_FusionMenuItemCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionMenuItemDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionMenuItemMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionMenuItemMatchFields)
 }
+}
+pgnIdToClass['fusionMenuItem'] = (fields:any, dst:number) => new PGN_130820_FusionMenuItem(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -18306,10 +19925,17 @@ export class PGN_130820_FusionAuxGain extends PGN implements PGN_130820_FusionAu
 
   constructor(fields: PGN_130820_FusionAuxGainCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionAuxGainDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionAuxGainMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionAuxGainMatchFields)
 }
+}
+pgnIdToClass['fusionAuxGain'] = (fields:any, dst:number) => new PGN_130820_FusionAuxGain(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -18374,10 +20000,17 @@ export class PGN_130820_FusionUsbRepeatStatus extends PGN implements PGN_130820_
 
   constructor(fields: PGN_130820_FusionUsbRepeatStatusCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionUsbRepeatStatusDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionUsbRepeatStatusMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionUsbRepeatStatusMatchFields)
 }
+}
+pgnIdToClass['fusionUsbRepeatStatus'] = (fields:any, dst:number) => new PGN_130820_FusionUsbRepeatStatus(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -18441,10 +20074,17 @@ export class PGN_130820_FusionSetting extends PGN implements PGN_130820_FusionSe
 
   constructor(fields: PGN_130820_FusionSettingCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionSettingDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionSettingMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionSettingMatchFields)
 }
+}
+pgnIdToClass['fusionSetting'] = (fields:any, dst:number) => new PGN_130820_FusionSetting(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -18514,10 +20154,17 @@ export class PGN_130820_FusionSettings extends PGN implements PGN_130820_FusionS
 
   constructor(fields: PGN_130820_FusionSettingsCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionSettingsDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionSettingsMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionSettingsMatchFields)
 }
+}
+pgnIdToClass['fusionSettings'] = (fields:any, dst:number) => new PGN_130820_FusionSettings(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -18579,10 +20226,17 @@ export class PGN_130820_FusionMute extends PGN implements PGN_130820_FusionMuteI
 
   constructor(fields: PGN_130820_FusionMuteCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionMuteDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionMuteMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionMuteMatchFields)
 }
+}
+pgnIdToClass['fusionMute'] = (fields:any, dst:number) => new PGN_130820_FusionMute(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -18646,10 +20300,17 @@ export class PGN_130820_FusionBalance extends PGN implements PGN_130820_FusionBa
 
   constructor(fields: PGN_130820_FusionBalanceCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionBalanceDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionBalanceMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionBalanceMatchFields)
 }
+}
+pgnIdToClass['fusionBalance'] = (fields:any, dst:number) => new PGN_130820_FusionBalance(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -18713,10 +20374,17 @@ export class PGN_130820_FusionLowPassFilter extends PGN implements PGN_130820_Fu
 
   constructor(fields: PGN_130820_FusionLowPassFilterCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionLowPassFilterDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionLowPassFilterMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionLowPassFilterMatchFields)
 }
+}
+pgnIdToClass['fusionLowPassFilter'] = (fields:any, dst:number) => new PGN_130820_FusionLowPassFilter(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -18784,10 +20452,17 @@ export class PGN_130820_FusionSublevels extends PGN implements PGN_130820_Fusion
 
   constructor(fields: PGN_130820_FusionSublevelsCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionSublevelsDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionSublevelsMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionSublevelsMatchFields)
 }
+}
+pgnIdToClass['fusionSublevels'] = (fields:any, dst:number) => new PGN_130820_FusionSublevels(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -18855,10 +20530,17 @@ export class PGN_130820_FusionEq extends PGN implements PGN_130820_FusionEqInter
 
   constructor(fields: PGN_130820_FusionEqCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionEqDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionEqMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionEqMatchFields)
 }
+}
+pgnIdToClass['fusionEq'] = (fields:any, dst:number) => new PGN_130820_FusionEq(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -18926,10 +20608,17 @@ export class PGN_130820_FusionVolumeLimits extends PGN implements PGN_130820_Fus
 
   constructor(fields: PGN_130820_FusionVolumeLimitsCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionVolumeLimitsDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionVolumeLimitsMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionVolumeLimitsMatchFields)
 }
+}
+pgnIdToClass['fusionVolumeLimits'] = (fields:any, dst:number) => new PGN_130820_FusionVolumeLimits(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -18997,10 +20686,17 @@ export class PGN_130820_FusionVolumes extends PGN implements PGN_130820_FusionVo
 
   constructor(fields: PGN_130820_FusionVolumesCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionVolumesDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionVolumesMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionVolumesMatchFields)
 }
+}
+pgnIdToClass['fusionVolumes'] = (fields:any, dst:number) => new PGN_130820_FusionVolumes(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -19070,10 +20766,17 @@ export class PGN_130820_FusionCapabilities extends PGN implements PGN_130820_Fus
 
   constructor(fields: PGN_130820_FusionCapabilitiesCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionCapabilitiesDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionCapabilitiesMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionCapabilitiesMatchFields)
 }
+}
+pgnIdToClass['fusionCapabilities'] = (fields:any, dst:number) => new PGN_130820_FusionCapabilities(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -19137,10 +20840,17 @@ export class PGN_130820_FusionLineLevelControl extends PGN implements PGN_130820
 
   constructor(fields: PGN_130820_FusionLineLevelControlCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionLineLevelControlDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionLineLevelControlMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionLineLevelControlMatchFields)
 }
+}
+pgnIdToClass['fusionLineLevelControl'] = (fields:any, dst:number) => new PGN_130820_FusionLineLevelControl(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -19202,10 +20912,17 @@ export class PGN_130820_FusionPowerState extends PGN implements PGN_130820_Fusio
 
   constructor(fields: PGN_130820_FusionPowerStateCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionPowerStateDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionPowerStateMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionPowerStateMatchFields)
 }
+}
+pgnIdToClass['fusionPowerState'] = (fields:any, dst:number) => new PGN_130820_FusionPowerState(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -19275,10 +20992,17 @@ export class PGN_130820_FusionSiriusxm extends PGN implements PGN_130820_FusionS
 
   constructor(fields: PGN_130820_FusionSiriusxmCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionSiriusxmDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionSiriusxmMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionSiriusxmMatchFields)
 }
+}
+pgnIdToClass['fusionSiriusxm'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxm(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -19344,10 +21068,17 @@ export class PGN_130820_FusionSiriusxmChannel extends PGN implements PGN_130820_
 
   constructor(fields: PGN_130820_FusionSiriusxmChannelCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionSiriusxmChannelDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionSiriusxmChannelMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionSiriusxmChannelMatchFields)
 }
+}
+pgnIdToClass['fusionSiriusxmChannel'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmChannel(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -19413,10 +21144,17 @@ export class PGN_130820_FusionSiriusxmTitle extends PGN implements PGN_130820_Fu
 
   constructor(fields: PGN_130820_FusionSiriusxmTitleCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionSiriusxmTitleDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionSiriusxmTitleMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionSiriusxmTitleMatchFields)
 }
+}
+pgnIdToClass['fusionSiriusxmTitle'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmTitle(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -19482,10 +21220,17 @@ export class PGN_130820_FusionSiriusxmArtist extends PGN implements PGN_130820_F
 
   constructor(fields: PGN_130820_FusionSiriusxmArtistCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionSiriusxmArtistDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionSiriusxmArtistMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionSiriusxmArtistMatchFields)
 }
+}
+pgnIdToClass['fusionSiriusxmArtist'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmArtist(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -19551,10 +21296,17 @@ export class PGN_130820_FusionSiriusxmContentInfo extends PGN implements PGN_130
 
   constructor(fields: PGN_130820_FusionSiriusxmContentInfoCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionSiriusxmContentInfoDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionSiriusxmContentInfoMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionSiriusxmContentInfoMatchFields)
 }
+}
+pgnIdToClass['fusionSiriusxmContentInfo'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmContentInfo(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -19620,10 +21372,17 @@ export class PGN_130820_FusionSiriusxmCategory extends PGN implements PGN_130820
 
   constructor(fields: PGN_130820_FusionSiriusxmCategoryCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionSiriusxmCategoryDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionSiriusxmCategoryMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionSiriusxmCategoryMatchFields)
 }
+}
+pgnIdToClass['fusionSiriusxmCategory'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmCategory(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -19687,10 +21446,17 @@ export class PGN_130820_FusionSiriusxmSignal extends PGN implements PGN_130820_F
 
   constructor(fields: PGN_130820_FusionSiriusxmSignalCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionSiriusxmSignalDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionSiriusxmSignalMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionSiriusxmSignalMatchFields)
 }
+}
+pgnIdToClass['fusionSiriusxmSignal'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmSignal(fields, dst)
+
+
 /**
  * PGN: 130820
  *
@@ -19756,10 +21522,17 @@ export class PGN_130820_FusionSiriusxmPresets extends PGN implements PGN_130820_
 
   constructor(fields: PGN_130820_FusionSiriusxmPresetsCreateArgs, dst: number = 255) {
     super(PGN_130820_FusionSiriusxmPresetsDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130820_FusionSiriusxmPresetsMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130820_FusionSiriusxmPresetsMatchFields)
 }
+}
+pgnIdToClass['fusionSiriusxmPresets'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmPresets(fields, dst)
+
+
 /**
  * PGN: 130821
  *
@@ -19820,10 +21593,17 @@ export class PGN_130821_NavicoAsciiData extends PGN implements PGN_130821_Navico
 
   constructor(fields: PGN_130821_NavicoAsciiDataCreateArgs, dst: number = 255) {
     super(PGN_130821_NavicoAsciiDataDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130821_NavicoAsciiDataMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130821_NavicoAsciiDataMatchFields)
 }
+}
+pgnIdToClass['navicoAsciiData'] = (fields:any, dst:number) => new PGN_130821_NavicoAsciiData(fields, dst)
+
+
 /**
  * PGN: 130821
  *
@@ -19900,10 +21680,17 @@ export class PGN_130821_FurunoUnknown130821 extends PGN implements PGN_130821_Fu
 
   constructor(fields: PGN_130821_FurunoUnknown130821CreateArgs, dst: number = 255) {
     super(PGN_130821_FurunoUnknown130821Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130821_FurunoUnknown130821MatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130821_FurunoUnknown130821MatchFields)
 }
+}
+pgnIdToClass['furunoUnknown130821'] = (fields:any, dst:number) => new PGN_130821_FurunoUnknown130821(fields, dst)
+
+
 /**
  * PGN: 130822
  *
@@ -19943,10 +21730,14 @@ export class PGN_130822 extends PGN implements PGN_130822Interface {
 
   constructor(fields: PGN_130822Fields, dst: number = 255) {
     super(PGN_130822Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['navicoUnknown1'] = (fields:any, dst:number) => new PGN_130822(fields, dst)
+
+
 /**
  * PGN: 130823
  *
@@ -19990,10 +21781,14 @@ export class PGN_130823 extends PGN implements PGN_130823Interface {
 
   constructor(fields: PGN_130823Fields, dst: number = 255) {
     super(PGN_130823Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['maretronProprietaryTemperatureHighRange'] = (fields:any, dst:number) => new PGN_130823(fields, dst)
+
+
 /**
  * PGN: 130824
  *
@@ -20062,10 +21857,17 @@ export class PGN_130824_BGkeyValueData extends PGN implements PGN_130824_BGkeyVa
 
   constructor(fields: PGN_130824_BGkeyValueDataCreateArgs, dst: number = 255) {
     super(PGN_130824_BGkeyValueDataDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130824_BGkeyValueDataMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130824_BGkeyValueDataMatchFields)
 }
+}
+pgnIdToClass['bGKeyValueData'] = (fields:any, dst:number) => new PGN_130824_BGkeyValueData(fields, dst)
+
+
 /**
  * PGN: 130824
  *
@@ -20132,10 +21934,17 @@ export class PGN_130824_MaretronAnnunciator extends PGN implements PGN_130824_Ma
 
   constructor(fields: PGN_130824_MaretronAnnunciatorCreateArgs, dst: number = 255) {
     super(PGN_130824_MaretronAnnunciatorDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130824_MaretronAnnunciatorMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130824_MaretronAnnunciatorMatchFields)
 }
+}
+pgnIdToClass['maretronAnnunciator'] = (fields:any, dst:number) => new PGN_130824_MaretronAnnunciator(fields, dst)
+
+
 /**
  * PGN: 130825
  *
@@ -20175,10 +21984,14 @@ export class PGN_130825 extends PGN implements PGN_130825Interface {
 
   constructor(fields: PGN_130825Fields, dst: number = 255) {
     super(PGN_130825Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['navicoUnknown2'] = (fields:any, dst:number) => new PGN_130825(fields, dst)
+
+
 /**
  * PGN: 130827
  *
@@ -20223,10 +22036,14 @@ export class PGN_130827 extends PGN implements PGN_130827Interface {
 
   constructor(fields: PGN_130827Fields, dst: number = 255) {
     super(PGN_130827Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['lowranceUnknown'] = (fields:any, dst:number) => new PGN_130827(fields, dst)
+
+
 /**
  * PGN: 130828
  *
@@ -20265,10 +22082,14 @@ export class PGN_130828 extends PGN implements PGN_130828Interface {
 
   constructor(fields: PGN_130828Fields, dst: number = 255) {
     super(PGN_130828Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['simnetSetSerialNumber'] = (fields:any, dst:number) => new PGN_130828(fields, dst)
+
+
 /**
  * PGN: 130831
  *
@@ -20307,10 +22128,14 @@ export class PGN_130831 extends PGN implements PGN_130831Interface {
 
   constructor(fields: PGN_130831Fields, dst: number = 255) {
     super(PGN_130831Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['suzukiEngineAndStorageDeviceConfig'] = (fields:any, dst:number) => new PGN_130831(fields, dst)
+
+
 /**
  * PGN: 130832
  *
@@ -20349,10 +22174,14 @@ export class PGN_130832 extends PGN implements PGN_130832Interface {
 
   constructor(fields: PGN_130832Fields, dst: number = 255) {
     super(PGN_130832Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['simnetFuelUsedHighResolution'] = (fields:any, dst:number) => new PGN_130832(fields, dst)
+
+
 /**
  * PGN: 130833
  *
@@ -20397,10 +22226,14 @@ export class PGN_130833 extends PGN implements PGN_130833Interface {
 
   constructor(fields: PGN_130833Fields, dst: number = 255) {
     super(PGN_130833Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['bGUserAndRemoteRename'] = (fields:any, dst:number) => new PGN_130833(fields, dst)
+
+
 /**
  * PGN: 130834
  *
@@ -20439,10 +22272,14 @@ export class PGN_130834 extends PGN implements PGN_130834Interface {
 
   constructor(fields: PGN_130834Fields, dst: number = 255) {
     super(PGN_130834Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['simnetEngineAndTankConfiguration'] = (fields:any, dst:number) => new PGN_130834(fields, dst)
+
+
 /**
  * PGN: 130835
  *
@@ -20481,10 +22318,14 @@ export class PGN_130835 extends PGN implements PGN_130835Interface {
 
   constructor(fields: PGN_130835Fields, dst: number = 255) {
     super(PGN_130835Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['simnetSetEngineAndTankConfiguration'] = (fields:any, dst:number) => new PGN_130835(fields, dst)
+
+
 /**
  * PGN: 130836
  *
@@ -20559,10 +22400,17 @@ export class PGN_130836_SimnetFluidLevelSensorConfiguration extends PGN implemen
 
   constructor(fields: PGN_130836_SimnetFluidLevelSensorConfigurationCreateArgs, dst: number = 255) {
     super(PGN_130836_SimnetFluidLevelSensorConfigurationDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130836_SimnetFluidLevelSensorConfigurationMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130836_SimnetFluidLevelSensorConfigurationMatchFields)
 }
+}
+pgnIdToClass['simnetFluidLevelSensorConfiguration'] = (fields:any, dst:number) => new PGN_130836_SimnetFluidLevelSensorConfiguration(fields, dst)
+
+
 /**
  * PGN: 130836
  *
@@ -20637,10 +22485,17 @@ export class PGN_130836_MaretronSwitchStatusCounter extends PGN implements PGN_1
 
   constructor(fields: PGN_130836_MaretronSwitchStatusCounterCreateArgs, dst: number = 255) {
     super(PGN_130836_MaretronSwitchStatusCounterDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130836_MaretronSwitchStatusCounterMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130836_MaretronSwitchStatusCounterMatchFields)
 }
+}
+pgnIdToClass['maretronSwitchStatusCounter'] = (fields:any, dst:number) => new PGN_130836_MaretronSwitchStatusCounter(fields, dst)
+
+
 /**
  * PGN: 130837
  *
@@ -20697,10 +22552,17 @@ export class PGN_130837_SimnetFuelFlowTurbineConfiguration extends PGN implement
 
   constructor(fields: PGN_130837_SimnetFuelFlowTurbineConfigurationCreateArgs, dst: number = 255) {
     super(PGN_130837_SimnetFuelFlowTurbineConfigurationDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130837_SimnetFuelFlowTurbineConfigurationMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130837_SimnetFuelFlowTurbineConfigurationMatchFields)
 }
+}
+pgnIdToClass['simnetFuelFlowTurbineConfiguration'] = (fields:any, dst:number) => new PGN_130837_SimnetFuelFlowTurbineConfiguration(fields, dst)
+
+
 /**
  * PGN: 130837
  *
@@ -20775,10 +22637,17 @@ export class PGN_130837_MaretronSwitchStatusTimer extends PGN implements PGN_130
 
   constructor(fields: PGN_130837_MaretronSwitchStatusTimerCreateArgs, dst: number = 255) {
     super(PGN_130837_MaretronSwitchStatusTimerDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130837_MaretronSwitchStatusTimerMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130837_MaretronSwitchStatusTimerMatchFields)
 }
+}
+pgnIdToClass['maretronSwitchStatusTimer'] = (fields:any, dst:number) => new PGN_130837_MaretronSwitchStatusTimer(fields, dst)
+
+
 /**
  * PGN: 130838
  *
@@ -20817,10 +22686,14 @@ export class PGN_130838 extends PGN implements PGN_130838Interface {
 
   constructor(fields: PGN_130838Fields, dst: number = 255) {
     super(PGN_130838Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['simnetFluidLevelWarning'] = (fields:any, dst:number) => new PGN_130838(fields, dst)
+
+
 /**
  * PGN: 130839
  *
@@ -20859,10 +22732,14 @@ export class PGN_130839 extends PGN implements PGN_130839Interface {
 
   constructor(fields: PGN_130839Fields, dst: number = 255) {
     super(PGN_130839Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['simnetPressureSensorConfiguration'] = (fields:any, dst:number) => new PGN_130839(fields, dst)
+
+
 /**
  * PGN: 130840
  *
@@ -20901,10 +22778,14 @@ export class PGN_130840 extends PGN implements PGN_130840Interface {
 
   constructor(fields: PGN_130840Fields, dst: number = 255) {
     super(PGN_130840Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['simnetDataUserGroupConfiguration'] = (fields:any, dst:number) => new PGN_130840(fields, dst)
+
+
 /**
  * PGN: 130842
  *
@@ -20973,10 +22854,17 @@ export class PGN_130842_SimnetAisClassBstaticDataMsg24PartA extends PGN implemen
 
   constructor(fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartACreateArgs, dst: number = 255) {
     super(PGN_130842_SimnetAisClassBstaticDataMsg24PartADefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130842_SimnetAisClassBstaticDataMsg24PartAMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130842_SimnetAisClassBstaticDataMsg24PartAMatchFields)
 }
+}
+pgnIdToClass['simnetAisClassBStaticDataMsg24PartA'] = (fields:any, dst:number) => new PGN_130842_SimnetAisClassBstaticDataMsg24PartA(fields, dst)
+
+
 /**
  * PGN: 130842
  *
@@ -21051,10 +22939,17 @@ export class PGN_130842_FurunoSixDegreesOfFreedomMovement extends PGN implements
 
   constructor(fields: PGN_130842_FurunoSixDegreesOfFreedomMovementCreateArgs, dst: number = 255) {
     super(PGN_130842_FurunoSixDegreesOfFreedomMovementDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130842_FurunoSixDegreesOfFreedomMovementMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130842_FurunoSixDegreesOfFreedomMovementMatchFields)
 }
+}
+pgnIdToClass['furunoSixDegreesOfFreedomMovement'] = (fields:any, dst:number) => new PGN_130842_FurunoSixDegreesOfFreedomMovement(fields, dst)
+
+
 /**
  * PGN: 130842
  *
@@ -21142,10 +23037,17 @@ export class PGN_130842_SimnetAisClassBstaticDataMsg24PartB extends PGN implemen
 
   constructor(fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartBCreateArgs, dst: number = 255) {
     super(PGN_130842_SimnetAisClassBstaticDataMsg24PartBDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130842_SimnetAisClassBstaticDataMsg24PartBMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130842_SimnetAisClassBstaticDataMsg24PartBMatchFields)
 }
+}
+pgnIdToClass['simnetAisClassBStaticDataMsg24PartB'] = (fields:any, dst:number) => new PGN_130842_SimnetAisClassBstaticDataMsg24PartB(fields, dst)
+
+
 /**
  * PGN: 130843
  *
@@ -21212,10 +23114,17 @@ export class PGN_130843_FurunoHeelAngleRollInformation extends PGN implements PG
 
   constructor(fields: PGN_130843_FurunoHeelAngleRollInformationCreateArgs, dst: number = 255) {
     super(PGN_130843_FurunoHeelAngleRollInformationDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130843_FurunoHeelAngleRollInformationMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130843_FurunoHeelAngleRollInformationMatchFields)
 }
+}
+pgnIdToClass['furunoHeelAngleRollInformation'] = (fields:any, dst:number) => new PGN_130843_FurunoHeelAngleRollInformation(fields, dst)
+
+
 /**
  * PGN: 130843
  *
@@ -21272,10 +23181,17 @@ export class PGN_130843_SimnetSonarStatusFrequencyAndDspVoltage extends PGN impl
 
   constructor(fields: PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageCreateArgs, dst: number = 255) {
     super(PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageMatchFields)
 }
+}
+pgnIdToClass['simnetSonarStatusFrequencyAndDspVoltage'] = (fields:any, dst:number) => new PGN_130843_SimnetSonarStatusFrequencyAndDspVoltage(fields, dst)
+
+
 /**
  * PGN: 130845
  *
@@ -21332,10 +23248,17 @@ export class PGN_130845_FurunoMultiSatsInViewExtended extends PGN implements PGN
 
   constructor(fields: PGN_130845_FurunoMultiSatsInViewExtendedCreateArgs, dst: number = 255) {
     super(PGN_130845_FurunoMultiSatsInViewExtendedDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130845_FurunoMultiSatsInViewExtendedMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130845_FurunoMultiSatsInViewExtendedMatchFields)
 }
+}
+pgnIdToClass['furunoMultiSatsInViewExtended'] = (fields:any, dst:number) => new PGN_130845_FurunoMultiSatsInViewExtended(fields, dst)
+
+
 /**
  * PGN: 130845
  *
@@ -21408,10 +23331,17 @@ export class PGN_130845_SimnetKeyValue extends PGN implements PGN_130845_SimnetK
 
   constructor(fields: PGN_130845_SimnetKeyValueCreateArgs, dst: number = 255) {
     super(PGN_130845_SimnetKeyValueDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130845_SimnetKeyValueMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130845_SimnetKeyValueMatchFields)
 }
+}
+pgnIdToClass['simnetKeyValue'] = (fields:any, dst:number) => new PGN_130845_SimnetKeyValue(fields, dst)
+
+
 /**
  * PGN: 130846
  *
@@ -21484,10 +23414,17 @@ export class PGN_130846_SimnetParameterSet extends PGN implements PGN_130846_Sim
 
   constructor(fields: PGN_130846_SimnetParameterSetCreateArgs, dst: number = 255) {
     super(PGN_130846_SimnetParameterSetDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130846_SimnetParameterSetMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130846_SimnetParameterSetMatchFields)
 }
+}
+pgnIdToClass['simnetParameterSet'] = (fields:any, dst:number) => new PGN_130846_SimnetParameterSet(fields, dst)
+
+
 /**
  * PGN: 130846
  *
@@ -21544,10 +23481,17 @@ export class PGN_130846_FurunoMotionSensorStatusExtended extends PGN implements 
 
   constructor(fields: PGN_130846_FurunoMotionSensorStatusExtendedCreateArgs, dst: number = 255) {
     super(PGN_130846_FurunoMotionSensorStatusExtendedDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130846_FurunoMotionSensorStatusExtendedMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130846_FurunoMotionSensorStatusExtendedMatchFields)
 }
+}
+pgnIdToClass['furunoMotionSensorStatusExtended'] = (fields:any, dst:number) => new PGN_130846_FurunoMotionSensorStatusExtended(fields, dst)
+
+
 /**
  * PGN: 130847
  *
@@ -21591,10 +23535,14 @@ export class PGN_130847 extends PGN implements PGN_130847Interface {
 
   constructor(fields: PGN_130847Fields, dst: number = 255) {
     super(PGN_130847Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['seatalkNodeStatistics'] = (fields:any, dst:number) => new PGN_130847(fields, dst)
+
+
 /**
  * PGN: 130848
  *
@@ -21639,10 +23587,14 @@ export class PGN_130848 extends PGN implements PGN_130848Interface {
 
   constructor(fields: PGN_130848Fields, dst: number = 255) {
     super(PGN_130848Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['seatalkWaypointInformation'] = (fields:any, dst:number) => new PGN_130848(fields, dst)
+
+
 /**
  * PGN: 130850
  *
@@ -21716,10 +23668,17 @@ export class PGN_130850_SimnetApCommand extends PGN implements PGN_130850_Simnet
 
   constructor(fields: PGN_130850_SimnetApCommandCreateArgs, dst: number = 255) {
     super(PGN_130850_SimnetApCommandDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130850_SimnetApCommandMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130850_SimnetApCommandMatchFields)
 }
+}
+pgnIdToClass['simnetApCommand'] = (fields:any, dst:number) => new PGN_130850_SimnetApCommand(fields, dst)
+
+
 /**
  * PGN: 130850
  *
@@ -21793,10 +23752,17 @@ export class PGN_130850_SimnetEventCommandApCommand extends PGN implements PGN_1
 
   constructor(fields: PGN_130850_SimnetEventCommandApCommandCreateArgs, dst: number = 255) {
     super(PGN_130850_SimnetEventCommandApCommandDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130850_SimnetEventCommandApCommandMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130850_SimnetEventCommandApCommandMatchFields)
 }
+}
+pgnIdToClass['simnetEventCommandApCommand'] = (fields:any, dst:number) => new PGN_130850_SimnetEventCommandApCommand(fields, dst)
+
+
 /**
  * PGN: 130850
  *
@@ -21872,10 +23838,17 @@ export class PGN_130850_SimnetAlarm extends PGN implements PGN_130850_SimnetAlar
 
   constructor(fields: PGN_130850_SimnetAlarmCreateArgs, dst: number = 255) {
     super(PGN_130850_SimnetAlarmDefaults)
-    this.src = dst
+    this.dst = dst
     this.fields = { ...PGN_130850_SimnetAlarmMatchFields, ...fields }
   }
+
+  isMatch() {
+    return isMatch(this, PGN_130850_SimnetAlarmMatchFields)
 }
+}
+pgnIdToClass['simnetAlarm'] = (fields:any, dst:number) => new PGN_130850_SimnetAlarm(fields, dst)
+
+
 /**
  * PGN: 130851
  *
@@ -21922,10 +23895,14 @@ export class PGN_130851 extends PGN implements PGN_130851Interface {
 
   constructor(fields: PGN_130851Fields, dst: number = 255) {
     super(PGN_130851Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['simnetEventReplyApCommand'] = (fields:any, dst:number) => new PGN_130851(fields, dst)
+
+
 /**
  * PGN: 130856
  *
@@ -21970,10 +23947,14 @@ export class PGN_130856 extends PGN implements PGN_130856Interface {
 
   constructor(fields: PGN_130856Fields, dst: number = 255) {
     super(PGN_130856Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['simnetAlarmMessage'] = (fields:any, dst:number) => new PGN_130856(fields, dst)
+
+
 /**
  * PGN: 130860
  *
@@ -22020,10 +24001,14 @@ export class PGN_130860 extends PGN implements PGN_130860Interface {
 
   constructor(fields: PGN_130860Fields, dst: number = 255) {
     super(PGN_130860Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['simnetApUnknown4'] = (fields:any, dst:number) => new PGN_130860(fields, dst)
+
+
 /**
  * PGN: 130880
  *
@@ -22066,10 +24051,14 @@ export class PGN_130880 extends PGN implements PGN_130880Interface {
 
   constructor(fields: PGN_130880Fields, dst: number = 255) {
     super(PGN_130880Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['airmarAdditionalWeatherData'] = (fields:any, dst:number) => new PGN_130880(fields, dst)
+
+
 /**
  * PGN: 130881
  *
@@ -22112,10 +24101,14 @@ export class PGN_130881 extends PGN implements PGN_130881Interface {
 
   constructor(fields: PGN_130881Fields, dst: number = 255) {
     super(PGN_130881Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['airmarHeaterControl'] = (fields:any, dst:number) => new PGN_130881(fields, dst)
+
+
 /**
  * PGN: 130918
  *
@@ -22162,10 +24155,14 @@ export class PGN_130918 extends PGN implements PGN_130918Interface {
 
   constructor(fields: PGN_130918Fields, dst: number = 255) {
     super(PGN_130918Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['seatalkRouteInformation'] = (fields:any, dst:number) => new PGN_130918(fields, dst)
+
+
 /**
  * PGN: 130944
  *
@@ -22209,7 +24206,11 @@ export class PGN_130944 extends PGN implements PGN_130944Interface {
 
   constructor(fields: PGN_130944Fields, dst: number = 255) {
     super(PGN_130944Defaults)
-    this.src = dst
+    this.dst = dst
     this.fields = fields
   }
+
 }
+pgnIdToClass['airmarPost'] = (fields:any, dst:number) => new PGN_130944(fields, dst)
+
+

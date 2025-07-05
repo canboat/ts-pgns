@@ -289,7 +289,7 @@ export class PGN {
     //let typeNameNoPGN = `${pgn.PGN}_${pgn.Id.charAt(0).toUpperCase() + pgn.Id.slice(1)}`
 
     if (hasMatchFields) {
-      typeNameNoPGN = `${typeNameNoPGN}_${camelCase(pgn.Id, { pascalCase: true, preserveConsecutiveUppercase:true })}`
+      typeNameNoPGN = `${typeNameNoPGN}_${camelCase(pgn.Id, { pascalCase: true, preserveConsecutiveUppercase: true })}`
     }
 
     /*

@@ -35,19 +35,31 @@ export type PGNMap = {
   [key: number]: Definition[]
 }
 
+class NotEqual extends Error {
+  constructor() {
+    super()
+  }
+}
+
 /**
  * Convers a PGN created using camelCase keys to one using Names
  *
  * @category Utilities
  */
-export const isMatch = (_pgn: PGN, _matchFields: any) => {
-  return false
-  /*
+export const isMatch = (pgn: any, matchFields: any) => {
   try {
     Object.keys(matchFields).forEach((key: string) => {
+      if (pgn.fields === undefined || pgn.fields[key] !== matchFields[key]) {
+        throw new NotEqual()
+      }
     })
-    } catch (err) {}
-  */
+    return true
+  } catch (err) {
+    if (err instanceof NotEqual) {
+      return false
+    }
+    throw err
+  }
 }
 
 /**

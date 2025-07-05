@@ -40,7 +40,7 @@ export type PGNMap = {
  *
  * @category Utilities
  */
-export const isMatch = (pgn: PGN, matchFields: any) => {
+export const isMatch = (_pgn: PGN, _matchFields: any) => {
   return false
   /*
   try {

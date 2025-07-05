@@ -18,6 +18,7 @@
 import camelCase from 'camelcase'
 import { getAllPGNs } from './index'
 import { Definition, Field } from './definition'
+import { fixIdentifier } from './internals'
 import minimist from 'minimist'
 import pgns from '../canboat.json'
 
@@ -103,6 +104,13 @@ if (argv.enums) {
 if (argv.pgns) {
   console.log('/* eslint-disable @typescript-eslint/no-explicit-any */')
   console.log("import * as enums from './enums'\n")
+  console.log("import {isMatch} from './utilities'\n")
+
+  console.log('const pgnIdToClass: {[key:string]: any} = {}\n')
+
+  console.log(`export const getPGNClass = (id: string) => {
+  return pgnIdToClass[id]
+}`)
 
   pgns.FieldTypes.forEach((ft: any) => {
     let type = 'number'
@@ -423,15 +431,26 @@ export class PGN {
 
   constructor(fields: ${typeName}${createArgs}, dst: number = 255) {
     super(${typeName}Defaults)
-    this.src = dst`)
+    this.dst = dst`)
 
     if (hasMatchFields) {
       console.log(`    this.fields = { ...${typeName}MatchFields, ...fields }`)
     } else {
       console.log(`    this.fields = fields`)
     }
-    console.log(`  }
+    console.log(`  }\n`)
+
+    if (hasMatchFields) {
+      console.log(`  isMatch() {
+    return isMatch(this, ${typeName}MatchFields)
 }`)
+    }
+
+    console.log('}')
+    console.log(
+      `pgnIdToClass['${pgn.Id}'] = (fields:any, dst:number) => new ${typeName}(fields, dst)`
+    )
+    console.log('\n')
 
     /*
     console.log(
@@ -450,42 +469,4 @@ export class PGN {
     console.log('}')
     */
   }
-}
-
-function fixIdentifier(str: string, prefix: string) {
-  let res = str
-
-  const firstChar = str[0]
-  if (
-    !(
-      (firstChar >= 'a' && firstChar <= 'z') ||
-      (firstChar >= 'A' && firstChar <= 'Z') ||
-      firstChar === '_' ||
-      firstChar === '$'
-    ) &&
-    firstChar !== '+' &&
-    firstChar !== '-'
-  ) {
-    res = `${prefix}` + str
-  }
-
-  let newS = ''
-  for (let i = 0; i < res.length; i++) {
-    const char = res[i]
-
-    if (char == '-') {
-      newS = newS + 'Minus'
-    } else if (char === '+') {
-      newS = newS + 'Plus'
-    } else if (
-      (char >= 'a' && char <= 'z') ||
-      (char >= 'A' && char <= 'Z') ||
-      (char >= '0' && char <= '9') ||
-      char === '_' ||
-      char === '$'
-    ) {
-      newS = newS + char
-    }
-  }
-  return newS
 }

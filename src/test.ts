@@ -25,6 +25,7 @@ const obj: any = {
   }
 }
 
+/*
 const obj2: PGN_65305_SimnetDeviceModeRequest = {
   ...PGN_65305_SimnetDeviceModeRequestDefaults,
   fields: {
@@ -34,10 +35,11 @@ const obj2: PGN_65305_SimnetDeviceModeRequest = {
     report: SimnetDeviceReport.Status,
     spare6: 1
   }
-}
+  }
 
 tryIt(obj)
 tryIt(obj2)
+  */
 
 function tryIt(pgn: PGN_65305_SimnetDeviceModeRequest) {
   if (pgn.fields.manufacturerCode === ManufacturerCode.BepMarine) {
@@ -54,6 +56,11 @@ if (pgn !== undefined) {
   console.log(inter)
 }
 
+const b = PGN_65305_SimnetDeviceModeRequest.constructor({
+  registerId: 1,
+  payload: 100
+})
+
 const battery = new PGN_61184_VictronBatteryRegister(
   {
     registerId: 1,
@@ -66,6 +73,7 @@ console.log(battery instanceof PGN_61184_VictronBatteryRegister)
 
 console.log((battery as any)['fields'])
 
+/*
 function myfunc(): PGN_61184_VictronBatteryRegister {
   return {
     ...PGN_61184_VictronBatteryRegisterDefaults,
@@ -74,8 +82,9 @@ function myfunc(): PGN_61184_VictronBatteryRegister {
       registerId: 1
     }
   }
-}
+  }
 
 const m = myfunc()
 console.log(m instanceof PGN_61184_VictronBatteryRegister)
 console.log(m.fields.manufacturerCode)
+*/

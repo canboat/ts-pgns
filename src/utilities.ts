@@ -15,9 +15,11 @@
  * limitations under the License.
  */
 
+import camelCase from 'camelcase'
 import { PGN } from './pgns'
 import canboat from '../canboat.json'
 import { getPGN } from './index'
+import { fixIdentifier } from './internals'
 import {
   Field,
   Definition,
@@ -31,6 +33,21 @@ import {
  */
 export type PGNMap = {
   [key: number]: Definition[]
+}
+
+/**
+ * Convers a PGN created using camelCase keys to one using Names
+ *
+ * @category Utilities
+ */
+export const isMatch = (_pgn: PGN, _matchFields: any) => {
+  return false
+  /*
+  try {
+    Object.keys(matchFields).forEach((key: string) => {
+    })
+    } catch (err) {}
+  */
 }
 
 /**
@@ -199,4 +216,14 @@ export const getBitEnumerations = (): BitEnumeration[] => {
  */
 export const getFieldTypeEnumerations = (): FieldTypeEnumeration[] => {
   return canboat.LookupFieldTypeEnumerations
+}
+
+/**
+ * Convers a PGN created using camelCase keys to one using Names
+ *
+ * @category Utilities
+ */
+export const nameToId = (name: string) => {
+  return fixIdentifier(camelCase(name), '_')
+  //return camelCase(fixIdentifier(name, '_'))
 }

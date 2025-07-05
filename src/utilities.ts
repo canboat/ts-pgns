@@ -37,15 +37,17 @@ export type PGNMap = {
 
 /**
  * Convers a PGN created using camelCase keys to one using Names
- * 
+ *
  * @category Utilities
  */
-export const isMatch = (pgn: PGN, matchFields:any) => {
+export const isMatch = (pgn: PGN, matchFields: any) => {
+  return false
+  /*
   try {
-    Object.keys(matchFields).forEach((key:string) => {
+    Object.keys(matchFields).forEach((key: string) => {
     })
-  } catch (err) {
-  }
+    } catch (err) {}
+  */
 }
 
 /**
@@ -218,7 +220,7 @@ export const getFieldTypeEnumerations = (): FieldTypeEnumeration[] => {
 
 /**
  * Convers a PGN created using camelCase keys to one using Names
- * 
+ *
  * @category Utilities
  */
 export const nameToId = (name: string) => {

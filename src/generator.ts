@@ -107,7 +107,7 @@ if (argv.pgns) {
   console.log("import {isMatch} from './utilities'\n")
 
   console.log('const pgnIdToClass: {[key:string]: any} = {}\n')
-  
+
   console.log(`export const getPGNClass = (id: string) => {
   return pgnIdToClass[id]
 }`)
@@ -440,14 +440,16 @@ export class PGN {
     }
     console.log(`  }\n`)
 
-    if ( hasMatchFields ) {
+    if (hasMatchFields) {
       console.log(`  isMatch() {
     return isMatch(this, ${typeName}MatchFields)
 }`)
     }
-    
+
     console.log('}')
-    console.log(`pgnIdToClass['${pgn.Id}'] = (fields:any, dst:number) => new ${typeName}(fields, dst)`)
+    console.log(
+      `pgnIdToClass['${pgn.Id}'] = (fields:any, dst:number) => new ${typeName}(fields, dst)`
+    )
     console.log('\n')
 
     /*
@@ -468,4 +470,3 @@ export class PGN {
     */
   }
 }
-

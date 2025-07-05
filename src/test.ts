@@ -56,11 +56,10 @@ if (pgn !== undefined) {
   console.log(inter)
 }
 
-const b = PGN_65305_SimnetDeviceModeRequest.constructor(
-  {
-    registerId: 1,
-    payload: 100
-  })
+const b = PGN_65305_SimnetDeviceModeRequest.constructor({
+  registerId: 1,
+  payload: 100
+})
 
 const battery = new PGN_61184_VictronBatteryRegister(
   {

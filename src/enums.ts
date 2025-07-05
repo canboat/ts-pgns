@@ -17,7 +17,7 @@ export enum IndustryCode {
   Highway = 'Highway',
   Agriculture = 'Agriculture',
   Construction = 'Construction',
-  Marine = 'Marine',
+  Marine = 'Marine Industry',
   Industrial = 'Industrial',
 }
 

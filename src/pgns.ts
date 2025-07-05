@@ -21799,16 +21799,16 @@ pgnIdToClass['maretronProprietaryTemperatureHighRange'] = (fields:any, dst:numbe
  * Match: Manufacturer Code == B & G<br>
  * Match: Industry Code == Marine Industry<br>
  *
- * @category PGN_130824_BGkeyValueData
+ * @category PGN_130824_BGKeyValueData
  */
-export interface PGN_130824_BGkeyValueDataInterface extends PGNInterface {
-  fields: PGN_130824_BGkeyValueDataFields
+export interface PGN_130824_BGKeyValueDataInterface extends PGNInterface {
+  fields: PGN_130824_BGKeyValueDataFields
 }
 
 /**
- * @category PGN_130824_BGkeyValueData
+ * @category PGN_130824_BGKeyValueData
  */
-export interface PGN_130824_BGkeyValueDataFields {
+export interface PGN_130824_BGKeyValueDataFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -21820,9 +21820,9 @@ export interface PGN_130824_BGkeyValueDataFields {
 }
 
 /**
- * @category PGN_130824_BGkeyValueData
+ * @category PGN_130824_BGKeyValueData
  */
-export const PGN_130824_BGkeyValueDataDefaults = {
+export const PGN_130824_BGKeyValueDataDefaults = {
   pgn: 130824,
   dst: 255,
   prio: 2,
@@ -21830,17 +21830,17 @@ export const PGN_130824_BGkeyValueDataDefaults = {
 }
 
 /**
- * @category PGN_130824_BGkeyValueData
+ * @category PGN_130824_BGKeyValueData
  */
-export const PGN_130824_BGkeyValueDataMatchFields = {
+export const PGN_130824_BGKeyValueDataMatchFields = {
   manufacturerCode: enums.ManufacturerCode.BG,
   industryCode: enums.IndustryCode.Marine,
 }
 
 /**
- * @category PGN_130824_BGkeyValueData
+ * @category PGN_130824_BGKeyValueData
  */
-export interface PGN_130824_BGkeyValueDataCreateArgs {
+export interface PGN_130824_BGKeyValueDataCreateArgs {
   reserved?: number
   list: {
     key?: N2K_DynamicFieldKey
@@ -21850,22 +21850,22 @@ export interface PGN_130824_BGkeyValueDataCreateArgs {
 }
 
 /**
- * @category PGN_130824_BGkeyValueData
+ * @category PGN_130824_BGKeyValueData
  */
-export class PGN_130824_BGkeyValueData extends PGN implements PGN_130824_BGkeyValueDataInterface {
-  fields: PGN_130824_BGkeyValueDataFields
+export class PGN_130824_BGKeyValueData extends PGN implements PGN_130824_BGKeyValueDataInterface {
+  fields: PGN_130824_BGKeyValueDataFields
 
-  constructor(fields: PGN_130824_BGkeyValueDataCreateArgs, dst: number = 255) {
-    super(PGN_130824_BGkeyValueDataDefaults)
+  constructor(fields: PGN_130824_BGKeyValueDataCreateArgs, dst: number = 255) {
+    super(PGN_130824_BGKeyValueDataDefaults)
     this.dst = dst
-    this.fields = { ...PGN_130824_BGkeyValueDataMatchFields, ...fields }
+    this.fields = { ...PGN_130824_BGKeyValueDataMatchFields, ...fields }
   }
 
   isMatch() {
-    return isMatch(this, PGN_130824_BGkeyValueDataMatchFields)
+    return isMatch(this, PGN_130824_BGKeyValueDataMatchFields)
 }
 }
-pgnIdToClass['bGKeyValueData'] = (fields:any, dst:number) => new PGN_130824_BGkeyValueData(fields, dst)
+pgnIdToClass['bGKeyValueData'] = (fields:any, dst:number) => new PGN_130824_BGKeyValueData(fields, dst)
 
 
 /**
@@ -22794,16 +22794,16 @@ pgnIdToClass['simnetDataUserGroupConfiguration'] = (fields:any, dst:number) => n
  * Match: Manufacturer Code == Simrad<br>
  * Match: Industry Code == Marine Industry<br>
  *
- * @category PGN_130842_SimnetAisClassBstaticDataMsg24PartA
+ * @category PGN_130842_SimnetAisClassBStaticDataMsg24PartA
  */
-export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartAInterface extends PGNInterface {
-  fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartAFields
+export interface PGN_130842_SimnetAisClassBStaticDataMsg24PartAInterface extends PGNInterface {
+  fields: PGN_130842_SimnetAisClassBStaticDataMsg24PartAFields
 }
 
 /**
- * @category PGN_130842_SimnetAisClassBstaticDataMsg24PartA
+ * @category PGN_130842_SimnetAisClassBStaticDataMsg24PartA
  */
-export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartAFields {
+export interface PGN_130842_SimnetAisClassBStaticDataMsg24PartAFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -22816,9 +22816,9 @@ export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartAFields {
 }
 
 /**
- * @category PGN_130842_SimnetAisClassBstaticDataMsg24PartA
+ * @category PGN_130842_SimnetAisClassBStaticDataMsg24PartA
  */
-export const PGN_130842_SimnetAisClassBstaticDataMsg24PartADefaults = {
+export const PGN_130842_SimnetAisClassBStaticDataMsg24PartADefaults = {
   pgn: 130842,
   dst: 255,
   prio: 3,
@@ -22826,17 +22826,17 @@ export const PGN_130842_SimnetAisClassBstaticDataMsg24PartADefaults = {
 }
 
 /**
- * @category PGN_130842_SimnetAisClassBstaticDataMsg24PartA
+ * @category PGN_130842_SimnetAisClassBStaticDataMsg24PartA
  */
-export const PGN_130842_SimnetAisClassBstaticDataMsg24PartAMatchFields = {
+export const PGN_130842_SimnetAisClassBStaticDataMsg24PartAMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.Marine,
 }
 
 /**
- * @category PGN_130842_SimnetAisClassBstaticDataMsg24PartA
+ * @category PGN_130842_SimnetAisClassBStaticDataMsg24PartA
  */
-export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartACreateArgs {
+export interface PGN_130842_SimnetAisClassBStaticDataMsg24PartACreateArgs {
   reserved?: number
   messageId: N2K_Number
   repeatIndicator?: enums.RepeatIndicator | number
@@ -22847,22 +22847,22 @@ export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartACreateArgs {
 }
 
 /**
- * @category PGN_130842_SimnetAisClassBstaticDataMsg24PartA
+ * @category PGN_130842_SimnetAisClassBStaticDataMsg24PartA
  */
-export class PGN_130842_SimnetAisClassBstaticDataMsg24PartA extends PGN implements PGN_130842_SimnetAisClassBstaticDataMsg24PartAInterface {
-  fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartAFields
+export class PGN_130842_SimnetAisClassBStaticDataMsg24PartA extends PGN implements PGN_130842_SimnetAisClassBStaticDataMsg24PartAInterface {
+  fields: PGN_130842_SimnetAisClassBStaticDataMsg24PartAFields
 
-  constructor(fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartACreateArgs, dst: number = 255) {
-    super(PGN_130842_SimnetAisClassBstaticDataMsg24PartADefaults)
+  constructor(fields: PGN_130842_SimnetAisClassBStaticDataMsg24PartACreateArgs, dst: number = 255) {
+    super(PGN_130842_SimnetAisClassBStaticDataMsg24PartADefaults)
     this.dst = dst
-    this.fields = { ...PGN_130842_SimnetAisClassBstaticDataMsg24PartAMatchFields, ...fields }
+    this.fields = { ...PGN_130842_SimnetAisClassBStaticDataMsg24PartAMatchFields, ...fields }
   }
 
   isMatch() {
-    return isMatch(this, PGN_130842_SimnetAisClassBstaticDataMsg24PartAMatchFields)
+    return isMatch(this, PGN_130842_SimnetAisClassBStaticDataMsg24PartAMatchFields)
 }
 }
-pgnIdToClass['simnetAisClassBStaticDataMsg24PartA'] = (fields:any, dst:number) => new PGN_130842_SimnetAisClassBstaticDataMsg24PartA(fields, dst)
+pgnIdToClass['simnetAisClassBStaticDataMsg24PartA'] = (fields:any, dst:number) => new PGN_130842_SimnetAisClassBStaticDataMsg24PartA(fields, dst)
 
 
 /**
@@ -22959,16 +22959,16 @@ pgnIdToClass['furunoSixDegreesOfFreedomMovement'] = (fields:any, dst:number) => 
  * Match: Industry Code == Marine Industry<br>
  * Match: Message ID == Msg 24 Part B<br>
  *
- * @category PGN_130842_SimnetAisClassBstaticDataMsg24PartB
+ * @category PGN_130842_SimnetAisClassBStaticDataMsg24PartB
  */
-export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartBInterface extends PGNInterface {
-  fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartBFields
+export interface PGN_130842_SimnetAisClassBStaticDataMsg24PartBInterface extends PGNInterface {
+  fields: PGN_130842_SimnetAisClassBStaticDataMsg24PartBFields
 }
 
 /**
- * @category PGN_130842_SimnetAisClassBstaticDataMsg24PartB
+ * @category PGN_130842_SimnetAisClassBStaticDataMsg24PartB
  */
-export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartBFields {
+export interface PGN_130842_SimnetAisClassBStaticDataMsg24PartBFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -22990,9 +22990,9 @@ export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartBFields {
 }
 
 /**
- * @category PGN_130842_SimnetAisClassBstaticDataMsg24PartB
+ * @category PGN_130842_SimnetAisClassBStaticDataMsg24PartB
  */
-export const PGN_130842_SimnetAisClassBstaticDataMsg24PartBDefaults = {
+export const PGN_130842_SimnetAisClassBStaticDataMsg24PartBDefaults = {
   pgn: 130842,
   dst: 255,
   prio: 3,
@@ -23000,18 +23000,18 @@ export const PGN_130842_SimnetAisClassBstaticDataMsg24PartBDefaults = {
 }
 
 /**
- * @category PGN_130842_SimnetAisClassBstaticDataMsg24PartB
+ * @category PGN_130842_SimnetAisClassBStaticDataMsg24PartB
  */
-export const PGN_130842_SimnetAisClassBstaticDataMsg24PartBMatchFields = {
+export const PGN_130842_SimnetAisClassBStaticDataMsg24PartBMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.Marine,
   messageId: 1,
 }
 
 /**
- * @category PGN_130842_SimnetAisClassBstaticDataMsg24PartB
+ * @category PGN_130842_SimnetAisClassBStaticDataMsg24PartB
  */
-export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartBCreateArgs {
+export interface PGN_130842_SimnetAisClassBStaticDataMsg24PartBCreateArgs {
   reserved?: number
   repeatIndicator?: enums.RepeatIndicator | number
   d?: N2K_Number
@@ -23030,22 +23030,22 @@ export interface PGN_130842_SimnetAisClassBstaticDataMsg24PartBCreateArgs {
 }
 
 /**
- * @category PGN_130842_SimnetAisClassBstaticDataMsg24PartB
+ * @category PGN_130842_SimnetAisClassBStaticDataMsg24PartB
  */
-export class PGN_130842_SimnetAisClassBstaticDataMsg24PartB extends PGN implements PGN_130842_SimnetAisClassBstaticDataMsg24PartBInterface {
-  fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartBFields
+export class PGN_130842_SimnetAisClassBStaticDataMsg24PartB extends PGN implements PGN_130842_SimnetAisClassBStaticDataMsg24PartBInterface {
+  fields: PGN_130842_SimnetAisClassBStaticDataMsg24PartBFields
 
-  constructor(fields: PGN_130842_SimnetAisClassBstaticDataMsg24PartBCreateArgs, dst: number = 255) {
-    super(PGN_130842_SimnetAisClassBstaticDataMsg24PartBDefaults)
+  constructor(fields: PGN_130842_SimnetAisClassBStaticDataMsg24PartBCreateArgs, dst: number = 255) {
+    super(PGN_130842_SimnetAisClassBStaticDataMsg24PartBDefaults)
     this.dst = dst
-    this.fields = { ...PGN_130842_SimnetAisClassBstaticDataMsg24PartBMatchFields, ...fields }
+    this.fields = { ...PGN_130842_SimnetAisClassBStaticDataMsg24PartBMatchFields, ...fields }
   }
 
   isMatch() {
-    return isMatch(this, PGN_130842_SimnetAisClassBstaticDataMsg24PartBMatchFields)
+    return isMatch(this, PGN_130842_SimnetAisClassBStaticDataMsg24PartBMatchFields)
 }
 }
-pgnIdToClass['simnetAisClassBStaticDataMsg24PartB'] = (fields:any, dst:number) => new PGN_130842_SimnetAisClassBstaticDataMsg24PartB(fields, dst)
+pgnIdToClass['simnetAisClassBStaticDataMsg24PartB'] = (fields:any, dst:number) => new PGN_130842_SimnetAisClassBStaticDataMsg24PartB(fields, dst)
 
 
 /**

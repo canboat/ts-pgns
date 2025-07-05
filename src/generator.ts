@@ -60,11 +60,17 @@ if (argv.enums) {
     category()
     console.log(`export enum ${enumName(en.Name)} {`)
     en.EnumValues.forEach((v: any) => {
+      let vName = v.Name
+
+      if (en.Name === 'INDUSTRY_CODE' && vName === 'Marine') {
+        vName = 'Marine Industry'
+      }
+
       const name = enumName(v.Name)
       const found = done[name]
       if (!found) {
         done[name] = 1
-        console.log(`  ${name} = '${v.Name}',`)
+        console.log(`  ${name} = '${vName}',`)
       }
     })
     console.log('}\n')
@@ -283,7 +289,7 @@ export class PGN {
     //let typeNameNoPGN = `${pgn.PGN}_${pgn.Id.charAt(0).toUpperCase() + pgn.Id.slice(1)}`
 
     if (hasMatchFields) {
-      typeNameNoPGN = `${typeNameNoPGN}_${camelCase(pgn.Id, { pascalCase: true })}`
+      typeNameNoPGN = `${typeNameNoPGN}_${camelCase(pgn.Id, { pascalCase: true, preserveConsecutiveUppercase:true })}`
     }
 
     /*

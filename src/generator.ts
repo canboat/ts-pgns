@@ -115,7 +115,6 @@ if (argv.pgns) {
 
   console.log('const pgnIdToCreator: {[key:string]: any} = {}\n')
 
-
   console.log(`/**
   * Create a PGN object
   *

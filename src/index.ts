@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /*
  * Copyright 2025 Scott Bender <scott@scottbender.net>
  *
@@ -19,6 +18,3 @@ export * from './enums'
 export * from './pgns'
 export * from './definition'
 export * from './utilities'
-
-import { Definition } from './definition'
-

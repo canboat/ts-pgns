@@ -39,7 +39,7 @@ export const getAllPGNs = (): Definition[] => {
 
 let pgnNumberMap: { [key: number]: Definition[] }
 
-const getPGNNumberMap = ()  => {
+const getPGNNumberMap = () => {
   if (pgnNumberMap === undefined) {
     const res: { [key: number]: Definition[] } = {}
 
@@ -69,7 +69,7 @@ const getPGNIdMap = () => {
     const res: { [key: string]: Definition } = {}
 
     getAllPGNs().forEach((pgn) => {
-      res[pgn.Id]= pgn
+      res[pgn.Id] = pgn
 
       let reservedCount = 1
       pgn.Fields.forEach((field) => {
@@ -90,7 +90,6 @@ const getPGNIdMap = () => {
 export const getPGNWithNumber = (num: number): Definition[] | undefined => {
   return getPGNNumberMap()[num]
 }
-
 
 /**
  * @category PGN Definition Access

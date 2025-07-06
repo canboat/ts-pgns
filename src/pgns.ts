@@ -3,10 +3,15 @@ import * as enums from './enums'
 
 import {isMatch} from './utilities'
 
-const pgnIdToClass: {[key:string]: any} = {}
+const pgnIdToCreator: {[key:string]: any} = {}
 
-export const getPGNClass = (id: string) => {
-  return pgnIdToClass[id]
+/**
+  * Create a PGN object
+  *
+  * @category Utilities
+  */
+export const createPGN = (id: string) => {
+  return pgnIdToCreator[id]
 }
 /**
  * @category Field Types
@@ -111,7 +116,7 @@ export interface PGNInterface {
 /**
  * @category PGN Definitions
  */
-export class PGN {
+export class PGN implements PGNInterface {
   pgn: number
   prio: number
   src?: number
@@ -176,7 +181,7 @@ export class PGN_59392 extends PGN implements PGN_59392Interface {
   }
 
 }
-pgnIdToClass['isoAcknowledgement'] = (fields:any, dst:number) => new PGN_59392(fields, dst)
+pgnIdToCreator['isoAcknowledgement'] = (fields:any, dst:number) => new PGN_59392(fields, dst)
 
 
 /**
@@ -222,7 +227,7 @@ export class PGN_59904 extends PGN implements PGN_59904Interface {
   }
 
 }
-pgnIdToClass['isoRequest'] = (fields:any, dst:number) => new PGN_59904(fields, dst)
+pgnIdToCreator['isoRequest'] = (fields:any, dst:number) => new PGN_59904(fields, dst)
 
 
 /**
@@ -269,7 +274,7 @@ export class PGN_60160 extends PGN implements PGN_60160Interface {
   }
 
 }
-pgnIdToClass['isoTransportProtocolDataTransfer'] = (fields:any, dst:number) => new PGN_60160(fields, dst)
+pgnIdToCreator['isoTransportProtocolDataTransfer'] = (fields:any, dst:number) => new PGN_60160(fields, dst)
 
 
 /**
@@ -339,9 +344,9 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend ext
 
   isMatch() {
     return isMatch(this, PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendMatchFields)
+  }
 }
-}
-pgnIdToClass['isoTransportProtocolConnectionManagementRequestToSend'] = (fields:any, dst:number) => new PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend(fields, dst)
+pgnIdToCreator['isoTransportProtocolConnectionManagementRequestToSend'] = (fields:any, dst:number) => new PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend(fields, dst)
 
 
 /**
@@ -411,9 +416,9 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementClearToSend exten
 
   isMatch() {
     return isMatch(this, PGN_60416_IsoTransportProtocolConnectionManagementClearToSendMatchFields)
+  }
 }
-}
-pgnIdToClass['isoTransportProtocolConnectionManagementClearToSend'] = (fields:any, dst:number) => new PGN_60416_IsoTransportProtocolConnectionManagementClearToSend(fields, dst)
+pgnIdToCreator['isoTransportProtocolConnectionManagementClearToSend'] = (fields:any, dst:number) => new PGN_60416_IsoTransportProtocolConnectionManagementClearToSend(fields, dst)
 
 
 /**
@@ -483,9 +488,9 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessage exte
 
   isMatch() {
     return isMatch(this, PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageMatchFields)
+  }
 }
-}
-pgnIdToClass['isoTransportProtocolConnectionManagementEndOfMessage'] = (fields:any, dst:number) => new PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessage(fields, dst)
+pgnIdToCreator['isoTransportProtocolConnectionManagementEndOfMessage'] = (fields:any, dst:number) => new PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessage(fields, dst)
 
 
 /**
@@ -555,9 +560,9 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce
 
   isMatch() {
     return isMatch(this, PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceMatchFields)
+  }
 }
-}
-pgnIdToClass['isoTransportProtocolConnectionManagementBroadcastAnnounce'] = (fields:any, dst:number) => new PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce(fields, dst)
+pgnIdToCreator['isoTransportProtocolConnectionManagementBroadcastAnnounce'] = (fields:any, dst:number) => new PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce(fields, dst)
 
 
 /**
@@ -625,9 +630,9 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementAbort extends PGN
 
   isMatch() {
     return isMatch(this, PGN_60416_IsoTransportProtocolConnectionManagementAbortMatchFields)
+  }
 }
-}
-pgnIdToClass['isoTransportProtocolConnectionManagementAbort'] = (fields:any, dst:number) => new PGN_60416_IsoTransportProtocolConnectionManagementAbort(fields, dst)
+pgnIdToCreator['isoTransportProtocolConnectionManagementAbort'] = (fields:any, dst:number) => new PGN_60416_IsoTransportProtocolConnectionManagementAbort(fields, dst)
 
 
 /**
@@ -682,7 +687,7 @@ export class PGN_60928 extends PGN implements PGN_60928Interface {
   }
 
 }
-pgnIdToClass['isoAddressClaim'] = (fields:any, dst:number) => new PGN_60928(fields, dst)
+pgnIdToCreator['isoAddressClaim'] = (fields:any, dst:number) => new PGN_60928(fields, dst)
 
 
 /**
@@ -758,9 +763,9 @@ export class PGN_61184_SeatalkWirelessKeypadLightControl extends PGN implements 
 
   isMatch() {
     return isMatch(this, PGN_61184_SeatalkWirelessKeypadLightControlMatchFields)
+  }
 }
-}
-pgnIdToClass['seatalkWirelessKeypadLightControl'] = (fields:any, dst:number) => new PGN_61184_SeatalkWirelessKeypadLightControl(fields, dst)
+pgnIdToCreator['seatalkWirelessKeypadLightControl'] = (fields:any, dst:number) => new PGN_61184_SeatalkWirelessKeypadLightControl(fields, dst)
 
 
 /**
@@ -833,9 +838,9 @@ export class PGN_61184_SeatalkWirelessKeypadControl extends PGN implements PGN_6
 
   isMatch() {
     return isMatch(this, PGN_61184_SeatalkWirelessKeypadControlMatchFields)
+  }
 }
-}
-pgnIdToClass['seatalkWirelessKeypadControl'] = (fields:any, dst:number) => new PGN_61184_SeatalkWirelessKeypadControl(fields, dst)
+pgnIdToCreator['seatalkWirelessKeypadControl'] = (fields:any, dst:number) => new PGN_61184_SeatalkWirelessKeypadControl(fields, dst)
 
 
 /**
@@ -904,9 +909,9 @@ export class PGN_61184_VictronBatteryRegister extends PGN implements PGN_61184_V
 
   isMatch() {
     return isMatch(this, PGN_61184_VictronBatteryRegisterMatchFields)
+  }
 }
-}
-pgnIdToClass['victronBatteryRegister'] = (fields:any, dst:number) => new PGN_61184_VictronBatteryRegister(fields, dst)
+pgnIdToCreator['victronBatteryRegister'] = (fields:any, dst:number) => new PGN_61184_VictronBatteryRegister(fields, dst)
 
 
 /**
@@ -953,7 +958,7 @@ export class PGN_65001 extends PGN implements PGN_65001Interface {
   }
 
 }
-pgnIdToClass['bus1PhaseCBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65001(fields, dst)
+pgnIdToCreator['bus1PhaseCBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65001(fields, dst)
 
 
 /**
@@ -1000,7 +1005,7 @@ export class PGN_65002 extends PGN implements PGN_65002Interface {
   }
 
 }
-pgnIdToClass['bus1PhaseBBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65002(fields, dst)
+pgnIdToCreator['bus1PhaseBBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65002(fields, dst)
 
 
 /**
@@ -1047,7 +1052,7 @@ export class PGN_65003 extends PGN implements PGN_65003Interface {
   }
 
 }
-pgnIdToClass['bus1PhaseABasicAcQuantities'] = (fields:any, dst:number) => new PGN_65003(fields, dst)
+pgnIdToCreator['bus1PhaseABasicAcQuantities'] = (fields:any, dst:number) => new PGN_65003(fields, dst)
 
 
 /**
@@ -1094,7 +1099,7 @@ export class PGN_65004 extends PGN implements PGN_65004Interface {
   }
 
 }
-pgnIdToClass['bus1AverageBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65004(fields, dst)
+pgnIdToCreator['bus1AverageBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65004(fields, dst)
 
 
 /**
@@ -1139,7 +1144,7 @@ export class PGN_65005 extends PGN implements PGN_65005Interface {
   }
 
 }
-pgnIdToClass['utilityTotalAcEnergy'] = (fields:any, dst:number) => new PGN_65005(fields, dst)
+pgnIdToCreator['utilityTotalAcEnergy'] = (fields:any, dst:number) => new PGN_65005(fields, dst)
 
 
 /**
@@ -1186,7 +1191,7 @@ export class PGN_65006 extends PGN implements PGN_65006Interface {
   }
 
 }
-pgnIdToClass['utilityPhaseCAcReactivePower'] = (fields:any, dst:number) => new PGN_65006(fields, dst)
+pgnIdToCreator['utilityPhaseCAcReactivePower'] = (fields:any, dst:number) => new PGN_65006(fields, dst)
 
 
 /**
@@ -1231,7 +1236,7 @@ export class PGN_65007 extends PGN implements PGN_65007Interface {
   }
 
 }
-pgnIdToClass['utilityPhaseCAcPower'] = (fields:any, dst:number) => new PGN_65007(fields, dst)
+pgnIdToCreator['utilityPhaseCAcPower'] = (fields:any, dst:number) => new PGN_65007(fields, dst)
 
 
 /**
@@ -1278,7 +1283,7 @@ export class PGN_65008 extends PGN implements PGN_65008Interface {
   }
 
 }
-pgnIdToClass['utilityPhaseCBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65008(fields, dst)
+pgnIdToCreator['utilityPhaseCBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65008(fields, dst)
 
 
 /**
@@ -1325,7 +1330,7 @@ export class PGN_65009 extends PGN implements PGN_65009Interface {
   }
 
 }
-pgnIdToClass['utilityPhaseBAcReactivePower'] = (fields:any, dst:number) => new PGN_65009(fields, dst)
+pgnIdToCreator['utilityPhaseBAcReactivePower'] = (fields:any, dst:number) => new PGN_65009(fields, dst)
 
 
 /**
@@ -1370,7 +1375,7 @@ export class PGN_65010 extends PGN implements PGN_65010Interface {
   }
 
 }
-pgnIdToClass['utilityPhaseBAcPower'] = (fields:any, dst:number) => new PGN_65010(fields, dst)
+pgnIdToCreator['utilityPhaseBAcPower'] = (fields:any, dst:number) => new PGN_65010(fields, dst)
 
 
 /**
@@ -1417,7 +1422,7 @@ export class PGN_65011 extends PGN implements PGN_65011Interface {
   }
 
 }
-pgnIdToClass['utilityPhaseBBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65011(fields, dst)
+pgnIdToCreator['utilityPhaseBBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65011(fields, dst)
 
 
 /**
@@ -1464,7 +1469,7 @@ export class PGN_65012 extends PGN implements PGN_65012Interface {
   }
 
 }
-pgnIdToClass['utilityPhaseAAcReactivePower'] = (fields:any, dst:number) => new PGN_65012(fields, dst)
+pgnIdToCreator['utilityPhaseAAcReactivePower'] = (fields:any, dst:number) => new PGN_65012(fields, dst)
 
 
 /**
@@ -1509,7 +1514,7 @@ export class PGN_65013 extends PGN implements PGN_65013Interface {
   }
 
 }
-pgnIdToClass['utilityPhaseAAcPower'] = (fields:any, dst:number) => new PGN_65013(fields, dst)
+pgnIdToCreator['utilityPhaseAAcPower'] = (fields:any, dst:number) => new PGN_65013(fields, dst)
 
 
 /**
@@ -1556,7 +1561,7 @@ export class PGN_65014 extends PGN implements PGN_65014Interface {
   }
 
 }
-pgnIdToClass['utilityPhaseABasicAcQuantities'] = (fields:any, dst:number) => new PGN_65014(fields, dst)
+pgnIdToCreator['utilityPhaseABasicAcQuantities'] = (fields:any, dst:number) => new PGN_65014(fields, dst)
 
 
 /**
@@ -1603,7 +1608,7 @@ export class PGN_65015 extends PGN implements PGN_65015Interface {
   }
 
 }
-pgnIdToClass['utilityTotalAcReactivePower'] = (fields:any, dst:number) => new PGN_65015(fields, dst)
+pgnIdToCreator['utilityTotalAcReactivePower'] = (fields:any, dst:number) => new PGN_65015(fields, dst)
 
 
 /**
@@ -1648,7 +1653,7 @@ export class PGN_65016 extends PGN implements PGN_65016Interface {
   }
 
 }
-pgnIdToClass['utilityTotalAcPower'] = (fields:any, dst:number) => new PGN_65016(fields, dst)
+pgnIdToCreator['utilityTotalAcPower'] = (fields:any, dst:number) => new PGN_65016(fields, dst)
 
 
 /**
@@ -1695,7 +1700,7 @@ export class PGN_65017 extends PGN implements PGN_65017Interface {
   }
 
 }
-pgnIdToClass['utilityAverageBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65017(fields, dst)
+pgnIdToCreator['utilityAverageBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65017(fields, dst)
 
 
 /**
@@ -1740,7 +1745,7 @@ export class PGN_65018 extends PGN implements PGN_65018Interface {
   }
 
 }
-pgnIdToClass['generatorTotalAcEnergy'] = (fields:any, dst:number) => new PGN_65018(fields, dst)
+pgnIdToCreator['generatorTotalAcEnergy'] = (fields:any, dst:number) => new PGN_65018(fields, dst)
 
 
 /**
@@ -1787,7 +1792,7 @@ export class PGN_65019 extends PGN implements PGN_65019Interface {
   }
 
 }
-pgnIdToClass['generatorPhaseCAcReactivePower'] = (fields:any, dst:number) => new PGN_65019(fields, dst)
+pgnIdToCreator['generatorPhaseCAcReactivePower'] = (fields:any, dst:number) => new PGN_65019(fields, dst)
 
 
 /**
@@ -1832,7 +1837,7 @@ export class PGN_65020 extends PGN implements PGN_65020Interface {
   }
 
 }
-pgnIdToClass['generatorPhaseCAcPower'] = (fields:any, dst:number) => new PGN_65020(fields, dst)
+pgnIdToCreator['generatorPhaseCAcPower'] = (fields:any, dst:number) => new PGN_65020(fields, dst)
 
 
 /**
@@ -1879,7 +1884,7 @@ export class PGN_65021 extends PGN implements PGN_65021Interface {
   }
 
 }
-pgnIdToClass['generatorPhaseCBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65021(fields, dst)
+pgnIdToCreator['generatorPhaseCBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65021(fields, dst)
 
 
 /**
@@ -1926,7 +1931,7 @@ export class PGN_65022 extends PGN implements PGN_65022Interface {
   }
 
 }
-pgnIdToClass['generatorPhaseBAcReactivePower'] = (fields:any, dst:number) => new PGN_65022(fields, dst)
+pgnIdToCreator['generatorPhaseBAcReactivePower'] = (fields:any, dst:number) => new PGN_65022(fields, dst)
 
 
 /**
@@ -1971,7 +1976,7 @@ export class PGN_65023 extends PGN implements PGN_65023Interface {
   }
 
 }
-pgnIdToClass['generatorPhaseBAcPower'] = (fields:any, dst:number) => new PGN_65023(fields, dst)
+pgnIdToCreator['generatorPhaseBAcPower'] = (fields:any, dst:number) => new PGN_65023(fields, dst)
 
 
 /**
@@ -2018,7 +2023,7 @@ export class PGN_65024 extends PGN implements PGN_65024Interface {
   }
 
 }
-pgnIdToClass['generatorPhaseBBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65024(fields, dst)
+pgnIdToCreator['generatorPhaseBBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65024(fields, dst)
 
 
 /**
@@ -2065,7 +2070,7 @@ export class PGN_65025 extends PGN implements PGN_65025Interface {
   }
 
 }
-pgnIdToClass['generatorPhaseAAcReactivePower'] = (fields:any, dst:number) => new PGN_65025(fields, dst)
+pgnIdToCreator['generatorPhaseAAcReactivePower'] = (fields:any, dst:number) => new PGN_65025(fields, dst)
 
 
 /**
@@ -2110,7 +2115,7 @@ export class PGN_65026 extends PGN implements PGN_65026Interface {
   }
 
 }
-pgnIdToClass['generatorPhaseAAcPower'] = (fields:any, dst:number) => new PGN_65026(fields, dst)
+pgnIdToCreator['generatorPhaseAAcPower'] = (fields:any, dst:number) => new PGN_65026(fields, dst)
 
 
 /**
@@ -2157,7 +2162,7 @@ export class PGN_65027 extends PGN implements PGN_65027Interface {
   }
 
 }
-pgnIdToClass['generatorPhaseABasicAcQuantities'] = (fields:any, dst:number) => new PGN_65027(fields, dst)
+pgnIdToCreator['generatorPhaseABasicAcQuantities'] = (fields:any, dst:number) => new PGN_65027(fields, dst)
 
 
 /**
@@ -2204,7 +2209,7 @@ export class PGN_65028 extends PGN implements PGN_65028Interface {
   }
 
 }
-pgnIdToClass['generatorTotalAcReactivePower'] = (fields:any, dst:number) => new PGN_65028(fields, dst)
+pgnIdToCreator['generatorTotalAcReactivePower'] = (fields:any, dst:number) => new PGN_65028(fields, dst)
 
 
 /**
@@ -2249,7 +2254,7 @@ export class PGN_65029 extends PGN implements PGN_65029Interface {
   }
 
 }
-pgnIdToClass['generatorTotalAcPower'] = (fields:any, dst:number) => new PGN_65029(fields, dst)
+pgnIdToCreator['generatorTotalAcPower'] = (fields:any, dst:number) => new PGN_65029(fields, dst)
 
 
 /**
@@ -2296,7 +2301,7 @@ export class PGN_65030 extends PGN implements PGN_65030Interface {
   }
 
 }
-pgnIdToClass['generatorAverageBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65030(fields, dst)
+pgnIdToCreator['generatorAverageBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65030(fields, dst)
 
 
 /**
@@ -2352,7 +2357,7 @@ export class PGN_65240 extends PGN implements PGN_65240Interface {
   }
 
 }
-pgnIdToClass['isoCommandedAddress'] = (fields:any, dst:number) => new PGN_65240(fields, dst)
+pgnIdToCreator['isoCommandedAddress'] = (fields:any, dst:number) => new PGN_65240(fields, dst)
 
 
 /**
@@ -2400,7 +2405,7 @@ export class PGN_65280 extends PGN implements PGN_65280Interface {
   }
 
 }
-pgnIdToClass['furunoHeave'] = (fields:any, dst:number) => new PGN_65280(fields, dst)
+pgnIdToCreator['furunoHeave'] = (fields:any, dst:number) => new PGN_65280(fields, dst)
 
 
 /**
@@ -2450,7 +2455,7 @@ export class PGN_65284 extends PGN implements PGN_65284Interface {
   }
 
 }
-pgnIdToClass['maretronProprietaryDcBreakerCurrent'] = (fields:any, dst:number) => new PGN_65284(fields, dst)
+pgnIdToCreator['maretronProprietaryDcBreakerCurrent'] = (fields:any, dst:number) => new PGN_65284(fields, dst)
 
 
 /**
@@ -2519,9 +2524,9 @@ export class PGN_65285_AirmarBootStateAcknowledgment extends PGN implements PGN_
 
   isMatch() {
     return isMatch(this, PGN_65285_AirmarBootStateAcknowledgmentMatchFields)
+  }
 }
-}
-pgnIdToClass['airmarBootStateAcknowledgment'] = (fields:any, dst:number) => new PGN_65285_AirmarBootStateAcknowledgment(fields, dst)
+pgnIdToCreator['airmarBootStateAcknowledgment'] = (fields:any, dst:number) => new PGN_65285_AirmarBootStateAcknowledgment(fields, dst)
 
 
 /**
@@ -2592,9 +2597,9 @@ export class PGN_65285_LowranceTemperature extends PGN implements PGN_65285_Lowr
 
   isMatch() {
     return isMatch(this, PGN_65285_LowranceTemperatureMatchFields)
+  }
 }
-}
-pgnIdToClass['lowranceTemperature'] = (fields:any, dst:number) => new PGN_65285_LowranceTemperature(fields, dst)
+pgnIdToCreator['lowranceTemperature'] = (fields:any, dst:number) => new PGN_65285_LowranceTemperature(fields, dst)
 
 
 /**
@@ -2671,9 +2676,9 @@ export class PGN_65286_ChetcoDimmer extends PGN implements PGN_65286_ChetcoDimme
 
   isMatch() {
     return isMatch(this, PGN_65286_ChetcoDimmerMatchFields)
+  }
 }
-}
-pgnIdToClass['chetcoDimmer'] = (fields:any, dst:number) => new PGN_65286_ChetcoDimmer(fields, dst)
+pgnIdToCreator['chetcoDimmer'] = (fields:any, dst:number) => new PGN_65286_ChetcoDimmer(fields, dst)
 
 
 /**
@@ -2740,9 +2745,9 @@ export class PGN_65286_AirmarBootStateRequest extends PGN implements PGN_65286_A
 
   isMatch() {
     return isMatch(this, PGN_65286_AirmarBootStateRequestMatchFields)
+  }
 }
-}
-pgnIdToClass['airmarBootStateRequest'] = (fields:any, dst:number) => new PGN_65286_AirmarBootStateRequest(fields, dst)
+pgnIdToCreator['airmarBootStateRequest'] = (fields:any, dst:number) => new PGN_65286_AirmarBootStateRequest(fields, dst)
 
 
 /**
@@ -2815,9 +2820,9 @@ export class PGN_65287_AirmarAccessLevel extends PGN implements PGN_65287_Airmar
 
   isMatch() {
     return isMatch(this, PGN_65287_AirmarAccessLevelMatchFields)
+  }
 }
-}
-pgnIdToClass['airmarAccessLevel'] = (fields:any, dst:number) => new PGN_65287_AirmarAccessLevel(fields, dst)
+pgnIdToCreator['airmarAccessLevel'] = (fields:any, dst:number) => new PGN_65287_AirmarAccessLevel(fields, dst)
 
 
 /**
@@ -2884,9 +2889,9 @@ export class PGN_65287_SimnetConfigureTemperatureSensor extends PGN implements P
 
   isMatch() {
     return isMatch(this, PGN_65287_SimnetConfigureTemperatureSensorMatchFields)
+  }
 }
-}
-pgnIdToClass['simnetConfigureTemperatureSensor'] = (fields:any, dst:number) => new PGN_65287_SimnetConfigureTemperatureSensor(fields, dst)
+pgnIdToCreator['simnetConfigureTemperatureSensor'] = (fields:any, dst:number) => new PGN_65287_SimnetConfigureTemperatureSensor(fields, dst)
 
 
 /**
@@ -2937,7 +2942,7 @@ export class PGN_65288 extends PGN implements PGN_65288Interface {
   }
 
 }
-pgnIdToClass['seatalkAlarm'] = (fields:any, dst:number) => new PGN_65288(fields, dst)
+pgnIdToCreator['seatalkAlarm'] = (fields:any, dst:number) => new PGN_65288(fields, dst)
 
 
 /**
@@ -2984,7 +2989,7 @@ export class PGN_65289 extends PGN implements PGN_65289Interface {
   }
 
 }
-pgnIdToClass['simnetTrimTabSensorCalibration'] = (fields:any, dst:number) => new PGN_65289(fields, dst)
+pgnIdToCreator['simnetTrimTabSensorCalibration'] = (fields:any, dst:number) => new PGN_65289(fields, dst)
 
 
 /**
@@ -3031,7 +3036,7 @@ export class PGN_65290 extends PGN implements PGN_65290Interface {
   }
 
 }
-pgnIdToClass['simnetPaddleWheelSpeedConfiguration'] = (fields:any, dst:number) => new PGN_65290(fields, dst)
+pgnIdToCreator['simnetPaddleWheelSpeedConfiguration'] = (fields:any, dst:number) => new PGN_65290(fields, dst)
 
 
 /**
@@ -3078,7 +3083,7 @@ export class PGN_65292 extends PGN implements PGN_65292Interface {
   }
 
 }
-pgnIdToClass['simnetClearFluidLevelWarnings'] = (fields:any, dst:number) => new PGN_65292(fields, dst)
+pgnIdToCreator['simnetClearFluidLevelWarnings'] = (fields:any, dst:number) => new PGN_65292(fields, dst)
 
 
 /**
@@ -3145,9 +3150,9 @@ export class PGN_65293_SimnetLgc2000Configuration extends PGN implements PGN_652
 
   isMatch() {
     return isMatch(this, PGN_65293_SimnetLgc2000ConfigurationMatchFields)
+  }
 }
-}
-pgnIdToClass['simnetLgc2000Configuration'] = (fields:any, dst:number) => new PGN_65293_SimnetLgc2000Configuration(fields, dst)
+pgnIdToCreator['simnetLgc2000Configuration'] = (fields:any, dst:number) => new PGN_65293_SimnetLgc2000Configuration(fields, dst)
 
 
 /**
@@ -3218,9 +3223,9 @@ export class PGN_65293_DiverseYachtServicesLoadCell extends PGN implements PGN_6
 
   isMatch() {
     return isMatch(this, PGN_65293_DiverseYachtServicesLoadCellMatchFields)
+  }
 }
-}
-pgnIdToClass['diverseYachtServicesLoadCell'] = (fields:any, dst:number) => new PGN_65293_DiverseYachtServicesLoadCell(fields, dst)
+pgnIdToCreator['diverseYachtServicesLoadCell'] = (fields:any, dst:number) => new PGN_65293_DiverseYachtServicesLoadCell(fields, dst)
 
 
 /**
@@ -3273,7 +3278,7 @@ export class PGN_65302 extends PGN implements PGN_65302Interface {
   }
 
 }
-pgnIdToClass['simnetApUnknown1'] = (fields:any, dst:number) => new PGN_65302(fields, dst)
+pgnIdToCreator['simnetApUnknown1'] = (fields:any, dst:number) => new PGN_65302(fields, dst)
 
 
 /**
@@ -3349,9 +3354,9 @@ export class PGN_65305_SimnetDeviceStatus extends PGN implements PGN_65305_Simne
 
   isMatch() {
     return isMatch(this, PGN_65305_SimnetDeviceStatusMatchFields)
+  }
 }
-}
-pgnIdToClass['simnetDeviceStatus'] = (fields:any, dst:number) => new PGN_65305_SimnetDeviceStatus(fields, dst)
+pgnIdToCreator['simnetDeviceStatus'] = (fields:any, dst:number) => new PGN_65305_SimnetDeviceStatus(fields, dst)
 
 
 /**
@@ -3425,9 +3430,9 @@ export class PGN_65305_SimnetDeviceStatusRequest extends PGN implements PGN_6530
 
   isMatch() {
     return isMatch(this, PGN_65305_SimnetDeviceStatusRequestMatchFields)
+  }
 }
-}
-pgnIdToClass['simnetDeviceStatusRequest'] = (fields:any, dst:number) => new PGN_65305_SimnetDeviceStatusRequest(fields, dst)
+pgnIdToCreator['simnetDeviceStatusRequest'] = (fields:any, dst:number) => new PGN_65305_SimnetDeviceStatusRequest(fields, dst)
 
 
 /**
@@ -3503,9 +3508,9 @@ export class PGN_65305_SimnetPilotMode extends PGN implements PGN_65305_SimnetPi
 
   isMatch() {
     return isMatch(this, PGN_65305_SimnetPilotModeMatchFields)
+  }
 }
-}
-pgnIdToClass['simnetPilotMode'] = (fields:any, dst:number) => new PGN_65305_SimnetPilotMode(fields, dst)
+pgnIdToCreator['simnetPilotMode'] = (fields:any, dst:number) => new PGN_65305_SimnetPilotMode(fields, dst)
 
 
 /**
@@ -3579,9 +3584,9 @@ export class PGN_65305_SimnetDeviceModeRequest extends PGN implements PGN_65305_
 
   isMatch() {
     return isMatch(this, PGN_65305_SimnetDeviceModeRequestMatchFields)
+  }
 }
-}
-pgnIdToClass['simnetDeviceModeRequest'] = (fields:any, dst:number) => new PGN_65305_SimnetDeviceModeRequest(fields, dst)
+pgnIdToCreator['simnetDeviceModeRequest'] = (fields:any, dst:number) => new PGN_65305_SimnetDeviceModeRequest(fields, dst)
 
 
 /**
@@ -3655,9 +3660,9 @@ export class PGN_65305_SimnetSailingProcessorStatus extends PGN implements PGN_6
 
   isMatch() {
     return isMatch(this, PGN_65305_SimnetSailingProcessorStatusMatchFields)
+  }
 }
-}
-pgnIdToClass['simnetSailingProcessorStatus'] = (fields:any, dst:number) => new PGN_65305_SimnetSailingProcessorStatus(fields, dst)
+pgnIdToCreator['simnetSailingProcessorStatus'] = (fields:any, dst:number) => new PGN_65305_SimnetSailingProcessorStatus(fields, dst)
 
 
 /**
@@ -3707,7 +3712,7 @@ export class PGN_65309 extends PGN implements PGN_65309Interface {
   }
 
 }
-pgnIdToClass['navicoWirelessBatteryStatus'] = (fields:any, dst:number) => new PGN_65309(fields, dst)
+pgnIdToCreator['navicoWirelessBatteryStatus'] = (fields:any, dst:number) => new PGN_65309(fields, dst)
 
 
 /**
@@ -3756,7 +3761,7 @@ export class PGN_65312 extends PGN implements PGN_65312Interface {
   }
 
 }
-pgnIdToClass['navicoWirelessSignalStatus'] = (fields:any, dst:number) => new PGN_65312(fields, dst)
+pgnIdToCreator['navicoWirelessSignalStatus'] = (fields:any, dst:number) => new PGN_65312(fields, dst)
 
 
 /**
@@ -3810,7 +3815,7 @@ export class PGN_65340 extends PGN implements PGN_65340Interface {
   }
 
 }
-pgnIdToClass['simnetApUnknown2'] = (fields:any, dst:number) => new PGN_65340(fields, dst)
+pgnIdToCreator['simnetApUnknown2'] = (fields:any, dst:number) => new PGN_65340(fields, dst)
 
 
 /**
@@ -3860,7 +3865,7 @@ export class PGN_65341 extends PGN implements PGN_65341Interface {
   }
 
 }
-pgnIdToClass['simnetAutopilotAngle'] = (fields:any, dst:number) => new PGN_65341(fields, dst)
+pgnIdToCreator['simnetAutopilotAngle'] = (fields:any, dst:number) => new PGN_65341(fields, dst)
 
 
 /**
@@ -3909,7 +3914,7 @@ export class PGN_65345 extends PGN implements PGN_65345Interface {
   }
 
 }
-pgnIdToClass['seatalkPilotWindDatum'] = (fields:any, dst:number) => new PGN_65345(fields, dst)
+pgnIdToCreator['seatalkPilotWindDatum'] = (fields:any, dst:number) => new PGN_65345(fields, dst)
 
 
 /**
@@ -3957,7 +3962,7 @@ export class PGN_65350 extends PGN implements PGN_65350Interface {
   }
 
 }
-pgnIdToClass['simnetMagneticField'] = (fields:any, dst:number) => new PGN_65350(fields, dst)
+pgnIdToCreator['simnetMagneticField'] = (fields:any, dst:number) => new PGN_65350(fields, dst)
 
 
 /**
@@ -4007,7 +4012,7 @@ export class PGN_65359 extends PGN implements PGN_65359Interface {
   }
 
 }
-pgnIdToClass['seatalkPilotHeading'] = (fields:any, dst:number) => new PGN_65359(fields, dst)
+pgnIdToCreator['seatalkPilotHeading'] = (fields:any, dst:number) => new PGN_65359(fields, dst)
 
 
 /**
@@ -4057,7 +4062,7 @@ export class PGN_65360 extends PGN implements PGN_65360Interface {
   }
 
 }
-pgnIdToClass['seatalkPilotLockedHeading'] = (fields:any, dst:number) => new PGN_65360(fields, dst)
+pgnIdToCreator['seatalkPilotLockedHeading'] = (fields:any, dst:number) => new PGN_65360(fields, dst)
 
 
 /**
@@ -4106,7 +4111,7 @@ export class PGN_65361 extends PGN implements PGN_65361Interface {
   }
 
 }
-pgnIdToClass['seatalkSilenceAlarm'] = (fields:any, dst:number) => new PGN_65361(fields, dst)
+pgnIdToCreator['seatalkSilenceAlarm'] = (fields:any, dst:number) => new PGN_65361(fields, dst)
 
 
 /**
@@ -4160,7 +4165,7 @@ export class PGN_65371 extends PGN implements PGN_65371Interface {
   }
 
 }
-pgnIdToClass['seatalkKeypadMessage'] = (fields:any, dst:number) => new PGN_65371(fields, dst)
+pgnIdToCreator['seatalkKeypadMessage'] = (fields:any, dst:number) => new PGN_65371(fields, dst)
 
 
 /**
@@ -4210,7 +4215,7 @@ export class PGN_65374 extends PGN implements PGN_65374Interface {
   }
 
 }
-pgnIdToClass['seatalkKeypadHeartbeat'] = (fields:any, dst:number) => new PGN_65374(fields, dst)
+pgnIdToCreator['seatalkKeypadHeartbeat'] = (fields:any, dst:number) => new PGN_65374(fields, dst)
 
 
 /**
@@ -4260,7 +4265,7 @@ export class PGN_65379 extends PGN implements PGN_65379Interface {
   }
 
 }
-pgnIdToClass['seatalkPilotMode'] = (fields:any, dst:number) => new PGN_65379(fields, dst)
+pgnIdToCreator['seatalkPilotMode'] = (fields:any, dst:number) => new PGN_65379(fields, dst)
 
 
 /**
@@ -4309,7 +4314,7 @@ export class PGN_65408 extends PGN implements PGN_65408Interface {
   }
 
 }
-pgnIdToClass['airmarDepthQualityFactor'] = (fields:any, dst:number) => new PGN_65408(fields, dst)
+pgnIdToCreator['airmarDepthQualityFactor'] = (fields:any, dst:number) => new PGN_65408(fields, dst)
 
 
 /**
@@ -4359,7 +4364,7 @@ export class PGN_65409 extends PGN implements PGN_65409Interface {
   }
 
 }
-pgnIdToClass['airmarSpeedPulseCount'] = (fields:any, dst:number) => new PGN_65409(fields, dst)
+pgnIdToCreator['airmarSpeedPulseCount'] = (fields:any, dst:number) => new PGN_65409(fields, dst)
 
 
 /**
@@ -4409,7 +4414,7 @@ export class PGN_65410 extends PGN implements PGN_65410Interface {
   }
 
 }
-pgnIdToClass['airmarDeviceInformation'] = (fields:any, dst:number) => new PGN_65410(fields, dst)
+pgnIdToCreator['airmarDeviceInformation'] = (fields:any, dst:number) => new PGN_65410(fields, dst)
 
 
 /**
@@ -4463,7 +4468,7 @@ export class PGN_65420 extends PGN implements PGN_65420Interface {
   }
 
 }
-pgnIdToClass['simnetApUnknown3'] = (fields:any, dst:number) => new PGN_65420(fields, dst)
+pgnIdToCreator['simnetApUnknown3'] = (fields:any, dst:number) => new PGN_65420(fields, dst)
 
 
 /**
@@ -4510,7 +4515,7 @@ export class PGN_65480 extends PGN implements PGN_65480Interface {
   }
 
 }
-pgnIdToClass['simnetAutopilotMode'] = (fields:any, dst:number) => new PGN_65480(fields, dst)
+pgnIdToCreator['simnetAutopilotMode'] = (fields:any, dst:number) => new PGN_65480(fields, dst)
 
 
 /**
@@ -4587,9 +4592,9 @@ export class PGN_126208_NmeaRequestGroupFunction extends PGN implements PGN_1262
 
   isMatch() {
     return isMatch(this, PGN_126208_NmeaRequestGroupFunctionMatchFields)
+  }
 }
-}
-pgnIdToClass['nmeaRequestGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaRequestGroupFunction(fields, dst)
+pgnIdToCreator['nmeaRequestGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaRequestGroupFunction(fields, dst)
 
 
 /**
@@ -4667,9 +4672,9 @@ export class PGN_126208_NmeaCommandGroupFunction extends PGN implements PGN_1262
 
   isMatch() {
     return isMatch(this, PGN_126208_NmeaCommandGroupFunctionMatchFields)
+  }
 }
-}
-pgnIdToClass['nmeaCommandGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaCommandGroupFunction(fields, dst)
+pgnIdToCreator['nmeaCommandGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaCommandGroupFunction(fields, dst)
 
 
 /**
@@ -4745,9 +4750,9 @@ export class PGN_126208_NmeaAcknowledgeGroupFunction extends PGN implements PGN_
 
   isMatch() {
     return isMatch(this, PGN_126208_NmeaAcknowledgeGroupFunctionMatchFields)
+  }
 }
-}
-pgnIdToClass['nmeaAcknowledgeGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaAcknowledgeGroupFunction(fields, dst)
+pgnIdToCreator['nmeaAcknowledgeGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaAcknowledgeGroupFunction(fields, dst)
 
 
 /**
@@ -4835,9 +4840,9 @@ export class PGN_126208_NmeaReadFieldsGroupFunction extends PGN implements PGN_1
 
   isMatch() {
     return isMatch(this, PGN_126208_NmeaReadFieldsGroupFunctionMatchFields)
+  }
 }
-}
-pgnIdToClass['nmeaReadFieldsGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaReadFieldsGroupFunction(fields, dst)
+pgnIdToCreator['nmeaReadFieldsGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaReadFieldsGroupFunction(fields, dst)
 
 
 /**
@@ -4927,9 +4932,9 @@ export class PGN_126208_NmeaReadFieldsReplyGroupFunction extends PGN implements 
 
   isMatch() {
     return isMatch(this, PGN_126208_NmeaReadFieldsReplyGroupFunctionMatchFields)
+  }
 }
-}
-pgnIdToClass['nmeaReadFieldsReplyGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaReadFieldsReplyGroupFunction(fields, dst)
+pgnIdToCreator['nmeaReadFieldsReplyGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaReadFieldsReplyGroupFunction(fields, dst)
 
 
 /**
@@ -5019,9 +5024,9 @@ export class PGN_126208_NmeaWriteFieldsGroupFunction extends PGN implements PGN_
 
   isMatch() {
     return isMatch(this, PGN_126208_NmeaWriteFieldsGroupFunctionMatchFields)
+  }
 }
-}
-pgnIdToClass['nmeaWriteFieldsGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaWriteFieldsGroupFunction(fields, dst)
+pgnIdToCreator['nmeaWriteFieldsGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaWriteFieldsGroupFunction(fields, dst)
 
 
 /**
@@ -5111,9 +5116,9 @@ export class PGN_126208_NmeaWriteFieldsReplyGroupFunction extends PGN implements
 
   isMatch() {
     return isMatch(this, PGN_126208_NmeaWriteFieldsReplyGroupFunctionMatchFields)
+  }
 }
-}
-pgnIdToClass['nmeaWriteFieldsReplyGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaWriteFieldsReplyGroupFunction(fields, dst)
+pgnIdToCreator['nmeaWriteFieldsReplyGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaWriteFieldsReplyGroupFunction(fields, dst)
 
 
 /**
@@ -5160,7 +5165,7 @@ export class PGN_126464 extends PGN implements PGN_126464Interface {
   }
 
 }
-pgnIdToClass['pgnListTransmitAndReceive'] = (fields:any, dst:number) => new PGN_126464(fields, dst)
+pgnIdToCreator['pgnListTransmitAndReceive'] = (fields:any, dst:number) => new PGN_126464(fields, dst)
 
 
 /**
@@ -5241,9 +5246,9 @@ export class PGN_126720_Seatalk1PilotMode extends PGN implements PGN_126720_Seat
 
   isMatch() {
     return isMatch(this, PGN_126720_Seatalk1PilotModeMatchFields)
+  }
 }
-}
-pgnIdToClass['seatalk1PilotMode'] = (fields:any, dst:number) => new PGN_126720_Seatalk1PilotMode(fields, dst)
+pgnIdToCreator['seatalk1PilotMode'] = (fields:any, dst:number) => new PGN_126720_Seatalk1PilotMode(fields, dst)
 
 
 /**
@@ -5317,9 +5322,9 @@ export class PGN_126720_FusionMediaControl extends PGN implements PGN_126720_Fus
 
   isMatch() {
     return isMatch(this, PGN_126720_FusionMediaControlMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionMediaControl'] = (fields:any, dst:number) => new PGN_126720_FusionMediaControl(fields, dst)
+pgnIdToCreator['fusionMediaControl'] = (fields:any, dst:number) => new PGN_126720_FusionMediaControl(fields, dst)
 
 
 /**
@@ -5393,9 +5398,9 @@ export class PGN_126720_FusionSiriusControl extends PGN implements PGN_126720_Fu
 
   isMatch() {
     return isMatch(this, PGN_126720_FusionSiriusControlMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionSiriusControl'] = (fields:any, dst:number) => new PGN_126720_FusionSiriusControl(fields, dst)
+pgnIdToCreator['fusionSiriusControl'] = (fields:any, dst:number) => new PGN_126720_FusionSiriusControl(fields, dst)
 
 
 /**
@@ -5465,9 +5470,9 @@ export class PGN_126720_FusionRequestStatus extends PGN implements PGN_126720_Fu
 
   isMatch() {
     return isMatch(this, PGN_126720_FusionRequestStatusMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionRequestStatus'] = (fields:any, dst:number) => new PGN_126720_FusionRequestStatus(fields, dst)
+pgnIdToCreator['fusionRequestStatus'] = (fields:any, dst:number) => new PGN_126720_FusionRequestStatus(fields, dst)
 
 
 /**
@@ -5539,9 +5544,9 @@ export class PGN_126720_FusionSetSource extends PGN implements PGN_126720_Fusion
 
   isMatch() {
     return isMatch(this, PGN_126720_FusionSetSourceMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionSetSource'] = (fields:any, dst:number) => new PGN_126720_FusionSetSource(fields, dst)
+pgnIdToCreator['fusionSetSource'] = (fields:any, dst:number) => new PGN_126720_FusionSetSource(fields, dst)
 
 
 /**
@@ -5611,9 +5616,9 @@ export class PGN_126720_FusionSetMute extends PGN implements PGN_126720_FusionSe
 
   isMatch() {
     return isMatch(this, PGN_126720_FusionSetMuteMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionSetMute'] = (fields:any, dst:number) => new PGN_126720_FusionSetMute(fields, dst)
+pgnIdToCreator['fusionSetMute'] = (fields:any, dst:number) => new PGN_126720_FusionSetMute(fields, dst)
 
 
 /**
@@ -5687,9 +5692,9 @@ export class PGN_126720_FusionSetZoneVolume extends PGN implements PGN_126720_Fu
 
   isMatch() {
     return isMatch(this, PGN_126720_FusionSetZoneVolumeMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionSetZoneVolume'] = (fields:any, dst:number) => new PGN_126720_FusionSetZoneVolume(fields, dst)
+pgnIdToCreator['fusionSetZoneVolume'] = (fields:any, dst:number) => new PGN_126720_FusionSetZoneVolume(fields, dst)
 
 
 /**
@@ -5767,9 +5772,9 @@ export class PGN_126720_FusionSetAllVolumes extends PGN implements PGN_126720_Fu
 
   isMatch() {
     return isMatch(this, PGN_126720_FusionSetAllVolumesMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionSetAllVolumes'] = (fields:any, dst:number) => new PGN_126720_FusionSetAllVolumes(fields, dst)
+pgnIdToCreator['fusionSetAllVolumes'] = (fields:any, dst:number) => new PGN_126720_FusionSetAllVolumes(fields, dst)
 
 
 /**
@@ -5848,9 +5853,9 @@ export class PGN_126720_Seatalk1Keystroke extends PGN implements PGN_126720_Seat
 
   isMatch() {
     return isMatch(this, PGN_126720_Seatalk1KeystrokeMatchFields)
+  }
 }
-}
-pgnIdToClass['seatalk1Keystroke'] = (fields:any, dst:number) => new PGN_126720_Seatalk1Keystroke(fields, dst)
+pgnIdToCreator['seatalk1Keystroke'] = (fields:any, dst:number) => new PGN_126720_Seatalk1Keystroke(fields, dst)
 
 
 /**
@@ -5925,9 +5930,9 @@ export class PGN_126720_Seatalk1DeviceIdentification extends PGN implements PGN_
 
   isMatch() {
     return isMatch(this, PGN_126720_Seatalk1DeviceIdentificationMatchFields)
+  }
 }
-}
-pgnIdToClass['seatalk1DeviceIdentification'] = (fields:any, dst:number) => new PGN_126720_Seatalk1DeviceIdentification(fields, dst)
+pgnIdToCreator['seatalk1DeviceIdentification'] = (fields:any, dst:number) => new PGN_126720_Seatalk1DeviceIdentification(fields, dst)
 
 
 /**
@@ -6005,9 +6010,9 @@ export class PGN_126720_Seatalk1DisplayBrightness extends PGN implements PGN_126
 
   isMatch() {
     return isMatch(this, PGN_126720_Seatalk1DisplayBrightnessMatchFields)
+  }
 }
-}
-pgnIdToClass['seatalk1DisplayBrightness'] = (fields:any, dst:number) => new PGN_126720_Seatalk1DisplayBrightness(fields, dst)
+pgnIdToCreator['seatalk1DisplayBrightness'] = (fields:any, dst:number) => new PGN_126720_Seatalk1DisplayBrightness(fields, dst)
 
 
 /**
@@ -6086,9 +6091,9 @@ export class PGN_126720_Seatalk1DisplayColor extends PGN implements PGN_126720_S
 
   isMatch() {
     return isMatch(this, PGN_126720_Seatalk1DisplayColorMatchFields)
+  }
 }
-}
-pgnIdToClass['seatalk1DisplayColor'] = (fields:any, dst:number) => new PGN_126720_Seatalk1DisplayColor(fields, dst)
+pgnIdToCreator['seatalk1DisplayColor'] = (fields:any, dst:number) => new PGN_126720_Seatalk1DisplayColor(fields, dst)
 
 
 /**
@@ -6162,9 +6167,9 @@ export class PGN_126720_AirmarAttitudeOffset extends PGN implements PGN_126720_A
 
   isMatch() {
     return isMatch(this, PGN_126720_AirmarAttitudeOffsetMatchFields)
+  }
 }
-}
-pgnIdToClass['airmarAttitudeOffset'] = (fields:any, dst:number) => new PGN_126720_AirmarAttitudeOffset(fields, dst)
+pgnIdToCreator['airmarAttitudeOffset'] = (fields:any, dst:number) => new PGN_126720_AirmarAttitudeOffset(fields, dst)
 
 
 /**
@@ -6256,9 +6261,9 @@ export class PGN_126720_AirmarCalibrateCompass extends PGN implements PGN_126720
 
   isMatch() {
     return isMatch(this, PGN_126720_AirmarCalibrateCompassMatchFields)
+  }
 }
-}
-pgnIdToClass['airmarCalibrateCompass'] = (fields:any, dst:number) => new PGN_126720_AirmarCalibrateCompass(fields, dst)
+pgnIdToCreator['airmarCalibrateCompass'] = (fields:any, dst:number) => new PGN_126720_AirmarCalibrateCompass(fields, dst)
 
 
 /**
@@ -6330,9 +6335,9 @@ export class PGN_126720_AirmarTrueWindOptions extends PGN implements PGN_126720_
 
   isMatch() {
     return isMatch(this, PGN_126720_AirmarTrueWindOptionsMatchFields)
+  }
 }
-}
-pgnIdToClass['airmarTrueWindOptions'] = (fields:any, dst:number) => new PGN_126720_AirmarTrueWindOptions(fields, dst)
+pgnIdToCreator['airmarTrueWindOptions'] = (fields:any, dst:number) => new PGN_126720_AirmarTrueWindOptions(fields, dst)
 
 
 /**
@@ -6404,9 +6409,9 @@ export class PGN_126720_AirmarSimulateMode extends PGN implements PGN_126720_Air
 
   isMatch() {
     return isMatch(this, PGN_126720_AirmarSimulateModeMatchFields)
+  }
 }
-}
-pgnIdToClass['airmarSimulateMode'] = (fields:any, dst:number) => new PGN_126720_AirmarSimulateMode(fields, dst)
+pgnIdToCreator['airmarSimulateMode'] = (fields:any, dst:number) => new PGN_126720_AirmarSimulateMode(fields, dst)
 
 
 /**
@@ -6478,9 +6483,9 @@ export class PGN_126720_AirmarCalibrateDepth extends PGN implements PGN_126720_A
 
   isMatch() {
     return isMatch(this, PGN_126720_AirmarCalibrateDepthMatchFields)
+  }
 }
-}
-pgnIdToClass['airmarCalibrateDepth'] = (fields:any, dst:number) => new PGN_126720_AirmarCalibrateDepth(fields, dst)
+pgnIdToCreator['airmarCalibrateDepth'] = (fields:any, dst:number) => new PGN_126720_AirmarCalibrateDepth(fields, dst)
 
 
 /**
@@ -6558,9 +6563,9 @@ export class PGN_126720_AirmarCalibrateSpeed extends PGN implements PGN_126720_A
 
   isMatch() {
     return isMatch(this, PGN_126720_AirmarCalibrateSpeedMatchFields)
+  }
 }
-}
-pgnIdToClass['airmarCalibrateSpeed'] = (fields:any, dst:number) => new PGN_126720_AirmarCalibrateSpeed(fields, dst)
+pgnIdToCreator['airmarCalibrateSpeed'] = (fields:any, dst:number) => new PGN_126720_AirmarCalibrateSpeed(fields, dst)
 
 
 /**
@@ -6634,9 +6639,9 @@ export class PGN_126720_AirmarCalibrateTemperature extends PGN implements PGN_12
 
   isMatch() {
     return isMatch(this, PGN_126720_AirmarCalibrateTemperatureMatchFields)
+  }
 }
-}
-pgnIdToClass['airmarCalibrateTemperature'] = (fields:any, dst:number) => new PGN_126720_AirmarCalibrateTemperature(fields, dst)
+pgnIdToCreator['airmarCalibrateTemperature'] = (fields:any, dst:number) => new PGN_126720_AirmarCalibrateTemperature(fields, dst)
 
 
 /**
@@ -6710,9 +6715,9 @@ export class PGN_126720_AirmarSpeedFilterNone extends PGN implements PGN_126720_
 
   isMatch() {
     return isMatch(this, PGN_126720_AirmarSpeedFilterNoneMatchFields)
+  }
 }
-}
-pgnIdToClass['airmarSpeedFilterNone'] = (fields:any, dst:number) => new PGN_126720_AirmarSpeedFilterNone(fields, dst)
+pgnIdToCreator['airmarSpeedFilterNone'] = (fields:any, dst:number) => new PGN_126720_AirmarSpeedFilterNone(fields, dst)
 
 
 /**
@@ -6789,9 +6794,9 @@ export class PGN_126720_AirmarSpeedFilterIir extends PGN implements PGN_126720_A
 
   isMatch() {
     return isMatch(this, PGN_126720_AirmarSpeedFilterIirMatchFields)
+  }
 }
-}
-pgnIdToClass['airmarSpeedFilterIir'] = (fields:any, dst:number) => new PGN_126720_AirmarSpeedFilterIir(fields, dst)
+pgnIdToCreator['airmarSpeedFilterIir'] = (fields:any, dst:number) => new PGN_126720_AirmarSpeedFilterIir(fields, dst)
 
 
 /**
@@ -6865,9 +6870,9 @@ export class PGN_126720_AirmarTemperatureFilterNone extends PGN implements PGN_1
 
   isMatch() {
     return isMatch(this, PGN_126720_AirmarTemperatureFilterNoneMatchFields)
+  }
 }
-}
-pgnIdToClass['airmarTemperatureFilterNone'] = (fields:any, dst:number) => new PGN_126720_AirmarTemperatureFilterNone(fields, dst)
+pgnIdToCreator['airmarTemperatureFilterNone'] = (fields:any, dst:number) => new PGN_126720_AirmarTemperatureFilterNone(fields, dst)
 
 
 /**
@@ -6944,9 +6949,9 @@ export class PGN_126720_AirmarTemperatureFilterIir extends PGN implements PGN_12
 
   isMatch() {
     return isMatch(this, PGN_126720_AirmarTemperatureFilterIirMatchFields)
+  }
 }
-}
-pgnIdToClass['airmarTemperatureFilterIir'] = (fields:any, dst:number) => new PGN_126720_AirmarTemperatureFilterIir(fields, dst)
+pgnIdToCreator['airmarTemperatureFilterIir'] = (fields:any, dst:number) => new PGN_126720_AirmarTemperatureFilterIir(fields, dst)
 
 
 /**
@@ -7018,9 +7023,9 @@ export class PGN_126720_AirmarNmea2000Options extends PGN implements PGN_126720_
 
   isMatch() {
     return isMatch(this, PGN_126720_AirmarNmea2000OptionsMatchFields)
+  }
 }
-}
-pgnIdToClass['airmarNmea2000Options'] = (fields:any, dst:number) => new PGN_126720_AirmarNmea2000Options(fields, dst)
+pgnIdToCreator['airmarNmea2000Options'] = (fields:any, dst:number) => new PGN_126720_AirmarNmea2000Options(fields, dst)
 
 
 /**
@@ -7087,9 +7092,9 @@ export class PGN_126720_AirmarAddressableMultiFrame extends PGN implements PGN_1
 
   isMatch() {
     return isMatch(this, PGN_126720_AirmarAddressableMultiFrameMatchFields)
+  }
 }
-}
-pgnIdToClass['airmarAddressableMultiFrame'] = (fields:any, dst:number) => new PGN_126720_AirmarAddressableMultiFrame(fields, dst)
+pgnIdToCreator['airmarAddressableMultiFrame'] = (fields:any, dst:number) => new PGN_126720_AirmarAddressableMultiFrame(fields, dst)
 
 
 /**
@@ -7162,9 +7167,9 @@ export class PGN_126720_MaretronSlaveResponse extends PGN implements PGN_126720_
 
   isMatch() {
     return isMatch(this, PGN_126720_MaretronSlaveResponseMatchFields)
+  }
 }
-}
-pgnIdToClass['maretronSlaveResponse'] = (fields:any, dst:number) => new PGN_126720_MaretronSlaveResponse(fields, dst)
+pgnIdToCreator['maretronSlaveResponse'] = (fields:any, dst:number) => new PGN_126720_MaretronSlaveResponse(fields, dst)
 
 
 /**
@@ -7249,9 +7254,9 @@ export class PGN_126720_GarminDayMode extends PGN implements PGN_126720_GarminDa
 
   isMatch() {
     return isMatch(this, PGN_126720_GarminDayModeMatchFields)
+  }
 }
-}
-pgnIdToClass['garminDayMode'] = (fields:any, dst:number) => new PGN_126720_GarminDayMode(fields, dst)
+pgnIdToCreator['garminDayMode'] = (fields:any, dst:number) => new PGN_126720_GarminDayMode(fields, dst)
 
 
 /**
@@ -7337,9 +7342,9 @@ export class PGN_126720_GarminNightMode extends PGN implements PGN_126720_Garmin
 
   isMatch() {
     return isMatch(this, PGN_126720_GarminNightModeMatchFields)
+  }
 }
-}
-pgnIdToClass['garminNightMode'] = (fields:any, dst:number) => new PGN_126720_GarminNightMode(fields, dst)
+pgnIdToCreator['garminNightMode'] = (fields:any, dst:number) => new PGN_126720_GarminNightMode(fields, dst)
 
 
 /**
@@ -7425,9 +7430,9 @@ export class PGN_126720_GarminColorMode extends PGN implements PGN_126720_Garmin
 
   isMatch() {
     return isMatch(this, PGN_126720_GarminColorModeMatchFields)
+  }
 }
-}
-pgnIdToClass['garminColorMode'] = (fields:any, dst:number) => new PGN_126720_GarminColorMode(fields, dst)
+pgnIdToCreator['garminColorMode'] = (fields:any, dst:number) => new PGN_126720_GarminColorMode(fields, dst)
 
 
 /**
@@ -7491,7 +7496,7 @@ export class PGN_126983 extends PGN implements PGN_126983Interface {
   }
 
 }
-pgnIdToClass['alert'] = (fields:any, dst:number) => new PGN_126983(fields, dst)
+pgnIdToCreator['alert'] = (fields:any, dst:number) => new PGN_126983(fields, dst)
 
 
 /**
@@ -7546,7 +7551,7 @@ export class PGN_126984 extends PGN implements PGN_126984Interface {
   }
 
 }
-pgnIdToClass['alertResponse'] = (fields:any, dst:number) => new PGN_126984(fields, dst)
+pgnIdToCreator['alertResponse'] = (fields:any, dst:number) => new PGN_126984(fields, dst)
 
 
 /**
@@ -7601,7 +7606,7 @@ export class PGN_126985 extends PGN implements PGN_126985Interface {
   }
 
 }
-pgnIdToClass['alertText'] = (fields:any, dst:number) => new PGN_126985(fields, dst)
+pgnIdToCreator['alertText'] = (fields:any, dst:number) => new PGN_126985(fields, dst)
 
 
 /**
@@ -7659,7 +7664,7 @@ export class PGN_126986 extends PGN implements PGN_126986Interface {
   }
 
 }
-pgnIdToClass['alertConfiguration'] = (fields:any, dst:number) => new PGN_126986(fields, dst)
+pgnIdToCreator['alertConfiguration'] = (fields:any, dst:number) => new PGN_126986(fields, dst)
 
 
 /**
@@ -7718,7 +7723,7 @@ export class PGN_126987 extends PGN implements PGN_126987Interface {
   }
 
 }
-pgnIdToClass['alertThreshold'] = (fields:any, dst:number) => new PGN_126987(fields, dst)
+pgnIdToCreator['alertThreshold'] = (fields:any, dst:number) => new PGN_126987(fields, dst)
 
 
 /**
@@ -7776,7 +7781,7 @@ export class PGN_126988 extends PGN implements PGN_126988Interface {
   }
 
 }
-pgnIdToClass['alertValue'] = (fields:any, dst:number) => new PGN_126988(fields, dst)
+pgnIdToCreator['alertValue'] = (fields:any, dst:number) => new PGN_126988(fields, dst)
 
 
 /**
@@ -7826,7 +7831,7 @@ export class PGN_126992 extends PGN implements PGN_126992Interface {
   }
 
 }
-pgnIdToClass['systemTime'] = (fields:any, dst:number) => new PGN_126992(fields, dst)
+pgnIdToCreator['systemTime'] = (fields:any, dst:number) => new PGN_126992(fields, dst)
 
 
 /**
@@ -7877,7 +7882,7 @@ export class PGN_126993 extends PGN implements PGN_126993Interface {
   }
 
 }
-pgnIdToClass['heartbeat'] = (fields:any, dst:number) => new PGN_126993(fields, dst)
+pgnIdToCreator['heartbeat'] = (fields:any, dst:number) => new PGN_126993(fields, dst)
 
 
 /**
@@ -7930,7 +7935,7 @@ export class PGN_126996 extends PGN implements PGN_126996Interface {
   }
 
 }
-pgnIdToClass['productInformation'] = (fields:any, dst:number) => new PGN_126996(fields, dst)
+pgnIdToCreator['productInformation'] = (fields:any, dst:number) => new PGN_126996(fields, dst)
 
 
 /**
@@ -7978,7 +7983,7 @@ export class PGN_126998 extends PGN implements PGN_126998Interface {
   }
 
 }
-pgnIdToClass['configurationInformation'] = (fields:any, dst:number) => new PGN_126998(fields, dst)
+pgnIdToCreator['configurationInformation'] = (fields:any, dst:number) => new PGN_126998(fields, dst)
 
 
 /**
@@ -8050,7 +8055,7 @@ export class PGN_127233 extends PGN implements PGN_127233Interface {
   }
 
 }
-pgnIdToClass['manOverboardNotification'] = (fields:any, dst:number) => new PGN_127233(fields, dst)
+pgnIdToCreator['manOverboardNotification'] = (fields:any, dst:number) => new PGN_127233(fields, dst)
 
 
 /**
@@ -8111,7 +8116,7 @@ export class PGN_127237 extends PGN implements PGN_127237Interface {
   }
 
 }
-pgnIdToClass['headingTrackControl'] = (fields:any, dst:number) => new PGN_127237(fields, dst)
+pgnIdToCreator['headingTrackControl'] = (fields:any, dst:number) => new PGN_127237(fields, dst)
 
 
 /**
@@ -8160,7 +8165,7 @@ export class PGN_127245 extends PGN implements PGN_127245Interface {
   }
 
 }
-pgnIdToClass['rudder'] = (fields:any, dst:number) => new PGN_127245(fields, dst)
+pgnIdToCreator['rudder'] = (fields:any, dst:number) => new PGN_127245(fields, dst)
 
 
 /**
@@ -8209,7 +8214,7 @@ export class PGN_127250 extends PGN implements PGN_127250Interface {
   }
 
 }
-pgnIdToClass['vesselHeading'] = (fields:any, dst:number) => new PGN_127250(fields, dst)
+pgnIdToCreator['vesselHeading'] = (fields:any, dst:number) => new PGN_127250(fields, dst)
 
 
 /**
@@ -8255,7 +8260,7 @@ export class PGN_127251 extends PGN implements PGN_127251Interface {
   }
 
 }
-pgnIdToClass['rateOfTurn'] = (fields:any, dst:number) => new PGN_127251(fields, dst)
+pgnIdToCreator['rateOfTurn'] = (fields:any, dst:number) => new PGN_127251(fields, dst)
 
 
 /**
@@ -8301,7 +8306,7 @@ export class PGN_127252 extends PGN implements PGN_127252Interface {
   }
 
 }
-pgnIdToClass['heave'] = (fields:any, dst:number) => new PGN_127252(fields, dst)
+pgnIdToCreator['heave'] = (fields:any, dst:number) => new PGN_127252(fields, dst)
 
 
 /**
@@ -8349,7 +8354,7 @@ export class PGN_127257 extends PGN implements PGN_127257Interface {
   }
 
 }
-pgnIdToClass['attitude'] = (fields:any, dst:number) => new PGN_127257(fields, dst)
+pgnIdToCreator['attitude'] = (fields:any, dst:number) => new PGN_127257(fields, dst)
 
 
 /**
@@ -8398,7 +8403,7 @@ export class PGN_127258 extends PGN implements PGN_127258Interface {
   }
 
 }
-pgnIdToClass['magneticVariation'] = (fields:any, dst:number) => new PGN_127258(fields, dst)
+pgnIdToCreator['magneticVariation'] = (fields:any, dst:number) => new PGN_127258(fields, dst)
 
 
 /**
@@ -8446,7 +8451,7 @@ export class PGN_127488 extends PGN implements PGN_127488Interface {
   }
 
 }
-pgnIdToClass['engineParametersRapidUpdate'] = (fields:any, dst:number) => new PGN_127488(fields, dst)
+pgnIdToCreator['engineParametersRapidUpdate'] = (fields:any, dst:number) => new PGN_127488(fields, dst)
 
 
 /**
@@ -8503,7 +8508,7 @@ export class PGN_127489 extends PGN implements PGN_127489Interface {
   }
 
 }
-pgnIdToClass['engineParametersDynamic'] = (fields:any, dst:number) => new PGN_127489(fields, dst)
+pgnIdToCreator['engineParametersDynamic'] = (fields:any, dst:number) => new PGN_127489(fields, dst)
 
 
 /**
@@ -8556,7 +8561,7 @@ export class PGN_127490 extends PGN implements PGN_127490Interface {
   }
 
 }
-pgnIdToClass['electricDriveStatusDynamic'] = (fields:any, dst:number) => new PGN_127490(fields, dst)
+pgnIdToCreator['electricDriveStatusDynamic'] = (fields:any, dst:number) => new PGN_127490(fields, dst)
 
 
 /**
@@ -8611,7 +8616,7 @@ export class PGN_127491 extends PGN implements PGN_127491Interface {
   }
 
 }
-pgnIdToClass['electricEnergyStorageStatusDynamic'] = (fields:any, dst:number) => new PGN_127491(fields, dst)
+pgnIdToCreator['electricEnergyStorageStatusDynamic'] = (fields:any, dst:number) => new PGN_127491(fields, dst)
 
 
 /**
@@ -8661,7 +8666,7 @@ export class PGN_127493 extends PGN implements PGN_127493Interface {
   }
 
 }
-pgnIdToClass['transmissionParametersDynamic'] = (fields:any, dst:number) => new PGN_127493(fields, dst)
+pgnIdToCreator['transmissionParametersDynamic'] = (fields:any, dst:number) => new PGN_127493(fields, dst)
 
 
 /**
@@ -8719,7 +8724,7 @@ export class PGN_127494 extends PGN implements PGN_127494Interface {
   }
 
 }
-pgnIdToClass['electricDriveInformation'] = (fields:any, dst:number) => new PGN_127494(fields, dst)
+pgnIdToCreator['electricDriveInformation'] = (fields:any, dst:number) => new PGN_127494(fields, dst)
 
 
 /**
@@ -8780,7 +8785,7 @@ export class PGN_127495 extends PGN implements PGN_127495Interface {
   }
 
 }
-pgnIdToClass['electricEnergyStorageInformation'] = (fields:any, dst:number) => new PGN_127495(fields, dst)
+pgnIdToCreator['electricEnergyStorageInformation'] = (fields:any, dst:number) => new PGN_127495(fields, dst)
 
 
 /**
@@ -8827,7 +8832,7 @@ export class PGN_127496 extends PGN implements PGN_127496Interface {
   }
 
 }
-pgnIdToClass['tripParametersVessel'] = (fields:any, dst:number) => new PGN_127496(fields, dst)
+pgnIdToCreator['tripParametersVessel'] = (fields:any, dst:number) => new PGN_127496(fields, dst)
 
 
 /**
@@ -8875,7 +8880,7 @@ export class PGN_127497 extends PGN implements PGN_127497Interface {
   }
 
 }
-pgnIdToClass['tripParametersEngine'] = (fields:any, dst:number) => new PGN_127497(fields, dst)
+pgnIdToCreator['tripParametersEngine'] = (fields:any, dst:number) => new PGN_127497(fields, dst)
 
 
 /**
@@ -8922,7 +8927,7 @@ export class PGN_127498 extends PGN implements PGN_127498Interface {
   }
 
 }
-pgnIdToClass['engineParametersStatic'] = (fields:any, dst:number) => new PGN_127498(fields, dst)
+pgnIdToCreator['engineParametersStatic'] = (fields:any, dst:number) => new PGN_127498(fields, dst)
 
 
 /**
@@ -8973,7 +8978,7 @@ export class PGN_127500 extends PGN implements PGN_127500Interface {
   }
 
 }
-pgnIdToClass['loadControllerConnectionStateControl'] = (fields:any, dst:number) => new PGN_127500(fields, dst)
+pgnIdToCreator['loadControllerConnectionStateControl'] = (fields:any, dst:number) => new PGN_127500(fields, dst)
 
 
 /**
@@ -9045,7 +9050,7 @@ export class PGN_127501 extends PGN implements PGN_127501Interface {
   }
 
 }
-pgnIdToClass['binarySwitchBankStatus'] = (fields:any, dst:number) => new PGN_127501(fields, dst)
+pgnIdToCreator['binarySwitchBankStatus'] = (fields:any, dst:number) => new PGN_127501(fields, dst)
 
 
 /**
@@ -9117,7 +9122,7 @@ export class PGN_127502 extends PGN implements PGN_127502Interface {
   }
 
 }
-pgnIdToClass['switchBankControl'] = (fields:any, dst:number) => new PGN_127502(fields, dst)
+pgnIdToCreator['switchBankControl'] = (fields:any, dst:number) => new PGN_127502(fields, dst)
 
 
 /**
@@ -9174,7 +9179,7 @@ export class PGN_127503 extends PGN implements PGN_127503Interface {
   }
 
 }
-pgnIdToClass['acInputStatus'] = (fields:any, dst:number) => new PGN_127503(fields, dst)
+pgnIdToCreator['acInputStatus'] = (fields:any, dst:number) => new PGN_127503(fields, dst)
 
 
 /**
@@ -9231,7 +9236,7 @@ export class PGN_127504 extends PGN implements PGN_127504Interface {
   }
 
 }
-pgnIdToClass['acOutputStatus'] = (fields:any, dst:number) => new PGN_127504(fields, dst)
+pgnIdToCreator['acOutputStatus'] = (fields:any, dst:number) => new PGN_127504(fields, dst)
 
 
 /**
@@ -9279,7 +9284,7 @@ export class PGN_127505 extends PGN implements PGN_127505Interface {
   }
 
 }
-pgnIdToClass['fluidLevel'] = (fields:any, dst:number) => new PGN_127505(fields, dst)
+pgnIdToCreator['fluidLevel'] = (fields:any, dst:number) => new PGN_127505(fields, dst)
 
 
 /**
@@ -9330,7 +9335,7 @@ export class PGN_127506 extends PGN implements PGN_127506Interface {
   }
 
 }
-pgnIdToClass['dcDetailedStatus'] = (fields:any, dst:number) => new PGN_127506(fields, dst)
+pgnIdToCreator['dcDetailedStatus'] = (fields:any, dst:number) => new PGN_127506(fields, dst)
 
 
 /**
@@ -9381,7 +9386,7 @@ export class PGN_127507 extends PGN implements PGN_127507Interface {
   }
 
 }
-pgnIdToClass['chargerStatus'] = (fields:any, dst:number) => new PGN_127507(fields, dst)
+pgnIdToCreator['chargerStatus'] = (fields:any, dst:number) => new PGN_127507(fields, dst)
 
 
 /**
@@ -9429,7 +9434,7 @@ export class PGN_127508 extends PGN implements PGN_127508Interface {
   }
 
 }
-pgnIdToClass['batteryStatus'] = (fields:any, dst:number) => new PGN_127508(fields, dst)
+pgnIdToCreator['batteryStatus'] = (fields:any, dst:number) => new PGN_127508(fields, dst)
 
 
 /**
@@ -9480,7 +9485,7 @@ export class PGN_127509 extends PGN implements PGN_127509Interface {
   }
 
 }
-pgnIdToClass['inverterStatus'] = (fields:any, dst:number) => new PGN_127509(fields, dst)
+pgnIdToCreator['inverterStatus'] = (fields:any, dst:number) => new PGN_127509(fields, dst)
 
 
 /**
@@ -9534,7 +9539,7 @@ export class PGN_127510 extends PGN implements PGN_127510Interface {
   }
 
 }
-pgnIdToClass['chargerConfigurationStatus'] = (fields:any, dst:number) => new PGN_127510(fields, dst)
+pgnIdToCreator['chargerConfigurationStatus'] = (fields:any, dst:number) => new PGN_127510(fields, dst)
 
 
 /**
@@ -9585,7 +9590,7 @@ export class PGN_127511 extends PGN implements PGN_127511Interface {
   }
 
 }
-pgnIdToClass['inverterConfigurationStatus'] = (fields:any, dst:number) => new PGN_127511(fields, dst)
+pgnIdToCreator['inverterConfigurationStatus'] = (fields:any, dst:number) => new PGN_127511(fields, dst)
 
 
 /**
@@ -9632,7 +9637,7 @@ export class PGN_127512 extends PGN implements PGN_127512Interface {
   }
 
 }
-pgnIdToClass['agsConfigurationStatus'] = (fields:any, dst:number) => new PGN_127512(fields, dst)
+pgnIdToCreator['agsConfigurationStatus'] = (fields:any, dst:number) => new PGN_127512(fields, dst)
 
 
 /**
@@ -9685,7 +9690,7 @@ export class PGN_127513 extends PGN implements PGN_127513Interface {
   }
 
 }
-pgnIdToClass['batteryConfigurationStatus'] = (fields:any, dst:number) => new PGN_127513(fields, dst)
+pgnIdToCreator['batteryConfigurationStatus'] = (fields:any, dst:number) => new PGN_127513(fields, dst)
 
 
 /**
@@ -9734,7 +9739,7 @@ export class PGN_127514 extends PGN implements PGN_127514Interface {
   }
 
 }
-pgnIdToClass['agsStatus'] = (fields:any, dst:number) => new PGN_127514(fields, dst)
+pgnIdToCreator['agsStatus'] = (fields:any, dst:number) => new PGN_127514(fields, dst)
 
 
 /**
@@ -9781,7 +9786,7 @@ export class PGN_127744 extends PGN implements PGN_127744Interface {
   }
 
 }
-pgnIdToClass['acPowerCurrentPhaseA'] = (fields:any, dst:number) => new PGN_127744(fields, dst)
+pgnIdToCreator['acPowerCurrentPhaseA'] = (fields:any, dst:number) => new PGN_127744(fields, dst)
 
 
 /**
@@ -9828,7 +9833,7 @@ export class PGN_127745 extends PGN implements PGN_127745Interface {
   }
 
 }
-pgnIdToClass['acPowerCurrentPhaseB'] = (fields:any, dst:number) => new PGN_127745(fields, dst)
+pgnIdToCreator['acPowerCurrentPhaseB'] = (fields:any, dst:number) => new PGN_127745(fields, dst)
 
 
 /**
@@ -9875,7 +9880,7 @@ export class PGN_127746 extends PGN implements PGN_127746Interface {
   }
 
 }
-pgnIdToClass['acPowerCurrentPhaseC'] = (fields:any, dst:number) => new PGN_127746(fields, dst)
+pgnIdToCreator['acPowerCurrentPhaseC'] = (fields:any, dst:number) => new PGN_127746(fields, dst)
 
 
 /**
@@ -9923,7 +9928,7 @@ export class PGN_127747 extends PGN implements PGN_127747Interface {
   }
 
 }
-pgnIdToClass['acVoltageFrequencyPhaseA'] = (fields:any, dst:number) => new PGN_127747(fields, dst)
+pgnIdToCreator['acVoltageFrequencyPhaseA'] = (fields:any, dst:number) => new PGN_127747(fields, dst)
 
 
 /**
@@ -9971,7 +9976,7 @@ export class PGN_127748 extends PGN implements PGN_127748Interface {
   }
 
 }
-pgnIdToClass['acVoltageFrequencyPhaseB'] = (fields:any, dst:number) => new PGN_127748(fields, dst)
+pgnIdToCreator['acVoltageFrequencyPhaseB'] = (fields:any, dst:number) => new PGN_127748(fields, dst)
 
 
 /**
@@ -10019,7 +10024,7 @@ export class PGN_127749 extends PGN implements PGN_127749Interface {
   }
 
 }
-pgnIdToClass['acVoltageFrequencyPhaseC'] = (fields:any, dst:number) => new PGN_127749(fields, dst)
+pgnIdToCreator['acVoltageFrequencyPhaseC'] = (fields:any, dst:number) => new PGN_127749(fields, dst)
 
 
 /**
@@ -10070,7 +10075,7 @@ export class PGN_127750 extends PGN implements PGN_127750Interface {
   }
 
 }
-pgnIdToClass['converterStatus'] = (fields:any, dst:number) => new PGN_127750(fields, dst)
+pgnIdToCreator['converterStatus'] = (fields:any, dst:number) => new PGN_127750(fields, dst)
 
 
 /**
@@ -10118,7 +10123,7 @@ export class PGN_127751 extends PGN implements PGN_127751Interface {
   }
 
 }
-pgnIdToClass['dcVoltageCurrent'] = (fields:any, dst:number) => new PGN_127751(fields, dst)
+pgnIdToCreator['dcVoltageCurrent'] = (fields:any, dst:number) => new PGN_127751(fields, dst)
 
 
 /**
@@ -10166,7 +10171,7 @@ export class PGN_128000 extends PGN implements PGN_128000Interface {
   }
 
 }
-pgnIdToClass['leewayAngle'] = (fields:any, dst:number) => new PGN_128000(fields, dst)
+pgnIdToCreator['leewayAngle'] = (fields:any, dst:number) => new PGN_128000(fields, dst)
 
 
 /**
@@ -10216,7 +10221,7 @@ export class PGN_128001 extends PGN implements PGN_128001Interface {
   }
 
 }
-pgnIdToClass['vesselAcceleration'] = (fields:any, dst:number) => new PGN_128001(fields, dst)
+pgnIdToCreator['vesselAcceleration'] = (fields:any, dst:number) => new PGN_128001(fields, dst)
 
 
 /**
@@ -10268,7 +10273,7 @@ export class PGN_128002 extends PGN implements PGN_128002Interface {
   }
 
 }
-pgnIdToClass['electricDriveStatusRapidUpdate'] = (fields:any, dst:number) => new PGN_128002(fields, dst)
+pgnIdToCreator['electricDriveStatusRapidUpdate'] = (fields:any, dst:number) => new PGN_128002(fields, dst)
 
 
 /**
@@ -10320,7 +10325,7 @@ export class PGN_128003 extends PGN implements PGN_128003Interface {
   }
 
 }
-pgnIdToClass['electricEnergyStorageStatusRapidUpdate'] = (fields:any, dst:number) => new PGN_128003(fields, dst)
+pgnIdToCreator['electricEnergyStorageStatusRapidUpdate'] = (fields:any, dst:number) => new PGN_128003(fields, dst)
 
 
 /**
@@ -10372,7 +10377,7 @@ export class PGN_128006 extends PGN implements PGN_128006Interface {
   }
 
 }
-pgnIdToClass['thrusterControlStatus'] = (fields:any, dst:number) => new PGN_128006(fields, dst)
+pgnIdToCreator['thrusterControlStatus'] = (fields:any, dst:number) => new PGN_128006(fields, dst)
 
 
 /**
@@ -10421,7 +10426,7 @@ export class PGN_128007 extends PGN implements PGN_128007Interface {
   }
 
 }
-pgnIdToClass['thrusterInformation'] = (fields:any, dst:number) => new PGN_128007(fields, dst)
+pgnIdToCreator['thrusterInformation'] = (fields:any, dst:number) => new PGN_128007(fields, dst)
 
 
 /**
@@ -10470,7 +10475,7 @@ export class PGN_128008 extends PGN implements PGN_128008Interface {
   }
 
 }
-pgnIdToClass['thrusterMotorStatus'] = (fields:any, dst:number) => new PGN_128008(fields, dst)
+pgnIdToCreator['thrusterMotorStatus'] = (fields:any, dst:number) => new PGN_128008(fields, dst)
 
 
 /**
@@ -10519,7 +10524,7 @@ export class PGN_128259 extends PGN implements PGN_128259Interface {
   }
 
 }
-pgnIdToClass['speed'] = (fields:any, dst:number) => new PGN_128259(fields, dst)
+pgnIdToCreator['speed'] = (fields:any, dst:number) => new PGN_128259(fields, dst)
 
 
 /**
@@ -10566,7 +10571,7 @@ export class PGN_128267 extends PGN implements PGN_128267Interface {
   }
 
 }
-pgnIdToClass['waterDepth'] = (fields:any, dst:number) => new PGN_128267(fields, dst)
+pgnIdToCreator['waterDepth'] = (fields:any, dst:number) => new PGN_128267(fields, dst)
 
 
 /**
@@ -10613,7 +10618,7 @@ export class PGN_128275 extends PGN implements PGN_128275Interface {
   }
 
 }
-pgnIdToClass['distanceLog'] = (fields:any, dst:number) => new PGN_128275(fields, dst)
+pgnIdToCreator['distanceLog'] = (fields:any, dst:number) => new PGN_128275(fields, dst)
 
 
 /**
@@ -10673,7 +10678,7 @@ export class PGN_128520 extends PGN implements PGN_128520Interface {
   }
 
 }
-pgnIdToClass['trackedTargetData'] = (fields:any, dst:number) => new PGN_128520(fields, dst)
+pgnIdToCreator['trackedTargetData'] = (fields:any, dst:number) => new PGN_128520(fields, dst)
 
 
 /**
@@ -10750,7 +10755,7 @@ export class PGN_128538 extends PGN implements PGN_128538Interface {
   }
 
 }
-pgnIdToClass['elevatorCarStatus'] = (fields:any, dst:number) => new PGN_128538(fields, dst)
+pgnIdToCreator['elevatorCarStatus'] = (fields:any, dst:number) => new PGN_128538(fields, dst)
 
 
 /**
@@ -10801,7 +10806,7 @@ export class PGN_128768 extends PGN implements PGN_128768Interface {
   }
 
 }
-pgnIdToClass['elevatorMotorControl'] = (fields:any, dst:number) => new PGN_128768(fields, dst)
+pgnIdToCreator['elevatorMotorControl'] = (fields:any, dst:number) => new PGN_128768(fields, dst)
 
 
 /**
@@ -10852,7 +10857,7 @@ export class PGN_128769 extends PGN implements PGN_128769Interface {
   }
 
 }
-pgnIdToClass['elevatorDeckPushButton'] = (fields:any, dst:number) => new PGN_128769(fields, dst)
+pgnIdToCreator['elevatorDeckPushButton'] = (fields:any, dst:number) => new PGN_128769(fields, dst)
 
 
 /**
@@ -10909,7 +10914,7 @@ export class PGN_128776 extends PGN implements PGN_128776Interface {
   }
 
 }
-pgnIdToClass['windlassControlStatus'] = (fields:any, dst:number) => new PGN_128776(fields, dst)
+pgnIdToCreator['windlassControlStatus'] = (fields:any, dst:number) => new PGN_128776(fields, dst)
 
 
 /**
@@ -10962,7 +10967,7 @@ export class PGN_128777 extends PGN implements PGN_128777Interface {
   }
 
 }
-pgnIdToClass['anchorWindlassOperatingStatus'] = (fields:any, dst:number) => new PGN_128777(fields, dst)
+pgnIdToCreator['anchorWindlassOperatingStatus'] = (fields:any, dst:number) => new PGN_128777(fields, dst)
 
 
 /**
@@ -11012,7 +11017,7 @@ export class PGN_128778 extends PGN implements PGN_128778Interface {
   }
 
 }
-pgnIdToClass['anchorWindlassMonitoringStatus'] = (fields:any, dst:number) => new PGN_128778(fields, dst)
+pgnIdToCreator['anchorWindlassMonitoringStatus'] = (fields:any, dst:number) => new PGN_128778(fields, dst)
 
 
 /**
@@ -11063,7 +11068,7 @@ export class PGN_128780 extends PGN implements PGN_128780Interface {
   }
 
 }
-pgnIdToClass['linearActuatorControlStatus'] = (fields:any, dst:number) => new PGN_128780(fields, dst)
+pgnIdToCreator['linearActuatorControlStatus'] = (fields:any, dst:number) => new PGN_128780(fields, dst)
 
 
 /**
@@ -11108,7 +11113,7 @@ export class PGN_129025 extends PGN implements PGN_129025Interface {
   }
 
 }
-pgnIdToClass['positionRapidUpdate'] = (fields:any, dst:number) => new PGN_129025(fields, dst)
+pgnIdToCreator['positionRapidUpdate'] = (fields:any, dst:number) => new PGN_129025(fields, dst)
 
 
 /**
@@ -11157,7 +11162,7 @@ export class PGN_129026 extends PGN implements PGN_129026Interface {
   }
 
 }
-pgnIdToClass['cogSogRapidUpdate'] = (fields:any, dst:number) => new PGN_129026(fields, dst)
+pgnIdToCreator['cogSogRapidUpdate'] = (fields:any, dst:number) => new PGN_129026(fields, dst)
 
 
 /**
@@ -11204,7 +11209,7 @@ export class PGN_129027 extends PGN implements PGN_129027Interface {
   }
 
 }
-pgnIdToClass['positionDeltaRapidUpdate'] = (fields:any, dst:number) => new PGN_129027(fields, dst)
+pgnIdToCreator['positionDeltaRapidUpdate'] = (fields:any, dst:number) => new PGN_129027(fields, dst)
 
 
 /**
@@ -11254,7 +11259,7 @@ export class PGN_129028 extends PGN implements PGN_129028Interface {
   }
 
 }
-pgnIdToClass['altitudeDeltaRapidUpdate'] = (fields:any, dst:number) => new PGN_129028(fields, dst)
+pgnIdToCreator['altitudeDeltaRapidUpdate'] = (fields:any, dst:number) => new PGN_129028(fields, dst)
 
 
 /**
@@ -11317,7 +11322,7 @@ export class PGN_129029 extends PGN implements PGN_129029Interface {
   }
 
 }
-pgnIdToClass['gnssPositionData'] = (fields:any, dst:number) => new PGN_129029(fields, dst)
+pgnIdToCreator['gnssPositionData'] = (fields:any, dst:number) => new PGN_129029(fields, dst)
 
 
 /**
@@ -11363,7 +11368,7 @@ export class PGN_129033 extends PGN implements PGN_129033Interface {
   }
 
 }
-pgnIdToClass['timeDate'] = (fields:any, dst:number) => new PGN_129033(fields, dst)
+pgnIdToCreator['timeDate'] = (fields:any, dst:number) => new PGN_129033(fields, dst)
 
 
 /**
@@ -11426,7 +11431,7 @@ export class PGN_129038 extends PGN implements PGN_129038Interface {
   }
 
 }
-pgnIdToClass['aisClassAPositionReport'] = (fields:any, dst:number) => new PGN_129038(fields, dst)
+pgnIdToCreator['aisClassAPositionReport'] = (fields:any, dst:number) => new PGN_129038(fields, dst)
 
 
 /**
@@ -11492,7 +11497,7 @@ export class PGN_129039 extends PGN implements PGN_129039Interface {
   }
 
 }
-pgnIdToClass['aisClassBPositionReport'] = (fields:any, dst:number) => new PGN_129039(fields, dst)
+pgnIdToCreator['aisClassBPositionReport'] = (fields:any, dst:number) => new PGN_129039(fields, dst)
 
 
 /**
@@ -11562,7 +11567,7 @@ export class PGN_129040 extends PGN implements PGN_129040Interface {
   }
 
 }
-pgnIdToClass['aisClassBExtendedPositionReport'] = (fields:any, dst:number) => new PGN_129040(fields, dst)
+pgnIdToCreator['aisClassBExtendedPositionReport'] = (fields:any, dst:number) => new PGN_129040(fields, dst)
 
 
 /**
@@ -11628,7 +11633,7 @@ export class PGN_129041 extends PGN implements PGN_129041Interface {
   }
 
 }
-pgnIdToClass['aisAidsToNavigationAtonReport'] = (fields:any, dst:number) => new PGN_129041(fields, dst)
+pgnIdToCreator['aisAidsToNavigationAtonReport'] = (fields:any, dst:number) => new PGN_129041(fields, dst)
 
 
 /**
@@ -11676,7 +11681,7 @@ export class PGN_129044 extends PGN implements PGN_129044Interface {
   }
 
 }
-pgnIdToClass['datum'] = (fields:any, dst:number) => new PGN_129044(fields, dst)
+pgnIdToCreator['datum'] = (fields:any, dst:number) => new PGN_129044(fields, dst)
 
 
 /**
@@ -11729,7 +11734,7 @@ export class PGN_129045 extends PGN implements PGN_129045Interface {
   }
 
 }
-pgnIdToClass['userDatum'] = (fields:any, dst:number) => new PGN_129045(fields, dst)
+pgnIdToCreator['userDatum'] = (fields:any, dst:number) => new PGN_129045(fields, dst)
 
 
 /**
@@ -11778,7 +11783,7 @@ export class PGN_129283 extends PGN implements PGN_129283Interface {
   }
 
 }
-pgnIdToClass['crossTrackError'] = (fields:any, dst:number) => new PGN_129283(fields, dst)
+pgnIdToCreator['crossTrackError'] = (fields:any, dst:number) => new PGN_129283(fields, dst)
 
 
 /**
@@ -11836,7 +11841,7 @@ export class PGN_129284 extends PGN implements PGN_129284Interface {
   }
 
 }
-pgnIdToClass['navigationData'] = (fields:any, dst:number) => new PGN_129284(fields, dst)
+pgnIdToCreator['navigationData'] = (fields:any, dst:number) => new PGN_129284(fields, dst)
 
 
 /**
@@ -11894,7 +11899,7 @@ export class PGN_129285 extends PGN implements PGN_129285Interface {
   }
 
 }
-pgnIdToClass['navigationRouteWpInformation'] = (fields:any, dst:number) => new PGN_129285(fields, dst)
+pgnIdToCreator['navigationRouteWpInformation'] = (fields:any, dst:number) => new PGN_129285(fields, dst)
 
 
 /**
@@ -11943,7 +11948,7 @@ export class PGN_129291 extends PGN implements PGN_129291Interface {
   }
 
 }
-pgnIdToClass['setDriftRapidUpdate'] = (fields:any, dst:number) => new PGN_129291(fields, dst)
+pgnIdToCreator['setDriftRapidUpdate'] = (fields:any, dst:number) => new PGN_129291(fields, dst)
 
 
 /**
@@ -11991,7 +11996,7 @@ export class PGN_129301 extends PGN implements PGN_129301Interface {
   }
 
 }
-pgnIdToClass['navigationRouteTimeToFromMark'] = (fields:any, dst:number) => new PGN_129301(fields, dst)
+pgnIdToCreator['navigationRouteTimeToFromMark'] = (fields:any, dst:number) => new PGN_129301(fields, dst)
 
 
 /**
@@ -12044,7 +12049,7 @@ export class PGN_129302 extends PGN implements PGN_129302Interface {
   }
 
 }
-pgnIdToClass['bearingAndDistanceBetweenTwoMarks'] = (fields:any, dst:number) => new PGN_129302(fields, dst)
+pgnIdToCreator['bearingAndDistanceBetweenTwoMarks'] = (fields:any, dst:number) => new PGN_129302(fields, dst)
 
 
 /**
@@ -12098,7 +12103,7 @@ export class PGN_129538 extends PGN implements PGN_129538Interface {
   }
 
 }
-pgnIdToClass['gnssControlStatus'] = (fields:any, dst:number) => new PGN_129538(fields, dst)
+pgnIdToCreator['gnssControlStatus'] = (fields:any, dst:number) => new PGN_129538(fields, dst)
 
 
 /**
@@ -12148,7 +12153,7 @@ export class PGN_129539 extends PGN implements PGN_129539Interface {
   }
 
 }
-pgnIdToClass['gnssDops'] = (fields:any, dst:number) => new PGN_129539(fields, dst)
+pgnIdToCreator['gnssDops'] = (fields:any, dst:number) => new PGN_129539(fields, dst)
 
 
 /**
@@ -12204,7 +12209,7 @@ export class PGN_129540 extends PGN implements PGN_129540Interface {
   }
 
 }
-pgnIdToClass['gnssSatsInView'] = (fields:any, dst:number) => new PGN_129540(fields, dst)
+pgnIdToCreator['gnssSatsInView'] = (fields:any, dst:number) => new PGN_129540(fields, dst)
 
 
 /**
@@ -12261,7 +12266,7 @@ export class PGN_129541 extends PGN implements PGN_129541Interface {
   }
 
 }
-pgnIdToClass['gpsAlmanacData'] = (fields:any, dst:number) => new PGN_129541(fields, dst)
+pgnIdToCreator['gpsAlmanacData'] = (fields:any, dst:number) => new PGN_129541(fields, dst)
 
 
 /**
@@ -12312,7 +12317,7 @@ export class PGN_129542 extends PGN implements PGN_129542Interface {
   }
 
 }
-pgnIdToClass['gnssPseudorangeNoiseStatistics'] = (fields:any, dst:number) => new PGN_129542(fields, dst)
+pgnIdToCreator['gnssPseudorangeNoiseStatistics'] = (fields:any, dst:number) => new PGN_129542(fields, dst)
 
 
 /**
@@ -12365,7 +12370,7 @@ export class PGN_129545 extends PGN implements PGN_129545Interface {
   }
 
 }
-pgnIdToClass['gnssRaimOutput'] = (fields:any, dst:number) => new PGN_129545(fields, dst)
+pgnIdToCreator['gnssRaimOutput'] = (fields:any, dst:number) => new PGN_129545(fields, dst)
 
 
 /**
@@ -12413,7 +12418,7 @@ export class PGN_129546 extends PGN implements PGN_129546Interface {
   }
 
 }
-pgnIdToClass['gnssRaimSettings'] = (fields:any, dst:number) => new PGN_129546(fields, dst)
+pgnIdToCreator['gnssRaimSettings'] = (fields:any, dst:number) => new PGN_129546(fields, dst)
 
 
 /**
@@ -12464,7 +12469,7 @@ export class PGN_129547 extends PGN implements PGN_129547Interface {
   }
 
 }
-pgnIdToClass['gnssPseudorangeErrorStatistics'] = (fields:any, dst:number) => new PGN_129547(fields, dst)
+pgnIdToCreator['gnssPseudorangeErrorStatistics'] = (fields:any, dst:number) => new PGN_129547(fields, dst)
 
 
 /**
@@ -12518,7 +12523,7 @@ export class PGN_129549 extends PGN implements PGN_129549Interface {
   }
 
 }
-pgnIdToClass['dgnssCorrections'] = (fields:any, dst:number) => new PGN_129549(fields, dst)
+pgnIdToCreator['dgnssCorrections'] = (fields:any, dst:number) => new PGN_129549(fields, dst)
 
 
 /**
@@ -12568,7 +12573,7 @@ export class PGN_129550 extends PGN implements PGN_129550Interface {
   }
 
 }
-pgnIdToClass['gnssDifferentialCorrectionReceiverInterface'] = (fields:any, dst:number) => new PGN_129550(fields, dst)
+pgnIdToCreator['gnssDifferentialCorrectionReceiverInterface'] = (fields:any, dst:number) => new PGN_129550(fields, dst)
 
 
 /**
@@ -12625,7 +12630,7 @@ export class PGN_129551 extends PGN implements PGN_129551Interface {
   }
 
 }
-pgnIdToClass['gnssDifferentialCorrectionReceiverSignal'] = (fields:any, dst:number) => new PGN_129551(fields, dst)
+pgnIdToCreator['gnssDifferentialCorrectionReceiverSignal'] = (fields:any, dst:number) => new PGN_129551(fields, dst)
 
 
 /**
@@ -12684,7 +12689,7 @@ export class PGN_129556 extends PGN implements PGN_129556Interface {
   }
 
 }
-pgnIdToClass['glonassAlmanacData'] = (fields:any, dst:number) => new PGN_129556(fields, dst)
+pgnIdToCreator['glonassAlmanacData'] = (fields:any, dst:number) => new PGN_129556(fields, dst)
 
 
 /**
@@ -12739,7 +12744,7 @@ export class PGN_129792 extends PGN implements PGN_129792Interface {
   }
 
 }
-pgnIdToClass['aisDgnssBroadcastBinaryMessage'] = (fields:any, dst:number) => new PGN_129792(fields, dst)
+pgnIdToCreator['aisDgnssBroadcastBinaryMessage'] = (fields:any, dst:number) => new PGN_129792(fields, dst)
 
 
 /**
@@ -12796,7 +12801,7 @@ export class PGN_129793 extends PGN implements PGN_129793Interface {
   }
 
 }
-pgnIdToClass['aisUtcAndDateReport'] = (fields:any, dst:number) => new PGN_129793(fields, dst)
+pgnIdToCreator['aisUtcAndDateReport'] = (fields:any, dst:number) => new PGN_129793(fields, dst)
 
 
 /**
@@ -12860,7 +12865,7 @@ export class PGN_129794 extends PGN implements PGN_129794Interface {
   }
 
 }
-pgnIdToClass['aisClassAStaticAndVoyageRelatedData'] = (fields:any, dst:number) => new PGN_129794(fields, dst)
+pgnIdToCreator['aisClassAStaticAndVoyageRelatedData'] = (fields:any, dst:number) => new PGN_129794(fields, dst)
 
 
 /**
@@ -12915,7 +12920,7 @@ export class PGN_129795 extends PGN implements PGN_129795Interface {
   }
 
 }
-pgnIdToClass['aisAddressedBinaryMessage'] = (fields:any, dst:number) => new PGN_129795(fields, dst)
+pgnIdToCreator['aisAddressedBinaryMessage'] = (fields:any, dst:number) => new PGN_129795(fields, dst)
 
 
 /**
@@ -12969,7 +12974,7 @@ export class PGN_129796 extends PGN implements PGN_129796Interface {
   }
 
 }
-pgnIdToClass['aisAcknowledge'] = (fields:any, dst:number) => new PGN_129796(fields, dst)
+pgnIdToCreator['aisAcknowledge'] = (fields:any, dst:number) => new PGN_129796(fields, dst)
 
 
 /**
@@ -13020,7 +13025,7 @@ export class PGN_129797 extends PGN implements PGN_129797Interface {
   }
 
 }
-pgnIdToClass['aisBinaryBroadcastMessage'] = (fields:any, dst:number) => new PGN_129797(fields, dst)
+pgnIdToCreator['aisBinaryBroadcastMessage'] = (fields:any, dst:number) => new PGN_129797(fields, dst)
 
 
 /**
@@ -13080,7 +13085,7 @@ export class PGN_129798 extends PGN implements PGN_129798Interface {
   }
 
 }
-pgnIdToClass['aisSarAircraftPositionReport'] = (fields:any, dst:number) => new PGN_129798(fields, dst)
+pgnIdToCreator['aisSarAircraftPositionReport'] = (fields:any, dst:number) => new PGN_129798(fields, dst)
 
 
 /**
@@ -13131,7 +13136,7 @@ export class PGN_129799 extends PGN implements PGN_129799Interface {
   }
 
 }
-pgnIdToClass['radioFrequencyModePower'] = (fields:any, dst:number) => new PGN_129799(fields, dst)
+pgnIdToCreator['radioFrequencyModePower'] = (fields:any, dst:number) => new PGN_129799(fields, dst)
 
 
 /**
@@ -13181,7 +13186,7 @@ export class PGN_129800 extends PGN implements PGN_129800Interface {
   }
 
 }
-pgnIdToClass['aisUtcDateInquiry'] = (fields:any, dst:number) => new PGN_129800(fields, dst)
+pgnIdToCreator['aisUtcDateInquiry'] = (fields:any, dst:number) => new PGN_129800(fields, dst)
 
 
 /**
@@ -13235,7 +13240,7 @@ export class PGN_129801 extends PGN implements PGN_129801Interface {
   }
 
 }
-pgnIdToClass['aisAddressedSafetyRelatedMessage'] = (fields:any, dst:number) => new PGN_129801(fields, dst)
+pgnIdToCreator['aisAddressedSafetyRelatedMessage'] = (fields:any, dst:number) => new PGN_129801(fields, dst)
 
 
 /**
@@ -13285,7 +13290,7 @@ export class PGN_129802 extends PGN implements PGN_129802Interface {
   }
 
 }
-pgnIdToClass['aisSafetyRelatedBroadcastMessage'] = (fields:any, dst:number) => new PGN_129802(fields, dst)
+pgnIdToCreator['aisSafetyRelatedBroadcastMessage'] = (fields:any, dst:number) => new PGN_129802(fields, dst)
 
 
 /**
@@ -13350,7 +13355,7 @@ export class PGN_129803 extends PGN implements PGN_129803Interface {
   }
 
 }
-pgnIdToClass['aisInterrogation'] = (fields:any, dst:number) => new PGN_129803(fields, dst)
+pgnIdToCreator['aisInterrogation'] = (fields:any, dst:number) => new PGN_129803(fields, dst)
 
 
 /**
@@ -13407,7 +13412,7 @@ export class PGN_129804 extends PGN implements PGN_129804Interface {
   }
 
 }
-pgnIdToClass['aisAssignmentModeCommand'] = (fields:any, dst:number) => new PGN_129804(fields, dst)
+pgnIdToCreator['aisAssignmentModeCommand'] = (fields:any, dst:number) => new PGN_129804(fields, dst)
 
 
 /**
@@ -13462,7 +13467,7 @@ export class PGN_129805 extends PGN implements PGN_129805Interface {
   }
 
 }
-pgnIdToClass['aisDataLinkManagementMessage'] = (fields:any, dst:number) => new PGN_129805(fields, dst)
+pgnIdToCreator['aisDataLinkManagementMessage'] = (fields:any, dst:number) => new PGN_129805(fields, dst)
 
 
 /**
@@ -13528,7 +13533,7 @@ export class PGN_129806 extends PGN implements PGN_129806Interface {
   }
 
 }
-pgnIdToClass['aisChannelManagement'] = (fields:any, dst:number) => new PGN_129806(fields, dst)
+pgnIdToCreator['aisChannelManagement'] = (fields:any, dst:number) => new PGN_129806(fields, dst)
 
 
 /**
@@ -13590,7 +13595,7 @@ export class PGN_129807 extends PGN implements PGN_129807Interface {
   }
 
 }
-pgnIdToClass['aisClassBGroupAssignment'] = (fields:any, dst:number) => new PGN_129807(fields, dst)
+pgnIdToCreator['aisClassBGroupAssignment'] = (fields:any, dst:number) => new PGN_129807(fields, dst)
 
 
 /**
@@ -13696,9 +13701,9 @@ export class PGN_129808_DscDistressCallInformation extends PGN implements PGN_12
 
   isMatch() {
     return isMatch(this, PGN_129808_DscDistressCallInformationMatchFields)
+  }
 }
-}
-pgnIdToClass['dscDistressCallInformation'] = (fields:any, dst:number) => new PGN_129808_DscDistressCallInformation(fields, dst)
+pgnIdToCreator['dscDistressCallInformation'] = (fields:any, dst:number) => new PGN_129808_DscDistressCallInformation(fields, dst)
 
 
 /**
@@ -13766,7 +13771,7 @@ export class PGN_129808 extends PGN implements PGN_129808Interface {
   }
 
 }
-pgnIdToClass['dscCallInformation'] = (fields:any, dst:number) => new PGN_129808(fields, dst)
+pgnIdToCreator['dscCallInformation'] = (fields:any, dst:number) => new PGN_129808(fields, dst)
 
 
 /**
@@ -13816,7 +13821,7 @@ export class PGN_129809 extends PGN implements PGN_129809Interface {
   }
 
 }
-pgnIdToClass['aisClassBStaticDataMsg24PartA'] = (fields:any, dst:number) => new PGN_129809(fields, dst)
+pgnIdToCreator['aisClassBStaticDataMsg24PartA'] = (fields:any, dst:number) => new PGN_129809(fields, dst)
 
 
 /**
@@ -13876,7 +13881,7 @@ export class PGN_129810 extends PGN implements PGN_129810Interface {
   }
 
 }
-pgnIdToClass['aisClassBStaticDataMsg24PartB'] = (fields:any, dst:number) => new PGN_129810(fields, dst)
+pgnIdToCreator['aisClassBStaticDataMsg24PartB'] = (fields:any, dst:number) => new PGN_129810(fields, dst)
 
 
 /**
@@ -13934,7 +13939,7 @@ export class PGN_130052 extends PGN implements PGN_130052Interface {
   }
 
 }
-pgnIdToClass['loranCTdData'] = (fields:any, dst:number) => new PGN_130052(fields, dst)
+pgnIdToCreator['loranCTdData'] = (fields:any, dst:number) => new PGN_130052(fields, dst)
 
 
 /**
@@ -13992,7 +13997,7 @@ export class PGN_130053 extends PGN implements PGN_130053Interface {
   }
 
 }
-pgnIdToClass['loranCRangeData'] = (fields:any, dst:number) => new PGN_130053(fields, dst)
+pgnIdToCreator['loranCRangeData'] = (fields:any, dst:number) => new PGN_130053(fields, dst)
 
 
 /**
@@ -14040,7 +14045,7 @@ export class PGN_130054 extends PGN implements PGN_130054Interface {
   }
 
 }
-pgnIdToClass['loranCSignalData'] = (fields:any, dst:number) => new PGN_130054(fields, dst)
+pgnIdToCreator['loranCSignalData'] = (fields:any, dst:number) => new PGN_130054(fields, dst)
 
 
 /**
@@ -14091,7 +14096,7 @@ export class PGN_130060 extends PGN implements PGN_130060Interface {
   }
 
 }
-pgnIdToClass['label'] = (fields:any, dst:number) => new PGN_130060(fields, dst)
+pgnIdToCreator['label'] = (fields:any, dst:number) => new PGN_130060(fields, dst)
 
 
 /**
@@ -14145,7 +14150,7 @@ export class PGN_130061 extends PGN implements PGN_130061Interface {
   }
 
 }
-pgnIdToClass['channelSourceConfiguration'] = (fields:any, dst:number) => new PGN_130061(fields, dst)
+pgnIdToCreator['channelSourceConfiguration'] = (fields:any, dst:number) => new PGN_130061(fields, dst)
 
 
 /**
@@ -14202,7 +14207,7 @@ export class PGN_130064 extends PGN implements PGN_130064Interface {
   }
 
 }
-pgnIdToClass['routeAndWpServiceDatabaseList'] = (fields:any, dst:number) => new PGN_130064(fields, dst)
+pgnIdToCreator['routeAndWpServiceDatabaseList'] = (fields:any, dst:number) => new PGN_130064(fields, dst)
 
 
 /**
@@ -14256,7 +14261,7 @@ export class PGN_130065 extends PGN implements PGN_130065Interface {
   }
 
 }
-pgnIdToClass['routeAndWpServiceRouteList'] = (fields:any, dst:number) => new PGN_130065(fields, dst)
+pgnIdToCreator['routeAndWpServiceRouteList'] = (fields:any, dst:number) => new PGN_130065(fields, dst)
 
 
 /**
@@ -14311,7 +14316,7 @@ export class PGN_130066 extends PGN implements PGN_130066Interface {
   }
 
 }
-pgnIdToClass['routeAndWpServiceRouteWpListAttributes'] = (fields:any, dst:number) => new PGN_130066(fields, dst)
+pgnIdToCreator['routeAndWpServiceRouteWpListAttributes'] = (fields:any, dst:number) => new PGN_130066(fields, dst)
 
 
 /**
@@ -14365,7 +14370,7 @@ export class PGN_130067 extends PGN implements PGN_130067Interface {
   }
 
 }
-pgnIdToClass['routeAndWpServiceRouteWpNamePosition'] = (fields:any, dst:number) => new PGN_130067(fields, dst)
+pgnIdToCreator['routeAndWpServiceRouteWpNamePosition'] = (fields:any, dst:number) => new PGN_130067(fields, dst)
 
 
 /**
@@ -14417,7 +14422,7 @@ export class PGN_130068 extends PGN implements PGN_130068Interface {
   }
 
 }
-pgnIdToClass['routeAndWpServiceRouteWpName'] = (fields:any, dst:number) => new PGN_130068(fields, dst)
+pgnIdToCreator['routeAndWpServiceRouteWpName'] = (fields:any, dst:number) => new PGN_130068(fields, dst)
 
 
 /**
@@ -14471,7 +14476,7 @@ export class PGN_130069 extends PGN implements PGN_130069Interface {
   }
 
 }
-pgnIdToClass['routeAndWpServiceXteLimitNavigationMethod'] = (fields:any, dst:number) => new PGN_130069(fields, dst)
+pgnIdToCreator['routeAndWpServiceXteLimitNavigationMethod'] = (fields:any, dst:number) => new PGN_130069(fields, dst)
 
 
 /**
@@ -14523,7 +14528,7 @@ export class PGN_130070 extends PGN implements PGN_130070Interface {
   }
 
 }
-pgnIdToClass['routeAndWpServiceWpComment'] = (fields:any, dst:number) => new PGN_130070(fields, dst)
+pgnIdToCreator['routeAndWpServiceWpComment'] = (fields:any, dst:number) => new PGN_130070(fields, dst)
 
 
 /**
@@ -14574,7 +14579,7 @@ export class PGN_130071 extends PGN implements PGN_130071Interface {
   }
 
 }
-pgnIdToClass['routeAndWpServiceRouteComment'] = (fields:any, dst:number) => new PGN_130071(fields, dst)
+pgnIdToCreator['routeAndWpServiceRouteComment'] = (fields:any, dst:number) => new PGN_130071(fields, dst)
 
 
 /**
@@ -14624,7 +14629,7 @@ export class PGN_130072 extends PGN implements PGN_130072Interface {
   }
 
 }
-pgnIdToClass['routeAndWpServiceDatabaseComment'] = (fields:any, dst:number) => new PGN_130072(fields, dst)
+pgnIdToCreator['routeAndWpServiceDatabaseComment'] = (fields:any, dst:number) => new PGN_130072(fields, dst)
 
 
 /**
@@ -14676,7 +14681,7 @@ export class PGN_130073 extends PGN implements PGN_130073Interface {
   }
 
 }
-pgnIdToClass['routeAndWpServiceRadiusOfTurn'] = (fields:any, dst:number) => new PGN_130073(fields, dst)
+pgnIdToCreator['routeAndWpServiceRadiusOfTurn'] = (fields:any, dst:number) => new PGN_130073(fields, dst)
 
 
 /**
@@ -14730,7 +14735,7 @@ export class PGN_130074 extends PGN implements PGN_130074Interface {
   }
 
 }
-pgnIdToClass['routeAndWpServiceWpListWpNamePosition'] = (fields:any, dst:number) => new PGN_130074(fields, dst)
+pgnIdToCreator['routeAndWpServiceWpListWpNamePosition'] = (fields:any, dst:number) => new PGN_130074(fields, dst)
 
 
 /**
@@ -14778,7 +14783,7 @@ export class PGN_130306 extends PGN implements PGN_130306Interface {
   }
 
 }
-pgnIdToClass['windData'] = (fields:any, dst:number) => new PGN_130306(fields, dst)
+pgnIdToCreator['windData'] = (fields:any, dst:number) => new PGN_130306(fields, dst)
 
 
 /**
@@ -14828,7 +14833,7 @@ export class PGN_130310 extends PGN implements PGN_130310Interface {
   }
 
 }
-pgnIdToClass['environmentalParametersObsolete'] = (fields:any, dst:number) => new PGN_130310(fields, dst)
+pgnIdToCreator['environmentalParametersObsolete'] = (fields:any, dst:number) => new PGN_130310(fields, dst)
 
 
 /**
@@ -14879,7 +14884,7 @@ export class PGN_130311 extends PGN implements PGN_130311Interface {
   }
 
 }
-pgnIdToClass['environmentalParameters'] = (fields:any, dst:number) => new PGN_130311(fields, dst)
+pgnIdToCreator['environmentalParameters'] = (fields:any, dst:number) => new PGN_130311(fields, dst)
 
 
 /**
@@ -14928,7 +14933,7 @@ export class PGN_130312 extends PGN implements PGN_130312Interface {
   }
 
 }
-pgnIdToClass['temperature'] = (fields:any, dst:number) => new PGN_130312(fields, dst)
+pgnIdToCreator['temperature'] = (fields:any, dst:number) => new PGN_130312(fields, dst)
 
 
 /**
@@ -14977,7 +14982,7 @@ export class PGN_130313 extends PGN implements PGN_130313Interface {
   }
 
 }
-pgnIdToClass['humidity'] = (fields:any, dst:number) => new PGN_130313(fields, dst)
+pgnIdToCreator['humidity'] = (fields:any, dst:number) => new PGN_130313(fields, dst)
 
 
 /**
@@ -15025,7 +15030,7 @@ export class PGN_130314 extends PGN implements PGN_130314Interface {
   }
 
 }
-pgnIdToClass['actualPressure'] = (fields:any, dst:number) => new PGN_130314(fields, dst)
+pgnIdToCreator['actualPressure'] = (fields:any, dst:number) => new PGN_130314(fields, dst)
 
 
 /**
@@ -15073,7 +15078,7 @@ export class PGN_130315 extends PGN implements PGN_130315Interface {
   }
 
 }
-pgnIdToClass['setPressure'] = (fields:any, dst:number) => new PGN_130315(fields, dst)
+pgnIdToCreator['setPressure'] = (fields:any, dst:number) => new PGN_130315(fields, dst)
 
 
 /**
@@ -15121,7 +15126,7 @@ export class PGN_130316 extends PGN implements PGN_130316Interface {
   }
 
 }
-pgnIdToClass['temperatureExtendedRange'] = (fields:any, dst:number) => new PGN_130316(fields, dst)
+pgnIdToCreator['temperatureExtendedRange'] = (fields:any, dst:number) => new PGN_130316(fields, dst)
 
 
 /**
@@ -15175,7 +15180,7 @@ export class PGN_130320 extends PGN implements PGN_130320Interface {
   }
 
 }
-pgnIdToClass['tideStationData'] = (fields:any, dst:number) => new PGN_130320(fields, dst)
+pgnIdToCreator['tideStationData'] = (fields:any, dst:number) => new PGN_130320(fields, dst)
 
 
 /**
@@ -15228,7 +15233,7 @@ export class PGN_130321 extends PGN implements PGN_130321Interface {
   }
 
 }
-pgnIdToClass['salinityStationData'] = (fields:any, dst:number) => new PGN_130321(fields, dst)
+pgnIdToCreator['salinityStationData'] = (fields:any, dst:number) => new PGN_130321(fields, dst)
 
 
 /**
@@ -15284,7 +15289,7 @@ export class PGN_130322 extends PGN implements PGN_130322Interface {
   }
 
 }
-pgnIdToClass['currentStationData'] = (fields:any, dst:number) => new PGN_130322(fields, dst)
+pgnIdToCreator['currentStationData'] = (fields:any, dst:number) => new PGN_130322(fields, dst)
 
 
 /**
@@ -15342,7 +15347,7 @@ export class PGN_130323 extends PGN implements PGN_130323Interface {
   }
 
 }
-pgnIdToClass['meteorologicalStationData'] = (fields:any, dst:number) => new PGN_130323(fields, dst)
+pgnIdToCreator['meteorologicalStationData'] = (fields:any, dst:number) => new PGN_130323(fields, dst)
 
 
 /**
@@ -15403,7 +15408,7 @@ export class PGN_130324 extends PGN implements PGN_130324Interface {
   }
 
 }
-pgnIdToClass['mooredBuoyStationData'] = (fields:any, dst:number) => new PGN_130324(fields, dst)
+pgnIdToCreator['mooredBuoyStationData'] = (fields:any, dst:number) => new PGN_130324(fields, dst)
 
 
 /**
@@ -15460,7 +15465,7 @@ export class PGN_130330 extends PGN implements PGN_130330Interface {
   }
 
 }
-pgnIdToClass['lightingSystemSettings'] = (fields:any, dst:number) => new PGN_130330(fields, dst)
+pgnIdToCreator['lightingSystemSettings'] = (fields:any, dst:number) => new PGN_130330(fields, dst)
 
 
 /**
@@ -15509,7 +15514,7 @@ export class PGN_130560 extends PGN implements PGN_130560Interface {
   }
 
 }
-pgnIdToClass['payloadMass'] = (fields:any, dst:number) => new PGN_130560(fields, dst)
+pgnIdToCreator['payloadMass'] = (fields:any, dst:number) => new PGN_130560(fields, dst)
 
 
 /**
@@ -15568,7 +15573,7 @@ export class PGN_130561 extends PGN implements PGN_130561Interface {
   }
 
 }
-pgnIdToClass['lightingZone'] = (fields:any, dst:number) => new PGN_130561(fields, dst)
+pgnIdToCreator['lightingZone'] = (fields:any, dst:number) => new PGN_130561(fields, dst)
 
 
 /**
@@ -15627,7 +15632,7 @@ export class PGN_130562 extends PGN implements PGN_130562Interface {
   }
 
 }
-pgnIdToClass['lightingScene'] = (fields:any, dst:number) => new PGN_130562(fields, dst)
+pgnIdToCreator['lightingScene'] = (fields:any, dst:number) => new PGN_130562(fields, dst)
 
 
 /**
@@ -15690,7 +15695,7 @@ export class PGN_130563 extends PGN implements PGN_130563Interface {
   }
 
 }
-pgnIdToClass['lightingDevice'] = (fields:any, dst:number) => new PGN_130563(fields, dst)
+pgnIdToCreator['lightingDevice'] = (fields:any, dst:number) => new PGN_130563(fields, dst)
 
 
 /**
@@ -15742,7 +15747,7 @@ export class PGN_130564 extends PGN implements PGN_130564Interface {
   }
 
 }
-pgnIdToClass['lightingDeviceEnumeration'] = (fields:any, dst:number) => new PGN_130564(fields, dst)
+pgnIdToCreator['lightingDeviceEnumeration'] = (fields:any, dst:number) => new PGN_130564(fields, dst)
 
 
 /**
@@ -15797,7 +15802,7 @@ export class PGN_130565 extends PGN implements PGN_130565Interface {
   }
 
 }
-pgnIdToClass['lightingColorSequence'] = (fields:any, dst:number) => new PGN_130565(fields, dst)
+pgnIdToCreator['lightingColorSequence'] = (fields:any, dst:number) => new PGN_130565(fields, dst)
 
 
 /**
@@ -15847,7 +15852,7 @@ export class PGN_130566 extends PGN implements PGN_130566Interface {
   }
 
 }
-pgnIdToClass['lightingProgram'] = (fields:any, dst:number) => new PGN_130566(fields, dst)
+pgnIdToCreator['lightingProgram'] = (fields:any, dst:number) => new PGN_130566(fields, dst)
 
 
 /**
@@ -15913,7 +15918,7 @@ export class PGN_130567 extends PGN implements PGN_130567Interface {
   }
 
 }
-pgnIdToClass['watermakerInputSettingAndStatus'] = (fields:any, dst:number) => new PGN_130567(fields, dst)
+pgnIdToCreator['watermakerInputSettingAndStatus'] = (fields:any, dst:number) => new PGN_130567(fields, dst)
 
 
 /**
@@ -15973,7 +15978,7 @@ export class PGN_130569 extends PGN implements PGN_130569Interface {
   }
 
 }
-pgnIdToClass['currentStatusAndFile'] = (fields:any, dst:number) => new PGN_130569(fields, dst)
+pgnIdToCreator['currentStatusAndFile'] = (fields:any, dst:number) => new PGN_130569(fields, dst)
 
 
 /**
@@ -16033,7 +16038,7 @@ export class PGN_130570 extends PGN implements PGN_130570Interface {
   }
 
 }
-pgnIdToClass['libraryDataFile'] = (fields:any, dst:number) => new PGN_130570(fields, dst)
+pgnIdToCreator['libraryDataFile'] = (fields:any, dst:number) => new PGN_130570(fields, dst)
 
 
 /**
@@ -16090,7 +16095,7 @@ export class PGN_130571 extends PGN implements PGN_130571Interface {
   }
 
 }
-pgnIdToClass['libraryDataGroup'] = (fields:any, dst:number) => new PGN_130571(fields, dst)
+pgnIdToCreator['libraryDataGroup'] = (fields:any, dst:number) => new PGN_130571(fields, dst)
 
 
 /**
@@ -16142,7 +16147,7 @@ export class PGN_130572 extends PGN implements PGN_130572Interface {
   }
 
 }
-pgnIdToClass['libraryDataSearch'] = (fields:any, dst:number) => new PGN_130572(fields, dst)
+pgnIdToCreator['libraryDataSearch'] = (fields:any, dst:number) => new PGN_130572(fields, dst)
 
 
 /**
@@ -16200,7 +16205,7 @@ export class PGN_130573 extends PGN implements PGN_130573Interface {
   }
 
 }
-pgnIdToClass['supportedSourceData'] = (fields:any, dst:number) => new PGN_130573(fields, dst)
+pgnIdToCreator['supportedSourceData'] = (fields:any, dst:number) => new PGN_130573(fields, dst)
 
 
 /**
@@ -16250,7 +16255,7 @@ export class PGN_130574 extends PGN implements PGN_130574Interface {
   }
 
 }
-pgnIdToClass['supportedZoneData'] = (fields:any, dst:number) => new PGN_130574(fields, dst)
+pgnIdToCreator['supportedZoneData'] = (fields:any, dst:number) => new PGN_130574(fields, dst)
 
 
 /**
@@ -16296,7 +16301,7 @@ export class PGN_130576 extends PGN implements PGN_130576Interface {
   }
 
 }
-pgnIdToClass['smallCraftStatus'] = (fields:any, dst:number) => new PGN_130576(fields, dst)
+pgnIdToCreator['smallCraftStatus'] = (fields:any, dst:number) => new PGN_130576(fields, dst)
 
 
 /**
@@ -16349,7 +16354,7 @@ export class PGN_130577 extends PGN implements PGN_130577Interface {
   }
 
 }
-pgnIdToClass['directionData'] = (fields:any, dst:number) => new PGN_130577(fields, dst)
+pgnIdToCreator['directionData'] = (fields:any, dst:number) => new PGN_130577(fields, dst)
 
 
 /**
@@ -16398,7 +16403,7 @@ export class PGN_130578 extends PGN implements PGN_130578Interface {
   }
 
 }
-pgnIdToClass['vesselSpeedComponents'] = (fields:any, dst:number) => new PGN_130578(fields, dst)
+pgnIdToCreator['vesselSpeedComponents'] = (fields:any, dst:number) => new PGN_130578(fields, dst)
 
 
 /**
@@ -16447,7 +16452,7 @@ export class PGN_130579 extends PGN implements PGN_130579Interface {
   }
 
 }
-pgnIdToClass['systemConfiguration'] = (fields:any, dst:number) => new PGN_130579(fields, dst)
+pgnIdToCreator['systemConfiguration'] = (fields:any, dst:number) => new PGN_130579(fields, dst)
 
 
 /**
@@ -16494,7 +16499,7 @@ export class PGN_130580 extends PGN implements PGN_130580Interface {
   }
 
 }
-pgnIdToClass['systemConfigurationDeprecated'] = (fields:any, dst:number) => new PGN_130580(fields, dst)
+pgnIdToCreator['systemConfigurationDeprecated'] = (fields:any, dst:number) => new PGN_130580(fields, dst)
 
 
 /**
@@ -16544,7 +16549,7 @@ export class PGN_130581 extends PGN implements PGN_130581Interface {
   }
 
 }
-pgnIdToClass['zoneConfigurationDeprecated'] = (fields:any, dst:number) => new PGN_130581(fields, dst)
+pgnIdToCreator['zoneConfigurationDeprecated'] = (fields:any, dst:number) => new PGN_130581(fields, dst)
 
 
 /**
@@ -16594,7 +16599,7 @@ export class PGN_130582 extends PGN implements PGN_130582Interface {
   }
 
 }
-pgnIdToClass['zoneVolume'] = (fields:any, dst:number) => new PGN_130582(fields, dst)
+pgnIdToCreator['zoneVolume'] = (fields:any, dst:number) => new PGN_130582(fields, dst)
 
 
 /**
@@ -16644,7 +16649,7 @@ export class PGN_130583 extends PGN implements PGN_130583Interface {
   }
 
 }
-pgnIdToClass['availableAudioEqPresets'] = (fields:any, dst:number) => new PGN_130583(fields, dst)
+pgnIdToCreator['availableAudioEqPresets'] = (fields:any, dst:number) => new PGN_130583(fields, dst)
 
 
 /**
@@ -16696,7 +16701,7 @@ export class PGN_130584 extends PGN implements PGN_130584Interface {
   }
 
 }
-pgnIdToClass['availableBluetoothAddresses'] = (fields:any, dst:number) => new PGN_130584(fields, dst)
+pgnIdToCreator['availableBluetoothAddresses'] = (fields:any, dst:number) => new PGN_130584(fields, dst)
 
 
 /**
@@ -16744,7 +16749,7 @@ export class PGN_130585 extends PGN implements PGN_130585Interface {
   }
 
 }
-pgnIdToClass['bluetoothSourceStatus'] = (fields:any, dst:number) => new PGN_130585(fields, dst)
+pgnIdToCreator['bluetoothSourceStatus'] = (fields:any, dst:number) => new PGN_130585(fields, dst)
 
 
 /**
@@ -16800,7 +16805,7 @@ export class PGN_130586 extends PGN implements PGN_130586Interface {
   }
 
 }
-pgnIdToClass['zoneConfiguration'] = (fields:any, dst:number) => new PGN_130586(fields, dst)
+pgnIdToCreator['zoneConfiguration'] = (fields:any, dst:number) => new PGN_130586(fields, dst)
 
 
 /**
@@ -16876,9 +16881,9 @@ export class PGN_130816_SonichubInit2 extends PGN implements PGN_130816_Sonichub
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubInit2MatchFields)
+  }
 }
-}
-pgnIdToClass['sonichubInit2'] = (fields:any, dst:number) => new PGN_130816_SonichubInit2(fields, dst)
+pgnIdToCreator['sonichubInit2'] = (fields:any, dst:number) => new PGN_130816_SonichubInit2(fields, dst)
 
 
 /**
@@ -16962,9 +16967,9 @@ export class PGN_130816_SonichubAmRadio extends PGN implements PGN_130816_Sonich
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubAmRadioMatchFields)
+  }
 }
-}
-pgnIdToClass['sonichubAmRadio'] = (fields:any, dst:number) => new PGN_130816_SonichubAmRadio(fields, dst)
+pgnIdToCreator['sonichubAmRadio'] = (fields:any, dst:number) => new PGN_130816_SonichubAmRadio(fields, dst)
 
 
 /**
@@ -17038,9 +17043,9 @@ export class PGN_130816_SonichubZoneInfo extends PGN implements PGN_130816_Sonic
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubZoneInfoMatchFields)
+  }
 }
-}
-pgnIdToClass['sonichubZoneInfo'] = (fields:any, dst:number) => new PGN_130816_SonichubZoneInfo(fields, dst)
+pgnIdToCreator['sonichubZoneInfo'] = (fields:any, dst:number) => new PGN_130816_SonichubZoneInfo(fields, dst)
 
 
 /**
@@ -17114,9 +17119,9 @@ export class PGN_130816_SonichubSource extends PGN implements PGN_130816_Sonichu
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubSourceMatchFields)
+  }
 }
-}
-pgnIdToClass['sonichubSource'] = (fields:any, dst:number) => new PGN_130816_SonichubSource(fields, dst)
+pgnIdToCreator['sonichubSource'] = (fields:any, dst:number) => new PGN_130816_SonichubSource(fields, dst)
 
 
 /**
@@ -17194,9 +17199,9 @@ export class PGN_130816_SonichubSourceList extends PGN implements PGN_130816_Son
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubSourceListMatchFields)
+  }
 }
-}
-pgnIdToClass['sonichubSourceList'] = (fields:any, dst:number) => new PGN_130816_SonichubSourceList(fields, dst)
+pgnIdToCreator['sonichubSourceList'] = (fields:any, dst:number) => new PGN_130816_SonichubSourceList(fields, dst)
 
 
 /**
@@ -17270,9 +17275,9 @@ export class PGN_130816_SonichubControl extends PGN implements PGN_130816_Sonich
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubControlMatchFields)
+  }
 }
-}
-pgnIdToClass['sonichubControl'] = (fields:any, dst:number) => new PGN_130816_SonichubControl(fields, dst)
+pgnIdToCreator['sonichubControl'] = (fields:any, dst:number) => new PGN_130816_SonichubControl(fields, dst)
 
 
 /**
@@ -17356,9 +17361,9 @@ export class PGN_130816_SonichubFmRadio extends PGN implements PGN_130816_Sonich
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubFmRadioMatchFields)
+  }
 }
-}
-pgnIdToClass['sonichubFmRadio'] = (fields:any, dst:number) => new PGN_130816_SonichubFmRadio(fields, dst)
+pgnIdToCreator['sonichubFmRadio'] = (fields:any, dst:number) => new PGN_130816_SonichubFmRadio(fields, dst)
 
 
 /**
@@ -17442,9 +17447,9 @@ export class PGN_130816_SonichubPlaylist extends PGN implements PGN_130816_Sonic
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubPlaylistMatchFields)
+  }
 }
-}
-pgnIdToClass['sonichubPlaylist'] = (fields:any, dst:number) => new PGN_130816_SonichubPlaylist(fields, dst)
+pgnIdToCreator['sonichubPlaylist'] = (fields:any, dst:number) => new PGN_130816_SonichubPlaylist(fields, dst)
 
 
 /**
@@ -17520,9 +17525,9 @@ export class PGN_130816_SonichubTrack extends PGN implements PGN_130816_Sonichub
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubTrackMatchFields)
+  }
 }
-}
-pgnIdToClass['sonichubTrack'] = (fields:any, dst:number) => new PGN_130816_SonichubTrack(fields, dst)
+pgnIdToCreator['sonichubTrack'] = (fields:any, dst:number) => new PGN_130816_SonichubTrack(fields, dst)
 
 
 /**
@@ -17598,9 +17603,9 @@ export class PGN_130816_SonichubArtist extends PGN implements PGN_130816_Sonichu
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubArtistMatchFields)
+  }
 }
-}
-pgnIdToClass['sonichubArtist'] = (fields:any, dst:number) => new PGN_130816_SonichubArtist(fields, dst)
+pgnIdToCreator['sonichubArtist'] = (fields:any, dst:number) => new PGN_130816_SonichubArtist(fields, dst)
 
 
 /**
@@ -17676,9 +17681,9 @@ export class PGN_130816_SonichubAlbum extends PGN implements PGN_130816_Sonichub
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubAlbumMatchFields)
+  }
 }
-}
-pgnIdToClass['sonichubAlbum'] = (fields:any, dst:number) => new PGN_130816_SonichubAlbum(fields, dst)
+pgnIdToCreator['sonichubAlbum'] = (fields:any, dst:number) => new PGN_130816_SonichubAlbum(fields, dst)
 
 
 /**
@@ -17760,9 +17765,9 @@ export class PGN_130816_SonichubMenuItem extends PGN implements PGN_130816_Sonic
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubMenuItemMatchFields)
+  }
 }
-}
-pgnIdToClass['sonichubMenuItem'] = (fields:any, dst:number) => new PGN_130816_SonichubMenuItem(fields, dst)
+pgnIdToCreator['sonichubMenuItem'] = (fields:any, dst:number) => new PGN_130816_SonichubMenuItem(fields, dst)
 
 
 /**
@@ -17836,9 +17841,9 @@ export class PGN_130816_SonichubZones extends PGN implements PGN_130816_Sonichub
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubZonesMatchFields)
+  }
 }
-}
-pgnIdToClass['sonichubZones'] = (fields:any, dst:number) => new PGN_130816_SonichubZones(fields, dst)
+pgnIdToCreator['sonichubZones'] = (fields:any, dst:number) => new PGN_130816_SonichubZones(fields, dst)
 
 
 /**
@@ -17914,9 +17919,9 @@ export class PGN_130816_SonichubMaxVolume extends PGN implements PGN_130816_Soni
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubMaxVolumeMatchFields)
+  }
 }
-}
-pgnIdToClass['sonichubMaxVolume'] = (fields:any, dst:number) => new PGN_130816_SonichubMaxVolume(fields, dst)
+pgnIdToCreator['sonichubMaxVolume'] = (fields:any, dst:number) => new PGN_130816_SonichubMaxVolume(fields, dst)
 
 
 /**
@@ -17992,9 +17997,9 @@ export class PGN_130816_SonichubVolume extends PGN implements PGN_130816_Sonichu
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubVolumeMatchFields)
+  }
 }
-}
-pgnIdToClass['sonichubVolume'] = (fields:any, dst:number) => new PGN_130816_SonichubVolume(fields, dst)
+pgnIdToCreator['sonichubVolume'] = (fields:any, dst:number) => new PGN_130816_SonichubVolume(fields, dst)
 
 
 /**
@@ -18066,9 +18071,9 @@ export class PGN_130816_SonichubInit1 extends PGN implements PGN_130816_Sonichub
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubInit1MatchFields)
+  }
 }
-}
-pgnIdToClass['sonichubInit1'] = (fields:any, dst:number) => new PGN_130816_SonichubInit1(fields, dst)
+pgnIdToCreator['sonichubInit1'] = (fields:any, dst:number) => new PGN_130816_SonichubInit1(fields, dst)
 
 
 /**
@@ -18142,9 +18147,9 @@ export class PGN_130816_SonichubPosition extends PGN implements PGN_130816_Sonic
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubPositionMatchFields)
+  }
 }
-}
-pgnIdToClass['sonichubPosition'] = (fields:any, dst:number) => new PGN_130816_SonichubPosition(fields, dst)
+pgnIdToCreator['sonichubPosition'] = (fields:any, dst:number) => new PGN_130816_SonichubPosition(fields, dst)
 
 
 /**
@@ -18220,9 +18225,9 @@ export class PGN_130816_SonichubInit3 extends PGN implements PGN_130816_Sonichub
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubInit3MatchFields)
+  }
 }
-}
-pgnIdToClass['sonichubInit3'] = (fields:any, dst:number) => new PGN_130816_SonichubInit3(fields, dst)
+pgnIdToCreator['sonichubInit3'] = (fields:any, dst:number) => new PGN_130816_SonichubInit3(fields, dst)
 
 
 /**
@@ -18304,9 +18309,9 @@ export class PGN_130816_SimradTextMessage extends PGN implements PGN_130816_Simr
 
   isMatch() {
     return isMatch(this, PGN_130816_SimradTextMessageMatchFields)
+  }
 }
-}
-pgnIdToClass['simradTextMessage'] = (fields:any, dst:number) => new PGN_130816_SimradTextMessage(fields, dst)
+pgnIdToCreator['simradTextMessage'] = (fields:any, dst:number) => new PGN_130816_SimradTextMessage(fields, dst)
 
 
 /**
@@ -18381,9 +18386,9 @@ export class PGN_130817_NavicoUnknown extends PGN implements PGN_130817_NavicoUn
 
   isMatch() {
     return isMatch(this, PGN_130817_NavicoUnknownMatchFields)
+  }
 }
-}
-pgnIdToClass['navicoUnknown'] = (fields:any, dst:number) => new PGN_130817_NavicoUnknown(fields, dst)
+pgnIdToCreator['navicoUnknown'] = (fields:any, dst:number) => new PGN_130817_NavicoUnknown(fields, dst)
 
 
 /**
@@ -18464,9 +18469,9 @@ export class PGN_130817_LowranceProductInformation extends PGN implements PGN_13
 
   isMatch() {
     return isMatch(this, PGN_130817_LowranceProductInformationMatchFields)
+  }
 }
-}
-pgnIdToClass['lowranceProductInformation'] = (fields:any, dst:number) => new PGN_130817_LowranceProductInformation(fields, dst)
+pgnIdToCreator['lowranceProductInformation'] = (fields:any, dst:number) => new PGN_130817_LowranceProductInformation(fields, dst)
 
 
 /**
@@ -18515,7 +18520,7 @@ export class PGN_130818 extends PGN implements PGN_130818Interface {
   }
 
 }
-pgnIdToClass['simnetReprogramData'] = (fields:any, dst:number) => new PGN_130818(fields, dst)
+pgnIdToCreator['simnetReprogramData'] = (fields:any, dst:number) => new PGN_130818(fields, dst)
 
 
 /**
@@ -18561,7 +18566,7 @@ export class PGN_130819 extends PGN implements PGN_130819Interface {
   }
 
 }
-pgnIdToClass['simnetRequestReprogram'] = (fields:any, dst:number) => new PGN_130819(fields, dst)
+pgnIdToCreator['simnetRequestReprogram'] = (fields:any, dst:number) => new PGN_130819(fields, dst)
 
 
 /**
@@ -18632,9 +18637,9 @@ export class PGN_130820_SimnetReprogramStatus extends PGN implements PGN_130820_
 
   isMatch() {
     return isMatch(this, PGN_130820_SimnetReprogramStatusMatchFields)
+  }
 }
-}
-pgnIdToClass['simnetReprogramStatus'] = (fields:any, dst:number) => new PGN_130820_SimnetReprogramStatus(fields, dst)
+pgnIdToCreator['simnetReprogramStatus'] = (fields:any, dst:number) => new PGN_130820_SimnetReprogramStatus(fields, dst)
 
 
 /**
@@ -18709,9 +18714,9 @@ export class PGN_130820_FurunoUnknown130820 extends PGN implements PGN_130820_Fu
 
   isMatch() {
     return isMatch(this, PGN_130820_FurunoUnknown130820MatchFields)
+  }
 }
-}
-pgnIdToClass['furunoUnknown130820'] = (fields:any, dst:number) => new PGN_130820_FurunoUnknown130820(fields, dst)
+pgnIdToCreator['furunoUnknown130820'] = (fields:any, dst:number) => new PGN_130820_FurunoUnknown130820(fields, dst)
 
 
 /**
@@ -18789,9 +18794,9 @@ export class PGN_130820_FusionVersions extends PGN implements PGN_130820_FusionV
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionVersionsMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionVersions'] = (fields:any, dst:number) => new PGN_130820_FusionVersions(fields, dst)
+pgnIdToCreator['fusionVersions'] = (fields:any, dst:number) => new PGN_130820_FusionVersions(fields, dst)
 
 
 /**
@@ -18869,9 +18874,9 @@ export class PGN_130820_FusionSource extends PGN implements PGN_130820_FusionSou
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionSourceMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionSource'] = (fields:any, dst:number) => new PGN_130820_FusionSource(fields, dst)
+pgnIdToCreator['fusionSource'] = (fields:any, dst:number) => new PGN_130820_FusionSource(fields, dst)
 
 
 /**
@@ -18941,9 +18946,9 @@ export class PGN_130820_FusionSourceCount extends PGN implements PGN_130820_Fusi
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionSourceCountMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionSourceCount'] = (fields:any, dst:number) => new PGN_130820_FusionSourceCount(fields, dst)
+pgnIdToCreator['fusionSourceCount'] = (fields:any, dst:number) => new PGN_130820_FusionSourceCount(fields, dst)
 
 
 /**
@@ -19023,9 +19028,9 @@ export class PGN_130820_FusionMedia extends PGN implements PGN_130820_FusionMedi
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionMediaMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionMedia'] = (fields:any, dst:number) => new PGN_130820_FusionMedia(fields, dst)
+pgnIdToCreator['fusionMedia'] = (fields:any, dst:number) => new PGN_130820_FusionMedia(fields, dst)
 
 
 /**
@@ -19099,9 +19104,9 @@ export class PGN_130820_FusionTrackName extends PGN implements PGN_130820_Fusion
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionTrackNameMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionTrackName'] = (fields:any, dst:number) => new PGN_130820_FusionTrackName(fields, dst)
+pgnIdToCreator['fusionTrackName'] = (fields:any, dst:number) => new PGN_130820_FusionTrackName(fields, dst)
 
 
 /**
@@ -19175,9 +19180,9 @@ export class PGN_130820_FusionArtistName extends PGN implements PGN_130820_Fusio
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionArtistNameMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionArtistName'] = (fields:any, dst:number) => new PGN_130820_FusionArtistName(fields, dst)
+pgnIdToCreator['fusionArtistName'] = (fields:any, dst:number) => new PGN_130820_FusionArtistName(fields, dst)
 
 
 /**
@@ -19251,9 +19256,9 @@ export class PGN_130820_FusionAlbumName extends PGN implements PGN_130820_Fusion
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionAlbumNameMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionAlbumName'] = (fields:any, dst:number) => new PGN_130820_FusionAlbumName(fields, dst)
+pgnIdToCreator['fusionAlbumName'] = (fields:any, dst:number) => new PGN_130820_FusionAlbumName(fields, dst)
 
 
 /**
@@ -19323,9 +19328,9 @@ export class PGN_130820_FusionDeviceName extends PGN implements PGN_130820_Fusio
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionDeviceNameMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionDeviceName'] = (fields:any, dst:number) => new PGN_130820_FusionDeviceName(fields, dst)
+pgnIdToCreator['fusionDeviceName'] = (fields:any, dst:number) => new PGN_130820_FusionDeviceName(fields, dst)
 
 
 /**
@@ -19397,9 +19402,9 @@ export class PGN_130820_FusionZoneName extends PGN implements PGN_130820_FusionZ
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionZoneNameMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionZoneName'] = (fields:any, dst:number) => new PGN_130820_FusionZoneName(fields, dst)
+pgnIdToCreator['fusionZoneName'] = (fields:any, dst:number) => new PGN_130820_FusionZoneName(fields, dst)
 
 
 /**
@@ -19471,9 +19476,9 @@ export class PGN_130820_FusionTrackPosition extends PGN implements PGN_130820_Fu
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionTrackPositionMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionTrackPosition'] = (fields:any, dst:number) => new PGN_130820_FusionTrackPosition(fields, dst)
+pgnIdToCreator['fusionTrackPosition'] = (fields:any, dst:number) => new PGN_130820_FusionTrackPosition(fields, dst)
 
 
 /**
@@ -19551,9 +19556,9 @@ export class PGN_130820_FusionTuner extends PGN implements PGN_130820_FusionTune
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionTunerMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionTuner'] = (fields:any, dst:number) => new PGN_130820_FusionTuner(fields, dst)
+pgnIdToCreator['fusionTuner'] = (fields:any, dst:number) => new PGN_130820_FusionTuner(fields, dst)
 
 
 /**
@@ -19629,9 +19634,9 @@ export class PGN_130820_FusionMarineTuner extends PGN implements PGN_130820_Fusi
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionMarineTunerMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionMarineTuner'] = (fields:any, dst:number) => new PGN_130820_FusionMarineTuner(fields, dst)
+pgnIdToCreator['fusionMarineTuner'] = (fields:any, dst:number) => new PGN_130820_FusionMarineTuner(fields, dst)
 
 
 /**
@@ -19703,9 +19708,9 @@ export class PGN_130820_FusionMarineSquelch extends PGN implements PGN_130820_Fu
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionMarineSquelchMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionMarineSquelch'] = (fields:any, dst:number) => new PGN_130820_FusionMarineSquelch(fields, dst)
+pgnIdToCreator['fusionMarineSquelch'] = (fields:any, dst:number) => new PGN_130820_FusionMarineSquelch(fields, dst)
 
 
 /**
@@ -19777,9 +19782,9 @@ export class PGN_130820_FusionMarineScanMode extends PGN implements PGN_130820_F
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionMarineScanModeMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionMarineScanMode'] = (fields:any, dst:number) => new PGN_130820_FusionMarineScanMode(fields, dst)
+pgnIdToCreator['fusionMarineScanMode'] = (fields:any, dst:number) => new PGN_130820_FusionMarineScanMode(fields, dst)
 
 
 /**
@@ -19857,9 +19862,9 @@ export class PGN_130820_FusionMenuItem extends PGN implements PGN_130820_FusionM
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionMenuItemMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionMenuItem'] = (fields:any, dst:number) => new PGN_130820_FusionMenuItem(fields, dst)
+pgnIdToCreator['fusionMenuItem'] = (fields:any, dst:number) => new PGN_130820_FusionMenuItem(fields, dst)
 
 
 /**
@@ -19931,9 +19936,9 @@ export class PGN_130820_FusionAuxGain extends PGN implements PGN_130820_FusionAu
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionAuxGainMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionAuxGain'] = (fields:any, dst:number) => new PGN_130820_FusionAuxGain(fields, dst)
+pgnIdToCreator['fusionAuxGain'] = (fields:any, dst:number) => new PGN_130820_FusionAuxGain(fields, dst)
 
 
 /**
@@ -20006,9 +20011,9 @@ export class PGN_130820_FusionUsbRepeatStatus extends PGN implements PGN_130820_
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionUsbRepeatStatusMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionUsbRepeatStatus'] = (fields:any, dst:number) => new PGN_130820_FusionUsbRepeatStatus(fields, dst)
+pgnIdToCreator['fusionUsbRepeatStatus'] = (fields:any, dst:number) => new PGN_130820_FusionUsbRepeatStatus(fields, dst)
 
 
 /**
@@ -20080,9 +20085,9 @@ export class PGN_130820_FusionSetting extends PGN implements PGN_130820_FusionSe
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionSettingMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionSetting'] = (fields:any, dst:number) => new PGN_130820_FusionSetting(fields, dst)
+pgnIdToCreator['fusionSetting'] = (fields:any, dst:number) => new PGN_130820_FusionSetting(fields, dst)
 
 
 /**
@@ -20160,9 +20165,9 @@ export class PGN_130820_FusionSettings extends PGN implements PGN_130820_FusionS
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionSettingsMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionSettings'] = (fields:any, dst:number) => new PGN_130820_FusionSettings(fields, dst)
+pgnIdToCreator['fusionSettings'] = (fields:any, dst:number) => new PGN_130820_FusionSettings(fields, dst)
 
 
 /**
@@ -20232,9 +20237,9 @@ export class PGN_130820_FusionMute extends PGN implements PGN_130820_FusionMuteI
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionMuteMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionMute'] = (fields:any, dst:number) => new PGN_130820_FusionMute(fields, dst)
+pgnIdToCreator['fusionMute'] = (fields:any, dst:number) => new PGN_130820_FusionMute(fields, dst)
 
 
 /**
@@ -20306,9 +20311,9 @@ export class PGN_130820_FusionBalance extends PGN implements PGN_130820_FusionBa
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionBalanceMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionBalance'] = (fields:any, dst:number) => new PGN_130820_FusionBalance(fields, dst)
+pgnIdToCreator['fusionBalance'] = (fields:any, dst:number) => new PGN_130820_FusionBalance(fields, dst)
 
 
 /**
@@ -20380,9 +20385,9 @@ export class PGN_130820_FusionLowPassFilter extends PGN implements PGN_130820_Fu
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionLowPassFilterMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionLowPassFilter'] = (fields:any, dst:number) => new PGN_130820_FusionLowPassFilter(fields, dst)
+pgnIdToCreator['fusionLowPassFilter'] = (fields:any, dst:number) => new PGN_130820_FusionLowPassFilter(fields, dst)
 
 
 /**
@@ -20458,9 +20463,9 @@ export class PGN_130820_FusionSublevels extends PGN implements PGN_130820_Fusion
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionSublevelsMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionSublevels'] = (fields:any, dst:number) => new PGN_130820_FusionSublevels(fields, dst)
+pgnIdToCreator['fusionSublevels'] = (fields:any, dst:number) => new PGN_130820_FusionSublevels(fields, dst)
 
 
 /**
@@ -20536,9 +20541,9 @@ export class PGN_130820_FusionEq extends PGN implements PGN_130820_FusionEqInter
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionEqMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionEq'] = (fields:any, dst:number) => new PGN_130820_FusionEq(fields, dst)
+pgnIdToCreator['fusionEq'] = (fields:any, dst:number) => new PGN_130820_FusionEq(fields, dst)
 
 
 /**
@@ -20614,9 +20619,9 @@ export class PGN_130820_FusionVolumeLimits extends PGN implements PGN_130820_Fus
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionVolumeLimitsMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionVolumeLimits'] = (fields:any, dst:number) => new PGN_130820_FusionVolumeLimits(fields, dst)
+pgnIdToCreator['fusionVolumeLimits'] = (fields:any, dst:number) => new PGN_130820_FusionVolumeLimits(fields, dst)
 
 
 /**
@@ -20692,9 +20697,9 @@ export class PGN_130820_FusionVolumes extends PGN implements PGN_130820_FusionVo
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionVolumesMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionVolumes'] = (fields:any, dst:number) => new PGN_130820_FusionVolumes(fields, dst)
+pgnIdToCreator['fusionVolumes'] = (fields:any, dst:number) => new PGN_130820_FusionVolumes(fields, dst)
 
 
 /**
@@ -20772,9 +20777,9 @@ export class PGN_130820_FusionCapabilities extends PGN implements PGN_130820_Fus
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionCapabilitiesMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionCapabilities'] = (fields:any, dst:number) => new PGN_130820_FusionCapabilities(fields, dst)
+pgnIdToCreator['fusionCapabilities'] = (fields:any, dst:number) => new PGN_130820_FusionCapabilities(fields, dst)
 
 
 /**
@@ -20846,9 +20851,9 @@ export class PGN_130820_FusionLineLevelControl extends PGN implements PGN_130820
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionLineLevelControlMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionLineLevelControl'] = (fields:any, dst:number) => new PGN_130820_FusionLineLevelControl(fields, dst)
+pgnIdToCreator['fusionLineLevelControl'] = (fields:any, dst:number) => new PGN_130820_FusionLineLevelControl(fields, dst)
 
 
 /**
@@ -20918,9 +20923,9 @@ export class PGN_130820_FusionPowerState extends PGN implements PGN_130820_Fusio
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionPowerStateMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionPowerState'] = (fields:any, dst:number) => new PGN_130820_FusionPowerState(fields, dst)
+pgnIdToCreator['fusionPowerState'] = (fields:any, dst:number) => new PGN_130820_FusionPowerState(fields, dst)
 
 
 /**
@@ -20998,9 +21003,9 @@ export class PGN_130820_FusionSiriusxm extends PGN implements PGN_130820_FusionS
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionSiriusxmMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionSiriusxm'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxm(fields, dst)
+pgnIdToCreator['fusionSiriusxm'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxm(fields, dst)
 
 
 /**
@@ -21074,9 +21079,9 @@ export class PGN_130820_FusionSiriusxmChannel extends PGN implements PGN_130820_
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionSiriusxmChannelMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionSiriusxmChannel'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmChannel(fields, dst)
+pgnIdToCreator['fusionSiriusxmChannel'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmChannel(fields, dst)
 
 
 /**
@@ -21150,9 +21155,9 @@ export class PGN_130820_FusionSiriusxmTitle extends PGN implements PGN_130820_Fu
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionSiriusxmTitleMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionSiriusxmTitle'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmTitle(fields, dst)
+pgnIdToCreator['fusionSiriusxmTitle'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmTitle(fields, dst)
 
 
 /**
@@ -21226,9 +21231,9 @@ export class PGN_130820_FusionSiriusxmArtist extends PGN implements PGN_130820_F
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionSiriusxmArtistMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionSiriusxmArtist'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmArtist(fields, dst)
+pgnIdToCreator['fusionSiriusxmArtist'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmArtist(fields, dst)
 
 
 /**
@@ -21302,9 +21307,9 @@ export class PGN_130820_FusionSiriusxmContentInfo extends PGN implements PGN_130
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionSiriusxmContentInfoMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionSiriusxmContentInfo'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmContentInfo(fields, dst)
+pgnIdToCreator['fusionSiriusxmContentInfo'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmContentInfo(fields, dst)
 
 
 /**
@@ -21378,9 +21383,9 @@ export class PGN_130820_FusionSiriusxmCategory extends PGN implements PGN_130820
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionSiriusxmCategoryMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionSiriusxmCategory'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmCategory(fields, dst)
+pgnIdToCreator['fusionSiriusxmCategory'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmCategory(fields, dst)
 
 
 /**
@@ -21452,9 +21457,9 @@ export class PGN_130820_FusionSiriusxmSignal extends PGN implements PGN_130820_F
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionSiriusxmSignalMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionSiriusxmSignal'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmSignal(fields, dst)
+pgnIdToCreator['fusionSiriusxmSignal'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmSignal(fields, dst)
 
 
 /**
@@ -21528,9 +21533,9 @@ export class PGN_130820_FusionSiriusxmPresets extends PGN implements PGN_130820_
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionSiriusxmPresetsMatchFields)
+  }
 }
-}
-pgnIdToClass['fusionSiriusxmPresets'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmPresets(fields, dst)
+pgnIdToCreator['fusionSiriusxmPresets'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmPresets(fields, dst)
 
 
 /**
@@ -21599,9 +21604,9 @@ export class PGN_130821_NavicoAsciiData extends PGN implements PGN_130821_Navico
 
   isMatch() {
     return isMatch(this, PGN_130821_NavicoAsciiDataMatchFields)
+  }
 }
-}
-pgnIdToClass['navicoAsciiData'] = (fields:any, dst:number) => new PGN_130821_NavicoAsciiData(fields, dst)
+pgnIdToCreator['navicoAsciiData'] = (fields:any, dst:number) => new PGN_130821_NavicoAsciiData(fields, dst)
 
 
 /**
@@ -21686,9 +21691,9 @@ export class PGN_130821_FurunoUnknown130821 extends PGN implements PGN_130821_Fu
 
   isMatch() {
     return isMatch(this, PGN_130821_FurunoUnknown130821MatchFields)
+  }
 }
-}
-pgnIdToClass['furunoUnknown130821'] = (fields:any, dst:number) => new PGN_130821_FurunoUnknown130821(fields, dst)
+pgnIdToCreator['furunoUnknown130821'] = (fields:any, dst:number) => new PGN_130821_FurunoUnknown130821(fields, dst)
 
 
 /**
@@ -21735,7 +21740,7 @@ export class PGN_130822 extends PGN implements PGN_130822Interface {
   }
 
 }
-pgnIdToClass['navicoUnknown1'] = (fields:any, dst:number) => new PGN_130822(fields, dst)
+pgnIdToCreator['navicoUnknown1'] = (fields:any, dst:number) => new PGN_130822(fields, dst)
 
 
 /**
@@ -21786,7 +21791,7 @@ export class PGN_130823 extends PGN implements PGN_130823Interface {
   }
 
 }
-pgnIdToClass['maretronProprietaryTemperatureHighRange'] = (fields:any, dst:number) => new PGN_130823(fields, dst)
+pgnIdToCreator['maretronProprietaryTemperatureHighRange'] = (fields:any, dst:number) => new PGN_130823(fields, dst)
 
 
 /**
@@ -21863,9 +21868,9 @@ export class PGN_130824_BGKeyValueData extends PGN implements PGN_130824_BGKeyVa
 
   isMatch() {
     return isMatch(this, PGN_130824_BGKeyValueDataMatchFields)
+  }
 }
-}
-pgnIdToClass['bGKeyValueData'] = (fields:any, dst:number) => new PGN_130824_BGKeyValueData(fields, dst)
+pgnIdToCreator['bGKeyValueData'] = (fields:any, dst:number) => new PGN_130824_BGKeyValueData(fields, dst)
 
 
 /**
@@ -21940,9 +21945,9 @@ export class PGN_130824_MaretronAnnunciator extends PGN implements PGN_130824_Ma
 
   isMatch() {
     return isMatch(this, PGN_130824_MaretronAnnunciatorMatchFields)
+  }
 }
-}
-pgnIdToClass['maretronAnnunciator'] = (fields:any, dst:number) => new PGN_130824_MaretronAnnunciator(fields, dst)
+pgnIdToCreator['maretronAnnunciator'] = (fields:any, dst:number) => new PGN_130824_MaretronAnnunciator(fields, dst)
 
 
 /**
@@ -21989,7 +21994,7 @@ export class PGN_130825 extends PGN implements PGN_130825Interface {
   }
 
 }
-pgnIdToClass['navicoUnknown2'] = (fields:any, dst:number) => new PGN_130825(fields, dst)
+pgnIdToCreator['navicoUnknown2'] = (fields:any, dst:number) => new PGN_130825(fields, dst)
 
 
 /**
@@ -22041,7 +22046,7 @@ export class PGN_130827 extends PGN implements PGN_130827Interface {
   }
 
 }
-pgnIdToClass['lowranceUnknown'] = (fields:any, dst:number) => new PGN_130827(fields, dst)
+pgnIdToCreator['lowranceUnknown'] = (fields:any, dst:number) => new PGN_130827(fields, dst)
 
 
 /**
@@ -22087,7 +22092,7 @@ export class PGN_130828 extends PGN implements PGN_130828Interface {
   }
 
 }
-pgnIdToClass['simnetSetSerialNumber'] = (fields:any, dst:number) => new PGN_130828(fields, dst)
+pgnIdToCreator['simnetSetSerialNumber'] = (fields:any, dst:number) => new PGN_130828(fields, dst)
 
 
 /**
@@ -22133,7 +22138,7 @@ export class PGN_130831 extends PGN implements PGN_130831Interface {
   }
 
 }
-pgnIdToClass['suzukiEngineAndStorageDeviceConfig'] = (fields:any, dst:number) => new PGN_130831(fields, dst)
+pgnIdToCreator['suzukiEngineAndStorageDeviceConfig'] = (fields:any, dst:number) => new PGN_130831(fields, dst)
 
 
 /**
@@ -22179,7 +22184,7 @@ export class PGN_130832 extends PGN implements PGN_130832Interface {
   }
 
 }
-pgnIdToClass['simnetFuelUsedHighResolution'] = (fields:any, dst:number) => new PGN_130832(fields, dst)
+pgnIdToCreator['simnetFuelUsedHighResolution'] = (fields:any, dst:number) => new PGN_130832(fields, dst)
 
 
 /**
@@ -22231,7 +22236,7 @@ export class PGN_130833 extends PGN implements PGN_130833Interface {
   }
 
 }
-pgnIdToClass['bGUserAndRemoteRename'] = (fields:any, dst:number) => new PGN_130833(fields, dst)
+pgnIdToCreator['bGUserAndRemoteRename'] = (fields:any, dst:number) => new PGN_130833(fields, dst)
 
 
 /**
@@ -22277,7 +22282,7 @@ export class PGN_130834 extends PGN implements PGN_130834Interface {
   }
 
 }
-pgnIdToClass['simnetEngineAndTankConfiguration'] = (fields:any, dst:number) => new PGN_130834(fields, dst)
+pgnIdToCreator['simnetEngineAndTankConfiguration'] = (fields:any, dst:number) => new PGN_130834(fields, dst)
 
 
 /**
@@ -22323,7 +22328,7 @@ export class PGN_130835 extends PGN implements PGN_130835Interface {
   }
 
 }
-pgnIdToClass['simnetSetEngineAndTankConfiguration'] = (fields:any, dst:number) => new PGN_130835(fields, dst)
+pgnIdToCreator['simnetSetEngineAndTankConfiguration'] = (fields:any, dst:number) => new PGN_130835(fields, dst)
 
 
 /**
@@ -22406,9 +22411,9 @@ export class PGN_130836_SimnetFluidLevelSensorConfiguration extends PGN implemen
 
   isMatch() {
     return isMatch(this, PGN_130836_SimnetFluidLevelSensorConfigurationMatchFields)
+  }
 }
-}
-pgnIdToClass['simnetFluidLevelSensorConfiguration'] = (fields:any, dst:number) => new PGN_130836_SimnetFluidLevelSensorConfiguration(fields, dst)
+pgnIdToCreator['simnetFluidLevelSensorConfiguration'] = (fields:any, dst:number) => new PGN_130836_SimnetFluidLevelSensorConfiguration(fields, dst)
 
 
 /**
@@ -22491,9 +22496,9 @@ export class PGN_130836_MaretronSwitchStatusCounter extends PGN implements PGN_1
 
   isMatch() {
     return isMatch(this, PGN_130836_MaretronSwitchStatusCounterMatchFields)
+  }
 }
-}
-pgnIdToClass['maretronSwitchStatusCounter'] = (fields:any, dst:number) => new PGN_130836_MaretronSwitchStatusCounter(fields, dst)
+pgnIdToCreator['maretronSwitchStatusCounter'] = (fields:any, dst:number) => new PGN_130836_MaretronSwitchStatusCounter(fields, dst)
 
 
 /**
@@ -22558,9 +22563,9 @@ export class PGN_130837_SimnetFuelFlowTurbineConfiguration extends PGN implement
 
   isMatch() {
     return isMatch(this, PGN_130837_SimnetFuelFlowTurbineConfigurationMatchFields)
+  }
 }
-}
-pgnIdToClass['simnetFuelFlowTurbineConfiguration'] = (fields:any, dst:number) => new PGN_130837_SimnetFuelFlowTurbineConfiguration(fields, dst)
+pgnIdToCreator['simnetFuelFlowTurbineConfiguration'] = (fields:any, dst:number) => new PGN_130837_SimnetFuelFlowTurbineConfiguration(fields, dst)
 
 
 /**
@@ -22643,9 +22648,9 @@ export class PGN_130837_MaretronSwitchStatusTimer extends PGN implements PGN_130
 
   isMatch() {
     return isMatch(this, PGN_130837_MaretronSwitchStatusTimerMatchFields)
+  }
 }
-}
-pgnIdToClass['maretronSwitchStatusTimer'] = (fields:any, dst:number) => new PGN_130837_MaretronSwitchStatusTimer(fields, dst)
+pgnIdToCreator['maretronSwitchStatusTimer'] = (fields:any, dst:number) => new PGN_130837_MaretronSwitchStatusTimer(fields, dst)
 
 
 /**
@@ -22691,7 +22696,7 @@ export class PGN_130838 extends PGN implements PGN_130838Interface {
   }
 
 }
-pgnIdToClass['simnetFluidLevelWarning'] = (fields:any, dst:number) => new PGN_130838(fields, dst)
+pgnIdToCreator['simnetFluidLevelWarning'] = (fields:any, dst:number) => new PGN_130838(fields, dst)
 
 
 /**
@@ -22737,7 +22742,7 @@ export class PGN_130839 extends PGN implements PGN_130839Interface {
   }
 
 }
-pgnIdToClass['simnetPressureSensorConfiguration'] = (fields:any, dst:number) => new PGN_130839(fields, dst)
+pgnIdToCreator['simnetPressureSensorConfiguration'] = (fields:any, dst:number) => new PGN_130839(fields, dst)
 
 
 /**
@@ -22783,7 +22788,7 @@ export class PGN_130840 extends PGN implements PGN_130840Interface {
   }
 
 }
-pgnIdToClass['simnetDataUserGroupConfiguration'] = (fields:any, dst:number) => new PGN_130840(fields, dst)
+pgnIdToCreator['simnetDataUserGroupConfiguration'] = (fields:any, dst:number) => new PGN_130840(fields, dst)
 
 
 /**
@@ -22860,9 +22865,9 @@ export class PGN_130842_SimnetAisClassBStaticDataMsg24PartA extends PGN implemen
 
   isMatch() {
     return isMatch(this, PGN_130842_SimnetAisClassBStaticDataMsg24PartAMatchFields)
+  }
 }
-}
-pgnIdToClass['simnetAisClassBStaticDataMsg24PartA'] = (fields:any, dst:number) => new PGN_130842_SimnetAisClassBStaticDataMsg24PartA(fields, dst)
+pgnIdToCreator['simnetAisClassBStaticDataMsg24PartA'] = (fields:any, dst:number) => new PGN_130842_SimnetAisClassBStaticDataMsg24PartA(fields, dst)
 
 
 /**
@@ -22945,9 +22950,9 @@ export class PGN_130842_FurunoSixDegreesOfFreedomMovement extends PGN implements
 
   isMatch() {
     return isMatch(this, PGN_130842_FurunoSixDegreesOfFreedomMovementMatchFields)
+  }
 }
-}
-pgnIdToClass['furunoSixDegreesOfFreedomMovement'] = (fields:any, dst:number) => new PGN_130842_FurunoSixDegreesOfFreedomMovement(fields, dst)
+pgnIdToCreator['furunoSixDegreesOfFreedomMovement'] = (fields:any, dst:number) => new PGN_130842_FurunoSixDegreesOfFreedomMovement(fields, dst)
 
 
 /**
@@ -23043,9 +23048,9 @@ export class PGN_130842_SimnetAisClassBStaticDataMsg24PartB extends PGN implemen
 
   isMatch() {
     return isMatch(this, PGN_130842_SimnetAisClassBStaticDataMsg24PartBMatchFields)
+  }
 }
-}
-pgnIdToClass['simnetAisClassBStaticDataMsg24PartB'] = (fields:any, dst:number) => new PGN_130842_SimnetAisClassBStaticDataMsg24PartB(fields, dst)
+pgnIdToCreator['simnetAisClassBStaticDataMsg24PartB'] = (fields:any, dst:number) => new PGN_130842_SimnetAisClassBStaticDataMsg24PartB(fields, dst)
 
 
 /**
@@ -23120,9 +23125,9 @@ export class PGN_130843_FurunoHeelAngleRollInformation extends PGN implements PG
 
   isMatch() {
     return isMatch(this, PGN_130843_FurunoHeelAngleRollInformationMatchFields)
+  }
 }
-}
-pgnIdToClass['furunoHeelAngleRollInformation'] = (fields:any, dst:number) => new PGN_130843_FurunoHeelAngleRollInformation(fields, dst)
+pgnIdToCreator['furunoHeelAngleRollInformation'] = (fields:any, dst:number) => new PGN_130843_FurunoHeelAngleRollInformation(fields, dst)
 
 
 /**
@@ -23187,9 +23192,9 @@ export class PGN_130843_SimnetSonarStatusFrequencyAndDspVoltage extends PGN impl
 
   isMatch() {
     return isMatch(this, PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageMatchFields)
+  }
 }
-}
-pgnIdToClass['simnetSonarStatusFrequencyAndDspVoltage'] = (fields:any, dst:number) => new PGN_130843_SimnetSonarStatusFrequencyAndDspVoltage(fields, dst)
+pgnIdToCreator['simnetSonarStatusFrequencyAndDspVoltage'] = (fields:any, dst:number) => new PGN_130843_SimnetSonarStatusFrequencyAndDspVoltage(fields, dst)
 
 
 /**
@@ -23254,9 +23259,9 @@ export class PGN_130845_FurunoMultiSatsInViewExtended extends PGN implements PGN
 
   isMatch() {
     return isMatch(this, PGN_130845_FurunoMultiSatsInViewExtendedMatchFields)
+  }
 }
-}
-pgnIdToClass['furunoMultiSatsInViewExtended'] = (fields:any, dst:number) => new PGN_130845_FurunoMultiSatsInViewExtended(fields, dst)
+pgnIdToCreator['furunoMultiSatsInViewExtended'] = (fields:any, dst:number) => new PGN_130845_FurunoMultiSatsInViewExtended(fields, dst)
 
 
 /**
@@ -23337,9 +23342,9 @@ export class PGN_130845_SimnetKeyValue extends PGN implements PGN_130845_SimnetK
 
   isMatch() {
     return isMatch(this, PGN_130845_SimnetKeyValueMatchFields)
+  }
 }
-}
-pgnIdToClass['simnetKeyValue'] = (fields:any, dst:number) => new PGN_130845_SimnetKeyValue(fields, dst)
+pgnIdToCreator['simnetKeyValue'] = (fields:any, dst:number) => new PGN_130845_SimnetKeyValue(fields, dst)
 
 
 /**
@@ -23420,9 +23425,9 @@ export class PGN_130846_SimnetParameterSet extends PGN implements PGN_130846_Sim
 
   isMatch() {
     return isMatch(this, PGN_130846_SimnetParameterSetMatchFields)
+  }
 }
-}
-pgnIdToClass['simnetParameterSet'] = (fields:any, dst:number) => new PGN_130846_SimnetParameterSet(fields, dst)
+pgnIdToCreator['simnetParameterSet'] = (fields:any, dst:number) => new PGN_130846_SimnetParameterSet(fields, dst)
 
 
 /**
@@ -23487,9 +23492,9 @@ export class PGN_130846_FurunoMotionSensorStatusExtended extends PGN implements 
 
   isMatch() {
     return isMatch(this, PGN_130846_FurunoMotionSensorStatusExtendedMatchFields)
+  }
 }
-}
-pgnIdToClass['furunoMotionSensorStatusExtended'] = (fields:any, dst:number) => new PGN_130846_FurunoMotionSensorStatusExtended(fields, dst)
+pgnIdToCreator['furunoMotionSensorStatusExtended'] = (fields:any, dst:number) => new PGN_130846_FurunoMotionSensorStatusExtended(fields, dst)
 
 
 /**
@@ -23540,7 +23545,7 @@ export class PGN_130847 extends PGN implements PGN_130847Interface {
   }
 
 }
-pgnIdToClass['seatalkNodeStatistics'] = (fields:any, dst:number) => new PGN_130847(fields, dst)
+pgnIdToCreator['seatalkNodeStatistics'] = (fields:any, dst:number) => new PGN_130847(fields, dst)
 
 
 /**
@@ -23592,7 +23597,7 @@ export class PGN_130848 extends PGN implements PGN_130848Interface {
   }
 
 }
-pgnIdToClass['seatalkWaypointInformation'] = (fields:any, dst:number) => new PGN_130848(fields, dst)
+pgnIdToCreator['seatalkWaypointInformation'] = (fields:any, dst:number) => new PGN_130848(fields, dst)
 
 
 /**
@@ -23674,9 +23679,9 @@ export class PGN_130850_SimnetApCommand extends PGN implements PGN_130850_Simnet
 
   isMatch() {
     return isMatch(this, PGN_130850_SimnetApCommandMatchFields)
+  }
 }
-}
-pgnIdToClass['simnetApCommand'] = (fields:any, dst:number) => new PGN_130850_SimnetApCommand(fields, dst)
+pgnIdToCreator['simnetApCommand'] = (fields:any, dst:number) => new PGN_130850_SimnetApCommand(fields, dst)
 
 
 /**
@@ -23758,9 +23763,9 @@ export class PGN_130850_SimnetEventCommandApCommand extends PGN implements PGN_1
 
   isMatch() {
     return isMatch(this, PGN_130850_SimnetEventCommandApCommandMatchFields)
+  }
 }
-}
-pgnIdToClass['simnetEventCommandApCommand'] = (fields:any, dst:number) => new PGN_130850_SimnetEventCommandApCommand(fields, dst)
+pgnIdToCreator['simnetEventCommandApCommand'] = (fields:any, dst:number) => new PGN_130850_SimnetEventCommandApCommand(fields, dst)
 
 
 /**
@@ -23844,9 +23849,9 @@ export class PGN_130850_SimnetAlarm extends PGN implements PGN_130850_SimnetAlar
 
   isMatch() {
     return isMatch(this, PGN_130850_SimnetAlarmMatchFields)
+  }
 }
-}
-pgnIdToClass['simnetAlarm'] = (fields:any, dst:number) => new PGN_130850_SimnetAlarm(fields, dst)
+pgnIdToCreator['simnetAlarm'] = (fields:any, dst:number) => new PGN_130850_SimnetAlarm(fields, dst)
 
 
 /**
@@ -23900,7 +23905,7 @@ export class PGN_130851 extends PGN implements PGN_130851Interface {
   }
 
 }
-pgnIdToClass['simnetEventReplyApCommand'] = (fields:any, dst:number) => new PGN_130851(fields, dst)
+pgnIdToCreator['simnetEventReplyApCommand'] = (fields:any, dst:number) => new PGN_130851(fields, dst)
 
 
 /**
@@ -23952,7 +23957,7 @@ export class PGN_130856 extends PGN implements PGN_130856Interface {
   }
 
 }
-pgnIdToClass['simnetAlarmMessage'] = (fields:any, dst:number) => new PGN_130856(fields, dst)
+pgnIdToCreator['simnetAlarmMessage'] = (fields:any, dst:number) => new PGN_130856(fields, dst)
 
 
 /**
@@ -24006,7 +24011,7 @@ export class PGN_130860 extends PGN implements PGN_130860Interface {
   }
 
 }
-pgnIdToClass['simnetApUnknown4'] = (fields:any, dst:number) => new PGN_130860(fields, dst)
+pgnIdToCreator['simnetApUnknown4'] = (fields:any, dst:number) => new PGN_130860(fields, dst)
 
 
 /**
@@ -24056,7 +24061,7 @@ export class PGN_130880 extends PGN implements PGN_130880Interface {
   }
 
 }
-pgnIdToClass['airmarAdditionalWeatherData'] = (fields:any, dst:number) => new PGN_130880(fields, dst)
+pgnIdToCreator['airmarAdditionalWeatherData'] = (fields:any, dst:number) => new PGN_130880(fields, dst)
 
 
 /**
@@ -24106,7 +24111,7 @@ export class PGN_130881 extends PGN implements PGN_130881Interface {
   }
 
 }
-pgnIdToClass['airmarHeaterControl'] = (fields:any, dst:number) => new PGN_130881(fields, dst)
+pgnIdToCreator['airmarHeaterControl'] = (fields:any, dst:number) => new PGN_130881(fields, dst)
 
 
 /**
@@ -24160,7 +24165,7 @@ export class PGN_130918 extends PGN implements PGN_130918Interface {
   }
 
 }
-pgnIdToClass['seatalkRouteInformation'] = (fields:any, dst:number) => new PGN_130918(fields, dst)
+pgnIdToCreator['seatalkRouteInformation'] = (fields:any, dst:number) => new PGN_130918(fields, dst)
 
 
 /**
@@ -24211,6 +24216,6 @@ export class PGN_130944 extends PGN implements PGN_130944Interface {
   }
 
 }
-pgnIdToClass['airmarPost'] = (fields:any, dst:number) => new PGN_130944(fields, dst)
+pgnIdToCreator['airmarPost'] = (fields:any, dst:number) => new PGN_130944(fields, dst)
 
 

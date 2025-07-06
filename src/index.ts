@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /*
  * Copyright 2025 Scott Bender <scott@scottbender.net>
  *
@@ -19,54 +18,3 @@ export * from './enums'
 export * from './pgns'
 export * from './definition'
 export * from './utilities'
-
-import { Definition } from './definition'
-import { PGNMap } from './utilities'
-
-//const canboat = require('../canboat.json')
-import canboat from '../canboat.json'
-
-/**
- * @category PGN Definition Access
- */
-export const getAllPGNs = (): Definition[] => {
-  const all: Definition[] = canboat.PGNs as Definition[]
-  return all.filter(
-    (pgn: any) => pgn.Fallback === undefined || pgn.Fallback === false
-  )
-}
-
-let pgnMap: PGNMap
-
-/**
- * @category PGN Definition Access
- */
-export const getPGNMap = (): PGNMap => {
-  if (pgnMap === undefined) {
-    const res: { [key: number]: Definition[] } = {}
-
-    getAllPGNs().forEach((pgn) => {
-      if (!res[pgn.PGN]) {
-        res[pgn.PGN] = []
-      }
-      res[pgn.PGN].push(pgn)
-
-      let reservedCount = 1
-      pgn.Fields.forEach((field) => {
-        if (field.Name === 'Reserved') {
-          field.Name = `Reserved${reservedCount++}`
-        }
-      })
-    })
-    pgnMap = res
-  }
-
-  return pgnMap
-}
-
-/**
- * @category PGN Definition Access
- */
-export const getPGN = (num: number): Definition[] | undefined => {
-  return getPGNMap()[num]
-}

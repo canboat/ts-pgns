@@ -18,7 +18,6 @@
 import camelCase from 'camelcase'
 import { PGN } from './pgns'
 import canboat from '../canboat.json'
-import { getPGN } from './index'
 import { fixIdentifier } from './internals'
 import {
   Field,
@@ -31,8 +30,72 @@ import {
 /**
  * @category PGN Definition Access
  */
-export type PGNMap = {
-  [key: number]: Definition[]
+export const getAllPGNs = (): Definition[] => {
+  const all: Definition[] = canboat.PGNs as Definition[]
+  return all.filter(
+    (pgn: any) => pgn.Fallback === undefined || pgn.Fallback === false
+  )
+}
+
+let pgnNumberMap: { [key: number]: Definition[] }
+
+const getPGNNumberMap = () => {
+  if (pgnNumberMap === undefined) {
+    const res: { [key: number]: Definition[] } = {}
+
+    getAllPGNs().forEach((pgn) => {
+      if (!res[pgn.PGN]) {
+        res[pgn.PGN] = []
+      }
+      res[pgn.PGN].push(pgn)
+
+      let reservedCount = 1
+      pgn.Fields.forEach((field) => {
+        if (field.Name === 'Reserved') {
+          field.Name = `Reserved${reservedCount++}`
+        }
+      })
+    })
+    pgnNumberMap = res
+  }
+
+  return pgnNumberMap
+}
+
+let pgnIdMap: { [key: string]: Definition }
+
+const getPGNIdMap = () => {
+  if (pgnIdMap === undefined) {
+    const res: { [key: string]: Definition } = {}
+
+    getAllPGNs().forEach((pgn) => {
+      res[pgn.Id] = pgn
+
+      let reservedCount = 1
+      pgn.Fields.forEach((field) => {
+        if (field.Name === 'Reserved') {
+          field.Name = `Reserved${reservedCount++}`
+        }
+      })
+    })
+    pgnIdMap = res
+  }
+
+  return pgnIdMap
+}
+
+/**
+ * @category PGN Definition Access
+ */
+export const getPGNWithNumber = (num: number): Definition[] | undefined => {
+  return getPGNNumberMap()[num]
+}
+
+/**
+ * @category PGN Definition Access
+ */
+export const getPGNWithId = (id: string): Definition | undefined => {
+  return getPGNIdMap()[id]
 }
 
 class NotEqual extends Error {
@@ -42,7 +105,7 @@ class NotEqual extends Error {
 }
 
 /**
- * Convers a PGN created using camelCase keys to one using Names
+ * Check if the pgn matches to given fields
  *
  * @category Utilities
  */
@@ -63,7 +126,7 @@ export const isMatch = (pgn: any, matchFields: any) => {
 }
 
 /**
- * Convers a PGN created using camelCase keys to one using Names
+ * Converts a PGN created using camelCase keys to one using Names
  *
  * @category Utilities
  */
@@ -133,7 +196,7 @@ export const mapCamelCaseKeys = (pgn: PGN) => {
  * @category PGN Definition Access
  */
 export const findMatchingDefinition = (pgn: PGN): Definition => {
-  let defs = getPGN(pgn.pgn)
+  let defs = getPGNWithNumber(pgn.pgn)
   if (defs === undefined) {
     throw Error(`unknown pgn ${pgn.pgn}`)
   }

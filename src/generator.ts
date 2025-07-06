@@ -110,12 +110,23 @@ if (argv.enums) {
 if (argv.pgns) {
   console.log('/* eslint-disable @typescript-eslint/no-explicit-any */')
   console.log("import * as enums from './enums'\n")
-  console.log("import {isMatch} from './utilities'\n")
+  console.log("import {isMatch, getPGNWithId} from './utilities'\n")
+  console.log("import {Definition} from './definition'\n")
 
-  console.log('const pgnIdToClass: {[key:string]: any} = {}\n')
+  console.log('const pgnIdToCreator: {[key:string]: any} = {}\n')
 
-  console.log(`export const getPGNClass = (id: string) => {
-  return pgnIdToClass[id]
+  console.log(`/**
+  * Create a PGN object
+  *
+  * @category Utilities
+  */`)
+  console.log(`export const createPGN = (id: string, fields: any, dst:number|undefined = undefined ) : PGN|undefined => {
+  const creator = pgnIdToCreator[id]
+
+  if ( creator === undefined ) {
+    return undefined
+  }
+  return creator(fields, dst)
 }`)
 
   pgns.FieldTypes.forEach((ft: any) => {
@@ -168,13 +179,14 @@ export interface PGNInterface {
   timestamp?: string
   input?: string[]
   description?: string
-  fields: PGNFields
+  fields: PGNFields,
+  getDefinition(): Definition
 }\n`)
 
   console.log(`/**
  * @category PGN Definitions
  */
-export class PGN {
+export abstract class PGN implements PGNInterface {
   pgn: number
   prio: number
   src?: number
@@ -184,7 +196,7 @@ export class PGN {
   description?: string
   fields: PGNFields
   
-  constructor(fields: PGN) {
+  constructor(fields: any) {
     this.pgn = fields.pgn
     this.prio = fields.prio
     this.src = fields.src
@@ -192,6 +204,8 @@ export class PGN {
     this.timestamp = fields.timestamp
     this.fields = fields.fields
   }
+
+  abstract getDefinition(): Definition
 }`)
 
   /*
@@ -449,12 +463,16 @@ export class PGN {
     if (hasMatchFields) {
       console.log(`  isMatch() {
     return isMatch(this, ${typeName}MatchFields)
-}`)
+  }`)
     }
+
+    console.log(`  getDefinition(): Definition {
+    return getPGNWithId('${pgn.Id}')!
+  }`)
 
     console.log('}')
     console.log(
-      `pgnIdToClass['${pgn.Id}'] = (fields:any, dst:number) => new ${typeName}(fields, dst)`
+      `pgnIdToCreator['${pgn.Id}'] = (fields:any, dst:number) => new ${typeName}(fields, dst)`
     )
     console.log('\n')
 

@@ -3,11 +3,13 @@ import {
   PGN_129029,
   ManufacturerCode,
   IndustryCode,
-  PGN_61184_VictronBatteryRegister
+  PGN_61184_VictronBatteryRegister,
+  findMatchingDefinition,
+  mapCamelCaseKeys,
+  getPGNWithNumber,
+  getPGNWithId,
+  createPGN
 } from '../dist/index'
-import { findMatchingDefinition, mapCamelCaseKeys } from '../dist/utilities'
-
-//import { getPGN } from '../dist/index'
 
 describe('utilities tests', () => {
   it(`findMatchingDefinition works`, (done) => {
@@ -26,7 +28,7 @@ describe('utilities tests', () => {
     }
   })
 
-  it(`findMatchingDefinition works`, (done) => {
+  it(`mapCamelCaseKeys works`, (done) => {
     const pgn = new PGN_129029({
       date: 'date',
       time: 'time',
@@ -65,5 +67,35 @@ describe('utilities tests', () => {
     } catch (err) {
       done(err)
     }
+  })
+
+  it(`finds pgn 60928`, function (done) {
+    const def = getPGNWithNumber(60928)
+    assert(def !== undefined)
+    assert(def.length === 1)
+    assert(def[0].PGN === 60928)
+    done()
+  })
+
+  it(`finds pgn with id isoAcknowledgement`, function (done) {
+    const def = getPGNWithId('isoAcknowledgement')
+    assert(def !== undefined)
+    assert(def.PGN === 59392)
+    done()
+  })
+
+  it(`getDefinition works`, function (done) {
+    const pgn = createPGN('isoAcknowledgement')
+    assert(pgn !== undefined)
+
+    const def = pgn.getDefinition()
+    assert(def.PGN === 59392)
+    done()
+  })
+
+  it(`createPGN fails`, function (done) {
+    const pgn = createPGN('xxx')
+    assert(pgn === undefined)
+    done()
   })
 })

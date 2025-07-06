@@ -12,7 +12,7 @@ import {
   IndustryCode
 } from './index'
 
-import { getPGN } from './index'
+import { getPGNWithNumber } from './index'
 
 const obj: any = {
   fields: {
@@ -47,7 +47,7 @@ function tryIt(pgn: PGN_65305_SimnetDeviceModeRequest) {
   }
 }
 
-const pgn = getPGN(60928)
+const pgn = getPGNWithNumber(60928)
 
 console.log(JSON.stringify(pgn, null, 2))
 if (pgn !== undefined) {

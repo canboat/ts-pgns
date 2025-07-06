@@ -12,8 +12,13 @@ const pgnIdToCreator: {[key:string]: any} = {}
   *
   * @category Utilities
   */
-export const createPGN = (id: string) => {
-  return pgnIdToCreator[id]
+export const createPGN = (id: string, fields: any, dst:number|undefined = undefined ) : PGN|undefined => {
+  const creator = pgnIdToCreator[id]
+
+  if ( creator === undefined ) {
+    return undefined
+  }
+  return creator(fields, dst)
 }
 /**
  * @category Field Types

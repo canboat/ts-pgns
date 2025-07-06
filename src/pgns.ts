@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as enums from './enums'
 
-import {isMatch} from './utilities'
+import {isMatch, getPGNWithId} from './utilities'
+
+import {Definition} from './definition'
 
 const pgnIdToCreator: {[key:string]: any} = {}
 
@@ -110,13 +112,14 @@ export interface PGNInterface {
   timestamp?: string
   input?: string[]
   description?: string
-  fields: PGNFields
+  fields: PGNFields,
+  getDefinition(): Definition
 }
 
 /**
  * @category PGN Definitions
  */
-export class PGN implements PGNInterface {
+export abstract class PGN implements PGNInterface {
   pgn: number
   prio: number
   src?: number
@@ -126,7 +129,7 @@ export class PGN implements PGNInterface {
   description?: string
   fields: PGNFields
   
-  constructor(fields: PGN) {
+  constructor(fields: any) {
     this.pgn = fields.pgn
     this.prio = fields.prio
     this.src = fields.src
@@ -134,6 +137,8 @@ export class PGN implements PGNInterface {
     this.timestamp = fields.timestamp
     this.fields = fields.fields
   }
+
+  abstract getDefinition(): Definition
 }
 /**
  * PGN: 59392
@@ -180,6 +185,9 @@ export class PGN_59392 extends PGN implements PGN_59392Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('isoAcknowledgement')!
+  }
 }
 pgnIdToCreator['isoAcknowledgement'] = (fields:any, dst:number) => new PGN_59392(fields, dst)
 
@@ -226,6 +234,9 @@ export class PGN_59904 extends PGN implements PGN_59904Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('isoRequest')!
+  }
 }
 pgnIdToCreator['isoRequest'] = (fields:any, dst:number) => new PGN_59904(fields, dst)
 
@@ -273,6 +284,9 @@ export class PGN_60160 extends PGN implements PGN_60160Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('isoTransportProtocolDataTransfer')!
+  }
 }
 pgnIdToCreator['isoTransportProtocolDataTransfer'] = (fields:any, dst:number) => new PGN_60160(fields, dst)
 
@@ -344,6 +358,9 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend ext
 
   isMatch() {
     return isMatch(this, PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('isoTransportProtocolConnectionManagementRequestToSend')!
   }
 }
 pgnIdToCreator['isoTransportProtocolConnectionManagementRequestToSend'] = (fields:any, dst:number) => new PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend(fields, dst)
@@ -417,6 +434,9 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementClearToSend exten
   isMatch() {
     return isMatch(this, PGN_60416_IsoTransportProtocolConnectionManagementClearToSendMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('isoTransportProtocolConnectionManagementClearToSend')!
+  }
 }
 pgnIdToCreator['isoTransportProtocolConnectionManagementClearToSend'] = (fields:any, dst:number) => new PGN_60416_IsoTransportProtocolConnectionManagementClearToSend(fields, dst)
 
@@ -488,6 +508,9 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessage exte
 
   isMatch() {
     return isMatch(this, PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('isoTransportProtocolConnectionManagementEndOfMessage')!
   }
 }
 pgnIdToCreator['isoTransportProtocolConnectionManagementEndOfMessage'] = (fields:any, dst:number) => new PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessage(fields, dst)
@@ -561,6 +584,9 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce
   isMatch() {
     return isMatch(this, PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('isoTransportProtocolConnectionManagementBroadcastAnnounce')!
+  }
 }
 pgnIdToCreator['isoTransportProtocolConnectionManagementBroadcastAnnounce'] = (fields:any, dst:number) => new PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce(fields, dst)
 
@@ -631,6 +657,9 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementAbort extends PGN
   isMatch() {
     return isMatch(this, PGN_60416_IsoTransportProtocolConnectionManagementAbortMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('isoTransportProtocolConnectionManagementAbort')!
+  }
 }
 pgnIdToCreator['isoTransportProtocolConnectionManagementAbort'] = (fields:any, dst:number) => new PGN_60416_IsoTransportProtocolConnectionManagementAbort(fields, dst)
 
@@ -686,6 +715,9 @@ export class PGN_60928 extends PGN implements PGN_60928Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('isoAddressClaim')!
+  }
 }
 pgnIdToCreator['isoAddressClaim'] = (fields:any, dst:number) => new PGN_60928(fields, dst)
 
@@ -764,6 +796,9 @@ export class PGN_61184_SeatalkWirelessKeypadLightControl extends PGN implements 
   isMatch() {
     return isMatch(this, PGN_61184_SeatalkWirelessKeypadLightControlMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('seatalkWirelessKeypadLightControl')!
+  }
 }
 pgnIdToCreator['seatalkWirelessKeypadLightControl'] = (fields:any, dst:number) => new PGN_61184_SeatalkWirelessKeypadLightControl(fields, dst)
 
@@ -839,6 +874,9 @@ export class PGN_61184_SeatalkWirelessKeypadControl extends PGN implements PGN_6
   isMatch() {
     return isMatch(this, PGN_61184_SeatalkWirelessKeypadControlMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('seatalkWirelessKeypadControl')!
+  }
 }
 pgnIdToCreator['seatalkWirelessKeypadControl'] = (fields:any, dst:number) => new PGN_61184_SeatalkWirelessKeypadControl(fields, dst)
 
@@ -910,6 +948,9 @@ export class PGN_61184_VictronBatteryRegister extends PGN implements PGN_61184_V
   isMatch() {
     return isMatch(this, PGN_61184_VictronBatteryRegisterMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('victronBatteryRegister')!
+  }
 }
 pgnIdToCreator['victronBatteryRegister'] = (fields:any, dst:number) => new PGN_61184_VictronBatteryRegister(fields, dst)
 
@@ -957,6 +998,9 @@ export class PGN_65001 extends PGN implements PGN_65001Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('bus1PhaseCBasicAcQuantities')!
+  }
 }
 pgnIdToCreator['bus1PhaseCBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65001(fields, dst)
 
@@ -1004,6 +1048,9 @@ export class PGN_65002 extends PGN implements PGN_65002Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('bus1PhaseBBasicAcQuantities')!
+  }
 }
 pgnIdToCreator['bus1PhaseBBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65002(fields, dst)
 
@@ -1051,6 +1098,9 @@ export class PGN_65003 extends PGN implements PGN_65003Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('bus1PhaseABasicAcQuantities')!
+  }
 }
 pgnIdToCreator['bus1PhaseABasicAcQuantities'] = (fields:any, dst:number) => new PGN_65003(fields, dst)
 
@@ -1098,6 +1148,9 @@ export class PGN_65004 extends PGN implements PGN_65004Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('bus1AverageBasicAcQuantities')!
+  }
 }
 pgnIdToCreator['bus1AverageBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65004(fields, dst)
 
@@ -1143,6 +1196,9 @@ export class PGN_65005 extends PGN implements PGN_65005Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('utilityTotalAcEnergy')!
+  }
 }
 pgnIdToCreator['utilityTotalAcEnergy'] = (fields:any, dst:number) => new PGN_65005(fields, dst)
 
@@ -1190,6 +1246,9 @@ export class PGN_65006 extends PGN implements PGN_65006Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('utilityPhaseCAcReactivePower')!
+  }
 }
 pgnIdToCreator['utilityPhaseCAcReactivePower'] = (fields:any, dst:number) => new PGN_65006(fields, dst)
 
@@ -1235,6 +1294,9 @@ export class PGN_65007 extends PGN implements PGN_65007Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('utilityPhaseCAcPower')!
+  }
 }
 pgnIdToCreator['utilityPhaseCAcPower'] = (fields:any, dst:number) => new PGN_65007(fields, dst)
 
@@ -1282,6 +1344,9 @@ export class PGN_65008 extends PGN implements PGN_65008Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('utilityPhaseCBasicAcQuantities')!
+  }
 }
 pgnIdToCreator['utilityPhaseCBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65008(fields, dst)
 
@@ -1329,6 +1394,9 @@ export class PGN_65009 extends PGN implements PGN_65009Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('utilityPhaseBAcReactivePower')!
+  }
 }
 pgnIdToCreator['utilityPhaseBAcReactivePower'] = (fields:any, dst:number) => new PGN_65009(fields, dst)
 
@@ -1374,6 +1442,9 @@ export class PGN_65010 extends PGN implements PGN_65010Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('utilityPhaseBAcPower')!
+  }
 }
 pgnIdToCreator['utilityPhaseBAcPower'] = (fields:any, dst:number) => new PGN_65010(fields, dst)
 
@@ -1421,6 +1492,9 @@ export class PGN_65011 extends PGN implements PGN_65011Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('utilityPhaseBBasicAcQuantities')!
+  }
 }
 pgnIdToCreator['utilityPhaseBBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65011(fields, dst)
 
@@ -1468,6 +1542,9 @@ export class PGN_65012 extends PGN implements PGN_65012Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('utilityPhaseAAcReactivePower')!
+  }
 }
 pgnIdToCreator['utilityPhaseAAcReactivePower'] = (fields:any, dst:number) => new PGN_65012(fields, dst)
 
@@ -1513,6 +1590,9 @@ export class PGN_65013 extends PGN implements PGN_65013Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('utilityPhaseAAcPower')!
+  }
 }
 pgnIdToCreator['utilityPhaseAAcPower'] = (fields:any, dst:number) => new PGN_65013(fields, dst)
 
@@ -1560,6 +1640,9 @@ export class PGN_65014 extends PGN implements PGN_65014Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('utilityPhaseABasicAcQuantities')!
+  }
 }
 pgnIdToCreator['utilityPhaseABasicAcQuantities'] = (fields:any, dst:number) => new PGN_65014(fields, dst)
 
@@ -1607,6 +1690,9 @@ export class PGN_65015 extends PGN implements PGN_65015Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('utilityTotalAcReactivePower')!
+  }
 }
 pgnIdToCreator['utilityTotalAcReactivePower'] = (fields:any, dst:number) => new PGN_65015(fields, dst)
 
@@ -1652,6 +1738,9 @@ export class PGN_65016 extends PGN implements PGN_65016Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('utilityTotalAcPower')!
+  }
 }
 pgnIdToCreator['utilityTotalAcPower'] = (fields:any, dst:number) => new PGN_65016(fields, dst)
 
@@ -1699,6 +1788,9 @@ export class PGN_65017 extends PGN implements PGN_65017Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('utilityAverageBasicAcQuantities')!
+  }
 }
 pgnIdToCreator['utilityAverageBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65017(fields, dst)
 
@@ -1744,6 +1836,9 @@ export class PGN_65018 extends PGN implements PGN_65018Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('generatorTotalAcEnergy')!
+  }
 }
 pgnIdToCreator['generatorTotalAcEnergy'] = (fields:any, dst:number) => new PGN_65018(fields, dst)
 
@@ -1791,6 +1886,9 @@ export class PGN_65019 extends PGN implements PGN_65019Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('generatorPhaseCAcReactivePower')!
+  }
 }
 pgnIdToCreator['generatorPhaseCAcReactivePower'] = (fields:any, dst:number) => new PGN_65019(fields, dst)
 
@@ -1836,6 +1934,9 @@ export class PGN_65020 extends PGN implements PGN_65020Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('generatorPhaseCAcPower')!
+  }
 }
 pgnIdToCreator['generatorPhaseCAcPower'] = (fields:any, dst:number) => new PGN_65020(fields, dst)
 
@@ -1883,6 +1984,9 @@ export class PGN_65021 extends PGN implements PGN_65021Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('generatorPhaseCBasicAcQuantities')!
+  }
 }
 pgnIdToCreator['generatorPhaseCBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65021(fields, dst)
 
@@ -1930,6 +2034,9 @@ export class PGN_65022 extends PGN implements PGN_65022Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('generatorPhaseBAcReactivePower')!
+  }
 }
 pgnIdToCreator['generatorPhaseBAcReactivePower'] = (fields:any, dst:number) => new PGN_65022(fields, dst)
 
@@ -1975,6 +2082,9 @@ export class PGN_65023 extends PGN implements PGN_65023Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('generatorPhaseBAcPower')!
+  }
 }
 pgnIdToCreator['generatorPhaseBAcPower'] = (fields:any, dst:number) => new PGN_65023(fields, dst)
 
@@ -2022,6 +2132,9 @@ export class PGN_65024 extends PGN implements PGN_65024Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('generatorPhaseBBasicAcQuantities')!
+  }
 }
 pgnIdToCreator['generatorPhaseBBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65024(fields, dst)
 
@@ -2069,6 +2182,9 @@ export class PGN_65025 extends PGN implements PGN_65025Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('generatorPhaseAAcReactivePower')!
+  }
 }
 pgnIdToCreator['generatorPhaseAAcReactivePower'] = (fields:any, dst:number) => new PGN_65025(fields, dst)
 
@@ -2114,6 +2230,9 @@ export class PGN_65026 extends PGN implements PGN_65026Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('generatorPhaseAAcPower')!
+  }
 }
 pgnIdToCreator['generatorPhaseAAcPower'] = (fields:any, dst:number) => new PGN_65026(fields, dst)
 
@@ -2161,6 +2280,9 @@ export class PGN_65027 extends PGN implements PGN_65027Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('generatorPhaseABasicAcQuantities')!
+  }
 }
 pgnIdToCreator['generatorPhaseABasicAcQuantities'] = (fields:any, dst:number) => new PGN_65027(fields, dst)
 
@@ -2208,6 +2330,9 @@ export class PGN_65028 extends PGN implements PGN_65028Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('generatorTotalAcReactivePower')!
+  }
 }
 pgnIdToCreator['generatorTotalAcReactivePower'] = (fields:any, dst:number) => new PGN_65028(fields, dst)
 
@@ -2253,6 +2378,9 @@ export class PGN_65029 extends PGN implements PGN_65029Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('generatorTotalAcPower')!
+  }
 }
 pgnIdToCreator['generatorTotalAcPower'] = (fields:any, dst:number) => new PGN_65029(fields, dst)
 
@@ -2300,6 +2428,9 @@ export class PGN_65030 extends PGN implements PGN_65030Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('generatorAverageBasicAcQuantities')!
+  }
 }
 pgnIdToCreator['generatorAverageBasicAcQuantities'] = (fields:any, dst:number) => new PGN_65030(fields, dst)
 
@@ -2356,6 +2487,9 @@ export class PGN_65240 extends PGN implements PGN_65240Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('isoCommandedAddress')!
+  }
 }
 pgnIdToCreator['isoCommandedAddress'] = (fields:any, dst:number) => new PGN_65240(fields, dst)
 
@@ -2404,6 +2538,9 @@ export class PGN_65280 extends PGN implements PGN_65280Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('furunoHeave')!
+  }
 }
 pgnIdToCreator['furunoHeave'] = (fields:any, dst:number) => new PGN_65280(fields, dst)
 
@@ -2454,6 +2591,9 @@ export class PGN_65284 extends PGN implements PGN_65284Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('maretronProprietaryDcBreakerCurrent')!
+  }
 }
 pgnIdToCreator['maretronProprietaryDcBreakerCurrent'] = (fields:any, dst:number) => new PGN_65284(fields, dst)
 
@@ -2524,6 +2664,9 @@ export class PGN_65285_AirmarBootStateAcknowledgment extends PGN implements PGN_
 
   isMatch() {
     return isMatch(this, PGN_65285_AirmarBootStateAcknowledgmentMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('airmarBootStateAcknowledgment')!
   }
 }
 pgnIdToCreator['airmarBootStateAcknowledgment'] = (fields:any, dst:number) => new PGN_65285_AirmarBootStateAcknowledgment(fields, dst)
@@ -2597,6 +2740,9 @@ export class PGN_65285_LowranceTemperature extends PGN implements PGN_65285_Lowr
 
   isMatch() {
     return isMatch(this, PGN_65285_LowranceTemperatureMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('lowranceTemperature')!
   }
 }
 pgnIdToCreator['lowranceTemperature'] = (fields:any, dst:number) => new PGN_65285_LowranceTemperature(fields, dst)
@@ -2677,6 +2823,9 @@ export class PGN_65286_ChetcoDimmer extends PGN implements PGN_65286_ChetcoDimme
   isMatch() {
     return isMatch(this, PGN_65286_ChetcoDimmerMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('chetcoDimmer')!
+  }
 }
 pgnIdToCreator['chetcoDimmer'] = (fields:any, dst:number) => new PGN_65286_ChetcoDimmer(fields, dst)
 
@@ -2745,6 +2894,9 @@ export class PGN_65286_AirmarBootStateRequest extends PGN implements PGN_65286_A
 
   isMatch() {
     return isMatch(this, PGN_65286_AirmarBootStateRequestMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('airmarBootStateRequest')!
   }
 }
 pgnIdToCreator['airmarBootStateRequest'] = (fields:any, dst:number) => new PGN_65286_AirmarBootStateRequest(fields, dst)
@@ -2821,6 +2973,9 @@ export class PGN_65287_AirmarAccessLevel extends PGN implements PGN_65287_Airmar
   isMatch() {
     return isMatch(this, PGN_65287_AirmarAccessLevelMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('airmarAccessLevel')!
+  }
 }
 pgnIdToCreator['airmarAccessLevel'] = (fields:any, dst:number) => new PGN_65287_AirmarAccessLevel(fields, dst)
 
@@ -2890,6 +3045,9 @@ export class PGN_65287_SimnetConfigureTemperatureSensor extends PGN implements P
   isMatch() {
     return isMatch(this, PGN_65287_SimnetConfigureTemperatureSensorMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetConfigureTemperatureSensor')!
+  }
 }
 pgnIdToCreator['simnetConfigureTemperatureSensor'] = (fields:any, dst:number) => new PGN_65287_SimnetConfigureTemperatureSensor(fields, dst)
 
@@ -2941,6 +3099,9 @@ export class PGN_65288 extends PGN implements PGN_65288Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('seatalkAlarm')!
+  }
 }
 pgnIdToCreator['seatalkAlarm'] = (fields:any, dst:number) => new PGN_65288(fields, dst)
 
@@ -2988,6 +3149,9 @@ export class PGN_65289 extends PGN implements PGN_65289Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('simnetTrimTabSensorCalibration')!
+  }
 }
 pgnIdToCreator['simnetTrimTabSensorCalibration'] = (fields:any, dst:number) => new PGN_65289(fields, dst)
 
@@ -3035,6 +3199,9 @@ export class PGN_65290 extends PGN implements PGN_65290Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('simnetPaddleWheelSpeedConfiguration')!
+  }
 }
 pgnIdToCreator['simnetPaddleWheelSpeedConfiguration'] = (fields:any, dst:number) => new PGN_65290(fields, dst)
 
@@ -3082,6 +3249,9 @@ export class PGN_65292 extends PGN implements PGN_65292Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('simnetClearFluidLevelWarnings')!
+  }
 }
 pgnIdToCreator['simnetClearFluidLevelWarnings'] = (fields:any, dst:number) => new PGN_65292(fields, dst)
 
@@ -3150,6 +3320,9 @@ export class PGN_65293_SimnetLgc2000Configuration extends PGN implements PGN_652
 
   isMatch() {
     return isMatch(this, PGN_65293_SimnetLgc2000ConfigurationMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetLgc2000Configuration')!
   }
 }
 pgnIdToCreator['simnetLgc2000Configuration'] = (fields:any, dst:number) => new PGN_65293_SimnetLgc2000Configuration(fields, dst)
@@ -3224,6 +3397,9 @@ export class PGN_65293_DiverseYachtServicesLoadCell extends PGN implements PGN_6
   isMatch() {
     return isMatch(this, PGN_65293_DiverseYachtServicesLoadCellMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('diverseYachtServicesLoadCell')!
+  }
 }
 pgnIdToCreator['diverseYachtServicesLoadCell'] = (fields:any, dst:number) => new PGN_65293_DiverseYachtServicesLoadCell(fields, dst)
 
@@ -3277,6 +3453,9 @@ export class PGN_65302 extends PGN implements PGN_65302Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('simnetApUnknown1')!
+  }
 }
 pgnIdToCreator['simnetApUnknown1'] = (fields:any, dst:number) => new PGN_65302(fields, dst)
 
@@ -3355,6 +3534,9 @@ export class PGN_65305_SimnetDeviceStatus extends PGN implements PGN_65305_Simne
   isMatch() {
     return isMatch(this, PGN_65305_SimnetDeviceStatusMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetDeviceStatus')!
+  }
 }
 pgnIdToCreator['simnetDeviceStatus'] = (fields:any, dst:number) => new PGN_65305_SimnetDeviceStatus(fields, dst)
 
@@ -3430,6 +3612,9 @@ export class PGN_65305_SimnetDeviceStatusRequest extends PGN implements PGN_6530
 
   isMatch() {
     return isMatch(this, PGN_65305_SimnetDeviceStatusRequestMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetDeviceStatusRequest')!
   }
 }
 pgnIdToCreator['simnetDeviceStatusRequest'] = (fields:any, dst:number) => new PGN_65305_SimnetDeviceStatusRequest(fields, dst)
@@ -3509,6 +3694,9 @@ export class PGN_65305_SimnetPilotMode extends PGN implements PGN_65305_SimnetPi
   isMatch() {
     return isMatch(this, PGN_65305_SimnetPilotModeMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetPilotMode')!
+  }
 }
 pgnIdToCreator['simnetPilotMode'] = (fields:any, dst:number) => new PGN_65305_SimnetPilotMode(fields, dst)
 
@@ -3584,6 +3772,9 @@ export class PGN_65305_SimnetDeviceModeRequest extends PGN implements PGN_65305_
 
   isMatch() {
     return isMatch(this, PGN_65305_SimnetDeviceModeRequestMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetDeviceModeRequest')!
   }
 }
 pgnIdToCreator['simnetDeviceModeRequest'] = (fields:any, dst:number) => new PGN_65305_SimnetDeviceModeRequest(fields, dst)
@@ -3661,6 +3852,9 @@ export class PGN_65305_SimnetSailingProcessorStatus extends PGN implements PGN_6
   isMatch() {
     return isMatch(this, PGN_65305_SimnetSailingProcessorStatusMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetSailingProcessorStatus')!
+  }
 }
 pgnIdToCreator['simnetSailingProcessorStatus'] = (fields:any, dst:number) => new PGN_65305_SimnetSailingProcessorStatus(fields, dst)
 
@@ -3711,6 +3905,9 @@ export class PGN_65309 extends PGN implements PGN_65309Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('navicoWirelessBatteryStatus')!
+  }
 }
 pgnIdToCreator['navicoWirelessBatteryStatus'] = (fields:any, dst:number) => new PGN_65309(fields, dst)
 
@@ -3760,6 +3957,9 @@ export class PGN_65312 extends PGN implements PGN_65312Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('navicoWirelessSignalStatus')!
+  }
 }
 pgnIdToCreator['navicoWirelessSignalStatus'] = (fields:any, dst:number) => new PGN_65312(fields, dst)
 
@@ -3814,6 +4014,9 @@ export class PGN_65340 extends PGN implements PGN_65340Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('simnetApUnknown2')!
+  }
 }
 pgnIdToCreator['simnetApUnknown2'] = (fields:any, dst:number) => new PGN_65340(fields, dst)
 
@@ -3864,6 +4067,9 @@ export class PGN_65341 extends PGN implements PGN_65341Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('simnetAutopilotAngle')!
+  }
 }
 pgnIdToCreator['simnetAutopilotAngle'] = (fields:any, dst:number) => new PGN_65341(fields, dst)
 
@@ -3913,6 +4119,9 @@ export class PGN_65345 extends PGN implements PGN_65345Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('seatalkPilotWindDatum')!
+  }
 }
 pgnIdToCreator['seatalkPilotWindDatum'] = (fields:any, dst:number) => new PGN_65345(fields, dst)
 
@@ -3961,6 +4170,9 @@ export class PGN_65350 extends PGN implements PGN_65350Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('simnetMagneticField')!
+  }
 }
 pgnIdToCreator['simnetMagneticField'] = (fields:any, dst:number) => new PGN_65350(fields, dst)
 
@@ -4011,6 +4223,9 @@ export class PGN_65359 extends PGN implements PGN_65359Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('seatalkPilotHeading')!
+  }
 }
 pgnIdToCreator['seatalkPilotHeading'] = (fields:any, dst:number) => new PGN_65359(fields, dst)
 
@@ -4061,6 +4276,9 @@ export class PGN_65360 extends PGN implements PGN_65360Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('seatalkPilotLockedHeading')!
+  }
 }
 pgnIdToCreator['seatalkPilotLockedHeading'] = (fields:any, dst:number) => new PGN_65360(fields, dst)
 
@@ -4110,6 +4328,9 @@ export class PGN_65361 extends PGN implements PGN_65361Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('seatalkSilenceAlarm')!
+  }
 }
 pgnIdToCreator['seatalkSilenceAlarm'] = (fields:any, dst:number) => new PGN_65361(fields, dst)
 
@@ -4164,6 +4385,9 @@ export class PGN_65371 extends PGN implements PGN_65371Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('seatalkKeypadMessage')!
+  }
 }
 pgnIdToCreator['seatalkKeypadMessage'] = (fields:any, dst:number) => new PGN_65371(fields, dst)
 
@@ -4214,6 +4438,9 @@ export class PGN_65374 extends PGN implements PGN_65374Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('seatalkKeypadHeartbeat')!
+  }
 }
 pgnIdToCreator['seatalkKeypadHeartbeat'] = (fields:any, dst:number) => new PGN_65374(fields, dst)
 
@@ -4264,6 +4491,9 @@ export class PGN_65379 extends PGN implements PGN_65379Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('seatalkPilotMode')!
+  }
 }
 pgnIdToCreator['seatalkPilotMode'] = (fields:any, dst:number) => new PGN_65379(fields, dst)
 
@@ -4313,6 +4543,9 @@ export class PGN_65408 extends PGN implements PGN_65408Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('airmarDepthQualityFactor')!
+  }
 }
 pgnIdToCreator['airmarDepthQualityFactor'] = (fields:any, dst:number) => new PGN_65408(fields, dst)
 
@@ -4363,6 +4596,9 @@ export class PGN_65409 extends PGN implements PGN_65409Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('airmarSpeedPulseCount')!
+  }
 }
 pgnIdToCreator['airmarSpeedPulseCount'] = (fields:any, dst:number) => new PGN_65409(fields, dst)
 
@@ -4413,6 +4649,9 @@ export class PGN_65410 extends PGN implements PGN_65410Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('airmarDeviceInformation')!
+  }
 }
 pgnIdToCreator['airmarDeviceInformation'] = (fields:any, dst:number) => new PGN_65410(fields, dst)
 
@@ -4467,6 +4706,9 @@ export class PGN_65420 extends PGN implements PGN_65420Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('simnetApUnknown3')!
+  }
 }
 pgnIdToCreator['simnetApUnknown3'] = (fields:any, dst:number) => new PGN_65420(fields, dst)
 
@@ -4514,6 +4756,9 @@ export class PGN_65480 extends PGN implements PGN_65480Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('simnetAutopilotMode')!
+  }
 }
 pgnIdToCreator['simnetAutopilotMode'] = (fields:any, dst:number) => new PGN_65480(fields, dst)
 
@@ -4592,6 +4837,9 @@ export class PGN_126208_NmeaRequestGroupFunction extends PGN implements PGN_1262
 
   isMatch() {
     return isMatch(this, PGN_126208_NmeaRequestGroupFunctionMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('nmeaRequestGroupFunction')!
   }
 }
 pgnIdToCreator['nmeaRequestGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaRequestGroupFunction(fields, dst)
@@ -4673,6 +4921,9 @@ export class PGN_126208_NmeaCommandGroupFunction extends PGN implements PGN_1262
   isMatch() {
     return isMatch(this, PGN_126208_NmeaCommandGroupFunctionMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('nmeaCommandGroupFunction')!
+  }
 }
 pgnIdToCreator['nmeaCommandGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaCommandGroupFunction(fields, dst)
 
@@ -4750,6 +5001,9 @@ export class PGN_126208_NmeaAcknowledgeGroupFunction extends PGN implements PGN_
 
   isMatch() {
     return isMatch(this, PGN_126208_NmeaAcknowledgeGroupFunctionMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('nmeaAcknowledgeGroupFunction')!
   }
 }
 pgnIdToCreator['nmeaAcknowledgeGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaAcknowledgeGroupFunction(fields, dst)
@@ -4840,6 +5094,9 @@ export class PGN_126208_NmeaReadFieldsGroupFunction extends PGN implements PGN_1
 
   isMatch() {
     return isMatch(this, PGN_126208_NmeaReadFieldsGroupFunctionMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('nmeaReadFieldsGroupFunction')!
   }
 }
 pgnIdToCreator['nmeaReadFieldsGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaReadFieldsGroupFunction(fields, dst)
@@ -4933,6 +5190,9 @@ export class PGN_126208_NmeaReadFieldsReplyGroupFunction extends PGN implements 
   isMatch() {
     return isMatch(this, PGN_126208_NmeaReadFieldsReplyGroupFunctionMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('nmeaReadFieldsReplyGroupFunction')!
+  }
 }
 pgnIdToCreator['nmeaReadFieldsReplyGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaReadFieldsReplyGroupFunction(fields, dst)
 
@@ -5024,6 +5284,9 @@ export class PGN_126208_NmeaWriteFieldsGroupFunction extends PGN implements PGN_
 
   isMatch() {
     return isMatch(this, PGN_126208_NmeaWriteFieldsGroupFunctionMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('nmeaWriteFieldsGroupFunction')!
   }
 }
 pgnIdToCreator['nmeaWriteFieldsGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaWriteFieldsGroupFunction(fields, dst)
@@ -5117,6 +5380,9 @@ export class PGN_126208_NmeaWriteFieldsReplyGroupFunction extends PGN implements
   isMatch() {
     return isMatch(this, PGN_126208_NmeaWriteFieldsReplyGroupFunctionMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('nmeaWriteFieldsReplyGroupFunction')!
+  }
 }
 pgnIdToCreator['nmeaWriteFieldsReplyGroupFunction'] = (fields:any, dst:number) => new PGN_126208_NmeaWriteFieldsReplyGroupFunction(fields, dst)
 
@@ -5164,6 +5430,9 @@ export class PGN_126464 extends PGN implements PGN_126464Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('pgnListTransmitAndReceive')!
+  }
 }
 pgnIdToCreator['pgnListTransmitAndReceive'] = (fields:any, dst:number) => new PGN_126464(fields, dst)
 
@@ -5247,6 +5516,9 @@ export class PGN_126720_Seatalk1PilotMode extends PGN implements PGN_126720_Seat
   isMatch() {
     return isMatch(this, PGN_126720_Seatalk1PilotModeMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('seatalk1PilotMode')!
+  }
 }
 pgnIdToCreator['seatalk1PilotMode'] = (fields:any, dst:number) => new PGN_126720_Seatalk1PilotMode(fields, dst)
 
@@ -5322,6 +5594,9 @@ export class PGN_126720_FusionMediaControl extends PGN implements PGN_126720_Fus
 
   isMatch() {
     return isMatch(this, PGN_126720_FusionMediaControlMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionMediaControl')!
   }
 }
 pgnIdToCreator['fusionMediaControl'] = (fields:any, dst:number) => new PGN_126720_FusionMediaControl(fields, dst)
@@ -5399,6 +5674,9 @@ export class PGN_126720_FusionSiriusControl extends PGN implements PGN_126720_Fu
   isMatch() {
     return isMatch(this, PGN_126720_FusionSiriusControlMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSiriusControl')!
+  }
 }
 pgnIdToCreator['fusionSiriusControl'] = (fields:any, dst:number) => new PGN_126720_FusionSiriusControl(fields, dst)
 
@@ -5470,6 +5748,9 @@ export class PGN_126720_FusionRequestStatus extends PGN implements PGN_126720_Fu
 
   isMatch() {
     return isMatch(this, PGN_126720_FusionRequestStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionRequestStatus')!
   }
 }
 pgnIdToCreator['fusionRequestStatus'] = (fields:any, dst:number) => new PGN_126720_FusionRequestStatus(fields, dst)
@@ -5545,6 +5826,9 @@ export class PGN_126720_FusionSetSource extends PGN implements PGN_126720_Fusion
   isMatch() {
     return isMatch(this, PGN_126720_FusionSetSourceMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSetSource')!
+  }
 }
 pgnIdToCreator['fusionSetSource'] = (fields:any, dst:number) => new PGN_126720_FusionSetSource(fields, dst)
 
@@ -5616,6 +5900,9 @@ export class PGN_126720_FusionSetMute extends PGN implements PGN_126720_FusionSe
 
   isMatch() {
     return isMatch(this, PGN_126720_FusionSetMuteMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSetMute')!
   }
 }
 pgnIdToCreator['fusionSetMute'] = (fields:any, dst:number) => new PGN_126720_FusionSetMute(fields, dst)
@@ -5692,6 +5979,9 @@ export class PGN_126720_FusionSetZoneVolume extends PGN implements PGN_126720_Fu
 
   isMatch() {
     return isMatch(this, PGN_126720_FusionSetZoneVolumeMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSetZoneVolume')!
   }
 }
 pgnIdToCreator['fusionSetZoneVolume'] = (fields:any, dst:number) => new PGN_126720_FusionSetZoneVolume(fields, dst)
@@ -5772,6 +6062,9 @@ export class PGN_126720_FusionSetAllVolumes extends PGN implements PGN_126720_Fu
 
   isMatch() {
     return isMatch(this, PGN_126720_FusionSetAllVolumesMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSetAllVolumes')!
   }
 }
 pgnIdToCreator['fusionSetAllVolumes'] = (fields:any, dst:number) => new PGN_126720_FusionSetAllVolumes(fields, dst)
@@ -5854,6 +6147,9 @@ export class PGN_126720_Seatalk1Keystroke extends PGN implements PGN_126720_Seat
   isMatch() {
     return isMatch(this, PGN_126720_Seatalk1KeystrokeMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('seatalk1Keystroke')!
+  }
 }
 pgnIdToCreator['seatalk1Keystroke'] = (fields:any, dst:number) => new PGN_126720_Seatalk1Keystroke(fields, dst)
 
@@ -5930,6 +6226,9 @@ export class PGN_126720_Seatalk1DeviceIdentification extends PGN implements PGN_
 
   isMatch() {
     return isMatch(this, PGN_126720_Seatalk1DeviceIdentificationMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('seatalk1DeviceIdentification')!
   }
 }
 pgnIdToCreator['seatalk1DeviceIdentification'] = (fields:any, dst:number) => new PGN_126720_Seatalk1DeviceIdentification(fields, dst)
@@ -6010,6 +6309,9 @@ export class PGN_126720_Seatalk1DisplayBrightness extends PGN implements PGN_126
 
   isMatch() {
     return isMatch(this, PGN_126720_Seatalk1DisplayBrightnessMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('seatalk1DisplayBrightness')!
   }
 }
 pgnIdToCreator['seatalk1DisplayBrightness'] = (fields:any, dst:number) => new PGN_126720_Seatalk1DisplayBrightness(fields, dst)
@@ -6092,6 +6394,9 @@ export class PGN_126720_Seatalk1DisplayColor extends PGN implements PGN_126720_S
   isMatch() {
     return isMatch(this, PGN_126720_Seatalk1DisplayColorMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('seatalk1DisplayColor')!
+  }
 }
 pgnIdToCreator['seatalk1DisplayColor'] = (fields:any, dst:number) => new PGN_126720_Seatalk1DisplayColor(fields, dst)
 
@@ -6167,6 +6472,9 @@ export class PGN_126720_AirmarAttitudeOffset extends PGN implements PGN_126720_A
 
   isMatch() {
     return isMatch(this, PGN_126720_AirmarAttitudeOffsetMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('airmarAttitudeOffset')!
   }
 }
 pgnIdToCreator['airmarAttitudeOffset'] = (fields:any, dst:number) => new PGN_126720_AirmarAttitudeOffset(fields, dst)
@@ -6262,6 +6570,9 @@ export class PGN_126720_AirmarCalibrateCompass extends PGN implements PGN_126720
   isMatch() {
     return isMatch(this, PGN_126720_AirmarCalibrateCompassMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('airmarCalibrateCompass')!
+  }
 }
 pgnIdToCreator['airmarCalibrateCompass'] = (fields:any, dst:number) => new PGN_126720_AirmarCalibrateCompass(fields, dst)
 
@@ -6335,6 +6646,9 @@ export class PGN_126720_AirmarTrueWindOptions extends PGN implements PGN_126720_
 
   isMatch() {
     return isMatch(this, PGN_126720_AirmarTrueWindOptionsMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('airmarTrueWindOptions')!
   }
 }
 pgnIdToCreator['airmarTrueWindOptions'] = (fields:any, dst:number) => new PGN_126720_AirmarTrueWindOptions(fields, dst)
@@ -6410,6 +6724,9 @@ export class PGN_126720_AirmarSimulateMode extends PGN implements PGN_126720_Air
   isMatch() {
     return isMatch(this, PGN_126720_AirmarSimulateModeMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('airmarSimulateMode')!
+  }
 }
 pgnIdToCreator['airmarSimulateMode'] = (fields:any, dst:number) => new PGN_126720_AirmarSimulateMode(fields, dst)
 
@@ -6483,6 +6800,9 @@ export class PGN_126720_AirmarCalibrateDepth extends PGN implements PGN_126720_A
 
   isMatch() {
     return isMatch(this, PGN_126720_AirmarCalibrateDepthMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('airmarCalibrateDepth')!
   }
 }
 pgnIdToCreator['airmarCalibrateDepth'] = (fields:any, dst:number) => new PGN_126720_AirmarCalibrateDepth(fields, dst)
@@ -6564,6 +6884,9 @@ export class PGN_126720_AirmarCalibrateSpeed extends PGN implements PGN_126720_A
   isMatch() {
     return isMatch(this, PGN_126720_AirmarCalibrateSpeedMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('airmarCalibrateSpeed')!
+  }
 }
 pgnIdToCreator['airmarCalibrateSpeed'] = (fields:any, dst:number) => new PGN_126720_AirmarCalibrateSpeed(fields, dst)
 
@@ -6640,6 +6963,9 @@ export class PGN_126720_AirmarCalibrateTemperature extends PGN implements PGN_12
   isMatch() {
     return isMatch(this, PGN_126720_AirmarCalibrateTemperatureMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('airmarCalibrateTemperature')!
+  }
 }
 pgnIdToCreator['airmarCalibrateTemperature'] = (fields:any, dst:number) => new PGN_126720_AirmarCalibrateTemperature(fields, dst)
 
@@ -6715,6 +7041,9 @@ export class PGN_126720_AirmarSpeedFilterNone extends PGN implements PGN_126720_
 
   isMatch() {
     return isMatch(this, PGN_126720_AirmarSpeedFilterNoneMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('airmarSpeedFilterNone')!
   }
 }
 pgnIdToCreator['airmarSpeedFilterNone'] = (fields:any, dst:number) => new PGN_126720_AirmarSpeedFilterNone(fields, dst)
@@ -6795,6 +7124,9 @@ export class PGN_126720_AirmarSpeedFilterIir extends PGN implements PGN_126720_A
   isMatch() {
     return isMatch(this, PGN_126720_AirmarSpeedFilterIirMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('airmarSpeedFilterIir')!
+  }
 }
 pgnIdToCreator['airmarSpeedFilterIir'] = (fields:any, dst:number) => new PGN_126720_AirmarSpeedFilterIir(fields, dst)
 
@@ -6870,6 +7202,9 @@ export class PGN_126720_AirmarTemperatureFilterNone extends PGN implements PGN_1
 
   isMatch() {
     return isMatch(this, PGN_126720_AirmarTemperatureFilterNoneMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('airmarTemperatureFilterNone')!
   }
 }
 pgnIdToCreator['airmarTemperatureFilterNone'] = (fields:any, dst:number) => new PGN_126720_AirmarTemperatureFilterNone(fields, dst)
@@ -6950,6 +7285,9 @@ export class PGN_126720_AirmarTemperatureFilterIir extends PGN implements PGN_12
   isMatch() {
     return isMatch(this, PGN_126720_AirmarTemperatureFilterIirMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('airmarTemperatureFilterIir')!
+  }
 }
 pgnIdToCreator['airmarTemperatureFilterIir'] = (fields:any, dst:number) => new PGN_126720_AirmarTemperatureFilterIir(fields, dst)
 
@@ -7024,6 +7362,9 @@ export class PGN_126720_AirmarNmea2000Options extends PGN implements PGN_126720_
   isMatch() {
     return isMatch(this, PGN_126720_AirmarNmea2000OptionsMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('airmarNmea2000Options')!
+  }
 }
 pgnIdToCreator['airmarNmea2000Options'] = (fields:any, dst:number) => new PGN_126720_AirmarNmea2000Options(fields, dst)
 
@@ -7092,6 +7433,9 @@ export class PGN_126720_AirmarAddressableMultiFrame extends PGN implements PGN_1
 
   isMatch() {
     return isMatch(this, PGN_126720_AirmarAddressableMultiFrameMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('airmarAddressableMultiFrame')!
   }
 }
 pgnIdToCreator['airmarAddressableMultiFrame'] = (fields:any, dst:number) => new PGN_126720_AirmarAddressableMultiFrame(fields, dst)
@@ -7167,6 +7511,9 @@ export class PGN_126720_MaretronSlaveResponse extends PGN implements PGN_126720_
 
   isMatch() {
     return isMatch(this, PGN_126720_MaretronSlaveResponseMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronSlaveResponse')!
   }
 }
 pgnIdToCreator['maretronSlaveResponse'] = (fields:any, dst:number) => new PGN_126720_MaretronSlaveResponse(fields, dst)
@@ -7254,6 +7601,9 @@ export class PGN_126720_GarminDayMode extends PGN implements PGN_126720_GarminDa
 
   isMatch() {
     return isMatch(this, PGN_126720_GarminDayModeMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('garminDayMode')!
   }
 }
 pgnIdToCreator['garminDayMode'] = (fields:any, dst:number) => new PGN_126720_GarminDayMode(fields, dst)
@@ -7343,6 +7693,9 @@ export class PGN_126720_GarminNightMode extends PGN implements PGN_126720_Garmin
   isMatch() {
     return isMatch(this, PGN_126720_GarminNightModeMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('garminNightMode')!
+  }
 }
 pgnIdToCreator['garminNightMode'] = (fields:any, dst:number) => new PGN_126720_GarminNightMode(fields, dst)
 
@@ -7431,6 +7784,9 @@ export class PGN_126720_GarminColorMode extends PGN implements PGN_126720_Garmin
   isMatch() {
     return isMatch(this, PGN_126720_GarminColorModeMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('garminColorMode')!
+  }
 }
 pgnIdToCreator['garminColorMode'] = (fields:any, dst:number) => new PGN_126720_GarminColorMode(fields, dst)
 
@@ -7495,6 +7851,9 @@ export class PGN_126983 extends PGN implements PGN_126983Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('alert')!
+  }
 }
 pgnIdToCreator['alert'] = (fields:any, dst:number) => new PGN_126983(fields, dst)
 
@@ -7550,6 +7909,9 @@ export class PGN_126984 extends PGN implements PGN_126984Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('alertResponse')!
+  }
 }
 pgnIdToCreator['alertResponse'] = (fields:any, dst:number) => new PGN_126984(fields, dst)
 
@@ -7605,6 +7967,9 @@ export class PGN_126985 extends PGN implements PGN_126985Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('alertText')!
+  }
 }
 pgnIdToCreator['alertText'] = (fields:any, dst:number) => new PGN_126985(fields, dst)
 
@@ -7663,6 +8028,9 @@ export class PGN_126986 extends PGN implements PGN_126986Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('alertConfiguration')!
+  }
 }
 pgnIdToCreator['alertConfiguration'] = (fields:any, dst:number) => new PGN_126986(fields, dst)
 
@@ -7722,6 +8090,9 @@ export class PGN_126987 extends PGN implements PGN_126987Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('alertThreshold')!
+  }
 }
 pgnIdToCreator['alertThreshold'] = (fields:any, dst:number) => new PGN_126987(fields, dst)
 
@@ -7780,6 +8151,9 @@ export class PGN_126988 extends PGN implements PGN_126988Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('alertValue')!
+  }
 }
 pgnIdToCreator['alertValue'] = (fields:any, dst:number) => new PGN_126988(fields, dst)
 
@@ -7830,6 +8204,9 @@ export class PGN_126992 extends PGN implements PGN_126992Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('systemTime')!
+  }
 }
 pgnIdToCreator['systemTime'] = (fields:any, dst:number) => new PGN_126992(fields, dst)
 
@@ -7881,6 +8258,9 @@ export class PGN_126993 extends PGN implements PGN_126993Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('heartbeat')!
+  }
 }
 pgnIdToCreator['heartbeat'] = (fields:any, dst:number) => new PGN_126993(fields, dst)
 
@@ -7934,6 +8314,9 @@ export class PGN_126996 extends PGN implements PGN_126996Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('productInformation')!
+  }
 }
 pgnIdToCreator['productInformation'] = (fields:any, dst:number) => new PGN_126996(fields, dst)
 
@@ -7982,6 +8365,9 @@ export class PGN_126998 extends PGN implements PGN_126998Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('configurationInformation')!
+  }
 }
 pgnIdToCreator['configurationInformation'] = (fields:any, dst:number) => new PGN_126998(fields, dst)
 
@@ -8054,6 +8440,9 @@ export class PGN_127233 extends PGN implements PGN_127233Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('manOverboardNotification')!
+  }
 }
 pgnIdToCreator['manOverboardNotification'] = (fields:any, dst:number) => new PGN_127233(fields, dst)
 
@@ -8115,6 +8504,9 @@ export class PGN_127237 extends PGN implements PGN_127237Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('headingTrackControl')!
+  }
 }
 pgnIdToCreator['headingTrackControl'] = (fields:any, dst:number) => new PGN_127237(fields, dst)
 
@@ -8164,6 +8556,9 @@ export class PGN_127245 extends PGN implements PGN_127245Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('rudder')!
+  }
 }
 pgnIdToCreator['rudder'] = (fields:any, dst:number) => new PGN_127245(fields, dst)
 
@@ -8213,6 +8608,9 @@ export class PGN_127250 extends PGN implements PGN_127250Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('vesselHeading')!
+  }
 }
 pgnIdToCreator['vesselHeading'] = (fields:any, dst:number) => new PGN_127250(fields, dst)
 
@@ -8259,6 +8657,9 @@ export class PGN_127251 extends PGN implements PGN_127251Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('rateOfTurn')!
+  }
 }
 pgnIdToCreator['rateOfTurn'] = (fields:any, dst:number) => new PGN_127251(fields, dst)
 
@@ -8305,6 +8706,9 @@ export class PGN_127252 extends PGN implements PGN_127252Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('heave')!
+  }
 }
 pgnIdToCreator['heave'] = (fields:any, dst:number) => new PGN_127252(fields, dst)
 
@@ -8353,6 +8757,9 @@ export class PGN_127257 extends PGN implements PGN_127257Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('attitude')!
+  }
 }
 pgnIdToCreator['attitude'] = (fields:any, dst:number) => new PGN_127257(fields, dst)
 
@@ -8402,6 +8809,9 @@ export class PGN_127258 extends PGN implements PGN_127258Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('magneticVariation')!
+  }
 }
 pgnIdToCreator['magneticVariation'] = (fields:any, dst:number) => new PGN_127258(fields, dst)
 
@@ -8450,6 +8860,9 @@ export class PGN_127488 extends PGN implements PGN_127488Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('engineParametersRapidUpdate')!
+  }
 }
 pgnIdToCreator['engineParametersRapidUpdate'] = (fields:any, dst:number) => new PGN_127488(fields, dst)
 
@@ -8507,6 +8920,9 @@ export class PGN_127489 extends PGN implements PGN_127489Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('engineParametersDynamic')!
+  }
 }
 pgnIdToCreator['engineParametersDynamic'] = (fields:any, dst:number) => new PGN_127489(fields, dst)
 
@@ -8560,6 +8976,9 @@ export class PGN_127490 extends PGN implements PGN_127490Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('electricDriveStatusDynamic')!
+  }
 }
 pgnIdToCreator['electricDriveStatusDynamic'] = (fields:any, dst:number) => new PGN_127490(fields, dst)
 
@@ -8615,6 +9034,9 @@ export class PGN_127491 extends PGN implements PGN_127491Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('electricEnergyStorageStatusDynamic')!
+  }
 }
 pgnIdToCreator['electricEnergyStorageStatusDynamic'] = (fields:any, dst:number) => new PGN_127491(fields, dst)
 
@@ -8665,6 +9087,9 @@ export class PGN_127493 extends PGN implements PGN_127493Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('transmissionParametersDynamic')!
+  }
 }
 pgnIdToCreator['transmissionParametersDynamic'] = (fields:any, dst:number) => new PGN_127493(fields, dst)
 
@@ -8723,6 +9148,9 @@ export class PGN_127494 extends PGN implements PGN_127494Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('electricDriveInformation')!
+  }
 }
 pgnIdToCreator['electricDriveInformation'] = (fields:any, dst:number) => new PGN_127494(fields, dst)
 
@@ -8784,6 +9212,9 @@ export class PGN_127495 extends PGN implements PGN_127495Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('electricEnergyStorageInformation')!
+  }
 }
 pgnIdToCreator['electricEnergyStorageInformation'] = (fields:any, dst:number) => new PGN_127495(fields, dst)
 
@@ -8831,6 +9262,9 @@ export class PGN_127496 extends PGN implements PGN_127496Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('tripParametersVessel')!
+  }
 }
 pgnIdToCreator['tripParametersVessel'] = (fields:any, dst:number) => new PGN_127496(fields, dst)
 
@@ -8879,6 +9313,9 @@ export class PGN_127497 extends PGN implements PGN_127497Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('tripParametersEngine')!
+  }
 }
 pgnIdToCreator['tripParametersEngine'] = (fields:any, dst:number) => new PGN_127497(fields, dst)
 
@@ -8926,6 +9363,9 @@ export class PGN_127498 extends PGN implements PGN_127498Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('engineParametersStatic')!
+  }
 }
 pgnIdToCreator['engineParametersStatic'] = (fields:any, dst:number) => new PGN_127498(fields, dst)
 
@@ -8977,6 +9417,9 @@ export class PGN_127500 extends PGN implements PGN_127500Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('loadControllerConnectionStateControl')!
+  }
 }
 pgnIdToCreator['loadControllerConnectionStateControl'] = (fields:any, dst:number) => new PGN_127500(fields, dst)
 
@@ -9049,6 +9492,9 @@ export class PGN_127501 extends PGN implements PGN_127501Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('binarySwitchBankStatus')!
+  }
 }
 pgnIdToCreator['binarySwitchBankStatus'] = (fields:any, dst:number) => new PGN_127501(fields, dst)
 
@@ -9121,6 +9567,9 @@ export class PGN_127502 extends PGN implements PGN_127502Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('switchBankControl')!
+  }
 }
 pgnIdToCreator['switchBankControl'] = (fields:any, dst:number) => new PGN_127502(fields, dst)
 
@@ -9178,6 +9627,9 @@ export class PGN_127503 extends PGN implements PGN_127503Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('acInputStatus')!
+  }
 }
 pgnIdToCreator['acInputStatus'] = (fields:any, dst:number) => new PGN_127503(fields, dst)
 
@@ -9235,6 +9687,9 @@ export class PGN_127504 extends PGN implements PGN_127504Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('acOutputStatus')!
+  }
 }
 pgnIdToCreator['acOutputStatus'] = (fields:any, dst:number) => new PGN_127504(fields, dst)
 
@@ -9283,6 +9738,9 @@ export class PGN_127505 extends PGN implements PGN_127505Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('fluidLevel')!
+  }
 }
 pgnIdToCreator['fluidLevel'] = (fields:any, dst:number) => new PGN_127505(fields, dst)
 
@@ -9334,6 +9792,9 @@ export class PGN_127506 extends PGN implements PGN_127506Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('dcDetailedStatus')!
+  }
 }
 pgnIdToCreator['dcDetailedStatus'] = (fields:any, dst:number) => new PGN_127506(fields, dst)
 
@@ -9385,6 +9846,9 @@ export class PGN_127507 extends PGN implements PGN_127507Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('chargerStatus')!
+  }
 }
 pgnIdToCreator['chargerStatus'] = (fields:any, dst:number) => new PGN_127507(fields, dst)
 
@@ -9433,6 +9897,9 @@ export class PGN_127508 extends PGN implements PGN_127508Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('batteryStatus')!
+  }
 }
 pgnIdToCreator['batteryStatus'] = (fields:any, dst:number) => new PGN_127508(fields, dst)
 
@@ -9484,6 +9951,9 @@ export class PGN_127509 extends PGN implements PGN_127509Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('inverterStatus')!
+  }
 }
 pgnIdToCreator['inverterStatus'] = (fields:any, dst:number) => new PGN_127509(fields, dst)
 
@@ -9538,6 +10008,9 @@ export class PGN_127510 extends PGN implements PGN_127510Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('chargerConfigurationStatus')!
+  }
 }
 pgnIdToCreator['chargerConfigurationStatus'] = (fields:any, dst:number) => new PGN_127510(fields, dst)
 
@@ -9589,6 +10062,9 @@ export class PGN_127511 extends PGN implements PGN_127511Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('inverterConfigurationStatus')!
+  }
 }
 pgnIdToCreator['inverterConfigurationStatus'] = (fields:any, dst:number) => new PGN_127511(fields, dst)
 
@@ -9636,6 +10112,9 @@ export class PGN_127512 extends PGN implements PGN_127512Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('agsConfigurationStatus')!
+  }
 }
 pgnIdToCreator['agsConfigurationStatus'] = (fields:any, dst:number) => new PGN_127512(fields, dst)
 
@@ -9689,6 +10168,9 @@ export class PGN_127513 extends PGN implements PGN_127513Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('batteryConfigurationStatus')!
+  }
 }
 pgnIdToCreator['batteryConfigurationStatus'] = (fields:any, dst:number) => new PGN_127513(fields, dst)
 
@@ -9738,6 +10220,9 @@ export class PGN_127514 extends PGN implements PGN_127514Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('agsStatus')!
+  }
 }
 pgnIdToCreator['agsStatus'] = (fields:any, dst:number) => new PGN_127514(fields, dst)
 
@@ -9785,6 +10270,9 @@ export class PGN_127744 extends PGN implements PGN_127744Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('acPowerCurrentPhaseA')!
+  }
 }
 pgnIdToCreator['acPowerCurrentPhaseA'] = (fields:any, dst:number) => new PGN_127744(fields, dst)
 
@@ -9832,6 +10320,9 @@ export class PGN_127745 extends PGN implements PGN_127745Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('acPowerCurrentPhaseB')!
+  }
 }
 pgnIdToCreator['acPowerCurrentPhaseB'] = (fields:any, dst:number) => new PGN_127745(fields, dst)
 
@@ -9879,6 +10370,9 @@ export class PGN_127746 extends PGN implements PGN_127746Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('acPowerCurrentPhaseC')!
+  }
 }
 pgnIdToCreator['acPowerCurrentPhaseC'] = (fields:any, dst:number) => new PGN_127746(fields, dst)
 
@@ -9927,6 +10421,9 @@ export class PGN_127747 extends PGN implements PGN_127747Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('acVoltageFrequencyPhaseA')!
+  }
 }
 pgnIdToCreator['acVoltageFrequencyPhaseA'] = (fields:any, dst:number) => new PGN_127747(fields, dst)
 
@@ -9975,6 +10472,9 @@ export class PGN_127748 extends PGN implements PGN_127748Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('acVoltageFrequencyPhaseB')!
+  }
 }
 pgnIdToCreator['acVoltageFrequencyPhaseB'] = (fields:any, dst:number) => new PGN_127748(fields, dst)
 
@@ -10023,6 +10523,9 @@ export class PGN_127749 extends PGN implements PGN_127749Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('acVoltageFrequencyPhaseC')!
+  }
 }
 pgnIdToCreator['acVoltageFrequencyPhaseC'] = (fields:any, dst:number) => new PGN_127749(fields, dst)
 
@@ -10074,6 +10577,9 @@ export class PGN_127750 extends PGN implements PGN_127750Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('converterStatus')!
+  }
 }
 pgnIdToCreator['converterStatus'] = (fields:any, dst:number) => new PGN_127750(fields, dst)
 
@@ -10122,6 +10628,9 @@ export class PGN_127751 extends PGN implements PGN_127751Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('dcVoltageCurrent')!
+  }
 }
 pgnIdToCreator['dcVoltageCurrent'] = (fields:any, dst:number) => new PGN_127751(fields, dst)
 
@@ -10170,6 +10679,9 @@ export class PGN_128000 extends PGN implements PGN_128000Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('leewayAngle')!
+  }
 }
 pgnIdToCreator['leewayAngle'] = (fields:any, dst:number) => new PGN_128000(fields, dst)
 
@@ -10220,6 +10732,9 @@ export class PGN_128001 extends PGN implements PGN_128001Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('vesselAcceleration')!
+  }
 }
 pgnIdToCreator['vesselAcceleration'] = (fields:any, dst:number) => new PGN_128001(fields, dst)
 
@@ -10272,6 +10787,9 @@ export class PGN_128002 extends PGN implements PGN_128002Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('electricDriveStatusRapidUpdate')!
+  }
 }
 pgnIdToCreator['electricDriveStatusRapidUpdate'] = (fields:any, dst:number) => new PGN_128002(fields, dst)
 
@@ -10324,6 +10842,9 @@ export class PGN_128003 extends PGN implements PGN_128003Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('electricEnergyStorageStatusRapidUpdate')!
+  }
 }
 pgnIdToCreator['electricEnergyStorageStatusRapidUpdate'] = (fields:any, dst:number) => new PGN_128003(fields, dst)
 
@@ -10376,6 +10897,9 @@ export class PGN_128006 extends PGN implements PGN_128006Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('thrusterControlStatus')!
+  }
 }
 pgnIdToCreator['thrusterControlStatus'] = (fields:any, dst:number) => new PGN_128006(fields, dst)
 
@@ -10425,6 +10949,9 @@ export class PGN_128007 extends PGN implements PGN_128007Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('thrusterInformation')!
+  }
 }
 pgnIdToCreator['thrusterInformation'] = (fields:any, dst:number) => new PGN_128007(fields, dst)
 
@@ -10474,6 +11001,9 @@ export class PGN_128008 extends PGN implements PGN_128008Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('thrusterMotorStatus')!
+  }
 }
 pgnIdToCreator['thrusterMotorStatus'] = (fields:any, dst:number) => new PGN_128008(fields, dst)
 
@@ -10523,6 +11053,9 @@ export class PGN_128259 extends PGN implements PGN_128259Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('speed')!
+  }
 }
 pgnIdToCreator['speed'] = (fields:any, dst:number) => new PGN_128259(fields, dst)
 
@@ -10570,6 +11103,9 @@ export class PGN_128267 extends PGN implements PGN_128267Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('waterDepth')!
+  }
 }
 pgnIdToCreator['waterDepth'] = (fields:any, dst:number) => new PGN_128267(fields, dst)
 
@@ -10617,6 +11153,9 @@ export class PGN_128275 extends PGN implements PGN_128275Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('distanceLog')!
+  }
 }
 pgnIdToCreator['distanceLog'] = (fields:any, dst:number) => new PGN_128275(fields, dst)
 
@@ -10677,6 +11216,9 @@ export class PGN_128520 extends PGN implements PGN_128520Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('trackedTargetData')!
+  }
 }
 pgnIdToCreator['trackedTargetData'] = (fields:any, dst:number) => new PGN_128520(fields, dst)
 
@@ -10754,6 +11296,9 @@ export class PGN_128538 extends PGN implements PGN_128538Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('elevatorCarStatus')!
+  }
 }
 pgnIdToCreator['elevatorCarStatus'] = (fields:any, dst:number) => new PGN_128538(fields, dst)
 
@@ -10805,6 +11350,9 @@ export class PGN_128768 extends PGN implements PGN_128768Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('elevatorMotorControl')!
+  }
 }
 pgnIdToCreator['elevatorMotorControl'] = (fields:any, dst:number) => new PGN_128768(fields, dst)
 
@@ -10856,6 +11404,9 @@ export class PGN_128769 extends PGN implements PGN_128769Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('elevatorDeckPushButton')!
+  }
 }
 pgnIdToCreator['elevatorDeckPushButton'] = (fields:any, dst:number) => new PGN_128769(fields, dst)
 
@@ -10913,6 +11464,9 @@ export class PGN_128776 extends PGN implements PGN_128776Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('windlassControlStatus')!
+  }
 }
 pgnIdToCreator['windlassControlStatus'] = (fields:any, dst:number) => new PGN_128776(fields, dst)
 
@@ -10966,6 +11520,9 @@ export class PGN_128777 extends PGN implements PGN_128777Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('anchorWindlassOperatingStatus')!
+  }
 }
 pgnIdToCreator['anchorWindlassOperatingStatus'] = (fields:any, dst:number) => new PGN_128777(fields, dst)
 
@@ -11016,6 +11573,9 @@ export class PGN_128778 extends PGN implements PGN_128778Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('anchorWindlassMonitoringStatus')!
+  }
 }
 pgnIdToCreator['anchorWindlassMonitoringStatus'] = (fields:any, dst:number) => new PGN_128778(fields, dst)
 
@@ -11067,6 +11627,9 @@ export class PGN_128780 extends PGN implements PGN_128780Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('linearActuatorControlStatus')!
+  }
 }
 pgnIdToCreator['linearActuatorControlStatus'] = (fields:any, dst:number) => new PGN_128780(fields, dst)
 
@@ -11112,6 +11675,9 @@ export class PGN_129025 extends PGN implements PGN_129025Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('positionRapidUpdate')!
+  }
 }
 pgnIdToCreator['positionRapidUpdate'] = (fields:any, dst:number) => new PGN_129025(fields, dst)
 
@@ -11161,6 +11727,9 @@ export class PGN_129026 extends PGN implements PGN_129026Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('cogSogRapidUpdate')!
+  }
 }
 pgnIdToCreator['cogSogRapidUpdate'] = (fields:any, dst:number) => new PGN_129026(fields, dst)
 
@@ -11208,6 +11777,9 @@ export class PGN_129027 extends PGN implements PGN_129027Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('positionDeltaRapidUpdate')!
+  }
 }
 pgnIdToCreator['positionDeltaRapidUpdate'] = (fields:any, dst:number) => new PGN_129027(fields, dst)
 
@@ -11258,6 +11830,9 @@ export class PGN_129028 extends PGN implements PGN_129028Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('altitudeDeltaRapidUpdate')!
+  }
 }
 pgnIdToCreator['altitudeDeltaRapidUpdate'] = (fields:any, dst:number) => new PGN_129028(fields, dst)
 
@@ -11321,6 +11896,9 @@ export class PGN_129029 extends PGN implements PGN_129029Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('gnssPositionData')!
+  }
 }
 pgnIdToCreator['gnssPositionData'] = (fields:any, dst:number) => new PGN_129029(fields, dst)
 
@@ -11367,6 +11945,9 @@ export class PGN_129033 extends PGN implements PGN_129033Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('timeDate')!
+  }
 }
 pgnIdToCreator['timeDate'] = (fields:any, dst:number) => new PGN_129033(fields, dst)
 
@@ -11430,6 +12011,9 @@ export class PGN_129038 extends PGN implements PGN_129038Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('aisClassAPositionReport')!
+  }
 }
 pgnIdToCreator['aisClassAPositionReport'] = (fields:any, dst:number) => new PGN_129038(fields, dst)
 
@@ -11496,6 +12080,9 @@ export class PGN_129039 extends PGN implements PGN_129039Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('aisClassBPositionReport')!
+  }
 }
 pgnIdToCreator['aisClassBPositionReport'] = (fields:any, dst:number) => new PGN_129039(fields, dst)
 
@@ -11566,6 +12153,9 @@ export class PGN_129040 extends PGN implements PGN_129040Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('aisClassBExtendedPositionReport')!
+  }
 }
 pgnIdToCreator['aisClassBExtendedPositionReport'] = (fields:any, dst:number) => new PGN_129040(fields, dst)
 
@@ -11632,6 +12222,9 @@ export class PGN_129041 extends PGN implements PGN_129041Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('aisAidsToNavigationAtonReport')!
+  }
 }
 pgnIdToCreator['aisAidsToNavigationAtonReport'] = (fields:any, dst:number) => new PGN_129041(fields, dst)
 
@@ -11680,6 +12273,9 @@ export class PGN_129044 extends PGN implements PGN_129044Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('datum')!
+  }
 }
 pgnIdToCreator['datum'] = (fields:any, dst:number) => new PGN_129044(fields, dst)
 
@@ -11733,6 +12329,9 @@ export class PGN_129045 extends PGN implements PGN_129045Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('userDatum')!
+  }
 }
 pgnIdToCreator['userDatum'] = (fields:any, dst:number) => new PGN_129045(fields, dst)
 
@@ -11782,6 +12381,9 @@ export class PGN_129283 extends PGN implements PGN_129283Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('crossTrackError')!
+  }
 }
 pgnIdToCreator['crossTrackError'] = (fields:any, dst:number) => new PGN_129283(fields, dst)
 
@@ -11840,6 +12442,9 @@ export class PGN_129284 extends PGN implements PGN_129284Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('navigationData')!
+  }
 }
 pgnIdToCreator['navigationData'] = (fields:any, dst:number) => new PGN_129284(fields, dst)
 
@@ -11898,6 +12503,9 @@ export class PGN_129285 extends PGN implements PGN_129285Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('navigationRouteWpInformation')!
+  }
 }
 pgnIdToCreator['navigationRouteWpInformation'] = (fields:any, dst:number) => new PGN_129285(fields, dst)
 
@@ -11947,6 +12555,9 @@ export class PGN_129291 extends PGN implements PGN_129291Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('setDriftRapidUpdate')!
+  }
 }
 pgnIdToCreator['setDriftRapidUpdate'] = (fields:any, dst:number) => new PGN_129291(fields, dst)
 
@@ -11995,6 +12606,9 @@ export class PGN_129301 extends PGN implements PGN_129301Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('navigationRouteTimeToFromMark')!
+  }
 }
 pgnIdToCreator['navigationRouteTimeToFromMark'] = (fields:any, dst:number) => new PGN_129301(fields, dst)
 
@@ -12048,6 +12662,9 @@ export class PGN_129302 extends PGN implements PGN_129302Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('bearingAndDistanceBetweenTwoMarks')!
+  }
 }
 pgnIdToCreator['bearingAndDistanceBetweenTwoMarks'] = (fields:any, dst:number) => new PGN_129302(fields, dst)
 
@@ -12102,6 +12719,9 @@ export class PGN_129538 extends PGN implements PGN_129538Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('gnssControlStatus')!
+  }
 }
 pgnIdToCreator['gnssControlStatus'] = (fields:any, dst:number) => new PGN_129538(fields, dst)
 
@@ -12152,6 +12772,9 @@ export class PGN_129539 extends PGN implements PGN_129539Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('gnssDops')!
+  }
 }
 pgnIdToCreator['gnssDops'] = (fields:any, dst:number) => new PGN_129539(fields, dst)
 
@@ -12208,6 +12831,9 @@ export class PGN_129540 extends PGN implements PGN_129540Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('gnssSatsInView')!
+  }
 }
 pgnIdToCreator['gnssSatsInView'] = (fields:any, dst:number) => new PGN_129540(fields, dst)
 
@@ -12265,6 +12891,9 @@ export class PGN_129541 extends PGN implements PGN_129541Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('gpsAlmanacData')!
+  }
 }
 pgnIdToCreator['gpsAlmanacData'] = (fields:any, dst:number) => new PGN_129541(fields, dst)
 
@@ -12316,6 +12945,9 @@ export class PGN_129542 extends PGN implements PGN_129542Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('gnssPseudorangeNoiseStatistics')!
+  }
 }
 pgnIdToCreator['gnssPseudorangeNoiseStatistics'] = (fields:any, dst:number) => new PGN_129542(fields, dst)
 
@@ -12369,6 +13001,9 @@ export class PGN_129545 extends PGN implements PGN_129545Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('gnssRaimOutput')!
+  }
 }
 pgnIdToCreator['gnssRaimOutput'] = (fields:any, dst:number) => new PGN_129545(fields, dst)
 
@@ -12417,6 +13052,9 @@ export class PGN_129546 extends PGN implements PGN_129546Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('gnssRaimSettings')!
+  }
 }
 pgnIdToCreator['gnssRaimSettings'] = (fields:any, dst:number) => new PGN_129546(fields, dst)
 
@@ -12468,6 +13106,9 @@ export class PGN_129547 extends PGN implements PGN_129547Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('gnssPseudorangeErrorStatistics')!
+  }
 }
 pgnIdToCreator['gnssPseudorangeErrorStatistics'] = (fields:any, dst:number) => new PGN_129547(fields, dst)
 
@@ -12522,6 +13163,9 @@ export class PGN_129549 extends PGN implements PGN_129549Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('dgnssCorrections')!
+  }
 }
 pgnIdToCreator['dgnssCorrections'] = (fields:any, dst:number) => new PGN_129549(fields, dst)
 
@@ -12572,6 +13216,9 @@ export class PGN_129550 extends PGN implements PGN_129550Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('gnssDifferentialCorrectionReceiverInterface')!
+  }
 }
 pgnIdToCreator['gnssDifferentialCorrectionReceiverInterface'] = (fields:any, dst:number) => new PGN_129550(fields, dst)
 
@@ -12629,6 +13276,9 @@ export class PGN_129551 extends PGN implements PGN_129551Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('gnssDifferentialCorrectionReceiverSignal')!
+  }
 }
 pgnIdToCreator['gnssDifferentialCorrectionReceiverSignal'] = (fields:any, dst:number) => new PGN_129551(fields, dst)
 
@@ -12688,6 +13338,9 @@ export class PGN_129556 extends PGN implements PGN_129556Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('glonassAlmanacData')!
+  }
 }
 pgnIdToCreator['glonassAlmanacData'] = (fields:any, dst:number) => new PGN_129556(fields, dst)
 
@@ -12743,6 +13396,9 @@ export class PGN_129792 extends PGN implements PGN_129792Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('aisDgnssBroadcastBinaryMessage')!
+  }
 }
 pgnIdToCreator['aisDgnssBroadcastBinaryMessage'] = (fields:any, dst:number) => new PGN_129792(fields, dst)
 
@@ -12800,6 +13456,9 @@ export class PGN_129793 extends PGN implements PGN_129793Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('aisUtcAndDateReport')!
+  }
 }
 pgnIdToCreator['aisUtcAndDateReport'] = (fields:any, dst:number) => new PGN_129793(fields, dst)
 
@@ -12864,6 +13523,9 @@ export class PGN_129794 extends PGN implements PGN_129794Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('aisClassAStaticAndVoyageRelatedData')!
+  }
 }
 pgnIdToCreator['aisClassAStaticAndVoyageRelatedData'] = (fields:any, dst:number) => new PGN_129794(fields, dst)
 
@@ -12919,6 +13581,9 @@ export class PGN_129795 extends PGN implements PGN_129795Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('aisAddressedBinaryMessage')!
+  }
 }
 pgnIdToCreator['aisAddressedBinaryMessage'] = (fields:any, dst:number) => new PGN_129795(fields, dst)
 
@@ -12973,6 +13638,9 @@ export class PGN_129796 extends PGN implements PGN_129796Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('aisAcknowledge')!
+  }
 }
 pgnIdToCreator['aisAcknowledge'] = (fields:any, dst:number) => new PGN_129796(fields, dst)
 
@@ -13024,6 +13692,9 @@ export class PGN_129797 extends PGN implements PGN_129797Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('aisBinaryBroadcastMessage')!
+  }
 }
 pgnIdToCreator['aisBinaryBroadcastMessage'] = (fields:any, dst:number) => new PGN_129797(fields, dst)
 
@@ -13084,6 +13755,9 @@ export class PGN_129798 extends PGN implements PGN_129798Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('aisSarAircraftPositionReport')!
+  }
 }
 pgnIdToCreator['aisSarAircraftPositionReport'] = (fields:any, dst:number) => new PGN_129798(fields, dst)
 
@@ -13135,6 +13809,9 @@ export class PGN_129799 extends PGN implements PGN_129799Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('radioFrequencyModePower')!
+  }
 }
 pgnIdToCreator['radioFrequencyModePower'] = (fields:any, dst:number) => new PGN_129799(fields, dst)
 
@@ -13185,6 +13862,9 @@ export class PGN_129800 extends PGN implements PGN_129800Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('aisUtcDateInquiry')!
+  }
 }
 pgnIdToCreator['aisUtcDateInquiry'] = (fields:any, dst:number) => new PGN_129800(fields, dst)
 
@@ -13239,6 +13919,9 @@ export class PGN_129801 extends PGN implements PGN_129801Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('aisAddressedSafetyRelatedMessage')!
+  }
 }
 pgnIdToCreator['aisAddressedSafetyRelatedMessage'] = (fields:any, dst:number) => new PGN_129801(fields, dst)
 
@@ -13289,6 +13972,9 @@ export class PGN_129802 extends PGN implements PGN_129802Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('aisSafetyRelatedBroadcastMessage')!
+  }
 }
 pgnIdToCreator['aisSafetyRelatedBroadcastMessage'] = (fields:any, dst:number) => new PGN_129802(fields, dst)
 
@@ -13354,6 +14040,9 @@ export class PGN_129803 extends PGN implements PGN_129803Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('aisInterrogation')!
+  }
 }
 pgnIdToCreator['aisInterrogation'] = (fields:any, dst:number) => new PGN_129803(fields, dst)
 
@@ -13411,6 +14100,9 @@ export class PGN_129804 extends PGN implements PGN_129804Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('aisAssignmentModeCommand')!
+  }
 }
 pgnIdToCreator['aisAssignmentModeCommand'] = (fields:any, dst:number) => new PGN_129804(fields, dst)
 
@@ -13466,6 +14158,9 @@ export class PGN_129805 extends PGN implements PGN_129805Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('aisDataLinkManagementMessage')!
+  }
 }
 pgnIdToCreator['aisDataLinkManagementMessage'] = (fields:any, dst:number) => new PGN_129805(fields, dst)
 
@@ -13532,6 +14227,9 @@ export class PGN_129806 extends PGN implements PGN_129806Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('aisChannelManagement')!
+  }
 }
 pgnIdToCreator['aisChannelManagement'] = (fields:any, dst:number) => new PGN_129806(fields, dst)
 
@@ -13594,6 +14292,9 @@ export class PGN_129807 extends PGN implements PGN_129807Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('aisClassBGroupAssignment')!
+  }
 }
 pgnIdToCreator['aisClassBGroupAssignment'] = (fields:any, dst:number) => new PGN_129807(fields, dst)
 
@@ -13702,6 +14403,9 @@ export class PGN_129808_DscDistressCallInformation extends PGN implements PGN_12
   isMatch() {
     return isMatch(this, PGN_129808_DscDistressCallInformationMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('dscDistressCallInformation')!
+  }
 }
 pgnIdToCreator['dscDistressCallInformation'] = (fields:any, dst:number) => new PGN_129808_DscDistressCallInformation(fields, dst)
 
@@ -13770,6 +14474,9 @@ export class PGN_129808 extends PGN implements PGN_129808Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('dscCallInformation')!
+  }
 }
 pgnIdToCreator['dscCallInformation'] = (fields:any, dst:number) => new PGN_129808(fields, dst)
 
@@ -13820,6 +14527,9 @@ export class PGN_129809 extends PGN implements PGN_129809Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('aisClassBStaticDataMsg24PartA')!
+  }
 }
 pgnIdToCreator['aisClassBStaticDataMsg24PartA'] = (fields:any, dst:number) => new PGN_129809(fields, dst)
 
@@ -13880,6 +14590,9 @@ export class PGN_129810 extends PGN implements PGN_129810Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('aisClassBStaticDataMsg24PartB')!
+  }
 }
 pgnIdToCreator['aisClassBStaticDataMsg24PartB'] = (fields:any, dst:number) => new PGN_129810(fields, dst)
 
@@ -13938,6 +14651,9 @@ export class PGN_130052 extends PGN implements PGN_130052Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('loranCTdData')!
+  }
 }
 pgnIdToCreator['loranCTdData'] = (fields:any, dst:number) => new PGN_130052(fields, dst)
 
@@ -13996,6 +14712,9 @@ export class PGN_130053 extends PGN implements PGN_130053Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('loranCRangeData')!
+  }
 }
 pgnIdToCreator['loranCRangeData'] = (fields:any, dst:number) => new PGN_130053(fields, dst)
 
@@ -14044,6 +14763,9 @@ export class PGN_130054 extends PGN implements PGN_130054Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('loranCSignalData')!
+  }
 }
 pgnIdToCreator['loranCSignalData'] = (fields:any, dst:number) => new PGN_130054(fields, dst)
 
@@ -14095,6 +14817,9 @@ export class PGN_130060 extends PGN implements PGN_130060Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('label')!
+  }
 }
 pgnIdToCreator['label'] = (fields:any, dst:number) => new PGN_130060(fields, dst)
 
@@ -14149,6 +14874,9 @@ export class PGN_130061 extends PGN implements PGN_130061Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('channelSourceConfiguration')!
+  }
 }
 pgnIdToCreator['channelSourceConfiguration'] = (fields:any, dst:number) => new PGN_130061(fields, dst)
 
@@ -14206,6 +14934,9 @@ export class PGN_130064 extends PGN implements PGN_130064Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('routeAndWpServiceDatabaseList')!
+  }
 }
 pgnIdToCreator['routeAndWpServiceDatabaseList'] = (fields:any, dst:number) => new PGN_130064(fields, dst)
 
@@ -14260,6 +14991,9 @@ export class PGN_130065 extends PGN implements PGN_130065Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('routeAndWpServiceRouteList')!
+  }
 }
 pgnIdToCreator['routeAndWpServiceRouteList'] = (fields:any, dst:number) => new PGN_130065(fields, dst)
 
@@ -14315,6 +15049,9 @@ export class PGN_130066 extends PGN implements PGN_130066Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('routeAndWpServiceRouteWpListAttributes')!
+  }
 }
 pgnIdToCreator['routeAndWpServiceRouteWpListAttributes'] = (fields:any, dst:number) => new PGN_130066(fields, dst)
 
@@ -14369,6 +15106,9 @@ export class PGN_130067 extends PGN implements PGN_130067Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('routeAndWpServiceRouteWpNamePosition')!
+  }
 }
 pgnIdToCreator['routeAndWpServiceRouteWpNamePosition'] = (fields:any, dst:number) => new PGN_130067(fields, dst)
 
@@ -14421,6 +15161,9 @@ export class PGN_130068 extends PGN implements PGN_130068Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('routeAndWpServiceRouteWpName')!
+  }
 }
 pgnIdToCreator['routeAndWpServiceRouteWpName'] = (fields:any, dst:number) => new PGN_130068(fields, dst)
 
@@ -14475,6 +15218,9 @@ export class PGN_130069 extends PGN implements PGN_130069Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('routeAndWpServiceXteLimitNavigationMethod')!
+  }
 }
 pgnIdToCreator['routeAndWpServiceXteLimitNavigationMethod'] = (fields:any, dst:number) => new PGN_130069(fields, dst)
 
@@ -14527,6 +15273,9 @@ export class PGN_130070 extends PGN implements PGN_130070Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('routeAndWpServiceWpComment')!
+  }
 }
 pgnIdToCreator['routeAndWpServiceWpComment'] = (fields:any, dst:number) => new PGN_130070(fields, dst)
 
@@ -14578,6 +15327,9 @@ export class PGN_130071 extends PGN implements PGN_130071Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('routeAndWpServiceRouteComment')!
+  }
 }
 pgnIdToCreator['routeAndWpServiceRouteComment'] = (fields:any, dst:number) => new PGN_130071(fields, dst)
 
@@ -14628,6 +15380,9 @@ export class PGN_130072 extends PGN implements PGN_130072Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('routeAndWpServiceDatabaseComment')!
+  }
 }
 pgnIdToCreator['routeAndWpServiceDatabaseComment'] = (fields:any, dst:number) => new PGN_130072(fields, dst)
 
@@ -14680,6 +15435,9 @@ export class PGN_130073 extends PGN implements PGN_130073Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('routeAndWpServiceRadiusOfTurn')!
+  }
 }
 pgnIdToCreator['routeAndWpServiceRadiusOfTurn'] = (fields:any, dst:number) => new PGN_130073(fields, dst)
 
@@ -14734,6 +15492,9 @@ export class PGN_130074 extends PGN implements PGN_130074Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('routeAndWpServiceWpListWpNamePosition')!
+  }
 }
 pgnIdToCreator['routeAndWpServiceWpListWpNamePosition'] = (fields:any, dst:number) => new PGN_130074(fields, dst)
 
@@ -14782,6 +15543,9 @@ export class PGN_130306 extends PGN implements PGN_130306Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('windData')!
+  }
 }
 pgnIdToCreator['windData'] = (fields:any, dst:number) => new PGN_130306(fields, dst)
 
@@ -14832,6 +15596,9 @@ export class PGN_130310 extends PGN implements PGN_130310Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('environmentalParametersObsolete')!
+  }
 }
 pgnIdToCreator['environmentalParametersObsolete'] = (fields:any, dst:number) => new PGN_130310(fields, dst)
 
@@ -14883,6 +15650,9 @@ export class PGN_130311 extends PGN implements PGN_130311Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('environmentalParameters')!
+  }
 }
 pgnIdToCreator['environmentalParameters'] = (fields:any, dst:number) => new PGN_130311(fields, dst)
 
@@ -14932,6 +15702,9 @@ export class PGN_130312 extends PGN implements PGN_130312Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('temperature')!
+  }
 }
 pgnIdToCreator['temperature'] = (fields:any, dst:number) => new PGN_130312(fields, dst)
 
@@ -14981,6 +15754,9 @@ export class PGN_130313 extends PGN implements PGN_130313Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('humidity')!
+  }
 }
 pgnIdToCreator['humidity'] = (fields:any, dst:number) => new PGN_130313(fields, dst)
 
@@ -15029,6 +15805,9 @@ export class PGN_130314 extends PGN implements PGN_130314Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('actualPressure')!
+  }
 }
 pgnIdToCreator['actualPressure'] = (fields:any, dst:number) => new PGN_130314(fields, dst)
 
@@ -15077,6 +15856,9 @@ export class PGN_130315 extends PGN implements PGN_130315Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('setPressure')!
+  }
 }
 pgnIdToCreator['setPressure'] = (fields:any, dst:number) => new PGN_130315(fields, dst)
 
@@ -15125,6 +15907,9 @@ export class PGN_130316 extends PGN implements PGN_130316Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('temperatureExtendedRange')!
+  }
 }
 pgnIdToCreator['temperatureExtendedRange'] = (fields:any, dst:number) => new PGN_130316(fields, dst)
 
@@ -15179,6 +15964,9 @@ export class PGN_130320 extends PGN implements PGN_130320Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('tideStationData')!
+  }
 }
 pgnIdToCreator['tideStationData'] = (fields:any, dst:number) => new PGN_130320(fields, dst)
 
@@ -15232,6 +16020,9 @@ export class PGN_130321 extends PGN implements PGN_130321Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('salinityStationData')!
+  }
 }
 pgnIdToCreator['salinityStationData'] = (fields:any, dst:number) => new PGN_130321(fields, dst)
 
@@ -15288,6 +16079,9 @@ export class PGN_130322 extends PGN implements PGN_130322Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('currentStationData')!
+  }
 }
 pgnIdToCreator['currentStationData'] = (fields:any, dst:number) => new PGN_130322(fields, dst)
 
@@ -15346,6 +16140,9 @@ export class PGN_130323 extends PGN implements PGN_130323Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('meteorologicalStationData')!
+  }
 }
 pgnIdToCreator['meteorologicalStationData'] = (fields:any, dst:number) => new PGN_130323(fields, dst)
 
@@ -15407,6 +16204,9 @@ export class PGN_130324 extends PGN implements PGN_130324Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('mooredBuoyStationData')!
+  }
 }
 pgnIdToCreator['mooredBuoyStationData'] = (fields:any, dst:number) => new PGN_130324(fields, dst)
 
@@ -15464,6 +16264,9 @@ export class PGN_130330 extends PGN implements PGN_130330Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('lightingSystemSettings')!
+  }
 }
 pgnIdToCreator['lightingSystemSettings'] = (fields:any, dst:number) => new PGN_130330(fields, dst)
 
@@ -15513,6 +16316,9 @@ export class PGN_130560 extends PGN implements PGN_130560Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('payloadMass')!
+  }
 }
 pgnIdToCreator['payloadMass'] = (fields:any, dst:number) => new PGN_130560(fields, dst)
 
@@ -15572,6 +16378,9 @@ export class PGN_130561 extends PGN implements PGN_130561Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('lightingZone')!
+  }
 }
 pgnIdToCreator['lightingZone'] = (fields:any, dst:number) => new PGN_130561(fields, dst)
 
@@ -15631,6 +16440,9 @@ export class PGN_130562 extends PGN implements PGN_130562Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('lightingScene')!
+  }
 }
 pgnIdToCreator['lightingScene'] = (fields:any, dst:number) => new PGN_130562(fields, dst)
 
@@ -15694,6 +16506,9 @@ export class PGN_130563 extends PGN implements PGN_130563Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('lightingDevice')!
+  }
 }
 pgnIdToCreator['lightingDevice'] = (fields:any, dst:number) => new PGN_130563(fields, dst)
 
@@ -15746,6 +16561,9 @@ export class PGN_130564 extends PGN implements PGN_130564Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('lightingDeviceEnumeration')!
+  }
 }
 pgnIdToCreator['lightingDeviceEnumeration'] = (fields:any, dst:number) => new PGN_130564(fields, dst)
 
@@ -15801,6 +16619,9 @@ export class PGN_130565 extends PGN implements PGN_130565Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('lightingColorSequence')!
+  }
 }
 pgnIdToCreator['lightingColorSequence'] = (fields:any, dst:number) => new PGN_130565(fields, dst)
 
@@ -15851,6 +16672,9 @@ export class PGN_130566 extends PGN implements PGN_130566Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('lightingProgram')!
+  }
 }
 pgnIdToCreator['lightingProgram'] = (fields:any, dst:number) => new PGN_130566(fields, dst)
 
@@ -15917,6 +16741,9 @@ export class PGN_130567 extends PGN implements PGN_130567Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('watermakerInputSettingAndStatus')!
+  }
 }
 pgnIdToCreator['watermakerInputSettingAndStatus'] = (fields:any, dst:number) => new PGN_130567(fields, dst)
 
@@ -15977,6 +16804,9 @@ export class PGN_130569 extends PGN implements PGN_130569Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('currentStatusAndFile')!
+  }
 }
 pgnIdToCreator['currentStatusAndFile'] = (fields:any, dst:number) => new PGN_130569(fields, dst)
 
@@ -16037,6 +16867,9 @@ export class PGN_130570 extends PGN implements PGN_130570Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('libraryDataFile')!
+  }
 }
 pgnIdToCreator['libraryDataFile'] = (fields:any, dst:number) => new PGN_130570(fields, dst)
 
@@ -16094,6 +16927,9 @@ export class PGN_130571 extends PGN implements PGN_130571Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('libraryDataGroup')!
+  }
 }
 pgnIdToCreator['libraryDataGroup'] = (fields:any, dst:number) => new PGN_130571(fields, dst)
 
@@ -16146,6 +16982,9 @@ export class PGN_130572 extends PGN implements PGN_130572Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('libraryDataSearch')!
+  }
 }
 pgnIdToCreator['libraryDataSearch'] = (fields:any, dst:number) => new PGN_130572(fields, dst)
 
@@ -16204,6 +17043,9 @@ export class PGN_130573 extends PGN implements PGN_130573Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('supportedSourceData')!
+  }
 }
 pgnIdToCreator['supportedSourceData'] = (fields:any, dst:number) => new PGN_130573(fields, dst)
 
@@ -16254,6 +17096,9 @@ export class PGN_130574 extends PGN implements PGN_130574Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('supportedZoneData')!
+  }
 }
 pgnIdToCreator['supportedZoneData'] = (fields:any, dst:number) => new PGN_130574(fields, dst)
 
@@ -16300,6 +17145,9 @@ export class PGN_130576 extends PGN implements PGN_130576Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('smallCraftStatus')!
+  }
 }
 pgnIdToCreator['smallCraftStatus'] = (fields:any, dst:number) => new PGN_130576(fields, dst)
 
@@ -16353,6 +17201,9 @@ export class PGN_130577 extends PGN implements PGN_130577Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('directionData')!
+  }
 }
 pgnIdToCreator['directionData'] = (fields:any, dst:number) => new PGN_130577(fields, dst)
 
@@ -16402,6 +17253,9 @@ export class PGN_130578 extends PGN implements PGN_130578Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('vesselSpeedComponents')!
+  }
 }
 pgnIdToCreator['vesselSpeedComponents'] = (fields:any, dst:number) => new PGN_130578(fields, dst)
 
@@ -16451,6 +17305,9 @@ export class PGN_130579 extends PGN implements PGN_130579Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('systemConfiguration')!
+  }
 }
 pgnIdToCreator['systemConfiguration'] = (fields:any, dst:number) => new PGN_130579(fields, dst)
 
@@ -16498,6 +17355,9 @@ export class PGN_130580 extends PGN implements PGN_130580Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('systemConfigurationDeprecated')!
+  }
 }
 pgnIdToCreator['systemConfigurationDeprecated'] = (fields:any, dst:number) => new PGN_130580(fields, dst)
 
@@ -16548,6 +17408,9 @@ export class PGN_130581 extends PGN implements PGN_130581Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('zoneConfigurationDeprecated')!
+  }
 }
 pgnIdToCreator['zoneConfigurationDeprecated'] = (fields:any, dst:number) => new PGN_130581(fields, dst)
 
@@ -16598,6 +17461,9 @@ export class PGN_130582 extends PGN implements PGN_130582Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('zoneVolume')!
+  }
 }
 pgnIdToCreator['zoneVolume'] = (fields:any, dst:number) => new PGN_130582(fields, dst)
 
@@ -16648,6 +17514,9 @@ export class PGN_130583 extends PGN implements PGN_130583Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('availableAudioEqPresets')!
+  }
 }
 pgnIdToCreator['availableAudioEqPresets'] = (fields:any, dst:number) => new PGN_130583(fields, dst)
 
@@ -16700,6 +17569,9 @@ export class PGN_130584 extends PGN implements PGN_130584Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('availableBluetoothAddresses')!
+  }
 }
 pgnIdToCreator['availableBluetoothAddresses'] = (fields:any, dst:number) => new PGN_130584(fields, dst)
 
@@ -16748,6 +17620,9 @@ export class PGN_130585 extends PGN implements PGN_130585Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('bluetoothSourceStatus')!
+  }
 }
 pgnIdToCreator['bluetoothSourceStatus'] = (fields:any, dst:number) => new PGN_130585(fields, dst)
 
@@ -16804,6 +17679,9 @@ export class PGN_130586 extends PGN implements PGN_130586Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('zoneConfiguration')!
+  }
 }
 pgnIdToCreator['zoneConfiguration'] = (fields:any, dst:number) => new PGN_130586(fields, dst)
 
@@ -16881,6 +17759,9 @@ export class PGN_130816_SonichubInit2 extends PGN implements PGN_130816_Sonichub
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubInit2MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('sonichubInit2')!
   }
 }
 pgnIdToCreator['sonichubInit2'] = (fields:any, dst:number) => new PGN_130816_SonichubInit2(fields, dst)
@@ -16968,6 +17849,9 @@ export class PGN_130816_SonichubAmRadio extends PGN implements PGN_130816_Sonich
   isMatch() {
     return isMatch(this, PGN_130816_SonichubAmRadioMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('sonichubAmRadio')!
+  }
 }
 pgnIdToCreator['sonichubAmRadio'] = (fields:any, dst:number) => new PGN_130816_SonichubAmRadio(fields, dst)
 
@@ -17044,6 +17928,9 @@ export class PGN_130816_SonichubZoneInfo extends PGN implements PGN_130816_Sonic
   isMatch() {
     return isMatch(this, PGN_130816_SonichubZoneInfoMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('sonichubZoneInfo')!
+  }
 }
 pgnIdToCreator['sonichubZoneInfo'] = (fields:any, dst:number) => new PGN_130816_SonichubZoneInfo(fields, dst)
 
@@ -17119,6 +18006,9 @@ export class PGN_130816_SonichubSource extends PGN implements PGN_130816_Sonichu
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubSourceMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('sonichubSource')!
   }
 }
 pgnIdToCreator['sonichubSource'] = (fields:any, dst:number) => new PGN_130816_SonichubSource(fields, dst)
@@ -17200,6 +18090,9 @@ export class PGN_130816_SonichubSourceList extends PGN implements PGN_130816_Son
   isMatch() {
     return isMatch(this, PGN_130816_SonichubSourceListMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('sonichubSourceList')!
+  }
 }
 pgnIdToCreator['sonichubSourceList'] = (fields:any, dst:number) => new PGN_130816_SonichubSourceList(fields, dst)
 
@@ -17275,6 +18168,9 @@ export class PGN_130816_SonichubControl extends PGN implements PGN_130816_Sonich
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubControlMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('sonichubControl')!
   }
 }
 pgnIdToCreator['sonichubControl'] = (fields:any, dst:number) => new PGN_130816_SonichubControl(fields, dst)
@@ -17362,6 +18258,9 @@ export class PGN_130816_SonichubFmRadio extends PGN implements PGN_130816_Sonich
   isMatch() {
     return isMatch(this, PGN_130816_SonichubFmRadioMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('sonichubFmRadio')!
+  }
 }
 pgnIdToCreator['sonichubFmRadio'] = (fields:any, dst:number) => new PGN_130816_SonichubFmRadio(fields, dst)
 
@@ -17448,6 +18347,9 @@ export class PGN_130816_SonichubPlaylist extends PGN implements PGN_130816_Sonic
   isMatch() {
     return isMatch(this, PGN_130816_SonichubPlaylistMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('sonichubPlaylist')!
+  }
 }
 pgnIdToCreator['sonichubPlaylist'] = (fields:any, dst:number) => new PGN_130816_SonichubPlaylist(fields, dst)
 
@@ -17525,6 +18427,9 @@ export class PGN_130816_SonichubTrack extends PGN implements PGN_130816_Sonichub
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubTrackMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('sonichubTrack')!
   }
 }
 pgnIdToCreator['sonichubTrack'] = (fields:any, dst:number) => new PGN_130816_SonichubTrack(fields, dst)
@@ -17604,6 +18509,9 @@ export class PGN_130816_SonichubArtist extends PGN implements PGN_130816_Sonichu
   isMatch() {
     return isMatch(this, PGN_130816_SonichubArtistMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('sonichubArtist')!
+  }
 }
 pgnIdToCreator['sonichubArtist'] = (fields:any, dst:number) => new PGN_130816_SonichubArtist(fields, dst)
 
@@ -17681,6 +18589,9 @@ export class PGN_130816_SonichubAlbum extends PGN implements PGN_130816_Sonichub
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubAlbumMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('sonichubAlbum')!
   }
 }
 pgnIdToCreator['sonichubAlbum'] = (fields:any, dst:number) => new PGN_130816_SonichubAlbum(fields, dst)
@@ -17766,6 +18677,9 @@ export class PGN_130816_SonichubMenuItem extends PGN implements PGN_130816_Sonic
   isMatch() {
     return isMatch(this, PGN_130816_SonichubMenuItemMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('sonichubMenuItem')!
+  }
 }
 pgnIdToCreator['sonichubMenuItem'] = (fields:any, dst:number) => new PGN_130816_SonichubMenuItem(fields, dst)
 
@@ -17841,6 +18755,9 @@ export class PGN_130816_SonichubZones extends PGN implements PGN_130816_Sonichub
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubZonesMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('sonichubZones')!
   }
 }
 pgnIdToCreator['sonichubZones'] = (fields:any, dst:number) => new PGN_130816_SonichubZones(fields, dst)
@@ -17920,6 +18837,9 @@ export class PGN_130816_SonichubMaxVolume extends PGN implements PGN_130816_Soni
   isMatch() {
     return isMatch(this, PGN_130816_SonichubMaxVolumeMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('sonichubMaxVolume')!
+  }
 }
 pgnIdToCreator['sonichubMaxVolume'] = (fields:any, dst:number) => new PGN_130816_SonichubMaxVolume(fields, dst)
 
@@ -17998,6 +18918,9 @@ export class PGN_130816_SonichubVolume extends PGN implements PGN_130816_Sonichu
   isMatch() {
     return isMatch(this, PGN_130816_SonichubVolumeMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('sonichubVolume')!
+  }
 }
 pgnIdToCreator['sonichubVolume'] = (fields:any, dst:number) => new PGN_130816_SonichubVolume(fields, dst)
 
@@ -18071,6 +18994,9 @@ export class PGN_130816_SonichubInit1 extends PGN implements PGN_130816_Sonichub
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubInit1MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('sonichubInit1')!
   }
 }
 pgnIdToCreator['sonichubInit1'] = (fields:any, dst:number) => new PGN_130816_SonichubInit1(fields, dst)
@@ -18147,6 +19073,9 @@ export class PGN_130816_SonichubPosition extends PGN implements PGN_130816_Sonic
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubPositionMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('sonichubPosition')!
   }
 }
 pgnIdToCreator['sonichubPosition'] = (fields:any, dst:number) => new PGN_130816_SonichubPosition(fields, dst)
@@ -18225,6 +19154,9 @@ export class PGN_130816_SonichubInit3 extends PGN implements PGN_130816_Sonichub
 
   isMatch() {
     return isMatch(this, PGN_130816_SonichubInit3MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('sonichubInit3')!
   }
 }
 pgnIdToCreator['sonichubInit3'] = (fields:any, dst:number) => new PGN_130816_SonichubInit3(fields, dst)
@@ -18310,6 +19242,9 @@ export class PGN_130816_SimradTextMessage extends PGN implements PGN_130816_Simr
   isMatch() {
     return isMatch(this, PGN_130816_SimradTextMessageMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('simradTextMessage')!
+  }
 }
 pgnIdToCreator['simradTextMessage'] = (fields:any, dst:number) => new PGN_130816_SimradTextMessage(fields, dst)
 
@@ -18386,6 +19321,9 @@ export class PGN_130817_NavicoUnknown extends PGN implements PGN_130817_NavicoUn
 
   isMatch() {
     return isMatch(this, PGN_130817_NavicoUnknownMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoUnknown')!
   }
 }
 pgnIdToCreator['navicoUnknown'] = (fields:any, dst:number) => new PGN_130817_NavicoUnknown(fields, dst)
@@ -18470,6 +19408,9 @@ export class PGN_130817_LowranceProductInformation extends PGN implements PGN_13
   isMatch() {
     return isMatch(this, PGN_130817_LowranceProductInformationMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('lowranceProductInformation')!
+  }
 }
 pgnIdToCreator['lowranceProductInformation'] = (fields:any, dst:number) => new PGN_130817_LowranceProductInformation(fields, dst)
 
@@ -18519,6 +19460,9 @@ export class PGN_130818 extends PGN implements PGN_130818Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('simnetReprogramData')!
+  }
 }
 pgnIdToCreator['simnetReprogramData'] = (fields:any, dst:number) => new PGN_130818(fields, dst)
 
@@ -18565,6 +19509,9 @@ export class PGN_130819 extends PGN implements PGN_130819Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('simnetRequestReprogram')!
+  }
 }
 pgnIdToCreator['simnetRequestReprogram'] = (fields:any, dst:number) => new PGN_130819(fields, dst)
 
@@ -18637,6 +19584,9 @@ export class PGN_130820_SimnetReprogramStatus extends PGN implements PGN_130820_
 
   isMatch() {
     return isMatch(this, PGN_130820_SimnetReprogramStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetReprogramStatus')!
   }
 }
 pgnIdToCreator['simnetReprogramStatus'] = (fields:any, dst:number) => new PGN_130820_SimnetReprogramStatus(fields, dst)
@@ -18714,6 +19664,9 @@ export class PGN_130820_FurunoUnknown130820 extends PGN implements PGN_130820_Fu
 
   isMatch() {
     return isMatch(this, PGN_130820_FurunoUnknown130820MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('furunoUnknown130820')!
   }
 }
 pgnIdToCreator['furunoUnknown130820'] = (fields:any, dst:number) => new PGN_130820_FurunoUnknown130820(fields, dst)
@@ -18795,6 +19748,9 @@ export class PGN_130820_FusionVersions extends PGN implements PGN_130820_FusionV
   isMatch() {
     return isMatch(this, PGN_130820_FusionVersionsMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionVersions')!
+  }
 }
 pgnIdToCreator['fusionVersions'] = (fields:any, dst:number) => new PGN_130820_FusionVersions(fields, dst)
 
@@ -18875,6 +19831,9 @@ export class PGN_130820_FusionSource extends PGN implements PGN_130820_FusionSou
   isMatch() {
     return isMatch(this, PGN_130820_FusionSourceMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSource')!
+  }
 }
 pgnIdToCreator['fusionSource'] = (fields:any, dst:number) => new PGN_130820_FusionSource(fields, dst)
 
@@ -18946,6 +19905,9 @@ export class PGN_130820_FusionSourceCount extends PGN implements PGN_130820_Fusi
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionSourceCountMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSourceCount')!
   }
 }
 pgnIdToCreator['fusionSourceCount'] = (fields:any, dst:number) => new PGN_130820_FusionSourceCount(fields, dst)
@@ -19029,6 +19991,9 @@ export class PGN_130820_FusionMedia extends PGN implements PGN_130820_FusionMedi
   isMatch() {
     return isMatch(this, PGN_130820_FusionMediaMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionMedia')!
+  }
 }
 pgnIdToCreator['fusionMedia'] = (fields:any, dst:number) => new PGN_130820_FusionMedia(fields, dst)
 
@@ -19104,6 +20069,9 @@ export class PGN_130820_FusionTrackName extends PGN implements PGN_130820_Fusion
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionTrackNameMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionTrackName')!
   }
 }
 pgnIdToCreator['fusionTrackName'] = (fields:any, dst:number) => new PGN_130820_FusionTrackName(fields, dst)
@@ -19181,6 +20149,9 @@ export class PGN_130820_FusionArtistName extends PGN implements PGN_130820_Fusio
   isMatch() {
     return isMatch(this, PGN_130820_FusionArtistNameMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionArtistName')!
+  }
 }
 pgnIdToCreator['fusionArtistName'] = (fields:any, dst:number) => new PGN_130820_FusionArtistName(fields, dst)
 
@@ -19257,6 +20228,9 @@ export class PGN_130820_FusionAlbumName extends PGN implements PGN_130820_Fusion
   isMatch() {
     return isMatch(this, PGN_130820_FusionAlbumNameMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionAlbumName')!
+  }
 }
 pgnIdToCreator['fusionAlbumName'] = (fields:any, dst:number) => new PGN_130820_FusionAlbumName(fields, dst)
 
@@ -19328,6 +20302,9 @@ export class PGN_130820_FusionDeviceName extends PGN implements PGN_130820_Fusio
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionDeviceNameMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionDeviceName')!
   }
 }
 pgnIdToCreator['fusionDeviceName'] = (fields:any, dst:number) => new PGN_130820_FusionDeviceName(fields, dst)
@@ -19403,6 +20380,9 @@ export class PGN_130820_FusionZoneName extends PGN implements PGN_130820_FusionZ
   isMatch() {
     return isMatch(this, PGN_130820_FusionZoneNameMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionZoneName')!
+  }
 }
 pgnIdToCreator['fusionZoneName'] = (fields:any, dst:number) => new PGN_130820_FusionZoneName(fields, dst)
 
@@ -19476,6 +20456,9 @@ export class PGN_130820_FusionTrackPosition extends PGN implements PGN_130820_Fu
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionTrackPositionMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionTrackPosition')!
   }
 }
 pgnIdToCreator['fusionTrackPosition'] = (fields:any, dst:number) => new PGN_130820_FusionTrackPosition(fields, dst)
@@ -19557,6 +20540,9 @@ export class PGN_130820_FusionTuner extends PGN implements PGN_130820_FusionTune
   isMatch() {
     return isMatch(this, PGN_130820_FusionTunerMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionTuner')!
+  }
 }
 pgnIdToCreator['fusionTuner'] = (fields:any, dst:number) => new PGN_130820_FusionTuner(fields, dst)
 
@@ -19635,6 +20621,9 @@ export class PGN_130820_FusionMarineTuner extends PGN implements PGN_130820_Fusi
   isMatch() {
     return isMatch(this, PGN_130820_FusionMarineTunerMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionMarineTuner')!
+  }
 }
 pgnIdToCreator['fusionMarineTuner'] = (fields:any, dst:number) => new PGN_130820_FusionMarineTuner(fields, dst)
 
@@ -19709,6 +20698,9 @@ export class PGN_130820_FusionMarineSquelch extends PGN implements PGN_130820_Fu
   isMatch() {
     return isMatch(this, PGN_130820_FusionMarineSquelchMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionMarineSquelch')!
+  }
 }
 pgnIdToCreator['fusionMarineSquelch'] = (fields:any, dst:number) => new PGN_130820_FusionMarineSquelch(fields, dst)
 
@@ -19782,6 +20774,9 @@ export class PGN_130820_FusionMarineScanMode extends PGN implements PGN_130820_F
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionMarineScanModeMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionMarineScanMode')!
   }
 }
 pgnIdToCreator['fusionMarineScanMode'] = (fields:any, dst:number) => new PGN_130820_FusionMarineScanMode(fields, dst)
@@ -19863,6 +20858,9 @@ export class PGN_130820_FusionMenuItem extends PGN implements PGN_130820_FusionM
   isMatch() {
     return isMatch(this, PGN_130820_FusionMenuItemMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionMenuItem')!
+  }
 }
 pgnIdToCreator['fusionMenuItem'] = (fields:any, dst:number) => new PGN_130820_FusionMenuItem(fields, dst)
 
@@ -19936,6 +20934,9 @@ export class PGN_130820_FusionAuxGain extends PGN implements PGN_130820_FusionAu
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionAuxGainMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionAuxGain')!
   }
 }
 pgnIdToCreator['fusionAuxGain'] = (fields:any, dst:number) => new PGN_130820_FusionAuxGain(fields, dst)
@@ -20012,6 +21013,9 @@ export class PGN_130820_FusionUsbRepeatStatus extends PGN implements PGN_130820_
   isMatch() {
     return isMatch(this, PGN_130820_FusionUsbRepeatStatusMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionUsbRepeatStatus')!
+  }
 }
 pgnIdToCreator['fusionUsbRepeatStatus'] = (fields:any, dst:number) => new PGN_130820_FusionUsbRepeatStatus(fields, dst)
 
@@ -20085,6 +21089,9 @@ export class PGN_130820_FusionSetting extends PGN implements PGN_130820_FusionSe
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionSettingMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSetting')!
   }
 }
 pgnIdToCreator['fusionSetting'] = (fields:any, dst:number) => new PGN_130820_FusionSetting(fields, dst)
@@ -20166,6 +21173,9 @@ export class PGN_130820_FusionSettings extends PGN implements PGN_130820_FusionS
   isMatch() {
     return isMatch(this, PGN_130820_FusionSettingsMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSettings')!
+  }
 }
 pgnIdToCreator['fusionSettings'] = (fields:any, dst:number) => new PGN_130820_FusionSettings(fields, dst)
 
@@ -20237,6 +21247,9 @@ export class PGN_130820_FusionMute extends PGN implements PGN_130820_FusionMuteI
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionMuteMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionMute')!
   }
 }
 pgnIdToCreator['fusionMute'] = (fields:any, dst:number) => new PGN_130820_FusionMute(fields, dst)
@@ -20312,6 +21325,9 @@ export class PGN_130820_FusionBalance extends PGN implements PGN_130820_FusionBa
   isMatch() {
     return isMatch(this, PGN_130820_FusionBalanceMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionBalance')!
+  }
 }
 pgnIdToCreator['fusionBalance'] = (fields:any, dst:number) => new PGN_130820_FusionBalance(fields, dst)
 
@@ -20385,6 +21401,9 @@ export class PGN_130820_FusionLowPassFilter extends PGN implements PGN_130820_Fu
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionLowPassFilterMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionLowPassFilter')!
   }
 }
 pgnIdToCreator['fusionLowPassFilter'] = (fields:any, dst:number) => new PGN_130820_FusionLowPassFilter(fields, dst)
@@ -20464,6 +21483,9 @@ export class PGN_130820_FusionSublevels extends PGN implements PGN_130820_Fusion
   isMatch() {
     return isMatch(this, PGN_130820_FusionSublevelsMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSublevels')!
+  }
 }
 pgnIdToCreator['fusionSublevels'] = (fields:any, dst:number) => new PGN_130820_FusionSublevels(fields, dst)
 
@@ -20541,6 +21563,9 @@ export class PGN_130820_FusionEq extends PGN implements PGN_130820_FusionEqInter
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionEqMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionEq')!
   }
 }
 pgnIdToCreator['fusionEq'] = (fields:any, dst:number) => new PGN_130820_FusionEq(fields, dst)
@@ -20620,6 +21645,9 @@ export class PGN_130820_FusionVolumeLimits extends PGN implements PGN_130820_Fus
   isMatch() {
     return isMatch(this, PGN_130820_FusionVolumeLimitsMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionVolumeLimits')!
+  }
 }
 pgnIdToCreator['fusionVolumeLimits'] = (fields:any, dst:number) => new PGN_130820_FusionVolumeLimits(fields, dst)
 
@@ -20697,6 +21725,9 @@ export class PGN_130820_FusionVolumes extends PGN implements PGN_130820_FusionVo
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionVolumesMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionVolumes')!
   }
 }
 pgnIdToCreator['fusionVolumes'] = (fields:any, dst:number) => new PGN_130820_FusionVolumes(fields, dst)
@@ -20778,6 +21809,9 @@ export class PGN_130820_FusionCapabilities extends PGN implements PGN_130820_Fus
   isMatch() {
     return isMatch(this, PGN_130820_FusionCapabilitiesMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionCapabilities')!
+  }
 }
 pgnIdToCreator['fusionCapabilities'] = (fields:any, dst:number) => new PGN_130820_FusionCapabilities(fields, dst)
 
@@ -20852,6 +21886,9 @@ export class PGN_130820_FusionLineLevelControl extends PGN implements PGN_130820
   isMatch() {
     return isMatch(this, PGN_130820_FusionLineLevelControlMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionLineLevelControl')!
+  }
 }
 pgnIdToCreator['fusionLineLevelControl'] = (fields:any, dst:number) => new PGN_130820_FusionLineLevelControl(fields, dst)
 
@@ -20923,6 +21960,9 @@ export class PGN_130820_FusionPowerState extends PGN implements PGN_130820_Fusio
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionPowerStateMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionPowerState')!
   }
 }
 pgnIdToCreator['fusionPowerState'] = (fields:any, dst:number) => new PGN_130820_FusionPowerState(fields, dst)
@@ -21004,6 +22044,9 @@ export class PGN_130820_FusionSiriusxm extends PGN implements PGN_130820_FusionS
   isMatch() {
     return isMatch(this, PGN_130820_FusionSiriusxmMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSiriusxm')!
+  }
 }
 pgnIdToCreator['fusionSiriusxm'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxm(fields, dst)
 
@@ -21079,6 +22122,9 @@ export class PGN_130820_FusionSiriusxmChannel extends PGN implements PGN_130820_
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionSiriusxmChannelMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSiriusxmChannel')!
   }
 }
 pgnIdToCreator['fusionSiriusxmChannel'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmChannel(fields, dst)
@@ -21156,6 +22202,9 @@ export class PGN_130820_FusionSiriusxmTitle extends PGN implements PGN_130820_Fu
   isMatch() {
     return isMatch(this, PGN_130820_FusionSiriusxmTitleMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSiriusxmTitle')!
+  }
 }
 pgnIdToCreator['fusionSiriusxmTitle'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmTitle(fields, dst)
 
@@ -21231,6 +22280,9 @@ export class PGN_130820_FusionSiriusxmArtist extends PGN implements PGN_130820_F
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionSiriusxmArtistMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSiriusxmArtist')!
   }
 }
 pgnIdToCreator['fusionSiriusxmArtist'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmArtist(fields, dst)
@@ -21308,6 +22360,9 @@ export class PGN_130820_FusionSiriusxmContentInfo extends PGN implements PGN_130
   isMatch() {
     return isMatch(this, PGN_130820_FusionSiriusxmContentInfoMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSiriusxmContentInfo')!
+  }
 }
 pgnIdToCreator['fusionSiriusxmContentInfo'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmContentInfo(fields, dst)
 
@@ -21384,6 +22439,9 @@ export class PGN_130820_FusionSiriusxmCategory extends PGN implements PGN_130820
   isMatch() {
     return isMatch(this, PGN_130820_FusionSiriusxmCategoryMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSiriusxmCategory')!
+  }
 }
 pgnIdToCreator['fusionSiriusxmCategory'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmCategory(fields, dst)
 
@@ -21457,6 +22515,9 @@ export class PGN_130820_FusionSiriusxmSignal extends PGN implements PGN_130820_F
 
   isMatch() {
     return isMatch(this, PGN_130820_FusionSiriusxmSignalMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSiriusxmSignal')!
   }
 }
 pgnIdToCreator['fusionSiriusxmSignal'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmSignal(fields, dst)
@@ -21534,6 +22595,9 @@ export class PGN_130820_FusionSiriusxmPresets extends PGN implements PGN_130820_
   isMatch() {
     return isMatch(this, PGN_130820_FusionSiriusxmPresetsMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSiriusxmPresets')!
+  }
 }
 pgnIdToCreator['fusionSiriusxmPresets'] = (fields:any, dst:number) => new PGN_130820_FusionSiriusxmPresets(fields, dst)
 
@@ -21604,6 +22668,9 @@ export class PGN_130821_NavicoAsciiData extends PGN implements PGN_130821_Navico
 
   isMatch() {
     return isMatch(this, PGN_130821_NavicoAsciiDataMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoAsciiData')!
   }
 }
 pgnIdToCreator['navicoAsciiData'] = (fields:any, dst:number) => new PGN_130821_NavicoAsciiData(fields, dst)
@@ -21692,6 +22759,9 @@ export class PGN_130821_FurunoUnknown130821 extends PGN implements PGN_130821_Fu
   isMatch() {
     return isMatch(this, PGN_130821_FurunoUnknown130821MatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('furunoUnknown130821')!
+  }
 }
 pgnIdToCreator['furunoUnknown130821'] = (fields:any, dst:number) => new PGN_130821_FurunoUnknown130821(fields, dst)
 
@@ -21739,6 +22809,9 @@ export class PGN_130822 extends PGN implements PGN_130822Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('navicoUnknown1')!
+  }
 }
 pgnIdToCreator['navicoUnknown1'] = (fields:any, dst:number) => new PGN_130822(fields, dst)
 
@@ -21790,6 +22863,9 @@ export class PGN_130823 extends PGN implements PGN_130823Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('maretronProprietaryTemperatureHighRange')!
+  }
 }
 pgnIdToCreator['maretronProprietaryTemperatureHighRange'] = (fields:any, dst:number) => new PGN_130823(fields, dst)
 
@@ -21869,6 +22945,9 @@ export class PGN_130824_BGKeyValueData extends PGN implements PGN_130824_BGKeyVa
   isMatch() {
     return isMatch(this, PGN_130824_BGKeyValueDataMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('bGKeyValueData')!
+  }
 }
 pgnIdToCreator['bGKeyValueData'] = (fields:any, dst:number) => new PGN_130824_BGKeyValueData(fields, dst)
 
@@ -21946,6 +23025,9 @@ export class PGN_130824_MaretronAnnunciator extends PGN implements PGN_130824_Ma
   isMatch() {
     return isMatch(this, PGN_130824_MaretronAnnunciatorMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronAnnunciator')!
+  }
 }
 pgnIdToCreator['maretronAnnunciator'] = (fields:any, dst:number) => new PGN_130824_MaretronAnnunciator(fields, dst)
 
@@ -21993,6 +23075,9 @@ export class PGN_130825 extends PGN implements PGN_130825Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('navicoUnknown2')!
+  }
 }
 pgnIdToCreator['navicoUnknown2'] = (fields:any, dst:number) => new PGN_130825(fields, dst)
 
@@ -22045,6 +23130,9 @@ export class PGN_130827 extends PGN implements PGN_130827Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('lowranceUnknown')!
+  }
 }
 pgnIdToCreator['lowranceUnknown'] = (fields:any, dst:number) => new PGN_130827(fields, dst)
 
@@ -22091,6 +23179,9 @@ export class PGN_130828 extends PGN implements PGN_130828Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('simnetSetSerialNumber')!
+  }
 }
 pgnIdToCreator['simnetSetSerialNumber'] = (fields:any, dst:number) => new PGN_130828(fields, dst)
 
@@ -22137,6 +23228,9 @@ export class PGN_130831 extends PGN implements PGN_130831Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('suzukiEngineAndStorageDeviceConfig')!
+  }
 }
 pgnIdToCreator['suzukiEngineAndStorageDeviceConfig'] = (fields:any, dst:number) => new PGN_130831(fields, dst)
 
@@ -22183,6 +23277,9 @@ export class PGN_130832 extends PGN implements PGN_130832Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('simnetFuelUsedHighResolution')!
+  }
 }
 pgnIdToCreator['simnetFuelUsedHighResolution'] = (fields:any, dst:number) => new PGN_130832(fields, dst)
 
@@ -22235,6 +23332,9 @@ export class PGN_130833 extends PGN implements PGN_130833Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('bGUserAndRemoteRename')!
+  }
 }
 pgnIdToCreator['bGUserAndRemoteRename'] = (fields:any, dst:number) => new PGN_130833(fields, dst)
 
@@ -22281,6 +23381,9 @@ export class PGN_130834 extends PGN implements PGN_130834Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('simnetEngineAndTankConfiguration')!
+  }
 }
 pgnIdToCreator['simnetEngineAndTankConfiguration'] = (fields:any, dst:number) => new PGN_130834(fields, dst)
 
@@ -22327,6 +23430,9 @@ export class PGN_130835 extends PGN implements PGN_130835Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('simnetSetEngineAndTankConfiguration')!
+  }
 }
 pgnIdToCreator['simnetSetEngineAndTankConfiguration'] = (fields:any, dst:number) => new PGN_130835(fields, dst)
 
@@ -22411,6 +23517,9 @@ export class PGN_130836_SimnetFluidLevelSensorConfiguration extends PGN implemen
 
   isMatch() {
     return isMatch(this, PGN_130836_SimnetFluidLevelSensorConfigurationMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetFluidLevelSensorConfiguration')!
   }
 }
 pgnIdToCreator['simnetFluidLevelSensorConfiguration'] = (fields:any, dst:number) => new PGN_130836_SimnetFluidLevelSensorConfiguration(fields, dst)
@@ -22497,6 +23606,9 @@ export class PGN_130836_MaretronSwitchStatusCounter extends PGN implements PGN_1
   isMatch() {
     return isMatch(this, PGN_130836_MaretronSwitchStatusCounterMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronSwitchStatusCounter')!
+  }
 }
 pgnIdToCreator['maretronSwitchStatusCounter'] = (fields:any, dst:number) => new PGN_130836_MaretronSwitchStatusCounter(fields, dst)
 
@@ -22563,6 +23675,9 @@ export class PGN_130837_SimnetFuelFlowTurbineConfiguration extends PGN implement
 
   isMatch() {
     return isMatch(this, PGN_130837_SimnetFuelFlowTurbineConfigurationMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetFuelFlowTurbineConfiguration')!
   }
 }
 pgnIdToCreator['simnetFuelFlowTurbineConfiguration'] = (fields:any, dst:number) => new PGN_130837_SimnetFuelFlowTurbineConfiguration(fields, dst)
@@ -22649,6 +23764,9 @@ export class PGN_130837_MaretronSwitchStatusTimer extends PGN implements PGN_130
   isMatch() {
     return isMatch(this, PGN_130837_MaretronSwitchStatusTimerMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronSwitchStatusTimer')!
+  }
 }
 pgnIdToCreator['maretronSwitchStatusTimer'] = (fields:any, dst:number) => new PGN_130837_MaretronSwitchStatusTimer(fields, dst)
 
@@ -22695,6 +23813,9 @@ export class PGN_130838 extends PGN implements PGN_130838Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('simnetFluidLevelWarning')!
+  }
 }
 pgnIdToCreator['simnetFluidLevelWarning'] = (fields:any, dst:number) => new PGN_130838(fields, dst)
 
@@ -22741,6 +23862,9 @@ export class PGN_130839 extends PGN implements PGN_130839Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('simnetPressureSensorConfiguration')!
+  }
 }
 pgnIdToCreator['simnetPressureSensorConfiguration'] = (fields:any, dst:number) => new PGN_130839(fields, dst)
 
@@ -22787,6 +23911,9 @@ export class PGN_130840 extends PGN implements PGN_130840Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('simnetDataUserGroupConfiguration')!
+  }
 }
 pgnIdToCreator['simnetDataUserGroupConfiguration'] = (fields:any, dst:number) => new PGN_130840(fields, dst)
 
@@ -22865,6 +23992,9 @@ export class PGN_130842_SimnetAisClassBStaticDataMsg24PartA extends PGN implemen
 
   isMatch() {
     return isMatch(this, PGN_130842_SimnetAisClassBStaticDataMsg24PartAMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetAisClassBStaticDataMsg24PartA')!
   }
 }
 pgnIdToCreator['simnetAisClassBStaticDataMsg24PartA'] = (fields:any, dst:number) => new PGN_130842_SimnetAisClassBStaticDataMsg24PartA(fields, dst)
@@ -22950,6 +24080,9 @@ export class PGN_130842_FurunoSixDegreesOfFreedomMovement extends PGN implements
 
   isMatch() {
     return isMatch(this, PGN_130842_FurunoSixDegreesOfFreedomMovementMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('furunoSixDegreesOfFreedomMovement')!
   }
 }
 pgnIdToCreator['furunoSixDegreesOfFreedomMovement'] = (fields:any, dst:number) => new PGN_130842_FurunoSixDegreesOfFreedomMovement(fields, dst)
@@ -23049,6 +24182,9 @@ export class PGN_130842_SimnetAisClassBStaticDataMsg24PartB extends PGN implemen
   isMatch() {
     return isMatch(this, PGN_130842_SimnetAisClassBStaticDataMsg24PartBMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetAisClassBStaticDataMsg24PartB')!
+  }
 }
 pgnIdToCreator['simnetAisClassBStaticDataMsg24PartB'] = (fields:any, dst:number) => new PGN_130842_SimnetAisClassBStaticDataMsg24PartB(fields, dst)
 
@@ -23126,6 +24262,9 @@ export class PGN_130843_FurunoHeelAngleRollInformation extends PGN implements PG
   isMatch() {
     return isMatch(this, PGN_130843_FurunoHeelAngleRollInformationMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('furunoHeelAngleRollInformation')!
+  }
 }
 pgnIdToCreator['furunoHeelAngleRollInformation'] = (fields:any, dst:number) => new PGN_130843_FurunoHeelAngleRollInformation(fields, dst)
 
@@ -23193,6 +24332,9 @@ export class PGN_130843_SimnetSonarStatusFrequencyAndDspVoltage extends PGN impl
   isMatch() {
     return isMatch(this, PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetSonarStatusFrequencyAndDspVoltage')!
+  }
 }
 pgnIdToCreator['simnetSonarStatusFrequencyAndDspVoltage'] = (fields:any, dst:number) => new PGN_130843_SimnetSonarStatusFrequencyAndDspVoltage(fields, dst)
 
@@ -23259,6 +24401,9 @@ export class PGN_130845_FurunoMultiSatsInViewExtended extends PGN implements PGN
 
   isMatch() {
     return isMatch(this, PGN_130845_FurunoMultiSatsInViewExtendedMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('furunoMultiSatsInViewExtended')!
   }
 }
 pgnIdToCreator['furunoMultiSatsInViewExtended'] = (fields:any, dst:number) => new PGN_130845_FurunoMultiSatsInViewExtended(fields, dst)
@@ -23343,6 +24488,9 @@ export class PGN_130845_SimnetKeyValue extends PGN implements PGN_130845_SimnetK
   isMatch() {
     return isMatch(this, PGN_130845_SimnetKeyValueMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetKeyValue')!
+  }
 }
 pgnIdToCreator['simnetKeyValue'] = (fields:any, dst:number) => new PGN_130845_SimnetKeyValue(fields, dst)
 
@@ -23426,6 +24574,9 @@ export class PGN_130846_SimnetParameterSet extends PGN implements PGN_130846_Sim
   isMatch() {
     return isMatch(this, PGN_130846_SimnetParameterSetMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetParameterSet')!
+  }
 }
 pgnIdToCreator['simnetParameterSet'] = (fields:any, dst:number) => new PGN_130846_SimnetParameterSet(fields, dst)
 
@@ -23493,6 +24644,9 @@ export class PGN_130846_FurunoMotionSensorStatusExtended extends PGN implements 
   isMatch() {
     return isMatch(this, PGN_130846_FurunoMotionSensorStatusExtendedMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('furunoMotionSensorStatusExtended')!
+  }
 }
 pgnIdToCreator['furunoMotionSensorStatusExtended'] = (fields:any, dst:number) => new PGN_130846_FurunoMotionSensorStatusExtended(fields, dst)
 
@@ -23544,6 +24698,9 @@ export class PGN_130847 extends PGN implements PGN_130847Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('seatalkNodeStatistics')!
+  }
 }
 pgnIdToCreator['seatalkNodeStatistics'] = (fields:any, dst:number) => new PGN_130847(fields, dst)
 
@@ -23596,6 +24753,9 @@ export class PGN_130848 extends PGN implements PGN_130848Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('seatalkWaypointInformation')!
+  }
 }
 pgnIdToCreator['seatalkWaypointInformation'] = (fields:any, dst:number) => new PGN_130848(fields, dst)
 
@@ -23680,6 +24840,9 @@ export class PGN_130850_SimnetApCommand extends PGN implements PGN_130850_Simnet
   isMatch() {
     return isMatch(this, PGN_130850_SimnetApCommandMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetApCommand')!
+  }
 }
 pgnIdToCreator['simnetApCommand'] = (fields:any, dst:number) => new PGN_130850_SimnetApCommand(fields, dst)
 
@@ -23763,6 +24926,9 @@ export class PGN_130850_SimnetEventCommandApCommand extends PGN implements PGN_1
 
   isMatch() {
     return isMatch(this, PGN_130850_SimnetEventCommandApCommandMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetEventCommandApCommand')!
   }
 }
 pgnIdToCreator['simnetEventCommandApCommand'] = (fields:any, dst:number) => new PGN_130850_SimnetEventCommandApCommand(fields, dst)
@@ -23850,6 +25016,9 @@ export class PGN_130850_SimnetAlarm extends PGN implements PGN_130850_SimnetAlar
   isMatch() {
     return isMatch(this, PGN_130850_SimnetAlarmMatchFields)
   }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetAlarm')!
+  }
 }
 pgnIdToCreator['simnetAlarm'] = (fields:any, dst:number) => new PGN_130850_SimnetAlarm(fields, dst)
 
@@ -23904,6 +25073,9 @@ export class PGN_130851 extends PGN implements PGN_130851Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('simnetEventReplyApCommand')!
+  }
 }
 pgnIdToCreator['simnetEventReplyApCommand'] = (fields:any, dst:number) => new PGN_130851(fields, dst)
 
@@ -23956,6 +25128,9 @@ export class PGN_130856 extends PGN implements PGN_130856Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('simnetAlarmMessage')!
+  }
 }
 pgnIdToCreator['simnetAlarmMessage'] = (fields:any, dst:number) => new PGN_130856(fields, dst)
 
@@ -24010,6 +25185,9 @@ export class PGN_130860 extends PGN implements PGN_130860Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('simnetApUnknown4')!
+  }
 }
 pgnIdToCreator['simnetApUnknown4'] = (fields:any, dst:number) => new PGN_130860(fields, dst)
 
@@ -24060,6 +25238,9 @@ export class PGN_130880 extends PGN implements PGN_130880Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('airmarAdditionalWeatherData')!
+  }
 }
 pgnIdToCreator['airmarAdditionalWeatherData'] = (fields:any, dst:number) => new PGN_130880(fields, dst)
 
@@ -24110,6 +25291,9 @@ export class PGN_130881 extends PGN implements PGN_130881Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('airmarHeaterControl')!
+  }
 }
 pgnIdToCreator['airmarHeaterControl'] = (fields:any, dst:number) => new PGN_130881(fields, dst)
 
@@ -24164,6 +25348,9 @@ export class PGN_130918 extends PGN implements PGN_130918Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('seatalkRouteInformation')!
+  }
 }
 pgnIdToCreator['seatalkRouteInformation'] = (fields:any, dst:number) => new PGN_130918(fields, dst)
 
@@ -24215,6 +25402,9 @@ export class PGN_130944 extends PGN implements PGN_130944Interface {
     this.fields = fields
   }
 
+  getDefinition(): Definition {
+    return getPGNWithId('airmarPost')!
+  }
 }
 pgnIdToCreator['airmarPost'] = (fields:any, dst:number) => new PGN_130944(fields, dst)
 

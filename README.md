@@ -5,6 +5,4 @@
 
 TypeScript Canboat PGN Definitions
 
-# This is very much in flux right now, so expect many breaking changes until stable
-
 [Documentation](https://canboat.github.io/ts-pgns/index.html)

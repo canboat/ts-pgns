@@ -239,7 +239,7 @@ export abstract class PGN implements PGNInterface {
   pgnNumbers.forEach((pgnNumber) => {
     const pgns = organized[pgnNumber]
     pgns.forEach((pgn: any) => {
-      if ( pgn.PGN !== 59392 || !pgn.Fallback ) {
+      if (pgn.PGN !== 59392 || !pgn.Fallback) {
         outputPGN(pgn, pgns.length > 1)
       }
     })

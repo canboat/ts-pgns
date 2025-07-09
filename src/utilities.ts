@@ -32,9 +32,7 @@ import {
  */
 export const getAllPGNs = (): Definition[] => {
   const all: Definition[] = canboat.PGNs as Definition[]
-  return all.filter(
-    (pgn: any) => pgn.Fallback === undefined || pgn.Fallback === false
-  )
+  return all
 }
 
 let pgnNumberMap: { [key: number]: Definition[] }
@@ -201,12 +199,15 @@ export const findMatchingDefinition = (pgn: PGN): Definition => {
     throw Error(`unknown pgn ${pgn.pgn}`)
   }
 
-  let def = defs[0]
-
   if (defs.length === 1) {
-    return def
+    return defs[0]
   }
 
+  defs = defs.filter(
+    (pgn: any) => pgn.Fallback === undefined || pgn.Fallback === false
+  )
+
+  let def = defs[0]
   let repeatingSize = def.RepeatingFieldSet1Size || 0
 
   for (let i = 0; i < def.Fields.length - repeatingSize; i++) {

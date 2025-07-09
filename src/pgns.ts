@@ -152,6 +152,7 @@ export abstract class PGN implements PGNInterface {
  *
  * Explanation: This message is provided by ISO 11783 for a handshake mechanism between transmitting and receiving devices. This message is the possible response to acknowledge the reception of a 'normal broadcast' message or the response to a specific command to indicate compliance or failure.
  *
+ *
  * @category PGN_59392
  */
 export interface PGN_59392Interface extends PGNInterface {
@@ -730,6 +731,59 @@ pgnIdToCreator['isoAddressClaim'] = (fields:any, dst:number) => new PGN_60928(fi
 /**
  * PGN: 61184
  *
+ * Description: 0xEF00: Manufacturer Proprietary single-frame addressed
+ *
+ * Explanation: Manufacturer proprietary PGNs in PDU1 (addressed) single-frame PGN 0xEF00 (61184). When this is shown during analysis it means the PGN is not reverse engineered yet.
+ *
+ *
+ * @category PGN_61184
+ */
+export interface PGN_61184Interface extends PGNInterface {
+  fields: PGN_61184Fields
+}
+
+/**
+ * @category PGN_61184
+ */
+export interface PGN_61184Fields {
+  manufacturerCode: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_61184
+ */
+export const PGN_61184Defaults = {
+  pgn: 61184,
+  dst: 255,
+  prio: 3,
+  fields: []
+}
+
+/**
+ * @category PGN_61184
+ */
+export class PGN_61184 extends PGN implements PGN_61184Interface {
+  fields: PGN_61184Fields
+
+  constructor(fields: PGN_61184Fields, dst: number = 255) {
+    super(PGN_61184Defaults)
+    this.dst = dst
+    this.fields = fields
+  }
+
+  getDefinition(): Definition {
+    return getPGNWithId('0xef00ManufacturerProprietarySingleFrameAddressed')!
+  }
+}
+pgnIdToCreator['0xef00ManufacturerProprietarySingleFrameAddressed'] = (fields:any, dst:number) => new PGN_61184(fields, dst)
+
+
+/**
+ * PGN: 61184
+ *
  * Description: Seatalk: Wireless Keypad Light Control
  *
  * Match: Manufacturer Code == Raymarine<br>
@@ -958,6 +1012,58 @@ export class PGN_61184_VictronBatteryRegister extends PGN implements PGN_61184_V
   }
 }
 pgnIdToCreator['victronBatteryRegister'] = (fields:any, dst:number) => new PGN_61184_VictronBatteryRegister(fields, dst)
+
+
+/**
+ * PGN: 61440
+ *
+ * Description: 0xF000-0xFEFF: Standardized single-frame non-addressed
+ *
+ * Explanation: PGNs in PDU2 (non-addressed) single-frame PGN range 0xF000 to 0xFEFF (61440 - 65279). When this is shown during analysis it means the PGN is not reverse engineered yet.
+ *
+ * @category PGN_61440
+ */
+export interface PGN_61440Interface extends PGNInterface {
+  fields: PGN_61440Fields
+}
+
+/**
+ * @category PGN_61440
+ */
+export interface PGN_61440Fields {
+  manufacturerCode: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_61440
+ */
+export const PGN_61440Defaults = {
+  pgn: 61440,
+  dst: 255,
+  prio: 3,
+  fields: []
+}
+
+/**
+ * @category PGN_61440
+ */
+export class PGN_61440 extends PGN implements PGN_61440Interface {
+  fields: PGN_61440Fields
+
+  constructor(fields: PGN_61440Fields, dst: number = 255) {
+    super(PGN_61440Defaults)
+    this.dst = dst
+    this.fields = fields
+  }
+
+  getDefinition(): Definition {
+    return getPGNWithId('0xf0000xfeffStandardizedSingleFrameNonAddressed')!
+  }
+}
+pgnIdToCreator['0xf0000xfeffStandardizedSingleFrameNonAddressed'] = (fields:any, dst:number) => new PGN_61440(fields, dst)
 
 
 /**
@@ -2502,7 +2608,10 @@ pgnIdToCreator['isoCommandedAddress'] = (fields:any, dst:number) => new PGN_6524
 /**
  * PGN: 65280
  *
- * Description: Furuno: Heave
+ * Description: 0xFF00-0xFFFF: Manufacturer Proprietary single-frame non-addressed
+ *
+ * Explanation: Manufacturer proprietary PGNs in PDU2 (non-addressed) single-frame PGN range 0xFF00 to 0xFFFF (65280 - 65535). When this is shown during analysis it means the PGN is not reverse engineered yet.
+ *
  *
  * @category PGN_65280
  */
@@ -2517,8 +2626,7 @@ export interface PGN_65280Fields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
-  heave?: N2K_Number
-  reserved5?: number
+  data?: N2K_Binary
 }
 
 /**
@@ -2527,7 +2635,7 @@ export interface PGN_65280Fields {
 export const PGN_65280Defaults = {
   pgn: 65280,
   dst: 255,
-  prio: 2,
+  prio: 3,
   fields: []
 }
 
@@ -2544,10 +2652,84 @@ export class PGN_65280 extends PGN implements PGN_65280Interface {
   }
 
   getDefinition(): Definition {
+    return getPGNWithId('0xff000xffffManufacturerProprietarySingleFrameNonAddressed')!
+  }
+}
+pgnIdToCreator['0xff000xffffManufacturerProprietarySingleFrameNonAddressed'] = (fields:any, dst:number) => new PGN_65280(fields, dst)
+
+
+/**
+ * PGN: 65280
+ *
+ * Description: Furuno: Heave
+ *
+ * Match: Manufacturer Code == Furuno<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65280_FurunoHeave
+ */
+export interface PGN_65280_FurunoHeaveInterface extends PGNInterface {
+  fields: PGN_65280_FurunoHeaveFields
+}
+
+/**
+ * @category PGN_65280_FurunoHeave
+ */
+export interface PGN_65280_FurunoHeaveFields {
+  manufacturerCode: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode: enums.IndustryCode | number
+  heave?: N2K_Number
+  reserved5?: number
+}
+
+/**
+ * @category PGN_65280_FurunoHeave
+ */
+export const PGN_65280_FurunoHeaveDefaults = {
+  pgn: 65280,
+  dst: 255,
+  prio: 2,
+  fields: []
+}
+
+/**
+ * @category PGN_65280_FurunoHeave
+ */
+export const PGN_65280_FurunoHeaveMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Furuno,
+  industryCode: enums.IndustryCode.Marine,
+}
+
+/**
+ * @category PGN_65280_FurunoHeave
+ */
+export interface PGN_65280_FurunoHeaveCreateArgs {
+  reserved?: number
+  heave?: N2K_Number
+  reserved5?: number
+}
+
+/**
+ * @category PGN_65280_FurunoHeave
+ */
+export class PGN_65280_FurunoHeave extends PGN implements PGN_65280_FurunoHeaveInterface {
+  fields: PGN_65280_FurunoHeaveFields
+
+  constructor(fields: PGN_65280_FurunoHeaveCreateArgs, dst: number = 255) {
+    super(PGN_65280_FurunoHeaveDefaults)
+    this.dst = dst
+    this.fields = { ...PGN_65280_FurunoHeaveMatchFields, ...fields }
+  }
+
+  isMatch() {
+    return isMatch(this, PGN_65280_FurunoHeaveMatchFields)
+  }
+  getDefinition(): Definition {
     return getPGNWithId('furunoHeave')!
   }
 }
-pgnIdToCreator['furunoHeave'] = (fields:any, dst:number) => new PGN_65280(fields, dst)
+pgnIdToCreator['furunoHeave'] = (fields:any, dst:number) => new PGN_65280_FurunoHeave(fields, dst)
 
 
 /**
@@ -4771,6 +4953,56 @@ pgnIdToCreator['simnetAutopilotMode'] = (fields:any, dst:number) => new PGN_6548
 /**
  * PGN: 126208
  *
+ * Description: 0x1ED00 - 0x1EE00: Standardized fast-packet addressed
+ *
+ * Explanation: Standardized PGNs in PDU1 (addressed) fast-packet PGN range 0x1ED00 to 0x1EE00 (126208 - 126464). When this is shown during analysis it means the PGN is not reverse engineered yet.
+ *
+ *
+ * @category PGN_126208
+ */
+export interface PGN_126208Interface extends PGNInterface {
+  fields: PGN_126208Fields
+}
+
+/**
+ * @category PGN_126208
+ */
+export interface PGN_126208Fields {
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_126208
+ */
+export const PGN_126208Defaults = {
+  pgn: 126208,
+  dst: 255,
+  prio: 3,
+  fields: []
+}
+
+/**
+ * @category PGN_126208
+ */
+export class PGN_126208 extends PGN implements PGN_126208Interface {
+  fields: PGN_126208Fields
+
+  constructor(fields: PGN_126208Fields, dst: number = 255) {
+    super(PGN_126208Defaults)
+    this.dst = dst
+    this.fields = fields
+  }
+
+  getDefinition(): Definition {
+    return getPGNWithId('0x1ed000x1ee00StandardizedFastPacketAddressed')!
+  }
+}
+pgnIdToCreator['0x1ed000x1ee00StandardizedFastPacketAddressed'] = (fields:any, dst:number) => new PGN_126208(fields, dst)
+
+
+/**
+ * PGN: 126208
+ *
  * Description: NMEA - Request group function
  *
  * Explanation: This is the Request variation of this group function PGN. The receiver shall respond by sending the requested PGN, at the desired transmission interval.
@@ -5440,6 +5672,59 @@ export class PGN_126464 extends PGN implements PGN_126464Interface {
   }
 }
 pgnIdToCreator['pgnListTransmitAndReceive'] = (fields:any, dst:number) => new PGN_126464(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: 0x1EF00: Manufacturer Proprietary fast-packet addressed
+ *
+ * Explanation: Manufacturer Proprietary PGNs in PDU1 (addressed) fast-packet PGN 0x1EF00 (126720).When this is shown during analysis it means the PGN is not reverse engineered yet.
+ *
+ *
+ * @category PGN_126720
+ */
+export interface PGN_126720Interface extends PGNInterface {
+  fields: PGN_126720Fields
+}
+
+/**
+ * @category PGN_126720
+ */
+export interface PGN_126720Fields {
+  manufacturerCode: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_126720
+ */
+export const PGN_126720Defaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3,
+  fields: []
+}
+
+/**
+ * @category PGN_126720
+ */
+export class PGN_126720 extends PGN implements PGN_126720Interface {
+  fields: PGN_126720Fields
+
+  constructor(fields: PGN_126720Fields, dst: number = 255) {
+    super(PGN_126720Defaults)
+    this.dst = dst
+    this.fields = fields
+  }
+
+  getDefinition(): Definition {
+    return getPGNWithId('0x1ef00ManufacturerProprietaryFastPacketAddressed')!
+  }
+}
+pgnIdToCreator['0x1ef00ManufacturerProprietaryFastPacketAddressed'] = (fields:any, dst:number) => new PGN_126720(fields, dst)
 
 
 /**
@@ -7794,6 +8079,55 @@ export class PGN_126720_GarminColorMode extends PGN implements PGN_126720_Garmin
   }
 }
 pgnIdToCreator['garminColorMode'] = (fields:any, dst:number) => new PGN_126720_GarminColorMode(fields, dst)
+
+
+/**
+ * PGN: 126976
+ *
+ * Description: 0x1F000-0x1FEFF: Standardized mixed single/fast packet non-addressed
+ *
+ * Explanation: Standardized PGNs in PDU2 (non-addressed) mixed single/fast packet PGN range 0x1F000 to 0x1FEFF (126976 - 130815). When this is shown during analysis it means the PGN is not reverse engineered yet.
+ *
+ * @category PGN_126976
+ */
+export interface PGN_126976Interface extends PGNInterface {
+  fields: PGN_126976Fields
+}
+
+/**
+ * @category PGN_126976
+ */
+export interface PGN_126976Fields {
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_126976
+ */
+export const PGN_126976Defaults = {
+  pgn: 126976,
+  dst: 255,
+  prio: 3,
+  fields: []
+}
+
+/**
+ * @category PGN_126976
+ */
+export class PGN_126976 extends PGN implements PGN_126976Interface {
+  fields: PGN_126976Fields
+
+  constructor(fields: PGN_126976Fields, dst: number = 255) {
+    super(PGN_126976Defaults)
+    this.dst = dst
+    this.fields = fields
+  }
+
+  getDefinition(): Definition {
+    return getPGNWithId('0x1f0000x1feffStandardizedMixedSingleFastPacketNonAddressed')!
+  }
+}
+pgnIdToCreator['0x1f0000x1feffStandardizedMixedSingleFastPacketNonAddressed'] = (fields:any, dst:number) => new PGN_126976(fields, dst)
 
 
 /**
@@ -17689,6 +18023,56 @@ export class PGN_130586 extends PGN implements PGN_130586Interface {
   }
 }
 pgnIdToCreator['zoneConfiguration'] = (fields:any, dst:number) => new PGN_130586(fields, dst)
+
+
+/**
+ * PGN: 130816
+ *
+ * Description: 0x1FF00-0x1FFFF: Manufacturer Specific fast-packet non-addressed
+ *
+ * Explanation: This definition is used for Manufacturer Specific PGNs in PDU2 (non-addressed) fast-packet PGN range 0x1FF00 to 0x1FFFF (130816 - 131071). When this is shown during analysis it means the PGN is not reverse engineered yet.
+ *
+ *
+ * @category PGN_130816
+ */
+export interface PGN_130816Interface extends PGNInterface {
+  fields: PGN_130816Fields
+}
+
+/**
+ * @category PGN_130816
+ */
+export interface PGN_130816Fields {
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130816
+ */
+export const PGN_130816Defaults = {
+  pgn: 130816,
+  dst: 255,
+  prio: 3,
+  fields: []
+}
+
+/**
+ * @category PGN_130816
+ */
+export class PGN_130816 extends PGN implements PGN_130816Interface {
+  fields: PGN_130816Fields
+
+  constructor(fields: PGN_130816Fields, dst: number = 255) {
+    super(PGN_130816Defaults)
+    this.dst = dst
+    this.fields = fields
+  }
+
+  getDefinition(): Definition {
+    return getPGNWithId('0x1ff000x1ffffManufacturerSpecificFastPacketNonAddressed')!
+  }
+}
+pgnIdToCreator['0x1ff000x1ffffManufacturerSpecificFastPacketNonAddressed'] = (fields:any, dst:number) => new PGN_130816(fields, dst)
 
 
 /**

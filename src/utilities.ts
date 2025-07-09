@@ -32,9 +32,7 @@ import {
  */
 export const getAllPGNs = (): Definition[] => {
   const all: Definition[] = canboat.PGNs as Definition[]
-  return all.filter(
-    (pgn: any) => pgn.Fallback === undefined || pgn.Fallback === false
-  )
+  return all
 }
 
 let pgnNumberMap: { [key: number]: Definition[] }

@@ -26,6 +26,7 @@ import {
   BitEnumeration,
   FieldTypeEnumeration
 } from './definition'
+import { satisfies } from 'semver'
 
 /**
  * @category PGN Definition Access
@@ -306,3 +307,19 @@ export const nameToId = (name: string) => {
   return fixIdentifier(camelCase(name), '_')
   //return camelCase(fixIdentifier(name, '_'))
 }
+
+let skServerSupportsCamelCase: boolean|undefined = undefined
+
+/**
+ * Convert a PGN with camelCase keys to old, Name based keys
+ * if the signalk-server version does support camelCase
+ *
+ * @category Utilities
+ */
+export const convertCamelCase = (pluginApp: any, pgn: PGN) => {
+  if ( skServerSupportsCamelCase === undefined ) { 
+    skServerSupportsCamelCase = satisfies(pluginApp.config.version, '>=2.15.0')
+  }
+  return skServerSupportsCamelCase === false ? mapCamelCaseKeys(pgn) : pgn
+}
+

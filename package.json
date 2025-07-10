@@ -28,7 +28,8 @@
     "url": "https://github.com/canboat/ts-pgns.git"
   },
   "dependencies": {
-    "camelcase": "^6.0.0"
+    "camelcase": "^6.0.0",
+    "semver": "^7.7.2"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.6",
@@ -36,6 +37,7 @@
     "@types/minimist": "^1.2.5",
     "@types/mocha": "^10.0.10",
     "@types/node": "^24.0.4",
+    "@types/semver": "^7.7.0",
     "chai": "^5.2.0",
     "chai-json-equal": "^0.0.1",
     "chai-things": "^0.2.0",

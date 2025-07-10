@@ -394,7 +394,7 @@ export abstract class PGN implements PGNInterface {
       category()
       console.log(`export const ${typeName}MatchFields = {`)
       pgn.Fields.forEach((field: Field) => {
-        if (field.Match) {
+        if (field.Match !== undefined) {
           let value: any
           if (field.FieldType === 'LOOKUP' && field.Description) {
             const ename =
@@ -419,7 +419,7 @@ export abstract class PGN implements PGNInterface {
       category()
       console.log(`export interface ${typeName}CreateArgs {`)
       pgn.Fields.forEach((field: Field, idx) => {
-        if (!field.Match) {
+        if (field.Match === undefined) {
           if (
             pgn.RepeatingFieldSet1StartField !== undefined &&
             idx + 1 >= pgn.RepeatingFieldSet1StartField &&

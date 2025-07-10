@@ -152,7 +152,6 @@ export abstract class PGN implements PGNInterface {
  *
  * Explanation: This message is provided by ISO 11783 for a handshake mechanism between transmitting and receiving devices. This message is the possible response to acknowledge the reception of a 'normal broadcast' message or the response to a specific command to indicate compliance or failure.
  *
- *
  * @category PGN_59392
  */
 export interface PGN_59392Interface extends PGNInterface {
@@ -734,7 +733,6 @@ pgnIdToCreator['isoAddressClaim'] = (fields:any, dst:number) => new PGN_60928(fi
  * Description: 0xEF00: Manufacturer Proprietary single-frame addressed
  *
  * Explanation: Manufacturer proprietary PGNs in PDU1 (addressed) single-frame PGN 0xEF00 (61184). When this is shown during analysis it means the PGN is not reverse engineered yet.
- *
  *
  * @category PGN_61184
  */
@@ -2612,7 +2610,6 @@ pgnIdToCreator['isoCommandedAddress'] = (fields:any, dst:number) => new PGN_6524
  *
  * Explanation: Manufacturer proprietary PGNs in PDU2 (non-addressed) single-frame PGN range 0xFF00 to 0xFFFF (65280 - 65535). When this is shown during analysis it means the PGN is not reverse engineered yet.
  *
- *
  * @category PGN_65280
  */
 export interface PGN_65280Interface extends PGNInterface {
@@ -2737,16 +2734,19 @@ pgnIdToCreator['furunoHeave'] = (fields:any, dst:number) => new PGN_65280_Furuno
  *
  * Description: Maretron: Proprietary DC Breaker Current
  *
- * @category PGN_65284
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65284_MaretronProprietaryDcBreakerCurrent
  */
-export interface PGN_65284Interface extends PGNInterface {
-  fields: PGN_65284Fields
+export interface PGN_65284_MaretronProprietaryDcBreakerCurrentInterface extends PGNInterface {
+  fields: PGN_65284_MaretronProprietaryDcBreakerCurrentFields
 }
 
 /**
- * @category PGN_65284
+ * @category PGN_65284_MaretronProprietaryDcBreakerCurrent
  */
-export interface PGN_65284Fields {
+export interface PGN_65284_MaretronProprietaryDcBreakerCurrentFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -2757,9 +2757,9 @@ export interface PGN_65284Fields {
 }
 
 /**
- * @category PGN_65284
+ * @category PGN_65284_MaretronProprietaryDcBreakerCurrent
  */
-export const PGN_65284Defaults = {
+export const PGN_65284_MaretronProprietaryDcBreakerCurrentDefaults = {
   pgn: 65284,
   dst: 255,
   prio: 6,
@@ -2767,22 +2767,44 @@ export const PGN_65284Defaults = {
 }
 
 /**
- * @category PGN_65284
+ * @category PGN_65284_MaretronProprietaryDcBreakerCurrent
  */
-export class PGN_65284 extends PGN implements PGN_65284Interface {
-  fields: PGN_65284Fields
+export const PGN_65284_MaretronProprietaryDcBreakerCurrentMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_65284Fields, dst: number = 255) {
-    super(PGN_65284Defaults)
+/**
+ * @category PGN_65284_MaretronProprietaryDcBreakerCurrent
+ */
+export interface PGN_65284_MaretronProprietaryDcBreakerCurrentCreateArgs {
+  reserved?: number
+  bankInstance: N2K_Number
+  indicatorNumber?: N2K_Number
+  breakerCurrent?: N2K_Number
+  reserved7?: number
+}
+
+/**
+ * @category PGN_65284_MaretronProprietaryDcBreakerCurrent
+ */
+export class PGN_65284_MaretronProprietaryDcBreakerCurrent extends PGN implements PGN_65284_MaretronProprietaryDcBreakerCurrentInterface {
+  fields: PGN_65284_MaretronProprietaryDcBreakerCurrentFields
+
+  constructor(fields: PGN_65284_MaretronProprietaryDcBreakerCurrentCreateArgs, dst: number = 255) {
+    super(PGN_65284_MaretronProprietaryDcBreakerCurrentDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_65284_MaretronProprietaryDcBreakerCurrentMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_65284_MaretronProprietaryDcBreakerCurrentMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('maretronProprietaryDcBreakerCurrent')!
   }
 }
-pgnIdToCreator['maretronProprietaryDcBreakerCurrent'] = (fields:any, dst:number) => new PGN_65284(fields, dst)
+pgnIdToCreator['maretronProprietaryDcBreakerCurrent'] = (fields:any, dst:number) => new PGN_65284_MaretronProprietaryDcBreakerCurrent(fields, dst)
 
 
 /**
@@ -3244,16 +3266,19 @@ pgnIdToCreator['simnetConfigureTemperatureSensor'] = (fields:any, dst:number) =>
  *
  * Description: Seatalk: Alarm
  *
- * @category PGN_65288
+ * Match: Manufacturer Code == Raymarine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65288_SeatalkAlarm
  */
-export interface PGN_65288Interface extends PGNInterface {
-  fields: PGN_65288Fields
+export interface PGN_65288_SeatalkAlarmInterface extends PGNInterface {
+  fields: PGN_65288_SeatalkAlarmFields
 }
 
 /**
- * @category PGN_65288
+ * @category PGN_65288_SeatalkAlarm
  */
-export interface PGN_65288Fields {
+export interface PGN_65288_SeatalkAlarmFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -3265,9 +3290,9 @@ export interface PGN_65288Fields {
 }
 
 /**
- * @category PGN_65288
+ * @category PGN_65288_SeatalkAlarm
  */
-export const PGN_65288Defaults = {
+export const PGN_65288_SeatalkAlarmDefaults = {
   pgn: 65288,
   dst: 255,
   prio: 7,
@@ -3275,22 +3300,45 @@ export const PGN_65288Defaults = {
 }
 
 /**
- * @category PGN_65288
+ * @category PGN_65288_SeatalkAlarm
  */
-export class PGN_65288 extends PGN implements PGN_65288Interface {
-  fields: PGN_65288Fields
+export const PGN_65288_SeatalkAlarmMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Raymarine,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_65288Fields, dst: number = 255) {
-    super(PGN_65288Defaults)
+/**
+ * @category PGN_65288_SeatalkAlarm
+ */
+export interface PGN_65288_SeatalkAlarmCreateArgs {
+  reserved?: number
+  sid?: N2K_Binary
+  alarmStatus?: enums.SeatalkAlarmStatus | number
+  alarmId?: enums.SeatalkAlarmId | number
+  alarmGroup?: enums.SeatalkAlarmGroup | number
+  alarmPriority?: N2K_Binary
+}
+
+/**
+ * @category PGN_65288_SeatalkAlarm
+ */
+export class PGN_65288_SeatalkAlarm extends PGN implements PGN_65288_SeatalkAlarmInterface {
+  fields: PGN_65288_SeatalkAlarmFields
+
+  constructor(fields: PGN_65288_SeatalkAlarmCreateArgs, dst: number = 255) {
+    super(PGN_65288_SeatalkAlarmDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_65288_SeatalkAlarmMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_65288_SeatalkAlarmMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('seatalkAlarm')!
   }
 }
-pgnIdToCreator['seatalkAlarm'] = (fields:any, dst:number) => new PGN_65288(fields, dst)
+pgnIdToCreator['seatalkAlarm'] = (fields:any, dst:number) => new PGN_65288_SeatalkAlarm(fields, dst)
 
 
 /**
@@ -3298,16 +3346,19 @@ pgnIdToCreator['seatalkAlarm'] = (fields:any, dst:number) => new PGN_65288(field
  *
  * Description: Simnet: Trim Tab Sensor Calibration
  *
- * @category PGN_65289
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65289_SimnetTrimTabSensorCalibration
  */
-export interface PGN_65289Interface extends PGNInterface {
-  fields: PGN_65289Fields
+export interface PGN_65289_SimnetTrimTabSensorCalibrationInterface extends PGNInterface {
+  fields: PGN_65289_SimnetTrimTabSensorCalibrationFields
 }
 
 /**
- * @category PGN_65289
+ * @category PGN_65289_SimnetTrimTabSensorCalibration
  */
-export interface PGN_65289Fields {
+export interface PGN_65289_SimnetTrimTabSensorCalibrationFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -3315,9 +3366,9 @@ export interface PGN_65289Fields {
 }
 
 /**
- * @category PGN_65289
+ * @category PGN_65289_SimnetTrimTabSensorCalibration
  */
-export const PGN_65289Defaults = {
+export const PGN_65289_SimnetTrimTabSensorCalibrationDefaults = {
   pgn: 65289,
   dst: 255,
   prio: 3,
@@ -3325,22 +3376,41 @@ export const PGN_65289Defaults = {
 }
 
 /**
- * @category PGN_65289
+ * @category PGN_65289_SimnetTrimTabSensorCalibration
  */
-export class PGN_65289 extends PGN implements PGN_65289Interface {
-  fields: PGN_65289Fields
+export const PGN_65289_SimnetTrimTabSensorCalibrationMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_65289Fields, dst: number = 255) {
-    super(PGN_65289Defaults)
+/**
+ * @category PGN_65289_SimnetTrimTabSensorCalibration
+ */
+export interface PGN_65289_SimnetTrimTabSensorCalibrationCreateArgs {
+  reserved?: number
+  reserved4?: number
+}
+
+/**
+ * @category PGN_65289_SimnetTrimTabSensorCalibration
+ */
+export class PGN_65289_SimnetTrimTabSensorCalibration extends PGN implements PGN_65289_SimnetTrimTabSensorCalibrationInterface {
+  fields: PGN_65289_SimnetTrimTabSensorCalibrationFields
+
+  constructor(fields: PGN_65289_SimnetTrimTabSensorCalibrationCreateArgs, dst: number = 255) {
+    super(PGN_65289_SimnetTrimTabSensorCalibrationDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_65289_SimnetTrimTabSensorCalibrationMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_65289_SimnetTrimTabSensorCalibrationMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('simnetTrimTabSensorCalibration')!
   }
 }
-pgnIdToCreator['simnetTrimTabSensorCalibration'] = (fields:any, dst:number) => new PGN_65289(fields, dst)
+pgnIdToCreator['simnetTrimTabSensorCalibration'] = (fields:any, dst:number) => new PGN_65289_SimnetTrimTabSensorCalibration(fields, dst)
 
 
 /**
@@ -3348,16 +3418,19 @@ pgnIdToCreator['simnetTrimTabSensorCalibration'] = (fields:any, dst:number) => n
  *
  * Description: Simnet: Paddle Wheel Speed Configuration
  *
- * @category PGN_65290
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65290_SimnetPaddleWheelSpeedConfiguration
  */
-export interface PGN_65290Interface extends PGNInterface {
-  fields: PGN_65290Fields
+export interface PGN_65290_SimnetPaddleWheelSpeedConfigurationInterface extends PGNInterface {
+  fields: PGN_65290_SimnetPaddleWheelSpeedConfigurationFields
 }
 
 /**
- * @category PGN_65290
+ * @category PGN_65290_SimnetPaddleWheelSpeedConfiguration
  */
-export interface PGN_65290Fields {
+export interface PGN_65290_SimnetPaddleWheelSpeedConfigurationFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -3365,9 +3438,9 @@ export interface PGN_65290Fields {
 }
 
 /**
- * @category PGN_65290
+ * @category PGN_65290_SimnetPaddleWheelSpeedConfiguration
  */
-export const PGN_65290Defaults = {
+export const PGN_65290_SimnetPaddleWheelSpeedConfigurationDefaults = {
   pgn: 65290,
   dst: 255,
   prio: 3,
@@ -3375,22 +3448,41 @@ export const PGN_65290Defaults = {
 }
 
 /**
- * @category PGN_65290
+ * @category PGN_65290_SimnetPaddleWheelSpeedConfiguration
  */
-export class PGN_65290 extends PGN implements PGN_65290Interface {
-  fields: PGN_65290Fields
+export const PGN_65290_SimnetPaddleWheelSpeedConfigurationMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_65290Fields, dst: number = 255) {
-    super(PGN_65290Defaults)
+/**
+ * @category PGN_65290_SimnetPaddleWheelSpeedConfiguration
+ */
+export interface PGN_65290_SimnetPaddleWheelSpeedConfigurationCreateArgs {
+  reserved?: number
+  reserved4?: number
+}
+
+/**
+ * @category PGN_65290_SimnetPaddleWheelSpeedConfiguration
+ */
+export class PGN_65290_SimnetPaddleWheelSpeedConfiguration extends PGN implements PGN_65290_SimnetPaddleWheelSpeedConfigurationInterface {
+  fields: PGN_65290_SimnetPaddleWheelSpeedConfigurationFields
+
+  constructor(fields: PGN_65290_SimnetPaddleWheelSpeedConfigurationCreateArgs, dst: number = 255) {
+    super(PGN_65290_SimnetPaddleWheelSpeedConfigurationDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_65290_SimnetPaddleWheelSpeedConfigurationMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_65290_SimnetPaddleWheelSpeedConfigurationMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('simnetPaddleWheelSpeedConfiguration')!
   }
 }
-pgnIdToCreator['simnetPaddleWheelSpeedConfiguration'] = (fields:any, dst:number) => new PGN_65290(fields, dst)
+pgnIdToCreator['simnetPaddleWheelSpeedConfiguration'] = (fields:any, dst:number) => new PGN_65290_SimnetPaddleWheelSpeedConfiguration(fields, dst)
 
 
 /**
@@ -3398,16 +3490,19 @@ pgnIdToCreator['simnetPaddleWheelSpeedConfiguration'] = (fields:any, dst:number)
  *
  * Description: Simnet: Clear Fluid Level Warnings
  *
- * @category PGN_65292
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65292_SimnetClearFluidLevelWarnings
  */
-export interface PGN_65292Interface extends PGNInterface {
-  fields: PGN_65292Fields
+export interface PGN_65292_SimnetClearFluidLevelWarningsInterface extends PGNInterface {
+  fields: PGN_65292_SimnetClearFluidLevelWarningsFields
 }
 
 /**
- * @category PGN_65292
+ * @category PGN_65292_SimnetClearFluidLevelWarnings
  */
-export interface PGN_65292Fields {
+export interface PGN_65292_SimnetClearFluidLevelWarningsFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -3415,9 +3510,9 @@ export interface PGN_65292Fields {
 }
 
 /**
- * @category PGN_65292
+ * @category PGN_65292_SimnetClearFluidLevelWarnings
  */
-export const PGN_65292Defaults = {
+export const PGN_65292_SimnetClearFluidLevelWarningsDefaults = {
   pgn: 65292,
   dst: 255,
   prio: 3,
@@ -3425,22 +3520,41 @@ export const PGN_65292Defaults = {
 }
 
 /**
- * @category PGN_65292
+ * @category PGN_65292_SimnetClearFluidLevelWarnings
  */
-export class PGN_65292 extends PGN implements PGN_65292Interface {
-  fields: PGN_65292Fields
+export const PGN_65292_SimnetClearFluidLevelWarningsMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_65292Fields, dst: number = 255) {
-    super(PGN_65292Defaults)
+/**
+ * @category PGN_65292_SimnetClearFluidLevelWarnings
+ */
+export interface PGN_65292_SimnetClearFluidLevelWarningsCreateArgs {
+  reserved?: number
+  reserved4?: number
+}
+
+/**
+ * @category PGN_65292_SimnetClearFluidLevelWarnings
+ */
+export class PGN_65292_SimnetClearFluidLevelWarnings extends PGN implements PGN_65292_SimnetClearFluidLevelWarningsInterface {
+  fields: PGN_65292_SimnetClearFluidLevelWarningsFields
+
+  constructor(fields: PGN_65292_SimnetClearFluidLevelWarningsCreateArgs, dst: number = 255) {
+    super(PGN_65292_SimnetClearFluidLevelWarningsDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_65292_SimnetClearFluidLevelWarningsMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_65292_SimnetClearFluidLevelWarningsMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('simnetClearFluidLevelWarnings')!
   }
 }
-pgnIdToCreator['simnetClearFluidLevelWarnings'] = (fields:any, dst:number) => new PGN_65292(fields, dst)
+pgnIdToCreator['simnetClearFluidLevelWarnings'] = (fields:any, dst:number) => new PGN_65292_SimnetClearFluidLevelWarnings(fields, dst)
 
 
 /**
@@ -3598,16 +3712,19 @@ pgnIdToCreator['diverseYachtServicesLoadCell'] = (fields:any, dst:number) => new
  *
  * Explanation: Seen as sent by AC-42 only so far.
  *
- * @category PGN_65302
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65302_SimnetApUnknown1
  */
-export interface PGN_65302Interface extends PGNInterface {
-  fields: PGN_65302Fields
+export interface PGN_65302_SimnetApUnknown1Interface extends PGNInterface {
+  fields: PGN_65302_SimnetApUnknown1Fields
 }
 
 /**
- * @category PGN_65302
+ * @category PGN_65302_SimnetApUnknown1
  */
-export interface PGN_65302Fields {
+export interface PGN_65302_SimnetApUnknown1Fields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -3619,9 +3736,9 @@ export interface PGN_65302Fields {
 }
 
 /**
- * @category PGN_65302
+ * @category PGN_65302_SimnetApUnknown1
  */
-export const PGN_65302Defaults = {
+export const PGN_65302_SimnetApUnknown1Defaults = {
   pgn: 65302,
   dst: 255,
   prio: 7,
@@ -3629,22 +3746,45 @@ export const PGN_65302Defaults = {
 }
 
 /**
- * @category PGN_65302
+ * @category PGN_65302_SimnetApUnknown1
  */
-export class PGN_65302 extends PGN implements PGN_65302Interface {
-  fields: PGN_65302Fields
+export const PGN_65302_SimnetApUnknown1MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_65302Fields, dst: number = 255) {
-    super(PGN_65302Defaults)
+/**
+ * @category PGN_65302_SimnetApUnknown1
+ */
+export interface PGN_65302_SimnetApUnknown1CreateArgs {
+  reserved?: number
+  a?: N2K_Number
+  b?: N2K_Number
+  c?: N2K_Number
+  d?: N2K_Number
+  reserved8?: number
+}
+
+/**
+ * @category PGN_65302_SimnetApUnknown1
+ */
+export class PGN_65302_SimnetApUnknown1 extends PGN implements PGN_65302_SimnetApUnknown1Interface {
+  fields: PGN_65302_SimnetApUnknown1Fields
+
+  constructor(fields: PGN_65302_SimnetApUnknown1CreateArgs, dst: number = 255) {
+    super(PGN_65302_SimnetApUnknown1Defaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_65302_SimnetApUnknown1MatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_65302_SimnetApUnknown1MatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('simnetApUnknown1')!
   }
 }
-pgnIdToCreator['simnetApUnknown1'] = (fields:any, dst:number) => new PGN_65302(fields, dst)
+pgnIdToCreator['simnetApUnknown1'] = (fields:any, dst:number) => new PGN_65302_SimnetApUnknown1(fields, dst)
 
 
 /**
@@ -4051,16 +4191,19 @@ pgnIdToCreator['simnetSailingProcessorStatus'] = (fields:any, dst:number) => new
  *
  * Description: Navico: Wireless Battery Status
  *
- * @category PGN_65309
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65309_NavicoWirelessBatteryStatus
  */
-export interface PGN_65309Interface extends PGNInterface {
-  fields: PGN_65309Fields
+export interface PGN_65309_NavicoWirelessBatteryStatusInterface extends PGNInterface {
+  fields: PGN_65309_NavicoWirelessBatteryStatusFields
 }
 
 /**
- * @category PGN_65309
+ * @category PGN_65309_NavicoWirelessBatteryStatus
  */
-export interface PGN_65309Fields {
+export interface PGN_65309_NavicoWirelessBatteryStatusFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -4071,9 +4214,9 @@ export interface PGN_65309Fields {
 }
 
 /**
- * @category PGN_65309
+ * @category PGN_65309_NavicoWirelessBatteryStatus
  */
-export const PGN_65309Defaults = {
+export const PGN_65309_NavicoWirelessBatteryStatusDefaults = {
   pgn: 65309,
   dst: 255,
   prio: 7,
@@ -4081,22 +4224,44 @@ export const PGN_65309Defaults = {
 }
 
 /**
- * @category PGN_65309
+ * @category PGN_65309_NavicoWirelessBatteryStatus
  */
-export class PGN_65309 extends PGN implements PGN_65309Interface {
-  fields: PGN_65309Fields
+export const PGN_65309_NavicoWirelessBatteryStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_65309Fields, dst: number = 255) {
-    super(PGN_65309Defaults)
+/**
+ * @category PGN_65309_NavicoWirelessBatteryStatus
+ */
+export interface PGN_65309_NavicoWirelessBatteryStatusCreateArgs {
+  reserved?: number
+  status?: N2K_Number
+  batteryStatus?: N2K_Number
+  batteryChargeStatus?: N2K_Number
+  reserved7?: number
+}
+
+/**
+ * @category PGN_65309_NavicoWirelessBatteryStatus
+ */
+export class PGN_65309_NavicoWirelessBatteryStatus extends PGN implements PGN_65309_NavicoWirelessBatteryStatusInterface {
+  fields: PGN_65309_NavicoWirelessBatteryStatusFields
+
+  constructor(fields: PGN_65309_NavicoWirelessBatteryStatusCreateArgs, dst: number = 255) {
+    super(PGN_65309_NavicoWirelessBatteryStatusDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_65309_NavicoWirelessBatteryStatusMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_65309_NavicoWirelessBatteryStatusMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('navicoWirelessBatteryStatus')!
   }
 }
-pgnIdToCreator['navicoWirelessBatteryStatus'] = (fields:any, dst:number) => new PGN_65309(fields, dst)
+pgnIdToCreator['navicoWirelessBatteryStatus'] = (fields:any, dst:number) => new PGN_65309_NavicoWirelessBatteryStatus(fields, dst)
 
 
 /**
@@ -4104,16 +4269,19 @@ pgnIdToCreator['navicoWirelessBatteryStatus'] = (fields:any, dst:number) => new 
  *
  * Description: Navico: Wireless Signal Status
  *
- * @category PGN_65312
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65312_NavicoWirelessSignalStatus
  */
-export interface PGN_65312Interface extends PGNInterface {
-  fields: PGN_65312Fields
+export interface PGN_65312_NavicoWirelessSignalStatusInterface extends PGNInterface {
+  fields: PGN_65312_NavicoWirelessSignalStatusFields
 }
 
 /**
- * @category PGN_65312
+ * @category PGN_65312_NavicoWirelessSignalStatus
  */
-export interface PGN_65312Fields {
+export interface PGN_65312_NavicoWirelessSignalStatusFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -4123,9 +4291,9 @@ export interface PGN_65312Fields {
 }
 
 /**
- * @category PGN_65312
+ * @category PGN_65312_NavicoWirelessSignalStatus
  */
-export const PGN_65312Defaults = {
+export const PGN_65312_NavicoWirelessSignalStatusDefaults = {
   pgn: 65312,
   dst: 255,
   prio: 7,
@@ -4133,22 +4301,43 @@ export const PGN_65312Defaults = {
 }
 
 /**
- * @category PGN_65312
+ * @category PGN_65312_NavicoWirelessSignalStatus
  */
-export class PGN_65312 extends PGN implements PGN_65312Interface {
-  fields: PGN_65312Fields
+export const PGN_65312_NavicoWirelessSignalStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_65312Fields, dst: number = 255) {
-    super(PGN_65312Defaults)
+/**
+ * @category PGN_65312_NavicoWirelessSignalStatus
+ */
+export interface PGN_65312_NavicoWirelessSignalStatusCreateArgs {
+  reserved?: number
+  unknown?: N2K_Number
+  signalStrength?: N2K_Number
+  reserved6?: number
+}
+
+/**
+ * @category PGN_65312_NavicoWirelessSignalStatus
+ */
+export class PGN_65312_NavicoWirelessSignalStatus extends PGN implements PGN_65312_NavicoWirelessSignalStatusInterface {
+  fields: PGN_65312_NavicoWirelessSignalStatusFields
+
+  constructor(fields: PGN_65312_NavicoWirelessSignalStatusCreateArgs, dst: number = 255) {
+    super(PGN_65312_NavicoWirelessSignalStatusDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_65312_NavicoWirelessSignalStatusMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_65312_NavicoWirelessSignalStatusMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('navicoWirelessSignalStatus')!
   }
 }
-pgnIdToCreator['navicoWirelessSignalStatus'] = (fields:any, dst:number) => new PGN_65312(fields, dst)
+pgnIdToCreator['navicoWirelessSignalStatus'] = (fields:any, dst:number) => new PGN_65312_NavicoWirelessSignalStatus(fields, dst)
 
 
 /**
@@ -4158,16 +4347,19 @@ pgnIdToCreator['navicoWirelessSignalStatus'] = (fields:any, dst:number) => new P
  *
  * Explanation: Seen as sent by AC-42 only so far.
  *
- * @category PGN_65340
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65340_SimnetApUnknown2
  */
-export interface PGN_65340Interface extends PGNInterface {
-  fields: PGN_65340Fields
+export interface PGN_65340_SimnetApUnknown2Interface extends PGNInterface {
+  fields: PGN_65340_SimnetApUnknown2Fields
 }
 
 /**
- * @category PGN_65340
+ * @category PGN_65340_SimnetApUnknown2
  */
-export interface PGN_65340Fields {
+export interface PGN_65340_SimnetApUnknown2Fields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -4180,9 +4372,9 @@ export interface PGN_65340Fields {
 }
 
 /**
- * @category PGN_65340
+ * @category PGN_65340_SimnetApUnknown2
  */
-export const PGN_65340Defaults = {
+export const PGN_65340_SimnetApUnknown2Defaults = {
   pgn: 65340,
   dst: 255,
   prio: 3,
@@ -4190,22 +4382,46 @@ export const PGN_65340Defaults = {
 }
 
 /**
- * @category PGN_65340
+ * @category PGN_65340_SimnetApUnknown2
  */
-export class PGN_65340 extends PGN implements PGN_65340Interface {
-  fields: PGN_65340Fields
+export const PGN_65340_SimnetApUnknown2MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_65340Fields, dst: number = 255) {
-    super(PGN_65340Defaults)
+/**
+ * @category PGN_65340_SimnetApUnknown2
+ */
+export interface PGN_65340_SimnetApUnknown2CreateArgs {
+  reserved?: number
+  a?: N2K_Number
+  b?: N2K_Number
+  c?: N2K_Number
+  d?: N2K_Number
+  e?: N2K_Number
+  reserved9?: number
+}
+
+/**
+ * @category PGN_65340_SimnetApUnknown2
+ */
+export class PGN_65340_SimnetApUnknown2 extends PGN implements PGN_65340_SimnetApUnknown2Interface {
+  fields: PGN_65340_SimnetApUnknown2Fields
+
+  constructor(fields: PGN_65340_SimnetApUnknown2CreateArgs, dst: number = 255) {
+    super(PGN_65340_SimnetApUnknown2Defaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_65340_SimnetApUnknown2MatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_65340_SimnetApUnknown2MatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('simnetApUnknown2')!
   }
 }
-pgnIdToCreator['simnetApUnknown2'] = (fields:any, dst:number) => new PGN_65340(fields, dst)
+pgnIdToCreator['simnetApUnknown2'] = (fields:any, dst:number) => new PGN_65340_SimnetApUnknown2(fields, dst)
 
 
 /**
@@ -4213,16 +4429,19 @@ pgnIdToCreator['simnetApUnknown2'] = (fields:any, dst:number) => new PGN_65340(f
  *
  * Description: Simnet: Autopilot Angle
  *
- * @category PGN_65341
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65341_SimnetAutopilotAngle
  */
-export interface PGN_65341Interface extends PGNInterface {
-  fields: PGN_65341Fields
+export interface PGN_65341_SimnetAutopilotAngleInterface extends PGNInterface {
+  fields: PGN_65341_SimnetAutopilotAngleFields
 }
 
 /**
- * @category PGN_65341
+ * @category PGN_65341_SimnetAutopilotAngle
  */
-export interface PGN_65341Fields {
+export interface PGN_65341_SimnetAutopilotAngleFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -4233,9 +4452,9 @@ export interface PGN_65341Fields {
 }
 
 /**
- * @category PGN_65341
+ * @category PGN_65341_SimnetAutopilotAngle
  */
-export const PGN_65341Defaults = {
+export const PGN_65341_SimnetAutopilotAngleDefaults = {
   pgn: 65341,
   dst: 255,
   prio: 6,
@@ -4243,22 +4462,44 @@ export const PGN_65341Defaults = {
 }
 
 /**
- * @category PGN_65341
+ * @category PGN_65341_SimnetAutopilotAngle
  */
-export class PGN_65341 extends PGN implements PGN_65341Interface {
-  fields: PGN_65341Fields
+export const PGN_65341_SimnetAutopilotAngleMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_65341Fields, dst: number = 255) {
-    super(PGN_65341Defaults)
+/**
+ * @category PGN_65341_SimnetAutopilotAngle
+ */
+export interface PGN_65341_SimnetAutopilotAngleCreateArgs {
+  reserved?: number
+  reserved4?: number
+  mode?: enums.SimnetApMode | number
+  reserved6?: number
+  angle?: N2K_Number
+}
+
+/**
+ * @category PGN_65341_SimnetAutopilotAngle
+ */
+export class PGN_65341_SimnetAutopilotAngle extends PGN implements PGN_65341_SimnetAutopilotAngleInterface {
+  fields: PGN_65341_SimnetAutopilotAngleFields
+
+  constructor(fields: PGN_65341_SimnetAutopilotAngleCreateArgs, dst: number = 255) {
+    super(PGN_65341_SimnetAutopilotAngleDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_65341_SimnetAutopilotAngleMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_65341_SimnetAutopilotAngleMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('simnetAutopilotAngle')!
   }
 }
-pgnIdToCreator['simnetAutopilotAngle'] = (fields:any, dst:number) => new PGN_65341(fields, dst)
+pgnIdToCreator['simnetAutopilotAngle'] = (fields:any, dst:number) => new PGN_65341_SimnetAutopilotAngle(fields, dst)
 
 
 /**
@@ -4266,16 +4507,19 @@ pgnIdToCreator['simnetAutopilotAngle'] = (fields:any, dst:number) => new PGN_653
  *
  * Description: Seatalk: Pilot Wind Datum
  *
- * @category PGN_65345
+ * Match: Manufacturer Code == Raymarine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65345_SeatalkPilotWindDatum
  */
-export interface PGN_65345Interface extends PGNInterface {
-  fields: PGN_65345Fields
+export interface PGN_65345_SeatalkPilotWindDatumInterface extends PGNInterface {
+  fields: PGN_65345_SeatalkPilotWindDatumFields
 }
 
 /**
- * @category PGN_65345
+ * @category PGN_65345_SeatalkPilotWindDatum
  */
-export interface PGN_65345Fields {
+export interface PGN_65345_SeatalkPilotWindDatumFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -4285,9 +4529,9 @@ export interface PGN_65345Fields {
 }
 
 /**
- * @category PGN_65345
+ * @category PGN_65345_SeatalkPilotWindDatum
  */
-export const PGN_65345Defaults = {
+export const PGN_65345_SeatalkPilotWindDatumDefaults = {
   pgn: 65345,
   dst: 255,
   prio: 3,
@@ -4295,22 +4539,43 @@ export const PGN_65345Defaults = {
 }
 
 /**
- * @category PGN_65345
+ * @category PGN_65345_SeatalkPilotWindDatum
  */
-export class PGN_65345 extends PGN implements PGN_65345Interface {
-  fields: PGN_65345Fields
+export const PGN_65345_SeatalkPilotWindDatumMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Raymarine,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_65345Fields, dst: number = 255) {
-    super(PGN_65345Defaults)
+/**
+ * @category PGN_65345_SeatalkPilotWindDatum
+ */
+export interface PGN_65345_SeatalkPilotWindDatumCreateArgs {
+  reserved?: number
+  windDatum?: N2K_Number
+  rollingAverageWindAngle?: N2K_Number
+  reserved6?: number
+}
+
+/**
+ * @category PGN_65345_SeatalkPilotWindDatum
+ */
+export class PGN_65345_SeatalkPilotWindDatum extends PGN implements PGN_65345_SeatalkPilotWindDatumInterface {
+  fields: PGN_65345_SeatalkPilotWindDatumFields
+
+  constructor(fields: PGN_65345_SeatalkPilotWindDatumCreateArgs, dst: number = 255) {
+    super(PGN_65345_SeatalkPilotWindDatumDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_65345_SeatalkPilotWindDatumMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_65345_SeatalkPilotWindDatumMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('seatalkPilotWindDatum')!
   }
 }
-pgnIdToCreator['seatalkPilotWindDatum'] = (fields:any, dst:number) => new PGN_65345(fields, dst)
+pgnIdToCreator['seatalkPilotWindDatum'] = (fields:any, dst:number) => new PGN_65345_SeatalkPilotWindDatum(fields, dst)
 
 
 /**
@@ -4369,16 +4634,19 @@ pgnIdToCreator['simnetMagneticField'] = (fields:any, dst:number) => new PGN_6535
  *
  * Description: Seatalk: Pilot Heading
  *
- * @category PGN_65359
+ * Match: Manufacturer Code == Raymarine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65359_SeatalkPilotHeading
  */
-export interface PGN_65359Interface extends PGNInterface {
-  fields: PGN_65359Fields
+export interface PGN_65359_SeatalkPilotHeadingInterface extends PGNInterface {
+  fields: PGN_65359_SeatalkPilotHeadingFields
 }
 
 /**
- * @category PGN_65359
+ * @category PGN_65359_SeatalkPilotHeading
  */
-export interface PGN_65359Fields {
+export interface PGN_65359_SeatalkPilotHeadingFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -4389,9 +4657,9 @@ export interface PGN_65359Fields {
 }
 
 /**
- * @category PGN_65359
+ * @category PGN_65359_SeatalkPilotHeading
  */
-export const PGN_65359Defaults = {
+export const PGN_65359_SeatalkPilotHeadingDefaults = {
   pgn: 65359,
   dst: 255,
   prio: 7,
@@ -4399,22 +4667,44 @@ export const PGN_65359Defaults = {
 }
 
 /**
- * @category PGN_65359
+ * @category PGN_65359_SeatalkPilotHeading
  */
-export class PGN_65359 extends PGN implements PGN_65359Interface {
-  fields: PGN_65359Fields
+export const PGN_65359_SeatalkPilotHeadingMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Raymarine,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_65359Fields, dst: number = 255) {
-    super(PGN_65359Defaults)
+/**
+ * @category PGN_65359_SeatalkPilotHeading
+ */
+export interface PGN_65359_SeatalkPilotHeadingCreateArgs {
+  reserved?: number
+  sid?: N2K_Binary
+  headingTrue?: N2K_Number
+  headingMagnetic?: N2K_Number
+  reserved7?: number
+}
+
+/**
+ * @category PGN_65359_SeatalkPilotHeading
+ */
+export class PGN_65359_SeatalkPilotHeading extends PGN implements PGN_65359_SeatalkPilotHeadingInterface {
+  fields: PGN_65359_SeatalkPilotHeadingFields
+
+  constructor(fields: PGN_65359_SeatalkPilotHeadingCreateArgs, dst: number = 255) {
+    super(PGN_65359_SeatalkPilotHeadingDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_65359_SeatalkPilotHeadingMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_65359_SeatalkPilotHeadingMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('seatalkPilotHeading')!
   }
 }
-pgnIdToCreator['seatalkPilotHeading'] = (fields:any, dst:number) => new PGN_65359(fields, dst)
+pgnIdToCreator['seatalkPilotHeading'] = (fields:any, dst:number) => new PGN_65359_SeatalkPilotHeading(fields, dst)
 
 
 /**
@@ -4422,16 +4712,19 @@ pgnIdToCreator['seatalkPilotHeading'] = (fields:any, dst:number) => new PGN_6535
  *
  * Description: Seatalk: Pilot Locked Heading
  *
- * @category PGN_65360
+ * Match: Manufacturer Code == Raymarine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65360_SeatalkPilotLockedHeading
  */
-export interface PGN_65360Interface extends PGNInterface {
-  fields: PGN_65360Fields
+export interface PGN_65360_SeatalkPilotLockedHeadingInterface extends PGNInterface {
+  fields: PGN_65360_SeatalkPilotLockedHeadingFields
 }
 
 /**
- * @category PGN_65360
+ * @category PGN_65360_SeatalkPilotLockedHeading
  */
-export interface PGN_65360Fields {
+export interface PGN_65360_SeatalkPilotLockedHeadingFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -4442,9 +4735,9 @@ export interface PGN_65360Fields {
 }
 
 /**
- * @category PGN_65360
+ * @category PGN_65360_SeatalkPilotLockedHeading
  */
-export const PGN_65360Defaults = {
+export const PGN_65360_SeatalkPilotLockedHeadingDefaults = {
   pgn: 65360,
   dst: 255,
   prio: 7,
@@ -4452,22 +4745,44 @@ export const PGN_65360Defaults = {
 }
 
 /**
- * @category PGN_65360
+ * @category PGN_65360_SeatalkPilotLockedHeading
  */
-export class PGN_65360 extends PGN implements PGN_65360Interface {
-  fields: PGN_65360Fields
+export const PGN_65360_SeatalkPilotLockedHeadingMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Raymarine,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_65360Fields, dst: number = 255) {
-    super(PGN_65360Defaults)
+/**
+ * @category PGN_65360_SeatalkPilotLockedHeading
+ */
+export interface PGN_65360_SeatalkPilotLockedHeadingCreateArgs {
+  reserved?: number
+  sid?: N2K_Binary
+  targetHeadingTrue?: N2K_Number
+  targetHeadingMagnetic?: N2K_Number
+  reserved7?: number
+}
+
+/**
+ * @category PGN_65360_SeatalkPilotLockedHeading
+ */
+export class PGN_65360_SeatalkPilotLockedHeading extends PGN implements PGN_65360_SeatalkPilotLockedHeadingInterface {
+  fields: PGN_65360_SeatalkPilotLockedHeadingFields
+
+  constructor(fields: PGN_65360_SeatalkPilotLockedHeadingCreateArgs, dst: number = 255) {
+    super(PGN_65360_SeatalkPilotLockedHeadingDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_65360_SeatalkPilotLockedHeadingMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_65360_SeatalkPilotLockedHeadingMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('seatalkPilotLockedHeading')!
   }
 }
-pgnIdToCreator['seatalkPilotLockedHeading'] = (fields:any, dst:number) => new PGN_65360(fields, dst)
+pgnIdToCreator['seatalkPilotLockedHeading'] = (fields:any, dst:number) => new PGN_65360_SeatalkPilotLockedHeading(fields, dst)
 
 
 /**
@@ -4475,16 +4790,19 @@ pgnIdToCreator['seatalkPilotLockedHeading'] = (fields:any, dst:number) => new PG
  *
  * Description: Seatalk: Silence Alarm
  *
- * @category PGN_65361
+ * Match: Manufacturer Code == Raymarine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65361_SeatalkSilenceAlarm
  */
-export interface PGN_65361Interface extends PGNInterface {
-  fields: PGN_65361Fields
+export interface PGN_65361_SeatalkSilenceAlarmInterface extends PGNInterface {
+  fields: PGN_65361_SeatalkSilenceAlarmFields
 }
 
 /**
- * @category PGN_65361
+ * @category PGN_65361_SeatalkSilenceAlarm
  */
-export interface PGN_65361Fields {
+export interface PGN_65361_SeatalkSilenceAlarmFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -4494,9 +4812,9 @@ export interface PGN_65361Fields {
 }
 
 /**
- * @category PGN_65361
+ * @category PGN_65361_SeatalkSilenceAlarm
  */
-export const PGN_65361Defaults = {
+export const PGN_65361_SeatalkSilenceAlarmDefaults = {
   pgn: 65361,
   dst: 255,
   prio: 3,
@@ -4504,22 +4822,43 @@ export const PGN_65361Defaults = {
 }
 
 /**
- * @category PGN_65361
+ * @category PGN_65361_SeatalkSilenceAlarm
  */
-export class PGN_65361 extends PGN implements PGN_65361Interface {
-  fields: PGN_65361Fields
+export const PGN_65361_SeatalkSilenceAlarmMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Raymarine,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_65361Fields, dst: number = 255) {
-    super(PGN_65361Defaults)
+/**
+ * @category PGN_65361_SeatalkSilenceAlarm
+ */
+export interface PGN_65361_SeatalkSilenceAlarmCreateArgs {
+  reserved?: number
+  alarmId?: enums.SeatalkAlarmId | number
+  alarmGroup?: enums.SeatalkAlarmGroup | number
+  reserved6?: number
+}
+
+/**
+ * @category PGN_65361_SeatalkSilenceAlarm
+ */
+export class PGN_65361_SeatalkSilenceAlarm extends PGN implements PGN_65361_SeatalkSilenceAlarmInterface {
+  fields: PGN_65361_SeatalkSilenceAlarmFields
+
+  constructor(fields: PGN_65361_SeatalkSilenceAlarmCreateArgs, dst: number = 255) {
+    super(PGN_65361_SeatalkSilenceAlarmDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_65361_SeatalkSilenceAlarmMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_65361_SeatalkSilenceAlarmMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('seatalkSilenceAlarm')!
   }
 }
-pgnIdToCreator['seatalkSilenceAlarm'] = (fields:any, dst:number) => new PGN_65361(fields, dst)
+pgnIdToCreator['seatalkSilenceAlarm'] = (fields:any, dst:number) => new PGN_65361_SeatalkSilenceAlarm(fields, dst)
 
 
 /**
@@ -4527,16 +4866,19 @@ pgnIdToCreator['seatalkSilenceAlarm'] = (fields:any, dst:number) => new PGN_6536
  *
  * Description: Seatalk: Keypad Message
  *
- * @category PGN_65371
+ * Match: Manufacturer Code == Raymarine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65371_SeatalkKeypadMessage
  */
-export interface PGN_65371Interface extends PGNInterface {
-  fields: PGN_65371Fields
+export interface PGN_65371_SeatalkKeypadMessageInterface extends PGNInterface {
+  fields: PGN_65371_SeatalkKeypadMessageFields
 }
 
 /**
- * @category PGN_65371
+ * @category PGN_65371_SeatalkKeypadMessage
  */
-export interface PGN_65371Fields {
+export interface PGN_65371_SeatalkKeypadMessageFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -4551,9 +4893,9 @@ export interface PGN_65371Fields {
 }
 
 /**
- * @category PGN_65371
+ * @category PGN_65371_SeatalkKeypadMessage
  */
-export const PGN_65371Defaults = {
+export const PGN_65371_SeatalkKeypadMessageDefaults = {
   pgn: 65371,
   dst: 255,
   prio: 3,
@@ -4561,22 +4903,48 @@ export const PGN_65371Defaults = {
 }
 
 /**
- * @category PGN_65371
+ * @category PGN_65371_SeatalkKeypadMessage
  */
-export class PGN_65371 extends PGN implements PGN_65371Interface {
-  fields: PGN_65371Fields
+export const PGN_65371_SeatalkKeypadMessageMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Raymarine,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_65371Fields, dst: number = 255) {
-    super(PGN_65371Defaults)
+/**
+ * @category PGN_65371_SeatalkKeypadMessage
+ */
+export interface PGN_65371_SeatalkKeypadMessageCreateArgs {
+  reserved?: number
+  proprietaryId: N2K_Number
+  firstKey?: N2K_Number
+  secondKey?: N2K_Number
+  firstKeyState?: N2K_Number
+  secondKeyState?: N2K_Number
+  reserved9?: number
+  encoderPosition?: N2K_Number
+  reserved11?: number
+}
+
+/**
+ * @category PGN_65371_SeatalkKeypadMessage
+ */
+export class PGN_65371_SeatalkKeypadMessage extends PGN implements PGN_65371_SeatalkKeypadMessageInterface {
+  fields: PGN_65371_SeatalkKeypadMessageFields
+
+  constructor(fields: PGN_65371_SeatalkKeypadMessageCreateArgs, dst: number = 255) {
+    super(PGN_65371_SeatalkKeypadMessageDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_65371_SeatalkKeypadMessageMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_65371_SeatalkKeypadMessageMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('seatalkKeypadMessage')!
   }
 }
-pgnIdToCreator['seatalkKeypadMessage'] = (fields:any, dst:number) => new PGN_65371(fields, dst)
+pgnIdToCreator['seatalkKeypadMessage'] = (fields:any, dst:number) => new PGN_65371_SeatalkKeypadMessage(fields, dst)
 
 
 /**
@@ -4584,16 +4952,19 @@ pgnIdToCreator['seatalkKeypadMessage'] = (fields:any, dst:number) => new PGN_653
  *
  * Description: SeaTalk: Keypad Heartbeat
  *
- * @category PGN_65374
+ * Match: Manufacturer Code == Raymarine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65374_SeatalkKeypadHeartbeat
  */
-export interface PGN_65374Interface extends PGNInterface {
-  fields: PGN_65374Fields
+export interface PGN_65374_SeatalkKeypadHeartbeatInterface extends PGNInterface {
+  fields: PGN_65374_SeatalkKeypadHeartbeatFields
 }
 
 /**
- * @category PGN_65374
+ * @category PGN_65374_SeatalkKeypadHeartbeat
  */
-export interface PGN_65374Fields {
+export interface PGN_65374_SeatalkKeypadHeartbeatFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -4604,9 +4975,9 @@ export interface PGN_65374Fields {
 }
 
 /**
- * @category PGN_65374
+ * @category PGN_65374_SeatalkKeypadHeartbeat
  */
-export const PGN_65374Defaults = {
+export const PGN_65374_SeatalkKeypadHeartbeatDefaults = {
   pgn: 65374,
   dst: 255,
   prio: 3,
@@ -4614,22 +4985,44 @@ export const PGN_65374Defaults = {
 }
 
 /**
- * @category PGN_65374
+ * @category PGN_65374_SeatalkKeypadHeartbeat
  */
-export class PGN_65374 extends PGN implements PGN_65374Interface {
-  fields: PGN_65374Fields
+export const PGN_65374_SeatalkKeypadHeartbeatMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Raymarine,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_65374Fields, dst: number = 255) {
-    super(PGN_65374Defaults)
+/**
+ * @category PGN_65374_SeatalkKeypadHeartbeat
+ */
+export interface PGN_65374_SeatalkKeypadHeartbeatCreateArgs {
+  reserved?: number
+  proprietaryId: N2K_Number
+  variant?: N2K_Number
+  status?: N2K_Number
+  reserved7?: number
+}
+
+/**
+ * @category PGN_65374_SeatalkKeypadHeartbeat
+ */
+export class PGN_65374_SeatalkKeypadHeartbeat extends PGN implements PGN_65374_SeatalkKeypadHeartbeatInterface {
+  fields: PGN_65374_SeatalkKeypadHeartbeatFields
+
+  constructor(fields: PGN_65374_SeatalkKeypadHeartbeatCreateArgs, dst: number = 255) {
+    super(PGN_65374_SeatalkKeypadHeartbeatDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_65374_SeatalkKeypadHeartbeatMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_65374_SeatalkKeypadHeartbeatMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('seatalkKeypadHeartbeat')!
   }
 }
-pgnIdToCreator['seatalkKeypadHeartbeat'] = (fields:any, dst:number) => new PGN_65374(fields, dst)
+pgnIdToCreator['seatalkKeypadHeartbeat'] = (fields:any, dst:number) => new PGN_65374_SeatalkKeypadHeartbeat(fields, dst)
 
 
 /**
@@ -4637,16 +5030,19 @@ pgnIdToCreator['seatalkKeypadHeartbeat'] = (fields:any, dst:number) => new PGN_6
  *
  * Description: Seatalk: Pilot Mode
  *
- * @category PGN_65379
+ * Match: Manufacturer Code == Raymarine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65379_SeatalkPilotMode
  */
-export interface PGN_65379Interface extends PGNInterface {
-  fields: PGN_65379Fields
+export interface PGN_65379_SeatalkPilotModeInterface extends PGNInterface {
+  fields: PGN_65379_SeatalkPilotModeFields
 }
 
 /**
- * @category PGN_65379
+ * @category PGN_65379_SeatalkPilotMode
  */
-export interface PGN_65379Fields {
+export interface PGN_65379_SeatalkPilotModeFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -4657,9 +5053,9 @@ export interface PGN_65379Fields {
 }
 
 /**
- * @category PGN_65379
+ * @category PGN_65379_SeatalkPilotMode
  */
-export const PGN_65379Defaults = {
+export const PGN_65379_SeatalkPilotModeDefaults = {
   pgn: 65379,
   dst: 255,
   prio: 7,
@@ -4667,22 +5063,44 @@ export const PGN_65379Defaults = {
 }
 
 /**
- * @category PGN_65379
+ * @category PGN_65379_SeatalkPilotMode
  */
-export class PGN_65379 extends PGN implements PGN_65379Interface {
-  fields: PGN_65379Fields
+export const PGN_65379_SeatalkPilotModeMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Raymarine,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_65379Fields, dst: number = 255) {
-    super(PGN_65379Defaults)
+/**
+ * @category PGN_65379_SeatalkPilotMode
+ */
+export interface PGN_65379_SeatalkPilotModeCreateArgs {
+  reserved?: number
+  pilotMode?: enums.SeatalkPilotMode16 | number
+  subMode?: N2K_Binary
+  pilotModeData?: N2K_Binary
+  reserved7?: number
+}
+
+/**
+ * @category PGN_65379_SeatalkPilotMode
+ */
+export class PGN_65379_SeatalkPilotMode extends PGN implements PGN_65379_SeatalkPilotModeInterface {
+  fields: PGN_65379_SeatalkPilotModeFields
+
+  constructor(fields: PGN_65379_SeatalkPilotModeCreateArgs, dst: number = 255) {
+    super(PGN_65379_SeatalkPilotModeDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_65379_SeatalkPilotModeMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_65379_SeatalkPilotModeMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('seatalkPilotMode')!
   }
 }
-pgnIdToCreator['seatalkPilotMode'] = (fields:any, dst:number) => new PGN_65379(fields, dst)
+pgnIdToCreator['seatalkPilotMode'] = (fields:any, dst:number) => new PGN_65379_SeatalkPilotMode(fields, dst)
 
 
 /**
@@ -4690,16 +5108,19 @@ pgnIdToCreator['seatalkPilotMode'] = (fields:any, dst:number) => new PGN_65379(f
  *
  * Description: Airmar: Depth Quality Factor
  *
- * @category PGN_65408
+ * Match: Manufacturer Code == Airmar<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65408_AirmarDepthQualityFactor
  */
-export interface PGN_65408Interface extends PGNInterface {
-  fields: PGN_65408Fields
+export interface PGN_65408_AirmarDepthQualityFactorInterface extends PGNInterface {
+  fields: PGN_65408_AirmarDepthQualityFactorFields
 }
 
 /**
- * @category PGN_65408
+ * @category PGN_65408_AirmarDepthQualityFactor
  */
-export interface PGN_65408Fields {
+export interface PGN_65408_AirmarDepthQualityFactorFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -4709,9 +5130,9 @@ export interface PGN_65408Fields {
 }
 
 /**
- * @category PGN_65408
+ * @category PGN_65408_AirmarDepthQualityFactor
  */
-export const PGN_65408Defaults = {
+export const PGN_65408_AirmarDepthQualityFactorDefaults = {
   pgn: 65408,
   dst: 255,
   prio: 7,
@@ -4719,22 +5140,43 @@ export const PGN_65408Defaults = {
 }
 
 /**
- * @category PGN_65408
+ * @category PGN_65408_AirmarDepthQualityFactor
  */
-export class PGN_65408 extends PGN implements PGN_65408Interface {
-  fields: PGN_65408Fields
+export const PGN_65408_AirmarDepthQualityFactorMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_65408Fields, dst: number = 255) {
-    super(PGN_65408Defaults)
+/**
+ * @category PGN_65408_AirmarDepthQualityFactor
+ */
+export interface PGN_65408_AirmarDepthQualityFactorCreateArgs {
+  reserved?: number
+  sid?: N2K_Number
+  depthQualityFactor?: enums.AirmarDepthQualityFactor | number
+  reserved6?: number
+}
+
+/**
+ * @category PGN_65408_AirmarDepthQualityFactor
+ */
+export class PGN_65408_AirmarDepthQualityFactor extends PGN implements PGN_65408_AirmarDepthQualityFactorInterface {
+  fields: PGN_65408_AirmarDepthQualityFactorFields
+
+  constructor(fields: PGN_65408_AirmarDepthQualityFactorCreateArgs, dst: number = 255) {
+    super(PGN_65408_AirmarDepthQualityFactorDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_65408_AirmarDepthQualityFactorMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_65408_AirmarDepthQualityFactorMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('airmarDepthQualityFactor')!
   }
 }
-pgnIdToCreator['airmarDepthQualityFactor'] = (fields:any, dst:number) => new PGN_65408(fields, dst)
+pgnIdToCreator['airmarDepthQualityFactor'] = (fields:any, dst:number) => new PGN_65408_AirmarDepthQualityFactor(fields, dst)
 
 
 /**
@@ -4742,16 +5184,19 @@ pgnIdToCreator['airmarDepthQualityFactor'] = (fields:any, dst:number) => new PGN
  *
  * Description: Airmar: Speed Pulse Count
  *
- * @category PGN_65409
+ * Match: Manufacturer Code == Airmar<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65409_AirmarSpeedPulseCount
  */
-export interface PGN_65409Interface extends PGNInterface {
-  fields: PGN_65409Fields
+export interface PGN_65409_AirmarSpeedPulseCountInterface extends PGNInterface {
+  fields: PGN_65409_AirmarSpeedPulseCountFields
 }
 
 /**
- * @category PGN_65409
+ * @category PGN_65409_AirmarSpeedPulseCount
  */
-export interface PGN_65409Fields {
+export interface PGN_65409_AirmarSpeedPulseCountFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -4762,9 +5207,9 @@ export interface PGN_65409Fields {
 }
 
 /**
- * @category PGN_65409
+ * @category PGN_65409_AirmarSpeedPulseCount
  */
-export const PGN_65409Defaults = {
+export const PGN_65409_AirmarSpeedPulseCountDefaults = {
   pgn: 65409,
   dst: 255,
   prio: 7,
@@ -4772,22 +5217,44 @@ export const PGN_65409Defaults = {
 }
 
 /**
- * @category PGN_65409
+ * @category PGN_65409_AirmarSpeedPulseCount
  */
-export class PGN_65409 extends PGN implements PGN_65409Interface {
-  fields: PGN_65409Fields
+export const PGN_65409_AirmarSpeedPulseCountMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_65409Fields, dst: number = 255) {
-    super(PGN_65409Defaults)
+/**
+ * @category PGN_65409_AirmarSpeedPulseCount
+ */
+export interface PGN_65409_AirmarSpeedPulseCountCreateArgs {
+  reserved?: number
+  sid?: N2K_Number
+  durationOfInterval?: N2K_Duration
+  numberOfPulsesReceived?: N2K_Number
+  reserved7?: number
+}
+
+/**
+ * @category PGN_65409_AirmarSpeedPulseCount
+ */
+export class PGN_65409_AirmarSpeedPulseCount extends PGN implements PGN_65409_AirmarSpeedPulseCountInterface {
+  fields: PGN_65409_AirmarSpeedPulseCountFields
+
+  constructor(fields: PGN_65409_AirmarSpeedPulseCountCreateArgs, dst: number = 255) {
+    super(PGN_65409_AirmarSpeedPulseCountDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_65409_AirmarSpeedPulseCountMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_65409_AirmarSpeedPulseCountMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('airmarSpeedPulseCount')!
   }
 }
-pgnIdToCreator['airmarSpeedPulseCount'] = (fields:any, dst:number) => new PGN_65409(fields, dst)
+pgnIdToCreator['airmarSpeedPulseCount'] = (fields:any, dst:number) => new PGN_65409_AirmarSpeedPulseCount(fields, dst)
 
 
 /**
@@ -4795,16 +5262,19 @@ pgnIdToCreator['airmarSpeedPulseCount'] = (fields:any, dst:number) => new PGN_65
  *
  * Description: Airmar: Device Information
  *
- * @category PGN_65410
+ * Match: Manufacturer Code == Airmar<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65410_AirmarDeviceInformation
  */
-export interface PGN_65410Interface extends PGNInterface {
-  fields: PGN_65410Fields
+export interface PGN_65410_AirmarDeviceInformationInterface extends PGNInterface {
+  fields: PGN_65410_AirmarDeviceInformationFields
 }
 
 /**
- * @category PGN_65410
+ * @category PGN_65410_AirmarDeviceInformation
  */
-export interface PGN_65410Fields {
+export interface PGN_65410_AirmarDeviceInformationFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -4815,9 +5285,9 @@ export interface PGN_65410Fields {
 }
 
 /**
- * @category PGN_65410
+ * @category PGN_65410_AirmarDeviceInformation
  */
-export const PGN_65410Defaults = {
+export const PGN_65410_AirmarDeviceInformationDefaults = {
   pgn: 65410,
   dst: 255,
   prio: 7,
@@ -4825,22 +5295,44 @@ export const PGN_65410Defaults = {
 }
 
 /**
- * @category PGN_65410
+ * @category PGN_65410_AirmarDeviceInformation
  */
-export class PGN_65410 extends PGN implements PGN_65410Interface {
-  fields: PGN_65410Fields
+export const PGN_65410_AirmarDeviceInformationMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_65410Fields, dst: number = 255) {
-    super(PGN_65410Defaults)
+/**
+ * @category PGN_65410_AirmarDeviceInformation
+ */
+export interface PGN_65410_AirmarDeviceInformationCreateArgs {
+  reserved?: number
+  sid?: N2K_Number
+  internalDeviceTemperature?: N2K_Number
+  supplyVoltage?: N2K_Number
+  reserved7?: number
+}
+
+/**
+ * @category PGN_65410_AirmarDeviceInformation
+ */
+export class PGN_65410_AirmarDeviceInformation extends PGN implements PGN_65410_AirmarDeviceInformationInterface {
+  fields: PGN_65410_AirmarDeviceInformationFields
+
+  constructor(fields: PGN_65410_AirmarDeviceInformationCreateArgs, dst: number = 255) {
+    super(PGN_65410_AirmarDeviceInformationDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_65410_AirmarDeviceInformationMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_65410_AirmarDeviceInformationMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('airmarDeviceInformation')!
   }
 }
-pgnIdToCreator['airmarDeviceInformation'] = (fields:any, dst:number) => new PGN_65410(fields, dst)
+pgnIdToCreator['airmarDeviceInformation'] = (fields:any, dst:number) => new PGN_65410_AirmarDeviceInformation(fields, dst)
 
 
 /**
@@ -4850,16 +5342,19 @@ pgnIdToCreator['airmarDeviceInformation'] = (fields:any, dst:number) => new PGN_
  *
  * Explanation: Seen as sent by AC-42 only so far.
  *
- * @category PGN_65420
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65420_SimnetApUnknown3
  */
-export interface PGN_65420Interface extends PGNInterface {
-  fields: PGN_65420Fields
+export interface PGN_65420_SimnetApUnknown3Interface extends PGNInterface {
+  fields: PGN_65420_SimnetApUnknown3Fields
 }
 
 /**
- * @category PGN_65420
+ * @category PGN_65420_SimnetApUnknown3
  */
-export interface PGN_65420Fields {
+export interface PGN_65420_SimnetApUnknown3Fields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -4872,9 +5367,9 @@ export interface PGN_65420Fields {
 }
 
 /**
- * @category PGN_65420
+ * @category PGN_65420_SimnetApUnknown3
  */
-export const PGN_65420Defaults = {
+export const PGN_65420_SimnetApUnknown3Defaults = {
   pgn: 65420,
   dst: 255,
   prio: 6,
@@ -4882,22 +5377,46 @@ export const PGN_65420Defaults = {
 }
 
 /**
- * @category PGN_65420
+ * @category PGN_65420_SimnetApUnknown3
  */
-export class PGN_65420 extends PGN implements PGN_65420Interface {
-  fields: PGN_65420Fields
+export const PGN_65420_SimnetApUnknown3MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_65420Fields, dst: number = 255) {
-    super(PGN_65420Defaults)
+/**
+ * @category PGN_65420_SimnetApUnknown3
+ */
+export interface PGN_65420_SimnetApUnknown3CreateArgs {
+  reserved?: number
+  a?: N2K_Number
+  b?: N2K_Number
+  c?: N2K_Number
+  d?: N2K_Number
+  e?: N2K_Number
+  reserved9?: number
+}
+
+/**
+ * @category PGN_65420_SimnetApUnknown3
+ */
+export class PGN_65420_SimnetApUnknown3 extends PGN implements PGN_65420_SimnetApUnknown3Interface {
+  fields: PGN_65420_SimnetApUnknown3Fields
+
+  constructor(fields: PGN_65420_SimnetApUnknown3CreateArgs, dst: number = 255) {
+    super(PGN_65420_SimnetApUnknown3Defaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_65420_SimnetApUnknown3MatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_65420_SimnetApUnknown3MatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('simnetApUnknown3')!
   }
 }
-pgnIdToCreator['simnetApUnknown3'] = (fields:any, dst:number) => new PGN_65420(fields, dst)
+pgnIdToCreator['simnetApUnknown3'] = (fields:any, dst:number) => new PGN_65420_SimnetApUnknown3(fields, dst)
 
 
 /**
@@ -4905,16 +5424,19 @@ pgnIdToCreator['simnetApUnknown3'] = (fields:any, dst:number) => new PGN_65420(f
  *
  * Description: Simnet: Autopilot Mode
  *
- * @category PGN_65480
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65480_SimnetAutopilotMode
  */
-export interface PGN_65480Interface extends PGNInterface {
-  fields: PGN_65480Fields
+export interface PGN_65480_SimnetAutopilotModeInterface extends PGNInterface {
+  fields: PGN_65480_SimnetAutopilotModeFields
 }
 
 /**
- * @category PGN_65480
+ * @category PGN_65480_SimnetAutopilotMode
  */
-export interface PGN_65480Fields {
+export interface PGN_65480_SimnetAutopilotModeFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -4922,9 +5444,9 @@ export interface PGN_65480Fields {
 }
 
 /**
- * @category PGN_65480
+ * @category PGN_65480_SimnetAutopilotMode
  */
-export const PGN_65480Defaults = {
+export const PGN_65480_SimnetAutopilotModeDefaults = {
   pgn: 65480,
   dst: 255,
   prio: 3,
@@ -4932,22 +5454,41 @@ export const PGN_65480Defaults = {
 }
 
 /**
- * @category PGN_65480
+ * @category PGN_65480_SimnetAutopilotMode
  */
-export class PGN_65480 extends PGN implements PGN_65480Interface {
-  fields: PGN_65480Fields
+export const PGN_65480_SimnetAutopilotModeMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_65480Fields, dst: number = 255) {
-    super(PGN_65480Defaults)
+/**
+ * @category PGN_65480_SimnetAutopilotMode
+ */
+export interface PGN_65480_SimnetAutopilotModeCreateArgs {
+  reserved?: number
+  reserved4?: number
+}
+
+/**
+ * @category PGN_65480_SimnetAutopilotMode
+ */
+export class PGN_65480_SimnetAutopilotMode extends PGN implements PGN_65480_SimnetAutopilotModeInterface {
+  fields: PGN_65480_SimnetAutopilotModeFields
+
+  constructor(fields: PGN_65480_SimnetAutopilotModeCreateArgs, dst: number = 255) {
+    super(PGN_65480_SimnetAutopilotModeDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_65480_SimnetAutopilotModeMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_65480_SimnetAutopilotModeMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('simnetAutopilotMode')!
   }
 }
-pgnIdToCreator['simnetAutopilotMode'] = (fields:any, dst:number) => new PGN_65480(fields, dst)
+pgnIdToCreator['simnetAutopilotMode'] = (fields:any, dst:number) => new PGN_65480_SimnetAutopilotMode(fields, dst)
 
 
 /**
@@ -4956,7 +5497,6 @@ pgnIdToCreator['simnetAutopilotMode'] = (fields:any, dst:number) => new PGN_6548
  * Description: 0x1ED00 - 0x1EE00: Standardized fast-packet addressed
  *
  * Explanation: Standardized PGNs in PDU1 (addressed) fast-packet PGN range 0x1ED00 to 0x1EE00 (126208 - 126464). When this is shown during analysis it means the PGN is not reverse engineered yet.
- *
  *
  * @category PGN_126208
  */
@@ -5680,7 +6220,6 @@ pgnIdToCreator['pgnListTransmitAndReceive'] = (fields:any, dst:number) => new PG
  * Description: 0x1EF00: Manufacturer Proprietary fast-packet addressed
  *
  * Explanation: Manufacturer Proprietary PGNs in PDU1 (addressed) fast-packet PGN 0x1EF00 (126720).When this is shown during analysis it means the PGN is not reverse engineered yet.
- *
  *
  * @category PGN_126720
  */
@@ -14754,7 +15293,6 @@ pgnIdToCreator['dscDistressCallInformation'] = (fields:any, dst:number) => new P
  *
  * Description: DSC Call Information
  *
- *
  * @category PGN_129808
  */
 export interface PGN_129808Interface extends PGNInterface {
@@ -18032,7 +18570,6 @@ pgnIdToCreator['zoneConfiguration'] = (fields:any, dst:number) => new PGN_130586
  *
  * Explanation: This definition is used for Manufacturer Specific PGNs in PDU2 (non-addressed) fast-packet PGN range 0x1FF00 to 0x1FFFF (130816 - 131071). When this is shown during analysis it means the PGN is not reverse engineered yet.
  *
- *
  * @category PGN_130816
  */
 export interface PGN_130816Interface extends PGNInterface {
@@ -19809,16 +20346,19 @@ pgnIdToCreator['lowranceProductInformation'] = (fields:any, dst:number) => new P
  *
  * Description: Simnet: Reprogram Data
  *
- * @category PGN_130818
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130818_SimnetReprogramData
  */
-export interface PGN_130818Interface extends PGNInterface {
-  fields: PGN_130818Fields
+export interface PGN_130818_SimnetReprogramDataInterface extends PGNInterface {
+  fields: PGN_130818_SimnetReprogramDataFields
 }
 
 /**
- * @category PGN_130818
+ * @category PGN_130818_SimnetReprogramData
  */
-export interface PGN_130818Fields {
+export interface PGN_130818_SimnetReprogramDataFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -19828,9 +20368,9 @@ export interface PGN_130818Fields {
 }
 
 /**
- * @category PGN_130818
+ * @category PGN_130818_SimnetReprogramData
  */
-export const PGN_130818Defaults = {
+export const PGN_130818_SimnetReprogramDataDefaults = {
   pgn: 130818,
   dst: 255,
   prio: 7,
@@ -19838,22 +20378,43 @@ export const PGN_130818Defaults = {
 }
 
 /**
- * @category PGN_130818
+ * @category PGN_130818_SimnetReprogramData
  */
-export class PGN_130818 extends PGN implements PGN_130818Interface {
-  fields: PGN_130818Fields
+export const PGN_130818_SimnetReprogramDataMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_130818Fields, dst: number = 255) {
-    super(PGN_130818Defaults)
+/**
+ * @category PGN_130818_SimnetReprogramData
+ */
+export interface PGN_130818_SimnetReprogramDataCreateArgs {
+  reserved?: number
+  version?: N2K_Number
+  sequence?: N2K_Number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130818_SimnetReprogramData
+ */
+export class PGN_130818_SimnetReprogramData extends PGN implements PGN_130818_SimnetReprogramDataInterface {
+  fields: PGN_130818_SimnetReprogramDataFields
+
+  constructor(fields: PGN_130818_SimnetReprogramDataCreateArgs, dst: number = 255) {
+    super(PGN_130818_SimnetReprogramDataDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130818_SimnetReprogramDataMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130818_SimnetReprogramDataMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('simnetReprogramData')!
   }
 }
-pgnIdToCreator['simnetReprogramData'] = (fields:any, dst:number) => new PGN_130818(fields, dst)
+pgnIdToCreator['simnetReprogramData'] = (fields:any, dst:number) => new PGN_130818_SimnetReprogramData(fields, dst)
 
 
 /**
@@ -19861,25 +20422,28 @@ pgnIdToCreator['simnetReprogramData'] = (fields:any, dst:number) => new PGN_1308
  *
  * Description: Simnet: Request Reprogram
  *
- * @category PGN_130819
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130819_SimnetRequestReprogram
  */
-export interface PGN_130819Interface extends PGNInterface {
-  fields: PGN_130819Fields
+export interface PGN_130819_SimnetRequestReprogramInterface extends PGNInterface {
+  fields: PGN_130819_SimnetRequestReprogramFields
 }
 
 /**
- * @category PGN_130819
+ * @category PGN_130819_SimnetRequestReprogram
  */
-export interface PGN_130819Fields {
+export interface PGN_130819_SimnetRequestReprogramFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
 }
 
 /**
- * @category PGN_130819
+ * @category PGN_130819_SimnetRequestReprogram
  */
-export const PGN_130819Defaults = {
+export const PGN_130819_SimnetRequestReprogramDefaults = {
   pgn: 130819,
   dst: 255,
   prio: 7,
@@ -19887,22 +20451,40 @@ export const PGN_130819Defaults = {
 }
 
 /**
- * @category PGN_130819
+ * @category PGN_130819_SimnetRequestReprogram
  */
-export class PGN_130819 extends PGN implements PGN_130819Interface {
-  fields: PGN_130819Fields
+export const PGN_130819_SimnetRequestReprogramMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_130819Fields, dst: number = 255) {
-    super(PGN_130819Defaults)
+/**
+ * @category PGN_130819_SimnetRequestReprogram
+ */
+export interface PGN_130819_SimnetRequestReprogramCreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_130819_SimnetRequestReprogram
+ */
+export class PGN_130819_SimnetRequestReprogram extends PGN implements PGN_130819_SimnetRequestReprogramInterface {
+  fields: PGN_130819_SimnetRequestReprogramFields
+
+  constructor(fields: PGN_130819_SimnetRequestReprogramCreateArgs, dst: number = 255) {
+    super(PGN_130819_SimnetRequestReprogramDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130819_SimnetRequestReprogramMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130819_SimnetRequestReprogramMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('simnetRequestReprogram')!
   }
 }
-pgnIdToCreator['simnetRequestReprogram'] = (fields:any, dst:number) => new PGN_130819(fields, dst)
+pgnIdToCreator['simnetRequestReprogram'] = (fields:any, dst:number) => new PGN_130819_SimnetRequestReprogram(fields, dst)
 
 
 /**
@@ -23160,16 +23742,19 @@ pgnIdToCreator['furunoUnknown130821'] = (fields:any, dst:number) => new PGN_1308
  *
  * Description: Navico: Unknown 1
  *
- * @category PGN_130822
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130822_NavicoUnknown1
  */
-export interface PGN_130822Interface extends PGNInterface {
-  fields: PGN_130822Fields
+export interface PGN_130822_NavicoUnknown1Interface extends PGNInterface {
+  fields: PGN_130822_NavicoUnknown1Fields
 }
 
 /**
- * @category PGN_130822
+ * @category PGN_130822_NavicoUnknown1
  */
-export interface PGN_130822Fields {
+export interface PGN_130822_NavicoUnknown1Fields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -23177,9 +23762,9 @@ export interface PGN_130822Fields {
 }
 
 /**
- * @category PGN_130822
+ * @category PGN_130822_NavicoUnknown1
  */
-export const PGN_130822Defaults = {
+export const PGN_130822_NavicoUnknown1Defaults = {
   pgn: 130822,
   dst: 255,
   prio: 3,
@@ -23187,22 +23772,41 @@ export const PGN_130822Defaults = {
 }
 
 /**
- * @category PGN_130822
+ * @category PGN_130822_NavicoUnknown1
  */
-export class PGN_130822 extends PGN implements PGN_130822Interface {
-  fields: PGN_130822Fields
+export const PGN_130822_NavicoUnknown1MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_130822Fields, dst: number = 255) {
-    super(PGN_130822Defaults)
+/**
+ * @category PGN_130822_NavicoUnknown1
+ */
+export interface PGN_130822_NavicoUnknown1CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130822_NavicoUnknown1
+ */
+export class PGN_130822_NavicoUnknown1 extends PGN implements PGN_130822_NavicoUnknown1Interface {
+  fields: PGN_130822_NavicoUnknown1Fields
+
+  constructor(fields: PGN_130822_NavicoUnknown1CreateArgs, dst: number = 255) {
+    super(PGN_130822_NavicoUnknown1Defaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130822_NavicoUnknown1MatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130822_NavicoUnknown1MatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('navicoUnknown1')!
   }
 }
-pgnIdToCreator['navicoUnknown1'] = (fields:any, dst:number) => new PGN_130822(fields, dst)
+pgnIdToCreator['navicoUnknown1'] = (fields:any, dst:number) => new PGN_130822_NavicoUnknown1(fields, dst)
 
 
 /**
@@ -23210,16 +23814,19 @@ pgnIdToCreator['navicoUnknown1'] = (fields:any, dst:number) => new PGN_130822(fi
  *
  * Description: Maretron: Proprietary Temperature High Range
  *
- * @category PGN_130823
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130823_MaretronProprietaryTemperatureHighRange
  */
-export interface PGN_130823Interface extends PGNInterface {
-  fields: PGN_130823Fields
+export interface PGN_130823_MaretronProprietaryTemperatureHighRangeInterface extends PGNInterface {
+  fields: PGN_130823_MaretronProprietaryTemperatureHighRangeFields
 }
 
 /**
- * @category PGN_130823
+ * @category PGN_130823_MaretronProprietaryTemperatureHighRange
  */
-export interface PGN_130823Fields {
+export interface PGN_130823_MaretronProprietaryTemperatureHighRangeFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -23231,9 +23838,9 @@ export interface PGN_130823Fields {
 }
 
 /**
- * @category PGN_130823
+ * @category PGN_130823_MaretronProprietaryTemperatureHighRange
  */
-export const PGN_130823Defaults = {
+export const PGN_130823_MaretronProprietaryTemperatureHighRangeDefaults = {
   pgn: 130823,
   dst: 255,
   prio: 3,
@@ -23241,22 +23848,45 @@ export const PGN_130823Defaults = {
 }
 
 /**
- * @category PGN_130823
+ * @category PGN_130823_MaretronProprietaryTemperatureHighRange
  */
-export class PGN_130823 extends PGN implements PGN_130823Interface {
-  fields: PGN_130823Fields
+export const PGN_130823_MaretronProprietaryTemperatureHighRangeMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_130823Fields, dst: number = 255) {
-    super(PGN_130823Defaults)
+/**
+ * @category PGN_130823_MaretronProprietaryTemperatureHighRange
+ */
+export interface PGN_130823_MaretronProprietaryTemperatureHighRangeCreateArgs {
+  reserved?: number
+  sid?: N2K_Number
+  instance: N2K_Number
+  source?: enums.TemperatureSource | number
+  actualTemperature?: N2K_Number
+  setTemperature?: N2K_Number
+}
+
+/**
+ * @category PGN_130823_MaretronProprietaryTemperatureHighRange
+ */
+export class PGN_130823_MaretronProprietaryTemperatureHighRange extends PGN implements PGN_130823_MaretronProprietaryTemperatureHighRangeInterface {
+  fields: PGN_130823_MaretronProprietaryTemperatureHighRangeFields
+
+  constructor(fields: PGN_130823_MaretronProprietaryTemperatureHighRangeCreateArgs, dst: number = 255) {
+    super(PGN_130823_MaretronProprietaryTemperatureHighRangeDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130823_MaretronProprietaryTemperatureHighRangeMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130823_MaretronProprietaryTemperatureHighRangeMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('maretronProprietaryTemperatureHighRange')!
   }
 }
-pgnIdToCreator['maretronProprietaryTemperatureHighRange'] = (fields:any, dst:number) => new PGN_130823(fields, dst)
+pgnIdToCreator['maretronProprietaryTemperatureHighRange'] = (fields:any, dst:number) => new PGN_130823_MaretronProprietaryTemperatureHighRange(fields, dst)
 
 
 /**
@@ -23426,16 +24056,19 @@ pgnIdToCreator['maretronAnnunciator'] = (fields:any, dst:number) => new PGN_1308
  *
  * Description: Navico: Unknown 2
  *
- * @category PGN_130825
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130825_NavicoUnknown2
  */
-export interface PGN_130825Interface extends PGNInterface {
-  fields: PGN_130825Fields
+export interface PGN_130825_NavicoUnknown2Interface extends PGNInterface {
+  fields: PGN_130825_NavicoUnknown2Fields
 }
 
 /**
- * @category PGN_130825
+ * @category PGN_130825_NavicoUnknown2
  */
-export interface PGN_130825Fields {
+export interface PGN_130825_NavicoUnknown2Fields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -23443,9 +24076,9 @@ export interface PGN_130825Fields {
 }
 
 /**
- * @category PGN_130825
+ * @category PGN_130825_NavicoUnknown2
  */
-export const PGN_130825Defaults = {
+export const PGN_130825_NavicoUnknown2Defaults = {
   pgn: 130825,
   dst: 255,
   prio: 3,
@@ -23453,22 +24086,41 @@ export const PGN_130825Defaults = {
 }
 
 /**
- * @category PGN_130825
+ * @category PGN_130825_NavicoUnknown2
  */
-export class PGN_130825 extends PGN implements PGN_130825Interface {
-  fields: PGN_130825Fields
+export const PGN_130825_NavicoUnknown2MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_130825Fields, dst: number = 255) {
-    super(PGN_130825Defaults)
+/**
+ * @category PGN_130825_NavicoUnknown2
+ */
+export interface PGN_130825_NavicoUnknown2CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130825_NavicoUnknown2
+ */
+export class PGN_130825_NavicoUnknown2 extends PGN implements PGN_130825_NavicoUnknown2Interface {
+  fields: PGN_130825_NavicoUnknown2Fields
+
+  constructor(fields: PGN_130825_NavicoUnknown2CreateArgs, dst: number = 255) {
+    super(PGN_130825_NavicoUnknown2Defaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130825_NavicoUnknown2MatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130825_NavicoUnknown2MatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('navicoUnknown2')!
   }
 }
-pgnIdToCreator['navicoUnknown2'] = (fields:any, dst:number) => new PGN_130825(fields, dst)
+pgnIdToCreator['navicoUnknown2'] = (fields:any, dst:number) => new PGN_130825_NavicoUnknown2(fields, dst)
 
 
 /**
@@ -23476,16 +24128,19 @@ pgnIdToCreator['navicoUnknown2'] = (fields:any, dst:number) => new PGN_130825(fi
  *
  * Description: Lowrance: unknown
  *
- * @category PGN_130827
+ * Match: Manufacturer Code == Lowrance<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130827_LowranceUnknown
  */
-export interface PGN_130827Interface extends PGNInterface {
-  fields: PGN_130827Fields
+export interface PGN_130827_LowranceUnknownInterface extends PGNInterface {
+  fields: PGN_130827_LowranceUnknownFields
 }
 
 /**
- * @category PGN_130827
+ * @category PGN_130827_LowranceUnknown
  */
-export interface PGN_130827Fields {
+export interface PGN_130827_LowranceUnknownFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -23498,9 +24153,9 @@ export interface PGN_130827Fields {
 }
 
 /**
- * @category PGN_130827
+ * @category PGN_130827_LowranceUnknown
  */
-export const PGN_130827Defaults = {
+export const PGN_130827_LowranceUnknownDefaults = {
   pgn: 130827,
   dst: 255,
   prio: 3,
@@ -23508,22 +24163,46 @@ export const PGN_130827Defaults = {
 }
 
 /**
- * @category PGN_130827
+ * @category PGN_130827_LowranceUnknown
  */
-export class PGN_130827 extends PGN implements PGN_130827Interface {
-  fields: PGN_130827Fields
+export const PGN_130827_LowranceUnknownMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Lowrance,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_130827Fields, dst: number = 255) {
-    super(PGN_130827Defaults)
+/**
+ * @category PGN_130827_LowranceUnknown
+ */
+export interface PGN_130827_LowranceUnknownCreateArgs {
+  reserved?: number
+  a?: N2K_Number
+  b?: N2K_Number
+  c?: N2K_Number
+  d?: N2K_Number
+  e?: N2K_Number
+  f?: N2K_Number
+}
+
+/**
+ * @category PGN_130827_LowranceUnknown
+ */
+export class PGN_130827_LowranceUnknown extends PGN implements PGN_130827_LowranceUnknownInterface {
+  fields: PGN_130827_LowranceUnknownFields
+
+  constructor(fields: PGN_130827_LowranceUnknownCreateArgs, dst: number = 255) {
+    super(PGN_130827_LowranceUnknownDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130827_LowranceUnknownMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130827_LowranceUnknownMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('lowranceUnknown')!
   }
 }
-pgnIdToCreator['lowranceUnknown'] = (fields:any, dst:number) => new PGN_130827(fields, dst)
+pgnIdToCreator['lowranceUnknown'] = (fields:any, dst:number) => new PGN_130827_LowranceUnknown(fields, dst)
 
 
 /**
@@ -23531,25 +24210,28 @@ pgnIdToCreator['lowranceUnknown'] = (fields:any, dst:number) => new PGN_130827(f
  *
  * Description: Simnet: Set Serial Number
  *
- * @category PGN_130828
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130828_SimnetSetSerialNumber
  */
-export interface PGN_130828Interface extends PGNInterface {
-  fields: PGN_130828Fields
+export interface PGN_130828_SimnetSetSerialNumberInterface extends PGNInterface {
+  fields: PGN_130828_SimnetSetSerialNumberFields
 }
 
 /**
- * @category PGN_130828
+ * @category PGN_130828_SimnetSetSerialNumber
  */
-export interface PGN_130828Fields {
+export interface PGN_130828_SimnetSetSerialNumberFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
 }
 
 /**
- * @category PGN_130828
+ * @category PGN_130828_SimnetSetSerialNumber
  */
-export const PGN_130828Defaults = {
+export const PGN_130828_SimnetSetSerialNumberDefaults = {
   pgn: 130828,
   dst: 255,
   prio: 3,
@@ -23557,22 +24239,40 @@ export const PGN_130828Defaults = {
 }
 
 /**
- * @category PGN_130828
+ * @category PGN_130828_SimnetSetSerialNumber
  */
-export class PGN_130828 extends PGN implements PGN_130828Interface {
-  fields: PGN_130828Fields
+export const PGN_130828_SimnetSetSerialNumberMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_130828Fields, dst: number = 255) {
-    super(PGN_130828Defaults)
+/**
+ * @category PGN_130828_SimnetSetSerialNumber
+ */
+export interface PGN_130828_SimnetSetSerialNumberCreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_130828_SimnetSetSerialNumber
+ */
+export class PGN_130828_SimnetSetSerialNumber extends PGN implements PGN_130828_SimnetSetSerialNumberInterface {
+  fields: PGN_130828_SimnetSetSerialNumberFields
+
+  constructor(fields: PGN_130828_SimnetSetSerialNumberCreateArgs, dst: number = 255) {
+    super(PGN_130828_SimnetSetSerialNumberDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130828_SimnetSetSerialNumberMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130828_SimnetSetSerialNumberMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('simnetSetSerialNumber')!
   }
 }
-pgnIdToCreator['simnetSetSerialNumber'] = (fields:any, dst:number) => new PGN_130828(fields, dst)
+pgnIdToCreator['simnetSetSerialNumber'] = (fields:any, dst:number) => new PGN_130828_SimnetSetSerialNumber(fields, dst)
 
 
 /**
@@ -23580,25 +24280,28 @@ pgnIdToCreator['simnetSetSerialNumber'] = (fields:any, dst:number) => new PGN_13
  *
  * Description: Suzuki: Engine and Storage Device Config
  *
- * @category PGN_130831
+ * Match: Manufacturer Code == Suzuki Motor Corporation<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130831_SuzukiEngineAndStorageDeviceConfig
  */
-export interface PGN_130831Interface extends PGNInterface {
-  fields: PGN_130831Fields
+export interface PGN_130831_SuzukiEngineAndStorageDeviceConfigInterface extends PGNInterface {
+  fields: PGN_130831_SuzukiEngineAndStorageDeviceConfigFields
 }
 
 /**
- * @category PGN_130831
+ * @category PGN_130831_SuzukiEngineAndStorageDeviceConfig
  */
-export interface PGN_130831Fields {
+export interface PGN_130831_SuzukiEngineAndStorageDeviceConfigFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
 }
 
 /**
- * @category PGN_130831
+ * @category PGN_130831_SuzukiEngineAndStorageDeviceConfig
  */
-export const PGN_130831Defaults = {
+export const PGN_130831_SuzukiEngineAndStorageDeviceConfigDefaults = {
   pgn: 130831,
   dst: 255,
   prio: 3,
@@ -23606,22 +24309,40 @@ export const PGN_130831Defaults = {
 }
 
 /**
- * @category PGN_130831
+ * @category PGN_130831_SuzukiEngineAndStorageDeviceConfig
  */
-export class PGN_130831 extends PGN implements PGN_130831Interface {
-  fields: PGN_130831Fields
+export const PGN_130831_SuzukiEngineAndStorageDeviceConfigMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.SuzukiMotorCorporation,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_130831Fields, dst: number = 255) {
-    super(PGN_130831Defaults)
+/**
+ * @category PGN_130831_SuzukiEngineAndStorageDeviceConfig
+ */
+export interface PGN_130831_SuzukiEngineAndStorageDeviceConfigCreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_130831_SuzukiEngineAndStorageDeviceConfig
+ */
+export class PGN_130831_SuzukiEngineAndStorageDeviceConfig extends PGN implements PGN_130831_SuzukiEngineAndStorageDeviceConfigInterface {
+  fields: PGN_130831_SuzukiEngineAndStorageDeviceConfigFields
+
+  constructor(fields: PGN_130831_SuzukiEngineAndStorageDeviceConfigCreateArgs, dst: number = 255) {
+    super(PGN_130831_SuzukiEngineAndStorageDeviceConfigDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130831_SuzukiEngineAndStorageDeviceConfigMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130831_SuzukiEngineAndStorageDeviceConfigMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('suzukiEngineAndStorageDeviceConfig')!
   }
 }
-pgnIdToCreator['suzukiEngineAndStorageDeviceConfig'] = (fields:any, dst:number) => new PGN_130831(fields, dst)
+pgnIdToCreator['suzukiEngineAndStorageDeviceConfig'] = (fields:any, dst:number) => new PGN_130831_SuzukiEngineAndStorageDeviceConfig(fields, dst)
 
 
 /**
@@ -23629,25 +24350,28 @@ pgnIdToCreator['suzukiEngineAndStorageDeviceConfig'] = (fields:any, dst:number) 
  *
  * Description: Simnet: Fuel Used - High Resolution
  *
- * @category PGN_130832
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130832_SimnetFuelUsedHighResolution
  */
-export interface PGN_130832Interface extends PGNInterface {
-  fields: PGN_130832Fields
+export interface PGN_130832_SimnetFuelUsedHighResolutionInterface extends PGNInterface {
+  fields: PGN_130832_SimnetFuelUsedHighResolutionFields
 }
 
 /**
- * @category PGN_130832
+ * @category PGN_130832_SimnetFuelUsedHighResolution
  */
-export interface PGN_130832Fields {
+export interface PGN_130832_SimnetFuelUsedHighResolutionFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
 }
 
 /**
- * @category PGN_130832
+ * @category PGN_130832_SimnetFuelUsedHighResolution
  */
-export const PGN_130832Defaults = {
+export const PGN_130832_SimnetFuelUsedHighResolutionDefaults = {
   pgn: 130832,
   dst: 255,
   prio: 3,
@@ -23655,22 +24379,40 @@ export const PGN_130832Defaults = {
 }
 
 /**
- * @category PGN_130832
+ * @category PGN_130832_SimnetFuelUsedHighResolution
  */
-export class PGN_130832 extends PGN implements PGN_130832Interface {
-  fields: PGN_130832Fields
+export const PGN_130832_SimnetFuelUsedHighResolutionMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_130832Fields, dst: number = 255) {
-    super(PGN_130832Defaults)
+/**
+ * @category PGN_130832_SimnetFuelUsedHighResolution
+ */
+export interface PGN_130832_SimnetFuelUsedHighResolutionCreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_130832_SimnetFuelUsedHighResolution
+ */
+export class PGN_130832_SimnetFuelUsedHighResolution extends PGN implements PGN_130832_SimnetFuelUsedHighResolutionInterface {
+  fields: PGN_130832_SimnetFuelUsedHighResolutionFields
+
+  constructor(fields: PGN_130832_SimnetFuelUsedHighResolutionCreateArgs, dst: number = 255) {
+    super(PGN_130832_SimnetFuelUsedHighResolutionDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130832_SimnetFuelUsedHighResolutionMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130832_SimnetFuelUsedHighResolutionMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('simnetFuelUsedHighResolution')!
   }
 }
-pgnIdToCreator['simnetFuelUsedHighResolution'] = (fields:any, dst:number) => new PGN_130832(fields, dst)
+pgnIdToCreator['simnetFuelUsedHighResolution'] = (fields:any, dst:number) => new PGN_130832_SimnetFuelUsedHighResolution(fields, dst)
 
 
 /**
@@ -23678,16 +24420,19 @@ pgnIdToCreator['simnetFuelUsedHighResolution'] = (fields:any, dst:number) => new
  *
  * Description: B&G: User and Remote rename
  *
- * @category PGN_130833
+ * Match: Manufacturer Code == B & G<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130833_BGUserAndRemoteRename
  */
-export interface PGN_130833Interface extends PGNInterface {
-  fields: PGN_130833Fields
+export interface PGN_130833_BGUserAndRemoteRenameInterface extends PGNInterface {
+  fields: PGN_130833_BGUserAndRemoteRenameFields
 }
 
 /**
- * @category PGN_130833
+ * @category PGN_130833_BGUserAndRemoteRename
  */
-export interface PGN_130833Fields {
+export interface PGN_130833_BGUserAndRemoteRenameFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -23700,9 +24445,9 @@ export interface PGN_130833Fields {
 }
 
 /**
- * @category PGN_130833
+ * @category PGN_130833_BGUserAndRemoteRename
  */
-export const PGN_130833Defaults = {
+export const PGN_130833_BGUserAndRemoteRenameDefaults = {
   pgn: 130833,
   dst: 255,
   prio: 3,
@@ -23710,22 +24455,46 @@ export const PGN_130833Defaults = {
 }
 
 /**
- * @category PGN_130833
+ * @category PGN_130833_BGUserAndRemoteRename
  */
-export class PGN_130833 extends PGN implements PGN_130833Interface {
-  fields: PGN_130833Fields
+export const PGN_130833_BGUserAndRemoteRenameMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BG,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_130833Fields, dst: number = 255) {
-    super(PGN_130833Defaults)
+/**
+ * @category PGN_130833_BGUserAndRemoteRename
+ */
+export interface PGN_130833_BGUserAndRemoteRenameCreateArgs {
+  reserved?: number
+  dataType?: N2K_DynamicFieldKey
+  length?: N2K_Number
+  reserved6?: number
+  decimals?: enums.BandgDecimals | number
+  shortName?: N2K_StringFix
+  longName?: N2K_StringFix
+}
+
+/**
+ * @category PGN_130833_BGUserAndRemoteRename
+ */
+export class PGN_130833_BGUserAndRemoteRename extends PGN implements PGN_130833_BGUserAndRemoteRenameInterface {
+  fields: PGN_130833_BGUserAndRemoteRenameFields
+
+  constructor(fields: PGN_130833_BGUserAndRemoteRenameCreateArgs, dst: number = 255) {
+    super(PGN_130833_BGUserAndRemoteRenameDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130833_BGUserAndRemoteRenameMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130833_BGUserAndRemoteRenameMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('bGUserAndRemoteRename')!
   }
 }
-pgnIdToCreator['bGUserAndRemoteRename'] = (fields:any, dst:number) => new PGN_130833(fields, dst)
+pgnIdToCreator['bGUserAndRemoteRename'] = (fields:any, dst:number) => new PGN_130833_BGUserAndRemoteRename(fields, dst)
 
 
 /**
@@ -23733,25 +24502,28 @@ pgnIdToCreator['bGUserAndRemoteRename'] = (fields:any, dst:number) => new PGN_13
  *
  * Description: Simnet: Engine and Tank Configuration
  *
- * @category PGN_130834
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130834_SimnetEngineAndTankConfiguration
  */
-export interface PGN_130834Interface extends PGNInterface {
-  fields: PGN_130834Fields
+export interface PGN_130834_SimnetEngineAndTankConfigurationInterface extends PGNInterface {
+  fields: PGN_130834_SimnetEngineAndTankConfigurationFields
 }
 
 /**
- * @category PGN_130834
+ * @category PGN_130834_SimnetEngineAndTankConfiguration
  */
-export interface PGN_130834Fields {
+export interface PGN_130834_SimnetEngineAndTankConfigurationFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
 }
 
 /**
- * @category PGN_130834
+ * @category PGN_130834_SimnetEngineAndTankConfiguration
  */
-export const PGN_130834Defaults = {
+export const PGN_130834_SimnetEngineAndTankConfigurationDefaults = {
   pgn: 130834,
   dst: 255,
   prio: 3,
@@ -23759,22 +24531,40 @@ export const PGN_130834Defaults = {
 }
 
 /**
- * @category PGN_130834
+ * @category PGN_130834_SimnetEngineAndTankConfiguration
  */
-export class PGN_130834 extends PGN implements PGN_130834Interface {
-  fields: PGN_130834Fields
+export const PGN_130834_SimnetEngineAndTankConfigurationMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_130834Fields, dst: number = 255) {
-    super(PGN_130834Defaults)
+/**
+ * @category PGN_130834_SimnetEngineAndTankConfiguration
+ */
+export interface PGN_130834_SimnetEngineAndTankConfigurationCreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_130834_SimnetEngineAndTankConfiguration
+ */
+export class PGN_130834_SimnetEngineAndTankConfiguration extends PGN implements PGN_130834_SimnetEngineAndTankConfigurationInterface {
+  fields: PGN_130834_SimnetEngineAndTankConfigurationFields
+
+  constructor(fields: PGN_130834_SimnetEngineAndTankConfigurationCreateArgs, dst: number = 255) {
+    super(PGN_130834_SimnetEngineAndTankConfigurationDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130834_SimnetEngineAndTankConfigurationMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130834_SimnetEngineAndTankConfigurationMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('simnetEngineAndTankConfiguration')!
   }
 }
-pgnIdToCreator['simnetEngineAndTankConfiguration'] = (fields:any, dst:number) => new PGN_130834(fields, dst)
+pgnIdToCreator['simnetEngineAndTankConfiguration'] = (fields:any, dst:number) => new PGN_130834_SimnetEngineAndTankConfiguration(fields, dst)
 
 
 /**
@@ -23782,25 +24572,28 @@ pgnIdToCreator['simnetEngineAndTankConfiguration'] = (fields:any, dst:number) =>
  *
  * Description: Simnet: Set Engine and Tank Configuration
  *
- * @category PGN_130835
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130835_SimnetSetEngineAndTankConfiguration
  */
-export interface PGN_130835Interface extends PGNInterface {
-  fields: PGN_130835Fields
+export interface PGN_130835_SimnetSetEngineAndTankConfigurationInterface extends PGNInterface {
+  fields: PGN_130835_SimnetSetEngineAndTankConfigurationFields
 }
 
 /**
- * @category PGN_130835
+ * @category PGN_130835_SimnetSetEngineAndTankConfiguration
  */
-export interface PGN_130835Fields {
+export interface PGN_130835_SimnetSetEngineAndTankConfigurationFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
 }
 
 /**
- * @category PGN_130835
+ * @category PGN_130835_SimnetSetEngineAndTankConfiguration
  */
-export const PGN_130835Defaults = {
+export const PGN_130835_SimnetSetEngineAndTankConfigurationDefaults = {
   pgn: 130835,
   dst: 255,
   prio: 3,
@@ -23808,22 +24601,40 @@ export const PGN_130835Defaults = {
 }
 
 /**
- * @category PGN_130835
+ * @category PGN_130835_SimnetSetEngineAndTankConfiguration
  */
-export class PGN_130835 extends PGN implements PGN_130835Interface {
-  fields: PGN_130835Fields
+export const PGN_130835_SimnetSetEngineAndTankConfigurationMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_130835Fields, dst: number = 255) {
-    super(PGN_130835Defaults)
+/**
+ * @category PGN_130835_SimnetSetEngineAndTankConfiguration
+ */
+export interface PGN_130835_SimnetSetEngineAndTankConfigurationCreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_130835_SimnetSetEngineAndTankConfiguration
+ */
+export class PGN_130835_SimnetSetEngineAndTankConfiguration extends PGN implements PGN_130835_SimnetSetEngineAndTankConfigurationInterface {
+  fields: PGN_130835_SimnetSetEngineAndTankConfigurationFields
+
+  constructor(fields: PGN_130835_SimnetSetEngineAndTankConfigurationCreateArgs, dst: number = 255) {
+    super(PGN_130835_SimnetSetEngineAndTankConfigurationDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130835_SimnetSetEngineAndTankConfigurationMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130835_SimnetSetEngineAndTankConfigurationMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('simnetSetEngineAndTankConfiguration')!
   }
 }
-pgnIdToCreator['simnetSetEngineAndTankConfiguration'] = (fields:any, dst:number) => new PGN_130835(fields, dst)
+pgnIdToCreator['simnetSetEngineAndTankConfiguration'] = (fields:any, dst:number) => new PGN_130835_SimnetSetEngineAndTankConfiguration(fields, dst)
 
 
 /**
@@ -24165,25 +24976,28 @@ pgnIdToCreator['maretronSwitchStatusTimer'] = (fields:any, dst:number) => new PG
  *
  * Description: Simnet: Fluid Level Warning
  *
- * @category PGN_130838
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130838_SimnetFluidLevelWarning
  */
-export interface PGN_130838Interface extends PGNInterface {
-  fields: PGN_130838Fields
+export interface PGN_130838_SimnetFluidLevelWarningInterface extends PGNInterface {
+  fields: PGN_130838_SimnetFluidLevelWarningFields
 }
 
 /**
- * @category PGN_130838
+ * @category PGN_130838_SimnetFluidLevelWarning
  */
-export interface PGN_130838Fields {
+export interface PGN_130838_SimnetFluidLevelWarningFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
 }
 
 /**
- * @category PGN_130838
+ * @category PGN_130838_SimnetFluidLevelWarning
  */
-export const PGN_130838Defaults = {
+export const PGN_130838_SimnetFluidLevelWarningDefaults = {
   pgn: 130838,
   dst: 255,
   prio: 3,
@@ -24191,22 +25005,40 @@ export const PGN_130838Defaults = {
 }
 
 /**
- * @category PGN_130838
+ * @category PGN_130838_SimnetFluidLevelWarning
  */
-export class PGN_130838 extends PGN implements PGN_130838Interface {
-  fields: PGN_130838Fields
+export const PGN_130838_SimnetFluidLevelWarningMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_130838Fields, dst: number = 255) {
-    super(PGN_130838Defaults)
+/**
+ * @category PGN_130838_SimnetFluidLevelWarning
+ */
+export interface PGN_130838_SimnetFluidLevelWarningCreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_130838_SimnetFluidLevelWarning
+ */
+export class PGN_130838_SimnetFluidLevelWarning extends PGN implements PGN_130838_SimnetFluidLevelWarningInterface {
+  fields: PGN_130838_SimnetFluidLevelWarningFields
+
+  constructor(fields: PGN_130838_SimnetFluidLevelWarningCreateArgs, dst: number = 255) {
+    super(PGN_130838_SimnetFluidLevelWarningDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130838_SimnetFluidLevelWarningMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130838_SimnetFluidLevelWarningMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('simnetFluidLevelWarning')!
   }
 }
-pgnIdToCreator['simnetFluidLevelWarning'] = (fields:any, dst:number) => new PGN_130838(fields, dst)
+pgnIdToCreator['simnetFluidLevelWarning'] = (fields:any, dst:number) => new PGN_130838_SimnetFluidLevelWarning(fields, dst)
 
 
 /**
@@ -24214,25 +25046,28 @@ pgnIdToCreator['simnetFluidLevelWarning'] = (fields:any, dst:number) => new PGN_
  *
  * Description: Simnet: Pressure Sensor Configuration
  *
- * @category PGN_130839
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130839_SimnetPressureSensorConfiguration
  */
-export interface PGN_130839Interface extends PGNInterface {
-  fields: PGN_130839Fields
+export interface PGN_130839_SimnetPressureSensorConfigurationInterface extends PGNInterface {
+  fields: PGN_130839_SimnetPressureSensorConfigurationFields
 }
 
 /**
- * @category PGN_130839
+ * @category PGN_130839_SimnetPressureSensorConfiguration
  */
-export interface PGN_130839Fields {
+export interface PGN_130839_SimnetPressureSensorConfigurationFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
 }
 
 /**
- * @category PGN_130839
+ * @category PGN_130839_SimnetPressureSensorConfiguration
  */
-export const PGN_130839Defaults = {
+export const PGN_130839_SimnetPressureSensorConfigurationDefaults = {
   pgn: 130839,
   dst: 255,
   prio: 3,
@@ -24240,22 +25075,40 @@ export const PGN_130839Defaults = {
 }
 
 /**
- * @category PGN_130839
+ * @category PGN_130839_SimnetPressureSensorConfiguration
  */
-export class PGN_130839 extends PGN implements PGN_130839Interface {
-  fields: PGN_130839Fields
+export const PGN_130839_SimnetPressureSensorConfigurationMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_130839Fields, dst: number = 255) {
-    super(PGN_130839Defaults)
+/**
+ * @category PGN_130839_SimnetPressureSensorConfiguration
+ */
+export interface PGN_130839_SimnetPressureSensorConfigurationCreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_130839_SimnetPressureSensorConfiguration
+ */
+export class PGN_130839_SimnetPressureSensorConfiguration extends PGN implements PGN_130839_SimnetPressureSensorConfigurationInterface {
+  fields: PGN_130839_SimnetPressureSensorConfigurationFields
+
+  constructor(fields: PGN_130839_SimnetPressureSensorConfigurationCreateArgs, dst: number = 255) {
+    super(PGN_130839_SimnetPressureSensorConfigurationDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130839_SimnetPressureSensorConfigurationMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130839_SimnetPressureSensorConfigurationMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('simnetPressureSensorConfiguration')!
   }
 }
-pgnIdToCreator['simnetPressureSensorConfiguration'] = (fields:any, dst:number) => new PGN_130839(fields, dst)
+pgnIdToCreator['simnetPressureSensorConfiguration'] = (fields:any, dst:number) => new PGN_130839_SimnetPressureSensorConfiguration(fields, dst)
 
 
 /**
@@ -24263,25 +25116,28 @@ pgnIdToCreator['simnetPressureSensorConfiguration'] = (fields:any, dst:number) =
  *
  * Description: Simnet: Data User Group Configuration
  *
- * @category PGN_130840
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130840_SimnetDataUserGroupConfiguration
  */
-export interface PGN_130840Interface extends PGNInterface {
-  fields: PGN_130840Fields
+export interface PGN_130840_SimnetDataUserGroupConfigurationInterface extends PGNInterface {
+  fields: PGN_130840_SimnetDataUserGroupConfigurationFields
 }
 
 /**
- * @category PGN_130840
+ * @category PGN_130840_SimnetDataUserGroupConfiguration
  */
-export interface PGN_130840Fields {
+export interface PGN_130840_SimnetDataUserGroupConfigurationFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
 }
 
 /**
- * @category PGN_130840
+ * @category PGN_130840_SimnetDataUserGroupConfiguration
  */
-export const PGN_130840Defaults = {
+export const PGN_130840_SimnetDataUserGroupConfigurationDefaults = {
   pgn: 130840,
   dst: 255,
   prio: 3,
@@ -24289,22 +25145,40 @@ export const PGN_130840Defaults = {
 }
 
 /**
- * @category PGN_130840
+ * @category PGN_130840_SimnetDataUserGroupConfiguration
  */
-export class PGN_130840 extends PGN implements PGN_130840Interface {
-  fields: PGN_130840Fields
+export const PGN_130840_SimnetDataUserGroupConfigurationMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_130840Fields, dst: number = 255) {
-    super(PGN_130840Defaults)
+/**
+ * @category PGN_130840_SimnetDataUserGroupConfiguration
+ */
+export interface PGN_130840_SimnetDataUserGroupConfigurationCreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_130840_SimnetDataUserGroupConfiguration
+ */
+export class PGN_130840_SimnetDataUserGroupConfiguration extends PGN implements PGN_130840_SimnetDataUserGroupConfigurationInterface {
+  fields: PGN_130840_SimnetDataUserGroupConfigurationFields
+
+  constructor(fields: PGN_130840_SimnetDataUserGroupConfigurationCreateArgs, dst: number = 255) {
+    super(PGN_130840_SimnetDataUserGroupConfigurationDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130840_SimnetDataUserGroupConfigurationMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130840_SimnetDataUserGroupConfigurationMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('simnetDataUserGroupConfiguration')!
   }
 }
-pgnIdToCreator['simnetDataUserGroupConfiguration'] = (fields:any, dst:number) => new PGN_130840(fields, dst)
+pgnIdToCreator['simnetDataUserGroupConfiguration'] = (fields:any, dst:number) => new PGN_130840_SimnetDataUserGroupConfiguration(fields, dst)
 
 
 /**
@@ -25045,16 +25919,19 @@ pgnIdToCreator['furunoMotionSensorStatusExtended'] = (fields:any, dst:number) =>
  *
  * Description: SeaTalk: Node Statistics
  *
- * @category PGN_130847
+ * Match: Manufacturer Code == Raymarine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130847_SeatalkNodeStatistics
  */
-export interface PGN_130847Interface extends PGNInterface {
-  fields: PGN_130847Fields
+export interface PGN_130847_SeatalkNodeStatisticsInterface extends PGNInterface {
+  fields: PGN_130847_SeatalkNodeStatisticsFields
 }
 
 /**
- * @category PGN_130847
+ * @category PGN_130847_SeatalkNodeStatistics
  */
-export interface PGN_130847Fields {
+export interface PGN_130847_SeatalkNodeStatisticsFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -25066,9 +25943,9 @@ export interface PGN_130847Fields {
 }
 
 /**
- * @category PGN_130847
+ * @category PGN_130847_SeatalkNodeStatistics
  */
-export const PGN_130847Defaults = {
+export const PGN_130847_SeatalkNodeStatisticsDefaults = {
   pgn: 130847,
   dst: 255,
   prio: 3,
@@ -25076,22 +25953,45 @@ export const PGN_130847Defaults = {
 }
 
 /**
- * @category PGN_130847
+ * @category PGN_130847_SeatalkNodeStatistics
  */
-export class PGN_130847 extends PGN implements PGN_130847Interface {
-  fields: PGN_130847Fields
+export const PGN_130847_SeatalkNodeStatisticsMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Raymarine,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_130847Fields, dst: number = 255) {
-    super(PGN_130847Defaults)
+/**
+ * @category PGN_130847_SeatalkNodeStatistics
+ */
+export interface PGN_130847_SeatalkNodeStatisticsCreateArgs {
+  reserved?: number
+  productCode?: N2K_Number
+  year?: N2K_Number
+  month?: N2K_Number
+  deviceNumber?: N2K_Number
+  nodeVoltage?: N2K_Number
+}
+
+/**
+ * @category PGN_130847_SeatalkNodeStatistics
+ */
+export class PGN_130847_SeatalkNodeStatistics extends PGN implements PGN_130847_SeatalkNodeStatisticsInterface {
+  fields: PGN_130847_SeatalkNodeStatisticsFields
+
+  constructor(fields: PGN_130847_SeatalkNodeStatisticsCreateArgs, dst: number = 255) {
+    super(PGN_130847_SeatalkNodeStatisticsDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130847_SeatalkNodeStatisticsMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130847_SeatalkNodeStatisticsMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('seatalkNodeStatistics')!
   }
 }
-pgnIdToCreator['seatalkNodeStatistics'] = (fields:any, dst:number) => new PGN_130847(fields, dst)
+pgnIdToCreator['seatalkNodeStatistics'] = (fields:any, dst:number) => new PGN_130847_SeatalkNodeStatistics(fields, dst)
 
 
 /**
@@ -25099,16 +25999,19 @@ pgnIdToCreator['seatalkNodeStatistics'] = (fields:any, dst:number) => new PGN_13
  *
  * Description: SeaTalk: Waypoint Information
  *
- * @category PGN_130848
+ * Match: Manufacturer Code == Raymarine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130848_SeatalkWaypointInformation
  */
-export interface PGN_130848Interface extends PGNInterface {
-  fields: PGN_130848Fields
+export interface PGN_130848_SeatalkWaypointInformationInterface extends PGNInterface {
+  fields: PGN_130848_SeatalkWaypointInformationFields
 }
 
 /**
- * @category PGN_130848
+ * @category PGN_130848_SeatalkWaypointInformation
  */
-export interface PGN_130848Fields {
+export interface PGN_130848_SeatalkWaypointInformationFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -25121,9 +26024,9 @@ export interface PGN_130848Fields {
 }
 
 /**
- * @category PGN_130848
+ * @category PGN_130848_SeatalkWaypointInformation
  */
-export const PGN_130848Defaults = {
+export const PGN_130848_SeatalkWaypointInformationDefaults = {
   pgn: 130848,
   dst: 255,
   prio: 7,
@@ -25131,22 +26034,46 @@ export const PGN_130848Defaults = {
 }
 
 /**
- * @category PGN_130848
+ * @category PGN_130848_SeatalkWaypointInformation
  */
-export class PGN_130848 extends PGN implements PGN_130848Interface {
-  fields: PGN_130848Fields
+export const PGN_130848_SeatalkWaypointInformationMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Raymarine,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_130848Fields, dst: number = 255) {
-    super(PGN_130848Defaults)
+/**
+ * @category PGN_130848_SeatalkWaypointInformation
+ */
+export interface PGN_130848_SeatalkWaypointInformationCreateArgs {
+  reserved?: number
+  sid?: N2K_Number
+  waypointName?: N2K_StringFix
+  waypointSequence?: N2K_StringFix
+  bearingToWaypointTrue?: N2K_Number
+  bearingToWaypointMagnetic?: N2K_Number
+  distanceToWaypoint?: N2K_Number
+}
+
+/**
+ * @category PGN_130848_SeatalkWaypointInformation
+ */
+export class PGN_130848_SeatalkWaypointInformation extends PGN implements PGN_130848_SeatalkWaypointInformationInterface {
+  fields: PGN_130848_SeatalkWaypointInformationFields
+
+  constructor(fields: PGN_130848_SeatalkWaypointInformationCreateArgs, dst: number = 255) {
+    super(PGN_130848_SeatalkWaypointInformationDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130848_SeatalkWaypointInformationMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130848_SeatalkWaypointInformationMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('seatalkWaypointInformation')!
   }
 }
-pgnIdToCreator['seatalkWaypointInformation'] = (fields:any, dst:number) => new PGN_130848(fields, dst)
+pgnIdToCreator['seatalkWaypointInformation'] = (fields:any, dst:number) => new PGN_130848_SeatalkWaypointInformation(fields, dst)
 
 
 /**
@@ -25417,16 +26344,20 @@ pgnIdToCreator['simnetAlarm'] = (fields:any, dst:number) => new PGN_130850_Simne
  *
  * Description: Simnet: Event Reply: AP command
  *
- * @category PGN_130851
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == AP command<br>
+ *
+ * @category PGN_130851_SimnetEventReplyApCommand
  */
-export interface PGN_130851Interface extends PGNInterface {
-  fields: PGN_130851Fields
+export interface PGN_130851_SimnetEventReplyApCommandInterface extends PGNInterface {
+  fields: PGN_130851_SimnetEventReplyApCommandFields
 }
 
 /**
- * @category PGN_130851
+ * @category PGN_130851_SimnetEventReplyApCommand
  */
-export interface PGN_130851Fields {
+export interface PGN_130851_SimnetEventReplyApCommandFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -25441,9 +26372,9 @@ export interface PGN_130851Fields {
 }
 
 /**
- * @category PGN_130851
+ * @category PGN_130851_SimnetEventReplyApCommand
  */
-export const PGN_130851Defaults = {
+export const PGN_130851_SimnetEventReplyApCommandDefaults = {
   pgn: 130851,
   dst: 255,
   prio: 7,
@@ -25451,22 +26382,48 @@ export const PGN_130851Defaults = {
 }
 
 /**
- * @category PGN_130851
+ * @category PGN_130851_SimnetEventReplyApCommand
  */
-export class PGN_130851 extends PGN implements PGN_130851Interface {
-  fields: PGN_130851Fields
+export const PGN_130851_SimnetEventReplyApCommandMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.SimnetEventCommand.ApCommand,
+}
 
-  constructor(fields: PGN_130851Fields, dst: number = 255) {
-    super(PGN_130851Defaults)
+/**
+ * @category PGN_130851_SimnetEventReplyApCommand
+ */
+export interface PGN_130851_SimnetEventReplyApCommandCreateArgs {
+  reserved?: number
+  b?: N2K_Number
+  address?: N2K_Number
+  event?: enums.SimnetApEvents | number
+  c?: N2K_Number
+  direction?: enums.SimnetDirection | number
+  angle?: N2K_Number
+  g?: N2K_Number
+}
+
+/**
+ * @category PGN_130851_SimnetEventReplyApCommand
+ */
+export class PGN_130851_SimnetEventReplyApCommand extends PGN implements PGN_130851_SimnetEventReplyApCommandInterface {
+  fields: PGN_130851_SimnetEventReplyApCommandFields
+
+  constructor(fields: PGN_130851_SimnetEventReplyApCommandCreateArgs, dst: number = 255) {
+    super(PGN_130851_SimnetEventReplyApCommandDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130851_SimnetEventReplyApCommandMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130851_SimnetEventReplyApCommandMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('simnetEventReplyApCommand')!
   }
 }
-pgnIdToCreator['simnetEventReplyApCommand'] = (fields:any, dst:number) => new PGN_130851(fields, dst)
+pgnIdToCreator['simnetEventReplyApCommand'] = (fields:any, dst:number) => new PGN_130851_SimnetEventReplyApCommand(fields, dst)
 
 
 /**
@@ -25476,16 +26433,19 @@ pgnIdToCreator['simnetEventReplyApCommand'] = (fields:any, dst:number) => new PG
  *
  * Explanation: Usually accompanied by a PGN 130850 'Simnet: Alarm' message with the same information in binary form.
  *
- * @category PGN_130856
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130856_SimnetAlarmMessage
  */
-export interface PGN_130856Interface extends PGNInterface {
-  fields: PGN_130856Fields
+export interface PGN_130856_SimnetAlarmMessageInterface extends PGNInterface {
+  fields: PGN_130856_SimnetAlarmMessageFields
 }
 
 /**
- * @category PGN_130856
+ * @category PGN_130856_SimnetAlarmMessage
  */
-export interface PGN_130856Fields {
+export interface PGN_130856_SimnetAlarmMessageFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -25496,9 +26456,9 @@ export interface PGN_130856Fields {
 }
 
 /**
- * @category PGN_130856
+ * @category PGN_130856_SimnetAlarmMessage
  */
-export const PGN_130856Defaults = {
+export const PGN_130856_SimnetAlarmMessageDefaults = {
   pgn: 130856,
   dst: 255,
   prio: 3,
@@ -25506,22 +26466,44 @@ export const PGN_130856Defaults = {
 }
 
 /**
- * @category PGN_130856
+ * @category PGN_130856_SimnetAlarmMessage
  */
-export class PGN_130856 extends PGN implements PGN_130856Interface {
-  fields: PGN_130856Fields
+export const PGN_130856_SimnetAlarmMessageMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_130856Fields, dst: number = 255) {
-    super(PGN_130856Defaults)
+/**
+ * @category PGN_130856_SimnetAlarmMessage
+ */
+export interface PGN_130856_SimnetAlarmMessageCreateArgs {
+  reserved?: number
+  messageId?: N2K_Number
+  b?: N2K_Number
+  c?: N2K_Number
+  text?: N2K_StringFix
+}
+
+/**
+ * @category PGN_130856_SimnetAlarmMessage
+ */
+export class PGN_130856_SimnetAlarmMessage extends PGN implements PGN_130856_SimnetAlarmMessageInterface {
+  fields: PGN_130856_SimnetAlarmMessageFields
+
+  constructor(fields: PGN_130856_SimnetAlarmMessageCreateArgs, dst: number = 255) {
+    super(PGN_130856_SimnetAlarmMessageDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130856_SimnetAlarmMessageMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130856_SimnetAlarmMessageMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('simnetAlarmMessage')!
   }
 }
-pgnIdToCreator['simnetAlarmMessage'] = (fields:any, dst:number) => new PGN_130856(fields, dst)
+pgnIdToCreator['simnetAlarmMessage'] = (fields:any, dst:number) => new PGN_130856_SimnetAlarmMessage(fields, dst)
 
 
 /**
@@ -25531,16 +26513,19 @@ pgnIdToCreator['simnetAlarmMessage'] = (fields:any, dst:number) => new PGN_13085
  *
  * Explanation: Seen as sent by AC-42 and H5000 AP only so far.
  *
- * @category PGN_130860
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130860_SimnetApUnknown4
  */
-export interface PGN_130860Interface extends PGNInterface {
-  fields: PGN_130860Fields
+export interface PGN_130860_SimnetApUnknown4Interface extends PGNInterface {
+  fields: PGN_130860_SimnetApUnknown4Fields
 }
 
 /**
- * @category PGN_130860
+ * @category PGN_130860_SimnetApUnknown4
  */
-export interface PGN_130860Fields {
+export interface PGN_130860_SimnetApUnknown4Fields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -25553,9 +26538,9 @@ export interface PGN_130860Fields {
 }
 
 /**
- * @category PGN_130860
+ * @category PGN_130860_SimnetApUnknown4
  */
-export const PGN_130860Defaults = {
+export const PGN_130860_SimnetApUnknown4Defaults = {
   pgn: 130860,
   dst: 255,
   prio: 7,
@@ -25563,22 +26548,46 @@ export const PGN_130860Defaults = {
 }
 
 /**
- * @category PGN_130860
+ * @category PGN_130860_SimnetApUnknown4
  */
-export class PGN_130860 extends PGN implements PGN_130860Interface {
-  fields: PGN_130860Fields
+export const PGN_130860_SimnetApUnknown4MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_130860Fields, dst: number = 255) {
-    super(PGN_130860Defaults)
+/**
+ * @category PGN_130860_SimnetApUnknown4
+ */
+export interface PGN_130860_SimnetApUnknown4CreateArgs {
+  reserved?: number
+  a?: N2K_Number
+  b?: N2K_Number
+  c?: N2K_Number
+  d?: N2K_Number
+  e?: N2K_Number
+  f?: N2K_Number
+}
+
+/**
+ * @category PGN_130860_SimnetApUnknown4
+ */
+export class PGN_130860_SimnetApUnknown4 extends PGN implements PGN_130860_SimnetApUnknown4Interface {
+  fields: PGN_130860_SimnetApUnknown4Fields
+
+  constructor(fields: PGN_130860_SimnetApUnknown4CreateArgs, dst: number = 255) {
+    super(PGN_130860_SimnetApUnknown4Defaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130860_SimnetApUnknown4MatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130860_SimnetApUnknown4MatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('simnetApUnknown4')!
   }
 }
-pgnIdToCreator['simnetApUnknown4'] = (fields:any, dst:number) => new PGN_130860(fields, dst)
+pgnIdToCreator['simnetApUnknown4'] = (fields:any, dst:number) => new PGN_130860_SimnetApUnknown4(fields, dst)
 
 
 /**
@@ -25586,16 +26595,19 @@ pgnIdToCreator['simnetApUnknown4'] = (fields:any, dst:number) => new PGN_130860(
  *
  * Description: Airmar: Additional Weather Data
  *
- * @category PGN_130880
+ * Match: Manufacturer Code == Airmar<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130880_AirmarAdditionalWeatherData
  */
-export interface PGN_130880Interface extends PGNInterface {
-  fields: PGN_130880Fields
+export interface PGN_130880_AirmarAdditionalWeatherDataInterface extends PGNInterface {
+  fields: PGN_130880_AirmarAdditionalWeatherDataFields
 }
 
 /**
- * @category PGN_130880
+ * @category PGN_130880_AirmarAdditionalWeatherData
  */
-export interface PGN_130880Fields {
+export interface PGN_130880_AirmarAdditionalWeatherDataFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -25606,9 +26618,9 @@ export interface PGN_130880Fields {
 }
 
 /**
- * @category PGN_130880
+ * @category PGN_130880_AirmarAdditionalWeatherData
  */
-export const PGN_130880Defaults = {
+export const PGN_130880_AirmarAdditionalWeatherDataDefaults = {
   pgn: 130880,
   dst: 255,
   prio: 3,
@@ -25616,22 +26628,44 @@ export const PGN_130880Defaults = {
 }
 
 /**
- * @category PGN_130880
+ * @category PGN_130880_AirmarAdditionalWeatherData
  */
-export class PGN_130880 extends PGN implements PGN_130880Interface {
-  fields: PGN_130880Fields
+export const PGN_130880_AirmarAdditionalWeatherDataMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_130880Fields, dst: number = 255) {
-    super(PGN_130880Defaults)
+/**
+ * @category PGN_130880_AirmarAdditionalWeatherData
+ */
+export interface PGN_130880_AirmarAdditionalWeatherDataCreateArgs {
+  reserved?: number
+  c?: N2K_Number
+  apparentWindchillTemperature?: N2K_Number
+  trueWindchillTemperature?: N2K_Number
+  dewpoint?: N2K_Number
+}
+
+/**
+ * @category PGN_130880_AirmarAdditionalWeatherData
+ */
+export class PGN_130880_AirmarAdditionalWeatherData extends PGN implements PGN_130880_AirmarAdditionalWeatherDataInterface {
+  fields: PGN_130880_AirmarAdditionalWeatherDataFields
+
+  constructor(fields: PGN_130880_AirmarAdditionalWeatherDataCreateArgs, dst: number = 255) {
+    super(PGN_130880_AirmarAdditionalWeatherDataDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130880_AirmarAdditionalWeatherDataMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130880_AirmarAdditionalWeatherDataMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('airmarAdditionalWeatherData')!
   }
 }
-pgnIdToCreator['airmarAdditionalWeatherData'] = (fields:any, dst:number) => new PGN_130880(fields, dst)
+pgnIdToCreator['airmarAdditionalWeatherData'] = (fields:any, dst:number) => new PGN_130880_AirmarAdditionalWeatherData(fields, dst)
 
 
 /**
@@ -25639,16 +26673,19 @@ pgnIdToCreator['airmarAdditionalWeatherData'] = (fields:any, dst:number) => new 
  *
  * Description: Airmar: Heater Control
  *
- * @category PGN_130881
+ * Match: Manufacturer Code == Airmar<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130881_AirmarHeaterControl
  */
-export interface PGN_130881Interface extends PGNInterface {
-  fields: PGN_130881Fields
+export interface PGN_130881_AirmarHeaterControlInterface extends PGNInterface {
+  fields: PGN_130881_AirmarHeaterControlFields
 }
 
 /**
- * @category PGN_130881
+ * @category PGN_130881_AirmarHeaterControl
  */
-export interface PGN_130881Fields {
+export interface PGN_130881_AirmarHeaterControlFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -25659,9 +26696,9 @@ export interface PGN_130881Fields {
 }
 
 /**
- * @category PGN_130881
+ * @category PGN_130881_AirmarHeaterControl
  */
-export const PGN_130881Defaults = {
+export const PGN_130881_AirmarHeaterControlDefaults = {
   pgn: 130881,
   dst: 255,
   prio: 3,
@@ -25669,22 +26706,44 @@ export const PGN_130881Defaults = {
 }
 
 /**
- * @category PGN_130881
+ * @category PGN_130881_AirmarHeaterControl
  */
-export class PGN_130881 extends PGN implements PGN_130881Interface {
-  fields: PGN_130881Fields
+export const PGN_130881_AirmarHeaterControlMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_130881Fields, dst: number = 255) {
-    super(PGN_130881Defaults)
+/**
+ * @category PGN_130881_AirmarHeaterControl
+ */
+export interface PGN_130881_AirmarHeaterControlCreateArgs {
+  reserved?: number
+  c?: N2K_Number
+  plateTemperature?: N2K_Number
+  airTemperature?: N2K_Number
+  dewpoint?: N2K_Number
+}
+
+/**
+ * @category PGN_130881_AirmarHeaterControl
+ */
+export class PGN_130881_AirmarHeaterControl extends PGN implements PGN_130881_AirmarHeaterControlInterface {
+  fields: PGN_130881_AirmarHeaterControlFields
+
+  constructor(fields: PGN_130881_AirmarHeaterControlCreateArgs, dst: number = 255) {
+    super(PGN_130881_AirmarHeaterControlDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130881_AirmarHeaterControlMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130881_AirmarHeaterControlMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('airmarHeaterControl')!
   }
 }
-pgnIdToCreator['airmarHeaterControl'] = (fields:any, dst:number) => new PGN_130881(fields, dst)
+pgnIdToCreator['airmarHeaterControl'] = (fields:any, dst:number) => new PGN_130881_AirmarHeaterControl(fields, dst)
 
 
 /**
@@ -25692,16 +26751,19 @@ pgnIdToCreator['airmarHeaterControl'] = (fields:any, dst:number) => new PGN_1308
  *
  * Description: SeaTalk: Route Information
  *
- * @category PGN_130918
+ * Match: Manufacturer Code == Raymarine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130918_SeatalkRouteInformation
  */
-export interface PGN_130918Interface extends PGNInterface {
-  fields: PGN_130918Fields
+export interface PGN_130918_SeatalkRouteInformationInterface extends PGNInterface {
+  fields: PGN_130918_SeatalkRouteInformationFields
 }
 
 /**
- * @category PGN_130918
+ * @category PGN_130918_SeatalkRouteInformation
  */
-export interface PGN_130918Fields {
+export interface PGN_130918_SeatalkRouteInformationFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -25716,9 +26778,9 @@ export interface PGN_130918Fields {
 }
 
 /**
- * @category PGN_130918
+ * @category PGN_130918_SeatalkRouteInformation
  */
-export const PGN_130918Defaults = {
+export const PGN_130918_SeatalkRouteInformationDefaults = {
   pgn: 130918,
   dst: 255,
   prio: 7,
@@ -25726,22 +26788,48 @@ export const PGN_130918Defaults = {
 }
 
 /**
- * @category PGN_130918
+ * @category PGN_130918_SeatalkRouteInformation
  */
-export class PGN_130918 extends PGN implements PGN_130918Interface {
-  fields: PGN_130918Fields
+export const PGN_130918_SeatalkRouteInformationMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Raymarine,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_130918Fields, dst: number = 255) {
-    super(PGN_130918Defaults)
+/**
+ * @category PGN_130918_SeatalkRouteInformation
+ */
+export interface PGN_130918_SeatalkRouteInformationCreateArgs {
+  reserved?: number
+  currentWaypointSequence?: N2K_Number
+  currentWaypointName?: N2K_StringFix
+  nextWaypointSequence?: N2K_Number
+  nextWaypointName?: N2K_StringFix
+  unknown?: N2K_Number
+  distancePositionToNextWaypoint?: N2K_Number
+  bearingPositionToNextWaypointTrue?: N2K_Number
+  bearingCurrentWaypointToNextWaypointTrue?: N2K_Number
+}
+
+/**
+ * @category PGN_130918_SeatalkRouteInformation
+ */
+export class PGN_130918_SeatalkRouteInformation extends PGN implements PGN_130918_SeatalkRouteInformationInterface {
+  fields: PGN_130918_SeatalkRouteInformationFields
+
+  constructor(fields: PGN_130918_SeatalkRouteInformationCreateArgs, dst: number = 255) {
+    super(PGN_130918_SeatalkRouteInformationDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130918_SeatalkRouteInformationMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130918_SeatalkRouteInformationMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('seatalkRouteInformation')!
   }
 }
-pgnIdToCreator['seatalkRouteInformation'] = (fields:any, dst:number) => new PGN_130918(fields, dst)
+pgnIdToCreator['seatalkRouteInformation'] = (fields:any, dst:number) => new PGN_130918_SeatalkRouteInformation(fields, dst)
 
 
 /**
@@ -25749,16 +26837,19 @@ pgnIdToCreator['seatalkRouteInformation'] = (fields:any, dst:number) => new PGN_
  *
  * Description: Airmar: POST
  *
- * @category PGN_130944
+ * Match: Manufacturer Code == Airmar<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130944_AirmarPost
  */
-export interface PGN_130944Interface extends PGNInterface {
-  fields: PGN_130944Fields
+export interface PGN_130944_AirmarPostInterface extends PGNInterface {
+  fields: PGN_130944_AirmarPostFields
 }
 
 /**
- * @category PGN_130944
+ * @category PGN_130944_AirmarPost
  */
-export interface PGN_130944Fields {
+export interface PGN_130944_AirmarPostFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
@@ -25770,9 +26861,9 @@ export interface PGN_130944Fields {
 }
 
 /**
- * @category PGN_130944
+ * @category PGN_130944_AirmarPost
  */
-export const PGN_130944Defaults = {
+export const PGN_130944_AirmarPostDefaults = {
   pgn: 130944,
   dst: 255,
   prio: 7,
@@ -25780,21 +26871,44 @@ export const PGN_130944Defaults = {
 }
 
 /**
- * @category PGN_130944
+ * @category PGN_130944_AirmarPost
  */
-export class PGN_130944 extends PGN implements PGN_130944Interface {
-  fields: PGN_130944Fields
+export const PGN_130944_AirmarPostMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.Marine,
+}
 
-  constructor(fields: PGN_130944Fields, dst: number = 255) {
-    super(PGN_130944Defaults)
+/**
+ * @category PGN_130944_AirmarPost
+ */
+export interface PGN_130944_AirmarPostCreateArgs {
+  reserved?: number
+  control: enums.AirmarPostControl | number
+  reserved5?: number
+  numberOfIdTestResultPairsToFollow?: N2K_Number
+  testId?: enums.AirmarPostId | number
+  testResult?: N2K_Number
+}
+
+/**
+ * @category PGN_130944_AirmarPost
+ */
+export class PGN_130944_AirmarPost extends PGN implements PGN_130944_AirmarPostInterface {
+  fields: PGN_130944_AirmarPostFields
+
+  constructor(fields: PGN_130944_AirmarPostCreateArgs, dst: number = 255) {
+    super(PGN_130944_AirmarPostDefaults)
     this.dst = dst
-    this.fields = fields
+    this.fields = { ...PGN_130944_AirmarPostMatchFields, ...fields }
   }
 
+  isMatch() {
+    return isMatch(this, PGN_130944_AirmarPostMatchFields)
+  }
   getDefinition(): Definition {
     return getPGNWithId('airmarPost')!
   }
 }
-pgnIdToCreator['airmarPost'] = (fields:any, dst:number) => new PGN_130944(fields, dst)
+pgnIdToCreator['airmarPost'] = (fields:any, dst:number) => new PGN_130944_AirmarPost(fields, dst)
 
 

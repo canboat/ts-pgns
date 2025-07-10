@@ -5043,6 +5043,7 @@ export const PGN_126208_NmeaRequestGroupFunctionDefaults = {
  * @category PGN_126208_NmeaRequestGroupFunction
  */
 export const PGN_126208_NmeaRequestGroupFunctionMatchFields = {
+  functionCode: enums.GroupFunction.Request,
 }
 
 /**
@@ -6571,6 +6572,7 @@ export const PGN_126720_Seatalk1DisplayBrightnessMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.Marine,
   proprietaryId: 3212,
+  command: 0,
 }
 
 /**
@@ -7305,6 +7307,7 @@ export const PGN_126720_AirmarSpeedFilterNoneMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.Marine,
   proprietaryId: enums.AirmarCommand.SpeedFilter,
+  filterType: 0,
 }
 
 /**
@@ -7466,6 +7469,7 @@ export const PGN_126720_AirmarTemperatureFilterNoneMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.Marine,
   proprietaryId: enums.AirmarCommand.TemperatureFilter,
+  filterType: 0,
 }
 
 /**
@@ -7864,6 +7868,7 @@ export const PGN_126720_GarminDayModeMatchFields = {
   unknownId2: 5,
   unknownId3: 5,
   unknownId4: 5,
+  mode: enums.GarminColorMode.Day,
 }
 
 /**
@@ -24352,6 +24357,7 @@ export const PGN_130842_SimnetAisClassBStaticDataMsg24PartADefaults = {
 export const PGN_130842_SimnetAisClassBStaticDataMsg24PartAMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.Marine,
+  messageId: 0,
 }
 
 /**

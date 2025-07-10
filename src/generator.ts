@@ -77,7 +77,9 @@ if (argv.enums) {
 
     done = {}
     category()
-    console.log(`export const ${enumName(en.Name)}Values : {[key: string]: number} = {`)
+    console.log(
+      `export const ${enumName(en.Name)}Values : {[key: string]: number} = {`
+    )
     en.EnumValues.forEach((v: any) => {
       let vName = v.Name
 
@@ -90,10 +92,12 @@ if (argv.enums) {
       if (found) {
         const num = done[name] + 1
         done[name] = num
-        console.log(`  ${name}${num}: 0x${v.Value.toString(16)},`)     
+        console.log(`  ${name}${num}: 0x${v.Value.toString(16)},`)
       } else {
         done[name] = 1
-        console.log(`  [${enumName(en.Name)}.${name}]: 0x${v.Value.toString(16)},`)
+        console.log(
+          `  [${enumName(en.Name)}.${name}]: 0x${v.Value.toString(16)},`
+        )
       }
     })
     console.log('}\n')

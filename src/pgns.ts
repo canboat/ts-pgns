@@ -803,7 +803,7 @@ export interface PGN_61184_SeatalkWirelessKeypadLightControlFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
-  proprietaryId: N2K_Number
+  proprietaryId: N2K_Number | string
   variant?: N2K_Number
   wirelessSetting?: N2K_Number
   wiredSetting?: N2K_Number
@@ -826,7 +826,7 @@ export const PGN_61184_SeatalkWirelessKeypadLightControlDefaults = {
 export const PGN_61184_SeatalkWirelessKeypadLightControlMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.Marine,
-  proprietaryId: 1,
+  proprietaryId: "Wireless Keypad Light Control",
 }
 
 /**
@@ -5750,8 +5750,8 @@ export interface PGN_126720_Seatalk1PilotModeFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
-  proprietaryId: N2K_Number
-  command?: N2K_Number
+  proprietaryId: N2K_Number | string
+  command?: N2K_Number | string
   unknown1?: N2K_Binary
   pilotMode?: enums.SeatalkPilotMode | number
   subMode?: N2K_Number
@@ -5775,8 +5775,8 @@ export const PGN_126720_Seatalk1PilotModeDefaults = {
 export const PGN_126720_Seatalk1PilotModeMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.Marine,
-  proprietaryId: 33264,
-  command: 132,
+  proprietaryId: "0x81f0",
+  command: "0x84",
 }
 
 /**
@@ -5835,7 +5835,7 @@ export interface PGN_126720_FusionMediaControlFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
-  proprietaryId: N2K_Number
+  proprietaryId: N2K_Number | string
   unknown?: N2K_Number
   sourceId?: N2K_Number
   command?: enums.FusionCommand | number
@@ -5857,7 +5857,7 @@ export const PGN_126720_FusionMediaControlDefaults = {
 export const PGN_126720_FusionMediaControlMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.Marine,
-  proprietaryId: 3,
+  proprietaryId: "Media Control",
 }
 
 /**
@@ -5914,7 +5914,7 @@ export interface PGN_126720_FusionSiriusControlFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
-  proprietaryId: N2K_Number
+  proprietaryId: N2K_Number | string
   unknown?: N2K_Number
   sourceId?: N2K_Number
   command?: enums.FusionSiriusCommand | number
@@ -5936,7 +5936,7 @@ export const PGN_126720_FusionSiriusControlDefaults = {
 export const PGN_126720_FusionSiriusControlMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.Marine,
-  proprietaryId: 30,
+  proprietaryId: "Sirius Control",
 }
 
 /**
@@ -6383,8 +6383,8 @@ export interface PGN_126720_Seatalk1KeystrokeFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
-  proprietaryId: N2K_Number
-  command?: N2K_Number
+  proprietaryId: N2K_Number | string
+  command?: N2K_Number | string
   device?: N2K_Number
   key?: enums.SeatalkKeystroke | number
   keyinverted?: N2K_Number
@@ -6407,8 +6407,8 @@ export const PGN_126720_Seatalk1KeystrokeDefaults = {
 export const PGN_126720_Seatalk1KeystrokeMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.Marine,
-  proprietaryId: 33264,
-  command: 134,
+  proprietaryId: "0x81f0",
+  command: "0x86",
 }
 
 /**
@@ -6467,8 +6467,8 @@ export interface PGN_126720_Seatalk1DeviceIdentificationFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
-  proprietaryId: N2K_Number
-  command?: N2K_Number
+  proprietaryId: N2K_Number | string
+  command?: N2K_Number | string
   reserved6?: number
   device?: enums.SeatalkDeviceId | number
 }
@@ -6489,8 +6489,8 @@ export const PGN_126720_Seatalk1DeviceIdentificationDefaults = {
 export const PGN_126720_Seatalk1DeviceIdentificationMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.Marine,
-  proprietaryId: 33264,
-  command: 144,
+  proprietaryId: "0x81f0",
+  command: "0x90",
 }
 
 /**
@@ -6546,10 +6546,10 @@ export interface PGN_126720_Seatalk1DisplayBrightnessFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
-  proprietaryId: N2K_Number
+  proprietaryId: N2K_Number | string
   group?: enums.SeatalkNetworkGroup | number
   unknown1?: N2K_Binary
-  command?: N2K_Number
+  command?: N2K_Number | string
   brightness?: N2K_Number
   unknown2?: N2K_Binary
 }
@@ -6570,8 +6570,8 @@ export const PGN_126720_Seatalk1DisplayBrightnessDefaults = {
 export const PGN_126720_Seatalk1DisplayBrightnessMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.Marine,
-  proprietaryId: 3212,
-  command: 0,
+  proprietaryId: "0x0c8c",
+  command: "Brightness",
 }
 
 /**
@@ -6630,10 +6630,10 @@ export interface PGN_126720_Seatalk1DisplayColorFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
-  proprietaryId: N2K_Number
+  proprietaryId: N2K_Number | string
   group?: enums.SeatalkNetworkGroup | number
   unknown1?: N2K_Binary
-  command?: N2K_Number
+  command?: N2K_Number | string
   color?: enums.SeatalkDisplayColor | number
   unknown2?: N2K_Binary
 }
@@ -6654,8 +6654,8 @@ export const PGN_126720_Seatalk1DisplayColorDefaults = {
 export const PGN_126720_Seatalk1DisplayColorMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.Marine,
-  proprietaryId: 3212,
-  command: 1,
+  proprietaryId: "0x0c8c",
+  command: "Color",
 }
 
 /**
@@ -7283,7 +7283,7 @@ export interface PGN_126720_AirmarSpeedFilterNoneFields {
   reserved?: number
   industryCode: enums.IndustryCode | number
   proprietaryId: enums.AirmarCommand | number
-  filterType?: N2K_Number
+  filterType?: N2K_Number | string
   reserved6?: number
   sampleInterval?: N2K_Duration
 }
@@ -7305,7 +7305,7 @@ export const PGN_126720_AirmarSpeedFilterNoneMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.Marine,
   proprietaryId: enums.AirmarCommand.SpeedFilter,
-  filterType: 0,
+  filterType: "No filter",
 }
 
 /**
@@ -7363,7 +7363,7 @@ export interface PGN_126720_AirmarSpeedFilterIirFields {
   reserved?: number
   industryCode: enums.IndustryCode | number
   proprietaryId: enums.AirmarCommand | number
-  filterType?: N2K_Number
+  filterType?: N2K_Number | string
   reserved6?: number
   sampleInterval?: N2K_Duration
   filterDuration?: N2K_Duration
@@ -7386,7 +7386,7 @@ export const PGN_126720_AirmarSpeedFilterIirMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.Marine,
   proprietaryId: enums.AirmarCommand.SpeedFilter,
-  filterType: 1,
+  filterType: "IIR filter",
 }
 
 /**
@@ -7444,7 +7444,7 @@ export interface PGN_126720_AirmarTemperatureFilterNoneFields {
   reserved?: number
   industryCode: enums.IndustryCode | number
   proprietaryId: enums.AirmarCommand | number
-  filterType?: N2K_Number
+  filterType?: N2K_Number | string
   reserved6?: number
   sampleInterval?: N2K_Duration
 }
@@ -7466,7 +7466,7 @@ export const PGN_126720_AirmarTemperatureFilterNoneMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.Marine,
   proprietaryId: enums.AirmarCommand.TemperatureFilter,
-  filterType: 0,
+  filterType: "No filter",
 }
 
 /**
@@ -7524,7 +7524,7 @@ export interface PGN_126720_AirmarTemperatureFilterIirFields {
   reserved?: number
   industryCode: enums.IndustryCode | number
   proprietaryId: enums.AirmarCommand | number
-  filterType?: N2K_Number
+  filterType?: N2K_Number | string
   reserved6?: number
   sampleInterval?: N2K_Duration
   filterDuration?: N2K_Duration
@@ -7547,7 +7547,7 @@ export const PGN_126720_AirmarTemperatureFilterIirMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.Marine,
   proprietaryId: enums.AirmarCommand.TemperatureFilter,
-  filterType: 1,
+  filterType: "IIR filter",
 }
 
 /**
@@ -7834,10 +7834,10 @@ export interface PGN_126720_GarminDayModeFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
-  unknownId1?: N2K_Number
-  unknownId2?: N2K_Number
-  unknownId3?: N2K_Number
-  unknownId4?: N2K_Number
+  unknownId1?: N2K_Number | string
+  unknownId2?: N2K_Number | string
+  unknownId3?: N2K_Number | string
+  unknownId4?: N2K_Number | string
   spare8?: number
   mode?: enums.GarminColorMode | number
   spare10?: number
@@ -7860,10 +7860,10 @@ export const PGN_126720_GarminDayModeDefaults = {
 export const PGN_126720_GarminDayModeMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Garmin,
   industryCode: enums.IndustryCode.Marine,
-  unknownId1: 222,
-  unknownId2: 5,
-  unknownId3: 5,
-  unknownId4: 5,
+  unknownId1: "Always 222",
+  unknownId2: "Always 5",
+  unknownId3: "Always 5",
+  unknownId4: "Always 5",
   mode: enums.GarminColorMode.Day,
 }
 
@@ -7925,10 +7925,10 @@ export interface PGN_126720_GarminNightModeFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
-  unknownId1?: N2K_Number
-  unknownId2?: N2K_Number
-  unknownId3?: N2K_Number
-  unknownId4?: N2K_Number
+  unknownId1?: N2K_Number | string
+  unknownId2?: N2K_Number | string
+  unknownId3?: N2K_Number | string
+  unknownId4?: N2K_Number | string
   spare8?: number
   mode?: enums.GarminColorMode | number
   spare10?: number
@@ -7951,10 +7951,10 @@ export const PGN_126720_GarminNightModeDefaults = {
 export const PGN_126720_GarminNightModeMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Garmin,
   industryCode: enums.IndustryCode.Marine,
-  unknownId1: 222,
-  unknownId2: 5,
-  unknownId3: 5,
-  unknownId4: 5,
+  unknownId1: "Always 222",
+  unknownId2: "Always 5",
+  unknownId3: "Always 5",
+  unknownId4: "Always 5",
   mode: enums.GarminColorMode.Night,
 }
 
@@ -8016,10 +8016,10 @@ export interface PGN_126720_GarminColorModeFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
-  unknownId1?: N2K_Number
-  unknownId2?: N2K_Number
-  unknownId3?: N2K_Number
-  unknownId4?: N2K_Number
+  unknownId1?: N2K_Number | string
+  unknownId2?: N2K_Number | string
+  unknownId3?: N2K_Number | string
+  unknownId4?: N2K_Number | string
   spare8?: number
   mode?: enums.GarminColorMode | number
   spare10?: number
@@ -8042,10 +8042,10 @@ export const PGN_126720_GarminColorModeDefaults = {
 export const PGN_126720_GarminColorModeMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Garmin,
   industryCode: enums.IndustryCode.Marine,
-  unknownId1: 222,
-  unknownId2: 5,
-  unknownId3: 5,
-  unknownId4: 5,
+  unknownId1: "Always 222",
+  unknownId2: "Always 5",
+  unknownId3: "Always 5",
+  unknownId4: "Always 5",
   mode: enums.GarminColorMode.Color,
 }
 
@@ -24328,7 +24328,7 @@ export interface PGN_130842_SimnetAisClassBStaticDataMsg24PartAFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
-  messageId: N2K_Number
+  messageId: N2K_Number | string
   repeatIndicator?: enums.RepeatIndicator | number
   d?: N2K_Number
   e?: N2K_Number
@@ -24352,7 +24352,7 @@ export const PGN_130842_SimnetAisClassBStaticDataMsg24PartADefaults = {
 export const PGN_130842_SimnetAisClassBStaticDataMsg24PartAMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.Marine,
-  messageId: 0,
+  messageId: "Msg 24 Part A",
 }
 
 /**
@@ -24499,7 +24499,7 @@ export interface PGN_130842_SimnetAisClassBStaticDataMsg24PartBFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
-  messageId: N2K_Number
+  messageId: N2K_Number | string
   repeatIndicator?: enums.RepeatIndicator | number
   d?: N2K_Number
   e?: N2K_Number
@@ -24532,7 +24532,7 @@ export const PGN_130842_SimnetAisClassBStaticDataMsg24PartBDefaults = {
 export const PGN_130842_SimnetAisClassBStaticDataMsg24PartBMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.Marine,
-  messageId: 1,
+  messageId: "Msg 24 Part B",
 }
 
 /**

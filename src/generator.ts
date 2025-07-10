@@ -17,7 +17,7 @@
 
 import camelCase from 'camelcase'
 import { getAllPGNs } from './index'
-import { Definition, Field } from './definition'
+import { Definition, Field, FieldType } from './definition'
 import { fixIdentifier } from './internals'
 import minimist from 'minimist'
 import pgns from '../canboat.json'
@@ -208,34 +208,6 @@ export abstract class PGN implements PGNInterface {
   abstract getDefinition(): Definition
 }`)
 
-  /*
-    function getMatchFields(pgn: Definition) : Field[] {
-    return pgn.Fields.filter(field => field.Match !== undefined)
-    }
-
-    function getPGNsWithMatchs(pgns: Definition[], count: number) : Definition[] {
-    const res : Definition[] = []
-    pgns.forEach(pgn => {
-    const matches = getMatchFields(pgn)
-    if ( matches.length == count ) {
-    res.push(pgn)
-    }
-    })
-    return res
-    }
-
-    function getMaxMatchs(pgns: Definition[]) : number {
-    let res = 0
-    pgns.forEach(pgn => {
-    const matches = getMatchFields(pgn)
-    if ( matches.length > res ) {
-    res = matches.length
-    }
-    })
-    return res
-    }
-  */
-
   pgnNumbers.forEach((pgnNumber) => {
     const pgns = organized[pgnNumber]
     pgns.forEach((pgn: any) => {
@@ -243,20 +215,6 @@ export abstract class PGN implements PGNInterface {
         outputPGN(pgn, pgns.length > 1)
       }
     })
-    /*
-      const pgns = organized[pgnNumber]
-      if ( pgns.length === 1 ) {
-      outputPGN(pgns[0], false)
-      } else {
-      const matchesByCount = []
-      for ( let i = 0; i < getMaxMatchs(pgns); i++ ) {
-      const withCount = getPGNsWithMatchs(pgns, i)
-      withCount.forEach(pgn => {
-      outputPGN(pgn, true, i)
-      })
-      }
-      }
-    */
   })
 
   function getFieldString(field: Field) {
@@ -265,12 +223,12 @@ export abstract class PGN implements PGNInterface {
       field.PartOfPrimaryKey == true || field.BitLength === 1 ? '' : '?'
 
     switch (field.FieldType) {
-      case 'RESERVED':
-      case 'SPARE':
+      case FieldType.Reserved:
+      case FieldType.Spare:
         required = '?'
         break
 
-      case 'LOOKUP':
+      case FieldType.Lookup:
         if (field.LookupEnumeration) {
           type = `enums.${enumName(field.LookupEnumeration)} | number`
         } else {
@@ -278,13 +236,13 @@ export abstract class PGN implements PGNInterface {
         }
         break
 
-      case 'INDIRECT_LOOKUP':
+      case FieldType.IndirectLookup:
         if (field.LookupIndirectEnumeration) {
           type = `enums.${enumName(field.LookupIndirectEnumeration)} | number`
         }
         break
 
-      case 'BITLOOKUP':
+      case FieldType.BitLookup:
         if (field.LookupBitEnumeration) {
           type = `enums.${enumName(field.LookupBitEnumeration)}[]`
         }
@@ -292,6 +250,9 @@ export abstract class PGN implements PGNInterface {
 
       default:
         type = `N2K_${camelCase(field.FieldType, { pascalCase: true })}`
+        if (field.Match !== undefined) {
+          type = type + ' | string'
+        }
         break
     }
 
@@ -396,7 +357,7 @@ export abstract class PGN implements PGNInterface {
       pgn.Fields.forEach((field: Field) => {
         if (field.Match !== undefined) {
           let value: any
-          if (field.FieldType === 'LOOKUP' && field.Description) {
+          if (field.FieldType === FieldType.Lookup && field.Description) {
             const ename =
               field.LookupEnumeration === 'INDUSTRY_CODE' &&
               field.Description === 'Marine Industry'
@@ -407,9 +368,14 @@ export abstract class PGN implements PGNInterface {
             value = `enums.${enumName(field.LookupEnumeration!)}.${ename}`
           } else {
             value =
+              typeof field.Description === 'string'
+                ? `"${field.Description}"`
+                : field.Match
+            /*
               typeof field.Description !== 'number'
                 ? field.Match
                 : field.Description!
+            */
           }
           console.log(`  ${fixIdentifier(field.Id, '_')}: ${value},`)
         }

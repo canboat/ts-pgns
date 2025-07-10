@@ -23,7 +23,7 @@ import minimist from 'minimist'
 import pgns from '../canboat.json'
 
 const argv = minimist(process.argv.slice(2), {
-  boolean: ['enums', 'pgns', 'categories'],
+  boolean: ['enums', 'pgns'],
   alias: { h: 'help' }
 })
 
@@ -239,7 +239,7 @@ export abstract class PGN implements PGNInterface {
     const pgns = organized[pgnNumber]
     pgns.forEach((pgn: any) => {
       if (pgn.PGN !== 59392 || !pgn.Fallback) {
-        outputPGN(pgn, pgns.length > 1)
+        outputPGN(pgn)
       }
     })
   })
@@ -286,9 +286,8 @@ export abstract class PGN implements PGNInterface {
     return `${fixIdentifier(field.Id, '_')}${required}: ${type}`
   }
 
-  function outputPGN(pgn: Definition, isMulti: boolean) {
-    const hasMatchFields =
-      isMulti && pgn.Fields.find((f) => f.Match !== undefined)
+  function outputPGN(pgn: Definition) {
+    const hasMatchFields = pgn.Fields.find((f) => f.Match !== undefined)
     let typeNameNoPGN = `${pgn.PGN}`
     //let typeNameNoPGN = `${pgn.PGN}_${pgn.Id.charAt(0).toUpperCase() + pgn.Id.slice(1)}`
 
@@ -323,7 +322,7 @@ export abstract class PGN implements PGNInterface {
       console.log(' *')
       console.log(` * Explanation: ${pgn.Explanation}`)
     }
-    if (isMulti) {
+    if (hasMatchFields) {
       console.log(' *')
       pgn.Fields.forEach((field: Field) => {
         if (field.Match) {

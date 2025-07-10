@@ -5050,7 +5050,6 @@ export const PGN_126208_NmeaRequestGroupFunctionMatchFields = {
  * @category PGN_126208_NmeaRequestGroupFunction
  */
 export interface PGN_126208_NmeaRequestGroupFunctionCreateArgs {
-  functionCode?: enums.GroupFunction | number
   pgn?: N2K_Pgn
   transmissionInterval?: N2K_Duration
   transmissionIntervalOffset?: N2K_Duration
@@ -6582,7 +6581,6 @@ export interface PGN_126720_Seatalk1DisplayBrightnessCreateArgs {
   reserved?: number
   group?: enums.SeatalkNetworkGroup | number
   unknown1?: N2K_Binary
-  command?: N2K_Number
   brightness?: N2K_Number
   unknown2?: N2K_Binary
 }
@@ -7315,7 +7313,6 @@ export const PGN_126720_AirmarSpeedFilterNoneMatchFields = {
  */
 export interface PGN_126720_AirmarSpeedFilterNoneCreateArgs {
   reserved?: number
-  filterType?: N2K_Number
   reserved6?: number
   sampleInterval?: N2K_Duration
 }
@@ -7477,7 +7474,6 @@ export const PGN_126720_AirmarTemperatureFilterNoneMatchFields = {
  */
 export interface PGN_126720_AirmarTemperatureFilterNoneCreateArgs {
   reserved?: number
-  filterType?: N2K_Number
   reserved6?: number
   sampleInterval?: N2K_Duration
 }
@@ -7877,7 +7873,6 @@ export const PGN_126720_GarminDayModeMatchFields = {
 export interface PGN_126720_GarminDayModeCreateArgs {
   reserved?: number
   spare8?: number
-  mode?: enums.GarminColorMode | number
   spare10?: number
   backlight?: enums.GarminBacklightLevel | number
 }
@@ -24365,7 +24360,6 @@ export const PGN_130842_SimnetAisClassBStaticDataMsg24PartAMatchFields = {
  */
 export interface PGN_130842_SimnetAisClassBStaticDataMsg24PartACreateArgs {
   reserved?: number
-  messageId: N2K_Number
   repeatIndicator?: enums.RepeatIndicator | number
   d?: N2K_Number
   e?: N2K_Number

@@ -56,7 +56,7 @@ if (argv.enums) {
   }
 
   pgns.LookupEnumerations.forEach((en: any) => {
-    const done: { [key: string]: number } = {}
+    let done: { [key: string]: number } = {}
     category()
     console.log(`export enum ${enumName(en.Name)} {`)
     en.EnumValues.forEach((v: any) => {
@@ -71,6 +71,33 @@ if (argv.enums) {
       if (!found) {
         done[name] = 1
         console.log(`  ${name} = '${vName}',`)
+      }
+    })
+    console.log('}\n')
+
+    done = {}
+    category()
+    console.log(
+      `export const ${enumName(en.Name)}Values : {[key: string]: number} = {`
+    )
+    en.EnumValues.forEach((v: any) => {
+      let vName = v.Name
+
+      if (en.Name === 'INDUSTRY_CODE' && vName === 'Marine') {
+        vName = 'Marine Industry'
+      }
+
+      const name = enumName(v.Name)
+      const found = done[name]
+      if (found) {
+        const num = done[name] + 1
+        done[name] = num
+        console.log(`  ${name}${num}: 0x${v.Value.toString(16)},`)
+      } else {
+        done[name] = 1
+        console.log(
+          `  [${enumName(en.Name)}.${name}]: 0x${v.Value.toString(16)},`
+        )
       }
     })
     console.log('}\n')

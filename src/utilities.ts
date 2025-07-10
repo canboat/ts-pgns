@@ -299,7 +299,6 @@ export const getFieldTypeEnumerations = (): FieldTypeEnumeration[] => {
 }
 
 /**
- * Convers a PGN created using camelCase keys to one using Names
  *
  * @category Utilities
  */

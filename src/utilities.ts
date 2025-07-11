@@ -308,7 +308,7 @@ export const nameToId = (name: string) => {
   //return camelCase(fixIdentifier(name, '_'))
 }
 
-let skServerSupportsCamelCase: boolean|undefined = undefined
+let skServerSupportsCamelCase: boolean | undefined = undefined
 
 /**
  * Convert a PGN with camelCase keys to old, Name based keys
@@ -317,9 +317,8 @@ let skServerSupportsCamelCase: boolean|undefined = undefined
  * @category Utilities
  */
 export const convertCamelCase = (pluginApp: any, pgn: PGN) => {
-  if ( skServerSupportsCamelCase === undefined ) { 
+  if (skServerSupportsCamelCase === undefined) {
     skServerSupportsCamelCase = satisfies(pluginApp.config.version, '>=2.15.0')
   }
   return skServerSupportsCamelCase === false ? mapCamelCaseKeys(pgn) : pgn
 }
-

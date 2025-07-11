@@ -455,8 +455,8 @@ export abstract class PGN implements PGNInterface {
     console.log(`  }\n`)
 
     if (hasMatchFields) {
-      console.log(`  isMatch() {
-    return isMatch(this, ${typeName}MatchFields)
+      console.log(`  static isMatch(pgn:PGN) {
+    return isMatch(pgn, ${typeName}MatchFields)
   }`)
     }
 

@@ -361,8 +361,8 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend ext
     this.fields = { ...PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('isoTransportProtocolConnectionManagementRequestToSend')!
@@ -436,8 +436,8 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementClearToSend exten
     this.fields = { ...PGN_60416_IsoTransportProtocolConnectionManagementClearToSendMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_60416_IsoTransportProtocolConnectionManagementClearToSendMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_60416_IsoTransportProtocolConnectionManagementClearToSendMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('isoTransportProtocolConnectionManagementClearToSend')!
@@ -511,8 +511,8 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessage exte
     this.fields = { ...PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('isoTransportProtocolConnectionManagementEndOfMessage')!
@@ -586,8 +586,8 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce
     this.fields = { ...PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('isoTransportProtocolConnectionManagementBroadcastAnnounce')!
@@ -659,8 +659,8 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementAbort extends PGN
     this.fields = { ...PGN_60416_IsoTransportProtocolConnectionManagementAbortMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_60416_IsoTransportProtocolConnectionManagementAbortMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_60416_IsoTransportProtocolConnectionManagementAbortMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('isoTransportProtocolConnectionManagementAbort')!
@@ -850,8 +850,8 @@ export class PGN_61184_SeatalkWirelessKeypadLightControl extends PGN implements 
     this.fields = { ...PGN_61184_SeatalkWirelessKeypadLightControlMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_61184_SeatalkWirelessKeypadLightControlMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_61184_SeatalkWirelessKeypadLightControlMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('seatalkWirelessKeypadLightControl')!
@@ -928,8 +928,8 @@ export class PGN_61184_SeatalkWirelessKeypadControl extends PGN implements PGN_6
     this.fields = { ...PGN_61184_SeatalkWirelessKeypadControlMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_61184_SeatalkWirelessKeypadControlMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_61184_SeatalkWirelessKeypadControlMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('seatalkWirelessKeypadControl')!
@@ -1002,8 +1002,8 @@ export class PGN_61184_VictronBatteryRegister extends PGN implements PGN_61184_V
     this.fields = { ...PGN_61184_VictronBatteryRegisterMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_61184_VictronBatteryRegisterMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_61184_VictronBatteryRegisterMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('victronBatteryRegister')!
@@ -2719,8 +2719,8 @@ export class PGN_65280_FurunoHeave extends PGN implements PGN_65280_FurunoHeaveI
     this.fields = { ...PGN_65280_FurunoHeaveMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65280_FurunoHeaveMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65280_FurunoHeaveMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('furunoHeave')!
@@ -2797,8 +2797,8 @@ export class PGN_65284_MaretronProprietaryDcBreakerCurrent extends PGN implement
     this.fields = { ...PGN_65284_MaretronProprietaryDcBreakerCurrentMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65284_MaretronProprietaryDcBreakerCurrentMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65284_MaretronProprietaryDcBreakerCurrentMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('maretronProprietaryDcBreakerCurrent')!
@@ -2871,8 +2871,8 @@ export class PGN_65285_AirmarBootStateAcknowledgment extends PGN implements PGN_
     this.fields = { ...PGN_65285_AirmarBootStateAcknowledgmentMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65285_AirmarBootStateAcknowledgmentMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65285_AirmarBootStateAcknowledgmentMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('airmarBootStateAcknowledgment')!
@@ -2947,8 +2947,8 @@ export class PGN_65285_LowranceTemperature extends PGN implements PGN_65285_Lowr
     this.fields = { ...PGN_65285_LowranceTemperatureMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65285_LowranceTemperatureMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65285_LowranceTemperatureMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('lowranceTemperature')!
@@ -3029,8 +3029,8 @@ export class PGN_65286_ChetcoDimmer extends PGN implements PGN_65286_ChetcoDimme
     this.fields = { ...PGN_65286_ChetcoDimmerMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65286_ChetcoDimmerMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65286_ChetcoDimmerMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('chetcoDimmer')!
@@ -3101,8 +3101,8 @@ export class PGN_65286_AirmarBootStateRequest extends PGN implements PGN_65286_A
     this.fields = { ...PGN_65286_AirmarBootStateRequestMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65286_AirmarBootStateRequestMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65286_AirmarBootStateRequestMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('airmarBootStateRequest')!
@@ -3179,8 +3179,8 @@ export class PGN_65287_AirmarAccessLevel extends PGN implements PGN_65287_Airmar
     this.fields = { ...PGN_65287_AirmarAccessLevelMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65287_AirmarAccessLevelMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65287_AirmarAccessLevelMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('airmarAccessLevel')!
@@ -3251,8 +3251,8 @@ export class PGN_65287_SimnetConfigureTemperatureSensor extends PGN implements P
     this.fields = { ...PGN_65287_SimnetConfigureTemperatureSensorMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65287_SimnetConfigureTemperatureSensorMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65287_SimnetConfigureTemperatureSensorMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetConfigureTemperatureSensor')!
@@ -3331,8 +3331,8 @@ export class PGN_65288_SeatalkAlarm extends PGN implements PGN_65288_SeatalkAlar
     this.fields = { ...PGN_65288_SeatalkAlarmMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65288_SeatalkAlarmMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65288_SeatalkAlarmMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('seatalkAlarm')!
@@ -3403,8 +3403,8 @@ export class PGN_65289_SimnetTrimTabSensorCalibration extends PGN implements PGN
     this.fields = { ...PGN_65289_SimnetTrimTabSensorCalibrationMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65289_SimnetTrimTabSensorCalibrationMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65289_SimnetTrimTabSensorCalibrationMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetTrimTabSensorCalibration')!
@@ -3475,8 +3475,8 @@ export class PGN_65290_SimnetPaddleWheelSpeedConfiguration extends PGN implement
     this.fields = { ...PGN_65290_SimnetPaddleWheelSpeedConfigurationMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65290_SimnetPaddleWheelSpeedConfigurationMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65290_SimnetPaddleWheelSpeedConfigurationMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetPaddleWheelSpeedConfiguration')!
@@ -3547,8 +3547,8 @@ export class PGN_65292_SimnetClearFluidLevelWarnings extends PGN implements PGN_
     this.fields = { ...PGN_65292_SimnetClearFluidLevelWarningsMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65292_SimnetClearFluidLevelWarningsMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65292_SimnetClearFluidLevelWarningsMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetClearFluidLevelWarnings')!
@@ -3619,8 +3619,8 @@ export class PGN_65293_SimnetLgc2000Configuration extends PGN implements PGN_652
     this.fields = { ...PGN_65293_SimnetLgc2000ConfigurationMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65293_SimnetLgc2000ConfigurationMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65293_SimnetLgc2000ConfigurationMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetLgc2000Configuration')!
@@ -3695,8 +3695,8 @@ export class PGN_65293_DiverseYachtServicesLoadCell extends PGN implements PGN_6
     this.fields = { ...PGN_65293_DiverseYachtServicesLoadCellMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65293_DiverseYachtServicesLoadCellMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65293_DiverseYachtServicesLoadCellMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('diverseYachtServicesLoadCell')!
@@ -3777,8 +3777,8 @@ export class PGN_65302_SimnetApUnknown1 extends PGN implements PGN_65302_SimnetA
     this.fields = { ...PGN_65302_SimnetApUnknown1MatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65302_SimnetApUnknown1MatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65302_SimnetApUnknown1MatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetApUnknown1')!
@@ -3858,8 +3858,8 @@ export class PGN_65305_SimnetDeviceStatus extends PGN implements PGN_65305_Simne
     this.fields = { ...PGN_65305_SimnetDeviceStatusMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65305_SimnetDeviceStatusMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65305_SimnetDeviceStatusMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetDeviceStatus')!
@@ -3937,8 +3937,8 @@ export class PGN_65305_SimnetDeviceStatusRequest extends PGN implements PGN_6530
     this.fields = { ...PGN_65305_SimnetDeviceStatusRequestMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65305_SimnetDeviceStatusRequestMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65305_SimnetDeviceStatusRequestMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetDeviceStatusRequest')!
@@ -4018,8 +4018,8 @@ export class PGN_65305_SimnetPilotMode extends PGN implements PGN_65305_SimnetPi
     this.fields = { ...PGN_65305_SimnetPilotModeMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65305_SimnetPilotModeMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65305_SimnetPilotModeMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetPilotMode')!
@@ -4097,8 +4097,8 @@ export class PGN_65305_SimnetDeviceModeRequest extends PGN implements PGN_65305_
     this.fields = { ...PGN_65305_SimnetDeviceModeRequestMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65305_SimnetDeviceModeRequestMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65305_SimnetDeviceModeRequestMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetDeviceModeRequest')!
@@ -4176,8 +4176,8 @@ export class PGN_65305_SimnetSailingProcessorStatus extends PGN implements PGN_6
     this.fields = { ...PGN_65305_SimnetSailingProcessorStatusMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65305_SimnetSailingProcessorStatusMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65305_SimnetSailingProcessorStatusMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetSailingProcessorStatus')!
@@ -4254,8 +4254,8 @@ export class PGN_65309_NavicoWirelessBatteryStatus extends PGN implements PGN_65
     this.fields = { ...PGN_65309_NavicoWirelessBatteryStatusMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65309_NavicoWirelessBatteryStatusMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65309_NavicoWirelessBatteryStatusMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('navicoWirelessBatteryStatus')!
@@ -4330,8 +4330,8 @@ export class PGN_65312_NavicoWirelessSignalStatus extends PGN implements PGN_653
     this.fields = { ...PGN_65312_NavicoWirelessSignalStatusMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65312_NavicoWirelessSignalStatusMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65312_NavicoWirelessSignalStatusMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('navicoWirelessSignalStatus')!
@@ -4414,8 +4414,8 @@ export class PGN_65340_SimnetApUnknown2 extends PGN implements PGN_65340_SimnetA
     this.fields = { ...PGN_65340_SimnetApUnknown2MatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65340_SimnetApUnknown2MatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65340_SimnetApUnknown2MatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetApUnknown2')!
@@ -4492,8 +4492,8 @@ export class PGN_65341_SimnetAutopilotAngle extends PGN implements PGN_65341_Sim
     this.fields = { ...PGN_65341_SimnetAutopilotAngleMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65341_SimnetAutopilotAngleMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65341_SimnetAutopilotAngleMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetAutopilotAngle')!
@@ -4568,8 +4568,8 @@ export class PGN_65345_SeatalkPilotWindDatum extends PGN implements PGN_65345_Se
     this.fields = { ...PGN_65345_SeatalkPilotWindDatumMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65345_SeatalkPilotWindDatumMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65345_SeatalkPilotWindDatumMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('seatalkPilotWindDatum')!
@@ -4697,8 +4697,8 @@ export class PGN_65359_SeatalkPilotHeading extends PGN implements PGN_65359_Seat
     this.fields = { ...PGN_65359_SeatalkPilotHeadingMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65359_SeatalkPilotHeadingMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65359_SeatalkPilotHeadingMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('seatalkPilotHeading')!
@@ -4775,8 +4775,8 @@ export class PGN_65360_SeatalkPilotLockedHeading extends PGN implements PGN_6536
     this.fields = { ...PGN_65360_SeatalkPilotLockedHeadingMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65360_SeatalkPilotLockedHeadingMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65360_SeatalkPilotLockedHeadingMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('seatalkPilotLockedHeading')!
@@ -4851,8 +4851,8 @@ export class PGN_65361_SeatalkSilenceAlarm extends PGN implements PGN_65361_Seat
     this.fields = { ...PGN_65361_SeatalkSilenceAlarmMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65361_SeatalkSilenceAlarmMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65361_SeatalkSilenceAlarmMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('seatalkSilenceAlarm')!
@@ -4937,8 +4937,8 @@ export class PGN_65371_SeatalkKeypadMessage extends PGN implements PGN_65371_Sea
     this.fields = { ...PGN_65371_SeatalkKeypadMessageMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65371_SeatalkKeypadMessageMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65371_SeatalkKeypadMessageMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('seatalkKeypadMessage')!
@@ -5015,8 +5015,8 @@ export class PGN_65374_SeatalkKeypadHeartbeat extends PGN implements PGN_65374_S
     this.fields = { ...PGN_65374_SeatalkKeypadHeartbeatMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65374_SeatalkKeypadHeartbeatMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65374_SeatalkKeypadHeartbeatMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('seatalkKeypadHeartbeat')!
@@ -5093,8 +5093,8 @@ export class PGN_65379_SeatalkPilotMode extends PGN implements PGN_65379_Seatalk
     this.fields = { ...PGN_65379_SeatalkPilotModeMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65379_SeatalkPilotModeMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65379_SeatalkPilotModeMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('seatalkPilotMode')!
@@ -5169,8 +5169,8 @@ export class PGN_65408_AirmarDepthQualityFactor extends PGN implements PGN_65408
     this.fields = { ...PGN_65408_AirmarDepthQualityFactorMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65408_AirmarDepthQualityFactorMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65408_AirmarDepthQualityFactorMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('airmarDepthQualityFactor')!
@@ -5247,8 +5247,8 @@ export class PGN_65409_AirmarSpeedPulseCount extends PGN implements PGN_65409_Ai
     this.fields = { ...PGN_65409_AirmarSpeedPulseCountMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65409_AirmarSpeedPulseCountMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65409_AirmarSpeedPulseCountMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('airmarSpeedPulseCount')!
@@ -5325,8 +5325,8 @@ export class PGN_65410_AirmarDeviceInformation extends PGN implements PGN_65410_
     this.fields = { ...PGN_65410_AirmarDeviceInformationMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65410_AirmarDeviceInformationMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65410_AirmarDeviceInformationMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('airmarDeviceInformation')!
@@ -5409,8 +5409,8 @@ export class PGN_65420_SimnetApUnknown3 extends PGN implements PGN_65420_SimnetA
     this.fields = { ...PGN_65420_SimnetApUnknown3MatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65420_SimnetApUnknown3MatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65420_SimnetApUnknown3MatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetApUnknown3')!
@@ -5481,8 +5481,8 @@ export class PGN_65480_SimnetAutopilotMode extends PGN implements PGN_65480_Simn
     this.fields = { ...PGN_65480_SimnetAutopilotModeMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_65480_SimnetAutopilotModeMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65480_SimnetAutopilotModeMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetAutopilotMode')!
@@ -5612,8 +5612,8 @@ export class PGN_126208_NmeaRequestGroupFunction extends PGN implements PGN_1262
     this.fields = { ...PGN_126208_NmeaRequestGroupFunctionMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126208_NmeaRequestGroupFunctionMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126208_NmeaRequestGroupFunctionMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('nmeaRequestGroupFunction')!
@@ -5695,8 +5695,8 @@ export class PGN_126208_NmeaCommandGroupFunction extends PGN implements PGN_1262
     this.fields = { ...PGN_126208_NmeaCommandGroupFunctionMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126208_NmeaCommandGroupFunctionMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126208_NmeaCommandGroupFunctionMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('nmeaCommandGroupFunction')!
@@ -5776,8 +5776,8 @@ export class PGN_126208_NmeaAcknowledgeGroupFunction extends PGN implements PGN_
     this.fields = { ...PGN_126208_NmeaAcknowledgeGroupFunctionMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126208_NmeaAcknowledgeGroupFunctionMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126208_NmeaAcknowledgeGroupFunctionMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('nmeaAcknowledgeGroupFunction')!
@@ -5869,8 +5869,8 @@ export class PGN_126208_NmeaReadFieldsGroupFunction extends PGN implements PGN_1
     this.fields = { ...PGN_126208_NmeaReadFieldsGroupFunctionMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126208_NmeaReadFieldsGroupFunctionMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126208_NmeaReadFieldsGroupFunctionMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('nmeaReadFieldsGroupFunction')!
@@ -5964,8 +5964,8 @@ export class PGN_126208_NmeaReadFieldsReplyGroupFunction extends PGN implements 
     this.fields = { ...PGN_126208_NmeaReadFieldsReplyGroupFunctionMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126208_NmeaReadFieldsReplyGroupFunctionMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126208_NmeaReadFieldsReplyGroupFunctionMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('nmeaReadFieldsReplyGroupFunction')!
@@ -6059,8 +6059,8 @@ export class PGN_126208_NmeaWriteFieldsGroupFunction extends PGN implements PGN_
     this.fields = { ...PGN_126208_NmeaWriteFieldsGroupFunctionMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126208_NmeaWriteFieldsGroupFunctionMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126208_NmeaWriteFieldsGroupFunctionMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('nmeaWriteFieldsGroupFunction')!
@@ -6154,8 +6154,8 @@ export class PGN_126208_NmeaWriteFieldsReplyGroupFunction extends PGN implements
     this.fields = { ...PGN_126208_NmeaWriteFieldsReplyGroupFunctionMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126208_NmeaWriteFieldsReplyGroupFunctionMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126208_NmeaWriteFieldsReplyGroupFunctionMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('nmeaWriteFieldsReplyGroupFunction')!
@@ -6342,8 +6342,8 @@ export class PGN_126720_Seatalk1PilotMode extends PGN implements PGN_126720_Seat
     this.fields = { ...PGN_126720_Seatalk1PilotModeMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_Seatalk1PilotModeMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_Seatalk1PilotModeMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('seatalk1PilotMode')!
@@ -6421,8 +6421,8 @@ export class PGN_126720_FusionMediaControl extends PGN implements PGN_126720_Fus
     this.fields = { ...PGN_126720_FusionMediaControlMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_FusionMediaControlMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_FusionMediaControlMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionMediaControl')!
@@ -6500,8 +6500,8 @@ export class PGN_126720_FusionSiriusControl extends PGN implements PGN_126720_Fu
     this.fields = { ...PGN_126720_FusionSiriusControlMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_FusionSiriusControlMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_FusionSiriusControlMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionSiriusControl')!
@@ -6575,8 +6575,8 @@ export class PGN_126720_FusionRequestStatus extends PGN implements PGN_126720_Fu
     this.fields = { ...PGN_126720_FusionRequestStatusMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_FusionRequestStatusMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_FusionRequestStatusMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionRequestStatus')!
@@ -6652,8 +6652,8 @@ export class PGN_126720_FusionSetSource extends PGN implements PGN_126720_Fusion
     this.fields = { ...PGN_126720_FusionSetSourceMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_FusionSetSourceMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_FusionSetSourceMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionSetSource')!
@@ -6727,8 +6727,8 @@ export class PGN_126720_FusionSetMute extends PGN implements PGN_126720_FusionSe
     this.fields = { ...PGN_126720_FusionSetMuteMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_FusionSetMuteMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_FusionSetMuteMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionSetMute')!
@@ -6806,8 +6806,8 @@ export class PGN_126720_FusionSetZoneVolume extends PGN implements PGN_126720_Fu
     this.fields = { ...PGN_126720_FusionSetZoneVolumeMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_FusionSetZoneVolumeMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_FusionSetZoneVolumeMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionSetZoneVolume')!
@@ -6889,8 +6889,8 @@ export class PGN_126720_FusionSetAllVolumes extends PGN implements PGN_126720_Fu
     this.fields = { ...PGN_126720_FusionSetAllVolumesMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_FusionSetAllVolumesMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_FusionSetAllVolumesMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionSetAllVolumes')!
@@ -6973,8 +6973,8 @@ export class PGN_126720_Seatalk1Keystroke extends PGN implements PGN_126720_Seat
     this.fields = { ...PGN_126720_Seatalk1KeystrokeMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_Seatalk1KeystrokeMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_Seatalk1KeystrokeMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('seatalk1Keystroke')!
@@ -7053,8 +7053,8 @@ export class PGN_126720_Seatalk1DeviceIdentification extends PGN implements PGN_
     this.fields = { ...PGN_126720_Seatalk1DeviceIdentificationMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_Seatalk1DeviceIdentificationMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_Seatalk1DeviceIdentificationMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('seatalk1DeviceIdentification')!
@@ -7136,8 +7136,8 @@ export class PGN_126720_Seatalk1DisplayBrightness extends PGN implements PGN_126
     this.fields = { ...PGN_126720_Seatalk1DisplayBrightnessMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_Seatalk1DisplayBrightnessMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_Seatalk1DisplayBrightnessMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('seatalk1DisplayBrightness')!
@@ -7220,8 +7220,8 @@ export class PGN_126720_Seatalk1DisplayColor extends PGN implements PGN_126720_S
     this.fields = { ...PGN_126720_Seatalk1DisplayColorMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_Seatalk1DisplayColorMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_Seatalk1DisplayColorMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('seatalk1DisplayColor')!
@@ -7299,8 +7299,8 @@ export class PGN_126720_AirmarAttitudeOffset extends PGN implements PGN_126720_A
     this.fields = { ...PGN_126720_AirmarAttitudeOffsetMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_AirmarAttitudeOffsetMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_AirmarAttitudeOffsetMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('airmarAttitudeOffset')!
@@ -7396,8 +7396,8 @@ export class PGN_126720_AirmarCalibrateCompass extends PGN implements PGN_126720
     this.fields = { ...PGN_126720_AirmarCalibrateCompassMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_AirmarCalibrateCompassMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_AirmarCalibrateCompassMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('airmarCalibrateCompass')!
@@ -7473,8 +7473,8 @@ export class PGN_126720_AirmarTrueWindOptions extends PGN implements PGN_126720_
     this.fields = { ...PGN_126720_AirmarTrueWindOptionsMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_AirmarTrueWindOptionsMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_AirmarTrueWindOptionsMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('airmarTrueWindOptions')!
@@ -7550,8 +7550,8 @@ export class PGN_126720_AirmarSimulateMode extends PGN implements PGN_126720_Air
     this.fields = { ...PGN_126720_AirmarSimulateModeMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_AirmarSimulateModeMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_AirmarSimulateModeMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('airmarSimulateMode')!
@@ -7627,8 +7627,8 @@ export class PGN_126720_AirmarCalibrateDepth extends PGN implements PGN_126720_A
     this.fields = { ...PGN_126720_AirmarCalibrateDepthMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_AirmarCalibrateDepthMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_AirmarCalibrateDepthMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('airmarCalibrateDepth')!
@@ -7710,8 +7710,8 @@ export class PGN_126720_AirmarCalibrateSpeed extends PGN implements PGN_126720_A
     this.fields = { ...PGN_126720_AirmarCalibrateSpeedMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_AirmarCalibrateSpeedMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_AirmarCalibrateSpeedMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('airmarCalibrateSpeed')!
@@ -7789,8 +7789,8 @@ export class PGN_126720_AirmarCalibrateTemperature extends PGN implements PGN_12
     this.fields = { ...PGN_126720_AirmarCalibrateTemperatureMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_AirmarCalibrateTemperatureMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_AirmarCalibrateTemperatureMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('airmarCalibrateTemperature')!
@@ -7868,8 +7868,8 @@ export class PGN_126720_AirmarSpeedFilterNone extends PGN implements PGN_126720_
     this.fields = { ...PGN_126720_AirmarSpeedFilterNoneMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_AirmarSpeedFilterNoneMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_AirmarSpeedFilterNoneMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('airmarSpeedFilterNone')!
@@ -7950,8 +7950,8 @@ export class PGN_126720_AirmarSpeedFilterIir extends PGN implements PGN_126720_A
     this.fields = { ...PGN_126720_AirmarSpeedFilterIirMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_AirmarSpeedFilterIirMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_AirmarSpeedFilterIirMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('airmarSpeedFilterIir')!
@@ -8029,8 +8029,8 @@ export class PGN_126720_AirmarTemperatureFilterNone extends PGN implements PGN_1
     this.fields = { ...PGN_126720_AirmarTemperatureFilterNoneMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_AirmarTemperatureFilterNoneMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_AirmarTemperatureFilterNoneMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('airmarTemperatureFilterNone')!
@@ -8111,8 +8111,8 @@ export class PGN_126720_AirmarTemperatureFilterIir extends PGN implements PGN_12
     this.fields = { ...PGN_126720_AirmarTemperatureFilterIirMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_AirmarTemperatureFilterIirMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_AirmarTemperatureFilterIirMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('airmarTemperatureFilterIir')!
@@ -8188,8 +8188,8 @@ export class PGN_126720_AirmarNmea2000Options extends PGN implements PGN_126720_
     this.fields = { ...PGN_126720_AirmarNmea2000OptionsMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_AirmarNmea2000OptionsMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_AirmarNmea2000OptionsMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('airmarNmea2000Options')!
@@ -8260,8 +8260,8 @@ export class PGN_126720_AirmarAddressableMultiFrame extends PGN implements PGN_1
     this.fields = { ...PGN_126720_AirmarAddressableMultiFrameMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_AirmarAddressableMultiFrameMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_AirmarAddressableMultiFrameMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('airmarAddressableMultiFrame')!
@@ -8338,8 +8338,8 @@ export class PGN_126720_MaretronSlaveResponse extends PGN implements PGN_126720_
     this.fields = { ...PGN_126720_MaretronSlaveResponseMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_MaretronSlaveResponseMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_MaretronSlaveResponseMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('maretronSlaveResponse')!
@@ -8428,8 +8428,8 @@ export class PGN_126720_GarminDayMode extends PGN implements PGN_126720_GarminDa
     this.fields = { ...PGN_126720_GarminDayModeMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_GarminDayModeMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminDayModeMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('garminDayMode')!
@@ -8519,8 +8519,8 @@ export class PGN_126720_GarminNightMode extends PGN implements PGN_126720_Garmin
     this.fields = { ...PGN_126720_GarminNightModeMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_GarminNightModeMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminNightModeMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('garminNightMode')!
@@ -8610,8 +8610,8 @@ export class PGN_126720_GarminColorMode extends PGN implements PGN_126720_Garmin
     this.fields = { ...PGN_126720_GarminColorModeMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_126720_GarminColorModeMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminColorModeMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('garminColorMode')!
@@ -15278,8 +15278,8 @@ export class PGN_129808_DscDistressCallInformation extends PGN implements PGN_12
     this.fields = { ...PGN_129808_DscDistressCallInformationMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_129808_DscDistressCallInformationMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_129808_DscDistressCallInformationMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('dscDistressCallInformation')!
@@ -18683,8 +18683,8 @@ export class PGN_130816_SonichubInit2 extends PGN implements PGN_130816_Sonichub
     this.fields = { ...PGN_130816_SonichubInit2MatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130816_SonichubInit2MatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_SonichubInit2MatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('sonichubInit2')!
@@ -18772,8 +18772,8 @@ export class PGN_130816_SonichubAmRadio extends PGN implements PGN_130816_Sonich
     this.fields = { ...PGN_130816_SonichubAmRadioMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130816_SonichubAmRadioMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_SonichubAmRadioMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('sonichubAmRadio')!
@@ -18851,8 +18851,8 @@ export class PGN_130816_SonichubZoneInfo extends PGN implements PGN_130816_Sonic
     this.fields = { ...PGN_130816_SonichubZoneInfoMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130816_SonichubZoneInfoMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_SonichubZoneInfoMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('sonichubZoneInfo')!
@@ -18930,8 +18930,8 @@ export class PGN_130816_SonichubSource extends PGN implements PGN_130816_Sonichu
     this.fields = { ...PGN_130816_SonichubSourceMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130816_SonichubSourceMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_SonichubSourceMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('sonichubSource')!
@@ -19013,8 +19013,8 @@ export class PGN_130816_SonichubSourceList extends PGN implements PGN_130816_Son
     this.fields = { ...PGN_130816_SonichubSourceListMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130816_SonichubSourceListMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_SonichubSourceListMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('sonichubSourceList')!
@@ -19092,8 +19092,8 @@ export class PGN_130816_SonichubControl extends PGN implements PGN_130816_Sonich
     this.fields = { ...PGN_130816_SonichubControlMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130816_SonichubControlMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_SonichubControlMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('sonichubControl')!
@@ -19181,8 +19181,8 @@ export class PGN_130816_SonichubFmRadio extends PGN implements PGN_130816_Sonich
     this.fields = { ...PGN_130816_SonichubFmRadioMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130816_SonichubFmRadioMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_SonichubFmRadioMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('sonichubFmRadio')!
@@ -19270,8 +19270,8 @@ export class PGN_130816_SonichubPlaylist extends PGN implements PGN_130816_Sonic
     this.fields = { ...PGN_130816_SonichubPlaylistMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130816_SonichubPlaylistMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_SonichubPlaylistMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('sonichubPlaylist')!
@@ -19351,8 +19351,8 @@ export class PGN_130816_SonichubTrack extends PGN implements PGN_130816_Sonichub
     this.fields = { ...PGN_130816_SonichubTrackMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130816_SonichubTrackMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_SonichubTrackMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('sonichubTrack')!
@@ -19432,8 +19432,8 @@ export class PGN_130816_SonichubArtist extends PGN implements PGN_130816_Sonichu
     this.fields = { ...PGN_130816_SonichubArtistMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130816_SonichubArtistMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_SonichubArtistMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('sonichubArtist')!
@@ -19513,8 +19513,8 @@ export class PGN_130816_SonichubAlbum extends PGN implements PGN_130816_Sonichub
     this.fields = { ...PGN_130816_SonichubAlbumMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130816_SonichubAlbumMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_SonichubAlbumMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('sonichubAlbum')!
@@ -19600,8 +19600,8 @@ export class PGN_130816_SonichubMenuItem extends PGN implements PGN_130816_Sonic
     this.fields = { ...PGN_130816_SonichubMenuItemMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130816_SonichubMenuItemMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_SonichubMenuItemMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('sonichubMenuItem')!
@@ -19679,8 +19679,8 @@ export class PGN_130816_SonichubZones extends PGN implements PGN_130816_Sonichub
     this.fields = { ...PGN_130816_SonichubZonesMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130816_SonichubZonesMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_SonichubZonesMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('sonichubZones')!
@@ -19760,8 +19760,8 @@ export class PGN_130816_SonichubMaxVolume extends PGN implements PGN_130816_Soni
     this.fields = { ...PGN_130816_SonichubMaxVolumeMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130816_SonichubMaxVolumeMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_SonichubMaxVolumeMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('sonichubMaxVolume')!
@@ -19841,8 +19841,8 @@ export class PGN_130816_SonichubVolume extends PGN implements PGN_130816_Sonichu
     this.fields = { ...PGN_130816_SonichubVolumeMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130816_SonichubVolumeMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_SonichubVolumeMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('sonichubVolume')!
@@ -19918,8 +19918,8 @@ export class PGN_130816_SonichubInit1 extends PGN implements PGN_130816_Sonichub
     this.fields = { ...PGN_130816_SonichubInit1MatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130816_SonichubInit1MatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_SonichubInit1MatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('sonichubInit1')!
@@ -19997,8 +19997,8 @@ export class PGN_130816_SonichubPosition extends PGN implements PGN_130816_Sonic
     this.fields = { ...PGN_130816_SonichubPositionMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130816_SonichubPositionMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_SonichubPositionMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('sonichubPosition')!
@@ -20078,8 +20078,8 @@ export class PGN_130816_SonichubInit3 extends PGN implements PGN_130816_Sonichub
     this.fields = { ...PGN_130816_SonichubInit3MatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130816_SonichubInit3MatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_SonichubInit3MatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('sonichubInit3')!
@@ -20165,8 +20165,8 @@ export class PGN_130816_SimradTextMessage extends PGN implements PGN_130816_Simr
     this.fields = { ...PGN_130816_SimradTextMessageMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130816_SimradTextMessageMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_SimradTextMessageMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simradTextMessage')!
@@ -20245,8 +20245,8 @@ export class PGN_130817_NavicoUnknown extends PGN implements PGN_130817_NavicoUn
     this.fields = { ...PGN_130817_NavicoUnknownMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130817_NavicoUnknownMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130817_NavicoUnknownMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('navicoUnknown')!
@@ -20331,8 +20331,8 @@ export class PGN_130817_LowranceProductInformation extends PGN implements PGN_13
     this.fields = { ...PGN_130817_LowranceProductInformationMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130817_LowranceProductInformationMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130817_LowranceProductInformationMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('lowranceProductInformation')!
@@ -20407,8 +20407,8 @@ export class PGN_130818_SimnetReprogramData extends PGN implements PGN_130818_Si
     this.fields = { ...PGN_130818_SimnetReprogramDataMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130818_SimnetReprogramDataMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130818_SimnetReprogramDataMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetReprogramData')!
@@ -20477,8 +20477,8 @@ export class PGN_130819_SimnetRequestReprogram extends PGN implements PGN_130819
     this.fields = { ...PGN_130819_SimnetRequestReprogramMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130819_SimnetRequestReprogramMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130819_SimnetRequestReprogramMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetRequestReprogram')!
@@ -20553,8 +20553,8 @@ export class PGN_130820_SimnetReprogramStatus extends PGN implements PGN_130820_
     this.fields = { ...PGN_130820_SimnetReprogramStatusMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_SimnetReprogramStatusMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_SimnetReprogramStatusMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetReprogramStatus')!
@@ -20633,8 +20633,8 @@ export class PGN_130820_FurunoUnknown130820 extends PGN implements PGN_130820_Fu
     this.fields = { ...PGN_130820_FurunoUnknown130820MatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FurunoUnknown130820MatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FurunoUnknown130820MatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('furunoUnknown130820')!
@@ -20716,8 +20716,8 @@ export class PGN_130820_FusionVersions extends PGN implements PGN_130820_FusionV
     this.fields = { ...PGN_130820_FusionVersionsMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionVersionsMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionVersionsMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionVersions')!
@@ -20799,8 +20799,8 @@ export class PGN_130820_FusionSource extends PGN implements PGN_130820_FusionSou
     this.fields = { ...PGN_130820_FusionSourceMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionSourceMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionSourceMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionSource')!
@@ -20874,8 +20874,8 @@ export class PGN_130820_FusionSourceCount extends PGN implements PGN_130820_Fusi
     this.fields = { ...PGN_130820_FusionSourceCountMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionSourceCountMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionSourceCountMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionSourceCount')!
@@ -20959,8 +20959,8 @@ export class PGN_130820_FusionMedia extends PGN implements PGN_130820_FusionMedi
     this.fields = { ...PGN_130820_FusionMediaMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionMediaMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionMediaMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionMedia')!
@@ -21038,8 +21038,8 @@ export class PGN_130820_FusionTrackName extends PGN implements PGN_130820_Fusion
     this.fields = { ...PGN_130820_FusionTrackNameMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionTrackNameMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionTrackNameMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionTrackName')!
@@ -21117,8 +21117,8 @@ export class PGN_130820_FusionArtistName extends PGN implements PGN_130820_Fusio
     this.fields = { ...PGN_130820_FusionArtistNameMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionArtistNameMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionArtistNameMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionArtistName')!
@@ -21196,8 +21196,8 @@ export class PGN_130820_FusionAlbumName extends PGN implements PGN_130820_Fusion
     this.fields = { ...PGN_130820_FusionAlbumNameMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionAlbumNameMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionAlbumNameMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionAlbumName')!
@@ -21271,8 +21271,8 @@ export class PGN_130820_FusionDeviceName extends PGN implements PGN_130820_Fusio
     this.fields = { ...PGN_130820_FusionDeviceNameMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionDeviceNameMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionDeviceNameMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionDeviceName')!
@@ -21348,8 +21348,8 @@ export class PGN_130820_FusionZoneName extends PGN implements PGN_130820_FusionZ
     this.fields = { ...PGN_130820_FusionZoneNameMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionZoneNameMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionZoneNameMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionZoneName')!
@@ -21425,8 +21425,8 @@ export class PGN_130820_FusionTrackPosition extends PGN implements PGN_130820_Fu
     this.fields = { ...PGN_130820_FusionTrackPositionMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionTrackPositionMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionTrackPositionMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionTrackPosition')!
@@ -21508,8 +21508,8 @@ export class PGN_130820_FusionTuner extends PGN implements PGN_130820_FusionTune
     this.fields = { ...PGN_130820_FusionTunerMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionTunerMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionTunerMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionTuner')!
@@ -21589,8 +21589,8 @@ export class PGN_130820_FusionMarineTuner extends PGN implements PGN_130820_Fusi
     this.fields = { ...PGN_130820_FusionMarineTunerMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionMarineTunerMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionMarineTunerMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionMarineTuner')!
@@ -21666,8 +21666,8 @@ export class PGN_130820_FusionMarineSquelch extends PGN implements PGN_130820_Fu
     this.fields = { ...PGN_130820_FusionMarineSquelchMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionMarineSquelchMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionMarineSquelchMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionMarineSquelch')!
@@ -21743,8 +21743,8 @@ export class PGN_130820_FusionMarineScanMode extends PGN implements PGN_130820_F
     this.fields = { ...PGN_130820_FusionMarineScanModeMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionMarineScanModeMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionMarineScanModeMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionMarineScanMode')!
@@ -21826,8 +21826,8 @@ export class PGN_130820_FusionMenuItem extends PGN implements PGN_130820_FusionM
     this.fields = { ...PGN_130820_FusionMenuItemMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionMenuItemMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionMenuItemMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionMenuItem')!
@@ -21903,8 +21903,8 @@ export class PGN_130820_FusionAuxGain extends PGN implements PGN_130820_FusionAu
     this.fields = { ...PGN_130820_FusionAuxGainMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionAuxGainMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionAuxGainMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionAuxGain')!
@@ -21981,8 +21981,8 @@ export class PGN_130820_FusionUsbRepeatStatus extends PGN implements PGN_130820_
     this.fields = { ...PGN_130820_FusionUsbRepeatStatusMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionUsbRepeatStatusMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionUsbRepeatStatusMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionUsbRepeatStatus')!
@@ -22058,8 +22058,8 @@ export class PGN_130820_FusionSetting extends PGN implements PGN_130820_FusionSe
     this.fields = { ...PGN_130820_FusionSettingMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionSettingMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionSettingMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionSetting')!
@@ -22141,8 +22141,8 @@ export class PGN_130820_FusionSettings extends PGN implements PGN_130820_FusionS
     this.fields = { ...PGN_130820_FusionSettingsMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionSettingsMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionSettingsMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionSettings')!
@@ -22216,8 +22216,8 @@ export class PGN_130820_FusionMute extends PGN implements PGN_130820_FusionMuteI
     this.fields = { ...PGN_130820_FusionMuteMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionMuteMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionMuteMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionMute')!
@@ -22293,8 +22293,8 @@ export class PGN_130820_FusionBalance extends PGN implements PGN_130820_FusionBa
     this.fields = { ...PGN_130820_FusionBalanceMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionBalanceMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionBalanceMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionBalance')!
@@ -22370,8 +22370,8 @@ export class PGN_130820_FusionLowPassFilter extends PGN implements PGN_130820_Fu
     this.fields = { ...PGN_130820_FusionLowPassFilterMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionLowPassFilterMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionLowPassFilterMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionLowPassFilter')!
@@ -22451,8 +22451,8 @@ export class PGN_130820_FusionSublevels extends PGN implements PGN_130820_Fusion
     this.fields = { ...PGN_130820_FusionSublevelsMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionSublevelsMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionSublevelsMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionSublevels')!
@@ -22532,8 +22532,8 @@ export class PGN_130820_FusionEq extends PGN implements PGN_130820_FusionEqInter
     this.fields = { ...PGN_130820_FusionEqMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionEqMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionEqMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionEq')!
@@ -22613,8 +22613,8 @@ export class PGN_130820_FusionVolumeLimits extends PGN implements PGN_130820_Fus
     this.fields = { ...PGN_130820_FusionVolumeLimitsMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionVolumeLimitsMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionVolumeLimitsMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionVolumeLimits')!
@@ -22694,8 +22694,8 @@ export class PGN_130820_FusionVolumes extends PGN implements PGN_130820_FusionVo
     this.fields = { ...PGN_130820_FusionVolumesMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionVolumesMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionVolumesMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionVolumes')!
@@ -22777,8 +22777,8 @@ export class PGN_130820_FusionCapabilities extends PGN implements PGN_130820_Fus
     this.fields = { ...PGN_130820_FusionCapabilitiesMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionCapabilitiesMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionCapabilitiesMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionCapabilities')!
@@ -22854,8 +22854,8 @@ export class PGN_130820_FusionLineLevelControl extends PGN implements PGN_130820
     this.fields = { ...PGN_130820_FusionLineLevelControlMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionLineLevelControlMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionLineLevelControlMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionLineLevelControl')!
@@ -22929,8 +22929,8 @@ export class PGN_130820_FusionPowerState extends PGN implements PGN_130820_Fusio
     this.fields = { ...PGN_130820_FusionPowerStateMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionPowerStateMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionPowerStateMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionPowerState')!
@@ -23012,8 +23012,8 @@ export class PGN_130820_FusionSiriusxm extends PGN implements PGN_130820_FusionS
     this.fields = { ...PGN_130820_FusionSiriusxmMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionSiriusxmMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionSiriusxmMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionSiriusxm')!
@@ -23091,8 +23091,8 @@ export class PGN_130820_FusionSiriusxmChannel extends PGN implements PGN_130820_
     this.fields = { ...PGN_130820_FusionSiriusxmChannelMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionSiriusxmChannelMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionSiriusxmChannelMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionSiriusxmChannel')!
@@ -23170,8 +23170,8 @@ export class PGN_130820_FusionSiriusxmTitle extends PGN implements PGN_130820_Fu
     this.fields = { ...PGN_130820_FusionSiriusxmTitleMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionSiriusxmTitleMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionSiriusxmTitleMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionSiriusxmTitle')!
@@ -23249,8 +23249,8 @@ export class PGN_130820_FusionSiriusxmArtist extends PGN implements PGN_130820_F
     this.fields = { ...PGN_130820_FusionSiriusxmArtistMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionSiriusxmArtistMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionSiriusxmArtistMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionSiriusxmArtist')!
@@ -23328,8 +23328,8 @@ export class PGN_130820_FusionSiriusxmContentInfo extends PGN implements PGN_130
     this.fields = { ...PGN_130820_FusionSiriusxmContentInfoMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionSiriusxmContentInfoMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionSiriusxmContentInfoMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionSiriusxmContentInfo')!
@@ -23407,8 +23407,8 @@ export class PGN_130820_FusionSiriusxmCategory extends PGN implements PGN_130820
     this.fields = { ...PGN_130820_FusionSiriusxmCategoryMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionSiriusxmCategoryMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionSiriusxmCategoryMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionSiriusxmCategory')!
@@ -23484,8 +23484,8 @@ export class PGN_130820_FusionSiriusxmSignal extends PGN implements PGN_130820_F
     this.fields = { ...PGN_130820_FusionSiriusxmSignalMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionSiriusxmSignalMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionSiriusxmSignalMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionSiriusxmSignal')!
@@ -23563,8 +23563,8 @@ export class PGN_130820_FusionSiriusxmPresets extends PGN implements PGN_130820_
     this.fields = { ...PGN_130820_FusionSiriusxmPresetsMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130820_FusionSiriusxmPresetsMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionSiriusxmPresetsMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('fusionSiriusxmPresets')!
@@ -23637,8 +23637,8 @@ export class PGN_130821_NavicoAsciiData extends PGN implements PGN_130821_Navico
     this.fields = { ...PGN_130821_NavicoAsciiDataMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130821_NavicoAsciiDataMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130821_NavicoAsciiDataMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('navicoAsciiData')!
@@ -23727,8 +23727,8 @@ export class PGN_130821_FurunoUnknown130821 extends PGN implements PGN_130821_Fu
     this.fields = { ...PGN_130821_FurunoUnknown130821MatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130821_FurunoUnknown130821MatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130821_FurunoUnknown130821MatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('furunoUnknown130821')!
@@ -23799,8 +23799,8 @@ export class PGN_130822_NavicoUnknown1 extends PGN implements PGN_130822_NavicoU
     this.fields = { ...PGN_130822_NavicoUnknown1MatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130822_NavicoUnknown1MatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130822_NavicoUnknown1MatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('navicoUnknown1')!
@@ -23879,8 +23879,8 @@ export class PGN_130823_MaretronProprietaryTemperatureHighRange extends PGN impl
     this.fields = { ...PGN_130823_MaretronProprietaryTemperatureHighRangeMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130823_MaretronProprietaryTemperatureHighRangeMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130823_MaretronProprietaryTemperatureHighRangeMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('maretronProprietaryTemperatureHighRange')!
@@ -23961,8 +23961,8 @@ export class PGN_130824_BGKeyValueData extends PGN implements PGN_130824_BGKeyVa
     this.fields = { ...PGN_130824_BGKeyValueDataMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130824_BGKeyValueDataMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130824_BGKeyValueDataMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('bGKeyValueData')!
@@ -24041,8 +24041,8 @@ export class PGN_130824_MaretronAnnunciator extends PGN implements PGN_130824_Ma
     this.fields = { ...PGN_130824_MaretronAnnunciatorMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130824_MaretronAnnunciatorMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130824_MaretronAnnunciatorMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('maretronAnnunciator')!
@@ -24113,8 +24113,8 @@ export class PGN_130825_NavicoUnknown2 extends PGN implements PGN_130825_NavicoU
     this.fields = { ...PGN_130825_NavicoUnknown2MatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130825_NavicoUnknown2MatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130825_NavicoUnknown2MatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('navicoUnknown2')!
@@ -24195,8 +24195,8 @@ export class PGN_130827_LowranceUnknown extends PGN implements PGN_130827_Lowran
     this.fields = { ...PGN_130827_LowranceUnknownMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130827_LowranceUnknownMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130827_LowranceUnknownMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('lowranceUnknown')!
@@ -24265,8 +24265,8 @@ export class PGN_130828_SimnetSetSerialNumber extends PGN implements PGN_130828_
     this.fields = { ...PGN_130828_SimnetSetSerialNumberMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130828_SimnetSetSerialNumberMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130828_SimnetSetSerialNumberMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetSetSerialNumber')!
@@ -24335,8 +24335,8 @@ export class PGN_130831_SuzukiEngineAndStorageDeviceConfig extends PGN implement
     this.fields = { ...PGN_130831_SuzukiEngineAndStorageDeviceConfigMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130831_SuzukiEngineAndStorageDeviceConfigMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130831_SuzukiEngineAndStorageDeviceConfigMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('suzukiEngineAndStorageDeviceConfig')!
@@ -24405,8 +24405,8 @@ export class PGN_130832_SimnetFuelUsedHighResolution extends PGN implements PGN_
     this.fields = { ...PGN_130832_SimnetFuelUsedHighResolutionMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130832_SimnetFuelUsedHighResolutionMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130832_SimnetFuelUsedHighResolutionMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetFuelUsedHighResolution')!
@@ -24487,8 +24487,8 @@ export class PGN_130833_BGUserAndRemoteRename extends PGN implements PGN_130833_
     this.fields = { ...PGN_130833_BGUserAndRemoteRenameMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130833_BGUserAndRemoteRenameMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130833_BGUserAndRemoteRenameMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('bGUserAndRemoteRename')!
@@ -24557,8 +24557,8 @@ export class PGN_130834_SimnetEngineAndTankConfiguration extends PGN implements 
     this.fields = { ...PGN_130834_SimnetEngineAndTankConfigurationMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130834_SimnetEngineAndTankConfigurationMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130834_SimnetEngineAndTankConfigurationMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetEngineAndTankConfiguration')!
@@ -24627,8 +24627,8 @@ export class PGN_130835_SimnetSetEngineAndTankConfiguration extends PGN implemen
     this.fields = { ...PGN_130835_SimnetSetEngineAndTankConfigurationMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130835_SimnetSetEngineAndTankConfigurationMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130835_SimnetSetEngineAndTankConfigurationMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetSetEngineAndTankConfiguration')!
@@ -24715,8 +24715,8 @@ export class PGN_130836_SimnetFluidLevelSensorConfiguration extends PGN implemen
     this.fields = { ...PGN_130836_SimnetFluidLevelSensorConfigurationMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130836_SimnetFluidLevelSensorConfigurationMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130836_SimnetFluidLevelSensorConfigurationMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetFluidLevelSensorConfiguration')!
@@ -24803,8 +24803,8 @@ export class PGN_130836_MaretronSwitchStatusCounter extends PGN implements PGN_1
     this.fields = { ...PGN_130836_MaretronSwitchStatusCounterMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130836_MaretronSwitchStatusCounterMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130836_MaretronSwitchStatusCounterMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('maretronSwitchStatusCounter')!
@@ -24873,8 +24873,8 @@ export class PGN_130837_SimnetFuelFlowTurbineConfiguration extends PGN implement
     this.fields = { ...PGN_130837_SimnetFuelFlowTurbineConfigurationMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130837_SimnetFuelFlowTurbineConfigurationMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130837_SimnetFuelFlowTurbineConfigurationMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetFuelFlowTurbineConfiguration')!
@@ -24961,8 +24961,8 @@ export class PGN_130837_MaretronSwitchStatusTimer extends PGN implements PGN_130
     this.fields = { ...PGN_130837_MaretronSwitchStatusTimerMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130837_MaretronSwitchStatusTimerMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130837_MaretronSwitchStatusTimerMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('maretronSwitchStatusTimer')!
@@ -25031,8 +25031,8 @@ export class PGN_130838_SimnetFluidLevelWarning extends PGN implements PGN_13083
     this.fields = { ...PGN_130838_SimnetFluidLevelWarningMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130838_SimnetFluidLevelWarningMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130838_SimnetFluidLevelWarningMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetFluidLevelWarning')!
@@ -25101,8 +25101,8 @@ export class PGN_130839_SimnetPressureSensorConfiguration extends PGN implements
     this.fields = { ...PGN_130839_SimnetPressureSensorConfigurationMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130839_SimnetPressureSensorConfigurationMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130839_SimnetPressureSensorConfigurationMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetPressureSensorConfiguration')!
@@ -25171,8 +25171,8 @@ export class PGN_130840_SimnetDataUserGroupConfiguration extends PGN implements 
     this.fields = { ...PGN_130840_SimnetDataUserGroupConfigurationMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130840_SimnetDataUserGroupConfigurationMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130840_SimnetDataUserGroupConfigurationMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetDataUserGroupConfiguration')!
@@ -25253,8 +25253,8 @@ export class PGN_130842_SimnetAisClassBStaticDataMsg24PartA extends PGN implemen
     this.fields = { ...PGN_130842_SimnetAisClassBStaticDataMsg24PartAMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130842_SimnetAisClassBStaticDataMsg24PartAMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130842_SimnetAisClassBStaticDataMsg24PartAMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetAisClassBStaticDataMsg24PartA')!
@@ -25341,8 +25341,8 @@ export class PGN_130842_FurunoSixDegreesOfFreedomMovement extends PGN implements
     this.fields = { ...PGN_130842_FurunoSixDegreesOfFreedomMovementMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130842_FurunoSixDegreesOfFreedomMovementMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130842_FurunoSixDegreesOfFreedomMovementMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('furunoSixDegreesOfFreedomMovement')!
@@ -25442,8 +25442,8 @@ export class PGN_130842_SimnetAisClassBStaticDataMsg24PartB extends PGN implemen
     this.fields = { ...PGN_130842_SimnetAisClassBStaticDataMsg24PartBMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130842_SimnetAisClassBStaticDataMsg24PartBMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130842_SimnetAisClassBStaticDataMsg24PartBMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetAisClassBStaticDataMsg24PartB')!
@@ -25522,8 +25522,8 @@ export class PGN_130843_FurunoHeelAngleRollInformation extends PGN implements PG
     this.fields = { ...PGN_130843_FurunoHeelAngleRollInformationMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130843_FurunoHeelAngleRollInformationMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130843_FurunoHeelAngleRollInformationMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('furunoHeelAngleRollInformation')!
@@ -25592,8 +25592,8 @@ export class PGN_130843_SimnetSonarStatusFrequencyAndDspVoltage extends PGN impl
     this.fields = { ...PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetSonarStatusFrequencyAndDspVoltage')!
@@ -25662,8 +25662,8 @@ export class PGN_130845_FurunoMultiSatsInViewExtended extends PGN implements PGN
     this.fields = { ...PGN_130845_FurunoMultiSatsInViewExtendedMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130845_FurunoMultiSatsInViewExtendedMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130845_FurunoMultiSatsInViewExtendedMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('furunoMultiSatsInViewExtended')!
@@ -25748,8 +25748,8 @@ export class PGN_130845_SimnetKeyValue extends PGN implements PGN_130845_SimnetK
     this.fields = { ...PGN_130845_SimnetKeyValueMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130845_SimnetKeyValueMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130845_SimnetKeyValueMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetKeyValue')!
@@ -25834,8 +25834,8 @@ export class PGN_130846_SimnetParameterSet extends PGN implements PGN_130846_Sim
     this.fields = { ...PGN_130846_SimnetParameterSetMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130846_SimnetParameterSetMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130846_SimnetParameterSetMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetParameterSet')!
@@ -25904,8 +25904,8 @@ export class PGN_130846_FurunoMotionSensorStatusExtended extends PGN implements 
     this.fields = { ...PGN_130846_FurunoMotionSensorStatusExtendedMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130846_FurunoMotionSensorStatusExtendedMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130846_FurunoMotionSensorStatusExtendedMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('furunoMotionSensorStatusExtended')!
@@ -25984,8 +25984,8 @@ export class PGN_130847_SeatalkNodeStatistics extends PGN implements PGN_130847_
     this.fields = { ...PGN_130847_SeatalkNodeStatisticsMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130847_SeatalkNodeStatisticsMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130847_SeatalkNodeStatisticsMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('seatalkNodeStatistics')!
@@ -26066,8 +26066,8 @@ export class PGN_130848_SeatalkWaypointInformation extends PGN implements PGN_13
     this.fields = { ...PGN_130848_SeatalkWaypointInformationMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130848_SeatalkWaypointInformationMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130848_SeatalkWaypointInformationMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('seatalkWaypointInformation')!
@@ -26153,8 +26153,8 @@ export class PGN_130850_SimnetApCommand extends PGN implements PGN_130850_Simnet
     this.fields = { ...PGN_130850_SimnetApCommandMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130850_SimnetApCommandMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130850_SimnetApCommandMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetApCommand')!
@@ -26240,8 +26240,8 @@ export class PGN_130850_SimnetEventCommandApCommand extends PGN implements PGN_1
     this.fields = { ...PGN_130850_SimnetEventCommandApCommandMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130850_SimnetEventCommandApCommandMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130850_SimnetEventCommandApCommandMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetEventCommandApCommand')!
@@ -26329,8 +26329,8 @@ export class PGN_130850_SimnetAlarm extends PGN implements PGN_130850_SimnetAlar
     this.fields = { ...PGN_130850_SimnetAlarmMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130850_SimnetAlarmMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130850_SimnetAlarmMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetAlarm')!
@@ -26416,8 +26416,8 @@ export class PGN_130851_SimnetEventReplyApCommand extends PGN implements PGN_130
     this.fields = { ...PGN_130851_SimnetEventReplyApCommandMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130851_SimnetEventReplyApCommandMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130851_SimnetEventReplyApCommandMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetEventReplyApCommand')!
@@ -26496,8 +26496,8 @@ export class PGN_130856_SimnetAlarmMessage extends PGN implements PGN_130856_Sim
     this.fields = { ...PGN_130856_SimnetAlarmMessageMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130856_SimnetAlarmMessageMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130856_SimnetAlarmMessageMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetAlarmMessage')!
@@ -26580,8 +26580,8 @@ export class PGN_130860_SimnetApUnknown4 extends PGN implements PGN_130860_Simne
     this.fields = { ...PGN_130860_SimnetApUnknown4MatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130860_SimnetApUnknown4MatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130860_SimnetApUnknown4MatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('simnetApUnknown4')!
@@ -26658,8 +26658,8 @@ export class PGN_130880_AirmarAdditionalWeatherData extends PGN implements PGN_1
     this.fields = { ...PGN_130880_AirmarAdditionalWeatherDataMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130880_AirmarAdditionalWeatherDataMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130880_AirmarAdditionalWeatherDataMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('airmarAdditionalWeatherData')!
@@ -26736,8 +26736,8 @@ export class PGN_130881_AirmarHeaterControl extends PGN implements PGN_130881_Ai
     this.fields = { ...PGN_130881_AirmarHeaterControlMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130881_AirmarHeaterControlMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130881_AirmarHeaterControlMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('airmarHeaterControl')!
@@ -26822,8 +26822,8 @@ export class PGN_130918_SeatalkRouteInformation extends PGN implements PGN_13091
     this.fields = { ...PGN_130918_SeatalkRouteInformationMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130918_SeatalkRouteInformationMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130918_SeatalkRouteInformationMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('seatalkRouteInformation')!
@@ -26902,8 +26902,8 @@ export class PGN_130944_AirmarPost extends PGN implements PGN_130944_AirmarPostI
     this.fields = { ...PGN_130944_AirmarPostMatchFields, ...fields }
   }
 
-  isMatch() {
-    return isMatch(this, PGN_130944_AirmarPostMatchFields)
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130944_AirmarPostMatchFields)
   }
   getDefinition(): Definition {
     return getPGNWithId('airmarPost')!

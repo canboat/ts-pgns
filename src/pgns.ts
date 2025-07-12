@@ -6359,7 +6359,7 @@ pgnIdToCreator['seatalk1PilotMode'] = (fields:any, dst:number) => new PGN_126720
  *
  * Match: Manufacturer Code == Fusion Electronics<br>
  * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == Media Control<br>
+ * Match: Proprietary ID == Media Command<br>
  *
  * @category PGN_126720_FusionMediaControl
  */
@@ -6374,8 +6374,7 @@ export interface PGN_126720_FusionMediaControlFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
-  proprietaryId: N2K_Number | string
-  unknown?: N2K_Number
+  proprietaryId: enums.FusionMessageId | number
   sourceId?: N2K_Number
   command?: enums.FusionCommand | number
 }
@@ -6396,7 +6395,7 @@ export const PGN_126720_FusionMediaControlDefaults = {
 export const PGN_126720_FusionMediaControlMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.Marine,
-  proprietaryId: "Media Control",
+  proprietaryId: enums.FusionMessageId.MediaCommand,
 }
 
 /**
@@ -6404,7 +6403,6 @@ export const PGN_126720_FusionMediaControlMatchFields = {
  */
 export interface PGN_126720_FusionMediaControlCreateArgs {
   reserved?: number
-  unknown?: N2K_Number
   sourceId?: N2K_Number
   command?: enums.FusionCommand | number
 }
@@ -6438,7 +6436,7 @@ pgnIdToCreator['fusionMediaControl'] = (fields:any, dst:number) => new PGN_12672
  *
  * Match: Manufacturer Code == Fusion Electronics<br>
  * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == Sirius Control<br>
+ * Match: Proprietary ID == Send Sirius Command<br>
  *
  * @category PGN_126720_FusionSiriusControl
  */
@@ -6453,10 +6451,10 @@ export interface PGN_126720_FusionSiriusControlFields {
   manufacturerCode: enums.ManufacturerCode | number
   reserved?: number
   industryCode: enums.IndustryCode | number
-  proprietaryId: N2K_Number | string
-  unknown?: N2K_Number
+  proprietaryId: enums.FusionMessageId | number
   sourceId?: N2K_Number
   command?: enums.FusionSiriusCommand | number
+  data?: N2K_Number
 }
 
 /**
@@ -6475,7 +6473,7 @@ export const PGN_126720_FusionSiriusControlDefaults = {
 export const PGN_126720_FusionSiriusControlMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.Marine,
-  proprietaryId: "Sirius Control",
+  proprietaryId: enums.FusionMessageId.SendSiriusCommand,
 }
 
 /**
@@ -6483,9 +6481,9 @@ export const PGN_126720_FusionSiriusControlMatchFields = {
  */
 export interface PGN_126720_FusionSiriusControlCreateArgs {
   reserved?: number
-  unknown?: N2K_Number
   sourceId?: N2K_Number
   command?: enums.FusionSiriusCommand | number
+  data?: N2K_Number
 }
 
 /**
@@ -6533,7 +6531,6 @@ export interface PGN_126720_FusionRequestStatusFields {
   reserved?: number
   industryCode: enums.IndustryCode | number
   proprietaryId: enums.FusionMessageId | number
-  unknown?: N2K_Number
 }
 
 /**
@@ -6560,7 +6557,6 @@ export const PGN_126720_FusionRequestStatusMatchFields = {
  */
 export interface PGN_126720_FusionRequestStatusCreateArgs {
   reserved?: number
-  unknown?: N2K_Number
 }
 
 /**
@@ -6592,7 +6588,7 @@ pgnIdToCreator['fusionRequestStatus'] = (fields:any, dst:number) => new PGN_1267
  *
  * Match: Manufacturer Code == Fusion Electronics<br>
  * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == Source<br>
+ * Match: Proprietary ID == Set Source<br>
  *
  * @category PGN_126720_FusionSetSource
  */
@@ -6608,7 +6604,6 @@ export interface PGN_126720_FusionSetSourceFields {
   reserved?: number
   industryCode: enums.IndustryCode | number
   proprietaryId: enums.FusionMessageId | number
-  unknown?: N2K_Number
   sourceId?: N2K_Number
 }
 
@@ -6628,7 +6623,7 @@ export const PGN_126720_FusionSetSourceDefaults = {
 export const PGN_126720_FusionSetSourceMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.Marine,
-  proprietaryId: enums.FusionMessageId.Source,
+  proprietaryId: enums.FusionMessageId.SetSource,
 }
 
 /**
@@ -6636,7 +6631,6 @@ export const PGN_126720_FusionSetSourceMatchFields = {
  */
 export interface PGN_126720_FusionSetSourceCreateArgs {
   reserved?: number
-  unknown?: N2K_Number
   sourceId?: N2K_Number
 }
 
@@ -6669,7 +6663,7 @@ pgnIdToCreator['fusionSetSource'] = (fields:any, dst:number) => new PGN_126720_F
  *
  * Match: Manufacturer Code == Fusion Electronics<br>
  * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == 23<br>
+ * Match: Proprietary ID == Set Mute<br>
  *
  * @category PGN_126720_FusionSetMute
  */
@@ -6704,7 +6698,7 @@ export const PGN_126720_FusionSetMuteDefaults = {
 export const PGN_126720_FusionSetMuteMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.Marine,
-  proprietaryId: 23,
+  proprietaryId: enums.FusionMessageId.SetMute,
 }
 
 /**
@@ -6760,7 +6754,6 @@ export interface PGN_126720_FusionSetZoneVolumeFields {
   reserved?: number
   industryCode: enums.IndustryCode | number
   proprietaryId: enums.FusionMessageId | number
-  unknown?: N2K_Number
   zone?: N2K_Number
   volume?: N2K_Number
 }
@@ -6789,7 +6782,6 @@ export const PGN_126720_FusionSetZoneVolumeMatchFields = {
  */
 export interface PGN_126720_FusionSetZoneVolumeCreateArgs {
   reserved?: number
-  unknown?: N2K_Number
   zone?: N2K_Number
   volume?: N2K_Number
 }
@@ -6839,7 +6831,6 @@ export interface PGN_126720_FusionSetAllVolumesFields {
   reserved?: number
   industryCode: enums.IndustryCode | number
   proprietaryId: enums.FusionMessageId | number
-  unknown?: N2K_Number
   zone1?: N2K_Number
   zone2?: N2K_Number
   zone3?: N2K_Number
@@ -6870,7 +6861,6 @@ export const PGN_126720_FusionSetAllVolumesMatchFields = {
  */
 export interface PGN_126720_FusionSetAllVolumesCreateArgs {
   reserved?: number
-  unknown?: N2K_Number
   zone1?: N2K_Number
   zone2?: N2K_Number
   zone3?: N2K_Number
@@ -6897,6 +6887,81 @@ export class PGN_126720_FusionSetAllVolumes extends PGN implements PGN_126720_Fu
   }
 }
 pgnIdToCreator['fusionSetAllVolumes'] = (fields:any, dst:number) => new PGN_126720_FusionSetAllVolumes(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Fusion: Set Power 
+ *
+ * Match: Manufacturer Code == Fusion Electronics<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Power<br>
+ *
+ * @category PGN_126720_FusionSetPower
+ */
+export interface PGN_126720_FusionSetPowerInterface extends PGNInterface {
+  fields: PGN_126720_FusionSetPowerFields
+}
+
+/**
+ * @category PGN_126720_FusionSetPower
+ */
+export interface PGN_126720_FusionSetPowerFields {
+  manufacturerCode: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode: enums.IndustryCode | number
+  proprietaryId: enums.FusionMessageId | number
+  power?: enums.FusionPowerState | number
+}
+
+/**
+ * @category PGN_126720_FusionSetPower
+ */
+export const PGN_126720_FusionSetPowerDefaults = {
+  pgn: 126720,
+  dst: 255,
+  prio: 3,
+  fields: []
+}
+
+/**
+ * @category PGN_126720_FusionSetPower
+ */
+export const PGN_126720_FusionSetPowerMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.Marine,
+  proprietaryId: enums.FusionMessageId.Power,
+}
+
+/**
+ * @category PGN_126720_FusionSetPower
+ */
+export interface PGN_126720_FusionSetPowerCreateArgs {
+  reserved?: number
+  power?: enums.FusionPowerState | number
+}
+
+/**
+ * @category PGN_126720_FusionSetPower
+ */
+export class PGN_126720_FusionSetPower extends PGN implements PGN_126720_FusionSetPowerInterface {
+  fields: PGN_126720_FusionSetPowerFields
+
+  constructor(fields: PGN_126720_FusionSetPowerCreateArgs, dst: number = 255) {
+    super(PGN_126720_FusionSetPowerDefaults)
+    this.dst = dst
+    this.fields = { ...PGN_126720_FusionSetPowerMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_FusionSetPowerMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSetPower')!
+  }
+}
+pgnIdToCreator['fusionSetPower'] = (fields:any, dst:number) => new PGN_126720_FusionSetPower(fields, dst)
 
 
 /**

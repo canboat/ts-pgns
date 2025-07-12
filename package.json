@@ -1,6 +1,6 @@
 {
   "name": "@canboat/ts-pgns",
-  "version": "1.9.2",
+  "version": "1.9.3",
   "description": "TypeScript Canboat PGN Definitions",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

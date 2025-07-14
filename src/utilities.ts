@@ -275,9 +275,29 @@ export const getEnumerationValue = (
   const theenum = getEnumeration(enumName)
   if (theenum !== undefined) {
     let theVal = value
+    if (enumName === 'INDUSTRY_CODE' && value === 'Marine') {
+       theVal = 'Marine Industry'
+     }
     const ev = theenum.EnumValues.find((v) => v.Name === theVal)
     if (ev !== undefined) {
       return ev.Value
+    }
+  }
+}
+
+/**
+ * @category PGN Definition Access
+ */
+export const getEnumerationName = (
+  enumName: string,
+  value: number
+): string | undefined => {
+  const theenum = getEnumeration(enumName)
+  if (theenum !== undefined) {
+    let theVal = value
+    const ev = theenum.EnumValues.find((v) => v.Value === theVal)
+    if (ev !== undefined) {
+      return ev.Name
     }
   }
 }
@@ -292,8 +312,108 @@ export const getBitEnumerations = (): BitEnumeration[] => {
 /**
  * @category PGN Definition Access
  */
+export const getBitEnumeration = (enumName: string): BitEnumeration | undefined => {
+  return getBitEnumerations().find((e) => e.Name === enumName)
+}
+
+/**
+ * @category PGN Definition Access
+ */
+export const getBitEnumerationValue = (
+  enumName: string,
+  value: string
+): number | undefined => {
+  const theenum = getBitEnumeration(enumName)
+  if (theenum !== undefined) {
+    const theVal = value
+    const ev = theenum.EnumBitValues.find((v) => v.Name === theVal)
+    if (ev !== undefined) {
+      return ev.Bit
+    }
+  }
+}
+
+/**
+ * @category PGN Definition Access
+ */
+export const getBitEnumerationName = (
+  enumName: string,
+  value: number
+): string | undefined => {
+  const theenum = getBitEnumeration(enumName)
+  if (theenum !== undefined) {
+    let theVal = value
+    const ev = theenum.EnumBitValues.find((v) => v.Bit === theVal)
+    if (ev !== undefined) {
+      return ev.Name
+    }
+  }
+}
+
+
+/**
+ * @category PGN Definition Access
+ */
 export const getFieldTypeEnumerations = (): FieldTypeEnumeration[] => {
   return canboat.LookupFieldTypeEnumerations
+}
+
+/**
+ * @category PGN Definition Access
+ */
+export const getFieldTypeEnumeration = (enumName: string): FieldTypeEnumeration | undefined => {
+  return getFieldTypeEnumerations().find((e) => e.Name === enumName)
+}
+
+/**
+ * @category PGN Definition Access
+ */
+export const getFieldTypeEnumerationValue = (
+  enumName: string,
+  value: string
+): number | undefined => {
+  const theenum = getFieldTypeEnumeration(enumName)
+  if (theenum !== undefined) {
+    const theVal = value
+    const ev = theenum.EnumFieldTypeValues.find((v) => v.name === theVal)
+    if (ev !== undefined) {
+      return ev.value
+    }
+  }
+}
+
+/**
+ * @category PGN Definition Access
+ */
+export const getFieldTypeEnumerationName = (
+  enumName: string,
+  value: number
+): string | undefined => {
+  const theenum = getFieldTypeEnumeration(enumName)
+  if (theenum !== undefined) {
+    let theVal = value
+    const ev = theenum.EnumFieldTypeValues.find((v) => v.value === theVal)
+    if (ev !== undefined) {
+      return ev.name
+    }
+  }
+}
+
+/**
+ * @category PGN Definition Access
+ */
+export const getFieldTypeEnumerationBits = (
+  enumName: string,
+  value: number
+): number | undefined => {
+  const theenum = getFieldTypeEnumeration(enumName)
+  if (theenum !== undefined) {
+    let theVal = value
+    const ev = theenum.EnumFieldTypeValues.find((v) => v.value === theVal)
+    if (ev !== undefined) {
+      return Number(ev.Bits)
+    }
+  }
 }
 
 /**

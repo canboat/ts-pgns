@@ -60,7 +60,7 @@ if (argv.enums) {
     category()
     console.log(`export enum ${enumName(en.Name)} {`)
     en.EnumValues.forEach((v: any) => {
-      let vName = v.Name
+      const vName = v.Name
       const name = enumName(v.Name)
       const found = done[name]
       if (!found) {
@@ -68,6 +68,10 @@ if (argv.enums) {
         console.log(`  ${name} = '${vName}',`)
       }
     })
+    if (en.Name === 'INDUSTRY_CODE') {
+      console.log('  // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values')
+      console.log(`  Marine = 'Marine Industry',`)
+    }
     console.log('}\n')
 
     done = {}
@@ -76,8 +80,6 @@ if (argv.enums) {
       `export const ${enumName(en.Name)}Values : {[key: string]: number} = {`
     )
     en.EnumValues.forEach((v: any) => {
-      let vName = v.Name
-
       const name = enumName(v.Name)
       const found = done[name]
       if (found) {
@@ -91,6 +93,9 @@ if (argv.enums) {
         )
       }
     })
+    if (en.Name === 'INDUSTRY_CODE') {
+      console.log(`  Marine: 0x4,`)
+    }
     console.log('}\n')
   })
 

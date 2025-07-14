@@ -30,6 +30,8 @@ export enum IndustryCode {
   Construction = 'Construction',
   MarineIndustry = 'Marine Industry',
   Industrial = 'Industrial',
+  // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
+  Marine = 'Marine Industry',
 }
 
 /**
@@ -42,6 +44,7 @@ export const IndustryCodeValues : {[key: string]: number} = {
   [IndustryCode.Construction]: 0x3,
   [IndustryCode.MarineIndustry]: 0x4,
   [IndustryCode.Industrial]: 0x5,
+  Marine: 0x4,
 }
 
 /**

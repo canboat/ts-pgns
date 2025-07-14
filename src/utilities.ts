@@ -275,9 +275,6 @@ export const getEnumerationValue = (
   const theenum = getEnumeration(enumName)
   if (theenum !== undefined) {
     let theVal = value
-    if (enumName === 'INDUSTRY_CODE' && value === 'Marine Industry') {
-      theVal = 'Marine'
-    }
     const ev = theenum.EnumValues.find((v) => v.Name === theVal)
     if (ev !== undefined) {
       return ev.Value

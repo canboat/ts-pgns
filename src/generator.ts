@@ -61,11 +61,6 @@ if (argv.enums) {
     console.log(`export enum ${enumName(en.Name)} {`)
     en.EnumValues.forEach((v: any) => {
       let vName = v.Name
-
-      if (en.Name === 'INDUSTRY_CODE' && vName === 'Marine') {
-        vName = 'Marine Industry'
-      }
-
       const name = enumName(v.Name)
       const found = done[name]
       if (!found) {
@@ -82,10 +77,6 @@ if (argv.enums) {
     )
     en.EnumValues.forEach((v: any) => {
       let vName = v.Name
-
-      if (en.Name === 'INDUSTRY_CODE' && vName === 'Marine') {
-        vName = 'Marine Industry'
-      }
 
       const name = enumName(v.Name)
       const found = done[name]
@@ -384,12 +375,7 @@ export abstract class PGN implements PGNInterface {
         if (field.Match !== undefined) {
           let value: any
           if (field.FieldType === FieldType.Lookup && field.Description) {
-            const ename =
-              field.LookupEnumeration === 'INDUSTRY_CODE' &&
-              field.Description === 'Marine Industry'
-                ? 'Marine'
-                : enumName(field.Description)
-
+            const ename = enumName(field.Description)
             enumName(field.Description)
             value = `enums.${enumName(field.LookupEnumeration!)}.${ename}`
           } else {

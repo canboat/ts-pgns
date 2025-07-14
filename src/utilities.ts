@@ -276,8 +276,8 @@ export const getEnumerationValue = (
   if (theenum !== undefined) {
     let theVal = value
     if (enumName === 'INDUSTRY_CODE' && value === 'Marine') {
-       theVal = 'Marine Industry'
-     }
+      theVal = 'Marine Industry'
+    }
     const ev = theenum.EnumValues.find((v) => v.Name === theVal)
     if (ev !== undefined) {
       return ev.Value
@@ -294,7 +294,7 @@ export const getEnumerationName = (
 ): string | undefined => {
   const theenum = getEnumeration(enumName)
   if (theenum !== undefined) {
-    let theVal = value
+    const theVal = value
     const ev = theenum.EnumValues.find((v) => v.Value === theVal)
     if (ev !== undefined) {
       return ev.Name
@@ -312,7 +312,9 @@ export const getBitEnumerations = (): BitEnumeration[] => {
 /**
  * @category PGN Definition Access
  */
-export const getBitEnumeration = (enumName: string): BitEnumeration | undefined => {
+export const getBitEnumeration = (
+  enumName: string
+): BitEnumeration | undefined => {
   return getBitEnumerations().find((e) => e.Name === enumName)
 }
 
@@ -342,14 +344,13 @@ export const getBitEnumerationName = (
 ): string | undefined => {
   const theenum = getBitEnumeration(enumName)
   if (theenum !== undefined) {
-    let theVal = value
+    const theVal = value
     const ev = theenum.EnumBitValues.find((v) => v.Bit === theVal)
     if (ev !== undefined) {
       return ev.Name
     }
   }
 }
-
 
 /**
  * @category PGN Definition Access
@@ -361,7 +362,9 @@ export const getFieldTypeEnumerations = (): FieldTypeEnumeration[] => {
 /**
  * @category PGN Definition Access
  */
-export const getFieldTypeEnumeration = (enumName: string): FieldTypeEnumeration | undefined => {
+export const getFieldTypeEnumeration = (
+  enumName: string
+): FieldTypeEnumeration | undefined => {
   return getFieldTypeEnumerations().find((e) => e.Name === enumName)
 }
 
@@ -391,7 +394,7 @@ export const getFieldTypeEnumerationName = (
 ): string | undefined => {
   const theenum = getFieldTypeEnumeration(enumName)
   if (theenum !== undefined) {
-    let theVal = value
+    const theVal = value
     const ev = theenum.EnumFieldTypeValues.find((v) => v.value === theVal)
     if (ev !== undefined) {
       return ev.name
@@ -408,7 +411,7 @@ export const getFieldTypeEnumerationBits = (
 ): number | undefined => {
   const theenum = getFieldTypeEnumeration(enumName)
   if (theenum !== undefined) {
-    let theVal = value
+    const theVal = value
     const ev = theenum.EnumFieldTypeValues.find((v) => v.value === theVal)
     if (ev !== undefined) {
       return Number(ev.Bits)

@@ -69,7 +69,9 @@ if (argv.enums) {
       }
     })
     if (en.Name === 'INDUSTRY_CODE') {
-      console.log('  // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values')
+      console.log(
+        '  // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values'
+      )
       console.log(`  Marine = 'Marine Industry',`)
     }
     console.log('}\n')

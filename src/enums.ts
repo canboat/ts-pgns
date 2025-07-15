@@ -12,12 +12,12 @@ export enum LightingCommand {
 /**
  * @category Enumerations
  */
-export enum LightingCommandValues {
-  Idle = 0x0,
-  DetectDevices = 0x1,
-  Reboot = 0x2,
-  FactoryReset = 0x3,
-  PoweringUp = 0x4,
+export const LightingCommandValues: {[key: string]: number} = {
+  [LightingCommand.Idle]: 0x0,
+  [LightingCommand.DetectDevices]: 0x1,
+  [LightingCommand.Reboot]: 0x2,
+  [LightingCommand.FactoryReset]: 0x3,
+  [LightingCommand.PoweringUp]: 0x4,
 }
 
 /**
@@ -37,15 +37,14 @@ export enum IndustryCode {
 /**
  * @category Enumerations
  */
-export enum IndustryCodeValues {
-  Global = 0x0,
-  Highway = 0x1,
-  Agriculture = 0x2,
-  Construction = 0x3,
-  MarineIndustry = 0x4,
-  Industrial = 0x5,
-  // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
-  Marine = 0x4,
+export const IndustryCodeValues: {[key: string]: number} = {
+  [IndustryCode.Global]: 0x0,
+  [IndustryCode.Highway]: 0x1,
+  [IndustryCode.Agriculture]: 0x2,
+  [IndustryCode.Construction]: 0x3,
+  [IndustryCode.MarineIndustry]: 0x4,
+  [IndustryCode.Industrial]: 0x5,
+  Marine: 0x4,
 }
 
 /**
@@ -340,296 +339,296 @@ export enum ManufacturerCode {
 /**
  * @category Enumerations
  */
-export enum ManufacturerCodeValues {
-  ArksEnterprisesInc = 0x45,
-  FwMurphyenovationControls = 0x4e,
-  TwinDisc = 0x50,
-  KohlerPowerSystems = 0x55,
-  HemisphereGpsInc = 0x58,
-  BepMarine = 0x74,
-  Airmar = 0x87,
-  Maretron = 0x89,
-  Lowrance = 0x8c,
-  MercuryMarine = 0x90,
-  NautibusElectronicGmbH = 0x93,
-  BlueWaterData = 0x94,
-  Westerbeke = 0x9a,
-  IssproInc = 0x9d,
-  OffshoreSystemsukLtd = 0xa1,
-  Evinrudebrp = 0xa3,
-  CpacSystemsAb = 0xa5,
-  XantrexTechnologyInc = 0xa8,
-  MarlinTechnologiesInc = 0xa9,
-  YanmarMarine = 0xac,
-  VolvoPenta = 0xae,
-  HondaMarine = 0xaf,
-  CarlingTechnologiesIncmoritzAerospace = 0xb0,
-  BeedeInstruments = 0xb9,
-  FloscanInstrumentCoInc = 0xc0,
-  Nobletec = 0xc1,
-  MysticValleyCommunications = 0xc6,
-  Actia = 0xc7,
-  HondaMarine2 = 0xc8,
-  DisenosYTechnologia = 0xc9,
-  DigitalSwitchingSystems = 0xd3,
-  Xintexatena = 0xd7,
-  EmmiNetworkSL = 0xe0,
-  HondaMarine3 = 0xe1,
-  Zf = 0xe4,
-  Garmin = 0xe5,
-  YachtMonitoringSolutions = 0xe9,
-  SailormadeMarineTelemetrytetraTechnologyLtd = 0xeb,
-  Eride = 0xf3,
-  HondaMarine4 = 0xfa,
-  HondaMotorCompanyLtd = 0x101,
-  Groco = 0x110,
-  Actisense = 0x111,
-  AmphenolLtwTechnology = 0x112,
-  Navico = 0x113,
-  HamiltonJet = 0x11b,
-  SeaRecovery = 0x11d,
-  CoelmoSrlItaly = 0x11e,
-  BepMarine2 = 0x127,
-  EmpirBus = 0x130,
-  NovAtel = 0x131,
-  SleipnerMotorAs = 0x132,
-  MbwTechnologies = 0x133,
-  FischerPanda = 0x137,
-  Icom = 0x13b,
-  Qwerty = 0x148,
-  Dief = 0x149,
-  BoeningAutomationstechnologieGmbHCoKg = 0x155,
-  KoreanMaritimeUniversity = 0x159,
-  ThraneAndThrane = 0x15f,
-  Mastervolt = 0x163,
-  FischerPandaGenerators = 0x164,
-  VictronEnergy = 0x166,
-  RollsRoyceMarine = 0x172,
-  ElectronicDesign = 0x175,
-  NorthernLights = 0x176,
-  Glendinning = 0x17a,
-  BG = 0x17d,
-  RosePointNavigationSystems = 0x180,
-  JohnsonOutdoorsMarineElectronicsIncGeonav = 0x181,
-  Capi2 = 0x18a,
-  BeyondMeasure = 0x18c,
-  LivorsiMarine = 0x190,
-  ComNav = 0x194,
-  Chetco = 0x199,
-  FusionElectronics = 0x1a3,
-  StandardHorizon = 0x1a5,
-  TrueHeadingAb = 0x1a6,
-  EgersundMarineElectronicsAs = 0x1aa,
-  EmTrakMarineElectronics = 0x1ab,
-  TohatsuCoJp = 0x1af,
-  DigitalYacht = 0x1b5,
-  ComarSystemsLimited = 0x1b6,
-  Cummins = 0x1b8,
-  VdoakaContinentalCorporation = 0x1bb,
-  ParkerHannifinAkaVillageMarineTech = 0x1c3,
-  AlltekMarineElectronicsCorp = 0x1cb,
-  SanGiorgioSEIN = 0x1cc,
-  VeethreeElectronicsMarine = 0x1d2,
-  HumminbirdMarineElectronics = 0x1d3,
-  SiTexMarineElectronics = 0x1d6,
-  SeaCrossMarineAb = 0x1d7,
-  GmeAkaStandardCommunicationsPtyLtd = 0x1db,
-  HumminbirdMarineElectronics2 = 0x1dc,
-  OceanSatBv = 0x1de,
-  ChetcoDigitialInstruments = 0x1e1,
-  Watcheye = 0x1ed,
-  LcjCapteurs = 0x1f3,
-  AttwoodMarine = 0x1f6,
-  NaviopSRL = 0x1f7,
-  VesperMarineLtd = 0x1f8,
-  MarinesoftCoLtd = 0x1fe,
-  NoLandEngineering = 0x205,
-  TransasUsa = 0x206,
-  NationalInstrumentsKorea = 0x211,
-  NationalMarineElectronicsAssociation = 0x212,
-  OnwaMarine = 0x214,
-  Webasto = 0x21c,
-  MarinecraftsouthKorea = 0x23b,
-  McMurdoGroupAkaOroliaLtd = 0x23d,
-  Advansea = 0x242,
-  Kvh = 0x243,
-  SanJoseTechnology = 0x244,
-  YachtControl = 0x247,
-  SuzukiMotorCorporation = 0x24a,
-  UsCoastGuard = 0x24f,
-  ShipModuleAkaCustomware = 0x253,
-  AquaticAv = 0x258,
-  AventicsGmbH = 0x25d,
-  Intellian = 0x25e,
-  SamwonIt = 0x264,
-  ArltTecnologies = 0x266,
-  BavariaYacts = 0x27d,
-  DiverseYachtServices = 0x281,
-  WemaUSADbaKus = 0x284,
-  Garmin2 = 0x285,
-  ShenzhenJiuzhouHimunication = 0x292,
-  RockfordCorp = 0x2b0,
-  HarmanInternational = 0x2bb,
-  JlAudio = 0x2c0,
-  LarsThrane = 0x2c4,
-  Autonnic = 0x2cb,
-  YachtDevices = 0x2cd,
-  ReapSystems = 0x2de,
-  AuElectronicsGroup = 0x2df,
-  LxNav = 0x2e3,
-  LittelfuseIncformerlyCarlingTechnologies = 0x2e5,
-  DaeMyung = 0x2e7,
-  Woosung = 0x2e8,
-  IsottaIfraSrl = 0x2ec,
-  ClarionUs = 0x305,
-  HmiSystems = 0x308,
-  OceanSignal = 0x309,
-  Seekeeper = 0x30a,
-  PolyPlanar = 0x30d,
-  FischerPandaDe = 0x311,
-  BroydaIndustries = 0x31b,
-  CanadianAutomotive = 0x31c,
-  TidesMarine = 0x31d,
-  Lumishore = 0x31e,
-  StillWaterDesignsAndAudio = 0x31f,
-  BjTechnologiesbeneteau = 0x322,
-  GillSensors = 0x323,
-  BlueWaterDesalination = 0x32b,
-  Flir = 0x32f,
-  UndheimSystems = 0x338,
-  LewmarInc = 0x33a,
-  TeamSurv = 0x346,
-  FellMarine = 0x34c,
-  Oceanvolt = 0x34f,
-  Prospec = 0x35e,
-  DataPanelCorp = 0x364,
-  L3Technologies = 0x37a,
-  RhodanMarineSystems = 0x37e,
-  NexfourSolutions = 0x380,
-  AsaElectronics = 0x389,
-  MarinesCosouthKorea = 0x38d,
-  NauticOn = 0x38f,
-  Sentinel = 0x395,
-  JlMarineYstems = 0x3a1,
-  Ecotronix = 0x3a2,
-  ZontisaMarine = 0x3b0,
-  ExorInternational = 0x3b7,
-  TimbolierIndustries = 0x3c2,
-  TjcMicro = 0x3c3,
-  CoxPowertrain = 0x3c8,
-  BlueSeas = 0x3c9,
-  KobeltManufacturingCoLtd = 0x3d5,
-  BlueOceanIot = 0x3e0,
-  XentaSystems = 0x3e5,
-  UltraflexSpA = 0x3ec,
-  LintestSmartBoat = 0x3f0,
-  Soundmax = 0x3f3,
-  TeamItaliaMarineonyxMarineAutomationSRL = 0x3fc,
-  Entratech = 0x3fd,
-  ItcInc = 0x3fe,
-  TheMarineGuardianLlc = 0x405,
-  SonicCorporation = 0x417,
-  ProNav = 0x41b,
-  VetusMaxwellInc = 0x41d,
-  LithiumPros = 0x420,
-  Boatrax = 0x423,
-  MarolCoLtd = 0x426,
-  CalypsoInstruments = 0x429,
-  SpotZeroWater = 0x42a,
-  LithionicsBatteryLlc = 0x42d,
-  QuickTeckElectronicsLtd = 0x42e,
-  UnidenAmerica = 0x433,
-  Nauticoncept = 0x43b,
-  ShadowCasterLedLightingLlc = 0x43c,
-  WetSoundsLlc = 0x43d,
-  ETACircuitBreakers = 0x440,
-  Scheiber = 0x444,
-  SmartYachtsInternationalLimited = 0x44c,
-  Dockmate = 0x455,
-  BobsMachine = 0x45a,
-  L3HarrisAsv = 0x45e,
-  BalmarLlc = 0x45f,
-  ElettromediaSpa = 0x460,
-  Electromaax = 0x467,
-  AcrossOceansSystemsLtd = 0x474,
-  KiwiYachting = 0x479,
-  BsbArtificialIntelligenceGmbH = 0x47e,
-  OrcaTechnologoesAs = 0x47f,
-  TbsElectronicsBv = 0x482,
-  TechnotonElectroics = 0x486,
-  MgEnergySystemsBV = 0x488,
-  SeaMacineRoboticsInc = 0x491,
-  VistaManufacturing = 0x493,
-  Zipwake = 0x49f,
-  SailmonBv = 0x4a2,
-  AirmoniqProKft = 0x4a8,
-  SierraMarine = 0x4aa,
-  XinuoInformationTechnologyxiamen = 0x4b0,
-  Septentrio = 0x4c2,
-  NkeMarineElecronics = 0x4d1,
-  SuperTrackAps = 0x4d6,
-  HondaElectronicsCoLtd = 0x4d7,
-  RaritanEngineeringCompanyInc = 0x4dd,
-  IntegratedPowerSolutionsAg = 0x4e1,
-  InteractiveTechnologiesInc = 0x4ec,
-  LtgTech = 0x503,
-  EnergySolutionsukLtd = 0x513,
-  WattFuelCellCorp = 0x514,
-  ProMainer = 0x516,
-  DragonflyEnergy = 0x519,
-  KodenElectronicsCoLtd = 0x51a,
-  HumphreeAb = 0x51f,
-  HinkleyYachts = 0x524,
-  GlobalMarineManagementGmbHgmm = 0x525,
-  TriskelMarineLtd = 0x528,
-  WarwickControlTechnologies = 0x532,
-  DolphinCharger = 0x533,
-  BarnacleSystemsInc = 0x539,
-  RadianIoTInc = 0x544,
-  OceanLedMarineLtd = 0x549,
-  BluNav = 0x54f,
-  OvanantongSaiyangElectronicsCoLtd = 0x551,
-  RadPropulsion = 0x558,
-  ElectricYacht = 0x559,
-  ElcoMotorYachts = 0x55c,
-  TecnosealFoundrySRL = 0x568,
-  ProChargingSystemsLlc = 0x569,
-  EvexCoLtd = 0x56d,
-  GobiusSensorTechnologyAb = 0x576,
-  ArcoMarine = 0x57b,
-  LencoMarineInc = 0x580,
-  NaocontrolSL = 0x585,
-  Revatek = 0x589,
-  Aeolionics = 0x59e,
-  PredictWindLtd = 0x59f,
-  EgisMobileElectric = 0x5a0,
-  StarboardYachtGroup = 0x5a5,
-  RoswellMarine = 0x5a6,
-  EPropulsionguangdongEPropulsionTechnologyLtd = 0x5ab,
-  MicroAirLlc = 0x5ac,
-  VitalBattery = 0x5ad,
-  RideControllerLlc = 0x5b2,
-  TocaroBlue = 0x5b4,
-  VanquishYachts = 0x5b5,
-  FtTechnologies = 0x5bf,
-  AlpsAlpineCoLtd = 0x5c6,
-  EForceMarine = 0x5c9,
-  CmcMarine = 0x5ca,
-  NanjingSandemarineInformationTechnologyCoLtd = 0x5cb,
-  TeleflexMarineseaStarSolutions = 0x73a,
-  Raymarine = 0x73b,
-  Navionics = 0x73c,
-  JapanRadioCo = 0x73d,
-  NorthstarTechnologies = 0x73e,
-  Furuno = 0x73f,
-  Trimble = 0x740,
-  Simrad = 0x741,
-  Litton = 0x742,
-  KvasarAb = 0x743,
-  Mmp = 0x744,
-  VectorCantech = 0x745,
-  YamahaMarine = 0x746,
-  FariaInstruments = 0x747,
+export const ManufacturerCodeValues: {[key: string]: number} = {
+  [ManufacturerCode.ArksEnterprisesInc]: 0x45,
+  [ManufacturerCode.FwMurphyenovationControls]: 0x4e,
+  [ManufacturerCode.TwinDisc]: 0x50,
+  [ManufacturerCode.KohlerPowerSystems]: 0x55,
+  [ManufacturerCode.HemisphereGpsInc]: 0x58,
+  [ManufacturerCode.BepMarine]: 0x74,
+  [ManufacturerCode.Airmar]: 0x87,
+  [ManufacturerCode.Maretron]: 0x89,
+  [ManufacturerCode.Lowrance]: 0x8c,
+  [ManufacturerCode.MercuryMarine]: 0x90,
+  [ManufacturerCode.NautibusElectronicGmbH]: 0x93,
+  [ManufacturerCode.BlueWaterData]: 0x94,
+  [ManufacturerCode.Westerbeke]: 0x9a,
+  [ManufacturerCode.IssproInc]: 0x9d,
+  [ManufacturerCode.OffshoreSystemsukLtd]: 0xa1,
+  [ManufacturerCode.Evinrudebrp]: 0xa3,
+  [ManufacturerCode.CpacSystemsAb]: 0xa5,
+  [ManufacturerCode.XantrexTechnologyInc]: 0xa8,
+  [ManufacturerCode.MarlinTechnologiesInc]: 0xa9,
+  [ManufacturerCode.YanmarMarine]: 0xac,
+  [ManufacturerCode.VolvoPenta]: 0xae,
+  [ManufacturerCode.HondaMarine]: 0xaf,
+  [ManufacturerCode.CarlingTechnologiesIncmoritzAerospace]: 0xb0,
+  [ManufacturerCode.BeedeInstruments]: 0xb9,
+  [ManufacturerCode.FloscanInstrumentCoInc]: 0xc0,
+  [ManufacturerCode.Nobletec]: 0xc1,
+  [ManufacturerCode.MysticValleyCommunications]: 0xc6,
+  [ManufacturerCode.Actia]: 0xc7,
+  HondaMarine2: 0xc8,
+  [ManufacturerCode.DisenosYTechnologia]: 0xc9,
+  [ManufacturerCode.DigitalSwitchingSystems]: 0xd3,
+  [ManufacturerCode.Xintexatena]: 0xd7,
+  [ManufacturerCode.EmmiNetworkSL]: 0xe0,
+  HondaMarine3: 0xe1,
+  [ManufacturerCode.Zf]: 0xe4,
+  [ManufacturerCode.Garmin]: 0xe5,
+  [ManufacturerCode.YachtMonitoringSolutions]: 0xe9,
+  [ManufacturerCode.SailormadeMarineTelemetrytetraTechnologyLtd]: 0xeb,
+  [ManufacturerCode.Eride]: 0xf3,
+  HondaMarine4: 0xfa,
+  [ManufacturerCode.HondaMotorCompanyLtd]: 0x101,
+  [ManufacturerCode.Groco]: 0x110,
+  [ManufacturerCode.Actisense]: 0x111,
+  [ManufacturerCode.AmphenolLtwTechnology]: 0x112,
+  [ManufacturerCode.Navico]: 0x113,
+  [ManufacturerCode.HamiltonJet]: 0x11b,
+  [ManufacturerCode.SeaRecovery]: 0x11d,
+  [ManufacturerCode.CoelmoSrlItaly]: 0x11e,
+  BepMarine2: 0x127,
+  [ManufacturerCode.EmpirBus]: 0x130,
+  [ManufacturerCode.NovAtel]: 0x131,
+  [ManufacturerCode.SleipnerMotorAs]: 0x132,
+  [ManufacturerCode.MbwTechnologies]: 0x133,
+  [ManufacturerCode.FischerPanda]: 0x137,
+  [ManufacturerCode.Icom]: 0x13b,
+  [ManufacturerCode.Qwerty]: 0x148,
+  [ManufacturerCode.Dief]: 0x149,
+  [ManufacturerCode.BoeningAutomationstechnologieGmbHCoKg]: 0x155,
+  [ManufacturerCode.KoreanMaritimeUniversity]: 0x159,
+  [ManufacturerCode.ThraneAndThrane]: 0x15f,
+  [ManufacturerCode.Mastervolt]: 0x163,
+  [ManufacturerCode.FischerPandaGenerators]: 0x164,
+  [ManufacturerCode.VictronEnergy]: 0x166,
+  [ManufacturerCode.RollsRoyceMarine]: 0x172,
+  [ManufacturerCode.ElectronicDesign]: 0x175,
+  [ManufacturerCode.NorthernLights]: 0x176,
+  [ManufacturerCode.Glendinning]: 0x17a,
+  [ManufacturerCode.BG]: 0x17d,
+  [ManufacturerCode.RosePointNavigationSystems]: 0x180,
+  [ManufacturerCode.JohnsonOutdoorsMarineElectronicsIncGeonav]: 0x181,
+  [ManufacturerCode.Capi2]: 0x18a,
+  [ManufacturerCode.BeyondMeasure]: 0x18c,
+  [ManufacturerCode.LivorsiMarine]: 0x190,
+  [ManufacturerCode.ComNav]: 0x194,
+  [ManufacturerCode.Chetco]: 0x199,
+  [ManufacturerCode.FusionElectronics]: 0x1a3,
+  [ManufacturerCode.StandardHorizon]: 0x1a5,
+  [ManufacturerCode.TrueHeadingAb]: 0x1a6,
+  [ManufacturerCode.EgersundMarineElectronicsAs]: 0x1aa,
+  [ManufacturerCode.EmTrakMarineElectronics]: 0x1ab,
+  [ManufacturerCode.TohatsuCoJp]: 0x1af,
+  [ManufacturerCode.DigitalYacht]: 0x1b5,
+  [ManufacturerCode.ComarSystemsLimited]: 0x1b6,
+  [ManufacturerCode.Cummins]: 0x1b8,
+  [ManufacturerCode.VdoakaContinentalCorporation]: 0x1bb,
+  [ManufacturerCode.ParkerHannifinAkaVillageMarineTech]: 0x1c3,
+  [ManufacturerCode.AlltekMarineElectronicsCorp]: 0x1cb,
+  [ManufacturerCode.SanGiorgioSEIN]: 0x1cc,
+  [ManufacturerCode.VeethreeElectronicsMarine]: 0x1d2,
+  [ManufacturerCode.HumminbirdMarineElectronics]: 0x1d3,
+  [ManufacturerCode.SiTexMarineElectronics]: 0x1d6,
+  [ManufacturerCode.SeaCrossMarineAb]: 0x1d7,
+  [ManufacturerCode.GmeAkaStandardCommunicationsPtyLtd]: 0x1db,
+  HumminbirdMarineElectronics2: 0x1dc,
+  [ManufacturerCode.OceanSatBv]: 0x1de,
+  [ManufacturerCode.ChetcoDigitialInstruments]: 0x1e1,
+  [ManufacturerCode.Watcheye]: 0x1ed,
+  [ManufacturerCode.LcjCapteurs]: 0x1f3,
+  [ManufacturerCode.AttwoodMarine]: 0x1f6,
+  [ManufacturerCode.NaviopSRL]: 0x1f7,
+  [ManufacturerCode.VesperMarineLtd]: 0x1f8,
+  [ManufacturerCode.MarinesoftCoLtd]: 0x1fe,
+  [ManufacturerCode.NoLandEngineering]: 0x205,
+  [ManufacturerCode.TransasUsa]: 0x206,
+  [ManufacturerCode.NationalInstrumentsKorea]: 0x211,
+  [ManufacturerCode.NationalMarineElectronicsAssociation]: 0x212,
+  [ManufacturerCode.OnwaMarine]: 0x214,
+  [ManufacturerCode.Webasto]: 0x21c,
+  [ManufacturerCode.MarinecraftsouthKorea]: 0x23b,
+  [ManufacturerCode.McMurdoGroupAkaOroliaLtd]: 0x23d,
+  [ManufacturerCode.Advansea]: 0x242,
+  [ManufacturerCode.Kvh]: 0x243,
+  [ManufacturerCode.SanJoseTechnology]: 0x244,
+  [ManufacturerCode.YachtControl]: 0x247,
+  [ManufacturerCode.SuzukiMotorCorporation]: 0x24a,
+  [ManufacturerCode.UsCoastGuard]: 0x24f,
+  [ManufacturerCode.ShipModuleAkaCustomware]: 0x253,
+  [ManufacturerCode.AquaticAv]: 0x258,
+  [ManufacturerCode.AventicsGmbH]: 0x25d,
+  [ManufacturerCode.Intellian]: 0x25e,
+  [ManufacturerCode.SamwonIt]: 0x264,
+  [ManufacturerCode.ArltTecnologies]: 0x266,
+  [ManufacturerCode.BavariaYacts]: 0x27d,
+  [ManufacturerCode.DiverseYachtServices]: 0x281,
+  [ManufacturerCode.WemaUSADbaKus]: 0x284,
+  Garmin2: 0x285,
+  [ManufacturerCode.ShenzhenJiuzhouHimunication]: 0x292,
+  [ManufacturerCode.RockfordCorp]: 0x2b0,
+  [ManufacturerCode.HarmanInternational]: 0x2bb,
+  [ManufacturerCode.JlAudio]: 0x2c0,
+  [ManufacturerCode.LarsThrane]: 0x2c4,
+  [ManufacturerCode.Autonnic]: 0x2cb,
+  [ManufacturerCode.YachtDevices]: 0x2cd,
+  [ManufacturerCode.ReapSystems]: 0x2de,
+  [ManufacturerCode.AuElectronicsGroup]: 0x2df,
+  [ManufacturerCode.LxNav]: 0x2e3,
+  [ManufacturerCode.LittelfuseIncformerlyCarlingTechnologies]: 0x2e5,
+  [ManufacturerCode.DaeMyung]: 0x2e7,
+  [ManufacturerCode.Woosung]: 0x2e8,
+  [ManufacturerCode.IsottaIfraSrl]: 0x2ec,
+  [ManufacturerCode.ClarionUs]: 0x305,
+  [ManufacturerCode.HmiSystems]: 0x308,
+  [ManufacturerCode.OceanSignal]: 0x309,
+  [ManufacturerCode.Seekeeper]: 0x30a,
+  [ManufacturerCode.PolyPlanar]: 0x30d,
+  [ManufacturerCode.FischerPandaDe]: 0x311,
+  [ManufacturerCode.BroydaIndustries]: 0x31b,
+  [ManufacturerCode.CanadianAutomotive]: 0x31c,
+  [ManufacturerCode.TidesMarine]: 0x31d,
+  [ManufacturerCode.Lumishore]: 0x31e,
+  [ManufacturerCode.StillWaterDesignsAndAudio]: 0x31f,
+  [ManufacturerCode.BjTechnologiesbeneteau]: 0x322,
+  [ManufacturerCode.GillSensors]: 0x323,
+  [ManufacturerCode.BlueWaterDesalination]: 0x32b,
+  [ManufacturerCode.Flir]: 0x32f,
+  [ManufacturerCode.UndheimSystems]: 0x338,
+  [ManufacturerCode.LewmarInc]: 0x33a,
+  [ManufacturerCode.TeamSurv]: 0x346,
+  [ManufacturerCode.FellMarine]: 0x34c,
+  [ManufacturerCode.Oceanvolt]: 0x34f,
+  [ManufacturerCode.Prospec]: 0x35e,
+  [ManufacturerCode.DataPanelCorp]: 0x364,
+  [ManufacturerCode.L3Technologies]: 0x37a,
+  [ManufacturerCode.RhodanMarineSystems]: 0x37e,
+  [ManufacturerCode.NexfourSolutions]: 0x380,
+  [ManufacturerCode.AsaElectronics]: 0x389,
+  [ManufacturerCode.MarinesCosouthKorea]: 0x38d,
+  [ManufacturerCode.NauticOn]: 0x38f,
+  [ManufacturerCode.Sentinel]: 0x395,
+  [ManufacturerCode.JlMarineYstems]: 0x3a1,
+  [ManufacturerCode.Ecotronix]: 0x3a2,
+  [ManufacturerCode.ZontisaMarine]: 0x3b0,
+  [ManufacturerCode.ExorInternational]: 0x3b7,
+  [ManufacturerCode.TimbolierIndustries]: 0x3c2,
+  [ManufacturerCode.TjcMicro]: 0x3c3,
+  [ManufacturerCode.CoxPowertrain]: 0x3c8,
+  [ManufacturerCode.BlueSeas]: 0x3c9,
+  [ManufacturerCode.KobeltManufacturingCoLtd]: 0x3d5,
+  [ManufacturerCode.BlueOceanIot]: 0x3e0,
+  [ManufacturerCode.XentaSystems]: 0x3e5,
+  [ManufacturerCode.UltraflexSpA]: 0x3ec,
+  [ManufacturerCode.LintestSmartBoat]: 0x3f0,
+  [ManufacturerCode.Soundmax]: 0x3f3,
+  [ManufacturerCode.TeamItaliaMarineonyxMarineAutomationSRL]: 0x3fc,
+  [ManufacturerCode.Entratech]: 0x3fd,
+  [ManufacturerCode.ItcInc]: 0x3fe,
+  [ManufacturerCode.TheMarineGuardianLlc]: 0x405,
+  [ManufacturerCode.SonicCorporation]: 0x417,
+  [ManufacturerCode.ProNav]: 0x41b,
+  [ManufacturerCode.VetusMaxwellInc]: 0x41d,
+  [ManufacturerCode.LithiumPros]: 0x420,
+  [ManufacturerCode.Boatrax]: 0x423,
+  [ManufacturerCode.MarolCoLtd]: 0x426,
+  [ManufacturerCode.CalypsoInstruments]: 0x429,
+  [ManufacturerCode.SpotZeroWater]: 0x42a,
+  [ManufacturerCode.LithionicsBatteryLlc]: 0x42d,
+  [ManufacturerCode.QuickTeckElectronicsLtd]: 0x42e,
+  [ManufacturerCode.UnidenAmerica]: 0x433,
+  [ManufacturerCode.Nauticoncept]: 0x43b,
+  [ManufacturerCode.ShadowCasterLedLightingLlc]: 0x43c,
+  [ManufacturerCode.WetSoundsLlc]: 0x43d,
+  [ManufacturerCode.ETACircuitBreakers]: 0x440,
+  [ManufacturerCode.Scheiber]: 0x444,
+  [ManufacturerCode.SmartYachtsInternationalLimited]: 0x44c,
+  [ManufacturerCode.Dockmate]: 0x455,
+  [ManufacturerCode.BobsMachine]: 0x45a,
+  [ManufacturerCode.L3HarrisAsv]: 0x45e,
+  [ManufacturerCode.BalmarLlc]: 0x45f,
+  [ManufacturerCode.ElettromediaSpa]: 0x460,
+  [ManufacturerCode.Electromaax]: 0x467,
+  [ManufacturerCode.AcrossOceansSystemsLtd]: 0x474,
+  [ManufacturerCode.KiwiYachting]: 0x479,
+  [ManufacturerCode.BsbArtificialIntelligenceGmbH]: 0x47e,
+  [ManufacturerCode.OrcaTechnologoesAs]: 0x47f,
+  [ManufacturerCode.TbsElectronicsBv]: 0x482,
+  [ManufacturerCode.TechnotonElectroics]: 0x486,
+  [ManufacturerCode.MgEnergySystemsBV]: 0x488,
+  [ManufacturerCode.SeaMacineRoboticsInc]: 0x491,
+  [ManufacturerCode.VistaManufacturing]: 0x493,
+  [ManufacturerCode.Zipwake]: 0x49f,
+  [ManufacturerCode.SailmonBv]: 0x4a2,
+  [ManufacturerCode.AirmoniqProKft]: 0x4a8,
+  [ManufacturerCode.SierraMarine]: 0x4aa,
+  [ManufacturerCode.XinuoInformationTechnologyxiamen]: 0x4b0,
+  [ManufacturerCode.Septentrio]: 0x4c2,
+  [ManufacturerCode.NkeMarineElecronics]: 0x4d1,
+  [ManufacturerCode.SuperTrackAps]: 0x4d6,
+  [ManufacturerCode.HondaElectronicsCoLtd]: 0x4d7,
+  [ManufacturerCode.RaritanEngineeringCompanyInc]: 0x4dd,
+  [ManufacturerCode.IntegratedPowerSolutionsAg]: 0x4e1,
+  [ManufacturerCode.InteractiveTechnologiesInc]: 0x4ec,
+  [ManufacturerCode.LtgTech]: 0x503,
+  [ManufacturerCode.EnergySolutionsukLtd]: 0x513,
+  [ManufacturerCode.WattFuelCellCorp]: 0x514,
+  [ManufacturerCode.ProMainer]: 0x516,
+  [ManufacturerCode.DragonflyEnergy]: 0x519,
+  [ManufacturerCode.KodenElectronicsCoLtd]: 0x51a,
+  [ManufacturerCode.HumphreeAb]: 0x51f,
+  [ManufacturerCode.HinkleyYachts]: 0x524,
+  [ManufacturerCode.GlobalMarineManagementGmbHgmm]: 0x525,
+  [ManufacturerCode.TriskelMarineLtd]: 0x528,
+  [ManufacturerCode.WarwickControlTechnologies]: 0x532,
+  [ManufacturerCode.DolphinCharger]: 0x533,
+  [ManufacturerCode.BarnacleSystemsInc]: 0x539,
+  [ManufacturerCode.RadianIoTInc]: 0x544,
+  [ManufacturerCode.OceanLedMarineLtd]: 0x549,
+  [ManufacturerCode.BluNav]: 0x54f,
+  [ManufacturerCode.OvanantongSaiyangElectronicsCoLtd]: 0x551,
+  [ManufacturerCode.RadPropulsion]: 0x558,
+  [ManufacturerCode.ElectricYacht]: 0x559,
+  [ManufacturerCode.ElcoMotorYachts]: 0x55c,
+  [ManufacturerCode.TecnosealFoundrySRL]: 0x568,
+  [ManufacturerCode.ProChargingSystemsLlc]: 0x569,
+  [ManufacturerCode.EvexCoLtd]: 0x56d,
+  [ManufacturerCode.GobiusSensorTechnologyAb]: 0x576,
+  [ManufacturerCode.ArcoMarine]: 0x57b,
+  [ManufacturerCode.LencoMarineInc]: 0x580,
+  [ManufacturerCode.NaocontrolSL]: 0x585,
+  [ManufacturerCode.Revatek]: 0x589,
+  [ManufacturerCode.Aeolionics]: 0x59e,
+  [ManufacturerCode.PredictWindLtd]: 0x59f,
+  [ManufacturerCode.EgisMobileElectric]: 0x5a0,
+  [ManufacturerCode.StarboardYachtGroup]: 0x5a5,
+  [ManufacturerCode.RoswellMarine]: 0x5a6,
+  [ManufacturerCode.EPropulsionguangdongEPropulsionTechnologyLtd]: 0x5ab,
+  [ManufacturerCode.MicroAirLlc]: 0x5ac,
+  [ManufacturerCode.VitalBattery]: 0x5ad,
+  [ManufacturerCode.RideControllerLlc]: 0x5b2,
+  [ManufacturerCode.TocaroBlue]: 0x5b4,
+  [ManufacturerCode.VanquishYachts]: 0x5b5,
+  [ManufacturerCode.FtTechnologies]: 0x5bf,
+  [ManufacturerCode.AlpsAlpineCoLtd]: 0x5c6,
+  [ManufacturerCode.EForceMarine]: 0x5c9,
+  [ManufacturerCode.CmcMarine]: 0x5ca,
+  [ManufacturerCode.NanjingSandemarineInformationTechnologyCoLtd]: 0x5cb,
+  [ManufacturerCode.TeleflexMarineseaStarSolutions]: 0x73a,
+  [ManufacturerCode.Raymarine]: 0x73b,
+  [ManufacturerCode.Navionics]: 0x73c,
+  [ManufacturerCode.JapanRadioCo]: 0x73d,
+  [ManufacturerCode.NorthstarTechnologies]: 0x73e,
+  [ManufacturerCode.Furuno]: 0x73f,
+  [ManufacturerCode.Trimble]: 0x740,
+  [ManufacturerCode.Simrad]: 0x741,
+  [ManufacturerCode.Litton]: 0x742,
+  [ManufacturerCode.KvasarAb]: 0x743,
+  [ManufacturerCode.Mmp]: 0x744,
+  [ManufacturerCode.VectorCantech]: 0x745,
+  [ManufacturerCode.YamahaMarine]: 0x746,
+  [ManufacturerCode.FariaInstruments]: 0x747,
 }
 
 /**
@@ -668,34 +667,34 @@ export enum AisMessageId {
 /**
  * @category Enumerations
  */
-export enum AisMessageIdValues {
-  ScheduledClassAPositionReport = 0x1,
-  AssignedScheduledClassAPositionReport = 0x2,
-  InterrogatedClassAPositionReport = 0x3,
-  BaseStationReport = 0x4,
-  StaticAndVoyageRelatedData = 0x5,
-  BinaryAddressedMessage = 0x6,
-  BinaryAcknowledgement = 0x7,
-  BinaryBroadcastMessage = 0x8,
-  StandardSarAircraftPositionReport = 0x9,
-  UtcdateInquiry = 0xa,
-  UtcdateResponse = 0xb,
-  SafetyRelatedAddressedMessage = 0xc,
-  SafetyRelatedAcknowledgement = 0xd,
-  SatetyRelatedBroadcastMessage = 0xe,
-  Interrogation = 0xf,
-  AssignmentModeCommand = 0x10,
-  DgnssBroadcastBinaryMessage = 0x11,
-  StandardClassBPositionReport = 0x12,
-  ExtendedClassBPositionReport = 0x13,
-  DataLinkManagementMessage = 0x14,
-  AtonReport = 0x15,
-  ChannelManagement = 0x16,
-  GroupAssignmentCommand = 0x17,
-  StaticDataReport = 0x18,
-  SingleSlotBinaryMessage = 0x19,
-  MultipleSlotBinaryMessage = 0x1a,
-  PositionReportForLongRangeApplications = 0x1b,
+export const AisMessageIdValues: {[key: string]: number} = {
+  [AisMessageId.ScheduledClassAPositionReport]: 0x1,
+  [AisMessageId.AssignedScheduledClassAPositionReport]: 0x2,
+  [AisMessageId.InterrogatedClassAPositionReport]: 0x3,
+  [AisMessageId.BaseStationReport]: 0x4,
+  [AisMessageId.StaticAndVoyageRelatedData]: 0x5,
+  [AisMessageId.BinaryAddressedMessage]: 0x6,
+  [AisMessageId.BinaryAcknowledgement]: 0x7,
+  [AisMessageId.BinaryBroadcastMessage]: 0x8,
+  [AisMessageId.StandardSarAircraftPositionReport]: 0x9,
+  [AisMessageId.UtcdateInquiry]: 0xa,
+  [AisMessageId.UtcdateResponse]: 0xb,
+  [AisMessageId.SafetyRelatedAddressedMessage]: 0xc,
+  [AisMessageId.SafetyRelatedAcknowledgement]: 0xd,
+  [AisMessageId.SatetyRelatedBroadcastMessage]: 0xe,
+  [AisMessageId.Interrogation]: 0xf,
+  [AisMessageId.AssignmentModeCommand]: 0x10,
+  [AisMessageId.DgnssBroadcastBinaryMessage]: 0x11,
+  [AisMessageId.StandardClassBPositionReport]: 0x12,
+  [AisMessageId.ExtendedClassBPositionReport]: 0x13,
+  [AisMessageId.DataLinkManagementMessage]: 0x14,
+  [AisMessageId.AtonReport]: 0x15,
+  [AisMessageId.ChannelManagement]: 0x16,
+  [AisMessageId.GroupAssignmentCommand]: 0x17,
+  [AisMessageId.StaticDataReport]: 0x18,
+  [AisMessageId.SingleSlotBinaryMessage]: 0x19,
+  [AisMessageId.MultipleSlotBinaryMessage]: 0x1a,
+  [AisMessageId.PositionReportForLongRangeApplications]: 0x1b,
 }
 
 /**
@@ -762,62 +761,62 @@ export enum ShipType {
 /**
  * @category Enumerations
  */
-export enum ShipTypeValues {
-  Unavailable = 0x0,
-  WingInGround = 0x14,
-  WingInGroundhazardCatX = 0x15,
-  WingInGroundhazardCatY = 0x16,
-  WingInGroundhazardCatZ = 0x17,
-  WingInGroundhazardCatOs = 0x18,
-  WingInGroundnoAdditionalInformation = 0x1d,
-  Fishing = 0x1e,
-  Towing = 0x1f,
-  TowingExceeds200MOrWiderThan25M = 0x20,
-  EngagedInDredgingOrUnderwaterOperations = 0x21,
-  EngagedInDivingOperations = 0x22,
-  EngagedInMilitaryOperations = 0x23,
-  Sailing = 0x24,
-  Pleasure = 0x25,
-  HighSpeedCraft = 0x28,
-  HighSpeedCrafthazardCatX = 0x29,
-  HighSpeedCrafthazardCatY = 0x2a,
-  HighSpeedCrafthazardCatZ = 0x2b,
-  HighSpeedCrafthazardCatOs = 0x2c,
-  HighSpeedCraftnoAdditionalInformation = 0x31,
-  PilotVessel = 0x32,
-  Sar = 0x33,
-  Tug = 0x34,
-  PortTender = 0x35,
-  AntiPollution = 0x36,
-  LawEnforcement = 0x37,
-  Spare = 0x38,
-  Spare2 = 0x39,
-  Medical = 0x3a,
-  ShipsAndAircraftOfStatesNotPartiesToAnArmedConflict = 0x3b,
-  PassengerShip = 0x3c,
-  PassengerShiphazardCatX = 0x3d,
-  PassengerShiphazardCatY = 0x3e,
-  PassengerShiphazardCatZ = 0x3f,
-  PassengerShiphazardCatOs = 0x40,
-  PassengerShipnoAdditionalInformation = 0x45,
-  CargoShip = 0x46,
-  CargoShiphazardCatX = 0x47,
-  CargoShiphazardCatY = 0x48,
-  CargoShiphazardCatZ = 0x49,
-  CargoShiphazardCatOs = 0x4a,
-  CargoShipnoAdditionalInformation = 0x4f,
-  Tanker = 0x50,
-  TankerhazardCatX = 0x51,
-  TankerhazardCatY = 0x52,
-  TankerhazardCatZ = 0x53,
-  TankerhazardCatOs = 0x54,
-  TankernoAdditionalInformation = 0x59,
-  Other = 0x5a,
-  OtherhazardCatX = 0x5b,
-  OtherhazardCatY = 0x5c,
-  OtherhazardCatZ = 0x5d,
-  OtherhazardCatOs = 0x5e,
-  OthernoAdditionalInformation = 0x63,
+export const ShipTypeValues: {[key: string]: number} = {
+  [ShipType.Unavailable]: 0x0,
+  [ShipType.WingInGround]: 0x14,
+  [ShipType.WingInGroundhazardCatX]: 0x15,
+  [ShipType.WingInGroundhazardCatY]: 0x16,
+  [ShipType.WingInGroundhazardCatZ]: 0x17,
+  [ShipType.WingInGroundhazardCatOs]: 0x18,
+  [ShipType.WingInGroundnoAdditionalInformation]: 0x1d,
+  [ShipType.Fishing]: 0x1e,
+  [ShipType.Towing]: 0x1f,
+  [ShipType.TowingExceeds200MOrWiderThan25M]: 0x20,
+  [ShipType.EngagedInDredgingOrUnderwaterOperations]: 0x21,
+  [ShipType.EngagedInDivingOperations]: 0x22,
+  [ShipType.EngagedInMilitaryOperations]: 0x23,
+  [ShipType.Sailing]: 0x24,
+  [ShipType.Pleasure]: 0x25,
+  [ShipType.HighSpeedCraft]: 0x28,
+  [ShipType.HighSpeedCrafthazardCatX]: 0x29,
+  [ShipType.HighSpeedCrafthazardCatY]: 0x2a,
+  [ShipType.HighSpeedCrafthazardCatZ]: 0x2b,
+  [ShipType.HighSpeedCrafthazardCatOs]: 0x2c,
+  [ShipType.HighSpeedCraftnoAdditionalInformation]: 0x31,
+  [ShipType.PilotVessel]: 0x32,
+  [ShipType.Sar]: 0x33,
+  [ShipType.Tug]: 0x34,
+  [ShipType.PortTender]: 0x35,
+  [ShipType.AntiPollution]: 0x36,
+  [ShipType.LawEnforcement]: 0x37,
+  [ShipType.Spare]: 0x38,
+  [ShipType.Spare2]: 0x39,
+  [ShipType.Medical]: 0x3a,
+  [ShipType.ShipsAndAircraftOfStatesNotPartiesToAnArmedConflict]: 0x3b,
+  [ShipType.PassengerShip]: 0x3c,
+  [ShipType.PassengerShiphazardCatX]: 0x3d,
+  [ShipType.PassengerShiphazardCatY]: 0x3e,
+  [ShipType.PassengerShiphazardCatZ]: 0x3f,
+  [ShipType.PassengerShiphazardCatOs]: 0x40,
+  [ShipType.PassengerShipnoAdditionalInformation]: 0x45,
+  [ShipType.CargoShip]: 0x46,
+  [ShipType.CargoShiphazardCatX]: 0x47,
+  [ShipType.CargoShiphazardCatY]: 0x48,
+  [ShipType.CargoShiphazardCatZ]: 0x49,
+  [ShipType.CargoShiphazardCatOs]: 0x4a,
+  [ShipType.CargoShipnoAdditionalInformation]: 0x4f,
+  [ShipType.Tanker]: 0x50,
+  [ShipType.TankerhazardCatX]: 0x51,
+  [ShipType.TankerhazardCatY]: 0x52,
+  [ShipType.TankerhazardCatZ]: 0x53,
+  [ShipType.TankerhazardCatOs]: 0x54,
+  [ShipType.TankernoAdditionalInformation]: 0x59,
+  [ShipType.Other]: 0x5a,
+  [ShipType.OtherhazardCatX]: 0x5b,
+  [ShipType.OtherhazardCatY]: 0x5c,
+  [ShipType.OtherhazardCatZ]: 0x5d,
+  [ShipType.OtherhazardCatOs]: 0x5e,
+  [ShipType.OthernoAdditionalInformation]: 0x63,
 }
 
 /**
@@ -847,25 +846,25 @@ export enum DeviceClass {
 /**
  * @category Enumerations
  */
-export enum DeviceClassValues {
-  ReservedFor2000Use = 0x0,
-  SystemTools = 0xa,
-  SafetySystems = 0x14,
-  InternetworkDevice = 0x19,
-  ElectricalDistribution = 0x1e,
-  ElectricalGeneration = 0x23,
-  SteeringAndControlSurfaces = 0x28,
-  Propulsion = 0x32,
-  Navigation = 0x3c,
-  Communication = 0x46,
-  SensorCommunicationInterface = 0x4b,
-  InstrumentationgeneralSystems = 0x50,
-  ExternalEnvironment = 0x55,
-  InternalEnvironment = 0x5a,
-  DeckPlusCargoPlusFishingEquipmentSystems = 0x64,
-  HumanInterface = 0x6e,
-  Display = 0x78,
-  Entertainment = 0x7d,
+export const DeviceClassValues: {[key: string]: number} = {
+  [DeviceClass.ReservedFor2000Use]: 0x0,
+  [DeviceClass.SystemTools]: 0xa,
+  [DeviceClass.SafetySystems]: 0x14,
+  [DeviceClass.InternetworkDevice]: 0x19,
+  [DeviceClass.ElectricalDistribution]: 0x1e,
+  [DeviceClass.ElectricalGeneration]: 0x23,
+  [DeviceClass.SteeringAndControlSurfaces]: 0x28,
+  [DeviceClass.Propulsion]: 0x32,
+  [DeviceClass.Navigation]: 0x3c,
+  [DeviceClass.Communication]: 0x46,
+  [DeviceClass.SensorCommunicationInterface]: 0x4b,
+  [DeviceClass.InstrumentationgeneralSystems]: 0x50,
+  [DeviceClass.ExternalEnvironment]: 0x55,
+  [DeviceClass.InternalEnvironment]: 0x5a,
+  [DeviceClass.DeckPlusCargoPlusFishingEquipmentSystems]: 0x64,
+  [DeviceClass.HumanInterface]: 0x6e,
+  [DeviceClass.Display]: 0x78,
+  [DeviceClass.Entertainment]: 0x7d,
 }
 
 /**
@@ -881,11 +880,11 @@ export enum RepeatIndicator {
 /**
  * @category Enumerations
  */
-export enum RepeatIndicatorValues {
-  Initial = 0x0,
-  FirstRetransmission = 0x1,
-  SecondRetransmission = 0x2,
-  FinalRetransmission = 0x3,
+export const RepeatIndicatorValues: {[key: string]: number} = {
+  [RepeatIndicator.Initial]: 0x0,
+  [RepeatIndicator.FirstRetransmission]: 0x1,
+  [RepeatIndicator.SecondRetransmission]: 0x2,
+  [RepeatIndicator.FinalRetransmission]: 0x3,
 }
 
 /**
@@ -900,10 +899,10 @@ export enum TxRxMode {
 /**
  * @category Enumerations
  */
-export enum TxRxModeValues {
-  TxAtxBRxArxB = 0x0,
-  TxARxArxB = 0x1,
-  TxBRxArxB = 0x2,
+export const TxRxModeValues: {[key: string]: number} = {
+  [TxRxMode.TxAtxBRxArxB]: 0x0,
+  [TxRxMode.TxARxArxB]: 0x1,
+  [TxRxMode.TxBRxArxB]: 0x2,
 }
 
 /**
@@ -924,16 +923,16 @@ export enum StationType {
 /**
  * @category Enumerations
  */
-export enum StationTypeValues {
-  AllTypesOfMobileStation = 0x0,
-  AllTypesOfClassBMobileStation = 0x2,
-  SarAirborneMobileStation = 0x3,
-  AtoNStation = 0x4,
-  ClassBCsShipborneMobileStation = 0x5,
-  InlandWaterways = 0x6,
-  RegionalUse7 = 0x7,
-  RegionalUse8 = 0x8,
-  RegionalUse9 = 0x9,
+export const StationTypeValues: {[key: string]: number} = {
+  [StationType.AllTypesOfMobileStation]: 0x0,
+  [StationType.AllTypesOfClassBMobileStation]: 0x2,
+  [StationType.SarAirborneMobileStation]: 0x3,
+  [StationType.AtoNStation]: 0x4,
+  [StationType.ClassBCsShipborneMobileStation]: 0x5,
+  [StationType.InlandWaterways]: 0x6,
+  [StationType.RegionalUse7]: 0x7,
+  [StationType.RegionalUse8]: 0x8,
+  [StationType.RegionalUse9]: 0x9,
 }
 
 /**
@@ -957,19 +956,19 @@ export enum ReportingInterval {
 /**
  * @category Enumerations
  */
-export enum ReportingIntervalValues {
-  AsGivenByTheAutonomousMode = 0x0,
-  _10Min = 0x1,
-  _6Min = 0x2,
-  _3Min = 0x3,
-  _1Min = 0x4,
-  _30Sec = 0x5,
-  _15Sec = 0x6,
-  _10Sec = 0x7,
-  _5Sec = 0x8,
-  _2SecnotApplicableToClassBCs = 0x9,
-  NextShorterReportingInterval = 0xa,
-  NextLongerReportingInterval = 0xb,
+export const ReportingIntervalValues: {[key: string]: number} = {
+  [ReportingInterval.AsGivenByTheAutonomousMode]: 0x0,
+  [ReportingInterval._10Min]: 0x1,
+  [ReportingInterval._6Min]: 0x2,
+  [ReportingInterval._3Min]: 0x3,
+  [ReportingInterval._1Min]: 0x4,
+  [ReportingInterval._30Sec]: 0x5,
+  [ReportingInterval._15Sec]: 0x6,
+  [ReportingInterval._10Sec]: 0x7,
+  [ReportingInterval._5Sec]: 0x8,
+  [ReportingInterval._2SecnotApplicableToClassBCs]: 0x9,
+  [ReportingInterval.NextShorterReportingInterval]: 0xa,
+  [ReportingInterval.NextLongerReportingInterval]: 0xb,
 }
 
 /**
@@ -987,13 +986,13 @@ export enum AisTransceiver {
 /**
  * @category Enumerations
  */
-export enum AisTransceiverValues {
-  ChannelAVdlReception = 0x0,
-  ChannelBVdlReception = 0x1,
-  ChannelAVdlTransmission = 0x2,
-  ChannelBVdlTransmission = 0x3,
-  OwnInformationNotBroadcast = 0x4,
-  Reserved = 0x5,
+export const AisTransceiverValues: {[key: string]: number} = {
+  [AisTransceiver.ChannelAVdlReception]: 0x0,
+  [AisTransceiver.ChannelBVdlReception]: 0x1,
+  [AisTransceiver.ChannelAVdlTransmission]: 0x2,
+  [AisTransceiver.ChannelBVdlTransmission]: 0x3,
+  [AisTransceiver.OwnInformationNotBroadcast]: 0x4,
+  [AisTransceiver.Reserved]: 0x5,
 }
 
 /**
@@ -1007,9 +1006,9 @@ export enum AisAssignedMode {
 /**
  * @category Enumerations
  */
-export enum AisAssignedModeValues {
-  AutonomousAndContinuous = 0x0,
-  AssignedMode = 0x1,
+export const AisAssignedModeValues: {[key: string]: number} = {
+  [AisAssignedMode.AutonomousAndContinuous]: 0x0,
+  [AisAssignedMode.AssignedMode]: 0x1,
 }
 
 /**
@@ -1053,39 +1052,39 @@ export enum AtonType {
 /**
  * @category Enumerations
  */
-export enum AtonTypeValues {
-  DefaultTypeOfAtoNNotSpecified = 0x0,
-  ReferencePoint = 0x1,
-  Racon = 0x2,
-  FixedStructureOffShore = 0x3,
-  ReservedForFutureUse = 0x4,
-  FixedLightWithoutSectors = 0x5,
-  FixedLightWithSectors = 0x6,
-  FixedLeadingLightFront = 0x7,
-  FixedLeadingLightRear = 0x8,
-  FixedBeaconCardinalN = 0x9,
-  FixedBeaconCardinalE = 0xa,
-  FixedBeaconCardinalS = 0xb,
-  FixedBeaconCardinalW = 0xc,
-  FixedBeaconPortHand = 0xd,
-  FixedBeaconStarboardHand = 0xe,
-  FixedBeaconPreferredChannelPortHand = 0xf,
-  FixedBeaconPreferredChannelStarboardHand = 0x10,
-  FixedBeaconIsolatedDanger = 0x11,
-  FixedBeaconSafeWater = 0x12,
-  FixedBeaconSpecialMark = 0x13,
-  FloatingAtoNCardinalN = 0x14,
-  FloatingAtoNCardinalE = 0x15,
-  FloatingAtoNCardinalS = 0x16,
-  FloatingAtoNCardinalW = 0x17,
-  FloatingAtoNPortHandMark = 0x18,
-  FloatingAtoNStarboardHandMark = 0x19,
-  FloatingAtoNPreferredChannelPortHand = 0x1a,
-  FloatingAtoNPreferredChannelStarboardHand = 0x1b,
-  FloatingAtoNIsolatedDanger = 0x1c,
-  FloatingAtoNSafeWater = 0x1d,
-  FloatingAtoNSpecialMark = 0x1e,
-  FloatingAtoNLightVessellanbyrigs = 0x1f,
+export const AtonTypeValues: {[key: string]: number} = {
+  [AtonType.DefaultTypeOfAtoNNotSpecified]: 0x0,
+  [AtonType.ReferencePoint]: 0x1,
+  [AtonType.Racon]: 0x2,
+  [AtonType.FixedStructureOffShore]: 0x3,
+  [AtonType.ReservedForFutureUse]: 0x4,
+  [AtonType.FixedLightWithoutSectors]: 0x5,
+  [AtonType.FixedLightWithSectors]: 0x6,
+  [AtonType.FixedLeadingLightFront]: 0x7,
+  [AtonType.FixedLeadingLightRear]: 0x8,
+  [AtonType.FixedBeaconCardinalN]: 0x9,
+  [AtonType.FixedBeaconCardinalE]: 0xa,
+  [AtonType.FixedBeaconCardinalS]: 0xb,
+  [AtonType.FixedBeaconCardinalW]: 0xc,
+  [AtonType.FixedBeaconPortHand]: 0xd,
+  [AtonType.FixedBeaconStarboardHand]: 0xe,
+  [AtonType.FixedBeaconPreferredChannelPortHand]: 0xf,
+  [AtonType.FixedBeaconPreferredChannelStarboardHand]: 0x10,
+  [AtonType.FixedBeaconIsolatedDanger]: 0x11,
+  [AtonType.FixedBeaconSafeWater]: 0x12,
+  [AtonType.FixedBeaconSpecialMark]: 0x13,
+  [AtonType.FloatingAtoNCardinalN]: 0x14,
+  [AtonType.FloatingAtoNCardinalE]: 0x15,
+  [AtonType.FloatingAtoNCardinalS]: 0x16,
+  [AtonType.FloatingAtoNCardinalW]: 0x17,
+  [AtonType.FloatingAtoNPortHandMark]: 0x18,
+  [AtonType.FloatingAtoNStarboardHandMark]: 0x19,
+  [AtonType.FloatingAtoNPreferredChannelPortHand]: 0x1a,
+  [AtonType.FloatingAtoNPreferredChannelStarboardHand]: 0x1b,
+  [AtonType.FloatingAtoNIsolatedDanger]: 0x1c,
+  [AtonType.FloatingAtoNSafeWater]: 0x1d,
+  [AtonType.FloatingAtoNSpecialMark]: 0x1e,
+  [AtonType.FloatingAtoNLightVessellanbyrigs]: 0x1f,
 }
 
 /**
@@ -1101,11 +1100,11 @@ export enum AisSpecialManeuver {
 /**
  * @category Enumerations
  */
-export enum AisSpecialManeuverValues {
-  NotAvailable = 0x0,
-  NotEngagedInSpecialManeuver = 0x1,
-  EngagedInSpecialManeuver = 0x2,
-  Reserved = 0x3,
+export const AisSpecialManeuverValues: {[key: string]: number} = {
+  [AisSpecialManeuver.NotAvailable]: 0x0,
+  [AisSpecialManeuver.NotEngagedInSpecialManeuver]: 0x1,
+  [AisSpecialManeuver.EngagedInSpecialManeuver]: 0x2,
+  [AisSpecialManeuver.Reserved]: 0x3,
 }
 
 /**
@@ -1126,16 +1125,16 @@ export enum PositionFixDevice {
 /**
  * @category Enumerations
  */
-export enum PositionFixDeviceValues {
-  DefaultUndefined = 0x0,
-  Gps = 0x1,
-  Glonass = 0x2,
-  CombinedGpsglonass = 0x3,
-  LoranC = 0x4,
-  Chayka = 0x5,
-  IntegratedNavigationSystem = 0x6,
-  Surveyed = 0x7,
-  Galileo = 0x8,
+export const PositionFixDeviceValues: {[key: string]: number} = {
+  [PositionFixDevice.DefaultUndefined]: 0x0,
+  [PositionFixDevice.Gps]: 0x1,
+  [PositionFixDevice.Glonass]: 0x2,
+  [PositionFixDevice.CombinedGpsglonass]: 0x3,
+  [PositionFixDevice.LoranC]: 0x4,
+  [PositionFixDevice.Chayka]: 0x5,
+  [PositionFixDevice.IntegratedNavigationSystem]: 0x6,
+  [PositionFixDevice.Surveyed]: 0x7,
+  [PositionFixDevice.Galileo]: 0x8,
 }
 
 /**
@@ -1156,16 +1155,16 @@ export enum Gns {
 /**
  * @category Enumerations
  */
-export enum GnsValues {
-  Gps = 0x0,
-  Glonass = 0x1,
-  GpsPlusglonass = 0x2,
-  GpsPlussbaswaas = 0x3,
-  GpsPlussbaswaasPlusglonass = 0x4,
-  Chayka = 0x5,
-  Integrated = 0x6,
-  Surveyed = 0x7,
-  Galileo = 0x8,
+export const GnsValues: {[key: string]: number} = {
+  [Gns.Gps]: 0x0,
+  [Gns.Glonass]: 0x1,
+  [Gns.GpsPlusglonass]: 0x2,
+  [Gns.GpsPlussbaswaas]: 0x3,
+  [Gns.GpsPlussbaswaasPlusglonass]: 0x4,
+  [Gns.Chayka]: 0x5,
+  [Gns.Integrated]: 0x6,
+  [Gns.Surveyed]: 0x7,
+  [Gns.Galileo]: 0x8,
 }
 
 /**
@@ -1179,9 +1178,9 @@ export enum EngineInstance {
 /**
  * @category Enumerations
  */
-export enum EngineInstanceValues {
-  SingleEngineOrDualEnginePort = 0x0,
-  DualEngineStarboard = 0x1,
+export const EngineInstanceValues: {[key: string]: number} = {
+  [EngineInstance.SingleEngineOrDualEnginePort]: 0x0,
+  [EngineInstance.DualEngineStarboard]: 0x1,
 }
 
 /**
@@ -1196,10 +1195,10 @@ export enum GearStatus {
 /**
  * @category Enumerations
  */
-export enum GearStatusValues {
-  Forward = 0x0,
-  Neutral = 0x1,
-  Reverse = 0x2,
+export const GearStatusValues: {[key: string]: number} = {
+  [GearStatus.Forward]: 0x0,
+  [GearStatus.Neutral]: 0x1,
+  [GearStatus.Reverse]: 0x2,
 }
 
 /**
@@ -1213,9 +1212,9 @@ export enum Direction {
 /**
  * @category Enumerations
  */
-export enum DirectionValues {
-  Forward = 0x0,
-  Reverse = 0x1,
+export const DirectionValues: {[key: string]: number} = {
+  [Direction.Forward]: 0x0,
+  [Direction.Reverse]: 0x1,
 }
 
 /**
@@ -1229,9 +1228,9 @@ export enum PositionAccuracy {
 /**
  * @category Enumerations
  */
-export enum PositionAccuracyValues {
-  Low = 0x0,
-  High = 0x1,
+export const PositionAccuracyValues: {[key: string]: number} = {
+  [PositionAccuracy.Low]: 0x0,
+  [PositionAccuracy.High]: 0x1,
 }
 
 /**
@@ -1245,9 +1244,9 @@ export enum RaimFlag {
 /**
  * @category Enumerations
  */
-export enum RaimFlagValues {
-  NotInUse = 0x0,
-  InUse = 0x1,
+export const RaimFlagValues: {[key: string]: number} = {
+  [RaimFlag.NotInUse]: 0x0,
+  [RaimFlag.InUse]: 0x1,
 }
 
 /**
@@ -1263,11 +1262,11 @@ export enum TimeStamp {
 /**
  * @category Enumerations
  */
-export enum TimeStampValues {
-  NotAvailable = 0x3c,
-  ManualInputMode = 0x3d,
-  DeadReckoningMode = 0x3e,
-  PositioningSystemIsInoperative = 0x3f,
+export const TimeStampValues: {[key: string]: number} = {
+  [TimeStamp.NotAvailable]: 0x3c,
+  [TimeStamp.ManualInputMode]: 0x3d,
+  [TimeStamp.DeadReckoningMode]: 0x3e,
+  [TimeStamp.PositioningSystemIsInoperative]: 0x3f,
 }
 
 /**
@@ -1288,16 +1287,16 @@ export enum GnsMethod {
 /**
  * @category Enumerations
  */
-export enum GnsMethodValues {
-  NoGnss = 0x0,
-  GnssFix = 0x1,
-  DgnssFix = 0x2,
-  PreciseGnss = 0x3,
-  RtkFixedInteger = 0x4,
-  RtkFloat = 0x5,
-  EstimateddrMode = 0x6,
-  ManualInput = 0x7,
-  SimulateMode = 0x8,
+export const GnsMethodValues: {[key: string]: number} = {
+  [GnsMethod.NoGnss]: 0x0,
+  [GnsMethod.GnssFix]: 0x1,
+  [GnsMethod.DgnssFix]: 0x2,
+  [GnsMethod.PreciseGnss]: 0x3,
+  [GnsMethod.RtkFixedInteger]: 0x4,
+  [GnsMethod.RtkFloat]: 0x5,
+  [GnsMethod.EstimateddrMode]: 0x6,
+  [GnsMethod.ManualInput]: 0x7,
+  [GnsMethod.SimulateMode]: 0x8,
 }
 
 /**
@@ -1313,11 +1312,11 @@ export enum GnsIntegrity {
 /**
  * @category Enumerations
  */
-export enum GnsIntegrityValues {
-  NoIntegrityChecking = 0x0,
-  Safe = 0x1,
-  Caution = 0x2,
-  Unsafe = 0x3,
+export const GnsIntegrityValues: {[key: string]: number} = {
+  [GnsIntegrity.NoIntegrityChecking]: 0x0,
+  [GnsIntegrity.Safe]: 0x1,
+  [GnsIntegrity.Caution]: 0x2,
+  [GnsIntegrity.Unsafe]: 0x3,
 }
 
 /**
@@ -1335,13 +1334,13 @@ export enum SystemTime {
 /**
  * @category Enumerations
  */
-export enum SystemTimeValues {
-  Gps = 0x0,
-  Glonass = 0x1,
-  RadioStation = 0x2,
-  LocalCesiumClock = 0x3,
-  LocalRubidiumClock = 0x4,
-  LocalCrystalClock = 0x5,
+export const SystemTimeValues: {[key: string]: number} = {
+  [SystemTime.Gps]: 0x0,
+  [SystemTime.Glonass]: 0x1,
+  [SystemTime.RadioStation]: 0x2,
+  [SystemTime.LocalCesiumClock]: 0x3,
+  [SystemTime.LocalRubidiumClock]: 0x4,
+  [SystemTime.LocalCrystalClock]: 0x5,
 }
 
 /**
@@ -1362,16 +1361,16 @@ export enum MagneticVariation {
 /**
  * @category Enumerations
  */
-export enum MagneticVariationValues {
-  Manual = 0x0,
-  AutomaticChart = 0x1,
-  AutomaticTable = 0x2,
-  AutomaticCalculation = 0x3,
-  Wmm2000 = 0x4,
-  Wmm2005 = 0x5,
-  Wmm2010 = 0x6,
-  Wmm2015 = 0x7,
-  Wmm2020 = 0x8,
+export const MagneticVariationValues: {[key: string]: number} = {
+  [MagneticVariation.Manual]: 0x0,
+  [MagneticVariation.AutomaticChart]: 0x1,
+  [MagneticVariation.AutomaticTable]: 0x2,
+  [MagneticVariation.AutomaticCalculation]: 0x3,
+  [MagneticVariation.Wmm2000]: 0x4,
+  [MagneticVariation.Wmm2005]: 0x5,
+  [MagneticVariation.Wmm2010]: 0x6,
+  [MagneticVariation.Wmm2015]: 0x7,
+  [MagneticVariation.Wmm2020]: 0x8,
 }
 
 /**
@@ -1388,12 +1387,12 @@ export enum ResidualMode {
 /**
  * @category Enumerations
  */
-export enum ResidualModeValues {
-  Autonomous = 0x0,
-  DifferentialEnhanced = 0x1,
-  Estimated = 0x2,
-  Simulator = 0x3,
-  Manual = 0x4,
+export const ResidualModeValues: {[key: string]: number} = {
+  [ResidualMode.Autonomous]: 0x0,
+  [ResidualMode.DifferentialEnhanced]: 0x1,
+  [ResidualMode.Estimated]: 0x2,
+  [ResidualMode.Simulator]: 0x3,
+  [ResidualMode.Manual]: 0x4,
 }
 
 /**
@@ -1410,12 +1409,12 @@ export enum WindReference {
 /**
  * @category Enumerations
  */
-export enum WindReferenceValues {
-  TruegroundReferencedToNorth = 0x0,
-  MagneticgroundReferencedToMagneticNorth = 0x1,
-  Apparent = 0x2,
-  TrueboatReferenced = 0x3,
-  TruewaterReferenced = 0x4,
+export const WindReferenceValues: {[key: string]: number} = {
+  [WindReference.TruegroundReferencedToNorth]: 0x0,
+  [WindReference.MagneticgroundReferencedToMagneticNorth]: 0x1,
+  [WindReference.Apparent]: 0x2,
+  [WindReference.TrueboatReferenced]: 0x3,
+  [WindReference.TruewaterReferenced]: 0x4,
 }
 
 /**
@@ -1432,12 +1431,12 @@ export enum WaterReference {
 /**
  * @category Enumerations
  */
-export enum WaterReferenceValues {
-  PaddleWheel = 0x0,
-  PitotTube = 0x1,
-  Doppler = 0x2,
-  CorrelationultraSound = 0x3,
-  ElectroMagnetic = 0x4,
+export const WaterReferenceValues: {[key: string]: number} = {
+  [WaterReference.PaddleWheel]: 0x0,
+  [WaterReference.PitotTube]: 0x1,
+  [WaterReference.Doppler]: 0x2,
+  [WaterReference.CorrelationultraSound]: 0x3,
+  [WaterReference.ElectroMagnetic]: 0x4,
 }
 
 /**
@@ -1451,9 +1450,9 @@ export enum YesNo {
 /**
  * @category Enumerations
  */
-export enum YesNoValues {
-  No = 0x0,
-  Yes = 0x1,
+export const YesNoValues: {[key: string]: number} = {
+  [YesNo.No]: 0x0,
+  [YesNo.Yes]: 0x1,
 }
 
 /**
@@ -1467,9 +1466,9 @@ export enum OkWarning {
 /**
  * @category Enumerations
  */
-export enum OkWarningValues {
-  Ok = 0x0,
-  Warning = 0x1,
+export const OkWarningValues: {[key: string]: number} = {
+  [OkWarning.Ok]: 0x0,
+  [OkWarning.Warning]: 0x1,
 }
 
 /**
@@ -1483,9 +1482,9 @@ export enum OffOn {
 /**
  * @category Enumerations
  */
-export enum OffOnValues {
-  Off = 0x0,
-  On = 0x1,
+export const OffOnValues: {[key: string]: number} = {
+  [OffOn.Off]: 0x0,
+  [OffOn.On]: 0x1,
 }
 
 /**
@@ -1501,11 +1500,11 @@ export enum OffOnControl {
 /**
  * @category Enumerations
  */
-export enum OffOnControlValues {
-  Off = 0x0,
-  On = 0x1,
-  Reserved = 0x2,
-  TakeNoActionnoChange = 0x3,
+export const OffOnControlValues: {[key: string]: number} = {
+  [OffOnControl.Off]: 0x0,
+  [OffOnControl.On]: 0x1,
+  [OffOnControl.Reserved]: 0x2,
+  [OffOnControl.TakeNoActionnoChange]: 0x3,
 }
 
 /**
@@ -1520,10 +1519,10 @@ export enum DirectionReference {
 /**
  * @category Enumerations
  */
-export enum DirectionReferenceValues {
-  True = 0x0,
-  Magnetic = 0x1,
-  Error = 0x2,
+export const DirectionReferenceValues: {[key: string]: number} = {
+  [DirectionReference.True]: 0x0,
+  [DirectionReference.Magnetic]: 0x1,
+  [DirectionReference.Error]: 0x2,
 }
 
 /**
@@ -1538,10 +1537,10 @@ export enum DirectionRudder {
 /**
  * @category Enumerations
  */
-export enum DirectionRudderValues {
-  NoOrder = 0x0,
-  MoveToStarboard = 0x1,
-  MoveToPort = 0x2,
+export const DirectionRudderValues: {[key: string]: number} = {
+  [DirectionRudder.NoOrder]: 0x0,
+  [DirectionRudder.MoveToStarboard]: 0x1,
+  [DirectionRudder.MoveToPort]: 0x2,
 }
 
 /**
@@ -1567,21 +1566,21 @@ export enum NavStatus {
 /**
  * @category Enumerations
  */
-export enum NavStatusValues {
-  UnderWayUsingEngine = 0x0,
-  AtAnchor = 0x1,
-  NotUnderCommand = 0x2,
-  RestrictedManeuverability = 0x3,
-  ConstrainedByHerDraught = 0x4,
-  Moored = 0x5,
-  Aground = 0x6,
-  EngagedInFishing = 0x7,
-  UnderWaySailing = 0x8,
-  HazardousMaterialHighSpeed = 0x9,
-  HazardousMaterialWingInGround = 0xa,
-  PowerDrivenVesselTowingAstern = 0xb,
-  PowerDrivenVesselPushingAheadOrTowingAlongside = 0xc,
-  AisSart = 0xe,
+export const NavStatusValues: {[key: string]: number} = {
+  [NavStatus.UnderWayUsingEngine]: 0x0,
+  [NavStatus.AtAnchor]: 0x1,
+  [NavStatus.NotUnderCommand]: 0x2,
+  [NavStatus.RestrictedManeuverability]: 0x3,
+  [NavStatus.ConstrainedByHerDraught]: 0x4,
+  [NavStatus.Moored]: 0x5,
+  [NavStatus.Aground]: 0x6,
+  [NavStatus.EngagedInFishing]: 0x7,
+  [NavStatus.UnderWaySailing]: 0x8,
+  [NavStatus.HazardousMaterialHighSpeed]: 0x9,
+  [NavStatus.HazardousMaterialWingInGround]: 0xa,
+  [NavStatus.PowerDrivenVesselTowingAstern]: 0xb,
+  [NavStatus.PowerDrivenVesselPushingAheadOrTowingAlongside]: 0xc,
+  [NavStatus.AisSart]: 0xe,
 }
 
 /**
@@ -1596,10 +1595,10 @@ export enum PowerFactor {
 /**
  * @category Enumerations
  */
-export enum PowerFactorValues {
-  Leading = 0x0,
-  Lagging = 0x1,
-  Error = 0x2,
+export const PowerFactorValues: {[key: string]: number} = {
+  [PowerFactor.Leading]: 0x0,
+  [PowerFactor.Lagging]: 0x1,
+  [PowerFactor.Error]: 0x2,
 }
 
 /**
@@ -1627,23 +1626,23 @@ export enum TemperatureSource {
 /**
  * @category Enumerations
  */
-export enum TemperatureSourceValues {
-  SeaTemperature = 0x0,
-  OutsideTemperature = 0x1,
-  InsideTemperature = 0x2,
-  EngineRoomTemperature = 0x3,
-  MainCabinTemperature = 0x4,
-  LiveWellTemperature = 0x5,
-  BaitWellTemperature = 0x6,
-  RefrigerationTemperature = 0x7,
-  HeatingSystemTemperature = 0x8,
-  DewPointTemperature = 0x9,
-  ApparentWindChillTemperature = 0xa,
-  TheoreticalWindChillTemperature = 0xb,
-  HeatIndexTemperature = 0xc,
-  FreezerTemperature = 0xd,
-  ExhaustGasTemperature = 0xe,
-  ShaftSealTemperature = 0xf,
+export const TemperatureSourceValues: {[key: string]: number} = {
+  [TemperatureSource.SeaTemperature]: 0x0,
+  [TemperatureSource.OutsideTemperature]: 0x1,
+  [TemperatureSource.InsideTemperature]: 0x2,
+  [TemperatureSource.EngineRoomTemperature]: 0x3,
+  [TemperatureSource.MainCabinTemperature]: 0x4,
+  [TemperatureSource.LiveWellTemperature]: 0x5,
+  [TemperatureSource.BaitWellTemperature]: 0x6,
+  [TemperatureSource.RefrigerationTemperature]: 0x7,
+  [TemperatureSource.HeatingSystemTemperature]: 0x8,
+  [TemperatureSource.DewPointTemperature]: 0x9,
+  [TemperatureSource.ApparentWindChillTemperature]: 0xa,
+  [TemperatureSource.TheoreticalWindChillTemperature]: 0xb,
+  [TemperatureSource.HeatIndexTemperature]: 0xc,
+  [TemperatureSource.FreezerTemperature]: 0xd,
+  [TemperatureSource.ExhaustGasTemperature]: 0xe,
+  [TemperatureSource.ShaftSealTemperature]: 0xf,
 }
 
 /**
@@ -1657,9 +1656,9 @@ export enum HumiditySource {
 /**
  * @category Enumerations
  */
-export enum HumiditySourceValues {
-  Inside = 0x0,
-  Outside = 0x1,
+export const HumiditySourceValues: {[key: string]: number} = {
+  [HumiditySource.Inside]: 0x0,
+  [HumiditySource.Outside]: 0x1,
 }
 
 /**
@@ -1680,16 +1679,16 @@ export enum PressureSource {
 /**
  * @category Enumerations
  */
-export enum PressureSourceValues {
-  Atmospheric = 0x0,
-  Water = 0x1,
-  Steam = 0x2,
-  CompressedAir = 0x3,
-  Hydraulic = 0x4,
-  Filter = 0x5,
-  AltimeterSetting = 0x6,
-  Oil = 0x7,
-  Fuel = 0x8,
+export const PressureSourceValues: {[key: string]: number} = {
+  [PressureSource.Atmospheric]: 0x0,
+  [PressureSource.Water]: 0x1,
+  [PressureSource.Steam]: 0x2,
+  [PressureSource.CompressedAir]: 0x3,
+  [PressureSource.Hydraulic]: 0x4,
+  [PressureSource.Filter]: 0x5,
+  [PressureSource.AltimeterSetting]: 0x6,
+  [PressureSource.Oil]: 0x7,
+  [PressureSource.Fuel]: 0x8,
 }
 
 /**
@@ -1708,14 +1707,14 @@ export enum DscFormat {
 /**
  * @category Enumerations
  */
-export enum DscFormatValues {
-  GeographicalArea = 0x66,
-  Distress = 0x70,
-  CommonInterest = 0x72,
-  AllShips = 0x74,
-  IndividualStations = 0x78,
-  NonCallingPurpose = 0x79,
-  IndividualStationAutomatic = 0x7b,
+export const DscFormatValues: {[key: string]: number} = {
+  [DscFormat.GeographicalArea]: 0x66,
+  [DscFormat.Distress]: 0x70,
+  [DscFormat.CommonInterest]: 0x72,
+  [DscFormat.AllShips]: 0x74,
+  [DscFormat.IndividualStations]: 0x78,
+  [DscFormat.NonCallingPurpose]: 0x79,
+  [DscFormat.IndividualStationAutomatic]: 0x7b,
 }
 
 /**
@@ -1731,11 +1730,11 @@ export enum DscCategory {
 /**
  * @category Enumerations
  */
-export enum DscCategoryValues {
-  Routine = 0x64,
-  Safety = 0x6c,
-  Urgency = 0x6e,
-  Distress = 0x70,
+export const DscCategoryValues: {[key: string]: number} = {
+  [DscCategory.Routine]: 0x64,
+  [DscCategory.Safety]: 0x6c,
+  [DscCategory.Urgency]: 0x6e,
+  [DscCategory.Distress]: 0x70,
 }
 
 /**
@@ -1759,19 +1758,19 @@ export enum DscNature {
 /**
  * @category Enumerations
  */
-export enum DscNatureValues {
-  Fire = 0x64,
-  Flooding = 0x65,
-  Collision = 0x66,
-  Grounding = 0x67,
-  Listing = 0x68,
-  Sinking = 0x69,
-  DisabledAndAdrift = 0x6a,
-  Undesignated = 0x6b,
-  AbandoningShip = 0x6c,
-  Piracy = 0x6d,
-  ManOverboard = 0x6e,
-  EpirbEmission = 0x70,
+export const DscNatureValues: {[key: string]: number} = {
+  [DscNature.Fire]: 0x64,
+  [DscNature.Flooding]: 0x65,
+  [DscNature.Collision]: 0x66,
+  [DscNature.Grounding]: 0x67,
+  [DscNature.Listing]: 0x68,
+  [DscNature.Sinking]: 0x69,
+  [DscNature.DisabledAndAdrift]: 0x6a,
+  [DscNature.Undesignated]: 0x6b,
+  [DscNature.AbandoningShip]: 0x6c,
+  [DscNature.Piracy]: 0x6d,
+  [DscNature.ManOverboard]: 0x6e,
+  [DscNature.EpirbEmission]: 0x70,
 }
 
 /**
@@ -1797,21 +1796,21 @@ export enum DscFirstTelecommand {
 /**
  * @category Enumerations
  */
-export enum DscFirstTelecommandValues {
-  F3Eg3EAllModesTp = 0x64,
-  F3Eg3EDuplexTp = 0x65,
-  Polling = 0x67,
-  UnableToComply = 0x68,
-  EndOfCall = 0x69,
-  Data = 0x6a,
-  J3ETp = 0x6d,
-  DistressAcknowledgement = 0x6e,
-  DistressRelay = 0x70,
-  F1Bj2BTtyFec = 0x71,
-  F1Bj2BTtyArq = 0x73,
-  Test = 0x76,
-  ShipPositionOrLocationRegistrationUpdating = 0x79,
-  NoInformation = 0x7e,
+export const DscFirstTelecommandValues: {[key: string]: number} = {
+  [DscFirstTelecommand.F3Eg3EAllModesTp]: 0x64,
+  [DscFirstTelecommand.F3Eg3EDuplexTp]: 0x65,
+  [DscFirstTelecommand.Polling]: 0x67,
+  [DscFirstTelecommand.UnableToComply]: 0x68,
+  [DscFirstTelecommand.EndOfCall]: 0x69,
+  [DscFirstTelecommand.Data]: 0x6a,
+  [DscFirstTelecommand.J3ETp]: 0x6d,
+  [DscFirstTelecommand.DistressAcknowledgement]: 0x6e,
+  [DscFirstTelecommand.DistressRelay]: 0x70,
+  [DscFirstTelecommand.F1Bj2BTtyFec]: 0x71,
+  [DscFirstTelecommand.F1Bj2BTtyArq]: 0x73,
+  [DscFirstTelecommand.Test]: 0x76,
+  [DscFirstTelecommand.ShipPositionOrLocationRegistrationUpdating]: 0x79,
+  [DscFirstTelecommand.NoInformation]: 0x7e,
 }
 
 /**
@@ -1838,22 +1837,22 @@ export enum DscSecondTelecommand {
 /**
  * @category Enumerations
  */
-export enum DscSecondTelecommandValues {
-  NoReasonGiven = 0x64,
-  CongestionAtMsc = 0x65,
-  Busy = 0x66,
-  QueueIndication = 0x67,
-  StationBarred = 0x68,
-  NoOperatorAvailable = 0x69,
-  OperatorTemporarilyUnavailable = 0x6a,
-  EquipmentDisabled = 0x6b,
-  UnableToUseProposedChannel = 0x6c,
-  UnableToUseProposedMode = 0x6d,
-  ShipsAndAircraftOfStatesNotPartiesToAnArmedConflict = 0x6e,
-  MedicalTransports = 0x6f,
-  PayPhonepublicCallOffice = 0x70,
-  Faxdata = 0x71,
-  NoInformation = 0x7e,
+export const DscSecondTelecommandValues: {[key: string]: number} = {
+  [DscSecondTelecommand.NoReasonGiven]: 0x64,
+  [DscSecondTelecommand.CongestionAtMsc]: 0x65,
+  [DscSecondTelecommand.Busy]: 0x66,
+  [DscSecondTelecommand.QueueIndication]: 0x67,
+  [DscSecondTelecommand.StationBarred]: 0x68,
+  [DscSecondTelecommand.NoOperatorAvailable]: 0x69,
+  [DscSecondTelecommand.OperatorTemporarilyUnavailable]: 0x6a,
+  [DscSecondTelecommand.EquipmentDisabled]: 0x6b,
+  [DscSecondTelecommand.UnableToUseProposedChannel]: 0x6c,
+  [DscSecondTelecommand.UnableToUseProposedMode]: 0x6d,
+  [DscSecondTelecommand.ShipsAndAircraftOfStatesNotPartiesToAnArmedConflict]: 0x6e,
+  [DscSecondTelecommand.MedicalTransports]: 0x6f,
+  [DscSecondTelecommand.PayPhonepublicCallOffice]: 0x70,
+  [DscSecondTelecommand.Faxdata]: 0x71,
+  [DscSecondTelecommand.NoInformation]: 0x7e,
 }
 
 /**
@@ -1872,14 +1871,14 @@ export enum DscExpansionData {
 /**
  * @category Enumerations
  */
-export enum DscExpansionDataValues {
-  EnhancedPosition = 0x64,
-  SourceAndDatumOfPosition = 0x65,
-  Sog = 0x66,
-  Cog = 0x67,
-  AdditionalStationIdentification = 0x68,
-  EnhancedGeographicArea = 0x69,
-  NumberOfPersonsOnBoard = 0x6a,
+export const DscExpansionDataValues: {[key: string]: number} = {
+  [DscExpansionData.EnhancedPosition]: 0x64,
+  [DscExpansionData.SourceAndDatumOfPosition]: 0x65,
+  [DscExpansionData.Sog]: 0x66,
+  [DscExpansionData.Cog]: 0x67,
+  [DscExpansionData.AdditionalStationIdentification]: 0x68,
+  [DscExpansionData.EnhancedGeographicArea]: 0x69,
+  [DscExpansionData.NumberOfPersonsOnBoard]: 0x6a,
 }
 
 /**
@@ -1894,10 +1893,10 @@ export enum SeatalkAlarmStatus {
 /**
  * @category Enumerations
  */
-export enum SeatalkAlarmStatusValues {
-  AlarmConditionNotMet = 0x0,
-  AlarmConditionMetAndNotSilenced = 0x1,
-  AlarmConditionMetAndSilenced = 0x2,
+export const SeatalkAlarmStatusValues: {[key: string]: number} = {
+  [SeatalkAlarmStatus.AlarmConditionNotMet]: 0x0,
+  [SeatalkAlarmStatus.AlarmConditionMetAndNotSilenced]: 0x1,
+  [SeatalkAlarmStatus.AlarmConditionMetAndSilenced]: 0x2,
 }
 
 /**
@@ -2015,113 +2014,113 @@ export enum SeatalkAlarmId {
 /**
  * @category Enumerations
  */
-export enum SeatalkAlarmIdValues {
-  NoAlarm = 0x0,
-  ShallowDepth = 0x1,
-  DeepDepth = 0x2,
-  ShallowAnchor = 0x3,
-  DeepAnchor = 0x4,
-  OffCourse = 0x5,
-  AwaHigh = 0x6,
-  AwaLow = 0x7,
-  AwsHigh = 0x8,
-  AwsLow = 0x9,
-  TwaHigh = 0xa,
-  TwaLow = 0xb,
-  TwsHigh = 0xc,
-  TwsLow = 0xd,
-  WpArrival = 0xe,
-  BoatSpeedHigh = 0xf,
-  BoatSpeedLow = 0x10,
-  SeaTemperatureHigh = 0x11,
-  SeaTemperatureLow = 0x12,
-  PilotWatch = 0x13,
-  PilotOffCourse = 0x14,
-  PilotWindShift = 0x15,
-  PilotLowBattery = 0x16,
-  PilotLastMinuteOfWatch = 0x17,
-  PilotNoNmeaData = 0x18,
-  PilotLargeXte = 0x19,
-  PilotNmeaDataError = 0x1a,
-  PilotCuDisconnected = 0x1b,
-  PilotAutoRelease = 0x1c,
-  PilotWayPointAdvance = 0x1d,
-  PilotDriveStopped = 0x1e,
-  PilotTypeUnspecified = 0x1f,
-  PilotCalibrationRequired = 0x20,
-  PilotLastHeading = 0x21,
-  PilotNoPilot = 0x22,
-  PilotRouteComplete = 0x23,
-  PilotVariableText = 0x24,
-  GpsFailure = 0x25,
-  Mob = 0x26,
-  Seatalk1Anchor = 0x27,
-  PilotSwappedMotorPower = 0x28,
-  PilotStandbyTooFastToFish = 0x29,
-  PilotNoGpsFix = 0x2a,
-  PilotNoGpsCog = 0x2b,
-  PilotStartUp = 0x2c,
-  PilotTooSlow = 0x2d,
-  PilotNoCompass = 0x2e,
-  PilotRateGyroFault = 0x2f,
-  PilotCurrentLimit = 0x30,
-  PilotWayPointAdvancePort = 0x31,
-  PilotWayPointAdvanceStbd = 0x32,
-  PilotNoWindData = 0x33,
-  PilotNoSpeedData = 0x34,
-  PilotSeatalkFail1 = 0x35,
-  PilotSeatalkFail2 = 0x36,
-  PilotWarningTooFastToFish = 0x37,
-  PilotAutoDocksideFail = 0x38,
-  PilotTurnTooFast = 0x39,
-  PilotNoNavData = 0x3a,
-  PilotLostWaypointData = 0x3b,
-  PilotEepromCorrupt = 0x3c,
-  PilotRudderFeedbackFail = 0x3d,
-  PilotAutolearnFail1 = 0x3e,
-  PilotAutolearnFail2 = 0x3f,
-  PilotAutolearnFail3 = 0x40,
-  PilotAutolearnFail4 = 0x41,
-  PilotAutolearnFail5 = 0x42,
-  PilotAutolearnFail6 = 0x43,
-  PilotWarningCalRequired = 0x44,
-  PilotWarningOffCourse = 0x45,
-  PilotWarningXte = 0x46,
-  PilotWarningWindShift = 0x47,
-  PilotWarningDriveShort = 0x48,
-  PilotWarningClutchShort = 0x49,
-  PilotWarningSolenoidShort = 0x4a,
-  PilotJoystickFault = 0x4b,
-  PilotNoJoystickData = 0x4c,
-  PilotInvalidCommand = 0x50,
-  AisTxMalfunction = 0x51,
-  AisAntennaVswrFault = 0x52,
-  AisRxChannel1Malfunction = 0x53,
-  AisRxChannel2Malfunction = 0x54,
-  AisNoSensorPositionInUse = 0x55,
-  AisNoValidSogInformation = 0x56,
-  AisNoValidCogInformation = 0x57,
-  Ais12VAlarm = 0x58,
-  Ais6VAlarm = 0x59,
-  AisNoiseThresholdExceededChannelA = 0x5a,
-  AisNoiseThresholdExceededChannelB = 0x5b,
-  AisTransmitterPaFault = 0x5c,
-  Ais3V3Alarm = 0x5d,
-  AisRxChannel70Malfunction = 0x5e,
-  AisHeadingLostinvalid = 0x5f,
-  AisInternalGpsLost = 0x60,
-  AisNoSensorPosition = 0x61,
-  AisLockFailure = 0x62,
-  AisInternalGgaTimeout = 0x63,
-  AisProtocolStackRestart = 0x64,
-  PilotNoIpsCommunications = 0x65,
-  PilotPowerOnOrSleepSwitchResetWhileEngaged = 0x66,
-  PilotUnexpectedResetWhileEngaged = 0x67,
-  AisDangerousTarget = 0x68,
-  AisLostTarget = 0x69,
-  AisSafetyRelatedMessageusedToSilence = 0x6a,
-  AisConnectionLost = 0x6b,
-  NoFix = 0x6c,
+export const SeatalkAlarmIdValues: {[key: string]: number} = {
+  [SeatalkAlarmId.NoAlarm]: 0x0,
+  [SeatalkAlarmId.ShallowDepth]: 0x1,
+  [SeatalkAlarmId.DeepDepth]: 0x2,
+  [SeatalkAlarmId.ShallowAnchor]: 0x3,
+  [SeatalkAlarmId.DeepAnchor]: 0x4,
+  [SeatalkAlarmId.OffCourse]: 0x5,
+  [SeatalkAlarmId.AwaHigh]: 0x6,
+  [SeatalkAlarmId.AwaLow]: 0x7,
+  [SeatalkAlarmId.AwsHigh]: 0x8,
+  [SeatalkAlarmId.AwsLow]: 0x9,
+  [SeatalkAlarmId.TwaHigh]: 0xa,
+  [SeatalkAlarmId.TwaLow]: 0xb,
+  [SeatalkAlarmId.TwsHigh]: 0xc,
+  [SeatalkAlarmId.TwsLow]: 0xd,
+  [SeatalkAlarmId.WpArrival]: 0xe,
+  [SeatalkAlarmId.BoatSpeedHigh]: 0xf,
+  [SeatalkAlarmId.BoatSpeedLow]: 0x10,
+  [SeatalkAlarmId.SeaTemperatureHigh]: 0x11,
+  [SeatalkAlarmId.SeaTemperatureLow]: 0x12,
+  [SeatalkAlarmId.PilotWatch]: 0x13,
+  [SeatalkAlarmId.PilotOffCourse]: 0x14,
+  [SeatalkAlarmId.PilotWindShift]: 0x15,
+  [SeatalkAlarmId.PilotLowBattery]: 0x16,
+  [SeatalkAlarmId.PilotLastMinuteOfWatch]: 0x17,
+  [SeatalkAlarmId.PilotNoNmeaData]: 0x18,
+  [SeatalkAlarmId.PilotLargeXte]: 0x19,
+  [SeatalkAlarmId.PilotNmeaDataError]: 0x1a,
+  [SeatalkAlarmId.PilotCuDisconnected]: 0x1b,
+  [SeatalkAlarmId.PilotAutoRelease]: 0x1c,
+  [SeatalkAlarmId.PilotWayPointAdvance]: 0x1d,
+  [SeatalkAlarmId.PilotDriveStopped]: 0x1e,
+  [SeatalkAlarmId.PilotTypeUnspecified]: 0x1f,
+  [SeatalkAlarmId.PilotCalibrationRequired]: 0x20,
+  [SeatalkAlarmId.PilotLastHeading]: 0x21,
+  [SeatalkAlarmId.PilotNoPilot]: 0x22,
+  [SeatalkAlarmId.PilotRouteComplete]: 0x23,
+  [SeatalkAlarmId.PilotVariableText]: 0x24,
+  [SeatalkAlarmId.GpsFailure]: 0x25,
+  [SeatalkAlarmId.Mob]: 0x26,
+  [SeatalkAlarmId.Seatalk1Anchor]: 0x27,
+  [SeatalkAlarmId.PilotSwappedMotorPower]: 0x28,
+  [SeatalkAlarmId.PilotStandbyTooFastToFish]: 0x29,
+  [SeatalkAlarmId.PilotNoGpsFix]: 0x2a,
+  [SeatalkAlarmId.PilotNoGpsCog]: 0x2b,
+  [SeatalkAlarmId.PilotStartUp]: 0x2c,
+  [SeatalkAlarmId.PilotTooSlow]: 0x2d,
+  [SeatalkAlarmId.PilotNoCompass]: 0x2e,
+  [SeatalkAlarmId.PilotRateGyroFault]: 0x2f,
+  [SeatalkAlarmId.PilotCurrentLimit]: 0x30,
+  [SeatalkAlarmId.PilotWayPointAdvancePort]: 0x31,
+  [SeatalkAlarmId.PilotWayPointAdvanceStbd]: 0x32,
+  [SeatalkAlarmId.PilotNoWindData]: 0x33,
+  [SeatalkAlarmId.PilotNoSpeedData]: 0x34,
+  [SeatalkAlarmId.PilotSeatalkFail1]: 0x35,
+  [SeatalkAlarmId.PilotSeatalkFail2]: 0x36,
+  [SeatalkAlarmId.PilotWarningTooFastToFish]: 0x37,
+  [SeatalkAlarmId.PilotAutoDocksideFail]: 0x38,
+  [SeatalkAlarmId.PilotTurnTooFast]: 0x39,
+  [SeatalkAlarmId.PilotNoNavData]: 0x3a,
+  [SeatalkAlarmId.PilotLostWaypointData]: 0x3b,
+  [SeatalkAlarmId.PilotEepromCorrupt]: 0x3c,
+  [SeatalkAlarmId.PilotRudderFeedbackFail]: 0x3d,
+  [SeatalkAlarmId.PilotAutolearnFail1]: 0x3e,
+  [SeatalkAlarmId.PilotAutolearnFail2]: 0x3f,
+  [SeatalkAlarmId.PilotAutolearnFail3]: 0x40,
+  [SeatalkAlarmId.PilotAutolearnFail4]: 0x41,
+  [SeatalkAlarmId.PilotAutolearnFail5]: 0x42,
+  [SeatalkAlarmId.PilotAutolearnFail6]: 0x43,
+  [SeatalkAlarmId.PilotWarningCalRequired]: 0x44,
+  [SeatalkAlarmId.PilotWarningOffCourse]: 0x45,
+  [SeatalkAlarmId.PilotWarningXte]: 0x46,
+  [SeatalkAlarmId.PilotWarningWindShift]: 0x47,
+  [SeatalkAlarmId.PilotWarningDriveShort]: 0x48,
+  [SeatalkAlarmId.PilotWarningClutchShort]: 0x49,
+  [SeatalkAlarmId.PilotWarningSolenoidShort]: 0x4a,
+  [SeatalkAlarmId.PilotJoystickFault]: 0x4b,
+  [SeatalkAlarmId.PilotNoJoystickData]: 0x4c,
+  [SeatalkAlarmId.PilotInvalidCommand]: 0x50,
+  [SeatalkAlarmId.AisTxMalfunction]: 0x51,
+  [SeatalkAlarmId.AisAntennaVswrFault]: 0x52,
+  [SeatalkAlarmId.AisRxChannel1Malfunction]: 0x53,
+  [SeatalkAlarmId.AisRxChannel2Malfunction]: 0x54,
+  [SeatalkAlarmId.AisNoSensorPositionInUse]: 0x55,
+  [SeatalkAlarmId.AisNoValidSogInformation]: 0x56,
+  [SeatalkAlarmId.AisNoValidCogInformation]: 0x57,
+  [SeatalkAlarmId.Ais12VAlarm]: 0x58,
+  [SeatalkAlarmId.Ais6VAlarm]: 0x59,
+  [SeatalkAlarmId.AisNoiseThresholdExceededChannelA]: 0x5a,
+  [SeatalkAlarmId.AisNoiseThresholdExceededChannelB]: 0x5b,
+  [SeatalkAlarmId.AisTransmitterPaFault]: 0x5c,
+  [SeatalkAlarmId.Ais3V3Alarm]: 0x5d,
+  [SeatalkAlarmId.AisRxChannel70Malfunction]: 0x5e,
+  [SeatalkAlarmId.AisHeadingLostinvalid]: 0x5f,
+  [SeatalkAlarmId.AisInternalGpsLost]: 0x60,
+  [SeatalkAlarmId.AisNoSensorPosition]: 0x61,
+  [SeatalkAlarmId.AisLockFailure]: 0x62,
+  [SeatalkAlarmId.AisInternalGgaTimeout]: 0x63,
+  [SeatalkAlarmId.AisProtocolStackRestart]: 0x64,
+  [SeatalkAlarmId.PilotNoIpsCommunications]: 0x65,
+  [SeatalkAlarmId.PilotPowerOnOrSleepSwitchResetWhileEngaged]: 0x66,
+  [SeatalkAlarmId.PilotUnexpectedResetWhileEngaged]: 0x67,
+  [SeatalkAlarmId.AisDangerousTarget]: 0x68,
+  [SeatalkAlarmId.AisLostTarget]: 0x69,
+  [SeatalkAlarmId.AisSafetyRelatedMessageusedToSilence]: 0x6a,
+  [SeatalkAlarmId.AisConnectionLost]: 0x6b,
+  [SeatalkAlarmId.NoFix]: 0x6c,
 }
 
 /**
@@ -2138,12 +2137,12 @@ export enum SeatalkAlarmGroup {
 /**
  * @category Enumerations
  */
-export enum SeatalkAlarmGroupValues {
-  Instrument = 0x0,
-  Autopilot = 0x1,
-  Radar = 0x2,
-  ChartPlotter = 0x3,
-  Ais = 0x4,
+export const SeatalkAlarmGroupValues: {[key: string]: number} = {
+  [SeatalkAlarmGroup.Instrument]: 0x0,
+  [SeatalkAlarmGroup.Autopilot]: 0x1,
+  [SeatalkAlarmGroup.Radar]: 0x2,
+  [SeatalkAlarmGroup.ChartPlotter]: 0x3,
+  [SeatalkAlarmGroup.Ais]: 0x4,
 }
 
 /**
@@ -2159,11 +2158,11 @@ export enum SeatalkPilotMode {
 /**
  * @category Enumerations
  */
-export enum SeatalkPilotModeValues {
-  Standby = 0x40,
-  Auto = 0x42,
-  Wind = 0x46,
-  Track = 0x4a,
+export const SeatalkPilotModeValues: {[key: string]: number} = {
+  [SeatalkPilotMode.Standby]: 0x40,
+  [SeatalkPilotMode.Auto]: 0x42,
+  [SeatalkPilotMode.Wind]: 0x46,
+  [SeatalkPilotMode.Track]: 0x4a,
 }
 
 /**
@@ -2180,12 +2179,12 @@ export enum EntertainmentZone {
 /**
  * @category Enumerations
  */
-export enum EntertainmentZoneValues {
-  AllZones = 0x0,
-  Zone1 = 0x1,
-  Zone2 = 0x2,
-  Zone3 = 0x3,
-  Zone4 = 0x4,
+export const EntertainmentZoneValues: {[key: string]: number} = {
+  [EntertainmentZone.AllZones]: 0x0,
+  [EntertainmentZone.Zone1]: 0x1,
+  [EntertainmentZone.Zone2]: 0x2,
+  [EntertainmentZone.Zone3]: 0x3,
+  [EntertainmentZone.Zone4]: 0x4,
 }
 
 /**
@@ -2222,32 +2221,32 @@ export enum EntertainmentSource {
 /**
  * @category Enumerations
  */
-export enum EntertainmentSourceValues {
-  VesselAlarm = 0x0,
-  Am = 0x1,
-  Fm = 0x2,
-  Weather = 0x3,
-  Dab = 0x4,
-  Aux = 0x5,
-  Usb = 0x6,
-  Cd = 0x7,
-  Mp3 = 0x8,
-  AppleIOs = 0x9,
-  Android = 0xa,
-  Bluetooth = 0xb,
-  SiriusXm = 0xc,
-  Pandora = 0xd,
-  Spotify = 0xe,
-  Slacker = 0xf,
-  Songza = 0x10,
-  AppleRadio = 0x11,
-  LastFm = 0x12,
-  Ethernet = 0x13,
-  VideoMp4 = 0x14,
-  VideoDvd = 0x15,
-  VideoBluRay = 0x16,
-  Hdmi = 0x17,
-  Video = 0x18,
+export const EntertainmentSourceValues: {[key: string]: number} = {
+  [EntertainmentSource.VesselAlarm]: 0x0,
+  [EntertainmentSource.Am]: 0x1,
+  [EntertainmentSource.Fm]: 0x2,
+  [EntertainmentSource.Weather]: 0x3,
+  [EntertainmentSource.Dab]: 0x4,
+  [EntertainmentSource.Aux]: 0x5,
+  [EntertainmentSource.Usb]: 0x6,
+  [EntertainmentSource.Cd]: 0x7,
+  [EntertainmentSource.Mp3]: 0x8,
+  [EntertainmentSource.AppleIOs]: 0x9,
+  [EntertainmentSource.Android]: 0xa,
+  [EntertainmentSource.Bluetooth]: 0xb,
+  [EntertainmentSource.SiriusXm]: 0xc,
+  [EntertainmentSource.Pandora]: 0xd,
+  [EntertainmentSource.Spotify]: 0xe,
+  [EntertainmentSource.Slacker]: 0xf,
+  [EntertainmentSource.Songza]: 0x10,
+  [EntertainmentSource.AppleRadio]: 0x11,
+  [EntertainmentSource.LastFm]: 0x12,
+  [EntertainmentSource.Ethernet]: 0x13,
+  [EntertainmentSource.VideoMp4]: 0x14,
+  [EntertainmentSource.VideoDvd]: 0x15,
+  [EntertainmentSource.VideoBluRay]: 0x16,
+  [EntertainmentSource.Hdmi]: 0x17,
+  [EntertainmentSource.Video]: 0x18,
 }
 
 /**
@@ -2284,32 +2283,32 @@ export enum EntertainmentPlayStatus {
 /**
  * @category Enumerations
  */
-export enum EntertainmentPlayStatusValues {
-  Play = 0x0,
-  Pause = 0x1,
-  Stop = 0x2,
-  Ff1X = 0x3,
-  Ff2X = 0x4,
-  Ff3X = 0x5,
-  Ff4X = 0x6,
-  Rw1X = 0x7,
-  Rw2X = 0x8,
-  Rw3X = 0x9,
-  Rw4X = 0xa,
-  SkipAhead = 0xb,
-  SkipBack = 0xc,
-  JogAhead = 0xd,
-  JogBack = 0xe,
-  SeekUp = 0xf,
-  SeekDown = 0x10,
-  ScanUp = 0x11,
-  ScanDown = 0x12,
-  TuneUp = 0x13,
-  TuneDown = 0x14,
-  SlowMotion75X = 0x15,
-  SlowMotion5X = 0x16,
-  SlowMotion25X = 0x17,
-  SlowMotion125X = 0x18,
+export const EntertainmentPlayStatusValues: {[key: string]: number} = {
+  [EntertainmentPlayStatus.Play]: 0x0,
+  [EntertainmentPlayStatus.Pause]: 0x1,
+  [EntertainmentPlayStatus.Stop]: 0x2,
+  [EntertainmentPlayStatus.Ff1X]: 0x3,
+  [EntertainmentPlayStatus.Ff2X]: 0x4,
+  [EntertainmentPlayStatus.Ff3X]: 0x5,
+  [EntertainmentPlayStatus.Ff4X]: 0x6,
+  [EntertainmentPlayStatus.Rw1X]: 0x7,
+  [EntertainmentPlayStatus.Rw2X]: 0x8,
+  [EntertainmentPlayStatus.Rw3X]: 0x9,
+  [EntertainmentPlayStatus.Rw4X]: 0xa,
+  [EntertainmentPlayStatus.SkipAhead]: 0xb,
+  [EntertainmentPlayStatus.SkipBack]: 0xc,
+  [EntertainmentPlayStatus.JogAhead]: 0xd,
+  [EntertainmentPlayStatus.JogBack]: 0xe,
+  [EntertainmentPlayStatus.SeekUp]: 0xf,
+  [EntertainmentPlayStatus.SeekDown]: 0x10,
+  [EntertainmentPlayStatus.ScanUp]: 0x11,
+  [EntertainmentPlayStatus.ScanDown]: 0x12,
+  [EntertainmentPlayStatus.TuneUp]: 0x13,
+  [EntertainmentPlayStatus.TuneDown]: 0x14,
+  [EntertainmentPlayStatus.SlowMotion75X]: 0x15,
+  [EntertainmentPlayStatus.SlowMotion5X]: 0x16,
+  [EntertainmentPlayStatus.SlowMotion25X]: 0x17,
+  [EntertainmentPlayStatus.SlowMotion125X]: 0x18,
 }
 
 /**
@@ -2324,10 +2323,10 @@ export enum EntertainmentRepeatStatus {
 /**
  * @category Enumerations
  */
-export enum EntertainmentRepeatStatusValues {
-  Off = 0x0,
-  One = 0x1,
-  All = 0x2,
+export const EntertainmentRepeatStatusValues: {[key: string]: number} = {
+  [EntertainmentRepeatStatus.Off]: 0x0,
+  [EntertainmentRepeatStatus.One]: 0x1,
+  [EntertainmentRepeatStatus.All]: 0x2,
 }
 
 /**
@@ -2342,10 +2341,10 @@ export enum EntertainmentShuffleStatus {
 /**
  * @category Enumerations
  */
-export enum EntertainmentShuffleStatusValues {
-  Off = 0x0,
-  PlayQueue = 0x1,
-  All = 0x2,
+export const EntertainmentShuffleStatusValues: {[key: string]: number} = {
+  [EntertainmentShuffleStatus.Off]: 0x0,
+  [EntertainmentShuffleStatus.PlayQueue]: 0x1,
+  [EntertainmentShuffleStatus.All]: 0x2,
 }
 
 /**
@@ -2360,10 +2359,10 @@ export enum EntertainmentLikeStatus {
 /**
  * @category Enumerations
  */
-export enum EntertainmentLikeStatusValues {
-  None = 0x0,
-  ThumbsUp = 0x1,
-  ThumbsDown = 0x2,
+export const EntertainmentLikeStatusValues: {[key: string]: number} = {
+  [EntertainmentLikeStatus.None]: 0x0,
+  [EntertainmentLikeStatus.ThumbsUp]: 0x1,
+  [EntertainmentLikeStatus.ThumbsDown]: 0x2,
 }
 
 /**
@@ -2386,18 +2385,18 @@ export enum EntertainmentType {
 /**
  * @category Enumerations
  */
-export enum EntertainmentTypeValues {
-  File = 0x0,
-  PlaylistName = 0x1,
-  GenreName = 0x2,
-  AlbumName = 0x3,
-  ArtistName = 0x4,
-  TrackName = 0x5,
-  StationName = 0x6,
-  StationNumber = 0x7,
-  FavouriteNumber = 0x8,
-  PlayQueue = 0x9,
-  ContentInfo = 0xa,
+export const EntertainmentTypeValues: {[key: string]: number} = {
+  [EntertainmentType.File]: 0x0,
+  [EntertainmentType.PlaylistName]: 0x1,
+  [EntertainmentType.GenreName]: 0x2,
+  [EntertainmentType.AlbumName]: 0x3,
+  [EntertainmentType.ArtistName]: 0x4,
+  [EntertainmentType.TrackName]: 0x5,
+  [EntertainmentType.StationName]: 0x6,
+  [EntertainmentType.StationNumber]: 0x7,
+  [EntertainmentType.FavouriteNumber]: 0x8,
+  [EntertainmentType.PlayQueue]: 0x9,
+  [EntertainmentType.ContentInfo]: 0xa,
 }
 
 /**
@@ -2420,18 +2419,18 @@ export enum EntertainmentGroup {
 /**
  * @category Enumerations
  */
-export enum EntertainmentGroupValues {
-  File = 0x0,
-  PlaylistName = 0x1,
-  GenreName = 0x2,
-  AlbumName = 0x3,
-  ArtistName = 0x4,
-  TrackName = 0x5,
-  StationName = 0x6,
-  StationNumber = 0x7,
-  FavouriteNumber = 0x8,
-  PlayQueue = 0x9,
-  ContentInfo = 0xa,
+export const EntertainmentGroupValues: {[key: string]: number} = {
+  [EntertainmentGroup.File]: 0x0,
+  [EntertainmentGroup.PlaylistName]: 0x1,
+  [EntertainmentGroup.GenreName]: 0x2,
+  [EntertainmentGroup.AlbumName]: 0x3,
+  [EntertainmentGroup.ArtistName]: 0x4,
+  [EntertainmentGroup.TrackName]: 0x5,
+  [EntertainmentGroup.StationName]: 0x6,
+  [EntertainmentGroup.StationNumber]: 0x7,
+  [EntertainmentGroup.FavouriteNumber]: 0x8,
+  [EntertainmentGroup.PlayQueue]: 0x9,
+  [EntertainmentGroup.ContentInfo]: 0xa,
 }
 
 /**
@@ -2456,20 +2455,20 @@ export enum EntertainmentChannel {
 /**
  * @category Enumerations
  */
-export enum EntertainmentChannelValues {
-  AllChannels = 0x0,
-  StereoFullRange = 0x1,
-  StereoFront = 0x2,
-  StereoBack = 0x3,
-  StereoSurround = 0x4,
-  Center = 0x5,
-  Subwoofer = 0x6,
-  FrontLeft = 0x7,
-  FrontRight = 0x8,
-  BackLeft = 0x9,
-  BackRight = 0xa,
-  SurroundLeft = 0xb,
-  SurroundRight = 0xc,
+export const EntertainmentChannelValues: {[key: string]: number} = {
+  [EntertainmentChannel.AllChannels]: 0x0,
+  [EntertainmentChannel.StereoFullRange]: 0x1,
+  [EntertainmentChannel.StereoFront]: 0x2,
+  [EntertainmentChannel.StereoBack]: 0x3,
+  [EntertainmentChannel.StereoSurround]: 0x4,
+  [EntertainmentChannel.Center]: 0x5,
+  [EntertainmentChannel.Subwoofer]: 0x6,
+  [EntertainmentChannel.FrontLeft]: 0x7,
+  [EntertainmentChannel.FrontRight]: 0x8,
+  [EntertainmentChannel.BackLeft]: 0x9,
+  [EntertainmentChannel.BackRight]: 0xa,
+  [EntertainmentChannel.SurroundLeft]: 0xb,
+  [EntertainmentChannel.SurroundRight]: 0xc,
 }
 
 /**
@@ -2492,18 +2491,18 @@ export enum EntertainmentEq {
 /**
  * @category Enumerations
  */
-export enum EntertainmentEqValues {
-  Flat = 0x0,
-  Rock = 0x1,
-  Hall = 0x2,
-  Jazz = 0x3,
-  Pop = 0x4,
-  Live = 0x5,
-  Classic = 0x6,
-  Vocal = 0x7,
-  Arena = 0x8,
-  Cinema = 0x9,
-  Custom = 0xa,
+export const EntertainmentEqValues: {[key: string]: number} = {
+  [EntertainmentEq.Flat]: 0x0,
+  [EntertainmentEq.Rock]: 0x1,
+  [EntertainmentEq.Hall]: 0x2,
+  [EntertainmentEq.Jazz]: 0x3,
+  [EntertainmentEq.Pop]: 0x4,
+  [EntertainmentEq.Live]: 0x5,
+  [EntertainmentEq.Classic]: 0x6,
+  [EntertainmentEq.Vocal]: 0x7,
+  [EntertainmentEq.Arena]: 0x8,
+  [EntertainmentEq.Cinema]: 0x9,
+  [EntertainmentEq.Custom]: 0xa,
 }
 
 /**
@@ -2520,12 +2519,12 @@ export enum EntertainmentFilter {
 /**
  * @category Enumerations
  */
-export enum EntertainmentFilterValues {
-  FullRange = 0x0,
-  HighPass = 0x1,
-  LowPass = 0x2,
-  BandPass = 0x3,
-  NotchFilter = 0x4,
+export const EntertainmentFilterValues: {[key: string]: number} = {
+  [EntertainmentFilter.FullRange]: 0x0,
+  [EntertainmentFilter.HighPass]: 0x1,
+  [EntertainmentFilter.LowPass]: 0x2,
+  [EntertainmentFilter.BandPass]: 0x3,
+  [EntertainmentFilter.NotchFilter]: 0x4,
 }
 
 /**
@@ -2541,11 +2540,11 @@ export enum AlertType {
 /**
  * @category Enumerations
  */
-export enum AlertTypeValues {
-  EmergencyAlarm = 0x1,
-  Alarm = 0x2,
-  Warning = 0x5,
-  Caution = 0x8,
+export const AlertTypeValues: {[key: string]: number} = {
+  [AlertType.EmergencyAlarm]: 0x1,
+  [AlertType.Alarm]: 0x2,
+  [AlertType.Warning]: 0x5,
+  [AlertType.Caution]: 0x8,
 }
 
 /**
@@ -2559,9 +2558,9 @@ export enum AlertCategory {
 /**
  * @category Enumerations
  */
-export enum AlertCategoryValues {
-  Navigational = 0x0,
-  Technical = 0x1,
+export const AlertCategoryValues: {[key: string]: number} = {
+  [AlertCategory.Navigational]: 0x0,
+  [AlertCategory.Technical]: 0x1,
 }
 
 /**
@@ -2577,11 +2576,11 @@ export enum AlertTriggerCondition {
 /**
  * @category Enumerations
  */
-export enum AlertTriggerConditionValues {
-  Manual = 0x0,
-  Auto = 0x1,
-  Test = 0x2,
-  Disabled = 0x3,
+export const AlertTriggerConditionValues: {[key: string]: number} = {
+  [AlertTriggerCondition.Manual]: 0x0,
+  [AlertTriggerCondition.Auto]: 0x1,
+  [AlertTriggerCondition.Test]: 0x2,
+  [AlertTriggerCondition.Disabled]: 0x3,
 }
 
 /**
@@ -2599,13 +2598,13 @@ export enum AlertThresholdStatus {
 /**
  * @category Enumerations
  */
-export enum AlertThresholdStatusValues {
-  Normal = 0x0,
-  ThresholdExceeded = 0x1,
-  ExtremeThresholdExceeded = 0x2,
-  LowThresholdExceeded = 0x3,
-  Acknowledged = 0x4,
-  AwaitingAcknowledge = 0x5,
+export const AlertThresholdStatusValues: {[key: string]: number} = {
+  [AlertThresholdStatus.Normal]: 0x0,
+  [AlertThresholdStatus.ThresholdExceeded]: 0x1,
+  [AlertThresholdStatus.ExtremeThresholdExceeded]: 0x2,
+  [AlertThresholdStatus.LowThresholdExceeded]: 0x3,
+  [AlertThresholdStatus.Acknowledged]: 0x4,
+  [AlertThresholdStatus.AwaitingAcknowledge]: 0x5,
 }
 
 /**
@@ -2623,13 +2622,13 @@ export enum AlertState {
 /**
  * @category Enumerations
  */
-export enum AlertStateValues {
-  Disabled = 0x0,
-  Normal = 0x1,
-  Active = 0x2,
-  Silenced = 0x3,
-  Acknowledged = 0x4,
-  AwaitingAcknowledge = 0x5,
+export const AlertStateValues: {[key: string]: number} = {
+  [AlertState.Disabled]: 0x0,
+  [AlertState.Normal]: 0x1,
+  [AlertState.Active]: 0x2,
+  [AlertState.Silenced]: 0x3,
+  [AlertState.Acknowledged]: 0x4,
+  [AlertState.AwaitingAcknowledge]: 0x5,
 }
 
 /**
@@ -2661,27 +2660,27 @@ export enum AlertLanguageId {
 /**
  * @category Enumerations
  */
-export enum AlertLanguageIdValues {
-  Englishus = 0x0,
-  Englishuk = 0x1,
-  Arabic = 0x2,
-  Chinesesimplified = 0x3,
-  Croatian = 0x4,
-  Danish = 0x5,
-  Dutch = 0x6,
-  Finnish = 0x7,
-  French = 0x8,
-  German = 0x9,
-  Greek = 0xa,
-  Italian = 0xb,
-  Japanese = 0xc,
-  Korean = 0xd,
-  Norwegian = 0xe,
-  Polish = 0xf,
-  Portuguese = 0x10,
-  Russian = 0x11,
-  Spanish = 0x12,
-  Swedish = 0x13,
+export const AlertLanguageIdValues: {[key: string]: number} = {
+  [AlertLanguageId.Englishus]: 0x0,
+  [AlertLanguageId.Englishuk]: 0x1,
+  [AlertLanguageId.Arabic]: 0x2,
+  [AlertLanguageId.Chinesesimplified]: 0x3,
+  [AlertLanguageId.Croatian]: 0x4,
+  [AlertLanguageId.Danish]: 0x5,
+  [AlertLanguageId.Dutch]: 0x6,
+  [AlertLanguageId.Finnish]: 0x7,
+  [AlertLanguageId.French]: 0x8,
+  [AlertLanguageId.German]: 0x9,
+  [AlertLanguageId.Greek]: 0xa,
+  [AlertLanguageId.Italian]: 0xb,
+  [AlertLanguageId.Japanese]: 0xc,
+  [AlertLanguageId.Korean]: 0xd,
+  [AlertLanguageId.Norwegian]: 0xe,
+  [AlertLanguageId.Polish]: 0xf,
+  [AlertLanguageId.Portuguese]: 0x10,
+  [AlertLanguageId.Russian]: 0x11,
+  [AlertLanguageId.Spanish]: 0x12,
+  [AlertLanguageId.Swedish]: 0x13,
 }
 
 /**
@@ -2697,11 +2696,11 @@ export enum AlertResponseCommand {
 /**
  * @category Enumerations
  */
-export enum AlertResponseCommandValues {
-  Acknowledge = 0x0,
-  TemporarySilence = 0x1,
-  TestCommandOff = 0x2,
-  TestCommandOn = 0x3,
+export const AlertResponseCommandValues: {[key: string]: number} = {
+  [AlertResponseCommand.Acknowledge]: 0x0,
+  [AlertResponseCommand.TemporarySilence]: 0x1,
+  [AlertResponseCommand.TestCommandOff]: 0x2,
+  [AlertResponseCommand.TestCommandOn]: 0x3,
 }
 
 /**
@@ -2724,18 +2723,18 @@ export enum ConverterState {
 /**
  * @category Enumerations
  */
-export enum ConverterStateValues {
-  Off = 0x0,
-  LowPowerMode = 0x1,
-  Fault = 0x2,
-  Bulk = 0x3,
-  Absorption = 0x4,
-  Float = 0x5,
-  Storage = 0x6,
-  Equalize = 0x7,
-  PassThru = 0x8,
-  Inverting = 0x9,
-  Assisting = 0xa,
+export const ConverterStateValues: {[key: string]: number} = {
+  [ConverterState.Off]: 0x0,
+  [ConverterState.LowPowerMode]: 0x1,
+  [ConverterState.Fault]: 0x2,
+  [ConverterState.Bulk]: 0x3,
+  [ConverterState.Absorption]: 0x4,
+  [ConverterState.Float]: 0x5,
+  [ConverterState.Storage]: 0x6,
+  [ConverterState.Equalize]: 0x7,
+  [ConverterState.PassThru]: 0x8,
+  [ConverterState.Inverting]: 0x9,
+  [ConverterState.Assisting]: 0xa,
 }
 
 /**
@@ -2751,11 +2750,11 @@ export enum ThrusterDirectionControl {
 /**
  * @category Enumerations
  */
-export enum ThrusterDirectionControlValues {
-  Off = 0x0,
-  Ready = 0x1,
-  ToPort = 0x2,
-  ToStarboard = 0x3,
+export const ThrusterDirectionControlValues: {[key: string]: number} = {
+  [ThrusterDirectionControl.Off]: 0x0,
+  [ThrusterDirectionControl.Ready]: 0x1,
+  [ThrusterDirectionControl.ToPort]: 0x2,
+  [ThrusterDirectionControl.ToStarboard]: 0x3,
 }
 
 /**
@@ -2770,10 +2769,10 @@ export enum ThrusterRetractControl {
 /**
  * @category Enumerations
  */
-export enum ThrusterRetractControlValues {
-  Off = 0x0,
-  Extend = 0x1,
-  Retract = 0x2,
+export const ThrusterRetractControlValues: {[key: string]: number} = {
+  [ThrusterRetractControl.Off]: 0x0,
+  [ThrusterRetractControl.Extend]: 0x1,
+  [ThrusterRetractControl.Retract]: 0x2,
 }
 
 /**
@@ -2790,12 +2789,12 @@ export enum ThrusterMotorType {
 /**
  * @category Enumerations
  */
-export enum ThrusterMotorTypeValues {
-  _12Vdc = 0x0,
-  _24Vdc = 0x1,
-  _48Vdc = 0x2,
-  _24Vac = 0x3,
-  Hydraulic = 0x4,
+export const ThrusterMotorTypeValues: {[key: string]: number} = {
+  [ThrusterMotorType._12Vdc]: 0x0,
+  [ThrusterMotorType._24Vdc]: 0x1,
+  [ThrusterMotorType._48Vdc]: 0x2,
+  [ThrusterMotorType._24Vac]: 0x3,
+  [ThrusterMotorType.Hydraulic]: 0x4,
 }
 
 /**
@@ -2810,10 +2809,10 @@ export enum BootState {
 /**
  * @category Enumerations
  */
-export enum BootStateValues {
-  InStartupMonitor = 0x0,
-  RunningBootloader = 0x1,
-  RunningApplication = 0x2,
+export const BootStateValues: {[key: string]: number} = {
+  [BootState.InStartupMonitor]: 0x0,
+  [BootState.RunningBootloader]: 0x1,
+  [BootState.RunningApplication]: 0x2,
 }
 
 /**
@@ -2828,10 +2827,10 @@ export enum AccessLevel {
 /**
  * @category Enumerations
  */
-export enum AccessLevelValues {
-  Locked = 0x0,
-  UnlockedLevel1 = 0x1,
-  UnlockedLevel2 = 0x2,
+export const AccessLevelValues: {[key: string]: number} = {
+  [AccessLevel.Locked]: 0x0,
+  [AccessLevel.UnlockedLevel1]: 0x1,
+  [AccessLevel.UnlockedLevel2]: 0x2,
 }
 
 /**
@@ -2848,12 +2847,12 @@ export enum TransmissionInterval {
 /**
  * @category Enumerations
  */
-export enum TransmissionIntervalValues {
-  Acknowledge = 0x0,
-  TransmitIntervalpriorityNotSupported = 0x1,
-  TransmitIntervalTooLow = 0x2,
-  AccessDenied = 0x3,
-  NotSupported = 0x4,
+export const TransmissionIntervalValues: {[key: string]: number} = {
+  [TransmissionInterval.Acknowledge]: 0x0,
+  [TransmissionInterval.TransmitIntervalpriorityNotSupported]: 0x1,
+  [TransmissionInterval.TransmitIntervalTooLow]: 0x2,
+  [TransmissionInterval.AccessDenied]: 0x3,
+  [TransmissionInterval.NotSupported]: 0x4,
 }
 
 /**
@@ -2872,14 +2871,14 @@ export enum ParameterField {
 /**
  * @category Enumerations
  */
-export enum ParameterFieldValues {
-  Acknowledge = 0x0,
-  InvalidParameterField = 0x1,
-  TemporaryError = 0x2,
-  ParameterOutOfRange = 0x3,
-  AccessDenied = 0x4,
-  NotSupported = 0x5,
-  ReadOrWriteNotSupported = 0x6,
+export const ParameterFieldValues: {[key: string]: number} = {
+  [ParameterField.Acknowledge]: 0x0,
+  [ParameterField.InvalidParameterField]: 0x1,
+  [ParameterField.TemporaryError]: 0x2,
+  [ParameterField.ParameterOutOfRange]: 0x3,
+  [ParameterField.AccessDenied]: 0x4,
+  [ParameterField.NotSupported]: 0x5,
+  [ParameterField.ReadOrWriteNotSupported]: 0x6,
 }
 
 /**
@@ -2893,9 +2892,9 @@ export enum PgnListFunction {
 /**
  * @category Enumerations
  */
-export enum PgnListFunctionValues {
-  TransmitPgnList = 0x0,
-  ReceivePgnList = 0x1,
+export const PgnListFunctionValues: {[key: string]: number} = {
+  [PgnListFunction.TransmitPgnList]: 0x0,
+  [PgnListFunction.ReceivePgnList]: 0x1,
 }
 
 /**
@@ -2911,11 +2910,11 @@ export enum FusionCommand {
 /**
  * @category Enumerations
  */
-export enum FusionCommandValues {
-  Play = 0x1,
-  Pause = 0x2,
-  Next = 0x4,
-  Prev = 0x6,
+export const FusionCommandValues: {[key: string]: number} = {
+  [FusionCommand.Play]: 0x1,
+  [FusionCommand.Pause]: 0x2,
+  [FusionCommand.Next]: 0x4,
+  [FusionCommand.Prev]: 0x6,
 }
 
 /**
@@ -2929,9 +2928,9 @@ export enum FusionSiriusCommand {
 /**
  * @category Enumerations
  */
-export enum FusionSiriusCommandValues {
-  Next = 0x1,
-  Prev = 0x2,
+export const FusionSiriusCommandValues: {[key: string]: number} = {
+  [FusionSiriusCommand.Next]: 0x1,
+  [FusionSiriusCommand.Prev]: 0x2,
 }
 
 /**
@@ -2945,9 +2944,9 @@ export enum FusionMuteCommand {
 /**
  * @category Enumerations
  */
-export enum FusionMuteCommandValues {
-  MuteOn = 0x1,
-  MuteOff = 0x2,
+export const FusionMuteCommandValues: {[key: string]: number} = {
+  [FusionMuteCommand.MuteOn]: 0x1,
+  [FusionMuteCommand.MuteOff]: 0x2,
 }
 
 /**
@@ -2969,17 +2968,17 @@ export enum SeatalkKeystroke {
 /**
  * @category Enumerations
  */
-export enum SeatalkKeystrokeValues {
-  Auto = 0x1,
-  Standby = 0x2,
-  Wind = 0x3,
-  _1 = 0x5,
-  _10 = 0x6,
-  Plus1 = 0x7,
-  Plus10 = 0x8,
-  _1And10 = 0x21,
-  Plus1AndPlus10 = 0x22,
-  Track = 0x23,
+export const SeatalkKeystrokeValues: {[key: string]: number} = {
+  [SeatalkKeystroke.Auto]: 0x1,
+  [SeatalkKeystroke.Standby]: 0x2,
+  [SeatalkKeystroke.Wind]: 0x3,
+  [SeatalkKeystroke._1]: 0x5,
+  [SeatalkKeystroke._10]: 0x6,
+  [SeatalkKeystroke.Plus1]: 0x7,
+  [SeatalkKeystroke.Plus10]: 0x8,
+  [SeatalkKeystroke._1And10]: 0x21,
+  [SeatalkKeystroke.Plus1AndPlus10]: 0x22,
+  [SeatalkKeystroke.Track]: 0x23,
 }
 
 /**
@@ -2993,9 +2992,9 @@ export enum SeatalkDeviceId {
 /**
  * @category Enumerations
  */
-export enum SeatalkDeviceIdValues {
-  S100 = 0x3,
-  CourseComputer = 0x5,
+export const SeatalkDeviceIdValues: {[key: string]: number} = {
+  [SeatalkDeviceId.S100]: 0x3,
+  [SeatalkDeviceId.CourseComputer]: 0x5,
 }
 
 /**
@@ -3018,18 +3017,18 @@ export enum SeatalkNetworkGroup {
 /**
  * @category Enumerations
  */
-export enum SeatalkNetworkGroupValues {
-  None = 0x0,
-  Helm1 = 0x1,
-  Helm2 = 0x2,
-  Cockpit = 0x3,
-  Flybridge = 0x4,
-  Mast = 0x5,
-  Group1 = 0x6,
-  Group2 = 0x7,
-  Group3 = 0x8,
-  Group4 = 0x9,
-  Group5 = 0xa,
+export const SeatalkNetworkGroupValues: {[key: string]: number} = {
+  [SeatalkNetworkGroup.None]: 0x0,
+  [SeatalkNetworkGroup.Helm1]: 0x1,
+  [SeatalkNetworkGroup.Helm2]: 0x2,
+  [SeatalkNetworkGroup.Cockpit]: 0x3,
+  [SeatalkNetworkGroup.Flybridge]: 0x4,
+  [SeatalkNetworkGroup.Mast]: 0x5,
+  [SeatalkNetworkGroup.Group1]: 0x6,
+  [SeatalkNetworkGroup.Group2]: 0x7,
+  [SeatalkNetworkGroup.Group3]: 0x8,
+  [SeatalkNetworkGroup.Group4]: 0x9,
+  [SeatalkNetworkGroup.Group5]: 0xa,
 }
 
 /**
@@ -3045,11 +3044,11 @@ export enum SeatalkDisplayColor {
 /**
  * @category Enumerations
  */
-export enum SeatalkDisplayColorValues {
-  Day1 = 0x0,
-  Day2 = 0x2,
-  Redblack = 0x3,
-  Inverse = 0x4,
+export const SeatalkDisplayColorValues: {[key: string]: number} = {
+  [SeatalkDisplayColor.Day1]: 0x0,
+  [SeatalkDisplayColor.Day2]: 0x2,
+  [SeatalkDisplayColor.Redblack]: 0x3,
+  [SeatalkDisplayColor.Inverse]: 0x4,
 }
 
 /**
@@ -3067,13 +3066,13 @@ export enum AirmarCalibrateFunction {
 /**
  * @category Enumerations
  */
-export enum AirmarCalibrateFunctionValues {
-  NormalcancelCalibration = 0x0,
-  EnterCalibrationMode = 0x1,
-  ResetCalibrationTo0 = 0x2,
-  Verify = 0x3,
-  ResetCompassToDefaults = 0x4,
-  ResetDampingToDefaults = 0x5,
+export const AirmarCalibrateFunctionValues: {[key: string]: number} = {
+  [AirmarCalibrateFunction.NormalcancelCalibration]: 0x0,
+  [AirmarCalibrateFunction.EnterCalibrationMode]: 0x1,
+  [AirmarCalibrateFunction.ResetCalibrationTo0]: 0x2,
+  [AirmarCalibrateFunction.Verify]: 0x3,
+  [AirmarCalibrateFunction.ResetCompassToDefaults]: 0x4,
+  [AirmarCalibrateFunction.ResetDampingToDefaults]: 0x5,
 }
 
 /**
@@ -3091,13 +3090,13 @@ export enum AirmarCalibrateStatus {
 /**
  * @category Enumerations
  */
-export enum AirmarCalibrateStatusValues {
-  Queried = 0x0,
-  Passed = 0x1,
-  FailedTimeout = 0x2,
-  FailedTiltError = 0x3,
-  FailedOther = 0x4,
-  InProgress = 0x5,
+export const AirmarCalibrateStatusValues: {[key: string]: number} = {
+  [AirmarCalibrateStatus.Queried]: 0x0,
+  [AirmarCalibrateStatus.Passed]: 0x1,
+  [AirmarCalibrateStatus.FailedTimeout]: 0x2,
+  [AirmarCalibrateStatus.FailedTiltError]: 0x3,
+  [AirmarCalibrateStatus.FailedOther]: 0x4,
+  [AirmarCalibrateStatus.InProgress]: 0x5,
 }
 
 /**
@@ -3112,10 +3111,10 @@ export enum AirmarTemperatureInstance {
 /**
  * @category Enumerations
  */
-export enum AirmarTemperatureInstanceValues {
-  DeviceSensor = 0x0,
-  OnboardWaterSensor = 0x1,
-  OptionalWaterSensor = 0x2,
+export const AirmarTemperatureInstanceValues: {[key: string]: number} = {
+  [AirmarTemperatureInstance.DeviceSensor]: 0x0,
+  [AirmarTemperatureInstance.OnboardWaterSensor]: 0x1,
+  [AirmarTemperatureInstance.OptionalWaterSensor]: 0x2,
 }
 
 /**
@@ -3129,9 +3128,9 @@ export enum AirmarFilter {
 /**
  * @category Enumerations
  */
-export enum AirmarFilterValues {
-  NoFilter = 0x0,
-  BasicIirFilter = 0x1,
+export const AirmarFilterValues: {[key: string]: number} = {
+  [AirmarFilter.NoFilter]: 0x0,
+  [AirmarFilter.BasicIirFilter]: 0x1,
 }
 
 /**
@@ -3146,10 +3145,10 @@ export enum ControllerState {
 /**
  * @category Enumerations
  */
-export enum ControllerStateValues {
-  ErrorActive = 0x0,
-  ErrorPassive = 0x1,
-  BusOff = 0x2,
+export const ControllerStateValues: {[key: string]: number} = {
+  [ControllerState.ErrorActive]: 0x0,
+  [ControllerState.ErrorPassive]: 0x1,
+  [ControllerState.BusOff]: 0x2,
 }
 
 /**
@@ -3163,9 +3162,9 @@ export enum EquipmentStatus {
 /**
  * @category Enumerations
  */
-export enum EquipmentStatusValues {
-  Operational = 0x0,
-  Fault = 0x1,
+export const EquipmentStatusValues: {[key: string]: number} = {
+  [EquipmentStatus.Operational]: 0x0,
+  [EquipmentStatus.Fault]: 0x1,
 }
 
 /**
@@ -3180,10 +3179,10 @@ export enum MobStatus {
 /**
  * @category Enumerations
  */
-export enum MobStatusValues {
-  MobEmitterActivated = 0x0,
-  ManualOnBoardMobButtonActivation = 0x1,
-  TestMode = 0x2,
+export const MobStatusValues: {[key: string]: number} = {
+  [MobStatus.MobEmitterActivated]: 0x0,
+  [MobStatus.ManualOnBoardMobButtonActivation]: 0x1,
+  [MobStatus.TestMode]: 0x2,
 }
 
 /**
@@ -3197,9 +3196,9 @@ export enum LowBattery {
 /**
  * @category Enumerations
  */
-export enum LowBatteryValues {
-  Good = 0x0,
-  Low = 0x1,
+export const LowBatteryValues: {[key: string]: number} = {
+  [LowBattery.Good]: 0x0,
+  [LowBattery.Low]: 0x1,
 }
 
 /**
@@ -3214,10 +3213,10 @@ export enum TurnMode {
 /**
  * @category Enumerations
  */
-export enum TurnModeValues {
-  RudderLimitControlled = 0x0,
-  TurnRateControlled = 0x1,
-  RadiusControlled = 0x2,
+export const TurnModeValues: {[key: string]: number} = {
+  [TurnMode.RudderLimitControlled]: 0x0,
+  [TurnMode.TurnRateControlled]: 0x1,
+  [TurnMode.RadiusControlled]: 0x2,
 }
 
 /**
@@ -3233,11 +3232,11 @@ export enum Acceptability {
 /**
  * @category Enumerations
  */
-export enum AcceptabilityValues {
-  BadLevel = 0x0,
-  BadFrequency = 0x1,
-  BeingQualified = 0x2,
-  Good = 0x3,
+export const AcceptabilityValues: {[key: string]: number} = {
+  [Acceptability.BadLevel]: 0x0,
+  [Acceptability.BadFrequency]: 0x1,
+  [Acceptability.BeingQualified]: 0x2,
+  [Acceptability.Good]: 0x3,
 }
 
 /**
@@ -3252,10 +3251,10 @@ export enum Line {
 /**
  * @category Enumerations
  */
-export enum LineValues {
-  Line1 = 0x0,
-  Line2 = 0x1,
-  Line3 = 0x2,
+export const LineValues: {[key: string]: number} = {
+  [Line.Line1]: 0x0,
+  [Line.Line2]: 0x1,
+  [Line.Line3]: 0x2,
 }
 
 /**
@@ -3269,9 +3268,9 @@ export enum Waveform {
 /**
  * @category Enumerations
  */
-export enum WaveformValues {
-  SineWave = 0x0,
-  ModifiedSineWave = 0x1,
+export const WaveformValues: {[key: string]: number} = {
+  [Waveform.SineWave]: 0x0,
+  [Waveform.ModifiedSineWave]: 0x1,
 }
 
 /**
@@ -3289,13 +3288,13 @@ export enum TankType {
 /**
  * @category Enumerations
  */
-export enum TankTypeValues {
-  Fuel = 0x0,
-  Water = 0x1,
-  GrayWater = 0x2,
-  LiveWell = 0x3,
-  Oil = 0x4,
-  BlackWater = 0x5,
+export const TankTypeValues: {[key: string]: number} = {
+  [TankType.Fuel]: 0x0,
+  [TankType.Water]: 0x1,
+  [TankType.GrayWater]: 0x2,
+  [TankType.LiveWell]: 0x3,
+  [TankType.Oil]: 0x4,
+  [TankType.BlackWater]: 0x5,
 }
 
 /**
@@ -3312,12 +3311,12 @@ export enum DcSource {
 /**
  * @category Enumerations
  */
-export enum DcSourceValues {
-  Battery = 0x0,
-  Alternator = 0x1,
-  Convertor = 0x2,
-  SolarCell = 0x3,
-  WindGenerator = 0x4,
+export const DcSourceValues: {[key: string]: number} = {
+  [DcSource.Battery]: 0x0,
+  [DcSource.Alternator]: 0x1,
+  [DcSource.Convertor]: 0x2,
+  [DcSource.SolarCell]: 0x3,
+  [DcSource.WindGenerator]: 0x4,
 }
 
 /**
@@ -3339,17 +3338,17 @@ export enum ChargerState {
 /**
  * @category Enumerations
  */
-export enum ChargerStateValues {
-  NotCharging = 0x0,
-  Bulk = 0x1,
-  Absorption = 0x2,
-  Overcharge = 0x3,
-  Equalise = 0x4,
-  Float = 0x5,
-  NoFloat = 0x6,
-  ConstantVi = 0x7,
-  Disabled = 0x8,
-  Fault = 0x9,
+export const ChargerStateValues: {[key: string]: number} = {
+  [ChargerState.NotCharging]: 0x0,
+  [ChargerState.Bulk]: 0x1,
+  [ChargerState.Absorption]: 0x2,
+  [ChargerState.Overcharge]: 0x3,
+  [ChargerState.Equalise]: 0x4,
+  [ChargerState.Float]: 0x5,
+  [ChargerState.NoFloat]: 0x6,
+  [ChargerState.ConstantVi]: 0x7,
+  [ChargerState.Disabled]: 0x8,
+  [ChargerState.Fault]: 0x9,
 }
 
 /**
@@ -3365,11 +3364,11 @@ export enum ChargingAlgorithm {
 /**
  * @category Enumerations
  */
-export enum ChargingAlgorithmValues {
-  Trickle = 0x0,
-  ConstantVoltageConstantCurrent = 0x1,
-  _2StagenoFloat = 0x2,
-  _3Stage = 0x3,
+export const ChargingAlgorithmValues: {[key: string]: number} = {
+  [ChargingAlgorithm.Trickle]: 0x0,
+  [ChargingAlgorithm.ConstantVoltageConstantCurrent]: 0x1,
+  [ChargingAlgorithm._2StagenoFloat]: 0x2,
+  [ChargingAlgorithm._3Stage]: 0x3,
 }
 
 /**
@@ -3385,11 +3384,11 @@ export enum ChargerMode {
 /**
  * @category Enumerations
  */
-export enum ChargerModeValues {
-  Standalone = 0x0,
-  Primary = 0x1,
-  Secondary = 0x2,
-  Echo = 0x3,
+export const ChargerModeValues: {[key: string]: number} = {
+  [ChargerMode.Standalone]: 0x0,
+  [ChargerMode.Primary]: 0x1,
+  [ChargerMode.Secondary]: 0x2,
+  [ChargerMode.Echo]: 0x3,
 }
 
 /**
@@ -3406,12 +3405,12 @@ export enum InverterState {
 /**
  * @category Enumerations
  */
-export enum InverterStateValues {
-  Invert = 0x0,
-  AcPassthru = 0x1,
-  LoadSense = 0x2,
-  Fault = 0x3,
-  Disabled = 0x4,
+export const InverterStateValues: {[key: string]: number} = {
+  [InverterState.Invert]: 0x0,
+  [InverterState.AcPassthru]: 0x1,
+  [InverterState.LoadSense]: 0x2,
+  [InverterState.Fault]: 0x3,
+  [InverterState.Disabled]: 0x4,
 }
 
 /**
@@ -3426,10 +3425,10 @@ export enum BatteryType {
 /**
  * @category Enumerations
  */
-export enum BatteryTypeValues {
-  Flooded = 0x0,
-  Gel = 0x1,
-  Agm = 0x2,
+export const BatteryTypeValues: {[key: string]: number} = {
+  [BatteryType.Flooded]: 0x0,
+  [BatteryType.Gel]: 0x1,
+  [BatteryType.Agm]: 0x2,
 }
 
 /**
@@ -3448,14 +3447,14 @@ export enum BatteryVoltage {
 /**
  * @category Enumerations
  */
-export enum BatteryVoltageValues {
-  _6V = 0x0,
-  _12V = 0x1,
-  _24V = 0x2,
-  _32V = 0x3,
-  _36V = 0x4,
-  _42V = 0x5,
-  _48V = 0x6,
+export const BatteryVoltageValues: {[key: string]: number} = {
+  [BatteryVoltage._6V]: 0x0,
+  [BatteryVoltage._12V]: 0x1,
+  [BatteryVoltage._24V]: 0x2,
+  [BatteryVoltage._32V]: 0x3,
+  [BatteryVoltage._36V]: 0x4,
+  [BatteryVoltage._42V]: 0x5,
+  [BatteryVoltage._48V]: 0x6,
 }
 
 /**
@@ -3472,12 +3471,12 @@ export enum BatteryChemistry {
 /**
  * @category Enumerations
  */
-export enum BatteryChemistryValues {
-  Pblead = 0x0,
-  Li = 0x1,
-  NiCd = 0x2,
-  ZnO = 0x3,
-  NiMh = 0x4,
+export const BatteryChemistryValues: {[key: string]: number} = {
+  [BatteryChemistry.Pblead]: 0x0,
+  [BatteryChemistry.Li]: 0x1,
+  [BatteryChemistry.NiCd]: 0x2,
+  [BatteryChemistry.ZnO]: 0x3,
+  [BatteryChemistry.NiMh]: 0x4,
 }
 
 /**
@@ -3492,10 +3491,10 @@ export enum GoodWarningError {
 /**
  * @category Enumerations
  */
-export enum GoodWarningErrorValues {
-  Good = 0x0,
-  Warning = 0x1,
-  Error = 0x2,
+export const GoodWarningErrorValues: {[key: string]: number} = {
+  [GoodWarningError.Good]: 0x0,
+  [GoodWarningError.Warning]: 0x1,
+  [GoodWarningError.Error]: 0x2,
 }
 
 /**
@@ -3511,11 +3510,11 @@ export enum Tracking {
 /**
  * @category Enumerations
  */
-export enum TrackingValues {
-  Cancelled = 0x0,
-  Acquiring = 0x1,
-  Tracking = 0x2,
-  Lost = 0x3,
+export const TrackingValues: {[key: string]: number} = {
+  [Tracking.Cancelled]: 0x0,
+  [Tracking.Acquiring]: 0x1,
+  [Tracking.Tracking]: 0x2,
+  [Tracking.Lost]: 0x3,
 }
 
 /**
@@ -3529,9 +3528,9 @@ export enum TargetAcquisition {
 /**
  * @category Enumerations
  */
-export enum TargetAcquisitionValues {
-  Manual = 0x0,
-  Automatic = 0x1,
+export const TargetAcquisitionValues: {[key: string]: number} = {
+  [TargetAcquisition.Manual]: 0x0,
+  [TargetAcquisition.Automatic]: 0x1,
 }
 
 /**
@@ -3546,10 +3545,10 @@ export enum WindlassDirection {
 /**
  * @category Enumerations
  */
-export enum WindlassDirectionValues {
-  Off = 0x0,
-  Down = 0x1,
-  Up = 0x2,
+export const WindlassDirectionValues: {[key: string]: number} = {
+  [WindlassDirection.Off]: 0x0,
+  [WindlassDirection.Down]: 0x1,
+  [WindlassDirection.Up]: 0x2,
 }
 
 /**
@@ -3564,10 +3563,10 @@ export enum SpeedType {
 /**
  * @category Enumerations
  */
-export enum SpeedTypeValues {
-  SingleSpeed = 0x0,
-  DualSpeed = 0x1,
-  ProportionalSpeed = 0x2,
+export const SpeedTypeValues: {[key: string]: number} = {
+  [SpeedType.SingleSpeed]: 0x0,
+  [SpeedType.DualSpeed]: 0x1,
+  [SpeedType.ProportionalSpeed]: 0x2,
 }
 
 /**
@@ -3582,10 +3581,10 @@ export enum WindlassMotion {
 /**
  * @category Enumerations
  */
-export enum WindlassMotionValues {
-  WindlassStopped = 0x0,
-  DeploymentOccurring = 0x1,
-  RetrievalOccurring = 0x2,
+export const WindlassMotionValues: {[key: string]: number} = {
+  [WindlassMotion.WindlassStopped]: 0x0,
+  [WindlassMotion.DeploymentOccurring]: 0x1,
+  [WindlassMotion.RetrievalOccurring]: 0x2,
 }
 
 /**
@@ -3599,9 +3598,9 @@ export enum RodeType {
 /**
  * @category Enumerations
  */
-export enum RodeTypeValues {
-  ChainPresentlyDetected = 0x0,
-  RopePresentlyDetected = 0x1,
+export const RodeTypeValues: {[key: string]: number} = {
+  [RodeType.ChainPresentlyDetected]: 0x0,
+  [RodeType.RopePresentlyDetected]: 0x1,
 }
 
 /**
@@ -3615,9 +3614,9 @@ export enum DockingStatus {
 /**
  * @category Enumerations
  */
-export enum DockingStatusValues {
-  NotDocked = 0x0,
-  FullyDocked = 0x1,
+export const DockingStatusValues: {[key: string]: number} = {
+  [DockingStatus.NotDocked]: 0x0,
+  [DockingStatus.FullyDocked]: 0x1,
 }
 
 /**
@@ -3631,9 +3630,9 @@ export enum AisType {
 /**
  * @category Enumerations
  */
-export enum AisTypeValues {
-  Sotdma = 0x0,
-  Cs = 0x1,
+export const AisTypeValues: {[key: string]: number} = {
+  [AisType.Sotdma]: 0x0,
+  [AisType.Cs]: 0x1,
 }
 
 /**
@@ -3647,9 +3646,9 @@ export enum AisBand {
 /**
  * @category Enumerations
  */
-export enum AisBandValues {
-  Top525KHzOfMarineBand = 0x0,
-  EntireMarineBand = 0x1,
+export const AisBandValues: {[key: string]: number} = {
+  [AisBand.Top525KHzOfMarineBand]: 0x0,
+  [AisBand.EntireMarineBand]: 0x1,
 }
 
 /**
@@ -3663,9 +3662,9 @@ export enum AisMode {
 /**
  * @category Enumerations
  */
-export enum AisModeValues {
-  Autonomous = 0x0,
-  Assigned = 0x1,
+export const AisModeValues: {[key: string]: number} = {
+  [AisMode.Autonomous]: 0x0,
+  [AisMode.Assigned]: 0x1,
 }
 
 /**
@@ -3679,9 +3678,9 @@ export enum AisCommunicationState {
 /**
  * @category Enumerations
  */
-export enum AisCommunicationStateValues {
-  Sotdma = 0x0,
-  Itdma = 0x1,
+export const AisCommunicationStateValues: {[key: string]: number} = {
+  [AisCommunicationState.Sotdma]: 0x0,
+  [AisCommunicationState.Itdma]: 0x1,
 }
 
 /**
@@ -3695,9 +3694,9 @@ export enum Available {
 /**
  * @category Enumerations
  */
-export enum AvailableValues {
-  Available = 0x0,
-  NotAvailable = 0x1,
+export const AvailableValues: {[key: string]: number} = {
+  [Available.Available]: 0x0,
+  [Available.NotAvailable]: 0x1,
 }
 
 /**
@@ -3711,9 +3710,9 @@ export enum BearingMode {
 /**
  * @category Enumerations
  */
-export enum BearingModeValues {
-  GreatCircle = 0x0,
-  Rhumbline = 0x1,
+export const BearingModeValues: {[key: string]: number} = {
+  [BearingMode.GreatCircle]: 0x0,
+  [BearingMode.Rhumbline]: 0x1,
 }
 
 /**
@@ -3730,12 +3729,12 @@ export enum MarkType {
 /**
  * @category Enumerations
  */
-export enum MarkTypeValues {
-  Collision = 0x0,
-  TurningPoint = 0x1,
-  Reference = 0x2,
-  Wheelover = 0x3,
-  Waypoint = 0x4,
+export const MarkTypeValues: {[key: string]: number} = {
+  [MarkType.Collision]: 0x0,
+  [MarkType.TurningPoint]: 0x1,
+  [MarkType.Reference]: 0x2,
+  [MarkType.Wheelover]: 0x3,
+  [MarkType.Waypoint]: 0x4,
 }
 
 /**
@@ -3751,11 +3750,11 @@ export enum GnssMode {
 /**
  * @category Enumerations
  */
-export enum GnssModeValues {
-  _1D = 0x0,
-  _2D = 0x1,
-  _3D = 0x2,
-  Auto = 0x3,
+export const GnssModeValues: {[key: string]: number} = {
+  [GnssMode._1D]: 0x0,
+  [GnssMode._2D]: 0x1,
+  [GnssMode._3D]: 0x2,
+  [GnssMode.Auto]: 0x3,
 }
 
 /**
@@ -3769,9 +3768,9 @@ export enum RangeResidualMode {
 /**
  * @category Enumerations
  */
-export enum RangeResidualModeValues {
-  RangeResidualsWereUsedToCalculateData = 0x0,
-  RangeResidualsWereCalculatedAfterThePosition = 0x1,
+export const RangeResidualModeValues: {[key: string]: number} = {
+  [RangeResidualMode.RangeResidualsWereUsedToCalculateData]: 0x0,
+  [RangeResidualMode.RangeResidualsWereCalculatedAfterThePosition]: 0x1,
 }
 
 /**
@@ -3786,10 +3785,10 @@ export enum DgnssMode {
 /**
  * @category Enumerations
  */
-export enum DgnssModeValues {
-  None = 0x0,
-  SbasIfAvailable = 0x1,
-  Sbas = 0x3,
+export const DgnssModeValues: {[key: string]: number} = {
+  [DgnssMode.None]: 0x0,
+  [DgnssMode.SbasIfAvailable]: 0x1,
+  [DgnssMode.Sbas]: 0x3,
 }
 
 /**
@@ -3807,13 +3806,13 @@ export enum SatelliteStatus {
 /**
  * @category Enumerations
  */
-export enum SatelliteStatusValues {
-  NotTracked = 0x0,
-  Tracked = 0x1,
-  Used = 0x2,
-  NotTrackedPlusdiff = 0x3,
-  TrackedPlusdiff = 0x4,
-  UsedPlusdiff = 0x5,
+export const SatelliteStatusValues: {[key: string]: number} = {
+  [SatelliteStatus.NotTracked]: 0x0,
+  [SatelliteStatus.Tracked]: 0x1,
+  [SatelliteStatus.Used]: 0x2,
+  [SatelliteStatus.NotTrackedPlusdiff]: 0x3,
+  [SatelliteStatus.TrackedPlusdiff]: 0x4,
+  [SatelliteStatus.UsedPlusdiff]: 0x5,
 }
 
 /**
@@ -3829,11 +3828,11 @@ export enum AisVersion {
 /**
  * @category Enumerations
  */
-export enum AisVersionValues {
-  ItuRM13711 = 0x0,
-  ItuRM13713 = 0x1,
-  ItuRM13715 = 0x2,
-  ItuRM1371FutureEdition = 0x3,
+export const AisVersionValues: {[key: string]: number} = {
+  [AisVersion.ItuRM13711]: 0x0,
+  [AisVersion.ItuRM13713]: 0x1,
+  [AisVersion.ItuRM13715]: 0x2,
+  [AisVersion.ItuRM1371FutureEdition]: 0x3,
 }
 
 /**
@@ -3847,9 +3846,9 @@ export enum Tide {
 /**
  * @category Enumerations
  */
-export enum TideValues {
-  Falling = 0x0,
-  Rising = 0x1,
+export const TideValues: {[key: string]: number} = {
+  [Tide.Falling]: 0x0,
+  [Tide.Rising]: 0x1,
 }
 
 /**
@@ -3869,15 +3868,15 @@ export enum WatermakerState {
 /**
  * @category Enumerations
  */
-export enum WatermakerStateValues {
-  Stopped = 0x0,
-  Starting = 0x1,
-  Running = 0x2,
-  Stopping = 0x3,
-  Flushing = 0x4,
-  Rinsing = 0x5,
-  Initiating = 0x6,
-  Manual = 0x7,
+export const WatermakerStateValues: {[key: string]: number} = {
+  [WatermakerState.Stopped]: 0x0,
+  [WatermakerState.Starting]: 0x1,
+  [WatermakerState.Running]: 0x2,
+  [WatermakerState.Stopping]: 0x3,
+  [WatermakerState.Flushing]: 0x4,
+  [WatermakerState.Rinsing]: 0x5,
+  [WatermakerState.Initiating]: 0x6,
+  [WatermakerState.Manual]: 0x7,
 }
 
 /**
@@ -3893,11 +3892,11 @@ export enum EntertainmentIdType {
 /**
  * @category Enumerations
  */
-export enum EntertainmentIdTypeValues {
-  Group = 0x0,
-  File = 0x1,
-  EncryptedGroup = 0x2,
-  EncryptedFile = 0x3,
+export const EntertainmentIdTypeValues: {[key: string]: number} = {
+  [EntertainmentIdType.Group]: 0x0,
+  [EntertainmentIdType.File]: 0x1,
+  [EntertainmentIdType.EncryptedGroup]: 0x2,
+  [EntertainmentIdType.EncryptedFile]: 0x3,
 }
 
 /**
@@ -3912,10 +3911,10 @@ export enum EntertainmentDefaultSettings {
 /**
  * @category Enumerations
  */
-export enum EntertainmentDefaultSettingsValues {
-  SaveCurrentSettingsAsUserDefault = 0x0,
-  LoadUserDefault = 0x1,
-  LoadManufacturerDefault = 0x2,
+export const EntertainmentDefaultSettingsValues: {[key: string]: number} = {
+  [EntertainmentDefaultSettings.SaveCurrentSettingsAsUserDefault]: 0x0,
+  [EntertainmentDefaultSettings.LoadUserDefault]: 0x1,
+  [EntertainmentDefaultSettings.LoadManufacturerDefault]: 0x2,
 }
 
 /**
@@ -3935,15 +3934,15 @@ export enum EntertainmentRegions {
 /**
  * @category Enumerations
  */
-export enum EntertainmentRegionsValues {
-  Usa = 0x0,
-  Europe = 0x1,
-  Asia = 0x2,
-  MiddleEast = 0x3,
-  LatinAmerica = 0x4,
-  Australia = 0x5,
-  Russia = 0x6,
-  Japan = 0x7,
+export const EntertainmentRegionsValues: {[key: string]: number} = {
+  [EntertainmentRegions.Usa]: 0x0,
+  [EntertainmentRegions.Europe]: 0x1,
+  [EntertainmentRegions.Asia]: 0x2,
+  [EntertainmentRegions.MiddleEast]: 0x3,
+  [EntertainmentRegions.LatinAmerica]: 0x4,
+  [EntertainmentRegions.Australia]: 0x5,
+  [EntertainmentRegions.Russia]: 0x6,
+  [EntertainmentRegions.Japan]: 0x7,
 }
 
 /**
@@ -3957,9 +3956,9 @@ export enum VideoProtocols {
 /**
  * @category Enumerations
  */
-export enum VideoProtocolsValues {
-  Pal = 0x0,
-  Ntsc = 0x1,
+export const VideoProtocolsValues: {[key: string]: number} = {
+  [VideoProtocols.Pal]: 0x0,
+  [VideoProtocols.Ntsc]: 0x1,
 }
 
 /**
@@ -3973,9 +3972,9 @@ export enum EntertainmentVolumeControl {
 /**
  * @category Enumerations
  */
-export enum EntertainmentVolumeControlValues {
-  Up = 0x0,
-  Down = 0x1,
+export const EntertainmentVolumeControlValues: {[key: string]: number} = {
+  [EntertainmentVolumeControl.Up]: 0x0,
+  [EntertainmentVolumeControl.Down]: 0x1,
 }
 
 /**
@@ -3990,10 +3989,10 @@ export enum BluetoothStatus {
 /**
  * @category Enumerations
  */
-export enum BluetoothStatusValues {
-  Connected = 0x0,
-  NotConnected = 0x1,
-  NotPaired = 0x2,
+export const BluetoothStatusValues: {[key: string]: number} = {
+  [BluetoothStatus.Connected]: 0x0,
+  [BluetoothStatus.NotConnected]: 0x1,
+  [BluetoothStatus.NotPaired]: 0x2,
 }
 
 /**
@@ -4009,11 +4008,11 @@ export enum BluetoothSourceStatus {
 /**
  * @category Enumerations
  */
-export enum BluetoothSourceStatusValues {
-  Reserved = 0x0,
-  Connected = 0x1,
-  Connecting = 0x2,
-  NotConnected = 0x3,
+export const BluetoothSourceStatusValues: {[key: string]: number} = {
+  [BluetoothSourceStatus.Reserved]: 0x0,
+  [BluetoothSourceStatus.Connected]: 0x1,
+  [BluetoothSourceStatus.Connecting]: 0x2,
+  [BluetoothSourceStatus.NotConnected]: 0x3,
 }
 
 /**
@@ -4043,25 +4042,25 @@ export enum SonichubCommand {
 /**
  * @category Enumerations
  */
-export enum SonichubCommandValues {
-  Init2 = 0x1,
-  AmRadio = 0x4,
-  ZoneInfo = 0x5,
-  Source = 0x6,
-  SourceList = 0x8,
-  Control = 0x9,
-  FmRadio = 0xc,
-  Playlist = 0xd,
-  Track = 0xe,
-  Artist = 0xf,
-  Album = 0x10,
-  MenuItem = 0x13,
-  Zones = 0x14,
-  MaxVolume = 0x17,
-  Volume = 0x18,
-  Init1 = 0x19,
-  Position = 0x30,
-  Init3 = 0x32,
+export const SonichubCommandValues: {[key: string]: number} = {
+  [SonichubCommand.Init2]: 0x1,
+  [SonichubCommand.AmRadio]: 0x4,
+  [SonichubCommand.ZoneInfo]: 0x5,
+  [SonichubCommand.Source]: 0x6,
+  [SonichubCommand.SourceList]: 0x8,
+  [SonichubCommand.Control]: 0x9,
+  [SonichubCommand.FmRadio]: 0xc,
+  [SonichubCommand.Playlist]: 0xd,
+  [SonichubCommand.Track]: 0xe,
+  [SonichubCommand.Artist]: 0xf,
+  [SonichubCommand.Album]: 0x10,
+  [SonichubCommand.MenuItem]: 0x13,
+  [SonichubCommand.Zones]: 0x14,
+  [SonichubCommand.MaxVolume]: 0x17,
+  [SonichubCommand.Volume]: 0x18,
+  [SonichubCommand.Init1]: 0x19,
+  [SonichubCommand.Position]: 0x30,
+  [SonichubCommand.Init3]: 0x32,
 }
 
 /**
@@ -4077,11 +4076,11 @@ export enum SimnetApMode {
 /**
  * @category Enumerations
  */
-export enum SimnetApModeValues {
-  Heading = 0x2,
-  Wind = 0x3,
-  Nav = 0xa,
-  NoDrift = 0xb,
+export const SimnetApModeValues: {[key: string]: number} = {
+  [SimnetApMode.Heading]: 0x2,
+  [SimnetApMode.Wind]: 0x3,
+  [SimnetApMode.Nav]: 0xa,
+  [SimnetApMode.NoDrift]: 0xb,
 }
 
 /**
@@ -4096,10 +4095,10 @@ export enum SimnetDeviceModel {
 /**
  * @category Enumerations
  */
-export enum SimnetDeviceModelValues {
-  Ac = 0x0,
-  OtherDevice = 0x1,
-  Nac = 0x64,
+export const SimnetDeviceModelValues: {[key: string]: number} = {
+  [SimnetDeviceModel.Ac]: 0x0,
+  [SimnetDeviceModel.OtherDevice]: 0x1,
+  [SimnetDeviceModel.Nac]: 0x64,
 }
 
 /**
@@ -4116,12 +4115,12 @@ export enum SimnetDeviceReport {
 /**
  * @category Enumerations
  */
-export enum SimnetDeviceReportValues {
-  Status = 0x2,
-  SendStatus = 0x3,
-  Mode = 0xa,
-  SendMode = 0xb,
-  SailingProcessorStatus = 0x17,
+export const SimnetDeviceReportValues: {[key: string]: number} = {
+  [SimnetDeviceReport.Status]: 0x2,
+  [SimnetDeviceReport.SendStatus]: 0x3,
+  [SimnetDeviceReport.Mode]: 0xa,
+  [SimnetDeviceReport.SendMode]: 0xb,
+  [SimnetDeviceReport.SailingProcessorStatus]: 0x17,
 }
 
 /**
@@ -4135,9 +4134,9 @@ export enum SimnetApStatus {
 /**
  * @category Enumerations
  */
-export enum SimnetApStatusValues {
-  Manual = 0x2,
-  Automatic = 0x10,
+export const SimnetApStatusValues: {[key: string]: number} = {
+  [SimnetApStatus.Manual]: 0x2,
+  [SimnetApStatus.Automatic]: 0x10,
 }
 
 /**
@@ -4150,8 +4149,8 @@ export enum SimnetCommand {
 /**
  * @category Enumerations
  */
-export enum SimnetCommandValues {
-  Text = 0x32,
+export const SimnetCommandValues: {[key: string]: number} = {
+  [SimnetCommand.Text]: 0x32,
 }
 
 /**
@@ -4166,10 +4165,10 @@ export enum SimnetEventCommand {
 /**
  * @category Enumerations
  */
-export enum SimnetEventCommandValues {
-  Alarm = 0x1,
-  ApCommand = 0x2,
-  Autopilot = 0xff,
+export const SimnetEventCommandValues: {[key: string]: number} = {
+  [SimnetEventCommand.Alarm]: 0x1,
+  [SimnetEventCommand.ApCommand]: 0x2,
+  [SimnetEventCommand.Autopilot]: 0xff,
 }
 
 /**
@@ -4183,9 +4182,9 @@ export enum SimnetNightMode {
 /**
  * @category Enumerations
  */
-export enum SimnetNightModeValues {
-  Day = 0x2,
-  Night = 0x4,
+export const SimnetNightModeValues: {[key: string]: number} = {
+  [SimnetNightMode.Day]: 0x2,
+  [SimnetNightMode.Night]: 0x4,
 }
 
 /**
@@ -4202,12 +4201,12 @@ export enum SimnetNightModeColor {
 /**
  * @category Enumerations
  */
-export enum SimnetNightModeColorValues {
-  Red = 0x0,
-  Green = 0x1,
-  Blue = 0x2,
-  White = 0x3,
-  Magenta = 0x4,
+export const SimnetNightModeColorValues: {[key: string]: number} = {
+  [SimnetNightModeColor.Red]: 0x0,
+  [SimnetNightModeColor.Green]: 0x1,
+  [SimnetNightModeColor.Blue]: 0x2,
+  [SimnetNightModeColor.White]: 0x3,
+  [SimnetNightModeColor.Magenta]: 0x4,
 }
 
 /**
@@ -4226,14 +4225,14 @@ export enum SimnetDisplayGroup {
 /**
  * @category Enumerations
  */
-export enum SimnetDisplayGroupValues {
-  Default = 0x1,
-  Group1 = 0x2,
-  Group2 = 0x3,
-  Group3 = 0x4,
-  Group4 = 0x5,
-  Group5 = 0x6,
-  Group6 = 0x7,
+export const SimnetDisplayGroupValues: {[key: string]: number} = {
+  [SimnetDisplayGroup.Default]: 0x1,
+  [SimnetDisplayGroup.Group1]: 0x2,
+  [SimnetDisplayGroup.Group2]: 0x3,
+  [SimnetDisplayGroup.Group3]: 0x4,
+  [SimnetDisplayGroup.Group4]: 0x5,
+  [SimnetDisplayGroup.Group5]: 0x6,
+  [SimnetDisplayGroup.Group6]: 0x7,
 }
 
 /**
@@ -4247,9 +4246,9 @@ export enum SimnetHourDisplay {
 /**
  * @category Enumerations
  */
-export enum SimnetHourDisplayValues {
-  _24Hour = 0x0,
-  _12Hour = 0x1,
+export const SimnetHourDisplayValues: {[key: string]: number} = {
+  [SimnetHourDisplay._24Hour]: 0x0,
+  [SimnetHourDisplay._12Hour]: 0x1,
 }
 
 /**
@@ -4263,9 +4262,9 @@ export enum SimnetTimeFormat {
 /**
  * @category Enumerations
  */
-export enum SimnetTimeFormatValues {
-  Mmddyyyy = 0x1,
-  Ddmmyyyy = 0x2,
+export const SimnetTimeFormatValues: {[key: string]: number} = {
+  [SimnetTimeFormat.Mmddyyyy]: 0x1,
+  [SimnetTimeFormat.Ddmmyyyy]: 0x2,
 }
 
 /**
@@ -4289,19 +4288,19 @@ export enum SimnetBacklightLevel {
 /**
  * @category Enumerations
  */
-export enum SimnetBacklightLevelValues {
-  _10min = 0x0,
-  DayMode = 0x1,
-  NightMode = 0x4,
-  _20 = 0xb,
-  _30 = 0x16,
-  _40 = 0x21,
-  _50 = 0x2c,
-  _60 = 0x37,
-  _70 = 0x42,
-  _80 = 0x4d,
-  _90 = 0x58,
-  _100max = 0x63,
+export const SimnetBacklightLevelValues: {[key: string]: number} = {
+  [SimnetBacklightLevel._10min]: 0x0,
+  [SimnetBacklightLevel.DayMode]: 0x1,
+  [SimnetBacklightLevel.NightMode]: 0x4,
+  [SimnetBacklightLevel._20]: 0xb,
+  [SimnetBacklightLevel._30]: 0x16,
+  [SimnetBacklightLevel._40]: 0x21,
+  [SimnetBacklightLevel._50]: 0x2c,
+  [SimnetBacklightLevel._60]: 0x37,
+  [SimnetBacklightLevel._70]: 0x42,
+  [SimnetBacklightLevel._80]: 0x4d,
+  [SimnetBacklightLevel._90]: 0x58,
+  [SimnetBacklightLevel._100max]: 0x63,
 }
 
 /**
@@ -4330,24 +4329,24 @@ export enum SimnetApEvents {
 /**
  * @category Enumerations
  */
-export enum SimnetApEventsValues {
-  Standby = 0x6,
-  AutoMode = 0x9,
-  NavMode = 0xa,
-  NonFollowUpMode = 0xd,
-  FollowUpMode = 0xe,
-  WindMode = 0xf,
-  Squareturn = 0x12,
-  CTurn = 0x13,
-  UTurn = 0x14,
-  Spiralturn = 0x15,
-  ZigZagturn = 0x16,
-  LazySturn = 0x17,
-  Depthturn = 0x18,
-  ChangeCourse = 0x1a,
-  TimerSync = 0x3d,
-  PingPortEnd = 0x70,
-  PingStarboardEnd = 0x71,
+export const SimnetApEventsValues: {[key: string]: number} = {
+  [SimnetApEvents.Standby]: 0x6,
+  [SimnetApEvents.AutoMode]: 0x9,
+  [SimnetApEvents.NavMode]: 0xa,
+  [SimnetApEvents.NonFollowUpMode]: 0xd,
+  [SimnetApEvents.FollowUpMode]: 0xe,
+  [SimnetApEvents.WindMode]: 0xf,
+  [SimnetApEvents.Squareturn]: 0x12,
+  [SimnetApEvents.CTurn]: 0x13,
+  [SimnetApEvents.UTurn]: 0x14,
+  [SimnetApEvents.Spiralturn]: 0x15,
+  [SimnetApEvents.ZigZagturn]: 0x16,
+  [SimnetApEvents.LazySturn]: 0x17,
+  [SimnetApEvents.Depthturn]: 0x18,
+  [SimnetApEvents.ChangeCourse]: 0x1a,
+  [SimnetApEvents.TimerSync]: 0x3d,
+  [SimnetApEvents.PingPortEnd]: 0x70,
+  [SimnetApEvents.PingStarboardEnd]: 0x71,
 }
 
 /**
@@ -4363,11 +4362,11 @@ export enum SimnetDirection {
 /**
  * @category Enumerations
  */
-export enum SimnetDirectionValues {
-  Port = 0x2,
-  Starboard = 0x3,
-  LeftRudderport = 0x4,
-  RightRudderstarboard = 0x5,
+export const SimnetDirectionValues: {[key: string]: number} = {
+  [SimnetDirection.Port]: 0x2,
+  [SimnetDirection.Starboard]: 0x3,
+  [SimnetDirection.LeftRudderport]: 0x4,
+  [SimnetDirection.RightRudderstarboard]: 0x5,
 }
 
 /**
@@ -4381,9 +4380,9 @@ export enum SimnetAlarm {
 /**
  * @category Enumerations
  */
-export enum SimnetAlarmValues {
-  LowBoatSpeed = 0x39,
-  WindDataMissing = 0x3a,
+export const SimnetAlarmValues: {[key: string]: number} = {
+  [SimnetAlarm.LowBoatSpeed]: 0x39,
+  [SimnetAlarm.WindDataMissing]: 0x3a,
 }
 
 /**
@@ -4444,56 +4443,56 @@ export enum FusionMessageId {
 /**
  * @category Enumerations
  */
-export enum FusionMessageIdValues {
-  RequestStatus = 0x1,
-  SetSource = 0x2,
-  MediaCommand = 0x3,
-  TunerCommand = 0x5,
-  MarineTunerCommand = 0x6,
-  SetMarineTunerSquelch = 0x7,
-  SetMarineTunerScanMode = 0x8,
-  MenuAction = 0x9,
-  RequestMenuCount = 0xa,
-  RequestMenuItem = 0xb,
-  RequestMenuLockId = 0xc,
-  SetAuxGain = 0xd,
-  SetSettings = 0xf,
-  DabUpdtateCommand = 0x10,
-  SetMute = 0x11,
-  SetBalance = 0x12,
-  SetLowPassFiler = 0x13,
-  SetSublevel = 0x14,
-  SetEqualizer = 0x16,
-  SetVolumeLimit = 0x17,
-  SetZoneVolume = 0x18,
-  SetAllVolumes = 0x19,
-  SetLineLevelControl = 0x1b,
-  Power = 0x1c,
-  SetDeviceName = 0x1d,
-  SendSiriusCommand = 0x1e,
-  SetSiriusParental = 0x1f,
-  SendFactoryResetCommand = 0x21,
-  SetZoneName = 0x22,
-  SendDvdCommand = 0x23,
-  DvdPressIrKey = 0x24,
-  SendSelectSiriusTeam = 0x27,
-  SendSelectSiriusArtist = 0x28,
-  SendSiriusSportAlertUserAction = 0x29,
-  SendSiriusArtistSongUserAction = 0x2d,
-  SendMultiroomCommand = 0x32,
-  GetMultiroomDeviceRecord = 0x33,
-  ScanMultirooomDevices = 0x34,
-  SendFileTransfer = 0x35,
-  SetLoud = 0x36,
-  FapiSetSourceMultiroomEnabled = 0x38,
-  RequestHeadUnitDspSettings = 0x39,
-  SendTransferStatus = 0x40,
-  FapiGetServerInfo = 0x41,
-  FapiSetSourceEnabled = 0x45,
-  FapiSetSourceName = 0x46,
-  SendExternalAmpGain = 0x49,
-  SendInternalAmpGain = 0x4a,
-  SendMono = 0x4b,
+export const FusionMessageIdValues: {[key: string]: number} = {
+  [FusionMessageId.RequestStatus]: 0x1,
+  [FusionMessageId.SetSource]: 0x2,
+  [FusionMessageId.MediaCommand]: 0x3,
+  [FusionMessageId.TunerCommand]: 0x5,
+  [FusionMessageId.MarineTunerCommand]: 0x6,
+  [FusionMessageId.SetMarineTunerSquelch]: 0x7,
+  [FusionMessageId.SetMarineTunerScanMode]: 0x8,
+  [FusionMessageId.MenuAction]: 0x9,
+  [FusionMessageId.RequestMenuCount]: 0xa,
+  [FusionMessageId.RequestMenuItem]: 0xb,
+  [FusionMessageId.RequestMenuLockId]: 0xc,
+  [FusionMessageId.SetAuxGain]: 0xd,
+  [FusionMessageId.SetSettings]: 0xf,
+  [FusionMessageId.DabUpdtateCommand]: 0x10,
+  [FusionMessageId.SetMute]: 0x11,
+  [FusionMessageId.SetBalance]: 0x12,
+  [FusionMessageId.SetLowPassFiler]: 0x13,
+  [FusionMessageId.SetSublevel]: 0x14,
+  [FusionMessageId.SetEqualizer]: 0x16,
+  [FusionMessageId.SetVolumeLimit]: 0x17,
+  [FusionMessageId.SetZoneVolume]: 0x18,
+  [FusionMessageId.SetAllVolumes]: 0x19,
+  [FusionMessageId.SetLineLevelControl]: 0x1b,
+  [FusionMessageId.Power]: 0x1c,
+  [FusionMessageId.SetDeviceName]: 0x1d,
+  [FusionMessageId.SendSiriusCommand]: 0x1e,
+  [FusionMessageId.SetSiriusParental]: 0x1f,
+  [FusionMessageId.SendFactoryResetCommand]: 0x21,
+  [FusionMessageId.SetZoneName]: 0x22,
+  [FusionMessageId.SendDvdCommand]: 0x23,
+  [FusionMessageId.DvdPressIrKey]: 0x24,
+  [FusionMessageId.SendSelectSiriusTeam]: 0x27,
+  [FusionMessageId.SendSelectSiriusArtist]: 0x28,
+  [FusionMessageId.SendSiriusSportAlertUserAction]: 0x29,
+  [FusionMessageId.SendSiriusArtistSongUserAction]: 0x2d,
+  [FusionMessageId.SendMultiroomCommand]: 0x32,
+  [FusionMessageId.GetMultiroomDeviceRecord]: 0x33,
+  [FusionMessageId.ScanMultirooomDevices]: 0x34,
+  [FusionMessageId.SendFileTransfer]: 0x35,
+  [FusionMessageId.SetLoud]: 0x36,
+  [FusionMessageId.FapiSetSourceMultiroomEnabled]: 0x38,
+  [FusionMessageId.RequestHeadUnitDspSettings]: 0x39,
+  [FusionMessageId.SendTransferStatus]: 0x40,
+  [FusionMessageId.FapiGetServerInfo]: 0x41,
+  [FusionMessageId.FapiSetSourceEnabled]: 0x45,
+  [FusionMessageId.FapiSetSourceName]: 0x46,
+  [FusionMessageId.SendExternalAmpGain]: 0x49,
+  [FusionMessageId.SendInternalAmpGain]: 0x4a,
+  [FusionMessageId.SendMono]: 0x4b,
 }
 
 /**
@@ -4511,13 +4510,13 @@ export enum FusionPlayStatus {
 /**
  * @category Enumerations
  */
-export enum FusionPlayStatusValues {
-  Invalid = 0x0,
-  Playing = 0x1,
-  Paused = 0x2,
-  Stopped = 0x3,
-  SkipForward = 0x4,
-  SkipRewind = 0x5,
+export const FusionPlayStatusValues: {[key: string]: number} = {
+  [FusionPlayStatus.Invalid]: 0x0,
+  [FusionPlayStatus.Playing]: 0x1,
+  [FusionPlayStatus.Paused]: 0x2,
+  [FusionPlayStatus.Stopped]: 0x3,
+  [FusionPlayStatus.SkipForward]: 0x4,
+  [FusionPlayStatus.SkipRewind]: 0x5,
 }
 
 /**
@@ -4547,25 +4546,25 @@ export enum FusionSourceType {
 /**
  * @category Enumerations
  */
-export enum FusionSourceTypeValues {
-  Am = 0x0,
-  Fm = 0x1,
-  Aux = 0x2,
-  Sirius = 0x3,
-  Ipod = 0x4,
-  Usb = 0x5,
-  Dvd = 0x6,
-  Vhf = 0x7,
-  Invalid = 0x8,
-  Mtp = 0x9,
-  Bluetooth = 0xa,
-  Arc = 0xb,
-  Android = 0xc,
-  Pandora = 0xd,
-  Dab = 0xe,
-  AirPlay = 0xf,
-  Upnp = 0x10,
-  Unknown = 0x11,
+export const FusionSourceTypeValues: {[key: string]: number} = {
+  [FusionSourceType.Am]: 0x0,
+  [FusionSourceType.Fm]: 0x1,
+  [FusionSourceType.Aux]: 0x2,
+  [FusionSourceType.Sirius]: 0x3,
+  [FusionSourceType.Ipod]: 0x4,
+  [FusionSourceType.Usb]: 0x5,
+  [FusionSourceType.Dvd]: 0x6,
+  [FusionSourceType.Vhf]: 0x7,
+  [FusionSourceType.Invalid]: 0x8,
+  [FusionSourceType.Mtp]: 0x9,
+  [FusionSourceType.Bluetooth]: 0xa,
+  [FusionSourceType.Arc]: 0xb,
+  [FusionSourceType.Android]: 0xc,
+  [FusionSourceType.Pandora]: 0xd,
+  [FusionSourceType.Dab]: 0xe,
+  [FusionSourceType.AirPlay]: 0xf,
+  [FusionSourceType.Upnp]: 0x10,
+  [FusionSourceType.Unknown]: 0x11,
 }
 
 /**
@@ -4581,11 +4580,11 @@ export enum FusionSiriusComState {
 /**
  * @category Enumerations
  */
-export enum FusionSiriusComStateValues {
-  Unknown = 0xff,
-  Off = 0x1,
-  Initialising = 0x2,
-  On = 0x3,
+export const FusionSiriusComStateValues: {[key: string]: number} = {
+  [FusionSiriusComState.Unknown]: 0xff,
+  [FusionSiriusComState.Off]: 0x1,
+  [FusionSiriusComState.Initialising]: 0x2,
+  [FusionSiriusComState.On]: 0x3,
 }
 
 /**
@@ -4602,12 +4601,12 @@ export enum FusionSiriusAlert {
 /**
  * @category Enumerations
  */
-export enum FusionSiriusAlertValues {
-  Unknown = 0xff,
-  None = 0x1,
-  Antenna = 0x2,
-  NoSignal = 0x3,
-  SubscriptionUpdate = 0x4,
+export const FusionSiriusAlertValues: {[key: string]: number} = {
+  [FusionSiriusAlert.Unknown]: 0xff,
+  [FusionSiriusAlert.None]: 0x1,
+  [FusionSiriusAlert.Antenna]: 0x2,
+  [FusionSiriusAlert.NoSignal]: 0x3,
+  [FusionSiriusAlert.SubscriptionUpdate]: 0x4,
 }
 
 /**
@@ -4622,10 +4621,10 @@ export enum FusionSiriusTuningMode {
 /**
  * @category Enumerations
  */
-export enum FusionSiriusTuningModeValues {
-  Normal = 0x1,
-  Category = 0x2,
-  Preset = 0x3,
+export const FusionSiriusTuningModeValues: {[key: string]: number} = {
+  [FusionSiriusTuningMode.Normal]: 0x1,
+  [FusionSiriusTuningMode.Category]: 0x2,
+  [FusionSiriusTuningMode.Preset]: 0x3,
 }
 
 /**
@@ -4683,53 +4682,53 @@ export enum FusionStatusMessageId {
 /**
  * @category Enumerations
  */
-export enum FusionStatusMessageIdValues {
-  Unknown = 0x0,
-  ApiVersion = 0x8001,
-  Source = 0x8002,
-  SourceCount = 0x8003,
-  TrackInfo = 0x8004,
-  TrackTitle = 0x8005,
-  TrackArtist = 0x8006,
-  TrackAlbum = 0x8007,
-  CoverArt = 0x8008,
-  TrackProgress = 0x8009,
-  TunerAlign = 0x800a,
-  Tuner = 0x800b,
-  MarineTuner = 0x800c,
-  MarineSquelch = 0x800d,
-  MarineScanMode = 0x800e,
-  MenuAction = 0x800f,
-  MenuCount = 0x8010,
-  MenuItem = 0x8011,
-  MenuLockId = 0x8012,
-  AuxGain = 0x8013,
-  Setting = 0x8014,
-  Settings = 0x8015,
-  UpdateFirmwareResult = 0x8016,
-  Mute = 0x8017,
-  Balance = 0x8018,
-  LowPassFilter = 0x8019,
-  Sublevels = 0x801a,
-  Tone = 0x801b,
-  VolumeLimits = 0x801c,
-  Volume = 0x801d,
-  Capabilities = 0x801e,
-  LineLevelControl = 0x801f,
-  Power = 0x8020,
-  UnitName = 0x8021,
-  Sirius = 0x8022,
-  SiriusXmPresetEvent = 0x8023,
-  SiriusXmChannel = 0x8024,
-  SiriusXmTitle = 0x8025,
-  SiriusXmArtist = 0x8026,
-  SiriusXmGenre = 0x8027,
-  SiriusXmCategory = 0x8028,
-  SiriusXmSignal = 0x8029,
-  SiriusXmParentalRequest = 0x802a,
-  SiriusXmDiagnostics = 0x802b,
-  SiriusXmPresets = 0x802c,
-  ZoneName = 0x802d,
+export const FusionStatusMessageIdValues: {[key: string]: number} = {
+  [FusionStatusMessageId.Unknown]: 0x0,
+  [FusionStatusMessageId.ApiVersion]: 0x8001,
+  [FusionStatusMessageId.Source]: 0x8002,
+  [FusionStatusMessageId.SourceCount]: 0x8003,
+  [FusionStatusMessageId.TrackInfo]: 0x8004,
+  [FusionStatusMessageId.TrackTitle]: 0x8005,
+  [FusionStatusMessageId.TrackArtist]: 0x8006,
+  [FusionStatusMessageId.TrackAlbum]: 0x8007,
+  [FusionStatusMessageId.CoverArt]: 0x8008,
+  [FusionStatusMessageId.TrackProgress]: 0x8009,
+  [FusionStatusMessageId.TunerAlign]: 0x800a,
+  [FusionStatusMessageId.Tuner]: 0x800b,
+  [FusionStatusMessageId.MarineTuner]: 0x800c,
+  [FusionStatusMessageId.MarineSquelch]: 0x800d,
+  [FusionStatusMessageId.MarineScanMode]: 0x800e,
+  [FusionStatusMessageId.MenuAction]: 0x800f,
+  [FusionStatusMessageId.MenuCount]: 0x8010,
+  [FusionStatusMessageId.MenuItem]: 0x8011,
+  [FusionStatusMessageId.MenuLockId]: 0x8012,
+  [FusionStatusMessageId.AuxGain]: 0x8013,
+  [FusionStatusMessageId.Setting]: 0x8014,
+  [FusionStatusMessageId.Settings]: 0x8015,
+  [FusionStatusMessageId.UpdateFirmwareResult]: 0x8016,
+  [FusionStatusMessageId.Mute]: 0x8017,
+  [FusionStatusMessageId.Balance]: 0x8018,
+  [FusionStatusMessageId.LowPassFilter]: 0x8019,
+  [FusionStatusMessageId.Sublevels]: 0x801a,
+  [FusionStatusMessageId.Tone]: 0x801b,
+  [FusionStatusMessageId.VolumeLimits]: 0x801c,
+  [FusionStatusMessageId.Volume]: 0x801d,
+  [FusionStatusMessageId.Capabilities]: 0x801e,
+  [FusionStatusMessageId.LineLevelControl]: 0x801f,
+  [FusionStatusMessageId.Power]: 0x8020,
+  [FusionStatusMessageId.UnitName]: 0x8021,
+  [FusionStatusMessageId.Sirius]: 0x8022,
+  [FusionStatusMessageId.SiriusXmPresetEvent]: 0x8023,
+  [FusionStatusMessageId.SiriusXmChannel]: 0x8024,
+  [FusionStatusMessageId.SiriusXmTitle]: 0x8025,
+  [FusionStatusMessageId.SiriusXmArtist]: 0x8026,
+  [FusionStatusMessageId.SiriusXmGenre]: 0x8027,
+  [FusionStatusMessageId.SiriusXmCategory]: 0x8028,
+  [FusionStatusMessageId.SiriusXmSignal]: 0x8029,
+  [FusionStatusMessageId.SiriusXmParentalRequest]: 0x802a,
+  [FusionStatusMessageId.SiriusXmDiagnostics]: 0x802b,
+  [FusionStatusMessageId.SiriusXmPresets]: 0x802c,
+  [FusionStatusMessageId.ZoneName]: 0x802d,
 }
 
 /**
@@ -4743,9 +4742,9 @@ export enum SonichubControl {
 /**
  * @category Enumerations
  */
-export enum SonichubControlValues {
-  Set = 0x0,
-  Ack = 0x80,
+export const SonichubControlValues: {[key: string]: number} = {
+  [SonichubControl.Set]: 0x0,
+  [SonichubControl.Ack]: 0x80,
 }
 
 /**
@@ -4764,14 +4763,14 @@ export enum SonichubSource {
 /**
  * @category Enumerations
  */
-export enum SonichubSourceValues {
-  Am = 0x0,
-  Fm = 0x1,
-  IPod = 0x2,
-  Usb = 0x3,
-  Aux = 0x4,
-  Aux2 = 0x5,
-  Mic = 0x6,
+export const SonichubSourceValues: {[key: string]: number} = {
+  [SonichubSource.Am]: 0x0,
+  [SonichubSource.Fm]: 0x1,
+  [SonichubSource.IPod]: 0x2,
+  [SonichubSource.Usb]: 0x3,
+  [SonichubSource.Aux]: 0x4,
+  [SonichubSource.Aux2]: 0x5,
+  [SonichubSource.Mic]: 0x6,
 }
 
 /**
@@ -4787,11 +4786,11 @@ export enum IsoControl {
 /**
  * @category Enumerations
  */
-export enum IsoControlValues {
-  Ack = 0x0,
-  Nak = 0x1,
-  AccessDenied = 0x2,
-  AddressBusy = 0x3,
+export const IsoControlValues: {[key: string]: number} = {
+  [IsoControl.Ack]: 0x0,
+  [IsoControl.Nak]: 0x1,
+  [IsoControl.AccessDenied]: 0x2,
+  [IsoControl.AddressBusy]: 0x3,
 }
 
 /**
@@ -4809,13 +4808,13 @@ export enum IsoCommand {
 /**
  * @category Enumerations
  */
-export enum IsoCommandValues {
-  Ack = 0x0,
-  Rts = 0x10,
-  Cts = 0x11,
-  Eom = 0x13,
-  Bam = 0x20,
-  Abort = 0xff,
+export const IsoCommandValues: {[key: string]: number} = {
+  [IsoCommand.Ack]: 0x0,
+  [IsoCommand.Rts]: 0x10,
+  [IsoCommand.Cts]: 0x11,
+  [IsoCommand.Eom]: 0x13,
+  [IsoCommand.Bam]: 0x20,
+  [IsoCommand.Abort]: 0xff,
 }
 
 /**
@@ -4834,14 +4833,14 @@ export enum GroupFunction {
 /**
  * @category Enumerations
  */
-export enum GroupFunctionValues {
-  Request = 0x0,
-  Command = 0x1,
-  Acknowledge = 0x2,
-  ReadFields = 0x3,
-  ReadFieldsReply = 0x4,
-  WriteFields = 0x5,
-  WriteFieldsReply = 0x6,
+export const GroupFunctionValues: {[key: string]: number} = {
+  [GroupFunction.Request]: 0x0,
+  [GroupFunction.Command]: 0x1,
+  [GroupFunction.Acknowledge]: 0x2,
+  [GroupFunction.ReadFields]: 0x3,
+  [GroupFunction.ReadFieldsReply]: 0x4,
+  [GroupFunction.WriteFields]: 0x5,
+  [GroupFunction.WriteFieldsReply]: 0x6,
 }
 
 /**
@@ -4863,17 +4862,17 @@ export enum AirmarCommand {
 /**
  * @category Enumerations
  */
-export enum AirmarCommandValues {
-  AttitudeOffsets = 0x20,
-  CalibrateCompass = 0x21,
-  TrueWindOptions = 0x22,
-  SimulateMode = 0x23,
-  CalibrateDepth = 0x28,
-  CalibrateSpeed = 0x29,
-  CalibrateTemperature = 0x2a,
-  SpeedFilter = 0x2b,
-  TemperatureFilter = 0x2c,
-  Nmea2000Options = 0x2e,
+export const AirmarCommandValues: {[key: string]: number} = {
+  [AirmarCommand.AttitudeOffsets]: 0x20,
+  [AirmarCommand.CalibrateCompass]: 0x21,
+  [AirmarCommand.TrueWindOptions]: 0x22,
+  [AirmarCommand.SimulateMode]: 0x23,
+  [AirmarCommand.CalibrateDepth]: 0x28,
+  [AirmarCommand.CalibrateSpeed]: 0x29,
+  [AirmarCommand.CalibrateTemperature]: 0x2a,
+  [AirmarCommand.SpeedFilter]: 0x2b,
+  [AirmarCommand.TemperatureFilter]: 0x2c,
+  [AirmarCommand.Nmea2000Options]: 0x2e,
 }
 
 /**
@@ -4896,18 +4895,18 @@ export enum AirmarDepthQualityFactor {
 /**
  * @category Enumerations
  */
-export enum AirmarDepthQualityFactorValues {
-  DepthUnlocked = 0x0,
-  Quality10 = 0x1,
-  Quality20 = 0x2,
-  Quality30 = 0x3,
-  Quality40 = 0x4,
-  Quality50 = 0x5,
-  Quality60 = 0x6,
-  Quality70 = 0x7,
-  Quality80 = 0x8,
-  Quality90 = 0x9,
-  Quality100 = 0xa,
+export const AirmarDepthQualityFactorValues: {[key: string]: number} = {
+  [AirmarDepthQualityFactor.DepthUnlocked]: 0x0,
+  [AirmarDepthQualityFactor.Quality10]: 0x1,
+  [AirmarDepthQualityFactor.Quality20]: 0x2,
+  [AirmarDepthQualityFactor.Quality30]: 0x3,
+  [AirmarDepthQualityFactor.Quality40]: 0x4,
+  [AirmarDepthQualityFactor.Quality50]: 0x5,
+  [AirmarDepthQualityFactor.Quality60]: 0x6,
+  [AirmarDepthQualityFactor.Quality70]: 0x7,
+  [AirmarDepthQualityFactor.Quality80]: 0x8,
+  [AirmarDepthQualityFactor.Quality90]: 0x9,
+  [AirmarDepthQualityFactor.Quality100]: 0xa,
 }
 
 /**
@@ -4926,14 +4925,14 @@ export enum PgnErrorCode {
 /**
  * @category Enumerations
  */
-export enum PgnErrorCodeValues {
-  Acknowledge = 0x0,
-  PgnNotSupported = 0x1,
-  PgnNotAvailable = 0x2,
-  AccessDenied = 0x3,
-  NotSupported = 0x4,
-  TagNotSupported = 0x5,
-  ReadOrWriteNotSupported = 0x6,
+export const PgnErrorCodeValues: {[key: string]: number} = {
+  [PgnErrorCode.Acknowledge]: 0x0,
+  [PgnErrorCode.PgnNotSupported]: 0x1,
+  [PgnErrorCode.PgnNotAvailable]: 0x2,
+  [PgnErrorCode.AccessDenied]: 0x3,
+  [PgnErrorCode.NotSupported]: 0x4,
+  [PgnErrorCode.TagNotSupported]: 0x5,
+  [PgnErrorCode.ReadOrWriteNotSupported]: 0x6,
 }
 
 /**
@@ -4947,9 +4946,9 @@ export enum AirmarTransmissionInterval {
 /**
  * @category Enumerations
  */
-export enum AirmarTransmissionIntervalValues {
-  MeasureInterval = 0x0,
-  RequestedByUser = 0x1,
+export const AirmarTransmissionIntervalValues: {[key: string]: number} = {
+  [AirmarTransmissionInterval.MeasureInterval]: 0x0,
+  [AirmarTransmissionInterval.RequestedByUser]: 0x1,
 }
 
 /**
@@ -4963,9 +4962,9 @@ export enum MobPositionSource {
 /**
  * @category Enumerations
  */
-export enum MobPositionSourceValues {
-  PositionEstimatedByTheVessel = 0x0,
-  PositionReportedByMobEmitter = 0x1,
+export const MobPositionSourceValues: {[key: string]: number} = {
+  [MobPositionSource.PositionEstimatedByTheVessel]: 0x0,
+  [MobPositionSource.PositionReportedByMobEmitter]: 0x1,
 }
 
 /**
@@ -4983,13 +4982,13 @@ export enum SteeringMode {
 /**
  * @category Enumerations
  */
-export enum SteeringModeValues {
-  MainSteering = 0x0,
-  NonFollowUpDevice = 0x1,
-  FollowUpDevice = 0x2,
-  HeadingControlStandalone = 0x3,
-  HeadingControl = 0x4,
-  TrackControl = 0x5,
+export const SteeringModeValues: {[key: string]: number} = {
+  [SteeringMode.MainSteering]: 0x0,
+  [SteeringMode.NonFollowUpDevice]: 0x1,
+  [SteeringMode.FollowUpDevice]: 0x2,
+  [SteeringMode.HeadingControlStandalone]: 0x3,
+  [SteeringMode.HeadingControl]: 0x4,
+  [SteeringMode.TrackControl]: 0x5,
 }
 
 /**
@@ -5003,9 +5002,9 @@ export enum FusionRadioSource {
 /**
  * @category Enumerations
  */
-export enum FusionRadioSourceValues {
-  Am = 0x0,
-  Fm = 0x1,
+export const FusionRadioSourceValues: {[key: string]: number} = {
+  [FusionRadioSource.Am]: 0x0,
+  [FusionRadioSource.Fm]: 0x1,
 }
 
 /**
@@ -5095,85 +5094,85 @@ export enum FusionSetting {
 /**
  * @category Enumerations
  */
-export enum FusionSettingValues {
-  AlphaSearchThreshold = 0x0,
-  IPodSubtitles = 0x1,
-  Zone2Linked = 0x2,
-  Zone2Enabled = 0x3,
-  Zone3Enabled = 0x4,
-  Zone4Enabled = 0x5,
-  Telemute = 0x6,
-  TunerRegion = 0x7,
-  MarineZone = 0x8,
-  UsbRepeat = 0x9,
-  UsbShuffle = 0xa,
-  IPodAlbumArtwork = 0xb,
-  IPodRepeat = 0xc,
-  IPodShuffle = 0xd,
-  AmPreset0 = 0xe,
-  AmPreset1 = 0xf,
-  AmPreset2 = 0x10,
-  AmPreset3 = 0x11,
-  AmPreset4 = 0x12,
-  AmPreset5 = 0x13,
-  AmPreset6 = 0x14,
-  AmPreset7 = 0x15,
-  AmPreset8 = 0x16,
-  AmPreset9 = 0x17,
-  AmPreset10 = 0x18,
-  AmPreset11 = 0x19,
-  AmPreset12 = 0x1a,
-  AmPreset13 = 0x1b,
-  AmPreset14 = 0x1c,
-  FmPreset0 = 0x1d,
-  FmPreset1 = 0x1e,
-  FmPreset2 = 0x1f,
-  FmPreset3 = 0x20,
-  FmPreset4 = 0x21,
-  FmPreset5 = 0x22,
-  FmPreset6 = 0x23,
-  FmPreset7 = 0x24,
-  FmPreset8 = 0x25,
-  FmPreset9 = 0x26,
-  FmPreset10 = 0x27,
-  FmPreset11 = 0x28,
-  FmPreset12 = 0x29,
-  FmPreset13 = 0x2a,
-  FmPreset14 = 0x2b,
-  VhfPreset0 = 0x2c,
-  VhfPreset1 = 0x2d,
-  VhfPreset2 = 0x2e,
-  VhfPreset3 = 0x2f,
-  VhfPreset4 = 0x30,
-  VhfPreset5 = 0x31,
-  VhfPreset6 = 0x32,
-  VhfPreset7 = 0x33,
-  VhfPreset8 = 0x34,
-  VhfPreset9 = 0x35,
-  VhfPreset10 = 0x36,
-  VhfPreset11 = 0x37,
-  VhfPreset12 = 0x38,
-  VhfPreset13 = 0x39,
-  VhfPreset14 = 0x3a,
-  ClockTime = 0x3b,
-  ClockAlarm = 0x3c,
-  IPodVideoSignal = 0x3d,
-  IPodMonitorAspect = 0x3e,
-  AuxNameIndex = 0x3f,
-  AmEnabled = 0x40,
-  VhfEnabled = 0x41,
-  Language = 0x42,
-  InternalAmpsOn = 0x43,
-  MtpRepeat = 0x44,
-  MtpShuffle = 0x45,
-  IdAccessorySource = 0x46,
-  NmeaPower = 0x47,
-  LowPowerMode = 0x48,
-  DvdRegion = 0x49,
-  VolumeZoneSync = 0x4a,
-  MaxVolumeStart = 0x4b,
-  BtAutoConnect = 0x4c,
-  NullSetting = 0x4d,
+export const FusionSettingValues: {[key: string]: number} = {
+  [FusionSetting.AlphaSearchThreshold]: 0x0,
+  [FusionSetting.IPodSubtitles]: 0x1,
+  [FusionSetting.Zone2Linked]: 0x2,
+  [FusionSetting.Zone2Enabled]: 0x3,
+  [FusionSetting.Zone3Enabled]: 0x4,
+  [FusionSetting.Zone4Enabled]: 0x5,
+  [FusionSetting.Telemute]: 0x6,
+  [FusionSetting.TunerRegion]: 0x7,
+  [FusionSetting.MarineZone]: 0x8,
+  [FusionSetting.UsbRepeat]: 0x9,
+  [FusionSetting.UsbShuffle]: 0xa,
+  [FusionSetting.IPodAlbumArtwork]: 0xb,
+  [FusionSetting.IPodRepeat]: 0xc,
+  [FusionSetting.IPodShuffle]: 0xd,
+  [FusionSetting.AmPreset0]: 0xe,
+  [FusionSetting.AmPreset1]: 0xf,
+  [FusionSetting.AmPreset2]: 0x10,
+  [FusionSetting.AmPreset3]: 0x11,
+  [FusionSetting.AmPreset4]: 0x12,
+  [FusionSetting.AmPreset5]: 0x13,
+  [FusionSetting.AmPreset6]: 0x14,
+  [FusionSetting.AmPreset7]: 0x15,
+  [FusionSetting.AmPreset8]: 0x16,
+  [FusionSetting.AmPreset9]: 0x17,
+  [FusionSetting.AmPreset10]: 0x18,
+  [FusionSetting.AmPreset11]: 0x19,
+  [FusionSetting.AmPreset12]: 0x1a,
+  [FusionSetting.AmPreset13]: 0x1b,
+  [FusionSetting.AmPreset14]: 0x1c,
+  [FusionSetting.FmPreset0]: 0x1d,
+  [FusionSetting.FmPreset1]: 0x1e,
+  [FusionSetting.FmPreset2]: 0x1f,
+  [FusionSetting.FmPreset3]: 0x20,
+  [FusionSetting.FmPreset4]: 0x21,
+  [FusionSetting.FmPreset5]: 0x22,
+  [FusionSetting.FmPreset6]: 0x23,
+  [FusionSetting.FmPreset7]: 0x24,
+  [FusionSetting.FmPreset8]: 0x25,
+  [FusionSetting.FmPreset9]: 0x26,
+  [FusionSetting.FmPreset10]: 0x27,
+  [FusionSetting.FmPreset11]: 0x28,
+  [FusionSetting.FmPreset12]: 0x29,
+  [FusionSetting.FmPreset13]: 0x2a,
+  [FusionSetting.FmPreset14]: 0x2b,
+  [FusionSetting.VhfPreset0]: 0x2c,
+  [FusionSetting.VhfPreset1]: 0x2d,
+  [FusionSetting.VhfPreset2]: 0x2e,
+  [FusionSetting.VhfPreset3]: 0x2f,
+  [FusionSetting.VhfPreset4]: 0x30,
+  [FusionSetting.VhfPreset5]: 0x31,
+  [FusionSetting.VhfPreset6]: 0x32,
+  [FusionSetting.VhfPreset7]: 0x33,
+  [FusionSetting.VhfPreset8]: 0x34,
+  [FusionSetting.VhfPreset9]: 0x35,
+  [FusionSetting.VhfPreset10]: 0x36,
+  [FusionSetting.VhfPreset11]: 0x37,
+  [FusionSetting.VhfPreset12]: 0x38,
+  [FusionSetting.VhfPreset13]: 0x39,
+  [FusionSetting.VhfPreset14]: 0x3a,
+  [FusionSetting.ClockTime]: 0x3b,
+  [FusionSetting.ClockAlarm]: 0x3c,
+  [FusionSetting.IPodVideoSignal]: 0x3d,
+  [FusionSetting.IPodMonitorAspect]: 0x3e,
+  [FusionSetting.AuxNameIndex]: 0x3f,
+  [FusionSetting.AmEnabled]: 0x40,
+  [FusionSetting.VhfEnabled]: 0x41,
+  [FusionSetting.Language]: 0x42,
+  [FusionSetting.InternalAmpsOn]: 0x43,
+  [FusionSetting.MtpRepeat]: 0x44,
+  [FusionSetting.MtpShuffle]: 0x45,
+  [FusionSetting.IdAccessorySource]: 0x46,
+  [FusionSetting.NmeaPower]: 0x47,
+  [FusionSetting.LowPowerMode]: 0x48,
+  [FusionSetting.DvdRegion]: 0x49,
+  [FusionSetting.VolumeZoneSync]: 0x4a,
+  [FusionSetting.MaxVolumeStart]: 0x4b,
+  [FusionSetting.BtAutoConnect]: 0x4c,
+  [FusionSetting.NullSetting]: 0x4d,
 }
 
 /**
@@ -5188,10 +5187,10 @@ export enum FusionRepeatStatus {
 /**
  * @category Enumerations
  */
-export enum FusionRepeatStatusValues {
-  Off = 0x0,
-  Onetrack = 0x1,
-  Allalbum = 0x2,
+export const FusionRepeatStatusValues: {[key: string]: number} = {
+  [FusionRepeatStatus.Off]: 0x0,
+  [FusionRepeatStatus.Onetrack]: 0x1,
+  [FusionRepeatStatus.Allalbum]: 0x2,
 }
 
 /**
@@ -5205,9 +5204,9 @@ export enum AirmarPostControl {
 /**
  * @category Enumerations
  */
-export enum AirmarPostControlValues {
-  ReportPreviousValues = 0x0,
-  GenerateNewValues = 0x1,
+export const AirmarPostControlValues: {[key: string]: number} = {
+  [AirmarPostControl.ReportPreviousValues]: 0x0,
+  [AirmarPostControl.GenerateNewValues]: 0x1,
 }
 
 /**
@@ -5227,15 +5226,15 @@ export enum AirmarPostId {
 /**
  * @category Enumerations
  */
-export enum AirmarPostIdValues {
-  FormatCode = 0x1,
-  FactoryEeprom = 0x2,
-  UserEeprom = 0x3,
-  WaterTemperatureSensor = 0x4,
-  SonarTransceiver = 0x5,
-  SpeedSensor = 0x6,
-  InternalTemperatureSensor = 0x7,
-  BatteryVoltageSensor = 0x8,
+export const AirmarPostIdValues: {[key: string]: number} = {
+  [AirmarPostId.FormatCode]: 0x1,
+  [AirmarPostId.FactoryEeprom]: 0x2,
+  [AirmarPostId.UserEeprom]: 0x3,
+  [AirmarPostId.WaterTemperatureSensor]: 0x4,
+  [AirmarPostId.SonarTransceiver]: 0x5,
+  [AirmarPostId.SpeedSensor]: 0x6,
+  [AirmarPostId.InternalTemperatureSensor]: 0x7,
+  [AirmarPostId.BatteryVoltageSensor]: 0x8,
 }
 
 /**
@@ -5250,10 +5249,10 @@ export enum SonichubTuning {
 /**
  * @category Enumerations
  */
-export enum SonichubTuningValues {
-  SeekingUp = 0x1,
-  Tuned = 0x2,
-  SeekingDown = 0x3,
+export const SonichubTuningValues: {[key: string]: number} = {
+  [SonichubTuning.SeekingUp]: 0x1,
+  [SonichubTuning.Tuned]: 0x2,
+  [SonichubTuning.SeekingDown]: 0x3,
 }
 
 /**
@@ -5268,10 +5267,10 @@ export enum SonichubPlaylist {
 /**
  * @category Enumerations
  */
-export enum SonichubPlaylistValues {
-  Report = 0x1,
-  NextSong = 0x4,
-  PreviousSong = 0x6,
+export const SonichubPlaylistValues: {[key: string]: number} = {
+  [SonichubPlaylist.Report]: 0x1,
+  [SonichubPlaylist.NextSong]: 0x4,
+  [SonichubPlaylist.PreviousSong]: 0x6,
 }
 
 /**
@@ -5285,9 +5284,9 @@ export enum FusionPowerState {
 /**
  * @category Enumerations
  */
-export enum FusionPowerStateValues {
-  On = 0x1,
-  Off = 0x2,
+export const FusionPowerStateValues: {[key: string]: number} = {
+  [FusionPowerState.On]: 0x1,
+  [FusionPowerState.Off]: 0x2,
 }
 
 /**
@@ -5309,17 +5308,17 @@ export enum Priority {
 /**
  * @category Enumerations
  */
-export enum PriorityValues {
-  _0 = 0x0,
-  _1 = 0x1,
-  _2 = 0x2,
-  _3 = 0x3,
-  _4 = 0x4,
-  _5 = 0x5,
-  _6 = 0x6,
-  _7 = 0x7,
-  LeaveUnchanged = 0x8,
-  ResetToDefault = 0x9,
+export const PriorityValues: {[key: string]: number} = {
+  [Priority._0]: 0x0,
+  [Priority._1]: 0x1,
+  [Priority._2]: 0x2,
+  [Priority._3]: 0x3,
+  [Priority._4]: 0x4,
+  [Priority._5]: 0x5,
+  [Priority._6]: 0x6,
+  [Priority._7]: 0x7,
+  [Priority.LeaveUnchanged]: 0x8,
+  [Priority.ResetToDefault]: 0x9,
 }
 
 /**
@@ -5334,10 +5333,10 @@ export enum DeviceTempState {
 /**
  * @category Enumerations
  */
-export enum DeviceTempStateValues {
-  Cold = 0x0,
-  Warm = 0x1,
-  Hot = 0x2,
+export const DeviceTempStateValues: {[key: string]: number} = {
+  [DeviceTempState.Cold]: 0x0,
+  [DeviceTempState.Warm]: 0x1,
+  [DeviceTempState.Hot]: 0x2,
 }
 
 /**
@@ -5355,13 +5354,13 @@ export enum BandgDecimals {
 /**
  * @category Enumerations
  */
-export enum BandgDecimalsValues {
-  _0 = 0x0,
-  _1 = 0x1,
-  _2 = 0x2,
-  _3 = 0x3,
-  _4 = 0x4,
-  Auto = 0xfe,
+export const BandgDecimalsValues: {[key: string]: number} = {
+  [BandgDecimals._0]: 0x0,
+  [BandgDecimals._1]: 0x1,
+  [BandgDecimals._2]: 0x2,
+  [BandgDecimals._3]: 0x3,
+  [BandgDecimals._4]: 0x4,
+  [BandgDecimals.Auto]: 0xfe,
 }
 
 /**
@@ -5376,10 +5375,10 @@ export enum GarminColorMode {
 /**
  * @category Enumerations
  */
-export enum GarminColorModeValues {
-  Day = 0x0,
-  Night = 0x1,
-  Color = 0xd,
+export const GarminColorModeValues: {[key: string]: number} = {
+  [GarminColorMode.Day]: 0x0,
+  [GarminColorMode.Night]: 0x1,
+  [GarminColorMode.Color]: 0xd,
 }
 
 /**
@@ -5396,12 +5395,12 @@ export enum GarminColor {
 /**
  * @category Enumerations
  */
-export enum GarminColorValues {
-  DayFullColor = 0x0,
-  DayHighContrast = 0x1,
-  NightFullColor = 0x2,
-  NightRedblack = 0x3,
-  NightGreenblack = 0x4,
+export const GarminColorValues: {[key: string]: number} = {
+  [GarminColor.DayFullColor]: 0x0,
+  [GarminColor.DayHighContrast]: 0x1,
+  [GarminColor.NightFullColor]: 0x2,
+  [GarminColor.NightRedblack]: 0x3,
+  [GarminColor.NightGreenblack]: 0x4,
 }
 
 /**
@@ -5434,28 +5433,28 @@ export enum GarminBacklightLevel {
 /**
  * @category Enumerations
  */
-export enum GarminBacklightLevelValues {
-  _0 = 0x0,
-  _5 = 0x1,
-  _10 = 0x2,
-  _15 = 0x3,
-  _20 = 0x4,
-  _25 = 0x5,
-  _30 = 0x6,
-  _35 = 0x7,
-  _40 = 0x8,
-  _45 = 0x9,
-  _50 = 0xa,
-  _55 = 0xb,
-  _60 = 0xc,
-  _65 = 0xd,
-  _70 = 0xe,
-  _75 = 0xf,
-  _80 = 0x10,
-  _85 = 0x11,
-  _90 = 0x12,
-  _95 = 0x13,
-  _100 = 0x14,
+export const GarminBacklightLevelValues: {[key: string]: number} = {
+  [GarminBacklightLevel._0]: 0x0,
+  [GarminBacklightLevel._5]: 0x1,
+  [GarminBacklightLevel._10]: 0x2,
+  [GarminBacklightLevel._15]: 0x3,
+  [GarminBacklightLevel._20]: 0x4,
+  [GarminBacklightLevel._25]: 0x5,
+  [GarminBacklightLevel._30]: 0x6,
+  [GarminBacklightLevel._35]: 0x7,
+  [GarminBacklightLevel._40]: 0x8,
+  [GarminBacklightLevel._45]: 0x9,
+  [GarminBacklightLevel._50]: 0xa,
+  [GarminBacklightLevel._55]: 0xb,
+  [GarminBacklightLevel._60]: 0xc,
+  [GarminBacklightLevel._65]: 0xd,
+  [GarminBacklightLevel._70]: 0xe,
+  [GarminBacklightLevel._75]: 0xf,
+  [GarminBacklightLevel._80]: 0x10,
+  [GarminBacklightLevel._85]: 0x11,
+  [GarminBacklightLevel._90]: 0x12,
+  [GarminBacklightLevel._95]: 0x13,
+  [GarminBacklightLevel._100]: 0x14,
 }
 
 /**
@@ -5472,12 +5471,12 @@ export enum SeatalkPilotMode16 {
 /**
  * @category Enumerations
  */
-export enum SeatalkPilotMode16Values {
-  Standby = 0x0,
-  AutoCompassCommanded = 0x40,
-  VaneWindMode = 0x100,
-  TrackMode = 0x180,
-  NoDriftCogReferencedinTrackCourseChanges = 0x181,
+export const SeatalkPilotMode16Values: {[key: string]: number} = {
+  [SeatalkPilotMode16.Standby]: 0x0,
+  [SeatalkPilotMode16.AutoCompassCommanded]: 0x40,
+  [SeatalkPilotMode16.VaneWindMode]: 0x100,
+  [SeatalkPilotMode16.TrackMode]: 0x180,
+  [SeatalkPilotMode16.NoDriftCogReferencedinTrackCourseChanges]: 0x181,
 }
 
 /**
@@ -5494,12 +5493,12 @@ export enum StationHealth {
 /**
  * @category Enumerations
  */
-export enum StationHealthValues {
-  NotWorking = 0x0,
-  Unmonitored = 0x1,
-  HealthyOperational = 0x2,
-  HealthyTestMode = 0x3,
-  TestMode = 0x4,
+export const StationHealthValues: {[key: string]: number} = {
+  [StationHealth.NotWorking]: 0x0,
+  [StationHealth.Unmonitored]: 0x1,
+  [StationHealth.HealthyOperational]: 0x2,
+  [StationHealth.HealthyTestMode]: 0x3,
+  [StationHealth.TestMode]: 0x4,
 }
 
 /**
@@ -5524,20 +5523,20 @@ export enum SerialBitRate {
 /**
  * @category Enumerations
  */
-export enum SerialBitRateValues {
-  _25 = 0x0,
-  _50 = 0x1,
-  _100 = 0x2,
-  _200 = 0x3,
-  _300 = 0x4,
-  _600 = 0x5,
-  _1200 = 0x6,
-  _2400 = 0x7,
-  _4800 = 0x8,
-  _9600 = 0x9,
-  _19200 = 0xa,
-  _38400 = 0xb,
-  _57600 = 0xc,
+export const SerialBitRateValues: {[key: string]: number} = {
+  [SerialBitRate._25]: 0x0,
+  [SerialBitRate._50]: 0x1,
+  [SerialBitRate._100]: 0x2,
+  [SerialBitRate._200]: 0x3,
+  [SerialBitRate._300]: 0x4,
+  [SerialBitRate._600]: 0x5,
+  [SerialBitRate._1200]: 0x6,
+  [SerialBitRate._2400]: 0x7,
+  [SerialBitRate._4800]: 0x8,
+  [SerialBitRate._9600]: 0x9,
+  [SerialBitRate._19200]: 0xa,
+  [SerialBitRate._38400]: 0xb,
+  [SerialBitRate._57600]: 0xc,
 }
 
 /**
@@ -5551,9 +5550,9 @@ export enum SerialDetectionMode {
 /**
  * @category Enumerations
  */
-export enum SerialDetectionModeValues {
-  AutoBitRate = 0x0,
-  ManualBitRate = 0x1,
+export const SerialDetectionModeValues: {[key: string]: number} = {
+  [SerialDetectionMode.AutoBitRate]: 0x0,
+  [SerialDetectionMode.ManualBitRate]: 0x1,
 }
 
 /**
@@ -5573,15 +5572,15 @@ export enum DifferentialSource {
 /**
  * @category Enumerations
  */
-export enum DifferentialSourceValues {
-  Auto = 0x0,
-  Loran = 0x1,
-  MskBeacon = 0x2,
-  FmSubcarrier = 0x3,
-  Ais = 0x4,
-  GroundBasedRadio = 0x5,
-  Sbas = 0x6,
-  Satellite = 0x7,
+export const DifferentialSourceValues: {[key: string]: number} = {
+  [DifferentialSource.Auto]: 0x0,
+  [DifferentialSource.Loran]: 0x1,
+  [DifferentialSource.MskBeacon]: 0x2,
+  [DifferentialSource.FmSubcarrier]: 0x3,
+  [DifferentialSource.Ais]: 0x4,
+  [DifferentialSource.GroundBasedRadio]: 0x5,
+  [DifferentialSource.Sbas]: 0x6,
+  [DifferentialSource.Satellite]: 0x7,
 }
 
 /**
@@ -5596,10 +5595,10 @@ export enum DifferentialMode {
 /**
  * @category Enumerations
  */
-export enum DifferentialModeValues {
-  Manual = 0x0,
-  AutoPower = 0x1,
-  AutoRange = 0x2,
+export const DifferentialModeValues: {[key: string]: number} = {
+  [DifferentialMode.Manual]: 0x0,
+  [DifferentialMode.AutoPower]: 0x1,
+  [DifferentialMode.AutoRange]: 0x2,
 }
 
 /**
@@ -5616,12 +5615,12 @@ export enum WpPositionResolution {
 /**
  * @category Enumerations
  */
-export enum WpPositionResolutionValues {
-  MoreThan01Min = 0x0,
-  _00101Min = 0x1,
-  _0001001Min = 0x2,
-  _000010001Min = 0x3,
-  _000001Min = 0x4,
+export const WpPositionResolutionValues: {[key: string]: number} = {
+  [WpPositionResolution.MoreThan01Min]: 0x0,
+  [WpPositionResolution._00101Min]: 0x1,
+  [WpPositionResolution._0001001Min]: 0x2,
+  [WpPositionResolution._000010001Min]: 0x3,
+  [WpPositionResolution._000001Min]: 0x4,
 }
 
 /**
@@ -5635,9 +5634,9 @@ export enum WpIdentificationMethod {
 /**
  * @category Enumerations
  */
-export enum WpIdentificationMethodValues {
-  WaypointsInWpList = 0x0,
-  WaypointsEmbeddedInRoute = 0x1,
+export const WpIdentificationMethodValues: {[key: string]: number} = {
+  [WpIdentificationMethod.WaypointsInWpList]: 0x0,
+  [WpIdentificationMethod.WaypointsEmbeddedInRoute]: 0x1,
 }
 
 /**
@@ -5652,10 +5651,10 @@ export enum WpRouteStatus {
 /**
  * @category Enumerations
  */
-export enum WpRouteStatusValues {
-  Active = 0x0,
-  Inactive = 0x1,
-  Deleted = 0x2,
+export const WpRouteStatusValues: {[key: string]: number} = {
+  [WpRouteStatus.Active]: 0x0,
+  [WpRouteStatus.Inactive]: 0x1,
+  [WpRouteStatus.Deleted]: 0x2,
 }
 
 /**
@@ -5669,9 +5668,9 @@ export enum WpNavigationMethod {
 /**
  * @category Enumerations
  */
-export enum WpNavigationMethodValues {
-  GreatCircle = 0x0,
-  RhumbLine = 0x1,
+export const WpNavigationMethodValues: {[key: string]: number} = {
+  [WpNavigationMethod.GreatCircle]: 0x0,
+  [WpNavigationMethod.RhumbLine]: 0x1,
 }
 
 /**
@@ -5688,12 +5687,12 @@ export enum InverterMode {
 /**
  * @category Enumerations
  */
-export enum InverterModeValues {
-  Standalone = 0x0,
-  SeriesMaster = 0x1,
-  SeriesSlave = 0x2,
-  ParallelMaster = 0x3,
-  ParallelSlave = 0x4,
+export const InverterModeValues: {[key: string]: number} = {
+  [InverterMode.Standalone]: 0x0,
+  [InverterMode.SeriesMaster]: 0x1,
+  [InverterMode.SeriesSlave]: 0x2,
+  [InverterMode.ParallelMaster]: 0x3,
+  [InverterMode.ParallelSlave]: 0x4,
 }
 
 /**
@@ -5707,9 +5706,9 @@ export enum CertificationLevel {
 /**
  * @category Enumerations
  */
-export enum CertificationLevelValues {
-  LevelA = 0x0,
-  LevelB = 0x1,
+export const CertificationLevelValues: {[key: string]: number} = {
+  [CertificationLevel.LevelA]: 0x0,
+  [CertificationLevel.LevelB]: 0x1,
 }
 
 /**
@@ -5724,10 +5723,10 @@ export enum AgsMode {
 /**
  * @category Enumerations
  */
-export enum AgsModeValues {
-  Off = 0x0,
-  On = 0x1,
-  Automatic = 0x2,
+export const AgsModeValues: {[key: string]: number} = {
+  [AgsMode.Off]: 0x0,
+  [AgsMode.On]: 0x1,
+  [AgsMode.Automatic]: 0x2,
 }
 
 /**
@@ -5749,17 +5748,17 @@ export enum AgsOperatingState {
 /**
  * @category Enumerations
  */
-export enum AgsOperatingStateValues {
-  QuietTime = 0x0,
-  AutoOn = 0x1,
-  AutoOff = 0x2,
-  ManualOn = 0x3,
-  ManualOff = 0x4,
-  GeneratorShutdown = 0x5,
-  ExternalShutdown = 0x6,
-  Fault = 0x7,
-  Suspend = 0x8,
-  NotOperating = 0x9,
+export const AgsOperatingStateValues: {[key: string]: number} = {
+  [AgsOperatingState.QuietTime]: 0x0,
+  [AgsOperatingState.AutoOn]: 0x1,
+  [AgsOperatingState.AutoOff]: 0x2,
+  [AgsOperatingState.ManualOn]: 0x3,
+  [AgsOperatingState.ManualOff]: 0x4,
+  [AgsOperatingState.GeneratorShutdown]: 0x5,
+  [AgsOperatingState.ExternalShutdown]: 0x6,
+  [AgsOperatingState.Fault]: 0x7,
+  [AgsOperatingState.Suspend]: 0x8,
+  [AgsOperatingState.NotOperating]: 0x9,
 }
 
 /**
@@ -5783,19 +5782,19 @@ export enum AgsGeneratingState {
 /**
  * @category Enumerations
  */
-export enum AgsGeneratingStateValues {
-  Preheating = 0x0,
-  StartDelay = 0x1,
-  Cranking = 0x2,
-  StarterCooling = 0x3,
-  WarmingUp = 0x4,
-  CoolingDown = 0x5,
-  SpinningUp = 0x6,
-  ShutdownBypass = 0x7,
-  Stopping = 0x8,
-  Running = 0x9,
-  Stopped = 0xa,
-  CrankDelaty = 0xb,
+export const AgsGeneratingStateValues: {[key: string]: number} = {
+  [AgsGeneratingState.Preheating]: 0x0,
+  [AgsGeneratingState.StartDelay]: 0x1,
+  [AgsGeneratingState.Cranking]: 0x2,
+  [AgsGeneratingState.StarterCooling]: 0x3,
+  [AgsGeneratingState.WarmingUp]: 0x4,
+  [AgsGeneratingState.CoolingDown]: 0x5,
+  [AgsGeneratingState.SpinningUp]: 0x6,
+  [AgsGeneratingState.ShutdownBypass]: 0x7,
+  [AgsGeneratingState.Stopping]: 0x8,
+  [AgsGeneratingState.Running]: 0x9,
+  [AgsGeneratingState.Stopped]: 0xa,
+  [AgsGeneratingState.CrankDelaty]: 0xb,
 }
 
 /**
@@ -5818,18 +5817,18 @@ export enum AgsOnReason {
 /**
  * @category Enumerations
  */
-export enum AgsOnReasonValues {
-  NotOn = 0x0,
-  DcVoltageLow = 0x1,
-  BatteryStateOfChargeLow = 0x2,
-  AcCurrentHigh = 0x3,
-  ContactClosed = 0x4,
-  ManualOn = 0x5,
-  Exercise = 0x6,
-  NonQuietTime = 0x7,
-  ExternalOnViaAgs = 0x8,
-  ExternalOnViaGenerator = 0x9,
-  UnableToStop = 0xa,
+export const AgsOnReasonValues: {[key: string]: number} = {
+  [AgsOnReason.NotOn]: 0x0,
+  [AgsOnReason.DcVoltageLow]: 0x1,
+  [AgsOnReason.BatteryStateOfChargeLow]: 0x2,
+  [AgsOnReason.AcCurrentHigh]: 0x3,
+  [AgsOnReason.ContactClosed]: 0x4,
+  [AgsOnReason.ManualOn]: 0x5,
+  [AgsOnReason.Exercise]: 0x6,
+  [AgsOnReason.NonQuietTime]: 0x7,
+  [AgsOnReason.ExternalOnViaAgs]: 0x8,
+  [AgsOnReason.ExternalOnViaGenerator]: 0x9,
+  [AgsOnReason.UnableToStop]: 0xa,
 }
 
 /**
@@ -5860,26 +5859,26 @@ export enum AgsOffReason {
 /**
  * @category Enumerations
  */
-export enum AgsOffReasonValues {
-  NotOff = 0x0,
-  DcVoltageHigh = 0x1,
-  BatteryStateOfChargeHigh = 0x2,
-  AcCurrentLow = 0x3,
-  ContactOpened = 0x4,
-  ReachedAbsorption = 0x5,
-  ReachedFloat = 0x6,
-  ManualOff = 0x7,
-  MaxRunTime = 0x8,
-  MaxAutoCycle = 0x9,
-  ExerciseDone = 0xa,
-  QuietTime = 0xb,
-  ExternalOffViaAgs = 0xc,
-  SafeMode = 0xd,
-  ExternalOffViaGenerator = 0xe,
-  ExternalShutdown = 0xf,
-  AutoOff = 0x10,
-  Fault = 0x11,
-  UnableToStart = 0x12,
+export const AgsOffReasonValues: {[key: string]: number} = {
+  [AgsOffReason.NotOff]: 0x0,
+  [AgsOffReason.DcVoltageHigh]: 0x1,
+  [AgsOffReason.BatteryStateOfChargeHigh]: 0x2,
+  [AgsOffReason.AcCurrentLow]: 0x3,
+  [AgsOffReason.ContactOpened]: 0x4,
+  [AgsOffReason.ReachedAbsorption]: 0x5,
+  [AgsOffReason.ReachedFloat]: 0x6,
+  [AgsOffReason.ManualOff]: 0x7,
+  [AgsOffReason.MaxRunTime]: 0x8,
+  [AgsOffReason.MaxAutoCycle]: 0x9,
+  [AgsOffReason.ExerciseDone]: 0xa,
+  [AgsOffReason.QuietTime]: 0xb,
+  [AgsOffReason.ExternalOffViaAgs]: 0xc,
+  [AgsOffReason.SafeMode]: 0xd,
+  [AgsOffReason.ExternalOffViaGenerator]: 0xe,
+  [AgsOffReason.ExternalShutdown]: 0xf,
+  [AgsOffReason.AutoOff]: 0x10,
+  [AgsOffReason.Fault]: 0x11,
+  [AgsOffReason.UnableToStart]: 0x12,
 }
 
 /**
@@ -5902,18 +5901,18 @@ export enum TelephoneMode {
 /**
  * @category Enumerations
  */
-export enum TelephoneModeValues {
-  F3Eg3ESimplexTelephone = 0x0,
-  F3Eg3EDuplexTelephone = 0x1,
-  J3ETelephone = 0x2,
-  H3ETelephone = 0x3,
-  F1Bj2BFecNbdpTelexteleprinter = 0x4,
-  F1Bj2BArqNbdpTelexteleprinter = 0x5,
-  F1Bj2BReceiveOnlyTeleprinterdsc = 0x6,
-  F1Bj2BTeleprinterdsc = 0x7,
-  A1AMorseTapeRecorder = 0x8,
-  A1AMorseMorseKeyheadSet = 0x9,
-  F1Cf2Cf3CFaxMachine = 0xa,
+export const TelephoneModeValues: {[key: string]: number} = {
+  [TelephoneMode.F3Eg3ESimplexTelephone]: 0x0,
+  [TelephoneMode.F3Eg3EDuplexTelephone]: 0x1,
+  [TelephoneMode.J3ETelephone]: 0x2,
+  [TelephoneMode.H3ETelephone]: 0x3,
+  [TelephoneMode.F1Bj2BFecNbdpTelexteleprinter]: 0x4,
+  [TelephoneMode.F1Bj2BArqNbdpTelexteleprinter]: 0x5,
+  [TelephoneMode.F1Bj2BReceiveOnlyTeleprinterdsc]: 0x6,
+  [TelephoneMode.F1Bj2BTeleprinterdsc]: 0x7,
+  [TelephoneMode.A1AMorseTapeRecorder]: 0x8,
+  [TelephoneMode.A1AMorseMorseKeyheadSet]: 0x9,
+  [TelephoneMode.F1Cf2Cf3CFaxMachine]: 0xa,
 }
 
 /**
@@ -5927,9 +5926,9 @@ export enum PowerMode {
 /**
  * @category Enumerations
  */
-export enum PowerModeValues {
-  High = 0x0,
-  Low = 0x1,
+export const PowerModeValues: {[key: string]: number} = {
+  [PowerMode.High]: 0x0,
+  [PowerMode.Low]: 0x1,
 }
 
 /**
@@ -5943,9 +5942,9 @@ export enum BroadcastIndicator {
 /**
  * @category Enumerations
  */
-export enum BroadcastIndicatorValues {
-  BroadcastGeoAreaMessage = 0x0,
-  AddressedMessage = 0x1,
+export const BroadcastIndicatorValues: {[key: string]: number} = {
+  [BroadcastIndicator.BroadcastGeoAreaMessage]: 0x0,
+  [BroadcastIndicator.AddressedMessage]: 0x1,
 }
 
 /**
@@ -5959,9 +5958,9 @@ export enum Bandwidth {
 /**
  * @category Enumerations
  */
-export enum BandwidthValues {
-  Default = 0x0,
-  _125KHz = 0x1,
+export const BandwidthValues: {[key: string]: number} = {
+  [Bandwidth.Default]: 0x0,
+  [Bandwidth._125KHz]: 0x1,
 }
 
 /**
@@ -5976,10 +5975,10 @@ export enum FloodState {
 /**
  * @category Enumerations
  */
-export enum FloodStateValues {
-  Flood = 0x0,
-  Slack = 0x1,
-  Ebb = 0x2,
+export const FloodStateValues: {[key: string]: number} = {
+  [FloodState.Flood]: 0x0,
+  [FloodState.Slack]: 0x1,
+  [FloodState.Ebb]: 0x2,
 }
 
 /**
@@ -5994,10 +5993,10 @@ export enum AcLine {
 /**
  * @category Enumerations
  */
-export enum AcLineValues {
-  Line1 = 0x0,
-  Line2 = 0x1,
-  Line3 = 0x2,
+export const AcLineValues: {[key: string]: number} = {
+  [AcLine.Line1]: 0x0,
+  [AcLine.Line2]: 0x1,
+  [AcLine.Line3]: 0x2,
 }
 
 /**
@@ -6015,13 +6014,13 @@ export enum ZoneSize {
 /**
  * @category Enumerations
  */
-export enum ZoneSizeValues {
-  _1Nm = 0x0,
-  _2Nm = 0x1,
-  _3Nm = 0x2,
-  _4Nm = 0x3,
-  _5Nm = 0x4,
-  _6Nm = 0x5,
+export const ZoneSizeValues: {[key: string]: number} = {
+  [ZoneSize._1Nm]: 0x0,
+  [ZoneSize._2Nm]: 0x1,
+  [ZoneSize._3Nm]: 0x2,
+  [ZoneSize._4Nm]: 0x3,
+  [ZoneSize._5Nm]: 0x4,
+  [ZoneSize._6Nm]: 0x5,
 }
 
 /**

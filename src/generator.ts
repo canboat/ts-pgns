@@ -78,24 +78,26 @@ if (argv.enums) {
 
     done = {}
     category()
-    console.log(`export enum ${enumName(en.Name)}Values {`)
+    console.log(
+      `export const ${enumName(en.Name)}Values: {[key: string]: number} = {`
+    )
     en.EnumValues.forEach((v: any) => {
       const name = enumName(v.Name)
       const found = done[name]
       if (found) {
         const num = done[name] + 1
         done[name] = num
-        console.log(`  ${name}${num} = 0x${v.Value.toString(16)},`)
+        console.log(`  ${name}${num}: 0x${v.Value.toString(16)},`)
       } else {
         done[name] = 1
-        console.log(`  ${name} = 0x${v.Value.toString(16)},`)
+        //console.log(`  ${name} = 0x${v.Value.toString(16)},`)
+        console.log(
+          `  [${enumName(en.Name)}.${name}]: 0x${v.Value.toString(16)},`
+        )
       }
     })
     if (en.Name === 'INDUSTRY_CODE') {
-      console.log(
-        '  // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values'
-      )
-      console.log(`  Marine = 0x4,`)
+      console.log(`  Marine: 0x4,`)
     }
     console.log('}\n')
   })

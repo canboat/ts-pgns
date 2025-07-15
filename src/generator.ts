@@ -366,6 +366,7 @@ export abstract class PGN implements PGNInterface {
     outputFields()
     console.log('}\n')
 
+    /*
     category()
     console.log(`export const ${typeName}Defaults = {`)
     console.log(`  pgn: ${pgn.PGN},`)
@@ -373,6 +374,7 @@ export abstract class PGN implements PGNInterface {
     console.log(`  prio: ${pgn.Priority !== undefined ? pgn.Priority : 3},`)
     console.log(`  fields: []`)
     console.log('}\n')
+    */
 
     if (hasMatchFields) {
       category()
@@ -436,8 +438,11 @@ export abstract class PGN implements PGNInterface {
   fields: ${typeName}Fields
 
   constructor(fields: ${typeName}${createArgs}, dst: number = 255) {
-    super(${typeName}Defaults)
-    this.dst = dst`)
+    super({
+      pgn: ${pgn.PGN},
+      prio: ${pgn.Priority !== undefined ? pgn.Priority : 3},
+      dst
+    })`)
 
     if (hasMatchFields) {
       console.log(`    this.fields = { ...${typeName}MatchFields, ...fields }`)

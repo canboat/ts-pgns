@@ -44,7 +44,6 @@ export const IndustryCodeValues: {[key: string]: number} = {
   [IndustryCode.Construction]: 0x3,
   [IndustryCode.MarineIndustry]: 0x4,
   [IndustryCode.Industrial]: 0x5,
-  // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
   Marine: 0x4,
 }
 

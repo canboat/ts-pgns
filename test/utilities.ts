@@ -8,7 +8,8 @@ import {
   mapCamelCaseKeys,
   getPGNWithNumber,
   getPGNWithId,
-  createPGN
+  createPGN,
+  mapNameKeysToCamelCase
 } from '../dist/index'
 
 describe('utilities tests', () => {
@@ -63,6 +64,48 @@ describe('utilities tests', () => {
       expect(mapped.fields.list.length).to.equal(2)
       expect(mapped.fields.list[1]['Reference Station Type']).to.equal(19)
       expect(mapped.fields.list[1]['Reference Station ID']).to.equal(22)
+      done()
+    } catch (err) {
+      done(err)
+    }
+  })
+
+  it(`mapNameKeysToCamelCase works`, (done) => {
+    const pgn = new PGN_129029({
+      Date: 'date',
+      Time: 'time',
+      Latitude: 1,
+      Longitude: 2,
+      'GNSS type': 3,
+      Method: 4,
+      Integrity: 5,
+      'Number of SVs': 6,
+      HDOP: 7,
+      'Geoidal Separation': 8,
+      'Reference Stations': 2,
+      list: [
+        {
+          'Reference Station Type': 9,
+          'Reference Station ID': 7
+        },
+        {
+          'Reference Station Type': 19,
+          'Reference Station ID': 22
+        }
+      ]
+    })
+
+    try {
+      const mapped = mapNameKeysToCamelCase(pgn)
+      assert(mapped !== undefined)
+      expect(mapped.fields).to.exist
+      expect(mapped.fields.date).to.equal('date')
+      expect(mapped.fields.gnssType).to.equal(3)
+      expect(mapped.fields.numberOfSvs).to.equal(6)
+      expect(mapped.fields.list).to.exist
+      expect(mapped.fields.list.length).to.equal(2)
+      expect(mapped.fields.list[1].referenceStationType).to.equal(19)
+      expect(mapped.fields.list[1].referenceStationId).to.equal(22)
       done()
     } catch (err) {
       done(err)

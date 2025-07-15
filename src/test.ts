@@ -2,9 +2,7 @@
 
 import {
   PGN_65305_SimnetDeviceModeRequest,
-  PGN_65305_SimnetDeviceModeRequestDefaults,
   PGN_61184_VictronBatteryRegister,
-  PGN_61184_VictronBatteryRegisterDefaults,
   PGN_61184_VictronBatteryRegisterMatchFields,
   SimnetDeviceModel,
   SimnetDeviceReport,

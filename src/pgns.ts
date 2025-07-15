@@ -171,22 +171,15 @@ export interface PGN_59392Fields {
 /**
  * @category PGN_59392
  */
-export const PGN_59392Defaults = {
-  pgn: 59392,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_59392
- */
 export class PGN_59392 extends PGN implements PGN_59392Interface {
   fields: PGN_59392Fields
 
   constructor(fields: PGN_59392Fields, dst: number = 255) {
-    super(PGN_59392Defaults)
-    this.dst = dst
+    super({
+      pgn: 59392,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -220,22 +213,15 @@ export interface PGN_59904Fields {
 /**
  * @category PGN_59904
  */
-export const PGN_59904Defaults = {
-  pgn: 59904,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_59904
- */
 export class PGN_59904 extends PGN implements PGN_59904Interface {
   fields: PGN_59904Fields
 
   constructor(fields: PGN_59904Fields, dst: number = 255) {
-    super(PGN_59904Defaults)
-    this.dst = dst
+    super({
+      pgn: 59904,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -270,22 +256,15 @@ export interface PGN_60160Fields {
 /**
  * @category PGN_60160
  */
-export const PGN_60160Defaults = {
-  pgn: 60160,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_60160
- */
 export class PGN_60160 extends PGN implements PGN_60160Interface {
   fields: PGN_60160Fields
 
   constructor(fields: PGN_60160Fields, dst: number = 255) {
-    super(PGN_60160Defaults)
-    this.dst = dst
+    super({
+      pgn: 60160,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -325,16 +304,6 @@ export interface PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend
 /**
  * @category PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend
  */
-export const PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendDefaults = {
-  pgn: 60416,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend
- */
 export const PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendMatchFields = {
   groupFunctionCode: enums.IsoCommand.Rts,
 }
@@ -356,8 +325,11 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementRequestToSend ext
   fields: PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendFields
 
   constructor(fields: PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendCreateArgs, dst: number = 255) {
-    super(PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendDefaults)
-    this.dst = dst
+    super({
+      pgn: 60416,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_60416_IsoTransportProtocolConnectionManagementRequestToSendMatchFields, ...fields }
   }
 
@@ -400,16 +372,6 @@ export interface PGN_60416_IsoTransportProtocolConnectionManagementClearToSendFi
 /**
  * @category PGN_60416_IsoTransportProtocolConnectionManagementClearToSend
  */
-export const PGN_60416_IsoTransportProtocolConnectionManagementClearToSendDefaults = {
-  pgn: 60416,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_60416_IsoTransportProtocolConnectionManagementClearToSend
- */
 export const PGN_60416_IsoTransportProtocolConnectionManagementClearToSendMatchFields = {
   groupFunctionCode: enums.IsoCommand.Cts,
 }
@@ -431,8 +393,11 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementClearToSend exten
   fields: PGN_60416_IsoTransportProtocolConnectionManagementClearToSendFields
 
   constructor(fields: PGN_60416_IsoTransportProtocolConnectionManagementClearToSendCreateArgs, dst: number = 255) {
-    super(PGN_60416_IsoTransportProtocolConnectionManagementClearToSendDefaults)
-    this.dst = dst
+    super({
+      pgn: 60416,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_60416_IsoTransportProtocolConnectionManagementClearToSendMatchFields, ...fields }
   }
 
@@ -475,16 +440,6 @@ export interface PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageF
 /**
  * @category PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessage
  */
-export const PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageDefaults = {
-  pgn: 60416,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessage
- */
 export const PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageMatchFields = {
   groupFunctionCode: enums.IsoCommand.Eom,
 }
@@ -506,8 +461,11 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessage exte
   fields: PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageFields
 
   constructor(fields: PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageCreateArgs, dst: number = 255) {
-    super(PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageDefaults)
-    this.dst = dst
+    super({
+      pgn: 60416,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_60416_IsoTransportProtocolConnectionManagementEndOfMessageMatchFields, ...fields }
   }
 
@@ -550,16 +508,6 @@ export interface PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnno
 /**
  * @category PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce
  */
-export const PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceDefaults = {
-  pgn: 60416,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce
- */
 export const PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceMatchFields = {
   groupFunctionCode: enums.IsoCommand.Bam,
 }
@@ -581,8 +529,11 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounce
   fields: PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceFields
 
   constructor(fields: PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceCreateArgs, dst: number = 255) {
-    super(PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceDefaults)
-    this.dst = dst
+    super({
+      pgn: 60416,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_60416_IsoTransportProtocolConnectionManagementBroadcastAnnounceMatchFields, ...fields }
   }
 
@@ -624,16 +575,6 @@ export interface PGN_60416_IsoTransportProtocolConnectionManagementAbortFields {
 /**
  * @category PGN_60416_IsoTransportProtocolConnectionManagementAbort
  */
-export const PGN_60416_IsoTransportProtocolConnectionManagementAbortDefaults = {
-  pgn: 60416,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_60416_IsoTransportProtocolConnectionManagementAbort
- */
 export const PGN_60416_IsoTransportProtocolConnectionManagementAbortMatchFields = {
   groupFunctionCode: enums.IsoCommand.Abort,
 }
@@ -654,8 +595,11 @@ export class PGN_60416_IsoTransportProtocolConnectionManagementAbort extends PGN
   fields: PGN_60416_IsoTransportProtocolConnectionManagementAbortFields
 
   constructor(fields: PGN_60416_IsoTransportProtocolConnectionManagementAbortCreateArgs, dst: number = 255) {
-    super(PGN_60416_IsoTransportProtocolConnectionManagementAbortDefaults)
-    this.dst = dst
+    super({
+      pgn: 60416,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_60416_IsoTransportProtocolConnectionManagementAbortMatchFields, ...fields }
   }
 
@@ -701,22 +645,15 @@ export interface PGN_60928Fields {
 /**
  * @category PGN_60928
  */
-export const PGN_60928Defaults = {
-  pgn: 60928,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_60928
- */
 export class PGN_60928 extends PGN implements PGN_60928Interface {
   fields: PGN_60928Fields
 
   constructor(fields: PGN_60928Fields, dst: number = 255) {
-    super(PGN_60928Defaults)
-    this.dst = dst
+    super({
+      pgn: 60928,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -753,22 +690,15 @@ export interface PGN_61184Fields {
 /**
  * @category PGN_61184
  */
-export const PGN_61184Defaults = {
-  pgn: 61184,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_61184
- */
 export class PGN_61184 extends PGN implements PGN_61184Interface {
   fields: PGN_61184Fields
 
   constructor(fields: PGN_61184Fields, dst: number = 255) {
-    super(PGN_61184Defaults)
-    this.dst = dst
+    super({
+      pgn: 61184,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -811,16 +741,6 @@ export interface PGN_61184_SeatalkWirelessKeypadLightControlFields {
 /**
  * @category PGN_61184_SeatalkWirelessKeypadLightControl
  */
-export const PGN_61184_SeatalkWirelessKeypadLightControlDefaults = {
-  pgn: 61184,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_61184_SeatalkWirelessKeypadLightControl
- */
 export const PGN_61184_SeatalkWirelessKeypadLightControlMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -845,8 +765,11 @@ export class PGN_61184_SeatalkWirelessKeypadLightControl extends PGN implements 
   fields: PGN_61184_SeatalkWirelessKeypadLightControlFields
 
   constructor(fields: PGN_61184_SeatalkWirelessKeypadLightControlCreateArgs, dst: number = 255) {
-    super(PGN_61184_SeatalkWirelessKeypadLightControlDefaults)
-    this.dst = dst
+    super({
+      pgn: 61184,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_61184_SeatalkWirelessKeypadLightControlMatchFields, ...fields }
   }
 
@@ -890,16 +813,6 @@ export interface PGN_61184_SeatalkWirelessKeypadControlFields {
 /**
  * @category PGN_61184_SeatalkWirelessKeypadControl
  */
-export const PGN_61184_SeatalkWirelessKeypadControlDefaults = {
-  pgn: 61184,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_61184_SeatalkWirelessKeypadControl
- */
 export const PGN_61184_SeatalkWirelessKeypadControlMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -923,8 +836,11 @@ export class PGN_61184_SeatalkWirelessKeypadControl extends PGN implements PGN_6
   fields: PGN_61184_SeatalkWirelessKeypadControlFields
 
   constructor(fields: PGN_61184_SeatalkWirelessKeypadControlCreateArgs, dst: number = 255) {
-    super(PGN_61184_SeatalkWirelessKeypadControlDefaults)
-    this.dst = dst
+    super({
+      pgn: 61184,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_61184_SeatalkWirelessKeypadControlMatchFields, ...fields }
   }
 
@@ -966,16 +882,6 @@ export interface PGN_61184_VictronBatteryRegisterFields {
 /**
  * @category PGN_61184_VictronBatteryRegister
  */
-export const PGN_61184_VictronBatteryRegisterDefaults = {
-  pgn: 61184,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_61184_VictronBatteryRegister
- */
 export const PGN_61184_VictronBatteryRegisterMatchFields = {
   manufacturerCode: enums.ManufacturerCode.VictronEnergy,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -997,8 +903,11 @@ export class PGN_61184_VictronBatteryRegister extends PGN implements PGN_61184_V
   fields: PGN_61184_VictronBatteryRegisterFields
 
   constructor(fields: PGN_61184_VictronBatteryRegisterCreateArgs, dst: number = 255) {
-    super(PGN_61184_VictronBatteryRegisterDefaults)
-    this.dst = dst
+    super({
+      pgn: 61184,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_61184_VictronBatteryRegisterMatchFields, ...fields }
   }
 
@@ -1038,22 +947,15 @@ export interface PGN_61440Fields {
 /**
  * @category PGN_61440
  */
-export const PGN_61440Defaults = {
-  pgn: 61440,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_61440
- */
 export class PGN_61440 extends PGN implements PGN_61440Interface {
   fields: PGN_61440Fields
 
   constructor(fields: PGN_61440Fields, dst: number = 255) {
-    super(PGN_61440Defaults)
-    this.dst = dst
+    super({
+      pgn: 61440,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -1088,22 +990,15 @@ export interface PGN_65001Fields {
 /**
  * @category PGN_65001
  */
-export const PGN_65001Defaults = {
-  pgn: 65001,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65001
- */
 export class PGN_65001 extends PGN implements PGN_65001Interface {
   fields: PGN_65001Fields
 
   constructor(fields: PGN_65001Fields, dst: number = 255) {
-    super(PGN_65001Defaults)
-    this.dst = dst
+    super({
+      pgn: 65001,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -1138,22 +1033,15 @@ export interface PGN_65002Fields {
 /**
  * @category PGN_65002
  */
-export const PGN_65002Defaults = {
-  pgn: 65002,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65002
- */
 export class PGN_65002 extends PGN implements PGN_65002Interface {
   fields: PGN_65002Fields
 
   constructor(fields: PGN_65002Fields, dst: number = 255) {
-    super(PGN_65002Defaults)
-    this.dst = dst
+    super({
+      pgn: 65002,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -1188,22 +1076,15 @@ export interface PGN_65003Fields {
 /**
  * @category PGN_65003
  */
-export const PGN_65003Defaults = {
-  pgn: 65003,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65003
- */
 export class PGN_65003 extends PGN implements PGN_65003Interface {
   fields: PGN_65003Fields
 
   constructor(fields: PGN_65003Fields, dst: number = 255) {
-    super(PGN_65003Defaults)
-    this.dst = dst
+    super({
+      pgn: 65003,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -1238,22 +1119,15 @@ export interface PGN_65004Fields {
 /**
  * @category PGN_65004
  */
-export const PGN_65004Defaults = {
-  pgn: 65004,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65004
- */
 export class PGN_65004 extends PGN implements PGN_65004Interface {
   fields: PGN_65004Fields
 
   constructor(fields: PGN_65004Fields, dst: number = 255) {
-    super(PGN_65004Defaults)
-    this.dst = dst
+    super({
+      pgn: 65004,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -1286,22 +1160,15 @@ export interface PGN_65005Fields {
 /**
  * @category PGN_65005
  */
-export const PGN_65005Defaults = {
-  pgn: 65005,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65005
- */
 export class PGN_65005 extends PGN implements PGN_65005Interface {
   fields: PGN_65005Fields
 
   constructor(fields: PGN_65005Fields, dst: number = 255) {
-    super(PGN_65005Defaults)
-    this.dst = dst
+    super({
+      pgn: 65005,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -1336,22 +1203,15 @@ export interface PGN_65006Fields {
 /**
  * @category PGN_65006
  */
-export const PGN_65006Defaults = {
-  pgn: 65006,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65006
- */
 export class PGN_65006 extends PGN implements PGN_65006Interface {
   fields: PGN_65006Fields
 
   constructor(fields: PGN_65006Fields, dst: number = 255) {
-    super(PGN_65006Defaults)
-    this.dst = dst
+    super({
+      pgn: 65006,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -1384,22 +1244,15 @@ export interface PGN_65007Fields {
 /**
  * @category PGN_65007
  */
-export const PGN_65007Defaults = {
-  pgn: 65007,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65007
- */
 export class PGN_65007 extends PGN implements PGN_65007Interface {
   fields: PGN_65007Fields
 
   constructor(fields: PGN_65007Fields, dst: number = 255) {
-    super(PGN_65007Defaults)
-    this.dst = dst
+    super({
+      pgn: 65007,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -1434,22 +1287,15 @@ export interface PGN_65008Fields {
 /**
  * @category PGN_65008
  */
-export const PGN_65008Defaults = {
-  pgn: 65008,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65008
- */
 export class PGN_65008 extends PGN implements PGN_65008Interface {
   fields: PGN_65008Fields
 
   constructor(fields: PGN_65008Fields, dst: number = 255) {
-    super(PGN_65008Defaults)
-    this.dst = dst
+    super({
+      pgn: 65008,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -1484,22 +1330,15 @@ export interface PGN_65009Fields {
 /**
  * @category PGN_65009
  */
-export const PGN_65009Defaults = {
-  pgn: 65009,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65009
- */
 export class PGN_65009 extends PGN implements PGN_65009Interface {
   fields: PGN_65009Fields
 
   constructor(fields: PGN_65009Fields, dst: number = 255) {
-    super(PGN_65009Defaults)
-    this.dst = dst
+    super({
+      pgn: 65009,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -1532,22 +1371,15 @@ export interface PGN_65010Fields {
 /**
  * @category PGN_65010
  */
-export const PGN_65010Defaults = {
-  pgn: 65010,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65010
- */
 export class PGN_65010 extends PGN implements PGN_65010Interface {
   fields: PGN_65010Fields
 
   constructor(fields: PGN_65010Fields, dst: number = 255) {
-    super(PGN_65010Defaults)
-    this.dst = dst
+    super({
+      pgn: 65010,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -1582,22 +1414,15 @@ export interface PGN_65011Fields {
 /**
  * @category PGN_65011
  */
-export const PGN_65011Defaults = {
-  pgn: 65011,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65011
- */
 export class PGN_65011 extends PGN implements PGN_65011Interface {
   fields: PGN_65011Fields
 
   constructor(fields: PGN_65011Fields, dst: number = 255) {
-    super(PGN_65011Defaults)
-    this.dst = dst
+    super({
+      pgn: 65011,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -1632,22 +1457,15 @@ export interface PGN_65012Fields {
 /**
  * @category PGN_65012
  */
-export const PGN_65012Defaults = {
-  pgn: 65012,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65012
- */
 export class PGN_65012 extends PGN implements PGN_65012Interface {
   fields: PGN_65012Fields
 
   constructor(fields: PGN_65012Fields, dst: number = 255) {
-    super(PGN_65012Defaults)
-    this.dst = dst
+    super({
+      pgn: 65012,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -1680,22 +1498,15 @@ export interface PGN_65013Fields {
 /**
  * @category PGN_65013
  */
-export const PGN_65013Defaults = {
-  pgn: 65013,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65013
- */
 export class PGN_65013 extends PGN implements PGN_65013Interface {
   fields: PGN_65013Fields
 
   constructor(fields: PGN_65013Fields, dst: number = 255) {
-    super(PGN_65013Defaults)
-    this.dst = dst
+    super({
+      pgn: 65013,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -1730,22 +1541,15 @@ export interface PGN_65014Fields {
 /**
  * @category PGN_65014
  */
-export const PGN_65014Defaults = {
-  pgn: 65014,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65014
- */
 export class PGN_65014 extends PGN implements PGN_65014Interface {
   fields: PGN_65014Fields
 
   constructor(fields: PGN_65014Fields, dst: number = 255) {
-    super(PGN_65014Defaults)
-    this.dst = dst
+    super({
+      pgn: 65014,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -1780,22 +1584,15 @@ export interface PGN_65015Fields {
 /**
  * @category PGN_65015
  */
-export const PGN_65015Defaults = {
-  pgn: 65015,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65015
- */
 export class PGN_65015 extends PGN implements PGN_65015Interface {
   fields: PGN_65015Fields
 
   constructor(fields: PGN_65015Fields, dst: number = 255) {
-    super(PGN_65015Defaults)
-    this.dst = dst
+    super({
+      pgn: 65015,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -1828,22 +1625,15 @@ export interface PGN_65016Fields {
 /**
  * @category PGN_65016
  */
-export const PGN_65016Defaults = {
-  pgn: 65016,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65016
- */
 export class PGN_65016 extends PGN implements PGN_65016Interface {
   fields: PGN_65016Fields
 
   constructor(fields: PGN_65016Fields, dst: number = 255) {
-    super(PGN_65016Defaults)
-    this.dst = dst
+    super({
+      pgn: 65016,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -1878,22 +1668,15 @@ export interface PGN_65017Fields {
 /**
  * @category PGN_65017
  */
-export const PGN_65017Defaults = {
-  pgn: 65017,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65017
- */
 export class PGN_65017 extends PGN implements PGN_65017Interface {
   fields: PGN_65017Fields
 
   constructor(fields: PGN_65017Fields, dst: number = 255) {
-    super(PGN_65017Defaults)
-    this.dst = dst
+    super({
+      pgn: 65017,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -1926,22 +1709,15 @@ export interface PGN_65018Fields {
 /**
  * @category PGN_65018
  */
-export const PGN_65018Defaults = {
-  pgn: 65018,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65018
- */
 export class PGN_65018 extends PGN implements PGN_65018Interface {
   fields: PGN_65018Fields
 
   constructor(fields: PGN_65018Fields, dst: number = 255) {
-    super(PGN_65018Defaults)
-    this.dst = dst
+    super({
+      pgn: 65018,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -1976,22 +1752,15 @@ export interface PGN_65019Fields {
 /**
  * @category PGN_65019
  */
-export const PGN_65019Defaults = {
-  pgn: 65019,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65019
- */
 export class PGN_65019 extends PGN implements PGN_65019Interface {
   fields: PGN_65019Fields
 
   constructor(fields: PGN_65019Fields, dst: number = 255) {
-    super(PGN_65019Defaults)
-    this.dst = dst
+    super({
+      pgn: 65019,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -2024,22 +1793,15 @@ export interface PGN_65020Fields {
 /**
  * @category PGN_65020
  */
-export const PGN_65020Defaults = {
-  pgn: 65020,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65020
- */
 export class PGN_65020 extends PGN implements PGN_65020Interface {
   fields: PGN_65020Fields
 
   constructor(fields: PGN_65020Fields, dst: number = 255) {
-    super(PGN_65020Defaults)
-    this.dst = dst
+    super({
+      pgn: 65020,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -2074,22 +1836,15 @@ export interface PGN_65021Fields {
 /**
  * @category PGN_65021
  */
-export const PGN_65021Defaults = {
-  pgn: 65021,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65021
- */
 export class PGN_65021 extends PGN implements PGN_65021Interface {
   fields: PGN_65021Fields
 
   constructor(fields: PGN_65021Fields, dst: number = 255) {
-    super(PGN_65021Defaults)
-    this.dst = dst
+    super({
+      pgn: 65021,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -2124,22 +1879,15 @@ export interface PGN_65022Fields {
 /**
  * @category PGN_65022
  */
-export const PGN_65022Defaults = {
-  pgn: 65022,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65022
- */
 export class PGN_65022 extends PGN implements PGN_65022Interface {
   fields: PGN_65022Fields
 
   constructor(fields: PGN_65022Fields, dst: number = 255) {
-    super(PGN_65022Defaults)
-    this.dst = dst
+    super({
+      pgn: 65022,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -2172,22 +1920,15 @@ export interface PGN_65023Fields {
 /**
  * @category PGN_65023
  */
-export const PGN_65023Defaults = {
-  pgn: 65023,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65023
- */
 export class PGN_65023 extends PGN implements PGN_65023Interface {
   fields: PGN_65023Fields
 
   constructor(fields: PGN_65023Fields, dst: number = 255) {
-    super(PGN_65023Defaults)
-    this.dst = dst
+    super({
+      pgn: 65023,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -2222,22 +1963,15 @@ export interface PGN_65024Fields {
 /**
  * @category PGN_65024
  */
-export const PGN_65024Defaults = {
-  pgn: 65024,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65024
- */
 export class PGN_65024 extends PGN implements PGN_65024Interface {
   fields: PGN_65024Fields
 
   constructor(fields: PGN_65024Fields, dst: number = 255) {
-    super(PGN_65024Defaults)
-    this.dst = dst
+    super({
+      pgn: 65024,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -2272,22 +2006,15 @@ export interface PGN_65025Fields {
 /**
  * @category PGN_65025
  */
-export const PGN_65025Defaults = {
-  pgn: 65025,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65025
- */
 export class PGN_65025 extends PGN implements PGN_65025Interface {
   fields: PGN_65025Fields
 
   constructor(fields: PGN_65025Fields, dst: number = 255) {
-    super(PGN_65025Defaults)
-    this.dst = dst
+    super({
+      pgn: 65025,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -2320,22 +2047,15 @@ export interface PGN_65026Fields {
 /**
  * @category PGN_65026
  */
-export const PGN_65026Defaults = {
-  pgn: 65026,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65026
- */
 export class PGN_65026 extends PGN implements PGN_65026Interface {
   fields: PGN_65026Fields
 
   constructor(fields: PGN_65026Fields, dst: number = 255) {
-    super(PGN_65026Defaults)
-    this.dst = dst
+    super({
+      pgn: 65026,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -2370,22 +2090,15 @@ export interface PGN_65027Fields {
 /**
  * @category PGN_65027
  */
-export const PGN_65027Defaults = {
-  pgn: 65027,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65027
- */
 export class PGN_65027 extends PGN implements PGN_65027Interface {
   fields: PGN_65027Fields
 
   constructor(fields: PGN_65027Fields, dst: number = 255) {
-    super(PGN_65027Defaults)
-    this.dst = dst
+    super({
+      pgn: 65027,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -2420,22 +2133,15 @@ export interface PGN_65028Fields {
 /**
  * @category PGN_65028
  */
-export const PGN_65028Defaults = {
-  pgn: 65028,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65028
- */
 export class PGN_65028 extends PGN implements PGN_65028Interface {
   fields: PGN_65028Fields
 
   constructor(fields: PGN_65028Fields, dst: number = 255) {
-    super(PGN_65028Defaults)
-    this.dst = dst
+    super({
+      pgn: 65028,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -2468,22 +2174,15 @@ export interface PGN_65029Fields {
 /**
  * @category PGN_65029
  */
-export const PGN_65029Defaults = {
-  pgn: 65029,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65029
- */
 export class PGN_65029 extends PGN implements PGN_65029Interface {
   fields: PGN_65029Fields
 
   constructor(fields: PGN_65029Fields, dst: number = 255) {
-    super(PGN_65029Defaults)
-    this.dst = dst
+    super({
+      pgn: 65029,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -2518,22 +2217,15 @@ export interface PGN_65030Fields {
 /**
  * @category PGN_65030
  */
-export const PGN_65030Defaults = {
-  pgn: 65030,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65030
- */
 export class PGN_65030 extends PGN implements PGN_65030Interface {
   fields: PGN_65030Fields
 
   constructor(fields: PGN_65030Fields, dst: number = 255) {
-    super(PGN_65030Defaults)
-    this.dst = dst
+    super({
+      pgn: 65030,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -2577,22 +2269,15 @@ export interface PGN_65240Fields {
 /**
  * @category PGN_65240
  */
-export const PGN_65240Defaults = {
-  pgn: 65240,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65240
- */
 export class PGN_65240 extends PGN implements PGN_65240Interface {
   fields: PGN_65240Fields
 
   constructor(fields: PGN_65240Fields, dst: number = 255) {
-    super(PGN_65240Defaults)
-    this.dst = dst
+    super({
+      pgn: 65240,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -2629,22 +2314,15 @@ export interface PGN_65280Fields {
 /**
  * @category PGN_65280
  */
-export const PGN_65280Defaults = {
-  pgn: 65280,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65280
- */
 export class PGN_65280 extends PGN implements PGN_65280Interface {
   fields: PGN_65280Fields
 
   constructor(fields: PGN_65280Fields, dst: number = 255) {
-    super(PGN_65280Defaults)
-    this.dst = dst
+    super({
+      pgn: 65280,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -2683,16 +2361,6 @@ export interface PGN_65280_FurunoHeaveFields {
 /**
  * @category PGN_65280_FurunoHeave
  */
-export const PGN_65280_FurunoHeaveDefaults = {
-  pgn: 65280,
-  dst: 255,
-  prio: 2,
-  fields: []
-}
-
-/**
- * @category PGN_65280_FurunoHeave
- */
 export const PGN_65280_FurunoHeaveMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Furuno,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -2714,8 +2382,11 @@ export class PGN_65280_FurunoHeave extends PGN implements PGN_65280_FurunoHeaveI
   fields: PGN_65280_FurunoHeaveFields
 
   constructor(fields: PGN_65280_FurunoHeaveCreateArgs, dst: number = 255) {
-    super(PGN_65280_FurunoHeaveDefaults)
-    this.dst = dst
+    super({
+      pgn: 65280,
+      prio: 2,
+      dst
+    })
     this.fields = { ...PGN_65280_FurunoHeaveMatchFields, ...fields }
   }
 
@@ -2759,16 +2430,6 @@ export interface PGN_65284_MaretronProprietaryDcBreakerCurrentFields {
 /**
  * @category PGN_65284_MaretronProprietaryDcBreakerCurrent
  */
-export const PGN_65284_MaretronProprietaryDcBreakerCurrentDefaults = {
-  pgn: 65284,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_65284_MaretronProprietaryDcBreakerCurrent
- */
 export const PGN_65284_MaretronProprietaryDcBreakerCurrentMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Maretron,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -2792,8 +2453,11 @@ export class PGN_65284_MaretronProprietaryDcBreakerCurrent extends PGN implement
   fields: PGN_65284_MaretronProprietaryDcBreakerCurrentFields
 
   constructor(fields: PGN_65284_MaretronProprietaryDcBreakerCurrentCreateArgs, dst: number = 255) {
-    super(PGN_65284_MaretronProprietaryDcBreakerCurrentDefaults)
-    this.dst = dst
+    super({
+      pgn: 65284,
+      prio: 6,
+      dst
+    })
     this.fields = { ...PGN_65284_MaretronProprietaryDcBreakerCurrentMatchFields, ...fields }
   }
 
@@ -2835,16 +2499,6 @@ export interface PGN_65285_AirmarBootStateAcknowledgmentFields {
 /**
  * @category PGN_65285_AirmarBootStateAcknowledgment
  */
-export const PGN_65285_AirmarBootStateAcknowledgmentDefaults = {
-  pgn: 65285,
-  dst: 255,
-  prio: 5,
-  fields: []
-}
-
-/**
- * @category PGN_65285_AirmarBootStateAcknowledgment
- */
 export const PGN_65285_AirmarBootStateAcknowledgmentMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -2866,8 +2520,11 @@ export class PGN_65285_AirmarBootStateAcknowledgment extends PGN implements PGN_
   fields: PGN_65285_AirmarBootStateAcknowledgmentFields
 
   constructor(fields: PGN_65285_AirmarBootStateAcknowledgmentCreateArgs, dst: number = 255) {
-    super(PGN_65285_AirmarBootStateAcknowledgmentDefaults)
-    this.dst = dst
+    super({
+      pgn: 65285,
+      prio: 5,
+      dst
+    })
     this.fields = { ...PGN_65285_AirmarBootStateAcknowledgmentMatchFields, ...fields }
   }
 
@@ -2910,16 +2567,6 @@ export interface PGN_65285_LowranceTemperatureFields {
 /**
  * @category PGN_65285_LowranceTemperature
  */
-export const PGN_65285_LowranceTemperatureDefaults = {
-  pgn: 65285,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65285_LowranceTemperature
- */
 export const PGN_65285_LowranceTemperatureMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Lowrance,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -2942,8 +2589,11 @@ export class PGN_65285_LowranceTemperature extends PGN implements PGN_65285_Lowr
   fields: PGN_65285_LowranceTemperatureFields
 
   constructor(fields: PGN_65285_LowranceTemperatureCreateArgs, dst: number = 255) {
-    super(PGN_65285_LowranceTemperatureDefaults)
-    this.dst = dst
+    super({
+      pgn: 65285,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_65285_LowranceTemperatureMatchFields, ...fields }
   }
 
@@ -2989,16 +2639,6 @@ export interface PGN_65286_ChetcoDimmerFields {
 /**
  * @category PGN_65286_ChetcoDimmer
  */
-export const PGN_65286_ChetcoDimmerDefaults = {
-  pgn: 65286,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65286_ChetcoDimmer
- */
 export const PGN_65286_ChetcoDimmerMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Chetco,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -3024,8 +2664,11 @@ export class PGN_65286_ChetcoDimmer extends PGN implements PGN_65286_ChetcoDimme
   fields: PGN_65286_ChetcoDimmerFields
 
   constructor(fields: PGN_65286_ChetcoDimmerCreateArgs, dst: number = 255) {
-    super(PGN_65286_ChetcoDimmerDefaults)
-    this.dst = dst
+    super({
+      pgn: 65286,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_65286_ChetcoDimmerMatchFields, ...fields }
   }
 
@@ -3066,16 +2709,6 @@ export interface PGN_65286_AirmarBootStateRequestFields {
 /**
  * @category PGN_65286_AirmarBootStateRequest
  */
-export const PGN_65286_AirmarBootStateRequestDefaults = {
-  pgn: 65286,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65286_AirmarBootStateRequest
- */
 export const PGN_65286_AirmarBootStateRequestMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -3096,8 +2729,11 @@ export class PGN_65286_AirmarBootStateRequest extends PGN implements PGN_65286_A
   fields: PGN_65286_AirmarBootStateRequestFields
 
   constructor(fields: PGN_65286_AirmarBootStateRequestCreateArgs, dst: number = 255) {
-    super(PGN_65286_AirmarBootStateRequestDefaults)
-    this.dst = dst
+    super({
+      pgn: 65286,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_65286_AirmarBootStateRequestMatchFields, ...fields }
   }
 
@@ -3141,16 +2777,6 @@ export interface PGN_65287_AirmarAccessLevelFields {
 /**
  * @category PGN_65287_AirmarAccessLevel
  */
-export const PGN_65287_AirmarAccessLevelDefaults = {
-  pgn: 65287,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65287_AirmarAccessLevel
- */
 export const PGN_65287_AirmarAccessLevelMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -3174,8 +2800,11 @@ export class PGN_65287_AirmarAccessLevel extends PGN implements PGN_65287_Airmar
   fields: PGN_65287_AirmarAccessLevelFields
 
   constructor(fields: PGN_65287_AirmarAccessLevelCreateArgs, dst: number = 255) {
-    super(PGN_65287_AirmarAccessLevelDefaults)
-    this.dst = dst
+    super({
+      pgn: 65287,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_65287_AirmarAccessLevelMatchFields, ...fields }
   }
 
@@ -3216,16 +2845,6 @@ export interface PGN_65287_SimnetConfigureTemperatureSensorFields {
 /**
  * @category PGN_65287_SimnetConfigureTemperatureSensor
  */
-export const PGN_65287_SimnetConfigureTemperatureSensorDefaults = {
-  pgn: 65287,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65287_SimnetConfigureTemperatureSensor
- */
 export const PGN_65287_SimnetConfigureTemperatureSensorMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -3246,8 +2865,11 @@ export class PGN_65287_SimnetConfigureTemperatureSensor extends PGN implements P
   fields: PGN_65287_SimnetConfigureTemperatureSensorFields
 
   constructor(fields: PGN_65287_SimnetConfigureTemperatureSensorCreateArgs, dst: number = 255) {
-    super(PGN_65287_SimnetConfigureTemperatureSensorDefaults)
-    this.dst = dst
+    super({
+      pgn: 65287,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_65287_SimnetConfigureTemperatureSensorMatchFields, ...fields }
   }
 
@@ -3292,16 +2914,6 @@ export interface PGN_65288_SeatalkAlarmFields {
 /**
  * @category PGN_65288_SeatalkAlarm
  */
-export const PGN_65288_SeatalkAlarmDefaults = {
-  pgn: 65288,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_65288_SeatalkAlarm
- */
 export const PGN_65288_SeatalkAlarmMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -3326,8 +2938,11 @@ export class PGN_65288_SeatalkAlarm extends PGN implements PGN_65288_SeatalkAlar
   fields: PGN_65288_SeatalkAlarmFields
 
   constructor(fields: PGN_65288_SeatalkAlarmCreateArgs, dst: number = 255) {
-    super(PGN_65288_SeatalkAlarmDefaults)
-    this.dst = dst
+    super({
+      pgn: 65288,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_65288_SeatalkAlarmMatchFields, ...fields }
   }
 
@@ -3368,16 +2983,6 @@ export interface PGN_65289_SimnetTrimTabSensorCalibrationFields {
 /**
  * @category PGN_65289_SimnetTrimTabSensorCalibration
  */
-export const PGN_65289_SimnetTrimTabSensorCalibrationDefaults = {
-  pgn: 65289,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65289_SimnetTrimTabSensorCalibration
- */
 export const PGN_65289_SimnetTrimTabSensorCalibrationMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -3398,8 +3003,11 @@ export class PGN_65289_SimnetTrimTabSensorCalibration extends PGN implements PGN
   fields: PGN_65289_SimnetTrimTabSensorCalibrationFields
 
   constructor(fields: PGN_65289_SimnetTrimTabSensorCalibrationCreateArgs, dst: number = 255) {
-    super(PGN_65289_SimnetTrimTabSensorCalibrationDefaults)
-    this.dst = dst
+    super({
+      pgn: 65289,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_65289_SimnetTrimTabSensorCalibrationMatchFields, ...fields }
   }
 
@@ -3440,16 +3048,6 @@ export interface PGN_65290_SimnetPaddleWheelSpeedConfigurationFields {
 /**
  * @category PGN_65290_SimnetPaddleWheelSpeedConfiguration
  */
-export const PGN_65290_SimnetPaddleWheelSpeedConfigurationDefaults = {
-  pgn: 65290,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65290_SimnetPaddleWheelSpeedConfiguration
- */
 export const PGN_65290_SimnetPaddleWheelSpeedConfigurationMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -3470,8 +3068,11 @@ export class PGN_65290_SimnetPaddleWheelSpeedConfiguration extends PGN implement
   fields: PGN_65290_SimnetPaddleWheelSpeedConfigurationFields
 
   constructor(fields: PGN_65290_SimnetPaddleWheelSpeedConfigurationCreateArgs, dst: number = 255) {
-    super(PGN_65290_SimnetPaddleWheelSpeedConfigurationDefaults)
-    this.dst = dst
+    super({
+      pgn: 65290,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_65290_SimnetPaddleWheelSpeedConfigurationMatchFields, ...fields }
   }
 
@@ -3512,16 +3113,6 @@ export interface PGN_65292_SimnetClearFluidLevelWarningsFields {
 /**
  * @category PGN_65292_SimnetClearFluidLevelWarnings
  */
-export const PGN_65292_SimnetClearFluidLevelWarningsDefaults = {
-  pgn: 65292,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65292_SimnetClearFluidLevelWarnings
- */
 export const PGN_65292_SimnetClearFluidLevelWarningsMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -3542,8 +3133,11 @@ export class PGN_65292_SimnetClearFluidLevelWarnings extends PGN implements PGN_
   fields: PGN_65292_SimnetClearFluidLevelWarningsFields
 
   constructor(fields: PGN_65292_SimnetClearFluidLevelWarningsCreateArgs, dst: number = 255) {
-    super(PGN_65292_SimnetClearFluidLevelWarningsDefaults)
-    this.dst = dst
+    super({
+      pgn: 65292,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_65292_SimnetClearFluidLevelWarningsMatchFields, ...fields }
   }
 
@@ -3584,16 +3178,6 @@ export interface PGN_65293_SimnetLgc2000ConfigurationFields {
 /**
  * @category PGN_65293_SimnetLgc2000Configuration
  */
-export const PGN_65293_SimnetLgc2000ConfigurationDefaults = {
-  pgn: 65293,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65293_SimnetLgc2000Configuration
- */
 export const PGN_65293_SimnetLgc2000ConfigurationMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -3614,8 +3198,11 @@ export class PGN_65293_SimnetLgc2000Configuration extends PGN implements PGN_652
   fields: PGN_65293_SimnetLgc2000ConfigurationFields
 
   constructor(fields: PGN_65293_SimnetLgc2000ConfigurationCreateArgs, dst: number = 255) {
-    super(PGN_65293_SimnetLgc2000ConfigurationDefaults)
-    this.dst = dst
+    super({
+      pgn: 65293,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_65293_SimnetLgc2000ConfigurationMatchFields, ...fields }
   }
 
@@ -3658,16 +3245,6 @@ export interface PGN_65293_DiverseYachtServicesLoadCellFields {
 /**
  * @category PGN_65293_DiverseYachtServicesLoadCell
  */
-export const PGN_65293_DiverseYachtServicesLoadCellDefaults = {
-  pgn: 65293,
-  dst: 255,
-  prio: 2,
-  fields: []
-}
-
-/**
- * @category PGN_65293_DiverseYachtServicesLoadCell
- */
 export const PGN_65293_DiverseYachtServicesLoadCellMatchFields = {
   manufacturerCode: enums.ManufacturerCode.DiverseYachtServices,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -3690,8 +3267,11 @@ export class PGN_65293_DiverseYachtServicesLoadCell extends PGN implements PGN_6
   fields: PGN_65293_DiverseYachtServicesLoadCellFields
 
   constructor(fields: PGN_65293_DiverseYachtServicesLoadCellCreateArgs, dst: number = 255) {
-    super(PGN_65293_DiverseYachtServicesLoadCellDefaults)
-    this.dst = dst
+    super({
+      pgn: 65293,
+      prio: 2,
+      dst
+    })
     this.fields = { ...PGN_65293_DiverseYachtServicesLoadCellMatchFields, ...fields }
   }
 
@@ -3738,16 +3318,6 @@ export interface PGN_65302_SimnetApUnknown1Fields {
 /**
  * @category PGN_65302_SimnetApUnknown1
  */
-export const PGN_65302_SimnetApUnknown1Defaults = {
-  pgn: 65302,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_65302_SimnetApUnknown1
- */
 export const PGN_65302_SimnetApUnknown1MatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -3772,8 +3342,11 @@ export class PGN_65302_SimnetApUnknown1 extends PGN implements PGN_65302_SimnetA
   fields: PGN_65302_SimnetApUnknown1Fields
 
   constructor(fields: PGN_65302_SimnetApUnknown1CreateArgs, dst: number = 255) {
-    super(PGN_65302_SimnetApUnknown1Defaults)
-    this.dst = dst
+    super({
+      pgn: 65302,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_65302_SimnetApUnknown1MatchFields, ...fields }
   }
 
@@ -3820,16 +3393,6 @@ export interface PGN_65305_SimnetDeviceStatusFields {
 /**
  * @category PGN_65305_SimnetDeviceStatus
  */
-export const PGN_65305_SimnetDeviceStatusDefaults = {
-  pgn: 65305,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65305_SimnetDeviceStatus
- */
 export const PGN_65305_SimnetDeviceStatusMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -3853,8 +3416,11 @@ export class PGN_65305_SimnetDeviceStatus extends PGN implements PGN_65305_Simne
   fields: PGN_65305_SimnetDeviceStatusFields
 
   constructor(fields: PGN_65305_SimnetDeviceStatusCreateArgs, dst: number = 255) {
-    super(PGN_65305_SimnetDeviceStatusDefaults)
-    this.dst = dst
+    super({
+      pgn: 65305,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_65305_SimnetDeviceStatusMatchFields, ...fields }
   }
 
@@ -3900,16 +3466,6 @@ export interface PGN_65305_SimnetDeviceStatusRequestFields {
 /**
  * @category PGN_65305_SimnetDeviceStatusRequest
  */
-export const PGN_65305_SimnetDeviceStatusRequestDefaults = {
-  pgn: 65305,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65305_SimnetDeviceStatusRequest
- */
 export const PGN_65305_SimnetDeviceStatusRequestMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -3932,8 +3488,11 @@ export class PGN_65305_SimnetDeviceStatusRequest extends PGN implements PGN_6530
   fields: PGN_65305_SimnetDeviceStatusRequestFields
 
   constructor(fields: PGN_65305_SimnetDeviceStatusRequestCreateArgs, dst: number = 255) {
-    super(PGN_65305_SimnetDeviceStatusRequestDefaults)
-    this.dst = dst
+    super({
+      pgn: 65305,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_65305_SimnetDeviceStatusRequestMatchFields, ...fields }
   }
 
@@ -3980,16 +3539,6 @@ export interface PGN_65305_SimnetPilotModeFields {
 /**
  * @category PGN_65305_SimnetPilotMode
  */
-export const PGN_65305_SimnetPilotModeDefaults = {
-  pgn: 65305,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65305_SimnetPilotMode
- */
 export const PGN_65305_SimnetPilotModeMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -4013,8 +3562,11 @@ export class PGN_65305_SimnetPilotMode extends PGN implements PGN_65305_SimnetPi
   fields: PGN_65305_SimnetPilotModeFields
 
   constructor(fields: PGN_65305_SimnetPilotModeCreateArgs, dst: number = 255) {
-    super(PGN_65305_SimnetPilotModeDefaults)
-    this.dst = dst
+    super({
+      pgn: 65305,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_65305_SimnetPilotModeMatchFields, ...fields }
   }
 
@@ -4060,16 +3612,6 @@ export interface PGN_65305_SimnetDeviceModeRequestFields {
 /**
  * @category PGN_65305_SimnetDeviceModeRequest
  */
-export const PGN_65305_SimnetDeviceModeRequestDefaults = {
-  pgn: 65305,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65305_SimnetDeviceModeRequest
- */
 export const PGN_65305_SimnetDeviceModeRequestMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -4092,8 +3634,11 @@ export class PGN_65305_SimnetDeviceModeRequest extends PGN implements PGN_65305_
   fields: PGN_65305_SimnetDeviceModeRequestFields
 
   constructor(fields: PGN_65305_SimnetDeviceModeRequestCreateArgs, dst: number = 255) {
-    super(PGN_65305_SimnetDeviceModeRequestDefaults)
-    this.dst = dst
+    super({
+      pgn: 65305,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_65305_SimnetDeviceModeRequestMatchFields, ...fields }
   }
 
@@ -4139,16 +3684,6 @@ export interface PGN_65305_SimnetSailingProcessorStatusFields {
 /**
  * @category PGN_65305_SimnetSailingProcessorStatus
  */
-export const PGN_65305_SimnetSailingProcessorStatusDefaults = {
-  pgn: 65305,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65305_SimnetSailingProcessorStatus
- */
 export const PGN_65305_SimnetSailingProcessorStatusMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -4171,8 +3706,11 @@ export class PGN_65305_SimnetSailingProcessorStatus extends PGN implements PGN_6
   fields: PGN_65305_SimnetSailingProcessorStatusFields
 
   constructor(fields: PGN_65305_SimnetSailingProcessorStatusCreateArgs, dst: number = 255) {
-    super(PGN_65305_SimnetSailingProcessorStatusDefaults)
-    this.dst = dst
+    super({
+      pgn: 65305,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_65305_SimnetSailingProcessorStatusMatchFields, ...fields }
   }
 
@@ -4216,16 +3754,6 @@ export interface PGN_65309_NavicoWirelessBatteryStatusFields {
 /**
  * @category PGN_65309_NavicoWirelessBatteryStatus
  */
-export const PGN_65309_NavicoWirelessBatteryStatusDefaults = {
-  pgn: 65309,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_65309_NavicoWirelessBatteryStatus
- */
 export const PGN_65309_NavicoWirelessBatteryStatusMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -4249,8 +3777,11 @@ export class PGN_65309_NavicoWirelessBatteryStatus extends PGN implements PGN_65
   fields: PGN_65309_NavicoWirelessBatteryStatusFields
 
   constructor(fields: PGN_65309_NavicoWirelessBatteryStatusCreateArgs, dst: number = 255) {
-    super(PGN_65309_NavicoWirelessBatteryStatusDefaults)
-    this.dst = dst
+    super({
+      pgn: 65309,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_65309_NavicoWirelessBatteryStatusMatchFields, ...fields }
   }
 
@@ -4293,16 +3824,6 @@ export interface PGN_65312_NavicoWirelessSignalStatusFields {
 /**
  * @category PGN_65312_NavicoWirelessSignalStatus
  */
-export const PGN_65312_NavicoWirelessSignalStatusDefaults = {
-  pgn: 65312,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_65312_NavicoWirelessSignalStatus
- */
 export const PGN_65312_NavicoWirelessSignalStatusMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -4325,8 +3846,11 @@ export class PGN_65312_NavicoWirelessSignalStatus extends PGN implements PGN_653
   fields: PGN_65312_NavicoWirelessSignalStatusFields
 
   constructor(fields: PGN_65312_NavicoWirelessSignalStatusCreateArgs, dst: number = 255) {
-    super(PGN_65312_NavicoWirelessSignalStatusDefaults)
-    this.dst = dst
+    super({
+      pgn: 65312,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_65312_NavicoWirelessSignalStatusMatchFields, ...fields }
   }
 
@@ -4374,16 +3898,6 @@ export interface PGN_65340_SimnetApUnknown2Fields {
 /**
  * @category PGN_65340_SimnetApUnknown2
  */
-export const PGN_65340_SimnetApUnknown2Defaults = {
-  pgn: 65340,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65340_SimnetApUnknown2
- */
 export const PGN_65340_SimnetApUnknown2MatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -4409,8 +3923,11 @@ export class PGN_65340_SimnetApUnknown2 extends PGN implements PGN_65340_SimnetA
   fields: PGN_65340_SimnetApUnknown2Fields
 
   constructor(fields: PGN_65340_SimnetApUnknown2CreateArgs, dst: number = 255) {
-    super(PGN_65340_SimnetApUnknown2Defaults)
-    this.dst = dst
+    super({
+      pgn: 65340,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_65340_SimnetApUnknown2MatchFields, ...fields }
   }
 
@@ -4454,16 +3971,6 @@ export interface PGN_65341_SimnetAutopilotAngleFields {
 /**
  * @category PGN_65341_SimnetAutopilotAngle
  */
-export const PGN_65341_SimnetAutopilotAngleDefaults = {
-  pgn: 65341,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_65341_SimnetAutopilotAngle
- */
 export const PGN_65341_SimnetAutopilotAngleMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -4487,8 +3994,11 @@ export class PGN_65341_SimnetAutopilotAngle extends PGN implements PGN_65341_Sim
   fields: PGN_65341_SimnetAutopilotAngleFields
 
   constructor(fields: PGN_65341_SimnetAutopilotAngleCreateArgs, dst: number = 255) {
-    super(PGN_65341_SimnetAutopilotAngleDefaults)
-    this.dst = dst
+    super({
+      pgn: 65341,
+      prio: 6,
+      dst
+    })
     this.fields = { ...PGN_65341_SimnetAutopilotAngleMatchFields, ...fields }
   }
 
@@ -4531,16 +4041,6 @@ export interface PGN_65345_SeatalkPilotWindDatumFields {
 /**
  * @category PGN_65345_SeatalkPilotWindDatum
  */
-export const PGN_65345_SeatalkPilotWindDatumDefaults = {
-  pgn: 65345,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65345_SeatalkPilotWindDatum
- */
 export const PGN_65345_SeatalkPilotWindDatumMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -4563,8 +4063,11 @@ export class PGN_65345_SeatalkPilotWindDatum extends PGN implements PGN_65345_Se
   fields: PGN_65345_SeatalkPilotWindDatumFields
 
   constructor(fields: PGN_65345_SeatalkPilotWindDatumCreateArgs, dst: number = 255) {
-    super(PGN_65345_SeatalkPilotWindDatumDefaults)
-    this.dst = dst
+    super({
+      pgn: 65345,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_65345_SeatalkPilotWindDatumMatchFields, ...fields }
   }
 
@@ -4603,22 +4106,15 @@ export interface PGN_65350Fields {
 /**
  * @category PGN_65350
  */
-export const PGN_65350Defaults = {
-  pgn: 65350,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65350
- */
 export class PGN_65350 extends PGN implements PGN_65350Interface {
   fields: PGN_65350Fields
 
   constructor(fields: PGN_65350Fields, dst: number = 255) {
-    super(PGN_65350Defaults)
-    this.dst = dst
+    super({
+      pgn: 65350,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -4659,16 +4155,6 @@ export interface PGN_65359_SeatalkPilotHeadingFields {
 /**
  * @category PGN_65359_SeatalkPilotHeading
  */
-export const PGN_65359_SeatalkPilotHeadingDefaults = {
-  pgn: 65359,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_65359_SeatalkPilotHeading
- */
 export const PGN_65359_SeatalkPilotHeadingMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -4692,8 +4178,11 @@ export class PGN_65359_SeatalkPilotHeading extends PGN implements PGN_65359_Seat
   fields: PGN_65359_SeatalkPilotHeadingFields
 
   constructor(fields: PGN_65359_SeatalkPilotHeadingCreateArgs, dst: number = 255) {
-    super(PGN_65359_SeatalkPilotHeadingDefaults)
-    this.dst = dst
+    super({
+      pgn: 65359,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_65359_SeatalkPilotHeadingMatchFields, ...fields }
   }
 
@@ -4737,16 +4226,6 @@ export interface PGN_65360_SeatalkPilotLockedHeadingFields {
 /**
  * @category PGN_65360_SeatalkPilotLockedHeading
  */
-export const PGN_65360_SeatalkPilotLockedHeadingDefaults = {
-  pgn: 65360,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_65360_SeatalkPilotLockedHeading
- */
 export const PGN_65360_SeatalkPilotLockedHeadingMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -4770,8 +4249,11 @@ export class PGN_65360_SeatalkPilotLockedHeading extends PGN implements PGN_6536
   fields: PGN_65360_SeatalkPilotLockedHeadingFields
 
   constructor(fields: PGN_65360_SeatalkPilotLockedHeadingCreateArgs, dst: number = 255) {
-    super(PGN_65360_SeatalkPilotLockedHeadingDefaults)
-    this.dst = dst
+    super({
+      pgn: 65360,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_65360_SeatalkPilotLockedHeadingMatchFields, ...fields }
   }
 
@@ -4814,16 +4296,6 @@ export interface PGN_65361_SeatalkSilenceAlarmFields {
 /**
  * @category PGN_65361_SeatalkSilenceAlarm
  */
-export const PGN_65361_SeatalkSilenceAlarmDefaults = {
-  pgn: 65361,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65361_SeatalkSilenceAlarm
- */
 export const PGN_65361_SeatalkSilenceAlarmMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -4846,8 +4318,11 @@ export class PGN_65361_SeatalkSilenceAlarm extends PGN implements PGN_65361_Seat
   fields: PGN_65361_SeatalkSilenceAlarmFields
 
   constructor(fields: PGN_65361_SeatalkSilenceAlarmCreateArgs, dst: number = 255) {
-    super(PGN_65361_SeatalkSilenceAlarmDefaults)
-    this.dst = dst
+    super({
+      pgn: 65361,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_65361_SeatalkSilenceAlarmMatchFields, ...fields }
   }
 
@@ -4895,16 +4370,6 @@ export interface PGN_65371_SeatalkKeypadMessageFields {
 /**
  * @category PGN_65371_SeatalkKeypadMessage
  */
-export const PGN_65371_SeatalkKeypadMessageDefaults = {
-  pgn: 65371,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65371_SeatalkKeypadMessage
- */
 export const PGN_65371_SeatalkKeypadMessageMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -4932,8 +4397,11 @@ export class PGN_65371_SeatalkKeypadMessage extends PGN implements PGN_65371_Sea
   fields: PGN_65371_SeatalkKeypadMessageFields
 
   constructor(fields: PGN_65371_SeatalkKeypadMessageCreateArgs, dst: number = 255) {
-    super(PGN_65371_SeatalkKeypadMessageDefaults)
-    this.dst = dst
+    super({
+      pgn: 65371,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_65371_SeatalkKeypadMessageMatchFields, ...fields }
   }
 
@@ -4977,16 +4445,6 @@ export interface PGN_65374_SeatalkKeypadHeartbeatFields {
 /**
  * @category PGN_65374_SeatalkKeypadHeartbeat
  */
-export const PGN_65374_SeatalkKeypadHeartbeatDefaults = {
-  pgn: 65374,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65374_SeatalkKeypadHeartbeat
- */
 export const PGN_65374_SeatalkKeypadHeartbeatMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -5010,8 +4468,11 @@ export class PGN_65374_SeatalkKeypadHeartbeat extends PGN implements PGN_65374_S
   fields: PGN_65374_SeatalkKeypadHeartbeatFields
 
   constructor(fields: PGN_65374_SeatalkKeypadHeartbeatCreateArgs, dst: number = 255) {
-    super(PGN_65374_SeatalkKeypadHeartbeatDefaults)
-    this.dst = dst
+    super({
+      pgn: 65374,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_65374_SeatalkKeypadHeartbeatMatchFields, ...fields }
   }
 
@@ -5055,16 +4516,6 @@ export interface PGN_65379_SeatalkPilotModeFields {
 /**
  * @category PGN_65379_SeatalkPilotMode
  */
-export const PGN_65379_SeatalkPilotModeDefaults = {
-  pgn: 65379,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_65379_SeatalkPilotMode
- */
 export const PGN_65379_SeatalkPilotModeMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -5088,8 +4539,11 @@ export class PGN_65379_SeatalkPilotMode extends PGN implements PGN_65379_Seatalk
   fields: PGN_65379_SeatalkPilotModeFields
 
   constructor(fields: PGN_65379_SeatalkPilotModeCreateArgs, dst: number = 255) {
-    super(PGN_65379_SeatalkPilotModeDefaults)
-    this.dst = dst
+    super({
+      pgn: 65379,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_65379_SeatalkPilotModeMatchFields, ...fields }
   }
 
@@ -5132,16 +4586,6 @@ export interface PGN_65408_AirmarDepthQualityFactorFields {
 /**
  * @category PGN_65408_AirmarDepthQualityFactor
  */
-export const PGN_65408_AirmarDepthQualityFactorDefaults = {
-  pgn: 65408,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_65408_AirmarDepthQualityFactor
- */
 export const PGN_65408_AirmarDepthQualityFactorMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -5164,8 +4608,11 @@ export class PGN_65408_AirmarDepthQualityFactor extends PGN implements PGN_65408
   fields: PGN_65408_AirmarDepthQualityFactorFields
 
   constructor(fields: PGN_65408_AirmarDepthQualityFactorCreateArgs, dst: number = 255) {
-    super(PGN_65408_AirmarDepthQualityFactorDefaults)
-    this.dst = dst
+    super({
+      pgn: 65408,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_65408_AirmarDepthQualityFactorMatchFields, ...fields }
   }
 
@@ -5209,16 +4656,6 @@ export interface PGN_65409_AirmarSpeedPulseCountFields {
 /**
  * @category PGN_65409_AirmarSpeedPulseCount
  */
-export const PGN_65409_AirmarSpeedPulseCountDefaults = {
-  pgn: 65409,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_65409_AirmarSpeedPulseCount
- */
 export const PGN_65409_AirmarSpeedPulseCountMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -5242,8 +4679,11 @@ export class PGN_65409_AirmarSpeedPulseCount extends PGN implements PGN_65409_Ai
   fields: PGN_65409_AirmarSpeedPulseCountFields
 
   constructor(fields: PGN_65409_AirmarSpeedPulseCountCreateArgs, dst: number = 255) {
-    super(PGN_65409_AirmarSpeedPulseCountDefaults)
-    this.dst = dst
+    super({
+      pgn: 65409,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_65409_AirmarSpeedPulseCountMatchFields, ...fields }
   }
 
@@ -5287,16 +4727,6 @@ export interface PGN_65410_AirmarDeviceInformationFields {
 /**
  * @category PGN_65410_AirmarDeviceInformation
  */
-export const PGN_65410_AirmarDeviceInformationDefaults = {
-  pgn: 65410,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_65410_AirmarDeviceInformation
- */
 export const PGN_65410_AirmarDeviceInformationMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -5320,8 +4750,11 @@ export class PGN_65410_AirmarDeviceInformation extends PGN implements PGN_65410_
   fields: PGN_65410_AirmarDeviceInformationFields
 
   constructor(fields: PGN_65410_AirmarDeviceInformationCreateArgs, dst: number = 255) {
-    super(PGN_65410_AirmarDeviceInformationDefaults)
-    this.dst = dst
+    super({
+      pgn: 65410,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_65410_AirmarDeviceInformationMatchFields, ...fields }
   }
 
@@ -5369,16 +4802,6 @@ export interface PGN_65420_SimnetApUnknown3Fields {
 /**
  * @category PGN_65420_SimnetApUnknown3
  */
-export const PGN_65420_SimnetApUnknown3Defaults = {
-  pgn: 65420,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_65420_SimnetApUnknown3
- */
 export const PGN_65420_SimnetApUnknown3MatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -5404,8 +4827,11 @@ export class PGN_65420_SimnetApUnknown3 extends PGN implements PGN_65420_SimnetA
   fields: PGN_65420_SimnetApUnknown3Fields
 
   constructor(fields: PGN_65420_SimnetApUnknown3CreateArgs, dst: number = 255) {
-    super(PGN_65420_SimnetApUnknown3Defaults)
-    this.dst = dst
+    super({
+      pgn: 65420,
+      prio: 6,
+      dst
+    })
     this.fields = { ...PGN_65420_SimnetApUnknown3MatchFields, ...fields }
   }
 
@@ -5446,16 +4872,6 @@ export interface PGN_65480_SimnetAutopilotModeFields {
 /**
  * @category PGN_65480_SimnetAutopilotMode
  */
-export const PGN_65480_SimnetAutopilotModeDefaults = {
-  pgn: 65480,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_65480_SimnetAutopilotMode
- */
 export const PGN_65480_SimnetAutopilotModeMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -5476,8 +4892,11 @@ export class PGN_65480_SimnetAutopilotMode extends PGN implements PGN_65480_Simn
   fields: PGN_65480_SimnetAutopilotModeFields
 
   constructor(fields: PGN_65480_SimnetAutopilotModeCreateArgs, dst: number = 255) {
-    super(PGN_65480_SimnetAutopilotModeDefaults)
-    this.dst = dst
+    super({
+      pgn: 65480,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_65480_SimnetAutopilotModeMatchFields, ...fields }
   }
 
@@ -5514,22 +4933,15 @@ export interface PGN_126208Fields {
 /**
  * @category PGN_126208
  */
-export const PGN_126208Defaults = {
-  pgn: 126208,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126208
- */
 export class PGN_126208 extends PGN implements PGN_126208Interface {
   fields: PGN_126208Fields
 
   constructor(fields: PGN_126208Fields, dst: number = 255) {
-    super(PGN_126208Defaults)
-    this.dst = dst
+    super({
+      pgn: 126208,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -5572,16 +4984,6 @@ export interface PGN_126208_NmeaRequestGroupFunctionFields {
 /**
  * @category PGN_126208_NmeaRequestGroupFunction
  */
-export const PGN_126208_NmeaRequestGroupFunctionDefaults = {
-  pgn: 126208,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126208_NmeaRequestGroupFunction
- */
 export const PGN_126208_NmeaRequestGroupFunctionMatchFields = {
   functionCode: enums.GroupFunction.Request,
 }
@@ -5607,8 +5009,11 @@ export class PGN_126208_NmeaRequestGroupFunction extends PGN implements PGN_1262
   fields: PGN_126208_NmeaRequestGroupFunctionFields
 
   constructor(fields: PGN_126208_NmeaRequestGroupFunctionCreateArgs, dst: number = 255) {
-    super(PGN_126208_NmeaRequestGroupFunctionDefaults)
-    this.dst = dst
+    super({
+      pgn: 126208,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126208_NmeaRequestGroupFunctionMatchFields, ...fields }
   }
 
@@ -5655,16 +5060,6 @@ export interface PGN_126208_NmeaCommandGroupFunctionFields {
 /**
  * @category PGN_126208_NmeaCommandGroupFunction
  */
-export const PGN_126208_NmeaCommandGroupFunctionDefaults = {
-  pgn: 126208,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126208_NmeaCommandGroupFunction
- */
 export const PGN_126208_NmeaCommandGroupFunctionMatchFields = {
   functionCode: enums.GroupFunction.Command,
 }
@@ -5690,8 +5085,11 @@ export class PGN_126208_NmeaCommandGroupFunction extends PGN implements PGN_1262
   fields: PGN_126208_NmeaCommandGroupFunctionFields
 
   constructor(fields: PGN_126208_NmeaCommandGroupFunctionCreateArgs, dst: number = 255) {
-    super(PGN_126208_NmeaCommandGroupFunctionDefaults)
-    this.dst = dst
+    super({
+      pgn: 126208,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126208_NmeaCommandGroupFunctionMatchFields, ...fields }
   }
 
@@ -5737,16 +5135,6 @@ export interface PGN_126208_NmeaAcknowledgeGroupFunctionFields {
 /**
  * @category PGN_126208_NmeaAcknowledgeGroupFunction
  */
-export const PGN_126208_NmeaAcknowledgeGroupFunctionDefaults = {
-  pgn: 126208,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126208_NmeaAcknowledgeGroupFunction
- */
 export const PGN_126208_NmeaAcknowledgeGroupFunctionMatchFields = {
   functionCode: enums.GroupFunction.Acknowledge,
 }
@@ -5771,8 +5159,11 @@ export class PGN_126208_NmeaAcknowledgeGroupFunction extends PGN implements PGN_
   fields: PGN_126208_NmeaAcknowledgeGroupFunctionFields
 
   constructor(fields: PGN_126208_NmeaAcknowledgeGroupFunctionCreateArgs, dst: number = 255) {
-    super(PGN_126208_NmeaAcknowledgeGroupFunctionDefaults)
-    this.dst = dst
+    super({
+      pgn: 126208,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126208_NmeaAcknowledgeGroupFunctionMatchFields, ...fields }
   }
 
@@ -5824,16 +5215,6 @@ export interface PGN_126208_NmeaReadFieldsGroupFunctionFields {
 /**
  * @category PGN_126208_NmeaReadFieldsGroupFunction
  */
-export const PGN_126208_NmeaReadFieldsGroupFunctionDefaults = {
-  pgn: 126208,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126208_NmeaReadFieldsGroupFunction
- */
 export const PGN_126208_NmeaReadFieldsGroupFunctionMatchFields = {
   functionCode: enums.GroupFunction.ReadFields,
 }
@@ -5864,8 +5245,11 @@ export class PGN_126208_NmeaReadFieldsGroupFunction extends PGN implements PGN_1
   fields: PGN_126208_NmeaReadFieldsGroupFunctionFields
 
   constructor(fields: PGN_126208_NmeaReadFieldsGroupFunctionCreateArgs, dst: number = 255) {
-    super(PGN_126208_NmeaReadFieldsGroupFunctionDefaults)
-    this.dst = dst
+    super({
+      pgn: 126208,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126208_NmeaReadFieldsGroupFunctionMatchFields, ...fields }
   }
 
@@ -5918,16 +5302,6 @@ export interface PGN_126208_NmeaReadFieldsReplyGroupFunctionFields {
 /**
  * @category PGN_126208_NmeaReadFieldsReplyGroupFunction
  */
-export const PGN_126208_NmeaReadFieldsReplyGroupFunctionDefaults = {
-  pgn: 126208,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126208_NmeaReadFieldsReplyGroupFunction
- */
 export const PGN_126208_NmeaReadFieldsReplyGroupFunctionMatchFields = {
   functionCode: enums.GroupFunction.ReadFieldsReply,
 }
@@ -5959,8 +5333,11 @@ export class PGN_126208_NmeaReadFieldsReplyGroupFunction extends PGN implements 
   fields: PGN_126208_NmeaReadFieldsReplyGroupFunctionFields
 
   constructor(fields: PGN_126208_NmeaReadFieldsReplyGroupFunctionCreateArgs, dst: number = 255) {
-    super(PGN_126208_NmeaReadFieldsReplyGroupFunctionDefaults)
-    this.dst = dst
+    super({
+      pgn: 126208,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126208_NmeaReadFieldsReplyGroupFunctionMatchFields, ...fields }
   }
 
@@ -6013,16 +5390,6 @@ export interface PGN_126208_NmeaWriteFieldsGroupFunctionFields {
 /**
  * @category PGN_126208_NmeaWriteFieldsGroupFunction
  */
-export const PGN_126208_NmeaWriteFieldsGroupFunctionDefaults = {
-  pgn: 126208,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126208_NmeaWriteFieldsGroupFunction
- */
 export const PGN_126208_NmeaWriteFieldsGroupFunctionMatchFields = {
   functionCode: enums.GroupFunction.WriteFields,
 }
@@ -6054,8 +5421,11 @@ export class PGN_126208_NmeaWriteFieldsGroupFunction extends PGN implements PGN_
   fields: PGN_126208_NmeaWriteFieldsGroupFunctionFields
 
   constructor(fields: PGN_126208_NmeaWriteFieldsGroupFunctionCreateArgs, dst: number = 255) {
-    super(PGN_126208_NmeaWriteFieldsGroupFunctionDefaults)
-    this.dst = dst
+    super({
+      pgn: 126208,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126208_NmeaWriteFieldsGroupFunctionMatchFields, ...fields }
   }
 
@@ -6108,16 +5478,6 @@ export interface PGN_126208_NmeaWriteFieldsReplyGroupFunctionFields {
 /**
  * @category PGN_126208_NmeaWriteFieldsReplyGroupFunction
  */
-export const PGN_126208_NmeaWriteFieldsReplyGroupFunctionDefaults = {
-  pgn: 126208,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126208_NmeaWriteFieldsReplyGroupFunction
- */
 export const PGN_126208_NmeaWriteFieldsReplyGroupFunctionMatchFields = {
   functionCode: enums.GroupFunction.WriteFieldsReply,
 }
@@ -6149,8 +5509,11 @@ export class PGN_126208_NmeaWriteFieldsReplyGroupFunction extends PGN implements
   fields: PGN_126208_NmeaWriteFieldsReplyGroupFunctionFields
 
   constructor(fields: PGN_126208_NmeaWriteFieldsReplyGroupFunctionCreateArgs, dst: number = 255) {
-    super(PGN_126208_NmeaWriteFieldsReplyGroupFunctionDefaults)
-    this.dst = dst
+    super({
+      pgn: 126208,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126208_NmeaWriteFieldsReplyGroupFunctionMatchFields, ...fields }
   }
 
@@ -6188,22 +5551,15 @@ export interface PGN_126464Fields {
 /**
  * @category PGN_126464
  */
-export const PGN_126464Defaults = {
-  pgn: 126464,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126464
- */
 export class PGN_126464 extends PGN implements PGN_126464Interface {
   fields: PGN_126464Fields
 
   constructor(fields: PGN_126464Fields, dst: number = 255) {
-    super(PGN_126464Defaults)
-    this.dst = dst
+    super({
+      pgn: 126464,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -6240,22 +5596,15 @@ export interface PGN_126720Fields {
 /**
  * @category PGN_126720
  */
-export const PGN_126720Defaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720
- */
 export class PGN_126720 extends PGN implements PGN_126720Interface {
   fields: PGN_126720Fields
 
   constructor(fields: PGN_126720Fields, dst: number = 255) {
-    super(PGN_126720Defaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -6301,16 +5650,6 @@ export interface PGN_126720_Seatalk1PilotModeFields {
 /**
  * @category PGN_126720_Seatalk1PilotMode
  */
-export const PGN_126720_Seatalk1PilotModeDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_Seatalk1PilotMode
- */
 export const PGN_126720_Seatalk1PilotModeMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -6337,8 +5676,11 @@ export class PGN_126720_Seatalk1PilotMode extends PGN implements PGN_126720_Seat
   fields: PGN_126720_Seatalk1PilotModeFields
 
   constructor(fields: PGN_126720_Seatalk1PilotModeCreateArgs, dst: number = 255) {
-    super(PGN_126720_Seatalk1PilotModeDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_Seatalk1PilotModeMatchFields, ...fields }
   }
 
@@ -6382,16 +5724,6 @@ export interface PGN_126720_FusionMediaControlFields {
 /**
  * @category PGN_126720_FusionMediaControl
  */
-export const PGN_126720_FusionMediaControlDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_FusionMediaControl
- */
 export const PGN_126720_FusionMediaControlMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -6414,8 +5746,11 @@ export class PGN_126720_FusionMediaControl extends PGN implements PGN_126720_Fus
   fields: PGN_126720_FusionMediaControlFields
 
   constructor(fields: PGN_126720_FusionMediaControlCreateArgs, dst: number = 255) {
-    super(PGN_126720_FusionMediaControlDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_FusionMediaControlMatchFields, ...fields }
   }
 
@@ -6460,16 +5795,6 @@ export interface PGN_126720_FusionSiriusControlFields {
 /**
  * @category PGN_126720_FusionSiriusControl
  */
-export const PGN_126720_FusionSiriusControlDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_FusionSiriusControl
- */
 export const PGN_126720_FusionSiriusControlMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -6493,8 +5818,11 @@ export class PGN_126720_FusionSiriusControl extends PGN implements PGN_126720_Fu
   fields: PGN_126720_FusionSiriusControlFields
 
   constructor(fields: PGN_126720_FusionSiriusControlCreateArgs, dst: number = 255) {
-    super(PGN_126720_FusionSiriusControlDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_FusionSiriusControlMatchFields, ...fields }
   }
 
@@ -6536,16 +5864,6 @@ export interface PGN_126720_FusionRequestStatusFields {
 /**
  * @category PGN_126720_FusionRequestStatus
  */
-export const PGN_126720_FusionRequestStatusDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_FusionRequestStatus
- */
 export const PGN_126720_FusionRequestStatusMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -6566,8 +5884,11 @@ export class PGN_126720_FusionRequestStatus extends PGN implements PGN_126720_Fu
   fields: PGN_126720_FusionRequestStatusFields
 
   constructor(fields: PGN_126720_FusionRequestStatusCreateArgs, dst: number = 255) {
-    super(PGN_126720_FusionRequestStatusDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_FusionRequestStatusMatchFields, ...fields }
   }
 
@@ -6610,16 +5931,6 @@ export interface PGN_126720_FusionSetSourceFields {
 /**
  * @category PGN_126720_FusionSetSource
  */
-export const PGN_126720_FusionSetSourceDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_FusionSetSource
- */
 export const PGN_126720_FusionSetSourceMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -6641,8 +5952,11 @@ export class PGN_126720_FusionSetSource extends PGN implements PGN_126720_Fusion
   fields: PGN_126720_FusionSetSourceFields
 
   constructor(fields: PGN_126720_FusionSetSourceCreateArgs, dst: number = 255) {
-    super(PGN_126720_FusionSetSourceDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_FusionSetSourceMatchFields, ...fields }
   }
 
@@ -6685,16 +5999,6 @@ export interface PGN_126720_FusionSetMuteFields {
 /**
  * @category PGN_126720_FusionSetMute
  */
-export const PGN_126720_FusionSetMuteDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_FusionSetMute
- */
 export const PGN_126720_FusionSetMuteMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -6716,8 +6020,11 @@ export class PGN_126720_FusionSetMute extends PGN implements PGN_126720_FusionSe
   fields: PGN_126720_FusionSetMuteFields
 
   constructor(fields: PGN_126720_FusionSetMuteCreateArgs, dst: number = 255) {
-    super(PGN_126720_FusionSetMuteDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_FusionSetMuteMatchFields, ...fields }
   }
 
@@ -6761,16 +6068,6 @@ export interface PGN_126720_FusionSetZoneVolumeFields {
 /**
  * @category PGN_126720_FusionSetZoneVolume
  */
-export const PGN_126720_FusionSetZoneVolumeDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_FusionSetZoneVolume
- */
 export const PGN_126720_FusionSetZoneVolumeMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -6793,8 +6090,11 @@ export class PGN_126720_FusionSetZoneVolume extends PGN implements PGN_126720_Fu
   fields: PGN_126720_FusionSetZoneVolumeFields
 
   constructor(fields: PGN_126720_FusionSetZoneVolumeCreateArgs, dst: number = 255) {
-    super(PGN_126720_FusionSetZoneVolumeDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_FusionSetZoneVolumeMatchFields, ...fields }
   }
 
@@ -6840,16 +6140,6 @@ export interface PGN_126720_FusionSetAllVolumesFields {
 /**
  * @category PGN_126720_FusionSetAllVolumes
  */
-export const PGN_126720_FusionSetAllVolumesDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_FusionSetAllVolumes
- */
 export const PGN_126720_FusionSetAllVolumesMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -6874,8 +6164,11 @@ export class PGN_126720_FusionSetAllVolumes extends PGN implements PGN_126720_Fu
   fields: PGN_126720_FusionSetAllVolumesFields
 
   constructor(fields: PGN_126720_FusionSetAllVolumesCreateArgs, dst: number = 255) {
-    super(PGN_126720_FusionSetAllVolumesDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_FusionSetAllVolumesMatchFields, ...fields }
   }
 
@@ -6918,16 +6211,6 @@ export interface PGN_126720_FusionSetPowerFields {
 /**
  * @category PGN_126720_FusionSetPower
  */
-export const PGN_126720_FusionSetPowerDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_FusionSetPower
- */
 export const PGN_126720_FusionSetPowerMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -6949,8 +6232,11 @@ export class PGN_126720_FusionSetPower extends PGN implements PGN_126720_FusionS
   fields: PGN_126720_FusionSetPowerFields
 
   constructor(fields: PGN_126720_FusionSetPowerCreateArgs, dst: number = 255) {
-    super(PGN_126720_FusionSetPowerDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_FusionSetPowerMatchFields, ...fields }
   }
 
@@ -6998,16 +6284,6 @@ export interface PGN_126720_Seatalk1KeystrokeFields {
 /**
  * @category PGN_126720_Seatalk1Keystroke
  */
-export const PGN_126720_Seatalk1KeystrokeDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_Seatalk1Keystroke
- */
 export const PGN_126720_Seatalk1KeystrokeMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -7033,8 +6309,11 @@ export class PGN_126720_Seatalk1Keystroke extends PGN implements PGN_126720_Seat
   fields: PGN_126720_Seatalk1KeystrokeFields
 
   constructor(fields: PGN_126720_Seatalk1KeystrokeCreateArgs, dst: number = 255) {
-    super(PGN_126720_Seatalk1KeystrokeDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_Seatalk1KeystrokeMatchFields, ...fields }
   }
 
@@ -7080,16 +6359,6 @@ export interface PGN_126720_Seatalk1DeviceIdentificationFields {
 /**
  * @category PGN_126720_Seatalk1DeviceIdentification
  */
-export const PGN_126720_Seatalk1DeviceIdentificationDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_Seatalk1DeviceIdentification
- */
 export const PGN_126720_Seatalk1DeviceIdentificationMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -7113,8 +6382,11 @@ export class PGN_126720_Seatalk1DeviceIdentification extends PGN implements PGN_
   fields: PGN_126720_Seatalk1DeviceIdentificationFields
 
   constructor(fields: PGN_126720_Seatalk1DeviceIdentificationCreateArgs, dst: number = 255) {
-    super(PGN_126720_Seatalk1DeviceIdentificationDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_Seatalk1DeviceIdentificationMatchFields, ...fields }
   }
 
@@ -7161,16 +6433,6 @@ export interface PGN_126720_Seatalk1DisplayBrightnessFields {
 /**
  * @category PGN_126720_Seatalk1DisplayBrightness
  */
-export const PGN_126720_Seatalk1DisplayBrightnessDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_Seatalk1DisplayBrightness
- */
 export const PGN_126720_Seatalk1DisplayBrightnessMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -7196,8 +6458,11 @@ export class PGN_126720_Seatalk1DisplayBrightness extends PGN implements PGN_126
   fields: PGN_126720_Seatalk1DisplayBrightnessFields
 
   constructor(fields: PGN_126720_Seatalk1DisplayBrightnessCreateArgs, dst: number = 255) {
-    super(PGN_126720_Seatalk1DisplayBrightnessDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_Seatalk1DisplayBrightnessMatchFields, ...fields }
   }
 
@@ -7245,16 +6510,6 @@ export interface PGN_126720_Seatalk1DisplayColorFields {
 /**
  * @category PGN_126720_Seatalk1DisplayColor
  */
-export const PGN_126720_Seatalk1DisplayColorDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_Seatalk1DisplayColor
- */
 export const PGN_126720_Seatalk1DisplayColorMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -7280,8 +6535,11 @@ export class PGN_126720_Seatalk1DisplayColor extends PGN implements PGN_126720_S
   fields: PGN_126720_Seatalk1DisplayColorFields
 
   constructor(fields: PGN_126720_Seatalk1DisplayColorCreateArgs, dst: number = 255) {
-    super(PGN_126720_Seatalk1DisplayColorDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_Seatalk1DisplayColorMatchFields, ...fields }
   }
 
@@ -7326,16 +6584,6 @@ export interface PGN_126720_AirmarAttitudeOffsetFields {
 /**
  * @category PGN_126720_AirmarAttitudeOffset
  */
-export const PGN_126720_AirmarAttitudeOffsetDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_AirmarAttitudeOffset
- */
 export const PGN_126720_AirmarAttitudeOffsetMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -7359,8 +6607,11 @@ export class PGN_126720_AirmarAttitudeOffset extends PGN implements PGN_126720_A
   fields: PGN_126720_AirmarAttitudeOffsetFields
 
   constructor(fields: PGN_126720_AirmarAttitudeOffsetCreateArgs, dst: number = 255) {
-    super(PGN_126720_AirmarAttitudeOffsetDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_AirmarAttitudeOffsetMatchFields, ...fields }
   }
 
@@ -7414,16 +6665,6 @@ export interface PGN_126720_AirmarCalibrateCompassFields {
 /**
  * @category PGN_126720_AirmarCalibrateCompass
  */
-export const PGN_126720_AirmarCalibrateCompassDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_AirmarCalibrateCompass
- */
 export const PGN_126720_AirmarCalibrateCompassMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -7456,8 +6697,11 @@ export class PGN_126720_AirmarCalibrateCompass extends PGN implements PGN_126720
   fields: PGN_126720_AirmarCalibrateCompassFields
 
   constructor(fields: PGN_126720_AirmarCalibrateCompassCreateArgs, dst: number = 255) {
-    super(PGN_126720_AirmarCalibrateCompassDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_AirmarCalibrateCompassMatchFields, ...fields }
   }
 
@@ -7501,16 +6745,6 @@ export interface PGN_126720_AirmarTrueWindOptionsFields {
 /**
  * @category PGN_126720_AirmarTrueWindOptions
  */
-export const PGN_126720_AirmarTrueWindOptionsDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_AirmarTrueWindOptions
- */
 export const PGN_126720_AirmarTrueWindOptionsMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -7533,8 +6767,11 @@ export class PGN_126720_AirmarTrueWindOptions extends PGN implements PGN_126720_
   fields: PGN_126720_AirmarTrueWindOptionsFields
 
   constructor(fields: PGN_126720_AirmarTrueWindOptionsCreateArgs, dst: number = 255) {
-    super(PGN_126720_AirmarTrueWindOptionsDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_AirmarTrueWindOptionsMatchFields, ...fields }
   }
 
@@ -7578,16 +6815,6 @@ export interface PGN_126720_AirmarSimulateModeFields {
 /**
  * @category PGN_126720_AirmarSimulateMode
  */
-export const PGN_126720_AirmarSimulateModeDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_AirmarSimulateMode
- */
 export const PGN_126720_AirmarSimulateModeMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -7610,8 +6837,11 @@ export class PGN_126720_AirmarSimulateMode extends PGN implements PGN_126720_Air
   fields: PGN_126720_AirmarSimulateModeFields
 
   constructor(fields: PGN_126720_AirmarSimulateModeCreateArgs, dst: number = 255) {
-    super(PGN_126720_AirmarSimulateModeDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_AirmarSimulateModeMatchFields, ...fields }
   }
 
@@ -7655,16 +6885,6 @@ export interface PGN_126720_AirmarCalibrateDepthFields {
 /**
  * @category PGN_126720_AirmarCalibrateDepth
  */
-export const PGN_126720_AirmarCalibrateDepthDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_AirmarCalibrateDepth
- */
 export const PGN_126720_AirmarCalibrateDepthMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -7687,8 +6907,11 @@ export class PGN_126720_AirmarCalibrateDepth extends PGN implements PGN_126720_A
   fields: PGN_126720_AirmarCalibrateDepthFields
 
   constructor(fields: PGN_126720_AirmarCalibrateDepthCreateArgs, dst: number = 255) {
-    super(PGN_126720_AirmarCalibrateDepthDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_AirmarCalibrateDepthMatchFields, ...fields }
   }
 
@@ -7735,16 +6958,6 @@ export interface PGN_126720_AirmarCalibrateSpeedFields {
 /**
  * @category PGN_126720_AirmarCalibrateSpeed
  */
-export const PGN_126720_AirmarCalibrateSpeedDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_AirmarCalibrateSpeed
- */
 export const PGN_126720_AirmarCalibrateSpeedMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -7770,8 +6983,11 @@ export class PGN_126720_AirmarCalibrateSpeed extends PGN implements PGN_126720_A
   fields: PGN_126720_AirmarCalibrateSpeedFields
 
   constructor(fields: PGN_126720_AirmarCalibrateSpeedCreateArgs, dst: number = 255) {
-    super(PGN_126720_AirmarCalibrateSpeedDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_AirmarCalibrateSpeedMatchFields, ...fields }
   }
 
@@ -7816,16 +7032,6 @@ export interface PGN_126720_AirmarCalibrateTemperatureFields {
 /**
  * @category PGN_126720_AirmarCalibrateTemperature
  */
-export const PGN_126720_AirmarCalibrateTemperatureDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_AirmarCalibrateTemperature
- */
 export const PGN_126720_AirmarCalibrateTemperatureMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -7849,8 +7055,11 @@ export class PGN_126720_AirmarCalibrateTemperature extends PGN implements PGN_12
   fields: PGN_126720_AirmarCalibrateTemperatureFields
 
   constructor(fields: PGN_126720_AirmarCalibrateTemperatureCreateArgs, dst: number = 255) {
-    super(PGN_126720_AirmarCalibrateTemperatureDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_AirmarCalibrateTemperatureMatchFields, ...fields }
   }
 
@@ -7895,16 +7104,6 @@ export interface PGN_126720_AirmarSpeedFilterNoneFields {
 /**
  * @category PGN_126720_AirmarSpeedFilterNone
  */
-export const PGN_126720_AirmarSpeedFilterNoneDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_AirmarSpeedFilterNone
- */
 export const PGN_126720_AirmarSpeedFilterNoneMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -7928,8 +7127,11 @@ export class PGN_126720_AirmarSpeedFilterNone extends PGN implements PGN_126720_
   fields: PGN_126720_AirmarSpeedFilterNoneFields
 
   constructor(fields: PGN_126720_AirmarSpeedFilterNoneCreateArgs, dst: number = 255) {
-    super(PGN_126720_AirmarSpeedFilterNoneDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_AirmarSpeedFilterNoneMatchFields, ...fields }
   }
 
@@ -7976,16 +7178,6 @@ export interface PGN_126720_AirmarSpeedFilterIirFields {
 /**
  * @category PGN_126720_AirmarSpeedFilterIir
  */
-export const PGN_126720_AirmarSpeedFilterIirDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_AirmarSpeedFilterIir
- */
 export const PGN_126720_AirmarSpeedFilterIirMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -8010,8 +7202,11 @@ export class PGN_126720_AirmarSpeedFilterIir extends PGN implements PGN_126720_A
   fields: PGN_126720_AirmarSpeedFilterIirFields
 
   constructor(fields: PGN_126720_AirmarSpeedFilterIirCreateArgs, dst: number = 255) {
-    super(PGN_126720_AirmarSpeedFilterIirDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_AirmarSpeedFilterIirMatchFields, ...fields }
   }
 
@@ -8056,16 +7251,6 @@ export interface PGN_126720_AirmarTemperatureFilterNoneFields {
 /**
  * @category PGN_126720_AirmarTemperatureFilterNone
  */
-export const PGN_126720_AirmarTemperatureFilterNoneDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_AirmarTemperatureFilterNone
- */
 export const PGN_126720_AirmarTemperatureFilterNoneMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -8089,8 +7274,11 @@ export class PGN_126720_AirmarTemperatureFilterNone extends PGN implements PGN_1
   fields: PGN_126720_AirmarTemperatureFilterNoneFields
 
   constructor(fields: PGN_126720_AirmarTemperatureFilterNoneCreateArgs, dst: number = 255) {
-    super(PGN_126720_AirmarTemperatureFilterNoneDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_AirmarTemperatureFilterNoneMatchFields, ...fields }
   }
 
@@ -8137,16 +7325,6 @@ export interface PGN_126720_AirmarTemperatureFilterIirFields {
 /**
  * @category PGN_126720_AirmarTemperatureFilterIir
  */
-export const PGN_126720_AirmarTemperatureFilterIirDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_AirmarTemperatureFilterIir
- */
 export const PGN_126720_AirmarTemperatureFilterIirMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -8171,8 +7349,11 @@ export class PGN_126720_AirmarTemperatureFilterIir extends PGN implements PGN_12
   fields: PGN_126720_AirmarTemperatureFilterIirFields
 
   constructor(fields: PGN_126720_AirmarTemperatureFilterIirCreateArgs, dst: number = 255) {
-    super(PGN_126720_AirmarTemperatureFilterIirDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_AirmarTemperatureFilterIirMatchFields, ...fields }
   }
 
@@ -8216,16 +7397,6 @@ export interface PGN_126720_AirmarNmea2000OptionsFields {
 /**
  * @category PGN_126720_AirmarNmea2000Options
  */
-export const PGN_126720_AirmarNmea2000OptionsDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_AirmarNmea2000Options
- */
 export const PGN_126720_AirmarNmea2000OptionsMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -8248,8 +7419,11 @@ export class PGN_126720_AirmarNmea2000Options extends PGN implements PGN_126720_
   fields: PGN_126720_AirmarNmea2000OptionsFields
 
   constructor(fields: PGN_126720_AirmarNmea2000OptionsCreateArgs, dst: number = 255) {
-    super(PGN_126720_AirmarNmea2000OptionsDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_AirmarNmea2000OptionsMatchFields, ...fields }
   }
 
@@ -8290,16 +7464,6 @@ export interface PGN_126720_AirmarAddressableMultiFrameFields {
 /**
  * @category PGN_126720_AirmarAddressableMultiFrame
  */
-export const PGN_126720_AirmarAddressableMultiFrameDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_AirmarAddressableMultiFrame
- */
 export const PGN_126720_AirmarAddressableMultiFrameMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -8320,8 +7484,11 @@ export class PGN_126720_AirmarAddressableMultiFrame extends PGN implements PGN_1
   fields: PGN_126720_AirmarAddressableMultiFrameFields
 
   constructor(fields: PGN_126720_AirmarAddressableMultiFrameCreateArgs, dst: number = 255) {
-    super(PGN_126720_AirmarAddressableMultiFrameDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_AirmarAddressableMultiFrameMatchFields, ...fields }
   }
 
@@ -8365,16 +7532,6 @@ export interface PGN_126720_MaretronSlaveResponseFields {
 /**
  * @category PGN_126720_MaretronSlaveResponse
  */
-export const PGN_126720_MaretronSlaveResponseDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_MaretronSlaveResponse
- */
 export const PGN_126720_MaretronSlaveResponseMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Maretron,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -8398,8 +7555,11 @@ export class PGN_126720_MaretronSlaveResponse extends PGN implements PGN_126720_
   fields: PGN_126720_MaretronSlaveResponseFields
 
   constructor(fields: PGN_126720_MaretronSlaveResponseCreateArgs, dst: number = 255) {
-    super(PGN_126720_MaretronSlaveResponseDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_MaretronSlaveResponseMatchFields, ...fields }
   }
 
@@ -8451,16 +7611,6 @@ export interface PGN_126720_GarminDayModeFields {
 /**
  * @category PGN_126720_GarminDayMode
  */
-export const PGN_126720_GarminDayModeDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_GarminDayMode
- */
 export const PGN_126720_GarminDayModeMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Garmin,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -8488,8 +7638,11 @@ export class PGN_126720_GarminDayMode extends PGN implements PGN_126720_GarminDa
   fields: PGN_126720_GarminDayModeFields
 
   constructor(fields: PGN_126720_GarminDayModeCreateArgs, dst: number = 255) {
-    super(PGN_126720_GarminDayModeDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_GarminDayModeMatchFields, ...fields }
   }
 
@@ -8542,16 +7695,6 @@ export interface PGN_126720_GarminNightModeFields {
 /**
  * @category PGN_126720_GarminNightMode
  */
-export const PGN_126720_GarminNightModeDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_GarminNightMode
- */
 export const PGN_126720_GarminNightModeMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Garmin,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -8579,8 +7722,11 @@ export class PGN_126720_GarminNightMode extends PGN implements PGN_126720_Garmin
   fields: PGN_126720_GarminNightModeFields
 
   constructor(fields: PGN_126720_GarminNightModeCreateArgs, dst: number = 255) {
-    super(PGN_126720_GarminNightModeDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_GarminNightModeMatchFields, ...fields }
   }
 
@@ -8633,16 +7779,6 @@ export interface PGN_126720_GarminColorModeFields {
 /**
  * @category PGN_126720_GarminColorMode
  */
-export const PGN_126720_GarminColorModeDefaults = {
-  pgn: 126720,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126720_GarminColorMode
- */
 export const PGN_126720_GarminColorModeMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Garmin,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -8670,8 +7806,11 @@ export class PGN_126720_GarminColorMode extends PGN implements PGN_126720_Garmin
   fields: PGN_126720_GarminColorModeFields
 
   constructor(fields: PGN_126720_GarminColorModeCreateArgs, dst: number = 255) {
-    super(PGN_126720_GarminColorModeDefaults)
-    this.dst = dst
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_126720_GarminColorModeMatchFields, ...fields }
   }
 
@@ -8708,22 +7847,15 @@ export interface PGN_126976Fields {
 /**
  * @category PGN_126976
  */
-export const PGN_126976Defaults = {
-  pgn: 126976,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126976
- */
 export class PGN_126976 extends PGN implements PGN_126976Interface {
   fields: PGN_126976Fields
 
   constructor(fields: PGN_126976Fields, dst: number = 255) {
-    super(PGN_126976Defaults)
-    this.dst = dst
+    super({
+      pgn: 126976,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -8775,22 +7907,15 @@ export interface PGN_126983Fields {
 /**
  * @category PGN_126983
  */
-export const PGN_126983Defaults = {
-  pgn: 126983,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126983
- */
 export class PGN_126983 extends PGN implements PGN_126983Interface {
   fields: PGN_126983Fields
 
   constructor(fields: PGN_126983Fields, dst: number = 255) {
-    super(PGN_126983Defaults)
-    this.dst = dst
+    super({
+      pgn: 126983,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -8833,22 +7958,15 @@ export interface PGN_126984Fields {
 /**
  * @category PGN_126984
  */
-export const PGN_126984Defaults = {
-  pgn: 126984,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126984
- */
 export class PGN_126984 extends PGN implements PGN_126984Interface {
   fields: PGN_126984Fields
 
   constructor(fields: PGN_126984Fields, dst: number = 255) {
-    super(PGN_126984Defaults)
-    this.dst = dst
+    super({
+      pgn: 126984,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -8891,22 +8009,15 @@ export interface PGN_126985Fields {
 /**
  * @category PGN_126985
  */
-export const PGN_126985Defaults = {
-  pgn: 126985,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126985
- */
 export class PGN_126985 extends PGN implements PGN_126985Interface {
   fields: PGN_126985Fields
 
   constructor(fields: PGN_126985Fields, dst: number = 255) {
-    super(PGN_126985Defaults)
-    this.dst = dst
+    super({
+      pgn: 126985,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -8952,22 +8063,15 @@ export interface PGN_126986Fields {
 /**
  * @category PGN_126986
  */
-export const PGN_126986Defaults = {
-  pgn: 126986,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126986
- */
 export class PGN_126986 extends PGN implements PGN_126986Interface {
   fields: PGN_126986Fields
 
   constructor(fields: PGN_126986Fields, dst: number = 255) {
-    super(PGN_126986Defaults)
-    this.dst = dst
+    super({
+      pgn: 126986,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -9014,22 +8118,15 @@ export interface PGN_126987Fields {
 /**
  * @category PGN_126987
  */
-export const PGN_126987Defaults = {
-  pgn: 126987,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126987
- */
 export class PGN_126987 extends PGN implements PGN_126987Interface {
   fields: PGN_126987Fields
 
   constructor(fields: PGN_126987Fields, dst: number = 255) {
-    super(PGN_126987Defaults)
-    this.dst = dst
+    super({
+      pgn: 126987,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -9075,22 +8172,15 @@ export interface PGN_126988Fields {
 /**
  * @category PGN_126988
  */
-export const PGN_126988Defaults = {
-  pgn: 126988,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126988
- */
 export class PGN_126988 extends PGN implements PGN_126988Interface {
   fields: PGN_126988Fields
 
   constructor(fields: PGN_126988Fields, dst: number = 255) {
-    super(PGN_126988Defaults)
-    this.dst = dst
+    super({
+      pgn: 126988,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -9128,22 +8218,15 @@ export interface PGN_126992Fields {
 /**
  * @category PGN_126992
  */
-export const PGN_126992Defaults = {
-  pgn: 126992,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_126992
- */
 export class PGN_126992 extends PGN implements PGN_126992Interface {
   fields: PGN_126992Fields
 
   constructor(fields: PGN_126992Fields, dst: number = 255) {
-    super(PGN_126992Defaults)
-    this.dst = dst
+    super({
+      pgn: 126992,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -9182,22 +8265,15 @@ export interface PGN_126993Fields {
 /**
  * @category PGN_126993
  */
-export const PGN_126993Defaults = {
-  pgn: 126993,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_126993
- */
 export class PGN_126993 extends PGN implements PGN_126993Interface {
   fields: PGN_126993Fields
 
   constructor(fields: PGN_126993Fields, dst: number = 255) {
-    super(PGN_126993Defaults)
-    this.dst = dst
+    super({
+      pgn: 126993,
+      prio: 7,
+      dst
+    })
     this.fields = fields
   }
 
@@ -9238,22 +8314,15 @@ export interface PGN_126996Fields {
 /**
  * @category PGN_126996
  */
-export const PGN_126996Defaults = {
-  pgn: 126996,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_126996
- */
 export class PGN_126996 extends PGN implements PGN_126996Interface {
   fields: PGN_126996Fields
 
   constructor(fields: PGN_126996Fields, dst: number = 255) {
-    super(PGN_126996Defaults)
-    this.dst = dst
+    super({
+      pgn: 126996,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -9289,22 +8358,15 @@ export interface PGN_126998Fields {
 /**
  * @category PGN_126998
  */
-export const PGN_126998Defaults = {
-  pgn: 126998,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_126998
- */
 export class PGN_126998 extends PGN implements PGN_126998Interface {
   fields: PGN_126998Fields
 
   constructor(fields: PGN_126998Fields, dst: number = 255) {
-    super(PGN_126998Defaults)
-    this.dst = dst
+    super({
+      pgn: 126998,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -9364,22 +8426,15 @@ export interface PGN_127233Fields {
 /**
  * @category PGN_127233
  */
-export const PGN_127233Defaults = {
-  pgn: 127233,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_127233
- */
 export class PGN_127233 extends PGN implements PGN_127233Interface {
   fields: PGN_127233Fields
 
   constructor(fields: PGN_127233Fields, dst: number = 255) {
-    super(PGN_127233Defaults)
-    this.dst = dst
+    super({
+      pgn: 127233,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -9428,22 +8483,15 @@ export interface PGN_127237Fields {
 /**
  * @category PGN_127237
  */
-export const PGN_127237Defaults = {
-  pgn: 127237,
-  dst: 255,
-  prio: 2,
-  fields: []
-}
-
-/**
- * @category PGN_127237
- */
 export class PGN_127237 extends PGN implements PGN_127237Interface {
   fields: PGN_127237Fields
 
   constructor(fields: PGN_127237Fields, dst: number = 255) {
-    super(PGN_127237Defaults)
-    this.dst = dst
+    super({
+      pgn: 127237,
+      prio: 2,
+      dst
+    })
     this.fields = fields
   }
 
@@ -9480,22 +8528,15 @@ export interface PGN_127245Fields {
 /**
  * @category PGN_127245
  */
-export const PGN_127245Defaults = {
-  pgn: 127245,
-  dst: 255,
-  prio: 2,
-  fields: []
-}
-
-/**
- * @category PGN_127245
- */
 export class PGN_127245 extends PGN implements PGN_127245Interface {
   fields: PGN_127245Fields
 
   constructor(fields: PGN_127245Fields, dst: number = 255) {
-    super(PGN_127245Defaults)
-    this.dst = dst
+    super({
+      pgn: 127245,
+      prio: 2,
+      dst
+    })
     this.fields = fields
   }
 
@@ -9532,22 +8573,15 @@ export interface PGN_127250Fields {
 /**
  * @category PGN_127250
  */
-export const PGN_127250Defaults = {
-  pgn: 127250,
-  dst: 255,
-  prio: 2,
-  fields: []
-}
-
-/**
- * @category PGN_127250
- */
 export class PGN_127250 extends PGN implements PGN_127250Interface {
   fields: PGN_127250Fields
 
   constructor(fields: PGN_127250Fields, dst: number = 255) {
-    super(PGN_127250Defaults)
-    this.dst = dst
+    super({
+      pgn: 127250,
+      prio: 2,
+      dst
+    })
     this.fields = fields
   }
 
@@ -9581,22 +8615,15 @@ export interface PGN_127251Fields {
 /**
  * @category PGN_127251
  */
-export const PGN_127251Defaults = {
-  pgn: 127251,
-  dst: 255,
-  prio: 2,
-  fields: []
-}
-
-/**
- * @category PGN_127251
- */
 export class PGN_127251 extends PGN implements PGN_127251Interface {
   fields: PGN_127251Fields
 
   constructor(fields: PGN_127251Fields, dst: number = 255) {
-    super(PGN_127251Defaults)
-    this.dst = dst
+    super({
+      pgn: 127251,
+      prio: 2,
+      dst
+    })
     this.fields = fields
   }
 
@@ -9630,22 +8657,15 @@ export interface PGN_127252Fields {
 /**
  * @category PGN_127252
  */
-export const PGN_127252Defaults = {
-  pgn: 127252,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_127252
- */
 export class PGN_127252 extends PGN implements PGN_127252Interface {
   fields: PGN_127252Fields
 
   constructor(fields: PGN_127252Fields, dst: number = 255) {
-    super(PGN_127252Defaults)
-    this.dst = dst
+    super({
+      pgn: 127252,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -9681,22 +8701,15 @@ export interface PGN_127257Fields {
 /**
  * @category PGN_127257
  */
-export const PGN_127257Defaults = {
-  pgn: 127257,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_127257
- */
 export class PGN_127257 extends PGN implements PGN_127257Interface {
   fields: PGN_127257Fields
 
   constructor(fields: PGN_127257Fields, dst: number = 255) {
-    super(PGN_127257Defaults)
-    this.dst = dst
+    super({
+      pgn: 127257,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -9733,22 +8746,15 @@ export interface PGN_127258Fields {
 /**
  * @category PGN_127258
  */
-export const PGN_127258Defaults = {
-  pgn: 127258,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_127258
- */
 export class PGN_127258 extends PGN implements PGN_127258Interface {
   fields: PGN_127258Fields
 
   constructor(fields: PGN_127258Fields, dst: number = 255) {
-    super(PGN_127258Defaults)
-    this.dst = dst
+    super({
+      pgn: 127258,
+      prio: 7,
+      dst
+    })
     this.fields = fields
   }
 
@@ -9784,22 +8790,15 @@ export interface PGN_127488Fields {
 /**
  * @category PGN_127488
  */
-export const PGN_127488Defaults = {
-  pgn: 127488,
-  dst: 255,
-  prio: 2,
-  fields: []
-}
-
-/**
- * @category PGN_127488
- */
 export class PGN_127488 extends PGN implements PGN_127488Interface {
   fields: PGN_127488Fields
 
   constructor(fields: PGN_127488Fields, dst: number = 255) {
-    super(PGN_127488Defaults)
-    this.dst = dst
+    super({
+      pgn: 127488,
+      prio: 2,
+      dst
+    })
     this.fields = fields
   }
 
@@ -9844,22 +8843,15 @@ export interface PGN_127489Fields {
 /**
  * @category PGN_127489
  */
-export const PGN_127489Defaults = {
-  pgn: 127489,
-  dst: 255,
-  prio: 2,
-  fields: []
-}
-
-/**
- * @category PGN_127489
- */
 export class PGN_127489 extends PGN implements PGN_127489Interface {
   fields: PGN_127489Fields
 
   constructor(fields: PGN_127489Fields, dst: number = 255) {
-    super(PGN_127489Defaults)
-    this.dst = dst
+    super({
+      pgn: 127489,
+      prio: 2,
+      dst
+    })
     this.fields = fields
   }
 
@@ -9900,22 +8892,15 @@ export interface PGN_127490Fields {
 /**
  * @category PGN_127490
  */
-export const PGN_127490Defaults = {
-  pgn: 127490,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_127490
- */
 export class PGN_127490 extends PGN implements PGN_127490Interface {
   fields: PGN_127490Fields
 
   constructor(fields: PGN_127490Fields, dst: number = 255) {
-    super(PGN_127490Defaults)
-    this.dst = dst
+    super({
+      pgn: 127490,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -9958,22 +8943,15 @@ export interface PGN_127491Fields {
 /**
  * @category PGN_127491
  */
-export const PGN_127491Defaults = {
-  pgn: 127491,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_127491
- */
 export class PGN_127491 extends PGN implements PGN_127491Interface {
   fields: PGN_127491Fields
 
   constructor(fields: PGN_127491Fields, dst: number = 255) {
-    super(PGN_127491Defaults)
-    this.dst = dst
+    super({
+      pgn: 127491,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -10011,22 +8989,15 @@ export interface PGN_127493Fields {
 /**
  * @category PGN_127493
  */
-export const PGN_127493Defaults = {
-  pgn: 127493,
-  dst: 255,
-  prio: 2,
-  fields: []
-}
-
-/**
- * @category PGN_127493
- */
 export class PGN_127493 extends PGN implements PGN_127493Interface {
   fields: PGN_127493Fields
 
   constructor(fields: PGN_127493Fields, dst: number = 255) {
-    super(PGN_127493Defaults)
-    this.dst = dst
+    super({
+      pgn: 127493,
+      prio: 2,
+      dst
+    })
     this.fields = fields
   }
 
@@ -10072,22 +9043,15 @@ export interface PGN_127494Fields {
 /**
  * @category PGN_127494
  */
-export const PGN_127494Defaults = {
-  pgn: 127494,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_127494
- */
 export class PGN_127494 extends PGN implements PGN_127494Interface {
   fields: PGN_127494Fields
 
   constructor(fields: PGN_127494Fields, dst: number = 255) {
-    super(PGN_127494Defaults)
-    this.dst = dst
+    super({
+      pgn: 127494,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -10136,22 +9100,15 @@ export interface PGN_127495Fields {
 /**
  * @category PGN_127495
  */
-export const PGN_127495Defaults = {
-  pgn: 127495,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_127495
- */
 export class PGN_127495 extends PGN implements PGN_127495Interface {
   fields: PGN_127495Fields
 
   constructor(fields: PGN_127495Fields, dst: number = 255) {
-    super(PGN_127495Defaults)
-    this.dst = dst
+    super({
+      pgn: 127495,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -10186,22 +9143,15 @@ export interface PGN_127496Fields {
 /**
  * @category PGN_127496
  */
-export const PGN_127496Defaults = {
-  pgn: 127496,
-  dst: 255,
-  prio: 5,
-  fields: []
-}
-
-/**
- * @category PGN_127496
- */
 export class PGN_127496 extends PGN implements PGN_127496Interface {
   fields: PGN_127496Fields
 
   constructor(fields: PGN_127496Fields, dst: number = 255) {
-    super(PGN_127496Defaults)
-    this.dst = dst
+    super({
+      pgn: 127496,
+      prio: 5,
+      dst
+    })
     this.fields = fields
   }
 
@@ -10237,22 +9187,15 @@ export interface PGN_127497Fields {
 /**
  * @category PGN_127497
  */
-export const PGN_127497Defaults = {
-  pgn: 127497,
-  dst: 255,
-  prio: 5,
-  fields: []
-}
-
-/**
- * @category PGN_127497
- */
 export class PGN_127497 extends PGN implements PGN_127497Interface {
   fields: PGN_127497Fields
 
   constructor(fields: PGN_127497Fields, dst: number = 255) {
-    super(PGN_127497Defaults)
-    this.dst = dst
+    super({
+      pgn: 127497,
+      prio: 5,
+      dst
+    })
     this.fields = fields
   }
 
@@ -10287,22 +9230,15 @@ export interface PGN_127498Fields {
 /**
  * @category PGN_127498
  */
-export const PGN_127498Defaults = {
-  pgn: 127498,
-  dst: 255,
-  prio: 5,
-  fields: []
-}
-
-/**
- * @category PGN_127498
- */
 export class PGN_127498 extends PGN implements PGN_127498Interface {
   fields: PGN_127498Fields
 
   constructor(fields: PGN_127498Fields, dst: number = 255) {
-    super(PGN_127498Defaults)
-    this.dst = dst
+    super({
+      pgn: 127498,
+      prio: 5,
+      dst
+    })
     this.fields = fields
   }
 
@@ -10341,22 +9277,15 @@ export interface PGN_127500Fields {
 /**
  * @category PGN_127500
  */
-export const PGN_127500Defaults = {
-  pgn: 127500,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_127500
- */
 export class PGN_127500 extends PGN implements PGN_127500Interface {
   fields: PGN_127500Fields
 
   constructor(fields: PGN_127500Fields, dst: number = 255) {
-    super(PGN_127500Defaults)
-    this.dst = dst
+    super({
+      pgn: 127500,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -10416,22 +9345,15 @@ export interface PGN_127501Fields {
 /**
  * @category PGN_127501
  */
-export const PGN_127501Defaults = {
-  pgn: 127501,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_127501
- */
 export class PGN_127501 extends PGN implements PGN_127501Interface {
   fields: PGN_127501Fields
 
   constructor(fields: PGN_127501Fields, dst: number = 255) {
-    super(PGN_127501Defaults)
-    this.dst = dst
+    super({
+      pgn: 127501,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -10491,22 +9413,15 @@ export interface PGN_127502Fields {
 /**
  * @category PGN_127502
  */
-export const PGN_127502Defaults = {
-  pgn: 127502,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_127502
- */
 export class PGN_127502 extends PGN implements PGN_127502Interface {
   fields: PGN_127502Fields
 
   constructor(fields: PGN_127502Fields, dst: number = 255) {
-    super(PGN_127502Defaults)
-    this.dst = dst
+    super({
+      pgn: 127502,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -10551,22 +9466,15 @@ export interface PGN_127503Fields {
 /**
  * @category PGN_127503
  */
-export const PGN_127503Defaults = {
-  pgn: 127503,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_127503
- */
 export class PGN_127503 extends PGN implements PGN_127503Interface {
   fields: PGN_127503Fields
 
   constructor(fields: PGN_127503Fields, dst: number = 255) {
-    super(PGN_127503Defaults)
-    this.dst = dst
+    super({
+      pgn: 127503,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -10611,22 +9519,15 @@ export interface PGN_127504Fields {
 /**
  * @category PGN_127504
  */
-export const PGN_127504Defaults = {
-  pgn: 127504,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_127504
- */
 export class PGN_127504 extends PGN implements PGN_127504Interface {
   fields: PGN_127504Fields
 
   constructor(fields: PGN_127504Fields, dst: number = 255) {
-    super(PGN_127504Defaults)
-    this.dst = dst
+    super({
+      pgn: 127504,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -10662,22 +9563,15 @@ export interface PGN_127505Fields {
 /**
  * @category PGN_127505
  */
-export const PGN_127505Defaults = {
-  pgn: 127505,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_127505
- */
 export class PGN_127505 extends PGN implements PGN_127505Interface {
   fields: PGN_127505Fields
 
   constructor(fields: PGN_127505Fields, dst: number = 255) {
-    super(PGN_127505Defaults)
-    this.dst = dst
+    super({
+      pgn: 127505,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -10716,22 +9610,15 @@ export interface PGN_127506Fields {
 /**
  * @category PGN_127506
  */
-export const PGN_127506Defaults = {
-  pgn: 127506,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_127506
- */
 export class PGN_127506 extends PGN implements PGN_127506Interface {
   fields: PGN_127506Fields
 
   constructor(fields: PGN_127506Fields, dst: number = 255) {
-    super(PGN_127506Defaults)
-    this.dst = dst
+    super({
+      pgn: 127506,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -10770,22 +9657,15 @@ export interface PGN_127507Fields {
 /**
  * @category PGN_127507
  */
-export const PGN_127507Defaults = {
-  pgn: 127507,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_127507
- */
 export class PGN_127507 extends PGN implements PGN_127507Interface {
   fields: PGN_127507Fields
 
   constructor(fields: PGN_127507Fields, dst: number = 255) {
-    super(PGN_127507Defaults)
-    this.dst = dst
+    super({
+      pgn: 127507,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -10821,22 +9701,15 @@ export interface PGN_127508Fields {
 /**
  * @category PGN_127508
  */
-export const PGN_127508Defaults = {
-  pgn: 127508,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_127508
- */
 export class PGN_127508 extends PGN implements PGN_127508Interface {
   fields: PGN_127508Fields
 
   constructor(fields: PGN_127508Fields, dst: number = 255) {
-    super(PGN_127508Defaults)
-    this.dst = dst
+    super({
+      pgn: 127508,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -10875,22 +9748,15 @@ export interface PGN_127509Fields {
 /**
  * @category PGN_127509
  */
-export const PGN_127509Defaults = {
-  pgn: 127509,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_127509
- */
 export class PGN_127509 extends PGN implements PGN_127509Interface {
   fields: PGN_127509Fields
 
   constructor(fields: PGN_127509Fields, dst: number = 255) {
-    super(PGN_127509Defaults)
-    this.dst = dst
+    super({
+      pgn: 127509,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -10932,22 +9798,15 @@ export interface PGN_127510Fields {
 /**
  * @category PGN_127510
  */
-export const PGN_127510Defaults = {
-  pgn: 127510,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_127510
- */
 export class PGN_127510 extends PGN implements PGN_127510Interface {
   fields: PGN_127510Fields
 
   constructor(fields: PGN_127510Fields, dst: number = 255) {
-    super(PGN_127510Defaults)
-    this.dst = dst
+    super({
+      pgn: 127510,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -10986,22 +9845,15 @@ export interface PGN_127511Fields {
 /**
  * @category PGN_127511
  */
-export const PGN_127511Defaults = {
-  pgn: 127511,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_127511
- */
 export class PGN_127511 extends PGN implements PGN_127511Interface {
   fields: PGN_127511Fields
 
   constructor(fields: PGN_127511Fields, dst: number = 255) {
-    super(PGN_127511Defaults)
-    this.dst = dst
+    super({
+      pgn: 127511,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -11036,22 +9888,15 @@ export interface PGN_127512Fields {
 /**
  * @category PGN_127512
  */
-export const PGN_127512Defaults = {
-  pgn: 127512,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_127512
- */
 export class PGN_127512 extends PGN implements PGN_127512Interface {
   fields: PGN_127512Fields
 
   constructor(fields: PGN_127512Fields, dst: number = 255) {
-    super(PGN_127512Defaults)
-    this.dst = dst
+    super({
+      pgn: 127512,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -11092,22 +9937,15 @@ export interface PGN_127513Fields {
 /**
  * @category PGN_127513
  */
-export const PGN_127513Defaults = {
-  pgn: 127513,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_127513
- */
 export class PGN_127513 extends PGN implements PGN_127513Interface {
   fields: PGN_127513Fields
 
   constructor(fields: PGN_127513Fields, dst: number = 255) {
-    super(PGN_127513Defaults)
-    this.dst = dst
+    super({
+      pgn: 127513,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -11144,22 +9982,15 @@ export interface PGN_127514Fields {
 /**
  * @category PGN_127514
  */
-export const PGN_127514Defaults = {
-  pgn: 127514,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_127514
- */
 export class PGN_127514 extends PGN implements PGN_127514Interface {
   fields: PGN_127514Fields
 
   constructor(fields: PGN_127514Fields, dst: number = 255) {
-    super(PGN_127514Defaults)
-    this.dst = dst
+    super({
+      pgn: 127514,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -11194,22 +10025,15 @@ export interface PGN_127744Fields {
 /**
  * @category PGN_127744
  */
-export const PGN_127744Defaults = {
-  pgn: 127744,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_127744
- */
 export class PGN_127744 extends PGN implements PGN_127744Interface {
   fields: PGN_127744Fields
 
   constructor(fields: PGN_127744Fields, dst: number = 255) {
-    super(PGN_127744Defaults)
-    this.dst = dst
+    super({
+      pgn: 127744,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -11244,22 +10068,15 @@ export interface PGN_127745Fields {
 /**
  * @category PGN_127745
  */
-export const PGN_127745Defaults = {
-  pgn: 127745,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_127745
- */
 export class PGN_127745 extends PGN implements PGN_127745Interface {
   fields: PGN_127745Fields
 
   constructor(fields: PGN_127745Fields, dst: number = 255) {
-    super(PGN_127745Defaults)
-    this.dst = dst
+    super({
+      pgn: 127745,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -11294,22 +10111,15 @@ export interface PGN_127746Fields {
 /**
  * @category PGN_127746
  */
-export const PGN_127746Defaults = {
-  pgn: 127746,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_127746
- */
 export class PGN_127746 extends PGN implements PGN_127746Interface {
   fields: PGN_127746Fields
 
   constructor(fields: PGN_127746Fields, dst: number = 255) {
-    super(PGN_127746Defaults)
-    this.dst = dst
+    super({
+      pgn: 127746,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -11345,22 +10155,15 @@ export interface PGN_127747Fields {
 /**
  * @category PGN_127747
  */
-export const PGN_127747Defaults = {
-  pgn: 127747,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_127747
- */
 export class PGN_127747 extends PGN implements PGN_127747Interface {
   fields: PGN_127747Fields
 
   constructor(fields: PGN_127747Fields, dst: number = 255) {
-    super(PGN_127747Defaults)
-    this.dst = dst
+    super({
+      pgn: 127747,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -11396,22 +10199,15 @@ export interface PGN_127748Fields {
 /**
  * @category PGN_127748
  */
-export const PGN_127748Defaults = {
-  pgn: 127748,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_127748
- */
 export class PGN_127748 extends PGN implements PGN_127748Interface {
   fields: PGN_127748Fields
 
   constructor(fields: PGN_127748Fields, dst: number = 255) {
-    super(PGN_127748Defaults)
-    this.dst = dst
+    super({
+      pgn: 127748,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -11447,22 +10243,15 @@ export interface PGN_127749Fields {
 /**
  * @category PGN_127749
  */
-export const PGN_127749Defaults = {
-  pgn: 127749,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_127749
- */
 export class PGN_127749 extends PGN implements PGN_127749Interface {
   fields: PGN_127749Fields
 
   constructor(fields: PGN_127749Fields, dst: number = 255) {
-    super(PGN_127749Defaults)
-    this.dst = dst
+    super({
+      pgn: 127749,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -11501,22 +10290,15 @@ export interface PGN_127750Fields {
 /**
  * @category PGN_127750
  */
-export const PGN_127750Defaults = {
-  pgn: 127750,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_127750
- */
 export class PGN_127750 extends PGN implements PGN_127750Interface {
   fields: PGN_127750Fields
 
   constructor(fields: PGN_127750Fields, dst: number = 255) {
-    super(PGN_127750Defaults)
-    this.dst = dst
+    super({
+      pgn: 127750,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -11552,22 +10334,15 @@ export interface PGN_127751Fields {
 /**
  * @category PGN_127751
  */
-export const PGN_127751Defaults = {
-  pgn: 127751,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_127751
- */
 export class PGN_127751 extends PGN implements PGN_127751Interface {
   fields: PGN_127751Fields
 
   constructor(fields: PGN_127751Fields, dst: number = 255) {
-    super(PGN_127751Defaults)
-    this.dst = dst
+    super({
+      pgn: 127751,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -11603,22 +10378,15 @@ export interface PGN_128000Fields {
 /**
  * @category PGN_128000
  */
-export const PGN_128000Defaults = {
-  pgn: 128000,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_128000
- */
 export class PGN_128000 extends PGN implements PGN_128000Interface {
   fields: PGN_128000Fields
 
   constructor(fields: PGN_128000Fields, dst: number = 255) {
-    super(PGN_128000Defaults)
-    this.dst = dst
+    super({
+      pgn: 128000,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -11656,22 +10424,15 @@ export interface PGN_128001Fields {
 /**
  * @category PGN_128001
  */
-export const PGN_128001Defaults = {
-  pgn: 128001,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_128001
- */
 export class PGN_128001 extends PGN implements PGN_128001Interface {
   fields: PGN_128001Fields
 
   constructor(fields: PGN_128001Fields, dst: number = 255) {
-    super(PGN_128001Defaults)
-    this.dst = dst
+    super({
+      pgn: 128001,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -11711,22 +10472,15 @@ export interface PGN_128002Fields {
 /**
  * @category PGN_128002
  */
-export const PGN_128002Defaults = {
-  pgn: 128002,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_128002
- */
 export class PGN_128002 extends PGN implements PGN_128002Interface {
   fields: PGN_128002Fields
 
   constructor(fields: PGN_128002Fields, dst: number = 255) {
-    super(PGN_128002Defaults)
-    this.dst = dst
+    super({
+      pgn: 128002,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -11766,22 +10520,15 @@ export interface PGN_128003Fields {
 /**
  * @category PGN_128003
  */
-export const PGN_128003Defaults = {
-  pgn: 128003,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_128003
- */
 export class PGN_128003 extends PGN implements PGN_128003Interface {
   fields: PGN_128003Fields
 
   constructor(fields: PGN_128003Fields, dst: number = 255) {
-    super(PGN_128003Defaults)
-    this.dst = dst
+    super({
+      pgn: 128003,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -11821,22 +10568,15 @@ export interface PGN_128006Fields {
 /**
  * @category PGN_128006
  */
-export const PGN_128006Defaults = {
-  pgn: 128006,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_128006
- */
 export class PGN_128006 extends PGN implements PGN_128006Interface {
   fields: PGN_128006Fields
 
   constructor(fields: PGN_128006Fields, dst: number = 255) {
-    super(PGN_128006Defaults)
-    this.dst = dst
+    super({
+      pgn: 128006,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -11873,22 +10613,15 @@ export interface PGN_128007Fields {
 /**
  * @category PGN_128007
  */
-export const PGN_128007Defaults = {
-  pgn: 128007,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_128007
- */
 export class PGN_128007 extends PGN implements PGN_128007Interface {
   fields: PGN_128007Fields
 
   constructor(fields: PGN_128007Fields, dst: number = 255) {
-    super(PGN_128007Defaults)
-    this.dst = dst
+    super({
+      pgn: 128007,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -11925,22 +10658,15 @@ export interface PGN_128008Fields {
 /**
  * @category PGN_128008
  */
-export const PGN_128008Defaults = {
-  pgn: 128008,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_128008
- */
 export class PGN_128008 extends PGN implements PGN_128008Interface {
   fields: PGN_128008Fields
 
   constructor(fields: PGN_128008Fields, dst: number = 255) {
-    super(PGN_128008Defaults)
-    this.dst = dst
+    super({
+      pgn: 128008,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -11977,22 +10703,15 @@ export interface PGN_128259Fields {
 /**
  * @category PGN_128259
  */
-export const PGN_128259Defaults = {
-  pgn: 128259,
-  dst: 255,
-  prio: 2,
-  fields: []
-}
-
-/**
- * @category PGN_128259
- */
 export class PGN_128259 extends PGN implements PGN_128259Interface {
   fields: PGN_128259Fields
 
   constructor(fields: PGN_128259Fields, dst: number = 255) {
-    super(PGN_128259Defaults)
-    this.dst = dst
+    super({
+      pgn: 128259,
+      prio: 2,
+      dst
+    })
     this.fields = fields
   }
 
@@ -12027,22 +10746,15 @@ export interface PGN_128267Fields {
 /**
  * @category PGN_128267
  */
-export const PGN_128267Defaults = {
-  pgn: 128267,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_128267
- */
 export class PGN_128267 extends PGN implements PGN_128267Interface {
   fields: PGN_128267Fields
 
   constructor(fields: PGN_128267Fields, dst: number = 255) {
-    super(PGN_128267Defaults)
-    this.dst = dst
+    super({
+      pgn: 128267,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -12077,22 +10789,15 @@ export interface PGN_128275Fields {
 /**
  * @category PGN_128275
  */
-export const PGN_128275Defaults = {
-  pgn: 128275,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_128275
- */
 export class PGN_128275 extends PGN implements PGN_128275Interface {
   fields: PGN_128275Fields
 
   constructor(fields: PGN_128275Fields, dst: number = 255) {
-    super(PGN_128275Defaults)
-    this.dst = dst
+    super({
+      pgn: 128275,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -12140,22 +10845,15 @@ export interface PGN_128520Fields {
 /**
  * @category PGN_128520
  */
-export const PGN_128520Defaults = {
-  pgn: 128520,
-  dst: 255,
-  prio: 2,
-  fields: []
-}
-
-/**
- * @category PGN_128520
- */
 export class PGN_128520 extends PGN implements PGN_128520Interface {
   fields: PGN_128520Fields
 
   constructor(fields: PGN_128520Fields, dst: number = 255) {
-    super(PGN_128520Defaults)
-    this.dst = dst
+    super({
+      pgn: 128520,
+      prio: 2,
+      dst
+    })
     this.fields = fields
   }
 
@@ -12220,22 +10918,15 @@ export interface PGN_128538Fields {
 /**
  * @category PGN_128538
  */
-export const PGN_128538Defaults = {
-  pgn: 128538,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_128538
- */
 export class PGN_128538 extends PGN implements PGN_128538Interface {
   fields: PGN_128538Fields
 
   constructor(fields: PGN_128538Fields, dst: number = 255) {
-    super(PGN_128538Defaults)
-    this.dst = dst
+    super({
+      pgn: 128538,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -12274,22 +10965,15 @@ export interface PGN_128768Fields {
 /**
  * @category PGN_128768
  */
-export const PGN_128768Defaults = {
-  pgn: 128768,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_128768
- */
 export class PGN_128768 extends PGN implements PGN_128768Interface {
   fields: PGN_128768Fields
 
   constructor(fields: PGN_128768Fields, dst: number = 255) {
-    super(PGN_128768Defaults)
-    this.dst = dst
+    super({
+      pgn: 128768,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -12328,22 +11012,15 @@ export interface PGN_128769Fields {
 /**
  * @category PGN_128769
  */
-export const PGN_128769Defaults = {
-  pgn: 128769,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_128769
- */
 export class PGN_128769 extends PGN implements PGN_128769Interface {
   fields: PGN_128769Fields
 
   constructor(fields: PGN_128769Fields, dst: number = 255) {
-    super(PGN_128769Defaults)
-    this.dst = dst
+    super({
+      pgn: 128769,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -12388,22 +11065,15 @@ export interface PGN_128776Fields {
 /**
  * @category PGN_128776
  */
-export const PGN_128776Defaults = {
-  pgn: 128776,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_128776
- */
 export class PGN_128776 extends PGN implements PGN_128776Interface {
   fields: PGN_128776Fields
 
   constructor(fields: PGN_128776Fields, dst: number = 255) {
-    super(PGN_128776Defaults)
-    this.dst = dst
+    super({
+      pgn: 128776,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -12444,22 +11114,15 @@ export interface PGN_128777Fields {
 /**
  * @category PGN_128777
  */
-export const PGN_128777Defaults = {
-  pgn: 128777,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_128777
- */
 export class PGN_128777 extends PGN implements PGN_128777Interface {
   fields: PGN_128777Fields
 
   constructor(fields: PGN_128777Fields, dst: number = 255) {
-    super(PGN_128777Defaults)
-    this.dst = dst
+    super({
+      pgn: 128777,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -12497,22 +11160,15 @@ export interface PGN_128778Fields {
 /**
  * @category PGN_128778
  */
-export const PGN_128778Defaults = {
-  pgn: 128778,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_128778
- */
 export class PGN_128778 extends PGN implements PGN_128778Interface {
   fields: PGN_128778Fields
 
   constructor(fields: PGN_128778Fields, dst: number = 255) {
-    super(PGN_128778Defaults)
-    this.dst = dst
+    super({
+      pgn: 128778,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -12551,22 +11207,15 @@ export interface PGN_128780Fields {
 /**
  * @category PGN_128780
  */
-export const PGN_128780Defaults = {
-  pgn: 128780,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_128780
- */
 export class PGN_128780 extends PGN implements PGN_128780Interface {
   fields: PGN_128780Fields
 
   constructor(fields: PGN_128780Fields, dst: number = 255) {
-    super(PGN_128780Defaults)
-    this.dst = dst
+    super({
+      pgn: 128780,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -12599,22 +11248,15 @@ export interface PGN_129025Fields {
 /**
  * @category PGN_129025
  */
-export const PGN_129025Defaults = {
-  pgn: 129025,
-  dst: 255,
-  prio: 2,
-  fields: []
-}
-
-/**
- * @category PGN_129025
- */
 export class PGN_129025 extends PGN implements PGN_129025Interface {
   fields: PGN_129025Fields
 
   constructor(fields: PGN_129025Fields, dst: number = 255) {
-    super(PGN_129025Defaults)
-    this.dst = dst
+    super({
+      pgn: 129025,
+      prio: 2,
+      dst
+    })
     this.fields = fields
   }
 
@@ -12651,22 +11293,15 @@ export interface PGN_129026Fields {
 /**
  * @category PGN_129026
  */
-export const PGN_129026Defaults = {
-  pgn: 129026,
-  dst: 255,
-  prio: 2,
-  fields: []
-}
-
-/**
- * @category PGN_129026
- */
 export class PGN_129026 extends PGN implements PGN_129026Interface {
   fields: PGN_129026Fields
 
   constructor(fields: PGN_129026Fields, dst: number = 255) {
-    super(PGN_129026Defaults)
-    this.dst = dst
+    super({
+      pgn: 129026,
+      prio: 2,
+      dst
+    })
     this.fields = fields
   }
 
@@ -12701,22 +11336,15 @@ export interface PGN_129027Fields {
 /**
  * @category PGN_129027
  */
-export const PGN_129027Defaults = {
-  pgn: 129027,
-  dst: 255,
-  prio: 2,
-  fields: []
-}
-
-/**
- * @category PGN_129027
- */
 export class PGN_129027 extends PGN implements PGN_129027Interface {
   fields: PGN_129027Fields
 
   constructor(fields: PGN_129027Fields, dst: number = 255) {
-    super(PGN_129027Defaults)
-    this.dst = dst
+    super({
+      pgn: 129027,
+      prio: 2,
+      dst
+    })
     this.fields = fields
   }
 
@@ -12754,22 +11382,15 @@ export interface PGN_129028Fields {
 /**
  * @category PGN_129028
  */
-export const PGN_129028Defaults = {
-  pgn: 129028,
-  dst: 255,
-  prio: 2,
-  fields: []
-}
-
-/**
- * @category PGN_129028
- */
 export class PGN_129028 extends PGN implements PGN_129028Interface {
   fields: PGN_129028Fields
 
   constructor(fields: PGN_129028Fields, dst: number = 255) {
-    super(PGN_129028Defaults)
-    this.dst = dst
+    super({
+      pgn: 129028,
+      prio: 2,
+      dst
+    })
     this.fields = fields
   }
 
@@ -12820,22 +11441,15 @@ export interface PGN_129029Fields {
 /**
  * @category PGN_129029
  */
-export const PGN_129029Defaults = {
-  pgn: 129029,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_129029
- */
 export class PGN_129029 extends PGN implements PGN_129029Interface {
   fields: PGN_129029Fields
 
   constructor(fields: PGN_129029Fields, dst: number = 255) {
-    super(PGN_129029Defaults)
-    this.dst = dst
+    super({
+      pgn: 129029,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -12869,22 +11483,15 @@ export interface PGN_129033Fields {
 /**
  * @category PGN_129033
  */
-export const PGN_129033Defaults = {
-  pgn: 129033,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_129033
- */
 export class PGN_129033 extends PGN implements PGN_129033Interface {
   fields: PGN_129033Fields
 
   constructor(fields: PGN_129033Fields, dst: number = 255) {
-    super(PGN_129033Defaults)
-    this.dst = dst
+    super({
+      pgn: 129033,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -12935,22 +11542,15 @@ export interface PGN_129038Fields {
 /**
  * @category PGN_129038
  */
-export const PGN_129038Defaults = {
-  pgn: 129038,
-  dst: 255,
-  prio: 4,
-  fields: []
-}
-
-/**
- * @category PGN_129038
- */
 export class PGN_129038 extends PGN implements PGN_129038Interface {
   fields: PGN_129038Fields
 
   constructor(fields: PGN_129038Fields, dst: number = 255) {
-    super(PGN_129038Defaults)
-    this.dst = dst
+    super({
+      pgn: 129038,
+      prio: 4,
+      dst
+    })
     this.fields = fields
   }
 
@@ -13004,22 +11604,15 @@ export interface PGN_129039Fields {
 /**
  * @category PGN_129039
  */
-export const PGN_129039Defaults = {
-  pgn: 129039,
-  dst: 255,
-  prio: 4,
-  fields: []
-}
-
-/**
- * @category PGN_129039
- */
 export class PGN_129039 extends PGN implements PGN_129039Interface {
   fields: PGN_129039Fields
 
   constructor(fields: PGN_129039Fields, dst: number = 255) {
-    super(PGN_129039Defaults)
-    this.dst = dst
+    super({
+      pgn: 129039,
+      prio: 4,
+      dst
+    })
     this.fields = fields
   }
 
@@ -13077,22 +11670,15 @@ export interface PGN_129040Fields {
 /**
  * @category PGN_129040
  */
-export const PGN_129040Defaults = {
-  pgn: 129040,
-  dst: 255,
-  prio: 4,
-  fields: []
-}
-
-/**
- * @category PGN_129040
- */
 export class PGN_129040 extends PGN implements PGN_129040Interface {
   fields: PGN_129040Fields
 
   constructor(fields: PGN_129040Fields, dst: number = 255) {
-    super(PGN_129040Defaults)
-    this.dst = dst
+    super({
+      pgn: 129040,
+      prio: 4,
+      dst
+    })
     this.fields = fields
   }
 
@@ -13146,22 +11732,15 @@ export interface PGN_129041Fields {
 /**
  * @category PGN_129041
  */
-export const PGN_129041Defaults = {
-  pgn: 129041,
-  dst: 255,
-  prio: 4,
-  fields: []
-}
-
-/**
- * @category PGN_129041
- */
 export class PGN_129041 extends PGN implements PGN_129041Interface {
   fields: PGN_129041Fields
 
   constructor(fields: PGN_129041Fields, dst: number = 255) {
-    super(PGN_129041Defaults)
-    this.dst = dst
+    super({
+      pgn: 129041,
+      prio: 4,
+      dst
+    })
     this.fields = fields
   }
 
@@ -13197,22 +11776,15 @@ export interface PGN_129044Fields {
 /**
  * @category PGN_129044
  */
-export const PGN_129044Defaults = {
-  pgn: 129044,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_129044
- */
 export class PGN_129044 extends PGN implements PGN_129044Interface {
   fields: PGN_129044Fields
 
   constructor(fields: PGN_129044Fields, dst: number = 255) {
-    super(PGN_129044Defaults)
-    this.dst = dst
+    super({
+      pgn: 129044,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -13253,22 +11825,15 @@ export interface PGN_129045Fields {
 /**
  * @category PGN_129045
  */
-export const PGN_129045Defaults = {
-  pgn: 129045,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_129045
- */
 export class PGN_129045 extends PGN implements PGN_129045Interface {
   fields: PGN_129045Fields
 
   constructor(fields: PGN_129045Fields, dst: number = 255) {
-    super(PGN_129045Defaults)
-    this.dst = dst
+    super({
+      pgn: 129045,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -13305,22 +11870,15 @@ export interface PGN_129283Fields {
 /**
  * @category PGN_129283
  */
-export const PGN_129283Defaults = {
-  pgn: 129283,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_129283
- */
 export class PGN_129283 extends PGN implements PGN_129283Interface {
   fields: PGN_129283Fields
 
   constructor(fields: PGN_129283Fields, dst: number = 255) {
-    super(PGN_129283Defaults)
-    this.dst = dst
+    super({
+      pgn: 129283,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -13366,22 +11924,15 @@ export interface PGN_129284Fields {
 /**
  * @category PGN_129284
  */
-export const PGN_129284Defaults = {
-  pgn: 129284,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_129284
- */
 export class PGN_129284 extends PGN implements PGN_129284Interface {
   fields: PGN_129284Fields
 
   constructor(fields: PGN_129284Fields, dst: number = 255) {
-    super(PGN_129284Defaults)
-    this.dst = dst
+    super({
+      pgn: 129284,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -13427,22 +11978,15 @@ export interface PGN_129285Fields {
 /**
  * @category PGN_129285
  */
-export const PGN_129285Defaults = {
-  pgn: 129285,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_129285
- */
 export class PGN_129285 extends PGN implements PGN_129285Interface {
   fields: PGN_129285Fields
 
   constructor(fields: PGN_129285Fields, dst: number = 255) {
-    super(PGN_129285Defaults)
-    this.dst = dst
+    super({
+      pgn: 129285,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -13479,22 +12023,15 @@ export interface PGN_129291Fields {
 /**
  * @category PGN_129291
  */
-export const PGN_129291Defaults = {
-  pgn: 129291,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_129291
- */
 export class PGN_129291 extends PGN implements PGN_129291Interface {
   fields: PGN_129291Fields
 
   constructor(fields: PGN_129291Fields, dst: number = 255) {
-    super(PGN_129291Defaults)
-    this.dst = dst
+    super({
+      pgn: 129291,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -13530,22 +12067,15 @@ export interface PGN_129301Fields {
 /**
  * @category PGN_129301
  */
-export const PGN_129301Defaults = {
-  pgn: 129301,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_129301
- */
 export class PGN_129301 extends PGN implements PGN_129301Interface {
   fields: PGN_129301Fields
 
   constructor(fields: PGN_129301Fields, dst: number = 255) {
-    super(PGN_129301Defaults)
-    this.dst = dst
+    super({
+      pgn: 129301,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -13586,22 +12116,15 @@ export interface PGN_129302Fields {
 /**
  * @category PGN_129302
  */
-export const PGN_129302Defaults = {
-  pgn: 129302,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_129302
- */
 export class PGN_129302 extends PGN implements PGN_129302Interface {
   fields: PGN_129302Fields
 
   constructor(fields: PGN_129302Fields, dst: number = 255) {
-    super(PGN_129302Defaults)
-    this.dst = dst
+    super({
+      pgn: 129302,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -13643,22 +12166,15 @@ export interface PGN_129538Fields {
 /**
  * @category PGN_129538
  */
-export const PGN_129538Defaults = {
-  pgn: 129538,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_129538
- */
 export class PGN_129538 extends PGN implements PGN_129538Interface {
   fields: PGN_129538Fields
 
   constructor(fields: PGN_129538Fields, dst: number = 255) {
-    super(PGN_129538Defaults)
-    this.dst = dst
+    super({
+      pgn: 129538,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -13696,22 +12212,15 @@ export interface PGN_129539Fields {
 /**
  * @category PGN_129539
  */
-export const PGN_129539Defaults = {
-  pgn: 129539,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_129539
- */
 export class PGN_129539 extends PGN implements PGN_129539Interface {
   fields: PGN_129539Fields
 
   constructor(fields: PGN_129539Fields, dst: number = 255) {
-    super(PGN_129539Defaults)
-    this.dst = dst
+    super({
+      pgn: 129539,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -13755,22 +12264,15 @@ export interface PGN_129540Fields {
 /**
  * @category PGN_129540
  */
-export const PGN_129540Defaults = {
-  pgn: 129540,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_129540
- */
 export class PGN_129540 extends PGN implements PGN_129540Interface {
   fields: PGN_129540Fields
 
   constructor(fields: PGN_129540Fields, dst: number = 255) {
-    super(PGN_129540Defaults)
-    this.dst = dst
+    super({
+      pgn: 129540,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -13815,22 +12317,15 @@ export interface PGN_129541Fields {
 /**
  * @category PGN_129541
  */
-export const PGN_129541Defaults = {
-  pgn: 129541,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_129541
- */
 export class PGN_129541 extends PGN implements PGN_129541Interface {
   fields: PGN_129541Fields
 
   constructor(fields: PGN_129541Fields, dst: number = 255) {
-    super(PGN_129541Defaults)
-    this.dst = dst
+    super({
+      pgn: 129541,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -13869,22 +12364,15 @@ export interface PGN_129542Fields {
 /**
  * @category PGN_129542
  */
-export const PGN_129542Defaults = {
-  pgn: 129542,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_129542
- */
 export class PGN_129542 extends PGN implements PGN_129542Interface {
   fields: PGN_129542Fields
 
   constructor(fields: PGN_129542Fields, dst: number = 255) {
-    super(PGN_129542Defaults)
-    this.dst = dst
+    super({
+      pgn: 129542,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -13925,22 +12413,15 @@ export interface PGN_129545Fields {
 /**
  * @category PGN_129545
  */
-export const PGN_129545Defaults = {
-  pgn: 129545,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_129545
- */
 export class PGN_129545 extends PGN implements PGN_129545Interface {
   fields: PGN_129545Fields
 
   constructor(fields: PGN_129545Fields, dst: number = 255) {
-    super(PGN_129545Defaults)
-    this.dst = dst
+    super({
+      pgn: 129545,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -13976,22 +12457,15 @@ export interface PGN_129546Fields {
 /**
  * @category PGN_129546
  */
-export const PGN_129546Defaults = {
-  pgn: 129546,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_129546
- */
 export class PGN_129546 extends PGN implements PGN_129546Interface {
   fields: PGN_129546Fields
 
   constructor(fields: PGN_129546Fields, dst: number = 255) {
-    super(PGN_129546Defaults)
-    this.dst = dst
+    super({
+      pgn: 129546,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -14030,22 +12504,15 @@ export interface PGN_129547Fields {
 /**
  * @category PGN_129547
  */
-export const PGN_129547Defaults = {
-  pgn: 129547,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_129547
- */
 export class PGN_129547 extends PGN implements PGN_129547Interface {
   fields: PGN_129547Fields
 
   constructor(fields: PGN_129547Fields, dst: number = 255) {
-    super(PGN_129547Defaults)
-    this.dst = dst
+    super({
+      pgn: 129547,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -14087,22 +12554,15 @@ export interface PGN_129549Fields {
 /**
  * @category PGN_129549
  */
-export const PGN_129549Defaults = {
-  pgn: 129549,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_129549
- */
 export class PGN_129549 extends PGN implements PGN_129549Interface {
   fields: PGN_129549Fields
 
   constructor(fields: PGN_129549Fields, dst: number = 255) {
-    super(PGN_129549Defaults)
-    this.dst = dst
+    super({
+      pgn: 129549,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -14140,22 +12600,15 @@ export interface PGN_129550Fields {
 /**
  * @category PGN_129550
  */
-export const PGN_129550Defaults = {
-  pgn: 129550,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_129550
- */
 export class PGN_129550 extends PGN implements PGN_129550Interface {
   fields: PGN_129550Fields
 
   constructor(fields: PGN_129550Fields, dst: number = 255) {
-    super(PGN_129550Defaults)
-    this.dst = dst
+    super({
+      pgn: 129550,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -14200,22 +12653,15 @@ export interface PGN_129551Fields {
 /**
  * @category PGN_129551
  */
-export const PGN_129551Defaults = {
-  pgn: 129551,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_129551
- */
 export class PGN_129551 extends PGN implements PGN_129551Interface {
   fields: PGN_129551Fields
 
   constructor(fields: PGN_129551Fields, dst: number = 255) {
-    super(PGN_129551Defaults)
-    this.dst = dst
+    super({
+      pgn: 129551,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -14262,22 +12708,15 @@ export interface PGN_129556Fields {
 /**
  * @category PGN_129556
  */
-export const PGN_129556Defaults = {
-  pgn: 129556,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_129556
- */
 export class PGN_129556 extends PGN implements PGN_129556Interface {
   fields: PGN_129556Fields
 
   constructor(fields: PGN_129556Fields, dst: number = 255) {
-    super(PGN_129556Defaults)
-    this.dst = dst
+    super({
+      pgn: 129556,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -14320,22 +12759,15 @@ export interface PGN_129792Fields {
 /**
  * @category PGN_129792
  */
-export const PGN_129792Defaults = {
-  pgn: 129792,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_129792
- */
 export class PGN_129792 extends PGN implements PGN_129792Interface {
   fields: PGN_129792Fields
 
   constructor(fields: PGN_129792Fields, dst: number = 255) {
-    super(PGN_129792Defaults)
-    this.dst = dst
+    super({
+      pgn: 129792,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -14380,22 +12812,15 @@ export interface PGN_129793Fields {
 /**
  * @category PGN_129793
  */
-export const PGN_129793Defaults = {
-  pgn: 129793,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_129793
- */
 export class PGN_129793 extends PGN implements PGN_129793Interface {
   fields: PGN_129793Fields
 
   constructor(fields: PGN_129793Fields, dst: number = 255) {
-    super(PGN_129793Defaults)
-    this.dst = dst
+    super({
+      pgn: 129793,
+      prio: 7,
+      dst
+    })
     this.fields = fields
   }
 
@@ -14447,22 +12872,15 @@ export interface PGN_129794Fields {
 /**
  * @category PGN_129794
  */
-export const PGN_129794Defaults = {
-  pgn: 129794,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_129794
- */
 export class PGN_129794 extends PGN implements PGN_129794Interface {
   fields: PGN_129794Fields
 
   constructor(fields: PGN_129794Fields, dst: number = 255) {
-    super(PGN_129794Defaults)
-    this.dst = dst
+    super({
+      pgn: 129794,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -14505,22 +12923,15 @@ export interface PGN_129795Fields {
 /**
  * @category PGN_129795
  */
-export const PGN_129795Defaults = {
-  pgn: 129795,
-  dst: 255,
-  prio: 5,
-  fields: []
-}
-
-/**
- * @category PGN_129795
- */
 export class PGN_129795 extends PGN implements PGN_129795Interface {
   fields: PGN_129795Fields
 
   constructor(fields: PGN_129795Fields, dst: number = 255) {
-    super(PGN_129795Defaults)
-    this.dst = dst
+    super({
+      pgn: 129795,
+      prio: 5,
+      dst
+    })
     this.fields = fields
   }
 
@@ -14562,22 +12973,15 @@ export interface PGN_129796Fields {
 /**
  * @category PGN_129796
  */
-export const PGN_129796Defaults = {
-  pgn: 129796,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_129796
- */
 export class PGN_129796 extends PGN implements PGN_129796Interface {
   fields: PGN_129796Fields
 
   constructor(fields: PGN_129796Fields, dst: number = 255) {
-    super(PGN_129796Defaults)
-    this.dst = dst
+    super({
+      pgn: 129796,
+      prio: 7,
+      dst
+    })
     this.fields = fields
   }
 
@@ -14616,22 +13020,15 @@ export interface PGN_129797Fields {
 /**
  * @category PGN_129797
  */
-export const PGN_129797Defaults = {
-  pgn: 129797,
-  dst: 255,
-  prio: 5,
-  fields: []
-}
-
-/**
- * @category PGN_129797
- */
 export class PGN_129797 extends PGN implements PGN_129797Interface {
   fields: PGN_129797Fields
 
   constructor(fields: PGN_129797Fields, dst: number = 255) {
-    super(PGN_129797Defaults)
-    this.dst = dst
+    super({
+      pgn: 129797,
+      prio: 5,
+      dst
+    })
     this.fields = fields
   }
 
@@ -14679,22 +13076,15 @@ export interface PGN_129798Fields {
 /**
  * @category PGN_129798
  */
-export const PGN_129798Defaults = {
-  pgn: 129798,
-  dst: 255,
-  prio: 4,
-  fields: []
-}
-
-/**
- * @category PGN_129798
- */
 export class PGN_129798 extends PGN implements PGN_129798Interface {
   fields: PGN_129798Fields
 
   constructor(fields: PGN_129798Fields, dst: number = 255) {
-    super(PGN_129798Defaults)
-    this.dst = dst
+    super({
+      pgn: 129798,
+      prio: 4,
+      dst
+    })
     this.fields = fields
   }
 
@@ -14733,22 +13123,15 @@ export interface PGN_129799Fields {
 /**
  * @category PGN_129799
  */
-export const PGN_129799Defaults = {
-  pgn: 129799,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_129799
- */
 export class PGN_129799 extends PGN implements PGN_129799Interface {
   fields: PGN_129799Fields
 
   constructor(fields: PGN_129799Fields, dst: number = 255) {
-    super(PGN_129799Defaults)
-    this.dst = dst
+    super({
+      pgn: 129799,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -14786,22 +13169,15 @@ export interface PGN_129800Fields {
 /**
  * @category PGN_129800
  */
-export const PGN_129800Defaults = {
-  pgn: 129800,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_129800
- */
 export class PGN_129800 extends PGN implements PGN_129800Interface {
   fields: PGN_129800Fields
 
   constructor(fields: PGN_129800Fields, dst: number = 255) {
-    super(PGN_129800Defaults)
-    this.dst = dst
+    super({
+      pgn: 129800,
+      prio: 7,
+      dst
+    })
     this.fields = fields
   }
 
@@ -14843,22 +13219,15 @@ export interface PGN_129801Fields {
 /**
  * @category PGN_129801
  */
-export const PGN_129801Defaults = {
-  pgn: 129801,
-  dst: 255,
-  prio: 5,
-  fields: []
-}
-
-/**
- * @category PGN_129801
- */
 export class PGN_129801 extends PGN implements PGN_129801Interface {
   fields: PGN_129801Fields
 
   constructor(fields: PGN_129801Fields, dst: number = 255) {
-    super(PGN_129801Defaults)
-    this.dst = dst
+    super({
+      pgn: 129801,
+      prio: 5,
+      dst
+    })
     this.fields = fields
   }
 
@@ -14896,22 +13265,15 @@ export interface PGN_129802Fields {
 /**
  * @category PGN_129802
  */
-export const PGN_129802Defaults = {
-  pgn: 129802,
-  dst: 255,
-  prio: 5,
-  fields: []
-}
-
-/**
- * @category PGN_129802
- */
 export class PGN_129802 extends PGN implements PGN_129802Interface {
   fields: PGN_129802Fields
 
   constructor(fields: PGN_129802Fields, dst: number = 255) {
-    super(PGN_129802Defaults)
-    this.dst = dst
+    super({
+      pgn: 129802,
+      prio: 5,
+      dst
+    })
     this.fields = fields
   }
 
@@ -14964,22 +13326,15 @@ export interface PGN_129803Fields {
 /**
  * @category PGN_129803
  */
-export const PGN_129803Defaults = {
-  pgn: 129803,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_129803
- */
 export class PGN_129803 extends PGN implements PGN_129803Interface {
   fields: PGN_129803Fields
 
   constructor(fields: PGN_129803Fields, dst: number = 255) {
-    super(PGN_129803Defaults)
-    this.dst = dst
+    super({
+      pgn: 129803,
+      prio: 7,
+      dst
+    })
     this.fields = fields
   }
 
@@ -15024,22 +13379,15 @@ export interface PGN_129804Fields {
 /**
  * @category PGN_129804
  */
-export const PGN_129804Defaults = {
-  pgn: 129804,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_129804
- */
 export class PGN_129804 extends PGN implements PGN_129804Interface {
   fields: PGN_129804Fields
 
   constructor(fields: PGN_129804Fields, dst: number = 255) {
-    super(PGN_129804Defaults)
-    this.dst = dst
+    super({
+      pgn: 129804,
+      prio: 7,
+      dst
+    })
     this.fields = fields
   }
 
@@ -15082,22 +13430,15 @@ export interface PGN_129805Fields {
 /**
  * @category PGN_129805
  */
-export const PGN_129805Defaults = {
-  pgn: 129805,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_129805
- */
 export class PGN_129805 extends PGN implements PGN_129805Interface {
   fields: PGN_129805Fields
 
   constructor(fields: PGN_129805Fields, dst: number = 255) {
-    super(PGN_129805Defaults)
-    this.dst = dst
+    super({
+      pgn: 129805,
+      prio: 7,
+      dst
+    })
     this.fields = fields
   }
 
@@ -15151,22 +13492,15 @@ export interface PGN_129806Fields {
 /**
  * @category PGN_129806
  */
-export const PGN_129806Defaults = {
-  pgn: 129806,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_129806
- */
 export class PGN_129806 extends PGN implements PGN_129806Interface {
   fields: PGN_129806Fields
 
   constructor(fields: PGN_129806Fields, dst: number = 255) {
-    super(PGN_129806Defaults)
-    this.dst = dst
+    super({
+      pgn: 129806,
+      prio: 7,
+      dst
+    })
     this.fields = fields
   }
 
@@ -15216,22 +13550,15 @@ export interface PGN_129807Fields {
 /**
  * @category PGN_129807
  */
-export const PGN_129807Defaults = {
-  pgn: 129807,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_129807
- */
 export class PGN_129807 extends PGN implements PGN_129807Interface {
   fields: PGN_129807Fields
 
   constructor(fields: PGN_129807Fields, dst: number = 255) {
-    super(PGN_129807Defaults)
-    this.dst = dst
+    super({
+      pgn: 129807,
+      prio: 7,
+      dst
+    })
     this.fields = fields
   }
 
@@ -15288,16 +13615,6 @@ export interface PGN_129808_DscDistressCallInformationFields {
 /**
  * @category PGN_129808_DscDistressCallInformation
  */
-export const PGN_129808_DscDistressCallInformationDefaults = {
-  pgn: 129808,
-  dst: 255,
-  prio: 4,
-  fields: []
-}
-
-/**
- * @category PGN_129808_DscDistressCallInformation
- */
 export const PGN_129808_DscDistressCallInformationMatchFields = {
   dscCategory: enums.DscCategory.Distress,
 }
@@ -15338,8 +13655,11 @@ export class PGN_129808_DscDistressCallInformation extends PGN implements PGN_12
   fields: PGN_129808_DscDistressCallInformationFields
 
   constructor(fields: PGN_129808_DscDistressCallInformationCreateArgs, dst: number = 255) {
-    super(PGN_129808_DscDistressCallInformationDefaults)
-    this.dst = dst
+    super({
+      pgn: 129808,
+      prio: 4,
+      dst
+    })
     this.fields = { ...PGN_129808_DscDistressCallInformationMatchFields, ...fields }
   }
 
@@ -15397,22 +13717,15 @@ export interface PGN_129808Fields {
 /**
  * @category PGN_129808
  */
-export const PGN_129808Defaults = {
-  pgn: 129808,
-  dst: 255,
-  prio: 4,
-  fields: []
-}
-
-/**
- * @category PGN_129808
- */
 export class PGN_129808 extends PGN implements PGN_129808Interface {
   fields: PGN_129808Fields
 
   constructor(fields: PGN_129808Fields, dst: number = 255) {
-    super(PGN_129808Defaults)
-    this.dst = dst
+    super({
+      pgn: 129808,
+      prio: 4,
+      dst
+    })
     this.fields = fields
   }
 
@@ -15450,22 +13763,15 @@ export interface PGN_129809Fields {
 /**
  * @category PGN_129809
  */
-export const PGN_129809Defaults = {
-  pgn: 129809,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_129809
- */
 export class PGN_129809 extends PGN implements PGN_129809Interface {
   fields: PGN_129809Fields
 
   constructor(fields: PGN_129809Fields, dst: number = 255) {
-    super(PGN_129809Defaults)
-    this.dst = dst
+    super({
+      pgn: 129809,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -15513,22 +13819,15 @@ export interface PGN_129810Fields {
 /**
  * @category PGN_129810
  */
-export const PGN_129810Defaults = {
-  pgn: 129810,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_129810
- */
 export class PGN_129810 extends PGN implements PGN_129810Interface {
   fields: PGN_129810Fields
 
   constructor(fields: PGN_129810Fields, dst: number = 255) {
-    super(PGN_129810Defaults)
-    this.dst = dst
+    super({
+      pgn: 129810,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -15574,22 +13873,15 @@ export interface PGN_130052Fields {
 /**
  * @category PGN_130052
  */
-export const PGN_130052Defaults = {
-  pgn: 130052,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130052
- */
 export class PGN_130052 extends PGN implements PGN_130052Interface {
   fields: PGN_130052Fields
 
   constructor(fields: PGN_130052Fields, dst: number = 255) {
-    super(PGN_130052Defaults)
-    this.dst = dst
+    super({
+      pgn: 130052,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -15635,22 +13927,15 @@ export interface PGN_130053Fields {
 /**
  * @category PGN_130053
  */
-export const PGN_130053Defaults = {
-  pgn: 130053,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130053
- */
 export class PGN_130053 extends PGN implements PGN_130053Interface {
   fields: PGN_130053Fields
 
   constructor(fields: PGN_130053Fields, dst: number = 255) {
-    super(PGN_130053Defaults)
-    this.dst = dst
+    super({
+      pgn: 130053,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -15686,22 +13971,15 @@ export interface PGN_130054Fields {
 /**
  * @category PGN_130054
  */
-export const PGN_130054Defaults = {
-  pgn: 130054,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130054
- */
 export class PGN_130054 extends PGN implements PGN_130054Interface {
   fields: PGN_130054Fields
 
   constructor(fields: PGN_130054Fields, dst: number = 255) {
-    super(PGN_130054Defaults)
-    this.dst = dst
+    super({
+      pgn: 130054,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -15740,22 +14018,15 @@ export interface PGN_130060Fields {
 /**
  * @category PGN_130060
  */
-export const PGN_130060Defaults = {
-  pgn: 130060,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130060
- */
 export class PGN_130060 extends PGN implements PGN_130060Interface {
   fields: PGN_130060Fields
 
   constructor(fields: PGN_130060Fields, dst: number = 255) {
-    super(PGN_130060Defaults)
-    this.dst = dst
+    super({
+      pgn: 130060,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -15797,22 +14068,15 @@ export interface PGN_130061Fields {
 /**
  * @category PGN_130061
  */
-export const PGN_130061Defaults = {
-  pgn: 130061,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130061
- */
 export class PGN_130061 extends PGN implements PGN_130061Interface {
   fields: PGN_130061Fields
 
   constructor(fields: PGN_130061Fields, dst: number = 255) {
-    super(PGN_130061Defaults)
-    this.dst = dst
+    super({
+      pgn: 130061,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -15857,22 +14121,15 @@ export interface PGN_130064Fields {
 /**
  * @category PGN_130064
  */
-export const PGN_130064Defaults = {
-  pgn: 130064,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130064
- */
 export class PGN_130064 extends PGN implements PGN_130064Interface {
   fields: PGN_130064Fields
 
   constructor(fields: PGN_130064Fields, dst: number = 255) {
-    super(PGN_130064Defaults)
-    this.dst = dst
+    super({
+      pgn: 130064,
+      prio: 7,
+      dst
+    })
     this.fields = fields
   }
 
@@ -15914,22 +14171,15 @@ export interface PGN_130065Fields {
 /**
  * @category PGN_130065
  */
-export const PGN_130065Defaults = {
-  pgn: 130065,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130065
- */
 export class PGN_130065 extends PGN implements PGN_130065Interface {
   fields: PGN_130065Fields
 
   constructor(fields: PGN_130065Fields, dst: number = 255) {
-    super(PGN_130065Defaults)
-    this.dst = dst
+    super({
+      pgn: 130065,
+      prio: 7,
+      dst
+    })
     this.fields = fields
   }
 
@@ -15972,22 +14222,15 @@ export interface PGN_130066Fields {
 /**
  * @category PGN_130066
  */
-export const PGN_130066Defaults = {
-  pgn: 130066,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130066
- */
 export class PGN_130066 extends PGN implements PGN_130066Interface {
   fields: PGN_130066Fields
 
   constructor(fields: PGN_130066Fields, dst: number = 255) {
-    super(PGN_130066Defaults)
-    this.dst = dst
+    super({
+      pgn: 130066,
+      prio: 7,
+      dst
+    })
     this.fields = fields
   }
 
@@ -16029,22 +14272,15 @@ export interface PGN_130067Fields {
 /**
  * @category PGN_130067
  */
-export const PGN_130067Defaults = {
-  pgn: 130067,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130067
- */
 export class PGN_130067 extends PGN implements PGN_130067Interface {
   fields: PGN_130067Fields
 
   constructor(fields: PGN_130067Fields, dst: number = 255) {
-    super(PGN_130067Defaults)
-    this.dst = dst
+    super({
+      pgn: 130067,
+      prio: 7,
+      dst
+    })
     this.fields = fields
   }
 
@@ -16084,22 +14320,15 @@ export interface PGN_130068Fields {
 /**
  * @category PGN_130068
  */
-export const PGN_130068Defaults = {
-  pgn: 130068,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130068
- */
 export class PGN_130068 extends PGN implements PGN_130068Interface {
   fields: PGN_130068Fields
 
   constructor(fields: PGN_130068Fields, dst: number = 255) {
-    super(PGN_130068Defaults)
-    this.dst = dst
+    super({
+      pgn: 130068,
+      prio: 7,
+      dst
+    })
     this.fields = fields
   }
 
@@ -16141,22 +14370,15 @@ export interface PGN_130069Fields {
 /**
  * @category PGN_130069
  */
-export const PGN_130069Defaults = {
-  pgn: 130069,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130069
- */
 export class PGN_130069 extends PGN implements PGN_130069Interface {
   fields: PGN_130069Fields
 
   constructor(fields: PGN_130069Fields, dst: number = 255) {
-    super(PGN_130069Defaults)
-    this.dst = dst
+    super({
+      pgn: 130069,
+      prio: 7,
+      dst
+    })
     this.fields = fields
   }
 
@@ -16196,22 +14418,15 @@ export interface PGN_130070Fields {
 /**
  * @category PGN_130070
  */
-export const PGN_130070Defaults = {
-  pgn: 130070,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130070
- */
 export class PGN_130070 extends PGN implements PGN_130070Interface {
   fields: PGN_130070Fields
 
   constructor(fields: PGN_130070Fields, dst: number = 255) {
-    super(PGN_130070Defaults)
-    this.dst = dst
+    super({
+      pgn: 130070,
+      prio: 7,
+      dst
+    })
     this.fields = fields
   }
 
@@ -16250,22 +14465,15 @@ export interface PGN_130071Fields {
 /**
  * @category PGN_130071
  */
-export const PGN_130071Defaults = {
-  pgn: 130071,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130071
- */
 export class PGN_130071 extends PGN implements PGN_130071Interface {
   fields: PGN_130071Fields
 
   constructor(fields: PGN_130071Fields, dst: number = 255) {
-    super(PGN_130071Defaults)
-    this.dst = dst
+    super({
+      pgn: 130071,
+      prio: 7,
+      dst
+    })
     this.fields = fields
   }
 
@@ -16303,22 +14511,15 @@ export interface PGN_130072Fields {
 /**
  * @category PGN_130072
  */
-export const PGN_130072Defaults = {
-  pgn: 130072,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130072
- */
 export class PGN_130072 extends PGN implements PGN_130072Interface {
   fields: PGN_130072Fields
 
   constructor(fields: PGN_130072Fields, dst: number = 255) {
-    super(PGN_130072Defaults)
-    this.dst = dst
+    super({
+      pgn: 130072,
+      prio: 7,
+      dst
+    })
     this.fields = fields
   }
 
@@ -16358,22 +14559,15 @@ export interface PGN_130073Fields {
 /**
  * @category PGN_130073
  */
-export const PGN_130073Defaults = {
-  pgn: 130073,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130073
- */
 export class PGN_130073 extends PGN implements PGN_130073Interface {
   fields: PGN_130073Fields
 
   constructor(fields: PGN_130073Fields, dst: number = 255) {
-    super(PGN_130073Defaults)
-    this.dst = dst
+    super({
+      pgn: 130073,
+      prio: 7,
+      dst
+    })
     this.fields = fields
   }
 
@@ -16415,22 +14609,15 @@ export interface PGN_130074Fields {
 /**
  * @category PGN_130074
  */
-export const PGN_130074Defaults = {
-  pgn: 130074,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130074
- */
 export class PGN_130074 extends PGN implements PGN_130074Interface {
   fields: PGN_130074Fields
 
   constructor(fields: PGN_130074Fields, dst: number = 255) {
-    super(PGN_130074Defaults)
-    this.dst = dst
+    super({
+      pgn: 130074,
+      prio: 7,
+      dst
+    })
     this.fields = fields
   }
 
@@ -16466,22 +14653,15 @@ export interface PGN_130306Fields {
 /**
  * @category PGN_130306
  */
-export const PGN_130306Defaults = {
-  pgn: 130306,
-  dst: 255,
-  prio: 2,
-  fields: []
-}
-
-/**
- * @category PGN_130306
- */
 export class PGN_130306 extends PGN implements PGN_130306Interface {
   fields: PGN_130306Fields
 
   constructor(fields: PGN_130306Fields, dst: number = 255) {
-    super(PGN_130306Defaults)
-    this.dst = dst
+    super({
+      pgn: 130306,
+      prio: 2,
+      dst
+    })
     this.fields = fields
   }
 
@@ -16519,22 +14699,15 @@ export interface PGN_130310Fields {
 /**
  * @category PGN_130310
  */
-export const PGN_130310Defaults = {
-  pgn: 130310,
-  dst: 255,
-  prio: 5,
-  fields: []
-}
-
-/**
- * @category PGN_130310
- */
 export class PGN_130310 extends PGN implements PGN_130310Interface {
   fields: PGN_130310Fields
 
   constructor(fields: PGN_130310Fields, dst: number = 255) {
-    super(PGN_130310Defaults)
-    this.dst = dst
+    super({
+      pgn: 130310,
+      prio: 5,
+      dst
+    })
     this.fields = fields
   }
 
@@ -16573,22 +14746,15 @@ export interface PGN_130311Fields {
 /**
  * @category PGN_130311
  */
-export const PGN_130311Defaults = {
-  pgn: 130311,
-  dst: 255,
-  prio: 5,
-  fields: []
-}
-
-/**
- * @category PGN_130311
- */
 export class PGN_130311 extends PGN implements PGN_130311Interface {
   fields: PGN_130311Fields
 
   constructor(fields: PGN_130311Fields, dst: number = 255) {
-    super(PGN_130311Defaults)
-    this.dst = dst
+    super({
+      pgn: 130311,
+      prio: 5,
+      dst
+    })
     this.fields = fields
   }
 
@@ -16625,22 +14791,15 @@ export interface PGN_130312Fields {
 /**
  * @category PGN_130312
  */
-export const PGN_130312Defaults = {
-  pgn: 130312,
-  dst: 255,
-  prio: 5,
-  fields: []
-}
-
-/**
- * @category PGN_130312
- */
 export class PGN_130312 extends PGN implements PGN_130312Interface {
   fields: PGN_130312Fields
 
   constructor(fields: PGN_130312Fields, dst: number = 255) {
-    super(PGN_130312Defaults)
-    this.dst = dst
+    super({
+      pgn: 130312,
+      prio: 5,
+      dst
+    })
     this.fields = fields
   }
 
@@ -16677,22 +14836,15 @@ export interface PGN_130313Fields {
 /**
  * @category PGN_130313
  */
-export const PGN_130313Defaults = {
-  pgn: 130313,
-  dst: 255,
-  prio: 5,
-  fields: []
-}
-
-/**
- * @category PGN_130313
- */
 export class PGN_130313 extends PGN implements PGN_130313Interface {
   fields: PGN_130313Fields
 
   constructor(fields: PGN_130313Fields, dst: number = 255) {
-    super(PGN_130313Defaults)
-    this.dst = dst
+    super({
+      pgn: 130313,
+      prio: 5,
+      dst
+    })
     this.fields = fields
   }
 
@@ -16728,22 +14880,15 @@ export interface PGN_130314Fields {
 /**
  * @category PGN_130314
  */
-export const PGN_130314Defaults = {
-  pgn: 130314,
-  dst: 255,
-  prio: 5,
-  fields: []
-}
-
-/**
- * @category PGN_130314
- */
 export class PGN_130314 extends PGN implements PGN_130314Interface {
   fields: PGN_130314Fields
 
   constructor(fields: PGN_130314Fields, dst: number = 255) {
-    super(PGN_130314Defaults)
-    this.dst = dst
+    super({
+      pgn: 130314,
+      prio: 5,
+      dst
+    })
     this.fields = fields
   }
 
@@ -16779,22 +14924,15 @@ export interface PGN_130315Fields {
 /**
  * @category PGN_130315
  */
-export const PGN_130315Defaults = {
-  pgn: 130315,
-  dst: 255,
-  prio: 5,
-  fields: []
-}
-
-/**
- * @category PGN_130315
- */
 export class PGN_130315 extends PGN implements PGN_130315Interface {
   fields: PGN_130315Fields
 
   constructor(fields: PGN_130315Fields, dst: number = 255) {
-    super(PGN_130315Defaults)
-    this.dst = dst
+    super({
+      pgn: 130315,
+      prio: 5,
+      dst
+    })
     this.fields = fields
   }
 
@@ -16830,22 +14968,15 @@ export interface PGN_130316Fields {
 /**
  * @category PGN_130316
  */
-export const PGN_130316Defaults = {
-  pgn: 130316,
-  dst: 255,
-  prio: 5,
-  fields: []
-}
-
-/**
- * @category PGN_130316
- */
 export class PGN_130316 extends PGN implements PGN_130316Interface {
   fields: PGN_130316Fields
 
   constructor(fields: PGN_130316Fields, dst: number = 255) {
-    super(PGN_130316Defaults)
-    this.dst = dst
+    super({
+      pgn: 130316,
+      prio: 5,
+      dst
+    })
     this.fields = fields
   }
 
@@ -16887,22 +15018,15 @@ export interface PGN_130320Fields {
 /**
  * @category PGN_130320
  */
-export const PGN_130320Defaults = {
-  pgn: 130320,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_130320
- */
 export class PGN_130320 extends PGN implements PGN_130320Interface {
   fields: PGN_130320Fields
 
   constructor(fields: PGN_130320Fields, dst: number = 255) {
-    super(PGN_130320Defaults)
-    this.dst = dst
+    super({
+      pgn: 130320,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -16943,22 +15067,15 @@ export interface PGN_130321Fields {
 /**
  * @category PGN_130321
  */
-export const PGN_130321Defaults = {
-  pgn: 130321,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_130321
- */
 export class PGN_130321 extends PGN implements PGN_130321Interface {
   fields: PGN_130321Fields
 
   constructor(fields: PGN_130321Fields, dst: number = 255) {
-    super(PGN_130321Defaults)
-    this.dst = dst
+    super({
+      pgn: 130321,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -17002,22 +15119,15 @@ export interface PGN_130322Fields {
 /**
  * @category PGN_130322
  */
-export const PGN_130322Defaults = {
-  pgn: 130322,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_130322
- */
 export class PGN_130322 extends PGN implements PGN_130322Interface {
   fields: PGN_130322Fields
 
   constructor(fields: PGN_130322Fields, dst: number = 255) {
-    super(PGN_130322Defaults)
-    this.dst = dst
+    super({
+      pgn: 130322,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -17063,22 +15173,15 @@ export interface PGN_130323Fields {
 /**
  * @category PGN_130323
  */
-export const PGN_130323Defaults = {
-  pgn: 130323,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_130323
- */
 export class PGN_130323 extends PGN implements PGN_130323Interface {
   fields: PGN_130323Fields
 
   constructor(fields: PGN_130323Fields, dst: number = 255) {
-    super(PGN_130323Defaults)
-    this.dst = dst
+    super({
+      pgn: 130323,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -17127,22 +15230,15 @@ export interface PGN_130324Fields {
 /**
  * @category PGN_130324
  */
-export const PGN_130324Defaults = {
-  pgn: 130324,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_130324
- */
 export class PGN_130324 extends PGN implements PGN_130324Interface {
   fields: PGN_130324Fields
 
   constructor(fields: PGN_130324Fields, dst: number = 255) {
-    super(PGN_130324Defaults)
-    this.dst = dst
+    super({
+      pgn: 130324,
+      prio: 6,
+      dst
+    })
     this.fields = fields
   }
 
@@ -17187,22 +15283,15 @@ export interface PGN_130330Fields {
 /**
  * @category PGN_130330
  */
-export const PGN_130330Defaults = {
-  pgn: 130330,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130330
- */
 export class PGN_130330 extends PGN implements PGN_130330Interface {
   fields: PGN_130330Fields
 
   constructor(fields: PGN_130330Fields, dst: number = 255) {
-    super(PGN_130330Defaults)
-    this.dst = dst
+    super({
+      pgn: 130330,
+      prio: 7,
+      dst
+    })
     this.fields = fields
   }
 
@@ -17239,22 +15328,15 @@ export interface PGN_130560Fields {
 /**
  * @category PGN_130560
  */
-export const PGN_130560Defaults = {
-  pgn: 130560,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130560
- */
 export class PGN_130560 extends PGN implements PGN_130560Interface {
   fields: PGN_130560Fields
 
   constructor(fields: PGN_130560Fields, dst: number = 255) {
-    super(PGN_130560Defaults)
-    this.dst = dst
+    super({
+      pgn: 130560,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -17301,22 +15383,15 @@ export interface PGN_130561Fields {
 /**
  * @category PGN_130561
  */
-export const PGN_130561Defaults = {
-  pgn: 130561,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130561
- */
 export class PGN_130561 extends PGN implements PGN_130561Interface {
   fields: PGN_130561Fields
 
   constructor(fields: PGN_130561Fields, dst: number = 255) {
-    super(PGN_130561Defaults)
-    this.dst = dst
+    super({
+      pgn: 130561,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -17363,22 +15438,15 @@ export interface PGN_130562Fields {
 /**
  * @category PGN_130562
  */
-export const PGN_130562Defaults = {
-  pgn: 130562,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130562
- */
 export class PGN_130562 extends PGN implements PGN_130562Interface {
   fields: PGN_130562Fields
 
   constructor(fields: PGN_130562Fields, dst: number = 255) {
-    super(PGN_130562Defaults)
-    this.dst = dst
+    super({
+      pgn: 130562,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -17429,22 +15497,15 @@ export interface PGN_130563Fields {
 /**
  * @category PGN_130563
  */
-export const PGN_130563Defaults = {
-  pgn: 130563,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130563
- */
 export class PGN_130563 extends PGN implements PGN_130563Interface {
   fields: PGN_130563Fields
 
   constructor(fields: PGN_130563Fields, dst: number = 255) {
-    super(PGN_130563Defaults)
-    this.dst = dst
+    super({
+      pgn: 130563,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -17484,22 +15545,15 @@ export interface PGN_130564Fields {
 /**
  * @category PGN_130564
  */
-export const PGN_130564Defaults = {
-  pgn: 130564,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130564
- */
 export class PGN_130564 extends PGN implements PGN_130564Interface {
   fields: PGN_130564Fields
 
   constructor(fields: PGN_130564Fields, dst: number = 255) {
-    super(PGN_130564Defaults)
-    this.dst = dst
+    super({
+      pgn: 130564,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -17542,22 +15596,15 @@ export interface PGN_130565Fields {
 /**
  * @category PGN_130565
  */
-export const PGN_130565Defaults = {
-  pgn: 130565,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130565
- */
 export class PGN_130565 extends PGN implements PGN_130565Interface {
   fields: PGN_130565Fields
 
   constructor(fields: PGN_130565Fields, dst: number = 255) {
-    super(PGN_130565Defaults)
-    this.dst = dst
+    super({
+      pgn: 130565,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -17595,22 +15642,15 @@ export interface PGN_130566Fields {
 /**
  * @category PGN_130566
  */
-export const PGN_130566Defaults = {
-  pgn: 130566,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130566
- */
 export class PGN_130566 extends PGN implements PGN_130566Interface {
   fields: PGN_130566Fields
 
   constructor(fields: PGN_130566Fields, dst: number = 255) {
-    super(PGN_130566Defaults)
-    this.dst = dst
+    super({
+      pgn: 130566,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -17664,22 +15704,15 @@ export interface PGN_130567Fields {
 /**
  * @category PGN_130567
  */
-export const PGN_130567Defaults = {
-  pgn: 130567,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130567
- */
 export class PGN_130567 extends PGN implements PGN_130567Interface {
   fields: PGN_130567Fields
 
   constructor(fields: PGN_130567Fields, dst: number = 255) {
-    super(PGN_130567Defaults)
-    this.dst = dst
+    super({
+      pgn: 130567,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -17727,22 +15760,15 @@ export interface PGN_130569Fields {
 /**
  * @category PGN_130569
  */
-export const PGN_130569Defaults = {
-  pgn: 130569,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130569
- */
 export class PGN_130569 extends PGN implements PGN_130569Interface {
   fields: PGN_130569Fields
 
   constructor(fields: PGN_130569Fields, dst: number = 255) {
-    super(PGN_130569Defaults)
-    this.dst = dst
+    super({
+      pgn: 130569,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -17790,22 +15816,15 @@ export interface PGN_130570Fields {
 /**
  * @category PGN_130570
  */
-export const PGN_130570Defaults = {
-  pgn: 130570,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130570
- */
 export class PGN_130570 extends PGN implements PGN_130570Interface {
   fields: PGN_130570Fields
 
   constructor(fields: PGN_130570Fields, dst: number = 255) {
-    super(PGN_130570Defaults)
-    this.dst = dst
+    super({
+      pgn: 130570,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -17850,22 +15869,15 @@ export interface PGN_130571Fields {
 /**
  * @category PGN_130571
  */
-export const PGN_130571Defaults = {
-  pgn: 130571,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130571
- */
 export class PGN_130571 extends PGN implements PGN_130571Interface {
   fields: PGN_130571Fields
 
   constructor(fields: PGN_130571Fields, dst: number = 255) {
-    super(PGN_130571Defaults)
-    this.dst = dst
+    super({
+      pgn: 130571,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -17905,22 +15917,15 @@ export interface PGN_130572Fields {
 /**
  * @category PGN_130572
  */
-export const PGN_130572Defaults = {
-  pgn: 130572,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130572
- */
 export class PGN_130572 extends PGN implements PGN_130572Interface {
   fields: PGN_130572Fields
 
   constructor(fields: PGN_130572Fields, dst: number = 255) {
-    super(PGN_130572Defaults)
-    this.dst = dst
+    super({
+      pgn: 130572,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -17966,22 +15971,15 @@ export interface PGN_130573Fields {
 /**
  * @category PGN_130573
  */
-export const PGN_130573Defaults = {
-  pgn: 130573,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130573
- */
 export class PGN_130573 extends PGN implements PGN_130573Interface {
   fields: PGN_130573Fields
 
   constructor(fields: PGN_130573Fields, dst: number = 255) {
-    super(PGN_130573Defaults)
-    this.dst = dst
+    super({
+      pgn: 130573,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -18019,22 +16017,15 @@ export interface PGN_130574Fields {
 /**
  * @category PGN_130574
  */
-export const PGN_130574Defaults = {
-  pgn: 130574,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130574
- */
 export class PGN_130574 extends PGN implements PGN_130574Interface {
   fields: PGN_130574Fields
 
   constructor(fields: PGN_130574Fields, dst: number = 255) {
-    super(PGN_130574Defaults)
-    this.dst = dst
+    super({
+      pgn: 130574,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -18068,22 +16059,15 @@ export interface PGN_130576Fields {
 /**
  * @category PGN_130576
  */
-export const PGN_130576Defaults = {
-  pgn: 130576,
-  dst: 255,
-  prio: 2,
-  fields: []
-}
-
-/**
- * @category PGN_130576
- */
 export class PGN_130576 extends PGN implements PGN_130576Interface {
   fields: PGN_130576Fields
 
   constructor(fields: PGN_130576Fields, dst: number = 255) {
-    super(PGN_130576Defaults)
-    this.dst = dst
+    super({
+      pgn: 130576,
+      prio: 2,
+      dst
+    })
     this.fields = fields
   }
 
@@ -18124,22 +16108,15 @@ export interface PGN_130577Fields {
 /**
  * @category PGN_130577
  */
-export const PGN_130577Defaults = {
-  pgn: 130577,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130577
- */
 export class PGN_130577 extends PGN implements PGN_130577Interface {
   fields: PGN_130577Fields
 
   constructor(fields: PGN_130577Fields, dst: number = 255) {
-    super(PGN_130577Defaults)
-    this.dst = dst
+    super({
+      pgn: 130577,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -18176,22 +16153,15 @@ export interface PGN_130578Fields {
 /**
  * @category PGN_130578
  */
-export const PGN_130578Defaults = {
-  pgn: 130578,
-  dst: 255,
-  prio: 2,
-  fields: []
-}
-
-/**
- * @category PGN_130578
- */
 export class PGN_130578 extends PGN implements PGN_130578Interface {
   fields: PGN_130578Fields
 
   constructor(fields: PGN_130578Fields, dst: number = 255) {
-    super(PGN_130578Defaults)
-    this.dst = dst
+    super({
+      pgn: 130578,
+      prio: 2,
+      dst
+    })
     this.fields = fields
   }
 
@@ -18228,22 +16198,15 @@ export interface PGN_130579Fields {
 /**
  * @category PGN_130579
  */
-export const PGN_130579Defaults = {
-  pgn: 130579,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130579
- */
 export class PGN_130579 extends PGN implements PGN_130579Interface {
   fields: PGN_130579Fields
 
   constructor(fields: PGN_130579Fields, dst: number = 255) {
-    super(PGN_130579Defaults)
-    this.dst = dst
+    super({
+      pgn: 130579,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -18278,22 +16241,15 @@ export interface PGN_130580Fields {
 /**
  * @category PGN_130580
  */
-export const PGN_130580Defaults = {
-  pgn: 130580,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130580
- */
 export class PGN_130580 extends PGN implements PGN_130580Interface {
   fields: PGN_130580Fields
 
   constructor(fields: PGN_130580Fields, dst: number = 255) {
-    super(PGN_130580Defaults)
-    this.dst = dst
+    super({
+      pgn: 130580,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -18331,22 +16287,15 @@ export interface PGN_130581Fields {
 /**
  * @category PGN_130581
  */
-export const PGN_130581Defaults = {
-  pgn: 130581,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130581
- */
 export class PGN_130581 extends PGN implements PGN_130581Interface {
   fields: PGN_130581Fields
 
   constructor(fields: PGN_130581Fields, dst: number = 255) {
-    super(PGN_130581Defaults)
-    this.dst = dst
+    super({
+      pgn: 130581,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -18384,22 +16333,15 @@ export interface PGN_130582Fields {
 /**
  * @category PGN_130582
  */
-export const PGN_130582Defaults = {
-  pgn: 130582,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130582
- */
 export class PGN_130582 extends PGN implements PGN_130582Interface {
   fields: PGN_130582Fields
 
   constructor(fields: PGN_130582Fields, dst: number = 255) {
-    super(PGN_130582Defaults)
-    this.dst = dst
+    super({
+      pgn: 130582,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -18437,22 +16379,15 @@ export interface PGN_130583Fields {
 /**
  * @category PGN_130583
  */
-export const PGN_130583Defaults = {
-  pgn: 130583,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130583
- */
 export class PGN_130583 extends PGN implements PGN_130583Interface {
   fields: PGN_130583Fields
 
   constructor(fields: PGN_130583Fields, dst: number = 255) {
-    super(PGN_130583Defaults)
-    this.dst = dst
+    super({
+      pgn: 130583,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -18492,22 +16427,15 @@ export interface PGN_130584Fields {
 /**
  * @category PGN_130584
  */
-export const PGN_130584Defaults = {
-  pgn: 130584,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130584
- */
 export class PGN_130584 extends PGN implements PGN_130584Interface {
   fields: PGN_130584Fields
 
   constructor(fields: PGN_130584Fields, dst: number = 255) {
-    super(PGN_130584Defaults)
-    this.dst = dst
+    super({
+      pgn: 130584,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -18543,22 +16471,15 @@ export interface PGN_130585Fields {
 /**
  * @category PGN_130585
  */
-export const PGN_130585Defaults = {
-  pgn: 130585,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130585
- */
 export class PGN_130585 extends PGN implements PGN_130585Interface {
   fields: PGN_130585Fields
 
   constructor(fields: PGN_130585Fields, dst: number = 255) {
-    super(PGN_130585Defaults)
-    this.dst = dst
+    super({
+      pgn: 130585,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -18602,22 +16523,15 @@ export interface PGN_130586Fields {
 /**
  * @category PGN_130586
  */
-export const PGN_130586Defaults = {
-  pgn: 130586,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130586
- */
 export class PGN_130586 extends PGN implements PGN_130586Interface {
   fields: PGN_130586Fields
 
   constructor(fields: PGN_130586Fields, dst: number = 255) {
-    super(PGN_130586Defaults)
-    this.dst = dst
+    super({
+      pgn: 130586,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -18651,22 +16565,15 @@ export interface PGN_130816Fields {
 /**
  * @category PGN_130816
  */
-export const PGN_130816Defaults = {
-  pgn: 130816,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130816
- */
 export class PGN_130816 extends PGN implements PGN_130816Interface {
   fields: PGN_130816Fields
 
   constructor(fields: PGN_130816Fields, dst: number = 255) {
-    super(PGN_130816Defaults)
-    this.dst = dst
+    super({
+      pgn: 130816,
+      prio: 3,
+      dst
+    })
     this.fields = fields
   }
 
@@ -18709,16 +16616,6 @@ export interface PGN_130816_SonichubInit2Fields {
 /**
  * @category PGN_130816_SonichubInit2
  */
-export const PGN_130816_SonichubInit2Defaults = {
-  pgn: 130816,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130816_SonichubInit2
- */
 export const PGN_130816_SonichubInit2MatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -18743,8 +16640,11 @@ export class PGN_130816_SonichubInit2 extends PGN implements PGN_130816_Sonichub
   fields: PGN_130816_SonichubInit2Fields
 
   constructor(fields: PGN_130816_SonichubInit2CreateArgs, dst: number = 255) {
-    super(PGN_130816_SonichubInit2Defaults)
-    this.dst = dst
+    super({
+      pgn: 130816,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130816_SonichubInit2MatchFields, ...fields }
   }
 
@@ -18794,16 +16694,6 @@ export interface PGN_130816_SonichubAmRadioFields {
 /**
  * @category PGN_130816_SonichubAmRadio
  */
-export const PGN_130816_SonichubAmRadioDefaults = {
-  pgn: 130816,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130816_SonichubAmRadio
- */
 export const PGN_130816_SonichubAmRadioMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -18832,8 +16722,11 @@ export class PGN_130816_SonichubAmRadio extends PGN implements PGN_130816_Sonich
   fields: PGN_130816_SonichubAmRadioFields
 
   constructor(fields: PGN_130816_SonichubAmRadioCreateArgs, dst: number = 255) {
-    super(PGN_130816_SonichubAmRadioDefaults)
-    this.dst = dst
+    super({
+      pgn: 130816,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130816_SonichubAmRadioMatchFields, ...fields }
   }
 
@@ -18878,16 +16771,6 @@ export interface PGN_130816_SonichubZoneInfoFields {
 /**
  * @category PGN_130816_SonichubZoneInfo
  */
-export const PGN_130816_SonichubZoneInfoDefaults = {
-  pgn: 130816,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130816_SonichubZoneInfo
- */
 export const PGN_130816_SonichubZoneInfoMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -18911,8 +16794,11 @@ export class PGN_130816_SonichubZoneInfo extends PGN implements PGN_130816_Sonic
   fields: PGN_130816_SonichubZoneInfoFields
 
   constructor(fields: PGN_130816_SonichubZoneInfoCreateArgs, dst: number = 255) {
-    super(PGN_130816_SonichubZoneInfoDefaults)
-    this.dst = dst
+    super({
+      pgn: 130816,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130816_SonichubZoneInfoMatchFields, ...fields }
   }
 
@@ -18957,16 +16843,6 @@ export interface PGN_130816_SonichubSourceFields {
 /**
  * @category PGN_130816_SonichubSource
  */
-export const PGN_130816_SonichubSourceDefaults = {
-  pgn: 130816,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130816_SonichubSource
- */
 export const PGN_130816_SonichubSourceMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -18990,8 +16866,11 @@ export class PGN_130816_SonichubSource extends PGN implements PGN_130816_Sonichu
   fields: PGN_130816_SonichubSourceFields
 
   constructor(fields: PGN_130816_SonichubSourceCreateArgs, dst: number = 255) {
-    super(PGN_130816_SonichubSourceDefaults)
-    this.dst = dst
+    super({
+      pgn: 130816,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130816_SonichubSourceMatchFields, ...fields }
   }
 
@@ -19038,16 +16917,6 @@ export interface PGN_130816_SonichubSourceListFields {
 /**
  * @category PGN_130816_SonichubSourceList
  */
-export const PGN_130816_SonichubSourceListDefaults = {
-  pgn: 130816,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130816_SonichubSourceList
- */
 export const PGN_130816_SonichubSourceListMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -19073,8 +16942,11 @@ export class PGN_130816_SonichubSourceList extends PGN implements PGN_130816_Son
   fields: PGN_130816_SonichubSourceListFields
 
   constructor(fields: PGN_130816_SonichubSourceListCreateArgs, dst: number = 255) {
-    super(PGN_130816_SonichubSourceListDefaults)
-    this.dst = dst
+    super({
+      pgn: 130816,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130816_SonichubSourceListMatchFields, ...fields }
   }
 
@@ -19119,16 +16991,6 @@ export interface PGN_130816_SonichubControlFields {
 /**
  * @category PGN_130816_SonichubControl
  */
-export const PGN_130816_SonichubControlDefaults = {
-  pgn: 130816,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130816_SonichubControl
- */
 export const PGN_130816_SonichubControlMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -19152,8 +17014,11 @@ export class PGN_130816_SonichubControl extends PGN implements PGN_130816_Sonich
   fields: PGN_130816_SonichubControlFields
 
   constructor(fields: PGN_130816_SonichubControlCreateArgs, dst: number = 255) {
-    super(PGN_130816_SonichubControlDefaults)
-    this.dst = dst
+    super({
+      pgn: 130816,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130816_SonichubControlMatchFields, ...fields }
   }
 
@@ -19203,16 +17068,6 @@ export interface PGN_130816_SonichubFmRadioFields {
 /**
  * @category PGN_130816_SonichubFmRadio
  */
-export const PGN_130816_SonichubFmRadioDefaults = {
-  pgn: 130816,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130816_SonichubFmRadio
- */
 export const PGN_130816_SonichubFmRadioMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -19241,8 +17096,11 @@ export class PGN_130816_SonichubFmRadio extends PGN implements PGN_130816_Sonich
   fields: PGN_130816_SonichubFmRadioFields
 
   constructor(fields: PGN_130816_SonichubFmRadioCreateArgs, dst: number = 255) {
-    super(PGN_130816_SonichubFmRadioDefaults)
-    this.dst = dst
+    super({
+      pgn: 130816,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130816_SonichubFmRadioMatchFields, ...fields }
   }
 
@@ -19292,16 +17150,6 @@ export interface PGN_130816_SonichubPlaylistFields {
 /**
  * @category PGN_130816_SonichubPlaylist
  */
-export const PGN_130816_SonichubPlaylistDefaults = {
-  pgn: 130816,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130816_SonichubPlaylist
- */
 export const PGN_130816_SonichubPlaylistMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -19330,8 +17178,11 @@ export class PGN_130816_SonichubPlaylist extends PGN implements PGN_130816_Sonic
   fields: PGN_130816_SonichubPlaylistFields
 
   constructor(fields: PGN_130816_SonichubPlaylistCreateArgs, dst: number = 255) {
-    super(PGN_130816_SonichubPlaylistDefaults)
-    this.dst = dst
+    super({
+      pgn: 130816,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130816_SonichubPlaylistMatchFields, ...fields }
   }
 
@@ -19377,16 +17228,6 @@ export interface PGN_130816_SonichubTrackFields {
 /**
  * @category PGN_130816_SonichubTrack
  */
-export const PGN_130816_SonichubTrackDefaults = {
-  pgn: 130816,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130816_SonichubTrack
- */
 export const PGN_130816_SonichubTrackMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -19411,8 +17252,11 @@ export class PGN_130816_SonichubTrack extends PGN implements PGN_130816_Sonichub
   fields: PGN_130816_SonichubTrackFields
 
   constructor(fields: PGN_130816_SonichubTrackCreateArgs, dst: number = 255) {
-    super(PGN_130816_SonichubTrackDefaults)
-    this.dst = dst
+    super({
+      pgn: 130816,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130816_SonichubTrackMatchFields, ...fields }
   }
 
@@ -19458,16 +17302,6 @@ export interface PGN_130816_SonichubArtistFields {
 /**
  * @category PGN_130816_SonichubArtist
  */
-export const PGN_130816_SonichubArtistDefaults = {
-  pgn: 130816,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130816_SonichubArtist
- */
 export const PGN_130816_SonichubArtistMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -19492,8 +17326,11 @@ export class PGN_130816_SonichubArtist extends PGN implements PGN_130816_Sonichu
   fields: PGN_130816_SonichubArtistFields
 
   constructor(fields: PGN_130816_SonichubArtistCreateArgs, dst: number = 255) {
-    super(PGN_130816_SonichubArtistDefaults)
-    this.dst = dst
+    super({
+      pgn: 130816,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130816_SonichubArtistMatchFields, ...fields }
   }
 
@@ -19539,16 +17376,6 @@ export interface PGN_130816_SonichubAlbumFields {
 /**
  * @category PGN_130816_SonichubAlbum
  */
-export const PGN_130816_SonichubAlbumDefaults = {
-  pgn: 130816,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130816_SonichubAlbum
- */
 export const PGN_130816_SonichubAlbumMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -19573,8 +17400,11 @@ export class PGN_130816_SonichubAlbum extends PGN implements PGN_130816_Sonichub
   fields: PGN_130816_SonichubAlbumFields
 
   constructor(fields: PGN_130816_SonichubAlbumCreateArgs, dst: number = 255) {
-    super(PGN_130816_SonichubAlbumDefaults)
-    this.dst = dst
+    super({
+      pgn: 130816,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130816_SonichubAlbumMatchFields, ...fields }
   }
 
@@ -19623,16 +17453,6 @@ export interface PGN_130816_SonichubMenuItemFields {
 /**
  * @category PGN_130816_SonichubMenuItem
  */
-export const PGN_130816_SonichubMenuItemDefaults = {
-  pgn: 130816,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130816_SonichubMenuItem
- */
 export const PGN_130816_SonichubMenuItemMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -19660,8 +17480,11 @@ export class PGN_130816_SonichubMenuItem extends PGN implements PGN_130816_Sonic
   fields: PGN_130816_SonichubMenuItemFields
 
   constructor(fields: PGN_130816_SonichubMenuItemCreateArgs, dst: number = 255) {
-    super(PGN_130816_SonichubMenuItemDefaults)
-    this.dst = dst
+    super({
+      pgn: 130816,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130816_SonichubMenuItemMatchFields, ...fields }
   }
 
@@ -19706,16 +17529,6 @@ export interface PGN_130816_SonichubZonesFields {
 /**
  * @category PGN_130816_SonichubZones
  */
-export const PGN_130816_SonichubZonesDefaults = {
-  pgn: 130816,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130816_SonichubZones
- */
 export const PGN_130816_SonichubZonesMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -19739,8 +17552,11 @@ export class PGN_130816_SonichubZones extends PGN implements PGN_130816_Sonichub
   fields: PGN_130816_SonichubZonesFields
 
   constructor(fields: PGN_130816_SonichubZonesCreateArgs, dst: number = 255) {
-    super(PGN_130816_SonichubZonesDefaults)
-    this.dst = dst
+    super({
+      pgn: 130816,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130816_SonichubZonesMatchFields, ...fields }
   }
 
@@ -19786,16 +17602,6 @@ export interface PGN_130816_SonichubMaxVolumeFields {
 /**
  * @category PGN_130816_SonichubMaxVolume
  */
-export const PGN_130816_SonichubMaxVolumeDefaults = {
-  pgn: 130816,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130816_SonichubMaxVolume
- */
 export const PGN_130816_SonichubMaxVolumeMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -19820,8 +17626,11 @@ export class PGN_130816_SonichubMaxVolume extends PGN implements PGN_130816_Soni
   fields: PGN_130816_SonichubMaxVolumeFields
 
   constructor(fields: PGN_130816_SonichubMaxVolumeCreateArgs, dst: number = 255) {
-    super(PGN_130816_SonichubMaxVolumeDefaults)
-    this.dst = dst
+    super({
+      pgn: 130816,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130816_SonichubMaxVolumeMatchFields, ...fields }
   }
 
@@ -19867,16 +17676,6 @@ export interface PGN_130816_SonichubVolumeFields {
 /**
  * @category PGN_130816_SonichubVolume
  */
-export const PGN_130816_SonichubVolumeDefaults = {
-  pgn: 130816,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130816_SonichubVolume
- */
 export const PGN_130816_SonichubVolumeMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -19901,8 +17700,11 @@ export class PGN_130816_SonichubVolume extends PGN implements PGN_130816_Sonichu
   fields: PGN_130816_SonichubVolumeFields
 
   constructor(fields: PGN_130816_SonichubVolumeCreateArgs, dst: number = 255) {
-    super(PGN_130816_SonichubVolumeDefaults)
-    this.dst = dst
+    super({
+      pgn: 130816,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130816_SonichubVolumeMatchFields, ...fields }
   }
 
@@ -19946,16 +17748,6 @@ export interface PGN_130816_SonichubInit1Fields {
 /**
  * @category PGN_130816_SonichubInit1
  */
-export const PGN_130816_SonichubInit1Defaults = {
-  pgn: 130816,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130816_SonichubInit1
- */
 export const PGN_130816_SonichubInit1MatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -19978,8 +17770,11 @@ export class PGN_130816_SonichubInit1 extends PGN implements PGN_130816_Sonichub
   fields: PGN_130816_SonichubInit1Fields
 
   constructor(fields: PGN_130816_SonichubInit1CreateArgs, dst: number = 255) {
-    super(PGN_130816_SonichubInit1Defaults)
-    this.dst = dst
+    super({
+      pgn: 130816,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130816_SonichubInit1MatchFields, ...fields }
   }
 
@@ -20024,16 +17819,6 @@ export interface PGN_130816_SonichubPositionFields {
 /**
  * @category PGN_130816_SonichubPosition
  */
-export const PGN_130816_SonichubPositionDefaults = {
-  pgn: 130816,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130816_SonichubPosition
- */
 export const PGN_130816_SonichubPositionMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -20057,8 +17842,11 @@ export class PGN_130816_SonichubPosition extends PGN implements PGN_130816_Sonic
   fields: PGN_130816_SonichubPositionFields
 
   constructor(fields: PGN_130816_SonichubPositionCreateArgs, dst: number = 255) {
-    super(PGN_130816_SonichubPositionDefaults)
-    this.dst = dst
+    super({
+      pgn: 130816,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130816_SonichubPositionMatchFields, ...fields }
   }
 
@@ -20104,16 +17892,6 @@ export interface PGN_130816_SonichubInit3Fields {
 /**
  * @category PGN_130816_SonichubInit3
  */
-export const PGN_130816_SonichubInit3Defaults = {
-  pgn: 130816,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130816_SonichubInit3
- */
 export const PGN_130816_SonichubInit3MatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -20138,8 +17916,11 @@ export class PGN_130816_SonichubInit3 extends PGN implements PGN_130816_Sonichub
   fields: PGN_130816_SonichubInit3Fields
 
   constructor(fields: PGN_130816_SonichubInit3CreateArgs, dst: number = 255) {
-    super(PGN_130816_SonichubInit3Defaults)
-    this.dst = dst
+    super({
+      pgn: 130816,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130816_SonichubInit3MatchFields, ...fields }
   }
 
@@ -20188,16 +17969,6 @@ export interface PGN_130816_SimradTextMessageFields {
 /**
  * @category PGN_130816_SimradTextMessage
  */
-export const PGN_130816_SimradTextMessageDefaults = {
-  pgn: 130816,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130816_SimradTextMessage
- */
 export const PGN_130816_SimradTextMessageMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -20225,8 +17996,11 @@ export class PGN_130816_SimradTextMessage extends PGN implements PGN_130816_Simr
   fields: PGN_130816_SimradTextMessageFields
 
   constructor(fields: PGN_130816_SimradTextMessageCreateArgs, dst: number = 255) {
-    super(PGN_130816_SimradTextMessageDefaults)
-    this.dst = dst
+    super({
+      pgn: 130816,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130816_SimradTextMessageMatchFields, ...fields }
   }
 
@@ -20271,16 +18045,6 @@ export interface PGN_130817_NavicoUnknownFields {
 /**
  * @category PGN_130817_NavicoUnknown
  */
-export const PGN_130817_NavicoUnknownDefaults = {
-  pgn: 130817,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130817_NavicoUnknown
- */
 export const PGN_130817_NavicoUnknownMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -20305,8 +18069,11 @@ export class PGN_130817_NavicoUnknown extends PGN implements PGN_130817_NavicoUn
   fields: PGN_130817_NavicoUnknownFields
 
   constructor(fields: PGN_130817_NavicoUnknownCreateArgs, dst: number = 255) {
-    super(PGN_130817_NavicoUnknownDefaults)
-    this.dst = dst
+    super({
+      pgn: 130817,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130817_NavicoUnknownMatchFields, ...fields }
   }
 
@@ -20354,16 +18121,6 @@ export interface PGN_130817_LowranceProductInformationFields {
 /**
  * @category PGN_130817_LowranceProductInformation
  */
-export const PGN_130817_LowranceProductInformationDefaults = {
-  pgn: 130817,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130817_LowranceProductInformation
- */
 export const PGN_130817_LowranceProductInformationMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Lowrance,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -20391,8 +18148,11 @@ export class PGN_130817_LowranceProductInformation extends PGN implements PGN_13
   fields: PGN_130817_LowranceProductInformationFields
 
   constructor(fields: PGN_130817_LowranceProductInformationCreateArgs, dst: number = 255) {
-    super(PGN_130817_LowranceProductInformationDefaults)
-    this.dst = dst
+    super({
+      pgn: 130817,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130817_LowranceProductInformationMatchFields, ...fields }
   }
 
@@ -20435,16 +18195,6 @@ export interface PGN_130818_SimnetReprogramDataFields {
 /**
  * @category PGN_130818_SimnetReprogramData
  */
-export const PGN_130818_SimnetReprogramDataDefaults = {
-  pgn: 130818,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130818_SimnetReprogramData
- */
 export const PGN_130818_SimnetReprogramDataMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -20467,8 +18217,11 @@ export class PGN_130818_SimnetReprogramData extends PGN implements PGN_130818_Si
   fields: PGN_130818_SimnetReprogramDataFields
 
   constructor(fields: PGN_130818_SimnetReprogramDataCreateArgs, dst: number = 255) {
-    super(PGN_130818_SimnetReprogramDataDefaults)
-    this.dst = dst
+    super({
+      pgn: 130818,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130818_SimnetReprogramDataMatchFields, ...fields }
   }
 
@@ -20508,16 +18261,6 @@ export interface PGN_130819_SimnetRequestReprogramFields {
 /**
  * @category PGN_130819_SimnetRequestReprogram
  */
-export const PGN_130819_SimnetRequestReprogramDefaults = {
-  pgn: 130819,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130819_SimnetRequestReprogram
- */
 export const PGN_130819_SimnetRequestReprogramMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -20537,8 +18280,11 @@ export class PGN_130819_SimnetRequestReprogram extends PGN implements PGN_130819
   fields: PGN_130819_SimnetRequestReprogramFields
 
   constructor(fields: PGN_130819_SimnetRequestReprogramCreateArgs, dst: number = 255) {
-    super(PGN_130819_SimnetRequestReprogramDefaults)
-    this.dst = dst
+    super({
+      pgn: 130819,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130819_SimnetRequestReprogramMatchFields, ...fields }
   }
 
@@ -20581,16 +18327,6 @@ export interface PGN_130820_SimnetReprogramStatusFields {
 /**
  * @category PGN_130820_SimnetReprogramStatus
  */
-export const PGN_130820_SimnetReprogramStatusDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_SimnetReprogramStatus
- */
 export const PGN_130820_SimnetReprogramStatusMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -20613,8 +18349,11 @@ export class PGN_130820_SimnetReprogramStatus extends PGN implements PGN_130820_
   fields: PGN_130820_SimnetReprogramStatusFields
 
   constructor(fields: PGN_130820_SimnetReprogramStatusCreateArgs, dst: number = 255) {
-    super(PGN_130820_SimnetReprogramStatusDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_SimnetReprogramStatusMatchFields, ...fields }
   }
 
@@ -20659,16 +18398,6 @@ export interface PGN_130820_FurunoUnknown130820Fields {
 /**
  * @category PGN_130820_FurunoUnknown130820
  */
-export const PGN_130820_FurunoUnknown130820Defaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FurunoUnknown130820
- */
 export const PGN_130820_FurunoUnknown130820MatchFields = {
   manufacturerCode: enums.ManufacturerCode.Furuno,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -20693,8 +18422,11 @@ export class PGN_130820_FurunoUnknown130820 extends PGN implements PGN_130820_Fu
   fields: PGN_130820_FurunoUnknown130820Fields
 
   constructor(fields: PGN_130820_FurunoUnknown130820CreateArgs, dst: number = 255) {
-    super(PGN_130820_FurunoUnknown130820Defaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FurunoUnknown130820MatchFields, ...fields }
   }
 
@@ -20741,16 +18473,6 @@ export interface PGN_130820_FusionVersionsFields {
 /**
  * @category PGN_130820_FusionVersions
  */
-export const PGN_130820_FusionVersionsDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionVersions
- */
 export const PGN_130820_FusionVersionsMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -20776,8 +18498,11 @@ export class PGN_130820_FusionVersions extends PGN implements PGN_130820_FusionV
   fields: PGN_130820_FusionVersionsFields
 
   constructor(fields: PGN_130820_FusionVersionsCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionVersionsDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionVersionsMatchFields, ...fields }
   }
 
@@ -20824,16 +18549,6 @@ export interface PGN_130820_FusionSourceFields {
 /**
  * @category PGN_130820_FusionSource
  */
-export const PGN_130820_FusionSourceDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionSource
- */
 export const PGN_130820_FusionSourceMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -20859,8 +18574,11 @@ export class PGN_130820_FusionSource extends PGN implements PGN_130820_FusionSou
   fields: PGN_130820_FusionSourceFields
 
   constructor(fields: PGN_130820_FusionSourceCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionSourceDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionSourceMatchFields, ...fields }
   }
 
@@ -20903,16 +18621,6 @@ export interface PGN_130820_FusionSourceCountFields {
 /**
  * @category PGN_130820_FusionSourceCount
  */
-export const PGN_130820_FusionSourceCountDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionSourceCount
- */
 export const PGN_130820_FusionSourceCountMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -20934,8 +18642,11 @@ export class PGN_130820_FusionSourceCount extends PGN implements PGN_130820_Fusi
   fields: PGN_130820_FusionSourceCountFields
 
   constructor(fields: PGN_130820_FusionSourceCountCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionSourceCountDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionSourceCountMatchFields, ...fields }
   }
 
@@ -20983,16 +18694,6 @@ export interface PGN_130820_FusionMediaFields {
 /**
  * @category PGN_130820_FusionMedia
  */
-export const PGN_130820_FusionMediaDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionMedia
- */
 export const PGN_130820_FusionMediaMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -21019,8 +18720,11 @@ export class PGN_130820_FusionMedia extends PGN implements PGN_130820_FusionMedi
   fields: PGN_130820_FusionMediaFields
 
   constructor(fields: PGN_130820_FusionMediaCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionMediaDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionMediaMatchFields, ...fields }
   }
 
@@ -21065,16 +18769,6 @@ export interface PGN_130820_FusionTrackNameFields {
 /**
  * @category PGN_130820_FusionTrackName
  */
-export const PGN_130820_FusionTrackNameDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionTrackName
- */
 export const PGN_130820_FusionTrackNameMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -21098,8 +18792,11 @@ export class PGN_130820_FusionTrackName extends PGN implements PGN_130820_Fusion
   fields: PGN_130820_FusionTrackNameFields
 
   constructor(fields: PGN_130820_FusionTrackNameCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionTrackNameDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionTrackNameMatchFields, ...fields }
   }
 
@@ -21144,16 +18841,6 @@ export interface PGN_130820_FusionArtistNameFields {
 /**
  * @category PGN_130820_FusionArtistName
  */
-export const PGN_130820_FusionArtistNameDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionArtistName
- */
 export const PGN_130820_FusionArtistNameMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -21177,8 +18864,11 @@ export class PGN_130820_FusionArtistName extends PGN implements PGN_130820_Fusio
   fields: PGN_130820_FusionArtistNameFields
 
   constructor(fields: PGN_130820_FusionArtistNameCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionArtistNameDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionArtistNameMatchFields, ...fields }
   }
 
@@ -21223,16 +18913,6 @@ export interface PGN_130820_FusionAlbumNameFields {
 /**
  * @category PGN_130820_FusionAlbumName
  */
-export const PGN_130820_FusionAlbumNameDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionAlbumName
- */
 export const PGN_130820_FusionAlbumNameMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -21256,8 +18936,11 @@ export class PGN_130820_FusionAlbumName extends PGN implements PGN_130820_Fusion
   fields: PGN_130820_FusionAlbumNameFields
 
   constructor(fields: PGN_130820_FusionAlbumNameCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionAlbumNameDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionAlbumNameMatchFields, ...fields }
   }
 
@@ -21300,16 +18983,6 @@ export interface PGN_130820_FusionDeviceNameFields {
 /**
  * @category PGN_130820_FusionDeviceName
  */
-export const PGN_130820_FusionDeviceNameDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionDeviceName
- */
 export const PGN_130820_FusionDeviceNameMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -21331,8 +19004,11 @@ export class PGN_130820_FusionDeviceName extends PGN implements PGN_130820_Fusio
   fields: PGN_130820_FusionDeviceNameFields
 
   constructor(fields: PGN_130820_FusionDeviceNameCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionDeviceNameDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionDeviceNameMatchFields, ...fields }
   }
 
@@ -21376,16 +19052,6 @@ export interface PGN_130820_FusionZoneNameFields {
 /**
  * @category PGN_130820_FusionZoneName
  */
-export const PGN_130820_FusionZoneNameDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionZoneName
- */
 export const PGN_130820_FusionZoneNameMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -21408,8 +19074,11 @@ export class PGN_130820_FusionZoneName extends PGN implements PGN_130820_FusionZ
   fields: PGN_130820_FusionZoneNameFields
 
   constructor(fields: PGN_130820_FusionZoneNameCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionZoneNameDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionZoneNameMatchFields, ...fields }
   }
 
@@ -21453,16 +19122,6 @@ export interface PGN_130820_FusionTrackPositionFields {
 /**
  * @category PGN_130820_FusionTrackPosition
  */
-export const PGN_130820_FusionTrackPositionDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionTrackPosition
- */
 export const PGN_130820_FusionTrackPositionMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -21485,8 +19144,11 @@ export class PGN_130820_FusionTrackPosition extends PGN implements PGN_130820_Fu
   fields: PGN_130820_FusionTrackPositionFields
 
   constructor(fields: PGN_130820_FusionTrackPositionCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionTrackPositionDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionTrackPositionMatchFields, ...fields }
   }
 
@@ -21533,16 +19195,6 @@ export interface PGN_130820_FusionTunerFields {
 /**
  * @category PGN_130820_FusionTuner
  */
-export const PGN_130820_FusionTunerDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionTuner
- */
 export const PGN_130820_FusionTunerMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -21568,8 +19220,11 @@ export class PGN_130820_FusionTuner extends PGN implements PGN_130820_FusionTune
   fields: PGN_130820_FusionTunerFields
 
   constructor(fields: PGN_130820_FusionTunerCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionTunerDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionTunerMatchFields, ...fields }
   }
 
@@ -21615,16 +19270,6 @@ export interface PGN_130820_FusionMarineTunerFields {
 /**
  * @category PGN_130820_FusionMarineTuner
  */
-export const PGN_130820_FusionMarineTunerDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionMarineTuner
- */
 export const PGN_130820_FusionMarineTunerMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -21649,8 +19294,11 @@ export class PGN_130820_FusionMarineTuner extends PGN implements PGN_130820_Fusi
   fields: PGN_130820_FusionMarineTunerFields
 
   constructor(fields: PGN_130820_FusionMarineTunerCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionMarineTunerDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionMarineTunerMatchFields, ...fields }
   }
 
@@ -21694,16 +19342,6 @@ export interface PGN_130820_FusionMarineSquelchFields {
 /**
  * @category PGN_130820_FusionMarineSquelch
  */
-export const PGN_130820_FusionMarineSquelchDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionMarineSquelch
- */
 export const PGN_130820_FusionMarineSquelchMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -21726,8 +19364,11 @@ export class PGN_130820_FusionMarineSquelch extends PGN implements PGN_130820_Fu
   fields: PGN_130820_FusionMarineSquelchFields
 
   constructor(fields: PGN_130820_FusionMarineSquelchCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionMarineSquelchDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionMarineSquelchMatchFields, ...fields }
   }
 
@@ -21771,16 +19412,6 @@ export interface PGN_130820_FusionMarineScanModeFields {
 /**
  * @category PGN_130820_FusionMarineScanMode
  */
-export const PGN_130820_FusionMarineScanModeDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionMarineScanMode
- */
 export const PGN_130820_FusionMarineScanModeMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -21803,8 +19434,11 @@ export class PGN_130820_FusionMarineScanMode extends PGN implements PGN_130820_F
   fields: PGN_130820_FusionMarineScanModeFields
 
   constructor(fields: PGN_130820_FusionMarineScanModeCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionMarineScanModeDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionMarineScanModeMatchFields, ...fields }
   }
 
@@ -21851,16 +19485,6 @@ export interface PGN_130820_FusionMenuItemFields {
 /**
  * @category PGN_130820_FusionMenuItem
  */
-export const PGN_130820_FusionMenuItemDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionMenuItem
- */
 export const PGN_130820_FusionMenuItemMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -21886,8 +19510,11 @@ export class PGN_130820_FusionMenuItem extends PGN implements PGN_130820_FusionM
   fields: PGN_130820_FusionMenuItemFields
 
   constructor(fields: PGN_130820_FusionMenuItemCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionMenuItemDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionMenuItemMatchFields, ...fields }
   }
 
@@ -21931,16 +19558,6 @@ export interface PGN_130820_FusionAuxGainFields {
 /**
  * @category PGN_130820_FusionAuxGain
  */
-export const PGN_130820_FusionAuxGainDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionAuxGain
- */
 export const PGN_130820_FusionAuxGainMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -21963,8 +19580,11 @@ export class PGN_130820_FusionAuxGain extends PGN implements PGN_130820_FusionAu
   fields: PGN_130820_FusionAuxGainFields
 
   constructor(fields: PGN_130820_FusionAuxGainCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionAuxGainDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionAuxGainMatchFields, ...fields }
   }
 
@@ -22009,16 +19629,6 @@ export interface PGN_130820_FusionUsbRepeatStatusFields {
 /**
  * @category PGN_130820_FusionUsbRepeatStatus
  */
-export const PGN_130820_FusionUsbRepeatStatusDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionUsbRepeatStatus
- */
 export const PGN_130820_FusionUsbRepeatStatusMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -22041,8 +19651,11 @@ export class PGN_130820_FusionUsbRepeatStatus extends PGN implements PGN_130820_
   fields: PGN_130820_FusionUsbRepeatStatusFields
 
   constructor(fields: PGN_130820_FusionUsbRepeatStatusCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionUsbRepeatStatusDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionUsbRepeatStatusMatchFields, ...fields }
   }
 
@@ -22086,16 +19699,6 @@ export interface PGN_130820_FusionSettingFields {
 /**
  * @category PGN_130820_FusionSetting
  */
-export const PGN_130820_FusionSettingDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionSetting
- */
 export const PGN_130820_FusionSettingMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -22118,8 +19721,11 @@ export class PGN_130820_FusionSetting extends PGN implements PGN_130820_FusionSe
   fields: PGN_130820_FusionSettingFields
 
   constructor(fields: PGN_130820_FusionSettingCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionSettingDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionSettingMatchFields, ...fields }
   }
 
@@ -22166,16 +19772,6 @@ export interface PGN_130820_FusionSettingsFields {
 /**
  * @category PGN_130820_FusionSettings
  */
-export const PGN_130820_FusionSettingsDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionSettings
- */
 export const PGN_130820_FusionSettingsMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -22201,8 +19797,11 @@ export class PGN_130820_FusionSettings extends PGN implements PGN_130820_FusionS
   fields: PGN_130820_FusionSettingsFields
 
   constructor(fields: PGN_130820_FusionSettingsCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionSettingsDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionSettingsMatchFields, ...fields }
   }
 
@@ -22245,16 +19844,6 @@ export interface PGN_130820_FusionMuteFields {
 /**
  * @category PGN_130820_FusionMute
  */
-export const PGN_130820_FusionMuteDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionMute
- */
 export const PGN_130820_FusionMuteMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -22276,8 +19865,11 @@ export class PGN_130820_FusionMute extends PGN implements PGN_130820_FusionMuteI
   fields: PGN_130820_FusionMuteFields
 
   constructor(fields: PGN_130820_FusionMuteCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionMuteDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionMuteMatchFields, ...fields }
   }
 
@@ -22321,16 +19913,6 @@ export interface PGN_130820_FusionBalanceFields {
 /**
  * @category PGN_130820_FusionBalance
  */
-export const PGN_130820_FusionBalanceDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionBalance
- */
 export const PGN_130820_FusionBalanceMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -22353,8 +19935,11 @@ export class PGN_130820_FusionBalance extends PGN implements PGN_130820_FusionBa
   fields: PGN_130820_FusionBalanceFields
 
   constructor(fields: PGN_130820_FusionBalanceCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionBalanceDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionBalanceMatchFields, ...fields }
   }
 
@@ -22398,16 +19983,6 @@ export interface PGN_130820_FusionLowPassFilterFields {
 /**
  * @category PGN_130820_FusionLowPassFilter
  */
-export const PGN_130820_FusionLowPassFilterDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionLowPassFilter
- */
 export const PGN_130820_FusionLowPassFilterMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -22430,8 +20005,11 @@ export class PGN_130820_FusionLowPassFilter extends PGN implements PGN_130820_Fu
   fields: PGN_130820_FusionLowPassFilterFields
 
   constructor(fields: PGN_130820_FusionLowPassFilterCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionLowPassFilterDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionLowPassFilterMatchFields, ...fields }
   }
 
@@ -22477,16 +20055,6 @@ export interface PGN_130820_FusionSublevelsFields {
 /**
  * @category PGN_130820_FusionSublevels
  */
-export const PGN_130820_FusionSublevelsDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionSublevels
- */
 export const PGN_130820_FusionSublevelsMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -22511,8 +20079,11 @@ export class PGN_130820_FusionSublevels extends PGN implements PGN_130820_Fusion
   fields: PGN_130820_FusionSublevelsFields
 
   constructor(fields: PGN_130820_FusionSublevelsCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionSublevelsDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionSublevelsMatchFields, ...fields }
   }
 
@@ -22558,16 +20129,6 @@ export interface PGN_130820_FusionEqFields {
 /**
  * @category PGN_130820_FusionEq
  */
-export const PGN_130820_FusionEqDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionEq
- */
 export const PGN_130820_FusionEqMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -22592,8 +20153,11 @@ export class PGN_130820_FusionEq extends PGN implements PGN_130820_FusionEqInter
   fields: PGN_130820_FusionEqFields
 
   constructor(fields: PGN_130820_FusionEqCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionEqDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionEqMatchFields, ...fields }
   }
 
@@ -22639,16 +20203,6 @@ export interface PGN_130820_FusionVolumeLimitsFields {
 /**
  * @category PGN_130820_FusionVolumeLimits
  */
-export const PGN_130820_FusionVolumeLimitsDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionVolumeLimits
- */
 export const PGN_130820_FusionVolumeLimitsMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -22673,8 +20227,11 @@ export class PGN_130820_FusionVolumeLimits extends PGN implements PGN_130820_Fus
   fields: PGN_130820_FusionVolumeLimitsFields
 
   constructor(fields: PGN_130820_FusionVolumeLimitsCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionVolumeLimitsDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionVolumeLimitsMatchFields, ...fields }
   }
 
@@ -22720,16 +20277,6 @@ export interface PGN_130820_FusionVolumesFields {
 /**
  * @category PGN_130820_FusionVolumes
  */
-export const PGN_130820_FusionVolumesDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionVolumes
- */
 export const PGN_130820_FusionVolumesMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -22754,8 +20301,11 @@ export class PGN_130820_FusionVolumes extends PGN implements PGN_130820_FusionVo
   fields: PGN_130820_FusionVolumesFields
 
   constructor(fields: PGN_130820_FusionVolumesCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionVolumesDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionVolumesMatchFields, ...fields }
   }
 
@@ -22802,16 +20352,6 @@ export interface PGN_130820_FusionCapabilitiesFields {
 /**
  * @category PGN_130820_FusionCapabilities
  */
-export const PGN_130820_FusionCapabilitiesDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionCapabilities
- */
 export const PGN_130820_FusionCapabilitiesMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -22837,8 +20377,11 @@ export class PGN_130820_FusionCapabilities extends PGN implements PGN_130820_Fus
   fields: PGN_130820_FusionCapabilitiesFields
 
   constructor(fields: PGN_130820_FusionCapabilitiesCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionCapabilitiesDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionCapabilitiesMatchFields, ...fields }
   }
 
@@ -22882,16 +20425,6 @@ export interface PGN_130820_FusionLineLevelControlFields {
 /**
  * @category PGN_130820_FusionLineLevelControl
  */
-export const PGN_130820_FusionLineLevelControlDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionLineLevelControl
- */
 export const PGN_130820_FusionLineLevelControlMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -22914,8 +20447,11 @@ export class PGN_130820_FusionLineLevelControl extends PGN implements PGN_130820
   fields: PGN_130820_FusionLineLevelControlFields
 
   constructor(fields: PGN_130820_FusionLineLevelControlCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionLineLevelControlDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionLineLevelControlMatchFields, ...fields }
   }
 
@@ -22958,16 +20494,6 @@ export interface PGN_130820_FusionPowerStateFields {
 /**
  * @category PGN_130820_FusionPowerState
  */
-export const PGN_130820_FusionPowerStateDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionPowerState
- */
 export const PGN_130820_FusionPowerStateMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -22989,8 +20515,11 @@ export class PGN_130820_FusionPowerState extends PGN implements PGN_130820_Fusio
   fields: PGN_130820_FusionPowerStateFields
 
   constructor(fields: PGN_130820_FusionPowerStateCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionPowerStateDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionPowerStateMatchFields, ...fields }
   }
 
@@ -23037,16 +20566,6 @@ export interface PGN_130820_FusionSiriusxmFields {
 /**
  * @category PGN_130820_FusionSiriusxm
  */
-export const PGN_130820_FusionSiriusxmDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionSiriusxm
- */
 export const PGN_130820_FusionSiriusxmMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -23072,8 +20591,11 @@ export class PGN_130820_FusionSiriusxm extends PGN implements PGN_130820_FusionS
   fields: PGN_130820_FusionSiriusxmFields
 
   constructor(fields: PGN_130820_FusionSiriusxmCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionSiriusxmDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionSiriusxmMatchFields, ...fields }
   }
 
@@ -23118,16 +20640,6 @@ export interface PGN_130820_FusionSiriusxmChannelFields {
 /**
  * @category PGN_130820_FusionSiriusxmChannel
  */
-export const PGN_130820_FusionSiriusxmChannelDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionSiriusxmChannel
- */
 export const PGN_130820_FusionSiriusxmChannelMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -23151,8 +20663,11 @@ export class PGN_130820_FusionSiriusxmChannel extends PGN implements PGN_130820_
   fields: PGN_130820_FusionSiriusxmChannelFields
 
   constructor(fields: PGN_130820_FusionSiriusxmChannelCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionSiriusxmChannelDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionSiriusxmChannelMatchFields, ...fields }
   }
 
@@ -23197,16 +20712,6 @@ export interface PGN_130820_FusionSiriusxmTitleFields {
 /**
  * @category PGN_130820_FusionSiriusxmTitle
  */
-export const PGN_130820_FusionSiriusxmTitleDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionSiriusxmTitle
- */
 export const PGN_130820_FusionSiriusxmTitleMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -23230,8 +20735,11 @@ export class PGN_130820_FusionSiriusxmTitle extends PGN implements PGN_130820_Fu
   fields: PGN_130820_FusionSiriusxmTitleFields
 
   constructor(fields: PGN_130820_FusionSiriusxmTitleCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionSiriusxmTitleDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionSiriusxmTitleMatchFields, ...fields }
   }
 
@@ -23276,16 +20784,6 @@ export interface PGN_130820_FusionSiriusxmArtistFields {
 /**
  * @category PGN_130820_FusionSiriusxmArtist
  */
-export const PGN_130820_FusionSiriusxmArtistDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionSiriusxmArtist
- */
 export const PGN_130820_FusionSiriusxmArtistMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -23309,8 +20807,11 @@ export class PGN_130820_FusionSiriusxmArtist extends PGN implements PGN_130820_F
   fields: PGN_130820_FusionSiriusxmArtistFields
 
   constructor(fields: PGN_130820_FusionSiriusxmArtistCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionSiriusxmArtistDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionSiriusxmArtistMatchFields, ...fields }
   }
 
@@ -23355,16 +20856,6 @@ export interface PGN_130820_FusionSiriusxmContentInfoFields {
 /**
  * @category PGN_130820_FusionSiriusxmContentInfo
  */
-export const PGN_130820_FusionSiriusxmContentInfoDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionSiriusxmContentInfo
- */
 export const PGN_130820_FusionSiriusxmContentInfoMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -23388,8 +20879,11 @@ export class PGN_130820_FusionSiriusxmContentInfo extends PGN implements PGN_130
   fields: PGN_130820_FusionSiriusxmContentInfoFields
 
   constructor(fields: PGN_130820_FusionSiriusxmContentInfoCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionSiriusxmContentInfoDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionSiriusxmContentInfoMatchFields, ...fields }
   }
 
@@ -23434,16 +20928,6 @@ export interface PGN_130820_FusionSiriusxmCategoryFields {
 /**
  * @category PGN_130820_FusionSiriusxmCategory
  */
-export const PGN_130820_FusionSiriusxmCategoryDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionSiriusxmCategory
- */
 export const PGN_130820_FusionSiriusxmCategoryMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -23467,8 +20951,11 @@ export class PGN_130820_FusionSiriusxmCategory extends PGN implements PGN_130820
   fields: PGN_130820_FusionSiriusxmCategoryFields
 
   constructor(fields: PGN_130820_FusionSiriusxmCategoryCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionSiriusxmCategoryDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionSiriusxmCategoryMatchFields, ...fields }
   }
 
@@ -23512,16 +20999,6 @@ export interface PGN_130820_FusionSiriusxmSignalFields {
 /**
  * @category PGN_130820_FusionSiriusxmSignal
  */
-export const PGN_130820_FusionSiriusxmSignalDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionSiriusxmSignal
- */
 export const PGN_130820_FusionSiriusxmSignalMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -23544,8 +21021,11 @@ export class PGN_130820_FusionSiriusxmSignal extends PGN implements PGN_130820_F
   fields: PGN_130820_FusionSiriusxmSignalFields
 
   constructor(fields: PGN_130820_FusionSiriusxmSignalCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionSiriusxmSignalDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionSiriusxmSignalMatchFields, ...fields }
   }
 
@@ -23590,16 +21070,6 @@ export interface PGN_130820_FusionSiriusxmPresetsFields {
 /**
  * @category PGN_130820_FusionSiriusxmPresets
  */
-export const PGN_130820_FusionSiriusxmPresetsDefaults = {
-  pgn: 130820,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130820_FusionSiriusxmPresets
- */
 export const PGN_130820_FusionSiriusxmPresetsMatchFields = {
   manufacturerCode: enums.ManufacturerCode.FusionElectronics,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -23623,8 +21093,11 @@ export class PGN_130820_FusionSiriusxmPresets extends PGN implements PGN_130820_
   fields: PGN_130820_FusionSiriusxmPresetsFields
 
   constructor(fields: PGN_130820_FusionSiriusxmPresetsCreateArgs, dst: number = 255) {
-    super(PGN_130820_FusionSiriusxmPresetsDefaults)
-    this.dst = dst
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130820_FusionSiriusxmPresetsMatchFields, ...fields }
   }
 
@@ -23666,16 +21139,6 @@ export interface PGN_130821_NavicoAsciiDataFields {
 /**
  * @category PGN_130821_NavicoAsciiData
  */
-export const PGN_130821_NavicoAsciiDataDefaults = {
-  pgn: 130821,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130821_NavicoAsciiData
- */
 export const PGN_130821_NavicoAsciiDataMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -23697,8 +21160,11 @@ export class PGN_130821_NavicoAsciiData extends PGN implements PGN_130821_Navico
   fields: PGN_130821_NavicoAsciiDataFields
 
   constructor(fields: PGN_130821_NavicoAsciiDataCreateArgs, dst: number = 255) {
-    super(PGN_130821_NavicoAsciiDataDefaults)
-    this.dst = dst
+    super({
+      pgn: 130821,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130821_NavicoAsciiDataMatchFields, ...fields }
   }
 
@@ -23748,16 +21214,6 @@ export interface PGN_130821_FurunoUnknown130821Fields {
 /**
  * @category PGN_130821_FurunoUnknown130821
  */
-export const PGN_130821_FurunoUnknown130821Defaults = {
-  pgn: 130821,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130821_FurunoUnknown130821
- */
 export const PGN_130821_FurunoUnknown130821MatchFields = {
   manufacturerCode: enums.ManufacturerCode.Furuno,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -23787,8 +21243,11 @@ export class PGN_130821_FurunoUnknown130821 extends PGN implements PGN_130821_Fu
   fields: PGN_130821_FurunoUnknown130821Fields
 
   constructor(fields: PGN_130821_FurunoUnknown130821CreateArgs, dst: number = 255) {
-    super(PGN_130821_FurunoUnknown130821Defaults)
-    this.dst = dst
+    super({
+      pgn: 130821,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130821_FurunoUnknown130821MatchFields, ...fields }
   }
 
@@ -23829,16 +21288,6 @@ export interface PGN_130822_NavicoUnknown1Fields {
 /**
  * @category PGN_130822_NavicoUnknown1
  */
-export const PGN_130822_NavicoUnknown1Defaults = {
-  pgn: 130822,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130822_NavicoUnknown1
- */
 export const PGN_130822_NavicoUnknown1MatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -23859,8 +21308,11 @@ export class PGN_130822_NavicoUnknown1 extends PGN implements PGN_130822_NavicoU
   fields: PGN_130822_NavicoUnknown1Fields
 
   constructor(fields: PGN_130822_NavicoUnknown1CreateArgs, dst: number = 255) {
-    super(PGN_130822_NavicoUnknown1Defaults)
-    this.dst = dst
+    super({
+      pgn: 130822,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130822_NavicoUnknown1MatchFields, ...fields }
   }
 
@@ -23905,16 +21357,6 @@ export interface PGN_130823_MaretronProprietaryTemperatureHighRangeFields {
 /**
  * @category PGN_130823_MaretronProprietaryTemperatureHighRange
  */
-export const PGN_130823_MaretronProprietaryTemperatureHighRangeDefaults = {
-  pgn: 130823,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130823_MaretronProprietaryTemperatureHighRange
- */
 export const PGN_130823_MaretronProprietaryTemperatureHighRangeMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Maretron,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -23939,8 +21381,11 @@ export class PGN_130823_MaretronProprietaryTemperatureHighRange extends PGN impl
   fields: PGN_130823_MaretronProprietaryTemperatureHighRangeFields
 
   constructor(fields: PGN_130823_MaretronProprietaryTemperatureHighRangeCreateArgs, dst: number = 255) {
-    super(PGN_130823_MaretronProprietaryTemperatureHighRangeDefaults)
-    this.dst = dst
+    super({
+      pgn: 130823,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130823_MaretronProprietaryTemperatureHighRangeMatchFields, ...fields }
   }
 
@@ -23987,16 +21432,6 @@ export interface PGN_130824_BGKeyValueDataFields {
 /**
  * @category PGN_130824_BGKeyValueData
  */
-export const PGN_130824_BGKeyValueDataDefaults = {
-  pgn: 130824,
-  dst: 255,
-  prio: 2,
-  fields: []
-}
-
-/**
- * @category PGN_130824_BGKeyValueData
- */
 export const PGN_130824_BGKeyValueDataMatchFields = {
   manufacturerCode: enums.ManufacturerCode.BG,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -24021,8 +21456,11 @@ export class PGN_130824_BGKeyValueData extends PGN implements PGN_130824_BGKeyVa
   fields: PGN_130824_BGKeyValueDataFields
 
   constructor(fields: PGN_130824_BGKeyValueDataCreateArgs, dst: number = 255) {
-    super(PGN_130824_BGKeyValueDataDefaults)
-    this.dst = dst
+    super({
+      pgn: 130824,
+      prio: 2,
+      dst
+    })
     this.fields = { ...PGN_130824_BGKeyValueDataMatchFields, ...fields }
   }
 
@@ -24067,16 +21505,6 @@ export interface PGN_130824_MaretronAnnunciatorFields {
 /**
  * @category PGN_130824_MaretronAnnunciator
  */
-export const PGN_130824_MaretronAnnunciatorDefaults = {
-  pgn: 130824,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130824_MaretronAnnunciator
- */
 export const PGN_130824_MaretronAnnunciatorMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Maretron,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -24101,8 +21529,11 @@ export class PGN_130824_MaretronAnnunciator extends PGN implements PGN_130824_Ma
   fields: PGN_130824_MaretronAnnunciatorFields
 
   constructor(fields: PGN_130824_MaretronAnnunciatorCreateArgs, dst: number = 255) {
-    super(PGN_130824_MaretronAnnunciatorDefaults)
-    this.dst = dst
+    super({
+      pgn: 130824,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130824_MaretronAnnunciatorMatchFields, ...fields }
   }
 
@@ -24143,16 +21574,6 @@ export interface PGN_130825_NavicoUnknown2Fields {
 /**
  * @category PGN_130825_NavicoUnknown2
  */
-export const PGN_130825_NavicoUnknown2Defaults = {
-  pgn: 130825,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130825_NavicoUnknown2
- */
 export const PGN_130825_NavicoUnknown2MatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -24173,8 +21594,11 @@ export class PGN_130825_NavicoUnknown2 extends PGN implements PGN_130825_NavicoU
   fields: PGN_130825_NavicoUnknown2Fields
 
   constructor(fields: PGN_130825_NavicoUnknown2CreateArgs, dst: number = 255) {
-    super(PGN_130825_NavicoUnknown2Defaults)
-    this.dst = dst
+    super({
+      pgn: 130825,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130825_NavicoUnknown2MatchFields, ...fields }
   }
 
@@ -24220,16 +21644,6 @@ export interface PGN_130827_LowranceUnknownFields {
 /**
  * @category PGN_130827_LowranceUnknown
  */
-export const PGN_130827_LowranceUnknownDefaults = {
-  pgn: 130827,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130827_LowranceUnknown
- */
 export const PGN_130827_LowranceUnknownMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Lowrance,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -24255,8 +21669,11 @@ export class PGN_130827_LowranceUnknown extends PGN implements PGN_130827_Lowran
   fields: PGN_130827_LowranceUnknownFields
 
   constructor(fields: PGN_130827_LowranceUnknownCreateArgs, dst: number = 255) {
-    super(PGN_130827_LowranceUnknownDefaults)
-    this.dst = dst
+    super({
+      pgn: 130827,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130827_LowranceUnknownMatchFields, ...fields }
   }
 
@@ -24296,16 +21713,6 @@ export interface PGN_130828_SimnetSetSerialNumberFields {
 /**
  * @category PGN_130828_SimnetSetSerialNumber
  */
-export const PGN_130828_SimnetSetSerialNumberDefaults = {
-  pgn: 130828,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130828_SimnetSetSerialNumber
- */
 export const PGN_130828_SimnetSetSerialNumberMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -24325,8 +21732,11 @@ export class PGN_130828_SimnetSetSerialNumber extends PGN implements PGN_130828_
   fields: PGN_130828_SimnetSetSerialNumberFields
 
   constructor(fields: PGN_130828_SimnetSetSerialNumberCreateArgs, dst: number = 255) {
-    super(PGN_130828_SimnetSetSerialNumberDefaults)
-    this.dst = dst
+    super({
+      pgn: 130828,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130828_SimnetSetSerialNumberMatchFields, ...fields }
   }
 
@@ -24366,16 +21776,6 @@ export interface PGN_130831_SuzukiEngineAndStorageDeviceConfigFields {
 /**
  * @category PGN_130831_SuzukiEngineAndStorageDeviceConfig
  */
-export const PGN_130831_SuzukiEngineAndStorageDeviceConfigDefaults = {
-  pgn: 130831,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130831_SuzukiEngineAndStorageDeviceConfig
- */
 export const PGN_130831_SuzukiEngineAndStorageDeviceConfigMatchFields = {
   manufacturerCode: enums.ManufacturerCode.SuzukiMotorCorporation,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -24395,8 +21795,11 @@ export class PGN_130831_SuzukiEngineAndStorageDeviceConfig extends PGN implement
   fields: PGN_130831_SuzukiEngineAndStorageDeviceConfigFields
 
   constructor(fields: PGN_130831_SuzukiEngineAndStorageDeviceConfigCreateArgs, dst: number = 255) {
-    super(PGN_130831_SuzukiEngineAndStorageDeviceConfigDefaults)
-    this.dst = dst
+    super({
+      pgn: 130831,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130831_SuzukiEngineAndStorageDeviceConfigMatchFields, ...fields }
   }
 
@@ -24436,16 +21839,6 @@ export interface PGN_130832_SimnetFuelUsedHighResolutionFields {
 /**
  * @category PGN_130832_SimnetFuelUsedHighResolution
  */
-export const PGN_130832_SimnetFuelUsedHighResolutionDefaults = {
-  pgn: 130832,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130832_SimnetFuelUsedHighResolution
- */
 export const PGN_130832_SimnetFuelUsedHighResolutionMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -24465,8 +21858,11 @@ export class PGN_130832_SimnetFuelUsedHighResolution extends PGN implements PGN_
   fields: PGN_130832_SimnetFuelUsedHighResolutionFields
 
   constructor(fields: PGN_130832_SimnetFuelUsedHighResolutionCreateArgs, dst: number = 255) {
-    super(PGN_130832_SimnetFuelUsedHighResolutionDefaults)
-    this.dst = dst
+    super({
+      pgn: 130832,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130832_SimnetFuelUsedHighResolutionMatchFields, ...fields }
   }
 
@@ -24512,16 +21908,6 @@ export interface PGN_130833_BGUserAndRemoteRenameFields {
 /**
  * @category PGN_130833_BGUserAndRemoteRename
  */
-export const PGN_130833_BGUserAndRemoteRenameDefaults = {
-  pgn: 130833,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130833_BGUserAndRemoteRename
- */
 export const PGN_130833_BGUserAndRemoteRenameMatchFields = {
   manufacturerCode: enums.ManufacturerCode.BG,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -24547,8 +21933,11 @@ export class PGN_130833_BGUserAndRemoteRename extends PGN implements PGN_130833_
   fields: PGN_130833_BGUserAndRemoteRenameFields
 
   constructor(fields: PGN_130833_BGUserAndRemoteRenameCreateArgs, dst: number = 255) {
-    super(PGN_130833_BGUserAndRemoteRenameDefaults)
-    this.dst = dst
+    super({
+      pgn: 130833,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130833_BGUserAndRemoteRenameMatchFields, ...fields }
   }
 
@@ -24588,16 +21977,6 @@ export interface PGN_130834_SimnetEngineAndTankConfigurationFields {
 /**
  * @category PGN_130834_SimnetEngineAndTankConfiguration
  */
-export const PGN_130834_SimnetEngineAndTankConfigurationDefaults = {
-  pgn: 130834,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130834_SimnetEngineAndTankConfiguration
- */
 export const PGN_130834_SimnetEngineAndTankConfigurationMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -24617,8 +21996,11 @@ export class PGN_130834_SimnetEngineAndTankConfiguration extends PGN implements 
   fields: PGN_130834_SimnetEngineAndTankConfigurationFields
 
   constructor(fields: PGN_130834_SimnetEngineAndTankConfigurationCreateArgs, dst: number = 255) {
-    super(PGN_130834_SimnetEngineAndTankConfigurationDefaults)
-    this.dst = dst
+    super({
+      pgn: 130834,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130834_SimnetEngineAndTankConfigurationMatchFields, ...fields }
   }
 
@@ -24658,16 +22040,6 @@ export interface PGN_130835_SimnetSetEngineAndTankConfigurationFields {
 /**
  * @category PGN_130835_SimnetSetEngineAndTankConfiguration
  */
-export const PGN_130835_SimnetSetEngineAndTankConfigurationDefaults = {
-  pgn: 130835,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130835_SimnetSetEngineAndTankConfiguration
- */
 export const PGN_130835_SimnetSetEngineAndTankConfigurationMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -24687,8 +22059,11 @@ export class PGN_130835_SimnetSetEngineAndTankConfiguration extends PGN implemen
   fields: PGN_130835_SimnetSetEngineAndTankConfigurationFields
 
   constructor(fields: PGN_130835_SimnetSetEngineAndTankConfigurationCreateArgs, dst: number = 255) {
-    super(PGN_130835_SimnetSetEngineAndTankConfigurationDefaults)
-    this.dst = dst
+    super({
+      pgn: 130835,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130835_SimnetSetEngineAndTankConfigurationMatchFields, ...fields }
   }
 
@@ -24737,16 +22112,6 @@ export interface PGN_130836_SimnetFluidLevelSensorConfigurationFields {
 /**
  * @category PGN_130836_SimnetFluidLevelSensorConfiguration
  */
-export const PGN_130836_SimnetFluidLevelSensorConfigurationDefaults = {
-  pgn: 130836,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130836_SimnetFluidLevelSensorConfiguration
- */
 export const PGN_130836_SimnetFluidLevelSensorConfigurationMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -24775,8 +22140,11 @@ export class PGN_130836_SimnetFluidLevelSensorConfiguration extends PGN implemen
   fields: PGN_130836_SimnetFluidLevelSensorConfigurationFields
 
   constructor(fields: PGN_130836_SimnetFluidLevelSensorConfigurationCreateArgs, dst: number = 255) {
-    super(PGN_130836_SimnetFluidLevelSensorConfigurationDefaults)
-    this.dst = dst
+    super({
+      pgn: 130836,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130836_SimnetFluidLevelSensorConfigurationMatchFields, ...fields }
   }
 
@@ -24825,16 +22193,6 @@ export interface PGN_130836_MaretronSwitchStatusCounterFields {
 /**
  * @category PGN_130836_MaretronSwitchStatusCounter
  */
-export const PGN_130836_MaretronSwitchStatusCounterDefaults = {
-  pgn: 130836,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_130836_MaretronSwitchStatusCounter
- */
 export const PGN_130836_MaretronSwitchStatusCounterMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Maretron,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -24863,8 +22221,11 @@ export class PGN_130836_MaretronSwitchStatusCounter extends PGN implements PGN_1
   fields: PGN_130836_MaretronSwitchStatusCounterFields
 
   constructor(fields: PGN_130836_MaretronSwitchStatusCounterCreateArgs, dst: number = 255) {
-    super(PGN_130836_MaretronSwitchStatusCounterDefaults)
-    this.dst = dst
+    super({
+      pgn: 130836,
+      prio: 6,
+      dst
+    })
     this.fields = { ...PGN_130836_MaretronSwitchStatusCounterMatchFields, ...fields }
   }
 
@@ -24904,16 +22265,6 @@ export interface PGN_130837_SimnetFuelFlowTurbineConfigurationFields {
 /**
  * @category PGN_130837_SimnetFuelFlowTurbineConfiguration
  */
-export const PGN_130837_SimnetFuelFlowTurbineConfigurationDefaults = {
-  pgn: 130837,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130837_SimnetFuelFlowTurbineConfiguration
- */
 export const PGN_130837_SimnetFuelFlowTurbineConfigurationMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -24933,8 +22284,11 @@ export class PGN_130837_SimnetFuelFlowTurbineConfiguration extends PGN implement
   fields: PGN_130837_SimnetFuelFlowTurbineConfigurationFields
 
   constructor(fields: PGN_130837_SimnetFuelFlowTurbineConfigurationCreateArgs, dst: number = 255) {
-    super(PGN_130837_SimnetFuelFlowTurbineConfigurationDefaults)
-    this.dst = dst
+    super({
+      pgn: 130837,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130837_SimnetFuelFlowTurbineConfigurationMatchFields, ...fields }
   }
 
@@ -24983,16 +22337,6 @@ export interface PGN_130837_MaretronSwitchStatusTimerFields {
 /**
  * @category PGN_130837_MaretronSwitchStatusTimer
  */
-export const PGN_130837_MaretronSwitchStatusTimerDefaults = {
-  pgn: 130837,
-  dst: 255,
-  prio: 6,
-  fields: []
-}
-
-/**
- * @category PGN_130837_MaretronSwitchStatusTimer
- */
 export const PGN_130837_MaretronSwitchStatusTimerMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Maretron,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -25021,8 +22365,11 @@ export class PGN_130837_MaretronSwitchStatusTimer extends PGN implements PGN_130
   fields: PGN_130837_MaretronSwitchStatusTimerFields
 
   constructor(fields: PGN_130837_MaretronSwitchStatusTimerCreateArgs, dst: number = 255) {
-    super(PGN_130837_MaretronSwitchStatusTimerDefaults)
-    this.dst = dst
+    super({
+      pgn: 130837,
+      prio: 6,
+      dst
+    })
     this.fields = { ...PGN_130837_MaretronSwitchStatusTimerMatchFields, ...fields }
   }
 
@@ -25062,16 +22409,6 @@ export interface PGN_130838_SimnetFluidLevelWarningFields {
 /**
  * @category PGN_130838_SimnetFluidLevelWarning
  */
-export const PGN_130838_SimnetFluidLevelWarningDefaults = {
-  pgn: 130838,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130838_SimnetFluidLevelWarning
- */
 export const PGN_130838_SimnetFluidLevelWarningMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -25091,8 +22428,11 @@ export class PGN_130838_SimnetFluidLevelWarning extends PGN implements PGN_13083
   fields: PGN_130838_SimnetFluidLevelWarningFields
 
   constructor(fields: PGN_130838_SimnetFluidLevelWarningCreateArgs, dst: number = 255) {
-    super(PGN_130838_SimnetFluidLevelWarningDefaults)
-    this.dst = dst
+    super({
+      pgn: 130838,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130838_SimnetFluidLevelWarningMatchFields, ...fields }
   }
 
@@ -25132,16 +22472,6 @@ export interface PGN_130839_SimnetPressureSensorConfigurationFields {
 /**
  * @category PGN_130839_SimnetPressureSensorConfiguration
  */
-export const PGN_130839_SimnetPressureSensorConfigurationDefaults = {
-  pgn: 130839,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130839_SimnetPressureSensorConfiguration
- */
 export const PGN_130839_SimnetPressureSensorConfigurationMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -25161,8 +22491,11 @@ export class PGN_130839_SimnetPressureSensorConfiguration extends PGN implements
   fields: PGN_130839_SimnetPressureSensorConfigurationFields
 
   constructor(fields: PGN_130839_SimnetPressureSensorConfigurationCreateArgs, dst: number = 255) {
-    super(PGN_130839_SimnetPressureSensorConfigurationDefaults)
-    this.dst = dst
+    super({
+      pgn: 130839,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130839_SimnetPressureSensorConfigurationMatchFields, ...fields }
   }
 
@@ -25202,16 +22535,6 @@ export interface PGN_130840_SimnetDataUserGroupConfigurationFields {
 /**
  * @category PGN_130840_SimnetDataUserGroupConfiguration
  */
-export const PGN_130840_SimnetDataUserGroupConfigurationDefaults = {
-  pgn: 130840,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130840_SimnetDataUserGroupConfiguration
- */
 export const PGN_130840_SimnetDataUserGroupConfigurationMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -25231,8 +22554,11 @@ export class PGN_130840_SimnetDataUserGroupConfiguration extends PGN implements 
   fields: PGN_130840_SimnetDataUserGroupConfigurationFields
 
   constructor(fields: PGN_130840_SimnetDataUserGroupConfigurationCreateArgs, dst: number = 255) {
-    super(PGN_130840_SimnetDataUserGroupConfigurationDefaults)
-    this.dst = dst
+    super({
+      pgn: 130840,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130840_SimnetDataUserGroupConfigurationMatchFields, ...fields }
   }
 
@@ -25278,16 +22604,6 @@ export interface PGN_130842_SimnetAisClassBStaticDataMsg24PartAFields {
 /**
  * @category PGN_130842_SimnetAisClassBStaticDataMsg24PartA
  */
-export const PGN_130842_SimnetAisClassBStaticDataMsg24PartADefaults = {
-  pgn: 130842,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130842_SimnetAisClassBStaticDataMsg24PartA
- */
 export const PGN_130842_SimnetAisClassBStaticDataMsg24PartAMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -25313,8 +22629,11 @@ export class PGN_130842_SimnetAisClassBStaticDataMsg24PartA extends PGN implemen
   fields: PGN_130842_SimnetAisClassBStaticDataMsg24PartAFields
 
   constructor(fields: PGN_130842_SimnetAisClassBStaticDataMsg24PartACreateArgs, dst: number = 255) {
-    super(PGN_130842_SimnetAisClassBStaticDataMsg24PartADefaults)
-    this.dst = dst
+    super({
+      pgn: 130842,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130842_SimnetAisClassBStaticDataMsg24PartAMatchFields, ...fields }
   }
 
@@ -25363,16 +22682,6 @@ export interface PGN_130842_FurunoSixDegreesOfFreedomMovementFields {
 /**
  * @category PGN_130842_FurunoSixDegreesOfFreedomMovement
  */
-export const PGN_130842_FurunoSixDegreesOfFreedomMovementDefaults = {
-  pgn: 130842,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130842_FurunoSixDegreesOfFreedomMovement
- */
 export const PGN_130842_FurunoSixDegreesOfFreedomMovementMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Furuno,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -25401,8 +22710,11 @@ export class PGN_130842_FurunoSixDegreesOfFreedomMovement extends PGN implements
   fields: PGN_130842_FurunoSixDegreesOfFreedomMovementFields
 
   constructor(fields: PGN_130842_FurunoSixDegreesOfFreedomMovementCreateArgs, dst: number = 255) {
-    super(PGN_130842_FurunoSixDegreesOfFreedomMovementDefaults)
-    this.dst = dst
+    super({
+      pgn: 130842,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130842_FurunoSixDegreesOfFreedomMovementMatchFields, ...fields }
   }
 
@@ -25458,16 +22770,6 @@ export interface PGN_130842_SimnetAisClassBStaticDataMsg24PartBFields {
 /**
  * @category PGN_130842_SimnetAisClassBStaticDataMsg24PartB
  */
-export const PGN_130842_SimnetAisClassBStaticDataMsg24PartBDefaults = {
-  pgn: 130842,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130842_SimnetAisClassBStaticDataMsg24PartB
- */
 export const PGN_130842_SimnetAisClassBStaticDataMsg24PartBMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -25502,8 +22804,11 @@ export class PGN_130842_SimnetAisClassBStaticDataMsg24PartB extends PGN implemen
   fields: PGN_130842_SimnetAisClassBStaticDataMsg24PartBFields
 
   constructor(fields: PGN_130842_SimnetAisClassBStaticDataMsg24PartBCreateArgs, dst: number = 255) {
-    super(PGN_130842_SimnetAisClassBStaticDataMsg24PartBDefaults)
-    this.dst = dst
+    super({
+      pgn: 130842,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130842_SimnetAisClassBStaticDataMsg24PartBMatchFields, ...fields }
   }
 
@@ -25548,16 +22853,6 @@ export interface PGN_130843_FurunoHeelAngleRollInformationFields {
 /**
  * @category PGN_130843_FurunoHeelAngleRollInformation
  */
-export const PGN_130843_FurunoHeelAngleRollInformationDefaults = {
-  pgn: 130843,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130843_FurunoHeelAngleRollInformation
- */
 export const PGN_130843_FurunoHeelAngleRollInformationMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Furuno,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -25582,8 +22877,11 @@ export class PGN_130843_FurunoHeelAngleRollInformation extends PGN implements PG
   fields: PGN_130843_FurunoHeelAngleRollInformationFields
 
   constructor(fields: PGN_130843_FurunoHeelAngleRollInformationCreateArgs, dst: number = 255) {
-    super(PGN_130843_FurunoHeelAngleRollInformationDefaults)
-    this.dst = dst
+    super({
+      pgn: 130843,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130843_FurunoHeelAngleRollInformationMatchFields, ...fields }
   }
 
@@ -25623,16 +22921,6 @@ export interface PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageFields {
 /**
  * @category PGN_130843_SimnetSonarStatusFrequencyAndDspVoltage
  */
-export const PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageDefaults = {
-  pgn: 130843,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130843_SimnetSonarStatusFrequencyAndDspVoltage
- */
 export const PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -25652,8 +22940,11 @@ export class PGN_130843_SimnetSonarStatusFrequencyAndDspVoltage extends PGN impl
   fields: PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageFields
 
   constructor(fields: PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageCreateArgs, dst: number = 255) {
-    super(PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageDefaults)
-    this.dst = dst
+    super({
+      pgn: 130843,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130843_SimnetSonarStatusFrequencyAndDspVoltageMatchFields, ...fields }
   }
 
@@ -25693,16 +22984,6 @@ export interface PGN_130845_FurunoMultiSatsInViewExtendedFields {
 /**
  * @category PGN_130845_FurunoMultiSatsInViewExtended
  */
-export const PGN_130845_FurunoMultiSatsInViewExtendedDefaults = {
-  pgn: 130845,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130845_FurunoMultiSatsInViewExtended
- */
 export const PGN_130845_FurunoMultiSatsInViewExtendedMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Furuno,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -25722,8 +23003,11 @@ export class PGN_130845_FurunoMultiSatsInViewExtended extends PGN implements PGN
   fields: PGN_130845_FurunoMultiSatsInViewExtendedFields
 
   constructor(fields: PGN_130845_FurunoMultiSatsInViewExtendedCreateArgs, dst: number = 255) {
-    super(PGN_130845_FurunoMultiSatsInViewExtendedDefaults)
-    this.dst = dst
+    super({
+      pgn: 130845,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130845_FurunoMultiSatsInViewExtendedMatchFields, ...fields }
   }
 
@@ -25771,16 +23055,6 @@ export interface PGN_130845_SimnetKeyValueFields {
 /**
  * @category PGN_130845_SimnetKeyValue
  */
-export const PGN_130845_SimnetKeyValueDefaults = {
-  pgn: 130845,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130845_SimnetKeyValue
- */
 export const PGN_130845_SimnetKeyValueMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -25808,8 +23082,11 @@ export class PGN_130845_SimnetKeyValue extends PGN implements PGN_130845_SimnetK
   fields: PGN_130845_SimnetKeyValueFields
 
   constructor(fields: PGN_130845_SimnetKeyValueCreateArgs, dst: number = 255) {
-    super(PGN_130845_SimnetKeyValueDefaults)
-    this.dst = dst
+    super({
+      pgn: 130845,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130845_SimnetKeyValueMatchFields, ...fields }
   }
 
@@ -25857,16 +23134,6 @@ export interface PGN_130846_SimnetParameterSetFields {
 /**
  * @category PGN_130846_SimnetParameterSet
  */
-export const PGN_130846_SimnetParameterSetDefaults = {
-  pgn: 130846,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130846_SimnetParameterSet
- */
 export const PGN_130846_SimnetParameterSetMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -25894,8 +23161,11 @@ export class PGN_130846_SimnetParameterSet extends PGN implements PGN_130846_Sim
   fields: PGN_130846_SimnetParameterSetFields
 
   constructor(fields: PGN_130846_SimnetParameterSetCreateArgs, dst: number = 255) {
-    super(PGN_130846_SimnetParameterSetDefaults)
-    this.dst = dst
+    super({
+      pgn: 130846,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130846_SimnetParameterSetMatchFields, ...fields }
   }
 
@@ -25935,16 +23205,6 @@ export interface PGN_130846_FurunoMotionSensorStatusExtendedFields {
 /**
  * @category PGN_130846_FurunoMotionSensorStatusExtended
  */
-export const PGN_130846_FurunoMotionSensorStatusExtendedDefaults = {
-  pgn: 130846,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130846_FurunoMotionSensorStatusExtended
- */
 export const PGN_130846_FurunoMotionSensorStatusExtendedMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Furuno,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -25964,8 +23224,11 @@ export class PGN_130846_FurunoMotionSensorStatusExtended extends PGN implements 
   fields: PGN_130846_FurunoMotionSensorStatusExtendedFields
 
   constructor(fields: PGN_130846_FurunoMotionSensorStatusExtendedCreateArgs, dst: number = 255) {
-    super(PGN_130846_FurunoMotionSensorStatusExtendedDefaults)
-    this.dst = dst
+    super({
+      pgn: 130846,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130846_FurunoMotionSensorStatusExtendedMatchFields, ...fields }
   }
 
@@ -26010,16 +23273,6 @@ export interface PGN_130847_SeatalkNodeStatisticsFields {
 /**
  * @category PGN_130847_SeatalkNodeStatistics
  */
-export const PGN_130847_SeatalkNodeStatisticsDefaults = {
-  pgn: 130847,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130847_SeatalkNodeStatistics
- */
 export const PGN_130847_SeatalkNodeStatisticsMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -26044,8 +23297,11 @@ export class PGN_130847_SeatalkNodeStatistics extends PGN implements PGN_130847_
   fields: PGN_130847_SeatalkNodeStatisticsFields
 
   constructor(fields: PGN_130847_SeatalkNodeStatisticsCreateArgs, dst: number = 255) {
-    super(PGN_130847_SeatalkNodeStatisticsDefaults)
-    this.dst = dst
+    super({
+      pgn: 130847,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130847_SeatalkNodeStatisticsMatchFields, ...fields }
   }
 
@@ -26091,16 +23347,6 @@ export interface PGN_130848_SeatalkWaypointInformationFields {
 /**
  * @category PGN_130848_SeatalkWaypointInformation
  */
-export const PGN_130848_SeatalkWaypointInformationDefaults = {
-  pgn: 130848,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130848_SeatalkWaypointInformation
- */
 export const PGN_130848_SeatalkWaypointInformationMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -26126,8 +23372,11 @@ export class PGN_130848_SeatalkWaypointInformation extends PGN implements PGN_13
   fields: PGN_130848_SeatalkWaypointInformationFields
 
   constructor(fields: PGN_130848_SeatalkWaypointInformationCreateArgs, dst: number = 255) {
-    super(PGN_130848_SeatalkWaypointInformationDefaults)
-    this.dst = dst
+    super({
+      pgn: 130848,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130848_SeatalkWaypointInformationMatchFields, ...fields }
   }
 
@@ -26176,16 +23425,6 @@ export interface PGN_130850_SimnetApCommandFields {
 /**
  * @category PGN_130850_SimnetApCommand
  */
-export const PGN_130850_SimnetApCommandDefaults = {
-  pgn: 130850,
-  dst: 255,
-  prio: 2,
-  fields: []
-}
-
-/**
- * @category PGN_130850_SimnetApCommand
- */
 export const PGN_130850_SimnetApCommandMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -26213,8 +23452,11 @@ export class PGN_130850_SimnetApCommand extends PGN implements PGN_130850_Simnet
   fields: PGN_130850_SimnetApCommandFields
 
   constructor(fields: PGN_130850_SimnetApCommandCreateArgs, dst: number = 255) {
-    super(PGN_130850_SimnetApCommandDefaults)
-    this.dst = dst
+    super({
+      pgn: 130850,
+      prio: 2,
+      dst
+    })
     this.fields = { ...PGN_130850_SimnetApCommandMatchFields, ...fields }
   }
 
@@ -26263,16 +23505,6 @@ export interface PGN_130850_SimnetEventCommandApCommandFields {
 /**
  * @category PGN_130850_SimnetEventCommandApCommand
  */
-export const PGN_130850_SimnetEventCommandApCommandDefaults = {
-  pgn: 130850,
-  dst: 255,
-  prio: 2,
-  fields: []
-}
-
-/**
- * @category PGN_130850_SimnetEventCommandApCommand
- */
 export const PGN_130850_SimnetEventCommandApCommandMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -26300,8 +23532,11 @@ export class PGN_130850_SimnetEventCommandApCommand extends PGN implements PGN_1
   fields: PGN_130850_SimnetEventCommandApCommandFields
 
   constructor(fields: PGN_130850_SimnetEventCommandApCommandCreateArgs, dst: number = 255) {
-    super(PGN_130850_SimnetEventCommandApCommandDefaults)
-    this.dst = dst
+    super({
+      pgn: 130850,
+      prio: 2,
+      dst
+    })
     this.fields = { ...PGN_130850_SimnetEventCommandApCommandMatchFields, ...fields }
   }
 
@@ -26352,16 +23587,6 @@ export interface PGN_130850_SimnetAlarmFields {
 /**
  * @category PGN_130850_SimnetAlarm
  */
-export const PGN_130850_SimnetAlarmDefaults = {
-  pgn: 130850,
-  dst: 255,
-  prio: 2,
-  fields: []
-}
-
-/**
- * @category PGN_130850_SimnetAlarm
- */
 export const PGN_130850_SimnetAlarmMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -26389,8 +23614,11 @@ export class PGN_130850_SimnetAlarm extends PGN implements PGN_130850_SimnetAlar
   fields: PGN_130850_SimnetAlarmFields
 
   constructor(fields: PGN_130850_SimnetAlarmCreateArgs, dst: number = 255) {
-    super(PGN_130850_SimnetAlarmDefaults)
-    this.dst = dst
+    super({
+      pgn: 130850,
+      prio: 2,
+      dst
+    })
     this.fields = { ...PGN_130850_SimnetAlarmMatchFields, ...fields }
   }
 
@@ -26439,16 +23667,6 @@ export interface PGN_130851_SimnetEventReplyApCommandFields {
 /**
  * @category PGN_130851_SimnetEventReplyApCommand
  */
-export const PGN_130851_SimnetEventReplyApCommandDefaults = {
-  pgn: 130851,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130851_SimnetEventReplyApCommand
- */
 export const PGN_130851_SimnetEventReplyApCommandMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -26476,8 +23694,11 @@ export class PGN_130851_SimnetEventReplyApCommand extends PGN implements PGN_130
   fields: PGN_130851_SimnetEventReplyApCommandFields
 
   constructor(fields: PGN_130851_SimnetEventReplyApCommandCreateArgs, dst: number = 255) {
-    super(PGN_130851_SimnetEventReplyApCommandDefaults)
-    this.dst = dst
+    super({
+      pgn: 130851,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130851_SimnetEventReplyApCommandMatchFields, ...fields }
   }
 
@@ -26523,16 +23744,6 @@ export interface PGN_130856_SimnetAlarmMessageFields {
 /**
  * @category PGN_130856_SimnetAlarmMessage
  */
-export const PGN_130856_SimnetAlarmMessageDefaults = {
-  pgn: 130856,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130856_SimnetAlarmMessage
- */
 export const PGN_130856_SimnetAlarmMessageMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -26556,8 +23767,11 @@ export class PGN_130856_SimnetAlarmMessage extends PGN implements PGN_130856_Sim
   fields: PGN_130856_SimnetAlarmMessageFields
 
   constructor(fields: PGN_130856_SimnetAlarmMessageCreateArgs, dst: number = 255) {
-    super(PGN_130856_SimnetAlarmMessageDefaults)
-    this.dst = dst
+    super({
+      pgn: 130856,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130856_SimnetAlarmMessageMatchFields, ...fields }
   }
 
@@ -26605,16 +23819,6 @@ export interface PGN_130860_SimnetApUnknown4Fields {
 /**
  * @category PGN_130860_SimnetApUnknown4
  */
-export const PGN_130860_SimnetApUnknown4Defaults = {
-  pgn: 130860,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130860_SimnetApUnknown4
- */
 export const PGN_130860_SimnetApUnknown4MatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -26640,8 +23844,11 @@ export class PGN_130860_SimnetApUnknown4 extends PGN implements PGN_130860_Simne
   fields: PGN_130860_SimnetApUnknown4Fields
 
   constructor(fields: PGN_130860_SimnetApUnknown4CreateArgs, dst: number = 255) {
-    super(PGN_130860_SimnetApUnknown4Defaults)
-    this.dst = dst
+    super({
+      pgn: 130860,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130860_SimnetApUnknown4MatchFields, ...fields }
   }
 
@@ -26685,16 +23892,6 @@ export interface PGN_130880_AirmarAdditionalWeatherDataFields {
 /**
  * @category PGN_130880_AirmarAdditionalWeatherData
  */
-export const PGN_130880_AirmarAdditionalWeatherDataDefaults = {
-  pgn: 130880,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130880_AirmarAdditionalWeatherData
- */
 export const PGN_130880_AirmarAdditionalWeatherDataMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -26718,8 +23915,11 @@ export class PGN_130880_AirmarAdditionalWeatherData extends PGN implements PGN_1
   fields: PGN_130880_AirmarAdditionalWeatherDataFields
 
   constructor(fields: PGN_130880_AirmarAdditionalWeatherDataCreateArgs, dst: number = 255) {
-    super(PGN_130880_AirmarAdditionalWeatherDataDefaults)
-    this.dst = dst
+    super({
+      pgn: 130880,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130880_AirmarAdditionalWeatherDataMatchFields, ...fields }
   }
 
@@ -26763,16 +23963,6 @@ export interface PGN_130881_AirmarHeaterControlFields {
 /**
  * @category PGN_130881_AirmarHeaterControl
  */
-export const PGN_130881_AirmarHeaterControlDefaults = {
-  pgn: 130881,
-  dst: 255,
-  prio: 3,
-  fields: []
-}
-
-/**
- * @category PGN_130881_AirmarHeaterControl
- */
 export const PGN_130881_AirmarHeaterControlMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -26796,8 +23986,11 @@ export class PGN_130881_AirmarHeaterControl extends PGN implements PGN_130881_Ai
   fields: PGN_130881_AirmarHeaterControlFields
 
   constructor(fields: PGN_130881_AirmarHeaterControlCreateArgs, dst: number = 255) {
-    super(PGN_130881_AirmarHeaterControlDefaults)
-    this.dst = dst
+    super({
+      pgn: 130881,
+      prio: 3,
+      dst
+    })
     this.fields = { ...PGN_130881_AirmarHeaterControlMatchFields, ...fields }
   }
 
@@ -26845,16 +24038,6 @@ export interface PGN_130918_SeatalkRouteInformationFields {
 /**
  * @category PGN_130918_SeatalkRouteInformation
  */
-export const PGN_130918_SeatalkRouteInformationDefaults = {
-  pgn: 130918,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130918_SeatalkRouteInformation
- */
 export const PGN_130918_SeatalkRouteInformationMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -26882,8 +24065,11 @@ export class PGN_130918_SeatalkRouteInformation extends PGN implements PGN_13091
   fields: PGN_130918_SeatalkRouteInformationFields
 
   constructor(fields: PGN_130918_SeatalkRouteInformationCreateArgs, dst: number = 255) {
-    super(PGN_130918_SeatalkRouteInformationDefaults)
-    this.dst = dst
+    super({
+      pgn: 130918,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130918_SeatalkRouteInformationMatchFields, ...fields }
   }
 
@@ -26928,16 +24114,6 @@ export interface PGN_130944_AirmarPostFields {
 /**
  * @category PGN_130944_AirmarPost
  */
-export const PGN_130944_AirmarPostDefaults = {
-  pgn: 130944,
-  dst: 255,
-  prio: 7,
-  fields: []
-}
-
-/**
- * @category PGN_130944_AirmarPost
- */
 export const PGN_130944_AirmarPostMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Airmar,
   industryCode: enums.IndustryCode.MarineIndustry,
@@ -26962,8 +24138,11 @@ export class PGN_130944_AirmarPost extends PGN implements PGN_130944_AirmarPostI
   fields: PGN_130944_AirmarPostFields
 
   constructor(fields: PGN_130944_AirmarPostCreateArgs, dst: number = 255) {
-    super(PGN_130944_AirmarPostDefaults)
-    this.dst = dst
+    super({
+      pgn: 130944,
+      prio: 7,
+      dst
+    })
     this.fields = { ...PGN_130944_AirmarPostMatchFields, ...fields }
   }
 

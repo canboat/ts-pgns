@@ -192,6 +192,58 @@ export const mapCamelCaseKeys = (pgn: PGN) => {
 }
 
 /**
+ * Converts a PGN created using camelCase keys to one using Names
+ *
+ * @category Utilities
+ */
+export const mapNameKeysToCamelCase = (pgn: PGN) => {
+  const def = findMatchingDefinition(pgn)
+
+  if (def === undefined) {
+    throw Error(`can't find matching pgn`)
+  }
+
+  const res: any = pgn //copy??
+
+  if (pgn.fields !== undefined && res.fields === undefined) {
+    res.fields = {}
+  }
+
+  const repeatingSize = def.RepeatingFieldSet1Size || 0
+
+  for (let i = 0; i < def.Fields.length - repeatingSize; i++) {
+    const field = def.Fields[i]
+    const value = (pgn.fields as any)[field.Name]
+
+    if (value !== undefined) {
+      res.fields[field.Id] = value
+    }
+  }
+
+  const list = (pgn.fields as any).list
+
+  if (repeatingSize > 0 && list !== undefined && list.length > 0) {
+    const repeating: Field[] = (def.Fields as any).slice(
+      def.Fields.length - repeatingSize
+    )
+
+    const dest: any = pgn.fields !== undefined ? res.fields : res
+
+    if (dest.list === undefined) {
+      dest.list = []
+    }
+
+    list.forEach((item: any) => {
+      repeating.forEach((field) => {
+        const value = item[field.Name]
+        item[field.Id] = value
+      })
+    })
+  }
+  return res
+}
+
+/**
  * @category PGN Definition Access
  */
 export const findMatchingDefinition = (pgn: PGN): Definition => {
@@ -216,8 +268,8 @@ export const findMatchingDefinition = (pgn: PGN): Definition => {
     const hasMatch = field.Match !== undefined
     let value =
       pgn.fields !== undefined
-        ? (pgn.fields as any)[field.Id]
-        : (pgn as any)[field.Id]
+        ? (pgn.fields as any)[field.Id] || (pgn.fields as any)[field.Name]
+        : (pgn as any)[field.Id] || (pgn as any)[field.Name]
 
     if (hasMatch) {
       const num = getNumericValue(field, value)
@@ -441,4 +493,17 @@ export const convertCamelCase = (pluginApp: any, pgn: PGN) => {
     skServerSupportsCamelCase = satisfies(pluginApp.config.version, '>=2.15.0')
   }
   return skServerSupportsCamelCase === false ? mapCamelCaseKeys(pgn) : pgn
+}
+
+/**
+ * Convert a PGN with Name keys to camelCase keys
+ * if the signalk-server version does support camelCase
+ *
+ * @category Utilities
+ */
+export const convertNamesToCamel = (pluginApp: any, pgn: any) => {
+  if (skServerSupportsCamelCase === undefined) {
+    skServerSupportsCamelCase = satisfies(pluginApp.config.version, '>=2.15.0')
+  }
+  return skServerSupportsCamelCase === false ? mapNameKeysToCamelCase(pgn) : pgn
 }

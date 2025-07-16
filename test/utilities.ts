@@ -1,8 +1,7 @@
 import { expect, assert } from 'chai'
 import {
+  PGN,
   PGN_129029,
-  ManufacturerCode,
-  IndustryCode,
   PGN_61184_VictronBatteryRegister,
   findMatchingDefinition,
   mapCamelCaseKeys,
@@ -55,7 +54,7 @@ describe('utilities tests', () => {
     })
 
     try {
-      const mapped = mapCamelCaseKeys(pgn)
+      const mapped = mapCamelCaseKeys(pgn) as PGN_129029
       assert(mapped !== undefined)
       expect(mapped.fields).to.exist
       expect(mapped.fields['Date']).to.equal('date')
@@ -71,33 +70,43 @@ describe('utilities tests', () => {
   })
 
   it(`mapNameKeysToCamelCase works`, (done) => {
-    const pgn = new PGN_129029({
-      Date: 'date',
-      Time: 'time',
-      Latitude: 1,
-      Longitude: 2,
-      'GNSS type': 3,
-      Method: 4,
-      Integrity: 5,
-      'Number of SVs': 6,
-      HDOP: 7,
-      'Geoidal Separation': 8,
-      'Reference Stations': 2,
-      list: [
-        {
-          'Reference Station Type': 9,
-          'Reference Station ID': 7
-        },
-        {
-          'Reference Station Type': 19,
-          'Reference Station ID': 22
-        }
-      ]
-    })
+    const pgn = {
+      pgn: 129029,
+      dst: 1,
+      priority: 6,
+      src: 123,
+      fields: {
+        Date: 'date',
+        Time: 'time',
+        Latitude: 1,
+        Longitude: 2,
+        'GNSS type': 3,
+        Method: 4,
+        Integrity: 5,
+        'Number of SVs': 6,
+        HDOP: 7,
+        'Geoidal Separation': 8,
+        'Reference Stations': 2,
+        list: [
+          {
+            'Reference Station Type': 9,
+            'Reference Station ID': 7
+          },
+          {
+            'Reference Station Type': 19,
+            'Reference Station ID': 22
+          }
+        ]
+      }
+    }
 
     try {
       const mapped = mapNameKeysToCamelCase(pgn)
       assert(mapped !== undefined)
+      expect(mapped.pgn).to.equal(129029)
+      expect(mapped.dst).to.equal(1)
+      expect(mapped.priority).to.equal(6)
+      expect(mapped.src).to.equal(123)
       expect(mapped.fields).to.exist
       expect(mapped.fields.date).to.equal('date')
       expect(mapped.fields.gnssType).to.equal(3)
@@ -128,7 +137,7 @@ describe('utilities tests', () => {
   })
 
   it(`getDefinition works`, function (done) {
-    const pgn = createPGN('isoAcknowledgement')
+    const pgn = createPGN('isoAcknowledgement', {})
     assert(pgn !== undefined)
 
     const def = pgn.getDefinition()
@@ -137,7 +146,7 @@ describe('utilities tests', () => {
   })
 
   it(`createPGN fails`, function (done) {
-    const pgn = createPGN('xxx')
+    const pgn = createPGN('xxx', {})
     assert(pgn === undefined)
     done()
   })

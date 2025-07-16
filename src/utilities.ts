@@ -16,7 +16,7 @@
  */
 
 import camelCase from 'camelcase'
-import { PGN } from './pgns'
+import { PGN, createPGN } from './pgns'
 import canboat from '../canboat.json'
 import { fixIdentifier } from './internals'
 import {
@@ -129,18 +129,20 @@ export const isMatch = (pgn: any, matchFields: any) => {
  *
  * @category Utilities
  */
-export const mapCamelCaseKeys = (pgn: PGN) => {
+export const mapCamelCaseKeys = (pgn: any) => {
   const def = findMatchingDefinition(pgn)
 
   if (def === undefined) {
     throw Error(`can't find matching pgn`)
   }
 
-  const res: any = pgn //copy??
+  const res: PGN = createPGN(def.Id, {})!
 
-  if (pgn.fields !== undefined && res.fields === undefined) {
-    res.fields = {}
-  }
+  Object.keys(pgn).forEach((key) => {
+    if (key !== 'pgn' && key !== 'fields') {
+      (res as any)[key] = pgn[key]
+    }
+  })
 
   const repeatingSize = def.RepeatingFieldSet1Size || 0
 
@@ -153,9 +155,9 @@ export const mapCamelCaseKeys = (pgn: PGN) => {
 
     if (value !== undefined) {
       if (pgn.fields !== undefined) {
-        res.fields[field.Name] = value
+        (res.fields as any)[field.Name] = value
       } else {
-        res[field.Name] = value
+        (res as any)[field.Name] = value
       }
     }
   }
@@ -175,16 +177,14 @@ export const mapCamelCaseKeys = (pgn: PGN) => {
     }
 
     list.forEach((item: any) => {
-      //const copy: { [key: string]: any } = {}
-      //dest.list.push(copy)
+      const copy: { [key: string]: any } = {}
+      dest.list.push(copy)
       repeating.forEach((field) => {
         const value = item[field.Id]
-        item[field.Name] = value
 
-        /*if (value !== undefined) {
+        if (value !== undefined) {
           copy[field.Name] = value
-          }
-          */
+        }
       })
     })
   }
@@ -196,18 +196,14 @@ export const mapCamelCaseKeys = (pgn: PGN) => {
  *
  * @category Utilities
  */
-export const mapNameKeysToCamelCase = (pgn: PGN) => {
+export const mapNameKeysToCamelCase = (pgn: any) => {
   const def = findMatchingDefinition(pgn)
 
   if (def === undefined) {
     throw Error(`can't find matching pgn`)
   }
 
-  const res: any = pgn //copy??
-
-  if (pgn.fields !== undefined && res.fields === undefined) {
-    res.fields = {}
-  }
+  const res = createPGN(def.Id, {})!
 
   const repeatingSize = def.RepeatingFieldSet1Size || 0
 
@@ -216,7 +212,7 @@ export const mapNameKeysToCamelCase = (pgn: PGN) => {
     const value = (pgn.fields as any)[field.Name]
 
     if (value !== undefined) {
-      res.fields[field.Id] = value
+      (res.fields as any)[field.Id] = value
     }
   }
 
@@ -227,16 +223,15 @@ export const mapNameKeysToCamelCase = (pgn: PGN) => {
       def.Fields.length - repeatingSize
     )
 
-    const dest: any = pgn.fields !== undefined ? res.fields : res
-
-    if (dest.list === undefined) {
-      dest.list = []
-    }
+    const dest: any = (res.fields as any).list = []
 
     list.forEach((item: any) => {
+      const copy: { [key: string]: any } = {}
+      dest.push(copy)
+
       repeating.forEach((field) => {
         const value = item[field.Name]
-        item[field.Id] = value
+        copy[field.Id] = value
       })
     })
   }

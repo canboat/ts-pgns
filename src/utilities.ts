@@ -129,18 +129,22 @@ export const isMatch = (pgn: any, matchFields: any) => {
  *
  * @category Utilities
  */
-export const mapCamelCaseKeys = (pgn: any) => {
+export const mapCamelCaseKeys = (pgn: PGN) => {
   const def = findMatchingDefinition(pgn)
 
   if (def === undefined) {
     throw Error(`can't find matching pgn`)
   }
 
-  const res: PGN = createPGN(def.Id, {})!
+  const res: any = {}
+
+  if ( pgn.fields !== undefined) {
+    res.fields = {}
+  }
 
   Object.keys(pgn).forEach((key) => {
-    if (key !== 'pgn' && key !== 'fields') {
-      (res as any)[key] = pgn[key]
+    if (key !== 'fields') {
+      res[key] = (pgn as any)[key]
     }
   })
 

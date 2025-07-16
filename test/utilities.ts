@@ -54,15 +54,14 @@ describe('utilities tests', () => {
     })
 
     pgn.dst = 1
-    pgn.priority = 6
     pgn.src = 123
 
     try {
-      const mapped = mapCamelCaseKeys(pgn) as PGN_129029
+      const mapped = mapCamelCaseKeys(pgn)
       assert(mapped !== undefined)
       expect(mapped.pgn).to.equal(129029)
       expect(mapped.dst).to.equal(1)
-      expect(mapped.priority).to.equal(6)
+      expect(mapped.prio).to.equal(3)
       expect(mapped.src).to.equal(123)
       expect(mapped.fields).to.exist
       expect(mapped.fields['Date']).to.equal('date')
@@ -81,7 +80,7 @@ describe('utilities tests', () => {
     const pgn = {
       pgn: 129029,
       dst: 1,
-      priority: 6,
+      prio: 6,
       src: 123,
       fields: {
         Date: 'date',
@@ -109,11 +108,11 @@ describe('utilities tests', () => {
     }
 
     try {
-      const mapped = mapNameKeysToCamelCase(pgn)
+      const mapped = mapNameKeysToCamelCase(pgn) as PGN_129029
       assert(mapped !== undefined)
       expect(mapped.pgn).to.equal(129029)
       expect(mapped.dst).to.equal(1)
-      expect(mapped.priority).to.equal(6)
+      expect(mapped.prio).to.equal(6)
       expect(mapped.src).to.equal(123)
       expect(mapped.fields).to.exist
       expect(mapped.fields.date).to.equal('date')

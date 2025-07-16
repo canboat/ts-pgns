@@ -205,6 +205,12 @@ export const mapNameKeysToCamelCase = (pgn: any) => {
 
   const res = createPGN(def.Id, {})!
 
+  Object.keys(pgn).forEach((key) => {
+    if (key !== 'pgn' && key !== 'fields') {
+      (res as any)[key] = pgn[key]
+    }
+  })
+
   const repeatingSize = def.RepeatingFieldSet1Size || 0
 
   for (let i = 0; i < def.Fields.length - repeatingSize; i++) {

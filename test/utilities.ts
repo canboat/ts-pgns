@@ -53,9 +53,17 @@ describe('utilities tests', () => {
       ]
     })
 
+    pgn.dst = 1
+    pgn.priority = 6
+    pgn.src = 123
+
     try {
       const mapped = mapCamelCaseKeys(pgn) as PGN_129029
       assert(mapped !== undefined)
+      expect(mapped.pgn).to.equal(129029)
+      expect(mapped.dst).to.equal(1)
+      expect(mapped.priority).to.equal(6)
+      expect(mapped.src).to.equal(123)
       expect(mapped.fields).to.exist
       expect(mapped.fields['Date']).to.equal('date')
       expect(mapped.fields['GNSS type']).to.equal(3)

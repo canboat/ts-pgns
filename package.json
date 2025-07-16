@@ -46,6 +46,7 @@
     "minimist": "^1.2.8",
     "mocha": "^11.7.1",
     "prettier": "^3.6.2",
+    "ts-node": "^10.9.2",
     "tsx": "^4.20.3",
     "typedoc": "^0.28.7",
     "typedoc-theme-hierarchy": "^6.0.0",

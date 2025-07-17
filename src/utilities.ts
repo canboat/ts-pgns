@@ -488,6 +488,12 @@ export const nameToId = (name: string) => {
 let skServerSupportsCamelCase: boolean | undefined = undefined
 let skServerSupportsCamelCaseCacheEnabled = true
 
+/**
+ * Set whether the signalk-server supports camelCase keys in PGNs.
+ * This is mainly useful for testing purposes.
+ *
+ * @category Utilities
+ */
 export const setSupportsCamelCaseCacheEnabled = (enabled: boolean) => {
   skServerSupportsCamelCaseCacheEnabled = enabled
   skServerSupportsCamelCase = undefined

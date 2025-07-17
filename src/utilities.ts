@@ -138,7 +138,7 @@ export const mapCamelCaseKeys = (pgn: PGN) => {
 
   const res: any = {}
 
-  if ( pgn.fields !== undefined) {
+  if (pgn.fields !== undefined) {
     res.fields = {}
   }
 
@@ -159,9 +159,9 @@ export const mapCamelCaseKeys = (pgn: PGN) => {
 
     if (value !== undefined) {
       if (pgn.fields !== undefined) {
-        (res.fields as any)[field.Name] = value
+        ;(res.fields as any)[field.Name] = value
       } else {
-        (res as any)[field.Name] = value
+        ;(res as any)[field.Name] = value
       }
     }
   }
@@ -211,7 +211,7 @@ export const mapNameKeysToCamelCase = (pgn: any) => {
 
   Object.keys(pgn).forEach((key) => {
     if (key !== 'pgn' && key !== 'fields') {
-      (res as any)[key] = pgn[key]
+      ;(res as any)[key] = pgn[key]
     }
   })
 
@@ -222,7 +222,7 @@ export const mapNameKeysToCamelCase = (pgn: any) => {
     const value = (pgn.fields as any)[field.Name]
 
     if (value !== undefined) {
-      (res.fields as any)[field.Id] = value
+      ;(res.fields as any)[field.Id] = value
     }
   }
 
@@ -233,7 +233,7 @@ export const mapNameKeysToCamelCase = (pgn: any) => {
       def.Fields.length - repeatingSize
     )
 
-    const dest: any = (res.fields as any).list = []
+    const dest: any = ((res.fields as any).list = [])
 
     list.forEach((item: any) => {
       const copy: { [key: string]: any } = {}

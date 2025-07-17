@@ -500,13 +500,16 @@ export const setSupportsCamelCaseCacheEnabled = (enabled: boolean) => {
 }
 
 function isCamelCaseSupported(app: any) {
+  const check = () =>
+    satisfies(app.config.version, '>=2.15.0') ||
+    satisfies(app.config.version, '>=2.15.0-beta')
   if (skServerSupportsCamelCaseCacheEnabled) {
     if (skServerSupportsCamelCase === undefined) {
-      skServerSupportsCamelCase = satisfies(app.config.version, '>=2.15.0')
+      skServerSupportsCamelCase = check()
     }
     return skServerSupportsCamelCase
   } else {
-    return satisfies(app.config.version, '>=2.15.0')
+    return check()
   }
 }
 

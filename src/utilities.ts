@@ -486,18 +486,32 @@ export const nameToId = (name: string) => {
 }
 
 let skServerSupportsCamelCase: boolean | undefined = undefined
+let skServerSupportsCamelCaseCacheEnabled = true
+
+export const setSupportsCamelCaseCacheEnabled = (enabled: boolean) => {
+  skServerSupportsCamelCaseCacheEnabled = enabled
+  skServerSupportsCamelCase = undefined
+}
+
+function isCamelCaseSupported(app: any) {
+  if (skServerSupportsCamelCaseCacheEnabled) {
+    if (skServerSupportsCamelCase === undefined) {
+      skServerSupportsCamelCase = satisfies(app.config.version, '>=2.15.0')
+    }
+    return skServerSupportsCamelCase
+  } else {
+    return satisfies(app.config.version, '>=2.15.0')
+  }
+}
 
 /**
  * Convert a PGN with camelCase keys to old, Name based keys
- * if the signalk-server version does support camelCase
+ * if the signalk-server version does no support camelCase
  *
  * @category Utilities
  */
 export const convertCamelCase = (pluginApp: any, pgn: PGN) => {
-  if (skServerSupportsCamelCase === undefined) {
-    skServerSupportsCamelCase = satisfies(pluginApp.config.version, '>=2.15.0')
-  }
-  return skServerSupportsCamelCase === false ? mapCamelCaseKeys(pgn) : pgn
+  return isCamelCaseSupported(pluginApp) === false ? mapCamelCaseKeys(pgn) : pgn
 }
 
 /**
@@ -507,8 +521,7 @@ export const convertCamelCase = (pluginApp: any, pgn: PGN) => {
  * @category Utilities
  */
 export const convertNamesToCamel = (pluginApp: any, pgn: any) => {
-  if (skServerSupportsCamelCase === undefined) {
-    skServerSupportsCamelCase = satisfies(pluginApp.config.version, '>=2.15.0')
-  }
-  return skServerSupportsCamelCase === false ? mapNameKeysToCamelCase(pgn) : pgn
+  return isCamelCaseSupported(pluginApp) === false
+    ? mapNameKeysToCamelCase(pgn)
+    : pgn
 }

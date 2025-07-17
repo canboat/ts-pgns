@@ -19,9 +19,19 @@
 				"kind": "build",
 				"isDefault": true
 			},
-			"problemMatcher": [],
+			"problemMatcher": ["$eslint-compact"],
 			"label": "npm: format"
-
+		},
+		{
+			"type": "npm",
+			"script": "watch",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [],
+			"label": "npm: watch",
+			"detail": "tsc --watch"
 		}
 	]
 }

@@ -97,25 +97,15 @@ export const getPGNWithId = (id: string): Definition | undefined => {
   return getPGNIdMap()[id]
 }
 
-class NotEqual extends Error {
-  constructor() {
-    super()
-  }
-}
-
 /**
  * Check if the pgn matches to given fields
  *
  * @category Utilities
  */
 export const isMatch = (pgn: any, matchFields: any) => {
-  let match = true
-  Object.keys(matchFields).forEach((key: string) => {
-    if (pgn.fields === undefined || pgn.fields[key] !== matchFields[key]) {
-      match = false
-    }
+  return !Object.keys(matchFields).some((key: string) => {
+    return pgn.fields === undefined || pgn.fields[key] !== matchFields[key]
   })
-  return match
 }
 
 /**

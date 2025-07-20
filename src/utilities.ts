@@ -109,19 +109,13 @@ class NotEqual extends Error {
  * @category Utilities
  */
 export const isMatch = (pgn: any, matchFields: any) => {
-  try {
-    Object.keys(matchFields).forEach((key: string) => {
-      if (pgn.fields === undefined || pgn.fields[key] !== matchFields[key]) {
-        throw new NotEqual()
-      }
-    })
-    return true
-  } catch (err) {
-    if (err instanceof NotEqual) {
-      return false
+  let match = true
+  Object.keys(matchFields).forEach((key: string) => {
+    if (pgn.fields === undefined || pgn.fields[key] !== matchFields[key]) {
+      match = false
     }
-    throw err
-  }
+  })
+  return match
 }
 
 /**

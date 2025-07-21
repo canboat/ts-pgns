@@ -134,11 +134,11 @@ export const isMatch = (pgn: any, matchFields: any) => {
 
 /**
  * Maps the keys of a PGN object to camelCase names based on its definition.
- * 
+ *
  * This function transforms the keys of the provided PGN object by looking up a matching definition,
  * and then mapping field IDs to their corresponding camelCase field names. It handles both regular
  * and repeating fields, and supports PGN objects with or without a `fields` property.
- * 
+ *
  * @param pgn - The PGN object to map.
  * @returns An object with keys mapped to camelCase field names, including nested fields and repeating field sets.
  * @throws If no matching definition is found for the provided PGN object.
@@ -212,11 +212,11 @@ export const mapCamelCaseKeys = (pgn: PGN) => {
 
 /**
  * Maps the keys of a PGN object from their original names to camelCase IDs as defined in a matching definition.
- * 
+ *
  * This function searches for a matching definition for the provided PGN object, creates a new PGN structure,
  * and copies over non-field properties. It then maps field values from their original names to their corresponding
  * IDs, including handling repeating field sets if present.
- * 
+ *
  * @param pgn - The PGN object to be transformed.
  * @returns A new PGN object with keys mapped to camelCase IDs.
  * @throws If no matching definition is found for the provided PGN object.
@@ -529,7 +529,6 @@ export const getFieldTypeEnumerationValue = (
   }
 }
 
-
 /**
  * Retrieves the name of an enumeration value from a specified field type enumeration.
  *
@@ -640,7 +639,6 @@ export const convertNamesToCamel = (pluginApp: any, pgn: any) => {
     ? mapNameKeysToCamelCase(pgn)
     : pgn
 }
-
 
 /**
  * Creates an instance of a NMEA 2000 group function PGN message based on the specified group function type,

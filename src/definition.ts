@@ -170,7 +170,6 @@ export interface FieldTypeEnumeration extends EnumBase {
   EnumFieldTypeValues: EnumFieldTypeValue[]
 }
 
-
 /**
  * Represents a field definition within a data structure, including metadata and configuration options.
  *

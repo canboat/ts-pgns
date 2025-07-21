@@ -11,7 +11,7 @@
     "build": "tsc -b",
     "watch": "tsc --watch",
     "prettier": "prettier --write .",
-    "lint": "eslint --fix --format compact",
+    "lint": "eslint --fix --format compact .",
     "ci-lint": "eslint && prettier --check .",
     "ci-test": "npm run build:all && npm run test && npm run ci-lint",
     "format": "npm run prettier && npm run lint",

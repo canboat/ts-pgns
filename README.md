@@ -46,6 +46,7 @@ npm install @canboat/ts-pgns
 
 ```typescript
 import { PGN_129029, PGN_127488 } from '@canboat/ts-pgns'
+import { pgnToActisenseSerialFormat } from '@canboat/canboatjs'
 
 // Create a GPS Position PGN (129029)
 const gpsPosition = new PGN_129029({
@@ -75,6 +76,10 @@ const engineData = new PGN_127488({
 
 console.log(`GPS Position: ${gpsPosition.fields.latitude}, ${gpsPosition.fields.longitude}`)
 console.log(`Engine Oil Pressure: ${engineData.fields.oilPressure} Pa`)
+
+//Generate actisense serial formated position
+const n2k = pgnToActisenseSerialFormat(gpsPosition)
+console.log(`actisense posistion ${n2k}`)
 ```
 
 ## 📚 API Documentation

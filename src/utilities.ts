@@ -633,5 +633,7 @@ export const createNmeaGroupFunction = (
         },
         dst
       )
+    default:
+      throw new Error(`Unsupported group function: ${groupFunction}`)
   }
 }

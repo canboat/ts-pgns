@@ -142,10 +142,19 @@ if (argv.pgns) {
   console.log('const pgnIdToCreator: {[key:string]: any} = {}\n')
 
   console.log(`/**
-  * Create a PGN object
-  *
-  * @category Utilities
-  */`)
+ * Creates a PGN object using the specified identifier and fields.
+ *
+ * This function looks up a creator function based on the provided \`id\` from the \`pgnIdToCreator\` mapping.
+ * If a matching creator is found, it is invoked with the given \`fields\` and optional \`dst\` parameter.
+ * If no creator is found for the given \`id\`, the function returns \`undefined\`.
+ *
+ * @param id - The identifier used to select the PGN creator function.
+ * @param fields - The fields to be passed to the creator function.
+ * @param dst - An optional destination number to be passed to the creator function.
+ * @returns The created PGN object, or \`undefined\` if no creator is found for the given \`id\`.
+ * @category Utilities
+ */
+`)
   console.log(`export const createPGN = (id: string, fields: any, dst:number|undefined = undefined ) : PGN|undefined => {
   const creator = pgnIdToCreator[id]
 

@@ -97,6 +97,10 @@ const getPGNIdMap = () => {
 }
 
 /**
+ * Retrieves the PGN definitions associated with a given number.
+ *
+ * @param num - The number used to look up PGN definitions.
+ * @returns An array of `Definition` objects if found, or `undefined` if no definitions exist for the provided number.
  * @category PGN Definition Access
  */
 export const getPGNWithNumber = (num: number): Definition[] | undefined => {
@@ -104,6 +108,10 @@ export const getPGNWithNumber = (num: number): Definition[] | undefined => {
 }
 
 /**
+ * Retrieves a PGN definition by its unique identifier.
+ *
+ * @param id - The unique identifier of the PGN definition to retrieve.
+ * @returns The corresponding {@link Definition} object if found; otherwise, `undefined`.
  * @category PGN Definition Access
  */
 export const getPGNWithId = (id: string): Definition | undefined => {
@@ -111,8 +119,11 @@ export const getPGNWithId = (id: string): Definition | undefined => {
 }
 
 /**
- * Check if the pgn matches to given fields
+ * Determines whether a given PGN object matches all specified fields.
  *
+ * @param pgn - The PGN object to check, expected to have a `fields` property.
+ * @param matchFields - An object containing key-value pairs to match against `pgn.fields`.
+ * @returns `true` if all keys in `matchFields` exist in `pgn.fields` and have equal values; otherwise, `false`.
  * @category Utilities
  */
 export const isMatch = (pgn: any, matchFields: any) => {
@@ -122,8 +133,15 @@ export const isMatch = (pgn: any, matchFields: any) => {
 }
 
 /**
- * Converts a PGN created using camelCase keys to one using Names
- *
+ * Maps the keys of a PGN object to camelCase names based on its definition.
+ * 
+ * This function transforms the keys of the provided PGN object by looking up a matching definition,
+ * and then mapping field IDs to their corresponding camelCase field names. It handles both regular
+ * and repeating fields, and supports PGN objects with or without a `fields` property.
+ * 
+ * @param pgn - The PGN object to map.
+ * @returns An object with keys mapped to camelCase field names, including nested fields and repeating field sets.
+ * @throws If no matching definition is found for the provided PGN object.
  * @category Utilities
  */
 export const mapCamelCaseKeys = (pgn: PGN) => {
@@ -193,8 +211,15 @@ export const mapCamelCaseKeys = (pgn: PGN) => {
 }
 
 /**
- * Converts a PGN created using camelCase keys to one using Names
- *
+ * Maps the keys of a PGN object from their original names to camelCase IDs as defined in a matching definition.
+ * 
+ * This function searches for a matching definition for the provided PGN object, creates a new PGN structure,
+ * and copies over non-field properties. It then maps field values from their original names to their corresponding
+ * IDs, including handling repeating field sets if present.
+ * 
+ * @param pgn - The PGN object to be transformed.
+ * @returns A new PGN object with keys mapped to camelCase IDs.
+ * @throws If no matching definition is found for the provided PGN object.
  * @category Utilities
  */
 export const mapNameKeysToCamelCase = (pgn: any) => {
@@ -246,6 +271,16 @@ export const mapNameKeysToCamelCase = (pgn: any) => {
 }
 
 /**
+ * Finds and returns the matching PGN definition for a given PGN object.
+ *
+ * This function retrieves possible definitions for the provided PGN, filters out fallback definitions,
+ * and iteratively matches fields with specific criteria. If a field has a `Match` property, it compares
+ * the numeric value of the field in the PGN with the definition. Throws an error if no matching definition
+ * is found or if a field value is invalid.
+ *
+ * @param pgn - The PGN object containing the PGN string and associated fields to match against definitions.
+ * @returns The matching `Definition` object for the provided PGN.
+ * @throws If the PGN is unknown, if a field value is invalid, or if no matching definition is found.
  * @category PGN Definition Access
  */
 export const findMatchingDefinition = (pgn: PGN): Definition => {
@@ -306,6 +341,9 @@ const getNumericValue = (field: Field, value: any) => {
 }
 
 /**
+ * Retrieves the list of available enumerations from the Canboat library.
+ *
+ * @returns {Enumeration[]} An array of enumeration objects.
  * @category PGN Definition Access
  */
 export const getEnumerations = (): Enumeration[] => {
@@ -313,6 +351,10 @@ export const getEnumerations = (): Enumeration[] => {
 }
 
 /**
+ * Retrieves an enumeration object by its name.
+ *
+ * @param enumName - The name of the enumeration to search for.
+ * @returns The matching `Enumeration` object if found; otherwise, `undefined`.
  * @category PGN Definition Access
  */
 export const getEnumeration = (enumName: string): Enumeration | undefined => {
@@ -320,6 +362,16 @@ export const getEnumeration = (enumName: string): Enumeration | undefined => {
 }
 
 /**
+ * Retrieves the numeric value associated with a given enumeration name and value string.
+ *
+ * This function looks up an enumeration by its name, then searches for an enumeration value
+ * matching the provided value string. If the enumeration name is 'INDUSTRY_CODE' and the value
+ * is 'Marine', it will substitute 'Marine Industry' for the lookup. Returns the corresponding
+ * numeric value if found, otherwise returns `undefined`.
+ *
+ * @param enumName - The name of the enumeration to search.
+ * @param value - The string value to look up within the enumeration.
+ * @returns The numeric value associated with the enumeration value, or `undefined` if not found.
  * @category PGN Definition Access
  */
 export const getEnumerationValue = (
@@ -340,6 +392,11 @@ export const getEnumerationValue = (
 }
 
 /**
+ * Retrieves the name of an enumeration value given the enumeration's name and the value.
+ *
+ * @param enumName - The name of the enumeration to search.
+ * @param value - The numeric value of the enumeration member.
+ * @returns The name of the enumeration member if found; otherwise, `undefined`.
  * @category PGN Definition Access
  */
 export const getEnumerationName = (
@@ -357,6 +414,9 @@ export const getEnumerationName = (
 }
 
 /**
+ * Retrieves the list of bit enumerations from the canboat library.
+ *
+ * @returns {BitEnumeration[]} An array of bit enumeration objects.
  * @category PGN Definition Access
  */
 export const getBitEnumerations = (): BitEnumeration[] => {
@@ -364,6 +424,10 @@ export const getBitEnumerations = (): BitEnumeration[] => {
 }
 
 /**
+ * Retrieves a bit enumeration object by its name.
+ *
+ * @param enumName - The name of the bit enumeration to search for.
+ * @returns The matching `BitEnumeration` object if found; otherwise, `undefined`.
  * @category PGN Definition Access
  */
 export const getBitEnumeration = (
@@ -373,6 +437,11 @@ export const getBitEnumeration = (
 }
 
 /**
+ * Retrieves the bit value associated with a specific enumeration value name from a named bit enumeration.
+ *
+ * @param enumName - The name of the bit enumeration to search within.
+ * @param value - The name of the enumeration value whose bit value is to be retrieved.
+ * @returns The bit value as a number if found; otherwise, `undefined`.
  * @category PGN Definition Access
  */
 export const getBitEnumerationValue = (
@@ -390,6 +459,11 @@ export const getBitEnumerationValue = (
 }
 
 /**
+ * Retrieves the name associated with a specific bit value from a named bit enumeration.
+ *
+ * @param enumName - The name of the bit enumeration to search.
+ * @param value - The bit value for which to find the corresponding name.
+ * @returns The name associated with the given bit value, or `undefined` if not found.
  * @category PGN Definition Access
  */
 export const getBitEnumerationName = (
@@ -407,6 +481,9 @@ export const getBitEnumerationName = (
 }
 
 /**
+ * Retrieves the list of field type enumerations from the Canboat library.
+ *
+ * @returns {FieldTypeEnumeration[]} An array of field type enumerations.
  * @category PGN Definition Access
  */
 export const getFieldTypeEnumerations = (): FieldTypeEnumeration[] => {
@@ -414,6 +491,10 @@ export const getFieldTypeEnumerations = (): FieldTypeEnumeration[] => {
 }
 
 /**
+ * Retrieves a specific field type enumeration by its name.
+ *
+ * @param enumName - The name of the field type enumeration to search for.
+ * @returns The matching {@link FieldTypeEnumeration} object if found; otherwise, `undefined`.
  * @category PGN Definition Access
  */
 export const getFieldTypeEnumeration = (
@@ -423,6 +504,15 @@ export const getFieldTypeEnumeration = (
 }
 
 /**
+ * Retrieves the numeric value associated with a specific enumeration field type value.
+ *
+ * Given an enumeration name and a value name, this function looks up the corresponding
+ * enumeration object and searches for the field type value by name. If found, it returns
+ * the associated numeric value; otherwise, it returns `undefined`.
+ *
+ * @param enumName - The name of the enumeration to search within.
+ * @param value - The name of the field type value to look up.
+ * @returns The numeric value of the field type if found, or `undefined` if not found.
  * @category PGN Definition Access
  */
 export const getFieldTypeEnumerationValue = (
@@ -439,7 +529,13 @@ export const getFieldTypeEnumerationValue = (
   }
 }
 
+
 /**
+ * Retrieves the name of an enumeration value from a specified field type enumeration.
+ *
+ * @param enumName - The name of the enumeration to search within.
+ * @param value - The numeric value of the enumeration member to look up.
+ * @returns The name of the enumeration member if found; otherwise, `undefined`.
  * @category PGN Definition Access
  */
 export const getFieldTypeEnumerationName = (
@@ -457,6 +553,11 @@ export const getFieldTypeEnumerationName = (
 }
 
 /**
+ * Retrieves the bit representation for a specific value from a field type enumeration.
+ *
+ * @param enumName - The name of the enumeration to search.
+ * @param value - The value within the enumeration for which to get the bit representation.
+ * @returns The bit representation as a number if found; otherwise, `undefined`.
  * @category PGN Definition Access
  */
 export const getFieldTypeEnumerationBits = (
@@ -474,7 +575,11 @@ export const getFieldTypeEnumerationBits = (
 }
 
 /**
+ * Converts a given name string to a valid identifier by first transforming it to camel case,
+ * then fixing any invalid characters using underscores as replacements.
  *
+ * @param name - The input string to be converted into an identifier.
+ * @returns A string representing the fixed identifier in camel case format.
  * @category Utilities
  */
 export const nameToId = (name: string) => {
@@ -511,9 +616,11 @@ function isCamelCaseSupported(app: any) {
 }
 
 /**
- * Convert a PGN with camelCase keys to old, Name based keys
- * if the signalk-server version does no support camelCase
+ * Converts the keys of a PGN object to camelCase if the server does not support camelCase.
  *
+ * @param pluginApp - The plugin application instance used to determine camelCase support.
+ * @param pgn - The PGN object whose keys may be converted to camelCase.
+ * @returns The PGN object with camelCase keys if not supported by the server; otherwise, returns the original PGN object.
  * @category Utilities
  */
 export const convertCamelCase = (pluginApp: any, pgn: PGN) => {
@@ -521,9 +628,11 @@ export const convertCamelCase = (pluginApp: any, pgn: PGN) => {
 }
 
 /**
- * Convert a PGN with Name keys to camelCase keys
- * if the signalk-server version does support camelCase
+ * Converts the property names of a PGN object to camelCase if the server does not support camelCase.
  *
+ * @param pluginApp - The plugin application instance used to determine camelCase support.
+ * @param pgn - The PGN object whose property names may be converted.
+ * @returns The PGN object with property names in camelCase if not supported by the server; otherwise, returns the original PGN object.
  * @category Utilities
  */
 export const convertNamesToCamel = (pluginApp: any, pgn: any) => {
@@ -532,6 +641,21 @@ export const convertNamesToCamel = (pluginApp: any, pgn: any) => {
     : pgn
 }
 
+
+/**
+ * Creates an instance of a NMEA 2000 group function PGN message based on the specified group function type,
+ * PGN definition, and optional destination address.
+ *
+ * This utility function maps the provided group function to the appropriate PGN message constructor,
+ * populating its parameters and values from the PGN's field definitions.
+ *
+ * @param groupFunction - The type of group function to create (e.g., Request, Command, Acknowledge, ReadFields, etc.).
+ * @param pgn - The PGN object containing the definition and field values.
+ * @param dst - Optional destination address for the message.
+ * @returns An instance of the corresponding NMEA 2000 group function PGN message.
+ * @throws Error if the provided group function is not supported.
+ * @category Utilities
+ */
 export const createNmeaGroupFunction = (
   groupFunction: GroupFunction,
   pgn: PGN,

@@ -8,8 +8,15 @@ import {
   getPGNWithNumber,
   getPGNWithId,
   createPGN,
-  mapNameKeysToCamelCase
+  mapNameKeysToCamelCase,
+  createNmeaGroupFunction,
+  GroupFunction,
+  PGN_65379_SeatalkPilotMode,
+  SeatalkPilotMode16,
+  PGN_126208_NmeaCommandGroupFunction,
+  Priority
 } from '../dist/index'
+import { pgnToActisenseSerialFormat } from '@canboat/canboatjs'
 
 describe('utilities tests', () => {
   it(`findMatchingDefinition works`, (done) => {
@@ -155,6 +162,37 @@ describe('utilities tests', () => {
   it(`createPGN fails`, function (done) {
     const pgn = createPGN('xxx', {})
     assert(pgn === undefined)
+    done()
+  })
+
+  it(`createNmeaGroupFunction works`, function (done) {
+    const rpgn = new PGN_65379_SeatalkPilotMode({
+      pilotMode: SeatalkPilotMode16.AutoCompassCommanded,
+      subMode: 0xffff
+    })
+    const pgn = createNmeaGroupFunction(
+      GroupFunction.Command,
+      rpgn,
+      123
+    ) as PGN_126208_NmeaCommandGroupFunction
+    pgn.fields.priority = Priority.LeaveUnchanged
+
+    const n2k = pgnToActisenseSerialFormat(pgn)
+
+    expect(pgn.fields.functionCode).to.eq(GroupFunction.Command)
+    expect(pgn.fields.pgn).to.eq(rpgn.pgn)
+
+    const expected = [
+      { parameter: 1, value: 'Raymarine' },
+      { parameter: 3, value: 'Marine Industry' },
+      { parameter: 4, value: 'Auto, compass commanded' },
+      { parameter: 5, value: 65535 }
+    ]
+    expect(pgn.fields.list).to.deep.eq(expected)
+
+    expect(n2k.slice('2025-07-21T17:30:30.177Z'.length)).to.eq(
+      ',3,126208,0,123,17,01,63,ff,00,f8,04,01,3b,07,03,04,04,40,00,05,ff,ff'
+    )
     done()
   })
 })

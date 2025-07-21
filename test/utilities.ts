@@ -18,8 +18,6 @@ import {
 } from '../dist/index'
 import { pgnToActisenseSerialFormat } from '@canboat/canboatjs'
 
-//import { create } from 'domain'
-
 describe('utilities tests', () => {
   it(`findMatchingDefinition works`, (done) => {
     const pgn = new PGN_61184_VictronBatteryRegister({

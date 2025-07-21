@@ -16,7 +16,20 @@
  */
 
 import camelCase from 'camelcase'
-import { PGN, createPGN } from './pgns'
+import {
+  PGN,
+  createPGN,
+  N2K_Variable,
+  N2K_FieldIndex,
+  PGN_126208_NmeaRequestGroupFunction,
+  PGN_126208_NmeaCommandGroupFunction,
+  PGN_126208_NmeaAcknowledgeGroupFunction,
+  PGN_126208_NmeaReadFieldsGroupFunction,
+  PGN_126208_NmeaReadFieldsReplyGroupFunction,
+  PGN_126208_NmeaWriteFieldsGroupFunction,
+  PGN_126208_NmeaWriteFieldsReplyGroupFunction
+} from './pgns'
+import { GroupFunction } from './enums'
 import canboat from '../canboat.json'
 import { fixIdentifier } from './internals'
 import {
@@ -517,4 +530,108 @@ export const convertNamesToCamel = (pluginApp: any, pgn: any) => {
   return isCamelCaseSupported(pluginApp) === false
     ? mapNameKeysToCamelCase(pgn)
     : pgn
+}
+
+export const createNmeaGroupFunction = (
+  groupFunction: GroupFunction,
+  pgn: PGN,
+  dst?: number
+) => {
+  const def = pgn.getDefinition()
+  const pgna = pgn as any
+  const list: any[] = []
+  let pkey: string, vkey: string
+
+  switch (groupFunction) {
+    case GroupFunction.Request:
+    case GroupFunction.Command:
+    case GroupFunction.Acknowledge:
+      pkey = 'parameter'
+      vkey = 'value'
+      break
+    case GroupFunction.ReadFields:
+    case GroupFunction.ReadFieldsReply:
+    case GroupFunction.WriteFields:
+    case GroupFunction.WriteFieldsReply:
+      pkey = 'selectionParameter'
+      vkey = 'selectionValue'
+      break
+  }
+
+  def.Fields.forEach((field: Field, index: number) => {
+    const value = pgna.fields[field.Id]
+    if (value !== undefined) {
+      list.push({ [pkey]: index + 1, [vkey]: value })
+    }
+  })
+
+  switch (groupFunction) {
+    case GroupFunction.Request:
+      return new PGN_126208_NmeaRequestGroupFunction(
+        { pgn: pgn.pgn, numberOfParameters: list.length, list },
+        dst
+      )
+    case GroupFunction.Command:
+      return new PGN_126208_NmeaCommandGroupFunction(
+        { pgn: pgn.pgn, numberOfParameters: list.length, list },
+        dst
+      )
+    case GroupFunction.Acknowledge:
+      return new PGN_126208_NmeaAcknowledgeGroupFunction(
+        { pgn: pgn.pgn, numberOfParameters: list.length, list },
+        dst
+      )
+    case GroupFunction.ReadFields:
+      return new PGN_126208_NmeaReadFieldsGroupFunction(
+        {
+          pgn: pgn.pgn,
+          numberOfParameters: list.length,
+          list: list as {
+            selectionParameter?: N2K_FieldIndex
+            selectionValue?: N2K_Variable
+          }[],
+          list2: []
+        },
+        dst
+      )
+    case GroupFunction.ReadFieldsReply:
+      return new PGN_126208_NmeaReadFieldsReplyGroupFunction(
+        {
+          pgn: pgn.pgn,
+          numberOfParameters: list.length,
+          list: list as {
+            selectionParameter?: N2K_FieldIndex
+            selectionValue?: N2K_Variable
+          }[],
+          list2: []
+        },
+        dst
+      )
+    case GroupFunction.WriteFields:
+      return new PGN_126208_NmeaWriteFieldsGroupFunction(
+        {
+          pgn: pgn.pgn,
+          numberOfParameters: list.length,
+          list: list as {
+            selectionParameter?: N2K_FieldIndex
+            selectionValue?: N2K_Variable
+          }[],
+          list2: []
+        },
+        dst
+      )
+    case GroupFunction.WriteFieldsReply:
+      return new PGN_126208_NmeaWriteFieldsReplyGroupFunction(
+        {
+          pgn: pgn.pgn,
+          numberOfParameters: list.length,
+          list: list as {
+            selectionParameter?: N2K_FieldIndex
+            selectionValue?: N2K_Variable
+          }[],
+          list2: []
+        },
+        dst
+      )
+  }
 }

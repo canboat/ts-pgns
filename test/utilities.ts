@@ -173,6 +173,7 @@ describe('utilities tests', () => {
     const pgn = createNmeaGroupFunction(
       GroupFunction.Command,
       rpgn,
+      { priority: Priority.LeaveUnchanged },
       123
     ) as PGN_126208_NmeaCommandGroupFunction
     pgn.fields.priority = Priority.LeaveUnchanged

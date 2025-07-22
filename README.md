@@ -50,31 +50,33 @@ import { pgnToActisenseSerialFormat } from '@canboat/canboatjs'
 
 // Create a GPS Position PGN (129029)
 const gpsPosition = new PGN_129029({
-  latitude: 47.6062,      // Seattle latitude
-  longitude: -122.3321,   // Seattle longitude
+  latitude: 47.6062, // Seattle latitude
+  longitude: -122.3321, // Seattle longitude
   altitude: 56.0,
-  gnssType: 3,           // GPS
-  method: 1,             // GNSS fix
-  integrity: 0,          // No integrity checking
-  numberOfSvs: 8,        // 8 satellites
-  hdop: 1.2,            // Horizontal dilution of precision
+  gnssType: 3, // GPS
+  method: 1, // GNSS fix
+  integrity: 0, // No integrity checking
+  numberOfSvs: 8, // 8 satellites
+  hdop: 1.2, // Horizontal dilution of precision
   geoidalSeparation: -34.0
 })
 
 // Create an Engine Parameters PGN (127488)
 const engineData = new PGN_127488({
   engineInstance: 0,
-  oilPressure: 275000,    // 275 kPa
+  oilPressure: 275000, // 275 kPa
   oilTemperature: 363.15, // 90°C in Kelvin
-  temperature: 353.15,    // 80°C coolant temp
+  temperature: 353.15, // 80°C coolant temp
   alternatorPotential: 14.2,
-  fuelRate: 15.5,        // L/h
+  fuelRate: 15.5, // L/h
   totalEngineHours: 1250.5,
   coolantPressure: 95000,
   fuelPressure: 280000
 })
 
-console.log(`GPS Position: ${gpsPosition.fields.latitude}, ${gpsPosition.fields.longitude}`)
+console.log(
+  `GPS Position: ${gpsPosition.fields.latitude}, ${gpsPosition.fields.longitude}`
+)
 console.log(`Engine Oil Pressure: ${engineData.fields.oilPressure} Pa`)
 
 //Generate actisense serial formated position
@@ -91,10 +93,10 @@ console.log(`actisense posistion ${n2k}`)
 ### Working with PGN Definitions
 
 ```typescript
-import { 
-  getPGNWithNumber, 
-  getPGNWithId, 
-  findMatchingDefinition 
+import {
+  getPGNWithNumber,
+  getPGNWithId,
+  findMatchingDefinition
 } from '@canboat/ts-pgns'
 
 // Get PGN definition by number
@@ -114,10 +116,10 @@ if (gpsPosition) {
 ### Working with Enumerations
 
 ```typescript
-import { 
-  getEnumerationValue, 
+import {
+  getEnumerationValue,
   getEnumerationName,
-  getBitEnumerationValue 
+  getBitEnumerationValue
 } from '@canboat/ts-pgns'
 
 // Get numeric value for enumeration
@@ -138,21 +140,23 @@ const alertBit = getBitEnumerationValue('ENGINE_ALERT', 'Warning')
 import { mapCamelCaseKeys, mapNameKeysToCamelCase } from '@canboat/ts-pgns'
 
 // Convert PGN field IDs to camelCase names
-const pgn = new PGN_129029({ /* ... */ })
+const pgn = new PGN_129029({
+  /* ... */
+})
 const camelCasePgn = mapCamelCaseKeys(pgn)
 
 // Now you can access fields by name instead of ID
-console.log(camelCasePgn.fields.latitude)  // instead of fields.latitude
+console.log(camelCasePgn.fields.latitude) // instead of fields.latitude
 console.log(camelCasePgn.fields.longitude) // instead of fields.longitude
 ```
 
 ### Creating Group Function Messages
 
 ```typescript
-import { 
-  createNmeaGroupFunction, 
-  GroupFunction, 
-  PGN_127488 
+import {
+  createNmeaGroupFunction,
+  GroupFunction,
+  PGN_127488
 } from '@canboat/ts-pgns'
 
 // Create an engine parameters PGN
@@ -166,7 +170,7 @@ const enginePgn = new PGN_127488({
 const requestMsg = createNmeaGroupFunction(
   GroupFunction.Request,
   enginePgn,
-  42  // destination address
+  42 // destination address
 )
 ```
 
@@ -175,29 +179,34 @@ const requestMsg = createNmeaGroupFunction(
 The library includes type-safe classes for hundreds of NMEA 2000 PGNs. Some commonly used ones include:
 
 ### Navigation & Positioning
+
 - `PGN_129029` - GNSS Position Data
-- `PGN_129025` - Position, Rapid Update  
+- `PGN_129025` - Position, Rapid Update
 - `PGN_129026` - COG & SOG, Rapid Update
 - `PGN_127250` - Vessel Heading
 - `PGN_130306` - Wind Data
 
-### Engine & Propulsion  
+### Engine & Propulsion
+
 - `PGN_127488` - Engine Parameters, Rapid Update
 - `PGN_127489` - Engine Parameters, Dynamic
 - `PGN_127505` - Fluid Level
 - `PGN_130312` - Temperature
 
 ### Electrical Systems
+
 - `PGN_127508` - Battery Status
 - `PGN_127506` - DC Detailed Status
 - `PGN_127513` - Battery Configuration Status
 
 ### Environmental
+
 - `PGN_130310` - Environmental Parameters
-- `PGN_130311` - Environmental Parameters  
+- `PGN_130311` - Environmental Parameters
 - `PGN_130316` - Temperature, Extended Range
 
 Each PGN class provides:
+
 - Type-safe field access
 - Proper TypeScript interfaces
 - Built-in validation
@@ -238,16 +247,16 @@ This library provides comprehensive TypeScript support:
 ```typescript
 // Strongly typed fields
 const gps = new PGN_129029({
-  latitude: 47.6062,        // number
-  longitude: -122.3321,     // number
-  gnssType: 3,             // number (enumeration)
-  method: 1                // number (enumeration)
+  latitude: 47.6062, // number
+  longitude: -122.3321, // number
+  gnssType: 3, // number (enumeration)
+  method: 1 // number (enumeration)
 })
 
 // TypeScript will catch field type errors
 const badGps = new PGN_129029({
-  latitude: "invalid",      // ❌ TypeScript error: string not assignable to number
-  gnssType: "GPS"          // ❌ TypeScript error: string not assignable to number
+  latitude: 'invalid', // ❌ TypeScript error: string not assignable to number
+  gnssType: 'GPS' // ❌ TypeScript error: string not assignable to number
 })
 
 // Proper enumeration usage
@@ -255,7 +264,7 @@ import { GnssType } from '@canboat/ts-pgns'
 const correctGps = new PGN_129029({
   latitude: 47.6062,
   longitude: -122.3321,
-  gnssType: GnssType.Gps,  // ✅ Type-safe enumeration
+  gnssType: GnssType.Gps, // ✅ Type-safe enumeration
   method: 1
 })
 ```
@@ -307,7 +316,7 @@ Once the API stabilizes, breaking changes will only be introduced in major relea
 ```json
 {
   "dependencies": {
-    "@canboat/ts-pgns": "~1.10.0"  // Pin to minor version
+    "@canboat/ts-pgns": "~1.10.0" // Pin to minor version
   }
 }
 ```
@@ -321,7 +330,6 @@ Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for detai
 - **[canboat](https://github.com/canboat/canboat)** - Core Canboat
 - **[canboatjs](https://github.com/canboat/canboatjs)** - Core Canboat JavaScript library
 - **[signalk-server](https://github.com/SignalK/signalk-server-node)** - Signal K server implementation
-
 
 ---
 

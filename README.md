@@ -7,17 +7,20 @@ A comprehensive TypeScript library providing strongly-typed NMEA 2000 Parameter 
 
 ## 📋 Table of Contents
 
-- [Overview](#overview)
-- [Features](#features)
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [API Documentation](#api-documentation)
-- [Usage Examples](#usage-examples)
-- [PGN Classes](#pgn-classes)
-- [Utilities](#utilities)
-- [Type Safety](#type-safety)
-- [Contributing](#contributing)
-- [License](#license)
+- [Overview](#-overview)
+- [Features](#-features)
+- [Installation](#-installation)
+- [Quick Start](#-quick-start)
+- [API Documentation](#-api-documentation)
+- [Usage Examples](#-usage-examples)
+- [PGN Classes](#-pgn-classes)
+- [Utilities](#-utilities)
+- [Type Safety](#-type-safety)
+- [Building from Source](#-building-from-source)
+- [Contributing](#-contributing)
+- [Version Policy](#-version-policy)
+- [License](#-license)
+- [Related Projects](#-related-projects)
 
 ## 🌊 Overview
 
@@ -156,20 +159,19 @@ console.log(camelCasePgn.fields.longitude) // instead of fields.longitude
 import {
   createNmeaGroupFunction,
   GroupFunction,
-  PGN_127488
+  SeatalkPilotMode16
+  PGN_65379_SeatalkPilotMode
 } from '@canboat/ts-pgns'
 
-// Create an engine parameters PGN
-const enginePgn = new PGN_127488({
-  engineInstance: 0,
-  oilPressure: 275000,
-  temperature: 353.15
-})
+const pgn = new PGN_65379_SeatalkPilotMode({
+  pilotMode: SeatalkPilotMode16.TrackMode,
+  subMode: 0xffff
+}),
 
-// Create a command group function to request this data
+// Create a command group function to change this data
 const requestMsg = createNmeaGroupFunction(
-  GroupFunction.Request,
-  enginePgn,
+  GroupFunction.Command,
+  pgn,
   42 // destination address
 )
 ```

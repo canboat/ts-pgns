@@ -5,30 +5,30 @@
 
 A comprehensive TypeScript library providing strongly-typed NMEA 2000 Parameter Group Number (PGN) definitions and utilities for marine electronics communication.
 
-## 📋 Table of Contents
+## Table of Contents
 
-- [Overview](#-overview)
-- [Features](#-features)
-- [Installation](#-installation)
-- [Quick Start](#-quick-start)
-- [API Documentation](#-api-documentation)
-- [Usage Examples](#-usage-examples)
-- [PGN Classes](#-pgn-classes)
-- [Utilities](#-utilities)
-- [Type Safety](#-type-safety)
-- [Building from Source](#-building-from-source)
-- [Contributing](#-contributing)
-- [Version Policy](#-version-policy)
-- [License](#-license)
-- [Related Projects](#-related-projects)
+- [Overview](#overview)
+- [Features](#features)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [API Documentation](#api-documentation)
+- [Usage Examples](#usage-examples)
+- [PGN Classes](#pgn-classes)
+- [Utilities](#utilities)
+- [Type Safety](#type-safety)
+- [Building from Source](#building-from-source)
+- [Contributing](#contributing)
+- [Version Policy](#version-policy)
+- [License](#license)
+- [Related Projects](#related-projects)
 
-## 🌊 Overview
+## Overview
 
 This library provides TypeScript definitions and utilities for working with NMEA 2000 Parameter Group Numbers (PGNs), which are standardized data messages used in marine electronics networks. Built on top of the Canboat project's PGN definitions, it offers type-safe access to hundreds of marine data message formats.
 
 **What are PGNs?** Parameter Group Numbers are standardized message formats in the NMEA 2000 protocol that define how different types of marine data (GPS position, engine data, weather information, etc.) are structured and transmitted over the network.
 
-## ✨ Features
+## Features
 
 - **🔒 Type Safety**: Fully typed PGN classes with TypeScript interfaces
 - **📊 Comprehensive Coverage**: Supports hundreds of standard NMEA 2000 PGNs
@@ -39,13 +39,13 @@ This library provides TypeScript definitions and utilities for working with NMEA
 - **🔄 Conversion Utilities**: Convert between different PGN representations
 - **⚡ Performance Optimized**: Efficient lookup and creation of PGN objects
 
-## 📦 Installation
+## Installation
 
 ```bash
 npm install @canboat/ts-pgns
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ```typescript
 import { PGN_129029, PGN_127488 } from '@canboat/ts-pgns'
@@ -87,11 +87,11 @@ const n2k = pgnToActisenseSerialFormat(gpsPosition)
 console.log(`actisense posistion ${n2k}`)
 ```
 
-## 📚 API Documentation
+## API Documentation
 
 [Complete API Documentation](https://canboat.github.io/ts-pgns/index.html)
 
-## 💡 Usage Examples
+## Usage Examples
 
 ### Working with PGN Definitions
 
@@ -159,14 +159,14 @@ console.log(camelCasePgn.fields.longitude) // instead of fields.longitude
 import {
   createNmeaGroupFunction,
   GroupFunction,
-  SeatalkPilotMode16
+  SeatalkPilotMode16,
   PGN_65379_SeatalkPilotMode
 } from '@canboat/ts-pgns'
 
 const pgn = new PGN_65379_SeatalkPilotMode({
   pilotMode: SeatalkPilotMode16.TrackMode,
   subMode: 0xffff
-}),
+})
 
 // Create a command group function to change this data
 const requestMsg = createNmeaGroupFunction(
@@ -176,7 +176,7 @@ const requestMsg = createNmeaGroupFunction(
 )
 ```
 
-## 🏗️ PGN Classes
+## PGN Classes
 
 The library includes type-safe classes for hundreds of NMEA 2000 PGNs. Some commonly used ones include:
 
@@ -214,7 +214,7 @@ Each PGN class provides:
 - Built-in validation
 - Access to the underlying PGN definition
 
-## 🔧 Utilities
+## Utilities
 
 ### Core Utilities
 
@@ -242,7 +242,7 @@ Each PGN class provides:
 - `convertCamelCase(pluginApp, pgn)` - Convert keys based on server capability
 - `convertNamesToCamel(pluginApp, pgn)` - Convert names based on server capability
 
-## 🛡️ Type Safety
+## Type Safety
 
 This library provides comprehensive TypeScript support:
 
@@ -271,7 +271,7 @@ const correctGps = new PGN_129029({
 })
 ```
 
-## 🏗️ Building from Source
+## Building from Source
 
 ```bash
 # Clone the repository
@@ -294,7 +294,7 @@ npm run build:docs
 npm run format
 ```
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
 
@@ -309,7 +309,7 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 7. Push to the branch: `git push origin feature/amazing-feature`
 8. Open a Pull Request
 
-## 📋 Version Policy
+## Version Policy
 
 **Important Note:** This library is currently in active development. Minor releases may include breaking changes. Please pin to specific minor versions (e.g., `1.10.x`) in your dependencies.
 
@@ -323,11 +323,11 @@ Once the API stabilizes, breaking changes will only be introduced in major relea
 }
 ```
 
-## 📄 License
+## License
 
 Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for details.
 
-## 🔗 Related Projects
+## Related Projects
 
 - **[canboat](https://github.com/canboat/canboat)** - Core Canboat
 - **[canboatjs](https://github.com/canboat/canboatjs)** - Core Canboat JavaScript library

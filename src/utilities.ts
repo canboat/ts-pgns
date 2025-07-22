@@ -27,7 +27,7 @@ import {
   PGN_126208_NmeaReadFieldsGroupFunction,
   PGN_126208_NmeaReadFieldsReplyGroupFunction,
   PGN_126208_NmeaWriteFieldsGroupFunction,
-  PGN_126208_NmeaWriteFieldsReplyGroupFunction
+  PGN_126208_NmeaWriteFieldsReplyGroupFunction,
 } from './pgns'
 import { GroupFunction } from './enums'
 import canboat from '../canboat.json'
@@ -649,6 +649,7 @@ export const convertNamesToCamel = (pluginApp: any, pgn: any) => {
  *
  * @param groupFunction - The type of group function to create (e.g., Request, Command, Acknowledge, ReadFields, etc.).
  * @param pgn - The PGN object containing the definition and field values.
+ * @param fields - Optional additional fields to include in the message.
  * @param dst - Optional destination address for the message.
  * @returns An instance of the corresponding NMEA 2000 group function PGN message.
  * @throws Error if the provided group function is not supported.
@@ -657,6 +658,7 @@ export const convertNamesToCamel = (pluginApp: any, pgn: any) => {
 export const createNmeaGroupFunction = (
   groupFunction: GroupFunction,
   pgn: PGN,
+  fields?: any,
   dst?: number
 ) => {
   const def = pgn.getDefinition()
@@ -690,17 +692,17 @@ export const createNmeaGroupFunction = (
   switch (groupFunction) {
     case GroupFunction.Request:
       return new PGN_126208_NmeaRequestGroupFunction(
-        { pgn: pgn.pgn, numberOfParameters: list.length, list },
+        { pgn: pgn.pgn, numberOfParameters: list.length, list, ...fields },
         dst
       )
     case GroupFunction.Command:
       return new PGN_126208_NmeaCommandGroupFunction(
-        { pgn: pgn.pgn, numberOfParameters: list.length, list },
+        { pgn: pgn.pgn, numberOfParameters: list.length, list, ...fields },
         dst
       )
     case GroupFunction.Acknowledge:
       return new PGN_126208_NmeaAcknowledgeGroupFunction(
-        { pgn: pgn.pgn, numberOfParameters: list.length, list },
+        { pgn: pgn.pgn, numberOfParameters: list.length, list, ...fields },
         dst
       )
     case GroupFunction.ReadFields:
@@ -712,7 +714,8 @@ export const createNmeaGroupFunction = (
             selectionParameter?: N2K_FieldIndex
             selectionValue?: N2K_Variable
           }[],
-          list2: []
+          list2: [],
+          ...fields
         },
         dst
       )
@@ -725,7 +728,8 @@ export const createNmeaGroupFunction = (
             selectionParameter?: N2K_FieldIndex
             selectionValue?: N2K_Variable
           }[],
-          list2: []
+          list2: [],
+          ...fields
         },
         dst
       )
@@ -738,7 +742,8 @@ export const createNmeaGroupFunction = (
             selectionParameter?: N2K_FieldIndex
             selectionValue?: N2K_Variable
           }[],
-          list2: []
+          list2: [],
+          ...fields
         },
         dst
       )
@@ -751,7 +756,8 @@ export const createNmeaGroupFunction = (
             selectionParameter?: N2K_FieldIndex
             selectionValue?: N2K_Variable
           }[],
-          list2: []
+          list2: [],
+          ...fields
         },
         dst
       )

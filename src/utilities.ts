@@ -27,7 +27,7 @@ import {
   PGN_126208_NmeaReadFieldsGroupFunction,
   PGN_126208_NmeaReadFieldsReplyGroupFunction,
   PGN_126208_NmeaWriteFieldsGroupFunction,
-  PGN_126208_NmeaWriteFieldsReplyGroupFunction,
+  PGN_126208_NmeaWriteFieldsReplyGroupFunction
 } from './pgns'
 import { GroupFunction } from './enums'
 import canboat from '../canboat.json'

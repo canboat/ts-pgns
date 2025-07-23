@@ -284,11 +284,12 @@ npm install
 # Build the project
 npm run build
 
+# Generate the typescript files if you have changed canboat.json
+npm run generate
+npm run build
+
 # Run tests
 npm test
-
-# Generate documentation
-npm run build:docs
 
 # Format code
 npm run format

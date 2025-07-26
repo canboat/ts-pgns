@@ -2168,6 +2168,30 @@ export const SeatalkPilotModeValues: {[key: string]: number} = {
 /**
  * @category Enumerations
  */
+export enum SeatalkPilotHullType {
+  Sail = 'Sail',
+  SailslowTurn = 'Sail (slow turn)',
+  SailCatamaran = 'Sail Catamaran',
+  PowerslowTurn = 'Power (slow turn)',
+  PowerfastTurn = 'Power (fast turn)',
+  Power = 'Power',
+}
+
+/**
+ * @category Enumerations
+ */
+export const SeatalkPilotHullTypeValues: {[key: string]: number} = {
+  [SeatalkPilotHullType.Sail]: 0x0,
+  [SeatalkPilotHullType.SailslowTurn]: 0x1,
+  [SeatalkPilotHullType.SailCatamaran]: 0x2,
+  [SeatalkPilotHullType.PowerslowTurn]: 0x3,
+  [SeatalkPilotHullType.PowerfastTurn]: 0x5,
+  [SeatalkPilotHullType.Power]: 0x8,
+}
+
+/**
+ * @category Enumerations
+ */
 export enum EntertainmentZone {
   AllZones = 'All zones',
   Zone1 = 'Zone 1',
@@ -6021,6 +6045,74 @@ export const ZoneSizeValues: {[key: string]: number} = {
   [ZoneSize._4Nm]: 0x3,
   [ZoneSize._5Nm]: 0x4,
   [ZoneSize._6Nm]: 0x5,
+}
+
+/**
+ * @category Enumerations
+ */
+export enum MaretronProductCode {
+  Ssc200 = 'SSC200',
+  Ssc300 = 'SSC300',
+}
+
+/**
+ * @category Enumerations
+ */
+export const MaretronProductCodeValues: {[key: string]: number} = {
+  [MaretronProductCode.Ssc200]: 0x1b2,
+  [MaretronProductCode.Ssc300]: 0xa7e,
+}
+
+/**
+ * @category Enumerations
+ */
+export enum MaretronSoftwareCode {
+  Version1 = 'Version 1',
+}
+
+/**
+ * @category Enumerations
+ */
+export const MaretronSoftwareCodeValues: {[key: string]: number} = {
+  [MaretronSoftwareCode.Version1]: 0x1,
+}
+
+/**
+ * @category Enumerations
+ */
+export enum MaretronCommand {
+  DeviationCalibration = 'Deviation calibration',
+}
+
+/**
+ * @category Enumerations
+ */
+export const MaretronCommandValues: {[key: string]: number} = {
+  [MaretronCommand.DeviationCalibration]: 0x50,
+}
+
+/**
+ * @category Enumerations
+ */
+export enum MaretronStatusDeviation {
+  Started = 'Started',
+  CompletedSuccessfully = 'Completed successfully',
+  FailedToComplete = 'Failed to complete',
+  TurningTooFast = 'Turning too fast',
+  TurningTooSlow = 'Turning too slow',
+  InvalidMovement = 'Invalid movement',
+}
+
+/**
+ * @category Enumerations
+ */
+export const MaretronStatusDeviationValues: {[key: string]: number} = {
+  [MaretronStatusDeviation.Started]: 0x1,
+  [MaretronStatusDeviation.CompletedSuccessfully]: 0x2,
+  [MaretronStatusDeviation.FailedToComplete]: 0x3,
+  [MaretronStatusDeviation.TurningTooFast]: 0x4,
+  [MaretronStatusDeviation.TurningTooSlow]: 0x5,
+  [MaretronStatusDeviation.InvalidMovement]: 0x6,
 }
 
 /**

@@ -20,6 +20,7 @@ const pgnIdToCreator: {[key:string]: any} = {}
  * @returns The created PGN object, or `undefined` if no creator is found for the given `id`.
  * @category Utilities
  */
+
 export const createPGN = (id: string, fields: any, dst:number|undefined = undefined ) : PGN|undefined => {
   const creator = pgnIdToCreator[id]
 
@@ -2567,7 +2568,7 @@ export interface PGN_65285_LowranceTemperatureFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  temperatureSource?: enums.TemperatureSource | number
+  temperatureSource: enums.TemperatureSource | number
   actualTemperature?: N2K_Number
   reserved6?: number
 }
@@ -2585,7 +2586,7 @@ export const PGN_65285_LowranceTemperatureMatchFields = {
  */
 export interface PGN_65285_LowranceTemperatureCreateArgs {
   reserved?: number
-  temperatureSource?: enums.TemperatureSource | number
+  temperatureSource: enums.TemperatureSource | number
   actualTemperature?: N2K_Number
   reserved6?: number
 }
@@ -5705,6 +5706,79 @@ pgnIdToCreator['seatalk1PilotMode'] = (fields:any, dst:number) => new PGN_126720
 /**
  * PGN: 126720
  *
+ * Description: Seatalk1: Pilot Hull Type
+ *
+ * Match: Manufacturer Code == Raymarine<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == 0x166C<br>
+ * Match: command == 0x50<br>
+ *
+ * @category PGN_126720_Seatalk1PilotHullType
+ */
+export interface PGN_126720_Seatalk1PilotHullTypeInterface extends PGNInterface {
+  fields: PGN_126720_Seatalk1PilotHullTypeFields
+}
+
+/**
+ * @category PGN_126720_Seatalk1PilotHullType
+ */
+export interface PGN_126720_Seatalk1PilotHullTypeFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: N2K_Number | string
+  command?: N2K_Number | string
+  hullType?: enums.SeatalkPilotHullType | number
+  unknown?: N2K_Binary
+}
+
+/**
+ * @category PGN_126720_Seatalk1PilotHullType
+ */
+export const PGN_126720_Seatalk1PilotHullTypeMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Raymarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: "0x166C",
+  command: "0x50",
+}
+
+/**
+ * @category PGN_126720_Seatalk1PilotHullType
+ */
+export interface PGN_126720_Seatalk1PilotHullTypeCreateArgs {
+  reserved?: number
+  hullType?: enums.SeatalkPilotHullType | number
+  unknown?: N2K_Binary
+}
+
+/**
+ * @category PGN_126720_Seatalk1PilotHullType
+ */
+export class PGN_126720_Seatalk1PilotHullType extends PGN implements PGN_126720_Seatalk1PilotHullTypeInterface {
+  fields: PGN_126720_Seatalk1PilotHullTypeFields
+
+  constructor(fields: PGN_126720_Seatalk1PilotHullTypeCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_Seatalk1PilotHullTypeMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_Seatalk1PilotHullTypeMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('seatalk1PilotHullType')!
+  }
+}
+pgnIdToCreator['seatalk1PilotHullType'] = (fields:any, dst:number) => new PGN_126720_Seatalk1PilotHullType(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
  * Description: Fusion: Media Control
  *
  * Match: Manufacturer Code == Fusion Electronics<br>
@@ -7513,6 +7587,79 @@ pgnIdToCreator['airmarAddressableMultiFrame'] = (fields:any, dst:number) => new 
 /**
  * PGN: 126720
  *
+ * Description: Maretron: Deviation Calibration Response
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Software code == Version 1<br>
+ * Match: Command == Deviation calibration<br>
+ *
+ * @category PGN_126720_MaretronDeviationCalibrationResponse
+ */
+export interface PGN_126720_MaretronDeviationCalibrationResponseInterface extends PGNInterface {
+  fields: PGN_126720_MaretronDeviationCalibrationResponseFields
+}
+
+/**
+ * @category PGN_126720_MaretronDeviationCalibrationResponse
+ */
+export interface PGN_126720_MaretronDeviationCalibrationResponseFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  productCode?: enums.MaretronProductCode | number
+  softwareCode?: enums.MaretronSoftwareCode | number
+  command?: enums.MaretronCommand | number
+  status?: enums.MaretronStatusDeviation | number
+}
+
+/**
+ * @category PGN_126720_MaretronDeviationCalibrationResponse
+ */
+export const PGN_126720_MaretronDeviationCalibrationResponseMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  softwareCode: enums.MaretronSoftwareCode.Version1,
+  command: enums.MaretronCommand.DeviationCalibration,
+}
+
+/**
+ * @category PGN_126720_MaretronDeviationCalibrationResponse
+ */
+export interface PGN_126720_MaretronDeviationCalibrationResponseCreateArgs {
+  reserved?: number
+  productCode?: enums.MaretronProductCode | number
+  status?: enums.MaretronStatusDeviation | number
+}
+
+/**
+ * @category PGN_126720_MaretronDeviationCalibrationResponse
+ */
+export class PGN_126720_MaretronDeviationCalibrationResponse extends PGN implements PGN_126720_MaretronDeviationCalibrationResponseInterface {
+  fields: PGN_126720_MaretronDeviationCalibrationResponseFields
+
+  constructor(fields: PGN_126720_MaretronDeviationCalibrationResponseCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_MaretronDeviationCalibrationResponseMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_MaretronDeviationCalibrationResponseMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronDeviationCalibrationResponse')!
+  }
+}
+pgnIdToCreator['maretronDeviationCalibrationResponse'] = (fields:any, dst:number) => new PGN_126720_MaretronDeviationCalibrationResponse(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
  * Description: Maretron: Slave Response
  *
  * Match: Manufacturer Code == Maretron<br>
@@ -8744,7 +8891,7 @@ export interface PGN_127258Interface extends PGNInterface {
  */
 export interface PGN_127258Fields {
   sid?: N2K_Number
-  source?: enums.MagneticVariation | number
+  source: enums.MagneticVariation | number
   reserved?: number
   ageOfService?: N2K_Date
   variation?: N2K_Number
@@ -13017,7 +13164,7 @@ export interface PGN_129797Interface extends PGNInterface {
 export interface PGN_129797Fields {
   messageId?: enums.AisMessageId | number
   repeatIndicator?: enums.RepeatIndicator | number
-  sourceId?: N2K_Number
+  sourceId: N2K_Mmsi
   reserved?: number
   aisTransceiverInformation?: enums.AisTransceiver | number
   spare6?: number
@@ -21357,7 +21504,7 @@ export interface PGN_130823_MaretronProprietaryTemperatureHighRangeFields {
   industryCode?: enums.IndustryCode | number
   sid?: N2K_Number
   instance: N2K_Number
-  source?: enums.TemperatureSource | number
+  source: enums.TemperatureSource | number
   actualTemperature?: N2K_Number
   setTemperature?: N2K_Number
 }
@@ -21377,7 +21524,7 @@ export interface PGN_130823_MaretronProprietaryTemperatureHighRangeCreateArgs {
   reserved?: number
   sid?: N2K_Number
   instance: N2K_Number
-  source?: enums.TemperatureSource | number
+  source: enums.TemperatureSource | number
   actualTemperature?: N2K_Number
   setTemperature?: N2K_Number
 }
@@ -21431,7 +21578,7 @@ export interface PGN_130824_BGKeyValueDataFields {
   reserved?: number
   industryCode?: enums.IndustryCode | number
   list: {
-    key?: N2K_DynamicFieldKey
+    key: N2K_DynamicFieldKey
     length?: N2K_DynamicFieldLength
     value?: N2K_DynamicFieldValue
   }[]
@@ -21451,7 +21598,7 @@ export const PGN_130824_BGKeyValueDataMatchFields = {
 export interface PGN_130824_BGKeyValueDataCreateArgs {
   reserved?: number
   list: {
-    key?: N2K_DynamicFieldKey
+    key: N2K_DynamicFieldKey
     length?: N2K_DynamicFieldLength
     value?: N2K_DynamicFieldValue
   }[]
@@ -21905,7 +22052,7 @@ export interface PGN_130833_BGUserAndRemoteRenameFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  dataType?: N2K_DynamicFieldKey
+  dataType: N2K_DynamicFieldKey
   length?: N2K_Number
   reserved6?: number
   decimals?: enums.BandgDecimals | number
@@ -21926,7 +22073,7 @@ export const PGN_130833_BGUserAndRemoteRenameMatchFields = {
  */
 export interface PGN_130833_BGUserAndRemoteRenameCreateArgs {
   reserved?: number
-  dataType?: N2K_DynamicFieldKey
+  dataType: N2K_DynamicFieldKey
   length?: N2K_Number
   reserved6?: number
   decimals?: enums.BandgDecimals | number
@@ -23054,7 +23201,7 @@ export interface PGN_130845_SimnetKeyValueFields {
   repeatIndicator?: enums.RepeatIndicator | number
   displayGroup?: enums.SimnetDisplayGroup | number
   reserved7?: number
-  key?: N2K_DynamicFieldKey
+  key: N2K_DynamicFieldKey
   spare9?: number
   minlength?: N2K_Number
   value?: N2K_DynamicFieldValue
@@ -23077,7 +23224,7 @@ export interface PGN_130845_SimnetKeyValueCreateArgs {
   repeatIndicator?: enums.RepeatIndicator | number
   displayGroup?: enums.SimnetDisplayGroup | number
   reserved7?: number
-  key?: N2K_DynamicFieldKey
+  key: N2K_DynamicFieldKey
   spare9?: number
   minlength?: N2K_Number
   value?: N2K_DynamicFieldValue
@@ -23133,7 +23280,7 @@ export interface PGN_130846_SimnetParameterSetFields {
   b?: N2K_Number
   displayGroup?: enums.SimnetDisplayGroup | number
   d?: N2K_Number
-  key?: N2K_DynamicFieldKey
+  key: N2K_DynamicFieldKey
   spare9?: number
   length?: N2K_Number
   value?: N2K_DynamicFieldValue
@@ -23156,7 +23303,7 @@ export interface PGN_130846_SimnetParameterSetCreateArgs {
   b?: N2K_Number
   displayGroup?: enums.SimnetDisplayGroup | number
   d?: N2K_Number
-  key?: N2K_DynamicFieldKey
+  key: N2K_DynamicFieldKey
   spare9?: number
   length?: N2K_Number
   value?: N2K_DynamicFieldValue

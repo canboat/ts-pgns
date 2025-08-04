@@ -5631,9 +5631,8 @@ pgnIdToCreator['0x1ef00ManufacturerProprietaryFastPacketAddressed'] = (fields:an
  *
  * Match: Manufacturer Code == Raymarine<br>
  * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == Seatalk 1 Encoded<br>
- * Match: command == Seatalk1<br>
- * Match: Seatalk1 Command == Compass heading Autopilot course and Rudder position<br>
+ * Match: Proprietary ID == 0x81f0<br>
+ * Match: command == 0x84<br>
  *
  * @category PGN_126720_Seatalk1PilotMode
  */
@@ -5648,9 +5647,8 @@ export interface PGN_126720_Seatalk1PilotModeFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  proprietaryId: enums.SeatalkMessageId | number
-  command: enums.SeatalkCommand | number
-  seatalk1Command: enums.Seatalk1Command | number
+  proprietaryId: N2K_Number | string
+  command?: N2K_Number | string
   unknown1?: N2K_Binary
   pilotMode?: enums.SeatalkPilotMode | number
   subMode?: N2K_Number
@@ -5664,9 +5662,8 @@ export interface PGN_126720_Seatalk1PilotModeFields {
 export const PGN_126720_Seatalk1PilotModeMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.MarineIndustry,
-  proprietaryId: enums.SeatalkMessageId.Seatalk1Encoded,
-  command: enums.SeatalkCommand.Seatalk1,
-  seatalk1Command: enums.Seatalk1Command.CompassHeadingAutopilotCourseAndRudderPosition,
+  proprietaryId: "0x81f0",
+  command: "0x84",
 }
 
 /**
@@ -5713,8 +5710,8 @@ pgnIdToCreator['seatalk1PilotMode'] = (fields:any, dst:number) => new PGN_126720
  *
  * Match: Manufacturer Code == Raymarine<br>
  * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == Pilot Configuration<br>
- * Match: command == Hull Type<br>
+ * Match: Proprietary ID == 0x166C<br>
+ * Match: command == 0x50<br>
  *
  * @category PGN_126720_Seatalk1PilotHullType
  */
@@ -5729,11 +5726,10 @@ export interface PGN_126720_Seatalk1PilotHullTypeFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  proprietaryId: enums.SeatalkMessageId | number
-  command: enums.SeatalkCommand | number
-  unknown?: N2K_Binary
+  proprietaryId: N2K_Number | string
+  command?: N2K_Number | string
   hullType?: enums.SeatalkPilotHullType | number
-  unknown2?: N2K_Binary
+  unknown?: N2K_Binary
 }
 
 /**
@@ -5742,8 +5738,8 @@ export interface PGN_126720_Seatalk1PilotHullTypeFields {
 export const PGN_126720_Seatalk1PilotHullTypeMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Raymarine,
   industryCode: enums.IndustryCode.MarineIndustry,
-  proprietaryId: enums.SeatalkMessageId.PilotConfiguration,
-  command: enums.SeatalkCommand.HullType,
+  proprietaryId: "0x166C",
+  command: "0x50",
 }
 
 /**
@@ -5751,9 +5747,8 @@ export const PGN_126720_Seatalk1PilotHullTypeMatchFields = {
  */
 export interface PGN_126720_Seatalk1PilotHullTypeCreateArgs {
   reserved?: number
-  unknown?: N2K_Binary
   hullType?: enums.SeatalkPilotHullType | number
-  unknown2?: N2K_Binary
+  unknown?: N2K_Binary
 }
 
 /**
@@ -5779,398 +5774,6 @@ export class PGN_126720_Seatalk1PilotHullType extends PGN implements PGN_126720_
   }
 }
 pgnIdToCreator['seatalk1PilotHullType'] = (fields:any, dst:number) => new PGN_126720_Seatalk1PilotHullType(fields, dst)
-
-
-/**
- * PGN: 126720
- *
- * Description: Seatalk: Pilot Auto Turn
- *
- * Match: Manufacturer Code == Raymarine<br>
- * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == Pilot Configuration<br>
- * Match: command == Auto Turn<br>
- *
- * @category PGN_126720_SeatalkPilotAutoTurn
- */
-export interface PGN_126720_SeatalkPilotAutoTurnInterface extends PGNInterface {
-  fields: PGN_126720_SeatalkPilotAutoTurnFields
-}
-
-/**
- * @category PGN_126720_SeatalkPilotAutoTurn
- */
-export interface PGN_126720_SeatalkPilotAutoTurnFields {
-  manufacturerCode?: enums.ManufacturerCode | number
-  reserved?: number
-  industryCode?: enums.IndustryCode | number
-  proprietaryId: enums.SeatalkMessageId | number
-  command: enums.SeatalkCommand | number
-  unknown?: N2K_Binary
-  enabled?: enums.YesNo | number
-  unknown2?: enums.YesNo | number
-  unknown3?: N2K_Binary
-}
-
-/**
- * @category PGN_126720_SeatalkPilotAutoTurn
- */
-export const PGN_126720_SeatalkPilotAutoTurnMatchFields = {
-  manufacturerCode: enums.ManufacturerCode.Raymarine,
-  industryCode: enums.IndustryCode.MarineIndustry,
-  proprietaryId: enums.SeatalkMessageId.PilotConfiguration,
-  command: enums.SeatalkCommand.AutoTurn,
-}
-
-/**
- * @category PGN_126720_SeatalkPilotAutoTurn
- */
-export interface PGN_126720_SeatalkPilotAutoTurnCreateArgs {
-  reserved?: number
-  unknown?: N2K_Binary
-  enabled?: enums.YesNo | number
-  unknown2?: enums.YesNo | number
-  unknown3?: N2K_Binary
-}
-
-/**
- * @category PGN_126720_SeatalkPilotAutoTurn
- */
-export class PGN_126720_SeatalkPilotAutoTurn extends PGN implements PGN_126720_SeatalkPilotAutoTurnInterface {
-  fields: PGN_126720_SeatalkPilotAutoTurnFields
-
-  constructor(fields: PGN_126720_SeatalkPilotAutoTurnCreateArgs, dst: number = 255) {
-    super({
-      pgn: 126720,
-      prio: 3,
-      dst
-    })
-    this.fields = { ...PGN_126720_SeatalkPilotAutoTurnMatchFields, ...fields }
-  }
-
-  static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_126720_SeatalkPilotAutoTurnMatchFields)
-  }
-  getDefinition(): Definition {
-    return getPGNWithId('seatalkPilotAutoTurn')!
-  }
-}
-pgnIdToCreator['seatalkPilotAutoTurn'] = (fields:any, dst:number) => new PGN_126720_SeatalkPilotAutoTurn(fields, dst)
-
-
-/**
- * PGN: 126720
- *
- * Description: Seatalk1: Device Identification
- *
- * Match: Manufacturer Code == Raymarine<br>
- * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == Seatalk 1 Encoded<br>
- * Match: command == Seatalk1<br>
- * Match: Seatalk1 Command == Device Indentification<br>
- *
- * @category PGN_126720_Seatalk1DeviceIdentification
- */
-export interface PGN_126720_Seatalk1DeviceIdentificationInterface extends PGNInterface {
-  fields: PGN_126720_Seatalk1DeviceIdentificationFields
-}
-
-/**
- * @category PGN_126720_Seatalk1DeviceIdentification
- */
-export interface PGN_126720_Seatalk1DeviceIdentificationFields {
-  manufacturerCode?: enums.ManufacturerCode | number
-  reserved?: number
-  industryCode?: enums.IndustryCode | number
-  proprietaryId: enums.SeatalkMessageId | number
-  command: enums.SeatalkCommand | number
-  seatalk1Command: enums.Seatalk1Command | number
-  reserved7?: number
-  device?: enums.SeatalkDeviceId | number
-}
-
-/**
- * @category PGN_126720_Seatalk1DeviceIdentification
- */
-export const PGN_126720_Seatalk1DeviceIdentificationMatchFields = {
-  manufacturerCode: enums.ManufacturerCode.Raymarine,
-  industryCode: enums.IndustryCode.MarineIndustry,
-  proprietaryId: enums.SeatalkMessageId.Seatalk1Encoded,
-  command: enums.SeatalkCommand.Seatalk1,
-  seatalk1Command: enums.Seatalk1Command.DeviceIndentification,
-}
-
-/**
- * @category PGN_126720_Seatalk1DeviceIdentification
- */
-export interface PGN_126720_Seatalk1DeviceIdentificationCreateArgs {
-  reserved?: number
-  reserved7?: number
-  device?: enums.SeatalkDeviceId | number
-}
-
-/**
- * @category PGN_126720_Seatalk1DeviceIdentification
- */
-export class PGN_126720_Seatalk1DeviceIdentification extends PGN implements PGN_126720_Seatalk1DeviceIdentificationInterface {
-  fields: PGN_126720_Seatalk1DeviceIdentificationFields
-
-  constructor(fields: PGN_126720_Seatalk1DeviceIdentificationCreateArgs, dst: number = 255) {
-    super({
-      pgn: 126720,
-      prio: 3,
-      dst
-    })
-    this.fields = { ...PGN_126720_Seatalk1DeviceIdentificationMatchFields, ...fields }
-  }
-
-  static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_126720_Seatalk1DeviceIdentificationMatchFields)
-  }
-  getDefinition(): Definition {
-    return getPGNWithId('seatalk1DeviceIdentification')!
-  }
-}
-pgnIdToCreator['seatalk1DeviceIdentification'] = (fields:any, dst:number) => new PGN_126720_Seatalk1DeviceIdentification(fields, dst)
-
-
-/**
- * PGN: 126720
- *
- * Description: Seatalk1: Display Brightness
- *
- * Match: Manufacturer Code == Raymarine<br>
- * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == Display<br>
- * Match: command1 == Settings<br>
- *
- * @category PGN_126720_Seatalk1DisplayBrightness
- */
-export interface PGN_126720_Seatalk1DisplayBrightnessInterface extends PGNInterface {
-  fields: PGN_126720_Seatalk1DisplayBrightnessFields
-}
-
-/**
- * @category PGN_126720_Seatalk1DisplayBrightness
- */
-export interface PGN_126720_Seatalk1DisplayBrightnessFields {
-  manufacturerCode?: enums.ManufacturerCode | number
-  reserved?: number
-  industryCode?: enums.IndustryCode | number
-  proprietaryId: enums.SeatalkMessageId | number
-  command1: enums.SeatalkCommand | number
-  group?: enums.SeatalkNetworkGroup | number
-  unknown1?: N2K_Binary
-  command?: N2K_Number | string
-  brightness?: N2K_Number
-  unknown2?: N2K_Binary
-}
-
-/**
- * @category PGN_126720_Seatalk1DisplayBrightness
- */
-export const PGN_126720_Seatalk1DisplayBrightnessMatchFields = {
-  manufacturerCode: enums.ManufacturerCode.Raymarine,
-  industryCode: enums.IndustryCode.MarineIndustry,
-  proprietaryId: enums.SeatalkMessageId.Display,
-  command1: enums.SeatalkCommand.Settings,
-  command: "Brightness",
-}
-
-/**
- * @category PGN_126720_Seatalk1DisplayBrightness
- */
-export interface PGN_126720_Seatalk1DisplayBrightnessCreateArgs {
-  reserved?: number
-  group?: enums.SeatalkNetworkGroup | number
-  unknown1?: N2K_Binary
-  brightness?: N2K_Number
-  unknown2?: N2K_Binary
-}
-
-/**
- * @category PGN_126720_Seatalk1DisplayBrightness
- */
-export class PGN_126720_Seatalk1DisplayBrightness extends PGN implements PGN_126720_Seatalk1DisplayBrightnessInterface {
-  fields: PGN_126720_Seatalk1DisplayBrightnessFields
-
-  constructor(fields: PGN_126720_Seatalk1DisplayBrightnessCreateArgs, dst: number = 255) {
-    super({
-      pgn: 126720,
-      prio: 3,
-      dst
-    })
-    this.fields = { ...PGN_126720_Seatalk1DisplayBrightnessMatchFields, ...fields }
-  }
-
-  static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_126720_Seatalk1DisplayBrightnessMatchFields)
-  }
-  getDefinition(): Definition {
-    return getPGNWithId('seatalk1DisplayBrightness')!
-  }
-}
-pgnIdToCreator['seatalk1DisplayBrightness'] = (fields:any, dst:number) => new PGN_126720_Seatalk1DisplayBrightness(fields, dst)
-
-
-/**
- * PGN: 126720
- *
- * Description: Seatalk1: Display Color
- *
- * Match: Manufacturer Code == Raymarine<br>
- * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == Display<br>
- * Match: command1 == Settings<br>
- * Match: Command == Color<br>
- *
- * @category PGN_126720_Seatalk1DisplayColor
- */
-export interface PGN_126720_Seatalk1DisplayColorInterface extends PGNInterface {
-  fields: PGN_126720_Seatalk1DisplayColorFields
-}
-
-/**
- * @category PGN_126720_Seatalk1DisplayColor
- */
-export interface PGN_126720_Seatalk1DisplayColorFields {
-  manufacturerCode?: enums.ManufacturerCode | number
-  reserved?: number
-  industryCode?: enums.IndustryCode | number
-  proprietaryId: enums.SeatalkMessageId | number
-  command1: enums.SeatalkCommand | number
-  group?: enums.SeatalkNetworkGroup | number
-  unknown1?: N2K_Binary
-  command?: N2K_Number | string
-  color?: enums.SeatalkDisplayColor | number
-  unknown2?: N2K_Binary
-}
-
-/**
- * @category PGN_126720_Seatalk1DisplayColor
- */
-export const PGN_126720_Seatalk1DisplayColorMatchFields = {
-  manufacturerCode: enums.ManufacturerCode.Raymarine,
-  industryCode: enums.IndustryCode.MarineIndustry,
-  proprietaryId: enums.SeatalkMessageId.Display,
-  command1: enums.SeatalkCommand.Settings,
-  command: "Color",
-}
-
-/**
- * @category PGN_126720_Seatalk1DisplayColor
- */
-export interface PGN_126720_Seatalk1DisplayColorCreateArgs {
-  reserved?: number
-  group?: enums.SeatalkNetworkGroup | number
-  unknown1?: N2K_Binary
-  color?: enums.SeatalkDisplayColor | number
-  unknown2?: N2K_Binary
-}
-
-/**
- * @category PGN_126720_Seatalk1DisplayColor
- */
-export class PGN_126720_Seatalk1DisplayColor extends PGN implements PGN_126720_Seatalk1DisplayColorInterface {
-  fields: PGN_126720_Seatalk1DisplayColorFields
-
-  constructor(fields: PGN_126720_Seatalk1DisplayColorCreateArgs, dst: number = 255) {
-    super({
-      pgn: 126720,
-      prio: 3,
-      dst
-    })
-    this.fields = { ...PGN_126720_Seatalk1DisplayColorMatchFields, ...fields }
-  }
-
-  static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_126720_Seatalk1DisplayColorMatchFields)
-  }
-  getDefinition(): Definition {
-    return getPGNWithId('seatalk1DisplayColor')!
-  }
-}
-pgnIdToCreator['seatalk1DisplayColor'] = (fields:any, dst:number) => new PGN_126720_Seatalk1DisplayColor(fields, dst)
-
-
-/**
- * PGN: 126720
- *
- * Description: Seatalk1: Keystroke
- *
- * Match: Manufacturer Code == Raymarine<br>
- * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == Seatalk 1 Encoded<br>
- * Match: command == Seatalk1<br>
- * Match: Seatalk1 Command == Keystroke<br>
- *
- * @category PGN_126720_Seatalk1Keystroke
- */
-export interface PGN_126720_Seatalk1KeystrokeInterface extends PGNInterface {
-  fields: PGN_126720_Seatalk1KeystrokeFields
-}
-
-/**
- * @category PGN_126720_Seatalk1Keystroke
- */
-export interface PGN_126720_Seatalk1KeystrokeFields {
-  manufacturerCode?: enums.ManufacturerCode | number
-  reserved?: number
-  industryCode?: enums.IndustryCode | number
-  proprietaryId: enums.SeatalkMessageId | number
-  command: enums.SeatalkCommand | number
-  seatalk1Command: enums.Seatalk1Command | number
-  device?: N2K_Number
-  key?: enums.SeatalkKeystroke | number
-  keyinverted?: N2K_Number
-  unknownData?: N2K_Binary
-}
-
-/**
- * @category PGN_126720_Seatalk1Keystroke
- */
-export const PGN_126720_Seatalk1KeystrokeMatchFields = {
-  manufacturerCode: enums.ManufacturerCode.Raymarine,
-  industryCode: enums.IndustryCode.MarineIndustry,
-  proprietaryId: enums.SeatalkMessageId.Seatalk1Encoded,
-  command: enums.SeatalkCommand.Seatalk1,
-  seatalk1Command: enums.Seatalk1Command.Keystroke,
-}
-
-/**
- * @category PGN_126720_Seatalk1Keystroke
- */
-export interface PGN_126720_Seatalk1KeystrokeCreateArgs {
-  reserved?: number
-  device?: N2K_Number
-  key?: enums.SeatalkKeystroke | number
-  keyinverted?: N2K_Number
-  unknownData?: N2K_Binary
-}
-
-/**
- * @category PGN_126720_Seatalk1Keystroke
- */
-export class PGN_126720_Seatalk1Keystroke extends PGN implements PGN_126720_Seatalk1KeystrokeInterface {
-  fields: PGN_126720_Seatalk1KeystrokeFields
-
-  constructor(fields: PGN_126720_Seatalk1KeystrokeCreateArgs, dst: number = 255) {
-    super({
-      pgn: 126720,
-      prio: 3,
-      dst
-    })
-    this.fields = { ...PGN_126720_Seatalk1KeystrokeMatchFields, ...fields }
-  }
-
-  static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_126720_Seatalk1KeystrokeMatchFields)
-  }
-  getDefinition(): Definition {
-    return getPGNWithId('seatalk1Keystroke')!
-  }
-}
-pgnIdToCreator['seatalk1Keystroke'] = (fields:any, dst:number) => new PGN_126720_Seatalk1Keystroke(fields, dst)
 
 
 /**
@@ -6727,6 +6330,309 @@ export class PGN_126720_FusionSetPower extends PGN implements PGN_126720_FusionS
   }
 }
 pgnIdToCreator['fusionSetPower'] = (fields:any, dst:number) => new PGN_126720_FusionSetPower(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Seatalk1: Keystroke
+ *
+ * Match: Manufacturer Code == Raymarine<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == 0x81f0<br>
+ * Match: command == 0x86<br>
+ *
+ * @category PGN_126720_Seatalk1Keystroke
+ */
+export interface PGN_126720_Seatalk1KeystrokeInterface extends PGNInterface {
+  fields: PGN_126720_Seatalk1KeystrokeFields
+}
+
+/**
+ * @category PGN_126720_Seatalk1Keystroke
+ */
+export interface PGN_126720_Seatalk1KeystrokeFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: N2K_Number | string
+  command?: N2K_Number | string
+  device?: N2K_Number
+  key?: enums.SeatalkKeystroke | number
+  keyinverted?: N2K_Number
+  unknownData?: N2K_Binary
+}
+
+/**
+ * @category PGN_126720_Seatalk1Keystroke
+ */
+export const PGN_126720_Seatalk1KeystrokeMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Raymarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: "0x81f0",
+  command: "0x86",
+}
+
+/**
+ * @category PGN_126720_Seatalk1Keystroke
+ */
+export interface PGN_126720_Seatalk1KeystrokeCreateArgs {
+  reserved?: number
+  device?: N2K_Number
+  key?: enums.SeatalkKeystroke | number
+  keyinverted?: N2K_Number
+  unknownData?: N2K_Binary
+}
+
+/**
+ * @category PGN_126720_Seatalk1Keystroke
+ */
+export class PGN_126720_Seatalk1Keystroke extends PGN implements PGN_126720_Seatalk1KeystrokeInterface {
+  fields: PGN_126720_Seatalk1KeystrokeFields
+
+  constructor(fields: PGN_126720_Seatalk1KeystrokeCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_Seatalk1KeystrokeMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_Seatalk1KeystrokeMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('seatalk1Keystroke')!
+  }
+}
+pgnIdToCreator['seatalk1Keystroke'] = (fields:any, dst:number) => new PGN_126720_Seatalk1Keystroke(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Seatalk1: Device Identification
+ *
+ * Match: Manufacturer Code == Raymarine<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == 0x81f0<br>
+ * Match: command == 0x90<br>
+ *
+ * @category PGN_126720_Seatalk1DeviceIdentification
+ */
+export interface PGN_126720_Seatalk1DeviceIdentificationInterface extends PGNInterface {
+  fields: PGN_126720_Seatalk1DeviceIdentificationFields
+}
+
+/**
+ * @category PGN_126720_Seatalk1DeviceIdentification
+ */
+export interface PGN_126720_Seatalk1DeviceIdentificationFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: N2K_Number | string
+  command?: N2K_Number | string
+  reserved6?: number
+  device?: enums.SeatalkDeviceId | number
+}
+
+/**
+ * @category PGN_126720_Seatalk1DeviceIdentification
+ */
+export const PGN_126720_Seatalk1DeviceIdentificationMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Raymarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: "0x81f0",
+  command: "0x90",
+}
+
+/**
+ * @category PGN_126720_Seatalk1DeviceIdentification
+ */
+export interface PGN_126720_Seatalk1DeviceIdentificationCreateArgs {
+  reserved?: number
+  reserved6?: number
+  device?: enums.SeatalkDeviceId | number
+}
+
+/**
+ * @category PGN_126720_Seatalk1DeviceIdentification
+ */
+export class PGN_126720_Seatalk1DeviceIdentification extends PGN implements PGN_126720_Seatalk1DeviceIdentificationInterface {
+  fields: PGN_126720_Seatalk1DeviceIdentificationFields
+
+  constructor(fields: PGN_126720_Seatalk1DeviceIdentificationCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_Seatalk1DeviceIdentificationMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_Seatalk1DeviceIdentificationMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('seatalk1DeviceIdentification')!
+  }
+}
+pgnIdToCreator['seatalk1DeviceIdentification'] = (fields:any, dst:number) => new PGN_126720_Seatalk1DeviceIdentification(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Seatalk1: Display Brightness
+ *
+ * Match: Manufacturer Code == Raymarine<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == 0x0c8c<br>
+ *
+ * @category PGN_126720_Seatalk1DisplayBrightness
+ */
+export interface PGN_126720_Seatalk1DisplayBrightnessInterface extends PGNInterface {
+  fields: PGN_126720_Seatalk1DisplayBrightnessFields
+}
+
+/**
+ * @category PGN_126720_Seatalk1DisplayBrightness
+ */
+export interface PGN_126720_Seatalk1DisplayBrightnessFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: N2K_Number | string
+  group?: enums.SeatalkNetworkGroup | number
+  unknown1?: N2K_Binary
+  command?: N2K_Number | string
+  brightness?: N2K_Number
+  unknown2?: N2K_Binary
+}
+
+/**
+ * @category PGN_126720_Seatalk1DisplayBrightness
+ */
+export const PGN_126720_Seatalk1DisplayBrightnessMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Raymarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: "0x0c8c",
+  command: "Brightness",
+}
+
+/**
+ * @category PGN_126720_Seatalk1DisplayBrightness
+ */
+export interface PGN_126720_Seatalk1DisplayBrightnessCreateArgs {
+  reserved?: number
+  group?: enums.SeatalkNetworkGroup | number
+  unknown1?: N2K_Binary
+  brightness?: N2K_Number
+  unknown2?: N2K_Binary
+}
+
+/**
+ * @category PGN_126720_Seatalk1DisplayBrightness
+ */
+export class PGN_126720_Seatalk1DisplayBrightness extends PGN implements PGN_126720_Seatalk1DisplayBrightnessInterface {
+  fields: PGN_126720_Seatalk1DisplayBrightnessFields
+
+  constructor(fields: PGN_126720_Seatalk1DisplayBrightnessCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_Seatalk1DisplayBrightnessMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_Seatalk1DisplayBrightnessMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('seatalk1DisplayBrightness')!
+  }
+}
+pgnIdToCreator['seatalk1DisplayBrightness'] = (fields:any, dst:number) => new PGN_126720_Seatalk1DisplayBrightness(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Seatalk1: Display Color
+ *
+ * Match: Manufacturer Code == Raymarine<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == 0x0c8c<br>
+ * Match: Command == Color<br>
+ *
+ * @category PGN_126720_Seatalk1DisplayColor
+ */
+export interface PGN_126720_Seatalk1DisplayColorInterface extends PGNInterface {
+  fields: PGN_126720_Seatalk1DisplayColorFields
+}
+
+/**
+ * @category PGN_126720_Seatalk1DisplayColor
+ */
+export interface PGN_126720_Seatalk1DisplayColorFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: N2K_Number | string
+  group?: enums.SeatalkNetworkGroup | number
+  unknown1?: N2K_Binary
+  command?: N2K_Number | string
+  color?: enums.SeatalkDisplayColor | number
+  unknown2?: N2K_Binary
+}
+
+/**
+ * @category PGN_126720_Seatalk1DisplayColor
+ */
+export const PGN_126720_Seatalk1DisplayColorMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Raymarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: "0x0c8c",
+  command: "Color",
+}
+
+/**
+ * @category PGN_126720_Seatalk1DisplayColor
+ */
+export interface PGN_126720_Seatalk1DisplayColorCreateArgs {
+  reserved?: number
+  group?: enums.SeatalkNetworkGroup | number
+  unknown1?: N2K_Binary
+  color?: enums.SeatalkDisplayColor | number
+  unknown2?: N2K_Binary
+}
+
+/**
+ * @category PGN_126720_Seatalk1DisplayColor
+ */
+export class PGN_126720_Seatalk1DisplayColor extends PGN implements PGN_126720_Seatalk1DisplayColorInterface {
+  fields: PGN_126720_Seatalk1DisplayColorFields
+
+  constructor(fields: PGN_126720_Seatalk1DisplayColorCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_Seatalk1DisplayColorMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_Seatalk1DisplayColorMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('seatalk1DisplayColor')!
+  }
+}
+pgnIdToCreator['seatalk1DisplayColor'] = (fields:any, dst:number) => new PGN_126720_Seatalk1DisplayColor(fields, dst)
 
 
 /**

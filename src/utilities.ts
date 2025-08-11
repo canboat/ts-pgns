@@ -49,6 +49,20 @@ export const getAllPGNs = (): Definition[] => {
   return all
 }
 
+/**
+ * @category PGN Definition Editing
+ */
+
+export const updatePGN = (updatedDefinition: Definition) => {
+  for (const definition of getAllPGNs()) {
+    if (definition.Id === updatedDefinition.Id) {
+      Object.assign(definition, updatedDefinition)
+      return
+    }
+  }
+  canboat.PGNs.push(updatedDefinition as any)
+}
+
 let pgnNumberMap: { [key: number]: Definition[] }
 
 const getPGNNumberMap = () => {
@@ -481,6 +495,33 @@ export const getBitEnumerationName = (
 }
 
 /**
+ * @category PGN Definition Editing
+ */
+
+export const updateLookup = (enumeration: Enumeration) => {
+  for (const def of getEnumerations()) {
+    if (enumeration.Name === def.Name) {
+      Object.assign(def, enumeration)
+      return
+    }
+  }
+  canboat.LookupEnumerations.push(enumeration as any)
+}
+/**
+ * @category PGN Definition Editing
+ */
+
+export const updateBitLookup = (enumeration: BitEnumeration) => {
+  for (const def of getBitEnumerations()) {
+    if (enumeration.Name === def.Name) {
+      Object.assign(def, enumeration)
+      return
+    }
+  }
+  canboat.LookupEnumerations.push(enumeration as any)
+}
+
+/**
  * Retrieves the list of field type enumerations from the Canboat library.
  *
  * @returns {FieldTypeEnumeration[]} An array of field type enumerations.
@@ -765,3 +806,13 @@ export const createNmeaGroupFunction = (
       throw new Error(`Unsupported group function: ${groupFunction}`)
   }
 }
+
+// Export PGN header generation functions
+export { 
+  generatePgnHeaderEntry, 
+  generateMultiplePgnHeaderEntries,
+  generateLookupHeaderEntry,
+  generateBitLookupHeaderEntry,
+  generateFieldTypeLookupHeaderEntry,
+  generateMultipleLookupEntries
+} from './pgnHeaderGenerator'

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Definition, Field, FieldType, PhysicalQuantity } from './definition'
+import { Definition, Field, FieldType, PhysicalQuantity, Enumeration, BitEnumeration, FieldTypeEnumeration } from './definition'
 
 /**
  * Mapping of TypeScript FieldType enum to C field type macros
@@ -513,4 +513,152 @@ export function generatePgnHeaderEntry(definition: Definition): string {
  */
 export function generateMultiplePgnHeaderEntries(definitions: Definition[]): string {
   return definitions.map(def => generatePgnHeaderEntry(def)).join('\n\n')
+}
+
+/**
+ * Converts a bit count to the appropriate C macro for lookup.h
+ */
+function bitsToLookupMacro(bits: number): string {
+  if (bits % 8 === 0) {
+    return `BYTES(${bits / 8})`
+  }
+  return `BITS(${bits})`
+}
+
+/**
+ * Generates a lookup.h entry from an Enumeration definition
+ * 
+ * @param enumeration - The enumeration definition from TypeScript
+ * @returns A C lookup entry formatted for lookup.h
+ */
+export function generateLookupHeaderEntry(enumeration: Enumeration): string {
+  const lines: string[] = []
+  
+  // Calculate bits needed based on MaxValue
+  const bitsNeeded = Math.ceil(Math.log2(enumeration.MaxValue + 1))
+  const sizeMacro = bitsToLookupMacro(bitsNeeded)
+  
+  // Start with the lookup type declaration
+  lines.push(`LOOKUP_TYPE(${enumeration.Name}, ${sizeMacro})`)
+  
+  // Add all enumeration values
+  for (const enumValue of enumeration.EnumValues) {
+    lines.push(`LOOKUP(${enumeration.Name}, ${enumValue.Value}, "${enumValue.Name}")`)
+  }
+  
+  // End the lookup
+  lines.push('LOOKUP_END')
+  
+  return lines.join('\n')
+}
+
+/**
+ * Generates a lookup.h bitfield entry from a BitEnumeration definition
+ * 
+ * @param bitEnumeration - The bit enumeration definition from TypeScript
+ * @returns A C bitfield lookup entry formatted for lookup.h
+ */
+export function generateBitLookupHeaderEntry(bitEnumeration: BitEnumeration): string {
+  const lines: string[] = []
+  
+  // Calculate maximum bit position to determine size
+  const maxBit = Math.max(...bitEnumeration.EnumBitValues.map(v => v.Bit))
+  const bitsNeeded = maxBit + 1
+  const sizeMacro = bitsToLookupMacro(bitsNeeded)
+  
+  // Start with the bitfield lookup type declaration
+  lines.push(`LOOKUP_TYPE_BITFIELD(${bitEnumeration.Name}, ${sizeMacro})`)
+  
+  // Add all bit enumeration values
+  for (const bitValue of bitEnumeration.EnumBitValues) {
+    lines.push(`LOOKUP_BITFIELD(${bitEnumeration.Name}, ${bitValue.Bit}, "${bitValue.Name}")`)
+  }
+  
+  // End the lookup
+  lines.push('LOOKUP_END')
+  
+  return lines.join('\n')
+}
+
+/**
+ * Generates a lookup.h fieldtype entry from a FieldTypeEnumeration definition
+ * 
+ * @param fieldTypeEnumeration - The field type enumeration definition from TypeScript
+ * @returns A C fieldtype lookup entry formatted for lookup.h
+ */
+export function generateFieldTypeLookupHeaderEntry(fieldTypeEnumeration: FieldTypeEnumeration): string {
+  const lines: string[] = []
+  
+  // Parse the bits from the first entry to determine size
+  const firstEntry = fieldTypeEnumeration.EnumFieldTypeValues[0]
+  let sizeMacro = 'BYTES(2)' // default
+  
+  if (firstEntry && firstEntry.Bits) {
+    try {
+      const bits = parseInt(firstEntry.Bits)
+      sizeMacro = bitsToLookupMacro(bits)
+    } catch {
+      // Use default if parsing fails
+    }
+  }
+  
+  // Start with the fieldtype lookup type declaration
+  lines.push(`LOOKUP_TYPE_FIELDTYPE(${fieldTypeEnumeration.Name}, ${sizeMacro})`)
+  
+  // Add all field type enumeration values
+  for (const fieldTypeValue of fieldTypeEnumeration.EnumFieldTypeValues) {
+    const fieldType = `"${fieldTypeValue.FieldType}"`
+    
+    // Check if this is a lookup type that needs special handling
+    if (fieldTypeValue.FieldType === 'LOOKUP' && fieldTypeValue.name.includes('_')) {
+      // This might be a lookup reference - use LOOKUP_FIELDTYPE_LOOKUP
+      const lookupName = fieldTypeValue.name.toUpperCase().replace(' ', '_')
+      lines.push(`LOOKUP_FIELDTYPE_LOOKUP(${fieldTypeEnumeration.Name}, ${fieldTypeValue.value}, "${fieldTypeValue.name}", "LOOKUP", ${fieldTypeValue.Bits || '8'}, PAIR, ${lookupName})`)
+    } else if (fieldTypeValue.FieldType === 'BITLOOKUP') {
+      // This is a bit lookup reference - use LOOKUP_FIELDTYPE_LOOKUP
+      const lookupName = fieldTypeValue.name.toUpperCase().replace(' ', '_')
+      lines.push(`LOOKUP_FIELDTYPE_LOOKUP(${fieldTypeEnumeration.Name}, ${fieldTypeValue.value}, "${fieldTypeValue.name}", "BITLOOKUP", ${fieldTypeValue.Bits || '8'}, BIT, ${lookupName})`)
+    } else {
+      // Regular field type
+      lines.push(`LOOKUP_FIELDTYPE(${fieldTypeEnumeration.Name}, ${fieldTypeValue.value}, "${fieldTypeValue.name}", ${fieldType})`)
+    }
+  }
+  
+  // End the lookup
+  lines.push('LOOKUP_END')
+  
+  return lines.join('\n')
+}
+
+/**
+ * Generates multiple lookup entries from arrays of enumeration definitions
+ * 
+ * @param enumerations - Array of Enumeration definitions
+ * @param bitEnumerations - Array of BitEnumeration definitions  
+ * @param fieldTypeEnumerations - Array of FieldTypeEnumeration definitions
+ * @returns A string containing all formatted lookup entries
+ */
+export function generateMultipleLookupEntries(
+  enumerations: Enumeration[] = [],
+  bitEnumerations: BitEnumeration[] = [],
+  fieldTypeEnumerations: FieldTypeEnumeration[] = []
+): string {
+  const entries: string[] = []
+  
+  // Add regular enumerations
+  for (const enumeration of enumerations) {
+    entries.push(generateLookupHeaderEntry(enumeration))
+  }
+  
+  // Add bit enumerations  
+  for (const bitEnumeration of bitEnumerations) {
+    entries.push(generateBitLookupHeaderEntry(bitEnumeration))
+  }
+  
+  // Add field type enumerations
+  for (const fieldTypeEnumeration of fieldTypeEnumerations) {
+    entries.push(generateFieldTypeLookupHeaderEntry(fieldTypeEnumeration))
+  }
+  
+  return entries.join('\n\n')
 }

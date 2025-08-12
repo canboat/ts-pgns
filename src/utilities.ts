@@ -60,10 +60,11 @@ export const updatePGN = (updatedDefinition: Definition) => {
       return
     }
   }
+  pgnNumberMap = undefined
   canboat.PGNs.push(updatedDefinition as any)
 }
 
-let pgnNumberMap: { [key: number]: Definition[] }
+let pgnNumberMap: { [key: number]: Definition[] } | undefined
 
 const getPGNNumberMap = () => {
   if (pgnNumberMap === undefined) {

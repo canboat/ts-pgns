@@ -289,10 +289,15 @@ function generateFieldDefinition(field: Field): string {
     const primaryKey = field.PartOfPrimaryKey ? 'PK(' : ''
     const primaryKeyClose = field.PartOfPrimaryKey ? ')' : ''
     
-    if (field.Description) {
-      return `LOOKUP_FIELD_DESC(${primaryKey}${fieldName}${primaryKeyClose}, ${lengthParam}, ${lookupType}, ${description})`
+    if ( field.Match !== undefined ) {
+      return `MATCH_LOOKUP_FIELD(${primaryKey}${fieldName}${primaryKeyClose}, ${lengthParam}, ${field.Match}, ${lookupType})`
+    } else {
+      if (field.Description) {
+        return `LOOKUP_FIELD_DESC(${primaryKey}${fieldName}${primaryKeyClose}, ${lengthParam}, ${lookupType}, ${description})`
+      }
+
+      return `LOOKUP_FIELD(${primaryKey}${fieldName}${primaryKeyClose}, ${lengthParam}, ${lookupType})`
     }
-    return `LOOKUP_FIELD(${primaryKey}${fieldName}${primaryKeyClose}, ${lengthParam}, ${lookupType})`
   }
   
   // Handle BitLookup fields

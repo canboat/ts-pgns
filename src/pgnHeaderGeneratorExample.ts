@@ -14,7 +14,10 @@
  * limitations under the License.
  */
 
-import { generatePgnHeaderEntry, generateMultiplePgnHeaderEntries } from './pgnHeaderGenerator'
+import {
+  generatePgnHeaderEntry,
+  generateMultiplePgnHeaderEntries
+} from './pgnHeaderGenerator'
 import { Definition, Type, FieldType, PhysicalQuantity } from './definition'
 
 // Example PGN definition for Wind Data (PGN 130306)
@@ -98,12 +101,14 @@ const systemTimePgn: Definition = {
   Type: Type.Single,
   Priority: 3,
   TransmissionInterval: 1000,
-  Explanation: 'The purpose of this PGN is twofold: To provide a regular transmission of UTC time and date. To provide synchronism for measurement data.',
+  Explanation:
+    'The purpose of this PGN is twofold: To provide a regular transmission of UTC time and date. To provide synchronism for measurement data.',
   Fields: [
     {
       Id: 'sid',
       Name: 'SID',
-      Description: 'An upward counting number used to tie related information together between different PGNs. For example the SID would be used to tie together the COG, SOG and RAIM values to a given position.',
+      Description:
+        'An upward counting number used to tie related information together between different PGNs. For example the SID would be used to tie together the COG, SOG and RAIM values to a given position.',
       BitOffset: 0,
       BitStart: 0,
       BitLength: 8,
@@ -161,10 +166,10 @@ const systemTimePgn: Definition = {
 function demonstratePgnHeaderGeneration() {
   console.log('=== Wind Data PGN Header Entry ===')
   console.log(generatePgnHeaderEntry(windDataPgn))
-  
+
   console.log('\n\n=== System Time PGN Header Entry ===')
   console.log(generatePgnHeaderEntry(systemTimePgn))
-  
+
   console.log('\n\n=== Multiple PGN Header Entries ===')
   console.log(generateMultiplePgnHeaderEntries([windDataPgn, systemTimePgn]))
 }

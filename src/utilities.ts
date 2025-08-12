@@ -809,8 +809,8 @@ export const createNmeaGroupFunction = (
 }
 
 // Export PGN header generation functions
-export { 
-  generatePgnHeaderEntry, 
+export {
+  generatePgnHeaderEntry,
   generateMultiplePgnHeaderEntries,
   generateLookupHeaderEntry,
   generateBitLookupHeaderEntry,

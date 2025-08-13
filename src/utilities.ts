@@ -535,7 +535,9 @@ export const updateLookup = (enumeration: Enumeration) => {
  * @category PGN Definition Editing
  */
 export const removeLookup = (enumeration: Enumeration) => {
-  const index = canboat.LookupEnumerations.findIndex((e) => e.Name === enumeration.Name)
+  const index = canboat.LookupEnumerations.findIndex(
+    (e) => e.Name === enumeration.Name
+  )
   if (index !== -1) {
     canboat.LookupEnumerations.splice(index, 1)
   }
@@ -558,7 +560,9 @@ export const updateBitLookup = (enumeration: BitEnumeration) => {
  * @category PGN Definition Editing
  */
 export const removeBitLookup = (enumeration: BitEnumeration) => {
-  const index = canboat.LookupBitEnumerations.findIndex((e) => e.Name === enumeration.Name)
+  const index = canboat.LookupBitEnumerations.findIndex(
+    (e) => e.Name === enumeration.Name
+  )
   if (index !== -1) {
     canboat.LookupBitEnumerations.splice(index, 1)
   }

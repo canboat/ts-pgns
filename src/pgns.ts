@@ -16808,6 +16808,9 @@ export interface PGN_130816Interface extends PGNInterface {
  * @category PGN_130816
  */
 export interface PGN_130816Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
   data?: N2K_Binary
 }
 

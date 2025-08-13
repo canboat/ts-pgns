@@ -49,7 +49,27 @@ export const getAllPGNs = (): Definition[] => {
   return all
 }
 
-let pgnNumberMap: { [key: number]: Definition[] }
+/**
+ * @category PGN Definition Editing
+ */
+
+export const updatePGN = (updatedDefinition: Definition) => {
+  for (const definition of getAllPGNs()) {
+    if (definition.Id === updatedDefinition.Id) {
+      Object.assign(definition, updatedDefinition)
+      return
+    }
+  }
+  pgnNumberMap = undefined
+  canboat.PGNs.push(updatedDefinition as any)
+}
+
+export const removePGN = (pgn: Definition) => {
+  canboat.PGNs = canboat.PGNs.filter((def) => def.Id !== pgn.Id)
+  pgnNumberMap = undefined
+}
+
+let pgnNumberMap: { [key: number]: Definition[] } | undefined
 
 const getPGNNumberMap = () => {
   if (pgnNumberMap === undefined) {
@@ -116,6 +136,24 @@ export const getPGNWithNumber = (num: number): Definition[] | undefined => {
  */
 export const getPGNWithId = (id: string): Definition | undefined => {
   return getPGNIdMap()[id]
+}
+
+export const findFallBackPGN = (pgn: number): Definition | undefined => {
+  const allPGNs = getAllPGNs()
+  return allPGNs
+    .filter((def) => def.Fallback === true)
+    ?.find((def) => {
+      const col = def.Description.indexOf(':')
+      if (col === -1) {
+        return false
+      }
+      const nums = def.Description.slice(0, col + 1)
+        .split('-')
+        .map((n) => parseInt(n, 16))
+      return nums.length == 1
+        ? nums[0] === pgn
+        : pgn >= nums[0] && pgn <= nums[1]
+    })
 }
 
 /**
@@ -481,6 +519,56 @@ export const getBitEnumerationName = (
 }
 
 /**
+ * @category PGN Definition Editing
+ */
+export const updateLookup = (enumeration: Enumeration) => {
+  for (const def of getEnumerations()) {
+    if (enumeration.Name === def.Name) {
+      Object.assign(def, enumeration)
+      return
+    }
+  }
+  canboat.LookupEnumerations.push(enumeration as any)
+}
+
+/**
+ * @category PGN Definition Editing
+ */
+export const removeLookup = (enumeration: Enumeration) => {
+  const index = canboat.LookupEnumerations.findIndex(
+    (e) => e.Name === enumeration.Name
+  )
+  if (index !== -1) {
+    canboat.LookupEnumerations.splice(index, 1)
+  }
+}
+
+/**
+ * @category PGN Definition Editing
+ */
+export const updateBitLookup = (enumeration: BitEnumeration) => {
+  for (const def of getBitEnumerations()) {
+    if (enumeration.Name === def.Name) {
+      Object.assign(def, enumeration)
+      return
+    }
+  }
+  canboat.LookupEnumerations.push(enumeration as any)
+}
+
+/**
+ * @category PGN Definition Editing
+ */
+export const removeBitLookup = (enumeration: BitEnumeration) => {
+  const index = canboat.LookupBitEnumerations.findIndex(
+    (e) => e.Name === enumeration.Name
+  )
+  if (index !== -1) {
+    canboat.LookupBitEnumerations.splice(index, 1)
+  }
+}
+
+/**
  * Retrieves the list of field type enumerations from the Canboat library.
  *
  * @returns {FieldTypeEnumeration[]} An array of field type enumerations.
@@ -765,3 +853,13 @@ export const createNmeaGroupFunction = (
       throw new Error(`Unsupported group function: ${groupFunction}`)
   }
 }
+
+// Export PGN header generation functions
+export {
+  generatePgnHeaderEntry,
+  generateMultiplePgnHeaderEntries,
+  generateLookupHeaderEntry,
+  generateBitLookupHeaderEntry,
+  generateFieldTypeLookupHeaderEntry,
+  generateMultipleLookupEntries
+} from './pgnHeaderGenerator'

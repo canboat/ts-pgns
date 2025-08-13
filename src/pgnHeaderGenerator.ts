@@ -462,13 +462,25 @@ export function generatePgnHeaderEntry(definition: Definition): string {
   // Packet type
   const packetType = getPacketType(definition.Type)
   lines.push(`     ${packetType},`)
+  
+  let fields = definition.Fields
+  let isCompany = false
+  if (
+    definition.Fields.length > 2 &&
+    definition.Fields[0].Id === 'manufacturerCode' &&
+    definition.Fields[1].Id === 'reserved' &&
+    definition.Fields[2].Id === 'industryCode'
+  ) {
+    isCompany = true
+    const code = fields[0].Match
+    lines.push(`     {COMPANY(${code}),`)
+    fields = fields.slice(3)
+  }
 
   // Fields array
   lines.push(
-    '     {' +
-      definition.Fields.map((field) => generateFieldDefinition(field)).join(
-        ',\n      '
-      ) +
+    ( isCompany ? '      ' : `     {`) +
+      fields.map((field) => generateFieldDefinition(field)).join(',\n      ') +
       ','
   )
   lines.push('      END_OF_FIELDS},')

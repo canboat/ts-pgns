@@ -64,6 +64,11 @@ export const updatePGN = (updatedDefinition: Definition) => {
   canboat.PGNs.push(updatedDefinition as any)
 }
 
+export const removePGN = (pgn: Definition) => {
+  canboat.PGNs = canboat.PGNs.filter((def) => def.Id !== pgn.Id)
+  pgnNumberMap = undefined
+}
+
 let pgnNumberMap: { [key: number]: Definition[] } | undefined
 
 const getPGNNumberMap = () => {
@@ -132,6 +137,19 @@ export const getPGNWithNumber = (num: number): Definition[] | undefined => {
 export const getPGNWithId = (id: string): Definition | undefined => {
   return getPGNIdMap()[id]
 }
+
+export const findFallBackPGN = (pgn: number): Definition | undefined => {
+  const allPGNs = getAllPGNs()
+  return allPGNs.filter((def) => def.Fallback === true)?.find((def) => {
+    const col = def.Description.indexOf(':')
+    if (col === -1) {
+      return false
+    }
+    const nums = def.Description.slice(0, col + 1).split('-').map((n) => parseInt(n, 16))
+    return nums.length == 1 ? nums[0] === pgn : pgn >= nums[0] && pgn <= nums[1]
+  })
+}
+
 
 /**
  * Determines whether a given PGN object matches all specified fields.

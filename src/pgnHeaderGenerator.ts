@@ -462,7 +462,7 @@ export function generatePgnHeaderEntry(definition: Definition): string {
   // Packet type
   const packetType = getPacketType(definition.Type)
   lines.push(`     ${packetType},`)
-  
+
   let fields = definition.Fields
   let isCompany = false
   if (
@@ -479,7 +479,7 @@ export function generatePgnHeaderEntry(definition: Definition): string {
 
   // Fields array
   lines.push(
-    ( isCompany ? '      ' : `     {`) +
+    (isCompany ? '      ' : `     {`) +
       fields.map((field) => generateFieldDefinition(field)).join(',\n      ') +
       ','
   )

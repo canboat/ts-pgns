@@ -468,4 +468,44 @@ describe('header generator', () => {
       expect(result).to.include('LOOKUP_END')
     })
   })
+
+  describe('Internal helper function validation', () => {
+    it('should validate internal functions through public API calls', () => {
+      // Test bitLengthToBytes and bitsToLookupMacro functions through enumeration generation
+
+      // Test 8-bit aligned (should use BYTES)
+      const enum8bit: Enumeration = {
+        Name: 'EIGHT_BIT_TEST',
+        MaxValue: 255,
+        EnumValues: [{ Name: 'Test', Value: 255 }]
+      }
+
+      const result8 = generateLookupHeaderEntry(enum8bit)
+      expect(result8).to.include('BYTES(1)')
+
+      // Test non-8-bit aligned (should use BITS)
+      const enum5bit: Enumeration = {
+        Name: 'FIVE_BIT_TEST',
+        MaxValue: 31,
+        EnumValues: [{ Name: 'Test', Value: 31 }]
+      }
+
+      const result5 = generateLookupHeaderEntry(enum5bit)
+      expect(result5).to.include('BITS(5)')
+
+      // Test getPacketType function through PGN generation
+      // This indirectly tests the internal getPacketType function
+      const testFastPgns = getPGNWithNumber(129029) // Known fast packet
+      if (testFastPgns && testFastPgns.length > 0) {
+        const fastResult = generatePgnHeaderEntry(testFastPgns[0])
+        expect(fastResult).to.include('PACKET_FAST')
+      }
+
+      const testSinglePgns = getPGNWithNumber(126992) // Known single packet
+      if (testSinglePgns && testSinglePgns.length > 0) {
+        const singleResult = generatePgnHeaderEntry(testSinglePgns[0])
+        expect(singleResult).to.include('PACKET_SINGLE')
+      }
+    })
+  })
 })

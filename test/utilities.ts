@@ -201,11 +201,15 @@ describe('utilities tests', () => {
   it('findFallBackPGN finds fallback PGN for single value range', (done) => {
     // Test with PGN 61184 (0xEF00) which has fallback "0xef00ManufacturerProprietarySingleFrameAddressed"
     const result = findFallBackPGN(61184)
-    
+
     expect(result).to.exist
     expect(result!.Fallback).to.be.true
-    expect(result!.Id).to.equal('0xef00ManufacturerProprietarySingleFrameAddressed')
-    expect(result!.Description).to.equal('0xEF00: Manufacturer Proprietary single-frame addressed')
+    expect(result!.Id).to.equal(
+      '0xef00ManufacturerProprietarySingleFrameAddressed'
+    )
+    expect(result!.Description).to.equal(
+      '0xEF00: Manufacturer Proprietary single-frame addressed'
+    )
     done()
   })
 
@@ -213,11 +217,13 @@ describe('utilities tests', () => {
     // Test with PGN in the range 59392-60928 (0xE800-0xEE00)
     const testPgn = 59500 // within the range
     const result = findFallBackPGN(testPgn)
-    
+
     expect(result).to.exist
     expect(result!.Fallback).to.be.true
     expect(result!.Id).to.equal('0xe8000xee00StandardizedSingleFrameAddressed')
-    expect(result!.Description).to.equal('0xE800-0xEE00: Standardized single-frame addressed')
+    expect(result!.Description).to.equal(
+      '0xE800-0xEE00: Standardized single-frame addressed'
+    )
     done()
   })
 
@@ -225,33 +231,37 @@ describe('utilities tests', () => {
     // Test boundary values for the 0xF000-0xFEFF range (61440-65279)
     const lowerBound = 61440
     const upperBound = 65279
-    
+
     const lowerResult = findFallBackPGN(lowerBound)
     expect(lowerResult).to.exist
     expect(lowerResult!.Fallback).to.be.true
-    expect(lowerResult!.Id).to.equal('0xf0000xfeffStandardizedSingleFrameNonAddressed')
-    
+    expect(lowerResult!.Id).to.equal(
+      '0xf0000xfeffStandardizedSingleFrameNonAddressed'
+    )
+
     const upperResult = findFallBackPGN(upperBound)
     expect(upperResult).to.exist
     expect(upperResult!.Fallback).to.be.true
-    expect(upperResult!.Id).to.equal('0xf0000xfeffStandardizedSingleFrameNonAddressed')
+    expect(upperResult!.Id).to.equal(
+      '0xf0000xfeffStandardizedSingleFrameNonAddressed'
+    )
     done()
   })
 
   it('findFallBackPGN returns undefined for PGN without fallback', (done) => {
     // Test with a PGN that should not have a fallback definition
     const result = findFallBackPGN(123456) // arbitrary high number unlikely to have fallback
-    
+
     expect(result).to.be.undefined
     done()
   })
 
   it('findFallBackPGN returns undefined for PGN with malformed Id (no colon)', (done) => {
     // This test verifies the function handles malformed IDs correctly
-    // Since we can't easily create a malformed ID in the test data, 
+    // Since we can't easily create a malformed ID in the test data,
     // we'll test with a known good PGN that should find a fallback
     const result = findFallBackPGN(0) // PGN 0 is unlikely to have fallback
-    
+
     expect(result).to.be.undefined
     done()
   })

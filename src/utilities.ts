@@ -140,16 +140,21 @@ export const getPGNWithId = (id: string): Definition | undefined => {
 
 export const findFallBackPGN = (pgn: number): Definition | undefined => {
   const allPGNs = getAllPGNs()
-  return allPGNs.filter((def) => def.Fallback === true)?.find((def) => {
-    const col = def.Description.indexOf(':')
-    if (col === -1) {
-      return false
-    }
-    const nums = def.Description.slice(0, col + 1).split('-').map((n) => parseInt(n, 16))
-    return nums.length == 1 ? nums[0] === pgn : pgn >= nums[0] && pgn <= nums[1]
-  })
+  return allPGNs
+    .filter((def) => def.Fallback === true)
+    ?.find((def) => {
+      const col = def.Description.indexOf(':')
+      if (col === -1) {
+        return false
+      }
+      const nums = def.Description.slice(0, col + 1)
+        .split('-')
+        .map((n) => parseInt(n, 16))
+      return nums.length == 1
+        ? nums[0] === pgn
+        : pgn >= nums[0] && pgn <= nums[1]
+    })
 }
-
 
 /**
  * Determines whether a given PGN object matches all specified fields.
@@ -516,7 +521,6 @@ export const getBitEnumerationName = (
 /**
  * @category PGN Definition Editing
  */
-
 export const updateLookup = (enumeration: Enumeration) => {
   for (const def of getEnumerations()) {
     if (enumeration.Name === def.Name) {
@@ -526,10 +530,20 @@ export const updateLookup = (enumeration: Enumeration) => {
   }
   canboat.LookupEnumerations.push(enumeration as any)
 }
+
 /**
  * @category PGN Definition Editing
  */
+export const removeLookup = (enumeration: Enumeration) => {
+  const index = canboat.LookupEnumerations.findIndex((e) => e.Name === enumeration.Name)
+  if (index !== -1) {
+    canboat.LookupEnumerations.splice(index, 1)
+  }
+}
 
+/**
+ * @category PGN Definition Editing
+ */
 export const updateBitLookup = (enumeration: BitEnumeration) => {
   for (const def of getBitEnumerations()) {
     if (enumeration.Name === def.Name) {
@@ -538,6 +552,16 @@ export const updateBitLookup = (enumeration: BitEnumeration) => {
     }
   }
   canboat.LookupEnumerations.push(enumeration as any)
+}
+
+/**
+ * @category PGN Definition Editing
+ */
+export const removeBitLookup = (enumeration: BitEnumeration) => {
+  const index = canboat.LookupBitEnumerations.findIndex((e) => e.Name === enumeration.Name)
+  if (index !== -1) {
+    canboat.LookupBitEnumerations.splice(index, 1)
+  }
 }
 
 /**

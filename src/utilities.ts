@@ -353,7 +353,7 @@ export const findMatchingDefinition = (pgn: PGN): Definition => {
         throw Error(`invalid value for field ${field.Id}: ${value}`)
       }
 
-      if ( typeof num === 'string' ) {
+      if (typeof num === 'string') {
         defs = defs.filter((f) => f.Fields[i].Description == num)
       } else {
         defs = defs.filter((f) => f.Fields[i].Match == num)

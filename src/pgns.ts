@@ -5960,7 +5960,7 @@ export interface PGN_126720_Seatalk1DisplayBrightnessFields {
   proprietaryId: enums.SeatalkMessageId | number
   command1: enums.SeatalkCommand | number
   group?: enums.SeatalkNetworkGroup | number
-  unknown1?: N2K_Binary
+  shared?: enums.SeatalkShared | number
   command?: N2K_Number | string
   brightness?: N2K_Number
   unknown2?: N2K_Binary
@@ -5983,7 +5983,7 @@ export const PGN_126720_Seatalk1DisplayBrightnessMatchFields = {
 export interface PGN_126720_Seatalk1DisplayBrightnessCreateArgs {
   reserved?: number
   group?: enums.SeatalkNetworkGroup | number
-  unknown1?: N2K_Binary
+  shared?: enums.SeatalkShared | number
   brightness?: N2K_Number
   unknown2?: N2K_Binary
 }
@@ -16272,7 +16272,7 @@ export class PGN_130574 extends PGN implements PGN_130574Interface {
   constructor(fields: PGN_130574Fields, dst: number = 255) {
     super({
       pgn: 130574,
-      prio: 3,
+      prio: 6,
       dst
     })
     this.fields = fields
@@ -18189,6 +18189,75 @@ pgnIdToCreator['sonichubInit3'] = (fields:any, dst:number) => new PGN_130816_Son
 /**
  * PGN: 130816
  *
+ * Description: Furuno: Status and Version Report
+ *
+ * Match: Manufacturer Code == Furuno<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130816_FurunoStatusAndVersionReport
+ */
+export interface PGN_130816_FurunoStatusAndVersionReportInterface extends PGNInterface {
+  fields: PGN_130816_FurunoStatusAndVersionReportFields
+}
+
+/**
+ * @category PGN_130816_FurunoStatusAndVersionReport
+ */
+export interface PGN_130816_FurunoStatusAndVersionReportFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: N2K_Number | string
+  a?: N2K_Number
+  status?: N2K_StringLau
+}
+
+/**
+ * @category PGN_130816_FurunoStatusAndVersionReport
+ */
+export const PGN_130816_FurunoStatusAndVersionReportMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Furuno,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: "Version Report",
+}
+
+/**
+ * @category PGN_130816_FurunoStatusAndVersionReport
+ */
+export interface PGN_130816_FurunoStatusAndVersionReportCreateArgs {
+  reserved?: number
+  a?: N2K_Number
+  status?: N2K_StringLau
+}
+
+/**
+ * @category PGN_130816_FurunoStatusAndVersionReport
+ */
+export class PGN_130816_FurunoStatusAndVersionReport extends PGN implements PGN_130816_FurunoStatusAndVersionReportInterface {
+  fields: PGN_130816_FurunoStatusAndVersionReportFields
+
+  constructor(fields: PGN_130816_FurunoStatusAndVersionReportCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130816,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_130816_FurunoStatusAndVersionReportMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_FurunoStatusAndVersionReportMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('furunoStatusAndVersionReport')!
+  }
+}
+pgnIdToCreator['furunoStatusAndVersionReport'] = (fields:any, dst:number) => new PGN_130816_FurunoStatusAndVersionReport(fields, dst)
+
+
+/**
+ * PGN: 130816
+ *
  * Description: Simrad: Text Message
  *
  * Match: Manufacturer Code == Simrad<br>
@@ -18419,6 +18488,87 @@ pgnIdToCreator['lowranceProductInformation'] = (fields:any, dst:number) => new P
 
 
 /**
+ * PGN: 130817
+ *
+ * Description: Furuno: SV control
+ *
+ * Match: Manufacturer Code == Furuno<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130817_FurunoSvControl
+ */
+export interface PGN_130817_FurunoSvControlInterface extends PGNInterface {
+  fields: PGN_130817_FurunoSvControlFields
+}
+
+/**
+ * @category PGN_130817_FurunoSvControl
+ */
+export interface PGN_130817_FurunoSvControlFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  f4?: N2K_Binary
+  f5?: N2K_Binary
+  sbasMode?: enums.AutomaticManual | number
+  sbasSatellite?: enums.SbasSv | number
+  f8?: N2K_Binary
+  gpsDisable?: enums.DisabledSatellites[]
+  glonassDisable?: enums.DisabledSatellites[]
+  galileoDisable?: enums.DisabledSatellites[]
+  qzssDisable?: enums.DisabledSatellites[]
+}
+
+/**
+ * @category PGN_130817_FurunoSvControl
+ */
+export const PGN_130817_FurunoSvControlMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Furuno,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130817_FurunoSvControl
+ */
+export interface PGN_130817_FurunoSvControlCreateArgs {
+  reserved?: number
+  f4?: N2K_Binary
+  f5?: N2K_Binary
+  sbasMode?: enums.AutomaticManual | number
+  sbasSatellite?: enums.SbasSv | number
+  f8?: N2K_Binary
+  gpsDisable?: enums.DisabledSatellites[]
+  glonassDisable?: enums.DisabledSatellites[]
+  galileoDisable?: enums.DisabledSatellites[]
+  qzssDisable?: enums.DisabledSatellites[]
+}
+
+/**
+ * @category PGN_130817_FurunoSvControl
+ */
+export class PGN_130817_FurunoSvControl extends PGN implements PGN_130817_FurunoSvControlInterface {
+  fields: PGN_130817_FurunoSvControlFields
+
+  constructor(fields: PGN_130817_FurunoSvControlCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130817,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_130817_FurunoSvControlMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130817_FurunoSvControlMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('furunoSvControl')!
+  }
+}
+pgnIdToCreator['furunoSvControl'] = (fields:any, dst:number) => new PGN_130817_FurunoSvControl(fields, dst)
+
+
+/**
  * PGN: 130818
  *
  * Description: Simnet: Reprogram Data
@@ -18485,6 +18635,93 @@ export class PGN_130818_SimnetReprogramData extends PGN implements PGN_130818_Si
   }
 }
 pgnIdToCreator['simnetReprogramData'] = (fields:any, dst:number) => new PGN_130818_SimnetReprogramData(fields, dst)
+
+
+/**
+ * PGN: 130818
+ *
+ * Description: Furuno: Sensor setup
+ *
+ * Match: Manufacturer Code == Furuno<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130818_FurunoSensorSetup
+ */
+export interface PGN_130818_FurunoSensorSetupInterface extends PGNInterface {
+  fields: PGN_130818_FurunoSensorSetupFields
+}
+
+/**
+ * @category PGN_130818_FurunoSensorSetup
+ */
+export interface PGN_130818_FurunoSensorSetupFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  rotationSmoothing?: N2K_Duration
+  headingOffset?: N2K_Number
+  pitchOffset?: N2K_Number
+  rollOffset?: N2K_Number
+  f8?: N2K_Number
+  f9?: N2K_Number
+  sogAndCogSmoothing?: N2K_Duration
+  _3AxisSpeedSmoothing?: N2K_Duration
+  fc?: N2K_Number
+  _3AxisOffset?: N2K_Number
+  airPressureOffset?: N2K_Number
+  airTemperatureOffset?: N2K_Number
+}
+
+/**
+ * @category PGN_130818_FurunoSensorSetup
+ */
+export const PGN_130818_FurunoSensorSetupMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Furuno,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130818_FurunoSensorSetup
+ */
+export interface PGN_130818_FurunoSensorSetupCreateArgs {
+  reserved?: number
+  rotationSmoothing?: N2K_Duration
+  headingOffset?: N2K_Number
+  pitchOffset?: N2K_Number
+  rollOffset?: N2K_Number
+  f8?: N2K_Number
+  f9?: N2K_Number
+  sogAndCogSmoothing?: N2K_Duration
+  _3AxisSpeedSmoothing?: N2K_Duration
+  fc?: N2K_Number
+  _3AxisOffset?: N2K_Number
+  airPressureOffset?: N2K_Number
+  airTemperatureOffset?: N2K_Number
+}
+
+/**
+ * @category PGN_130818_FurunoSensorSetup
+ */
+export class PGN_130818_FurunoSensorSetup extends PGN implements PGN_130818_FurunoSensorSetupInterface {
+  fields: PGN_130818_FurunoSensorSetupFields
+
+  constructor(fields: PGN_130818_FurunoSensorSetupCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130818,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_130818_FurunoSensorSetupMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130818_FurunoSensorSetupMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('furunoSensorSetup')!
+  }
+}
+pgnIdToCreator['furunoSensorSetup'] = (fields:any, dst:number) => new PGN_130818_FurunoSensorSetup(fields, dst)
 
 
 /**

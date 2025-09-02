@@ -148,6 +148,7 @@ export enum ManufacturerCode {
   NaviopSRL = 'Naviop S.R.L.',
   VesperMarineLtd = 'Vesper Marine Ltd',
   MarinesoftCoLtd = 'Marinesoft Co. LTD',
+  Simarine = 'Simarine',
   NoLandEngineering = 'NoLand Engineering',
   TransasUsa = 'Transas USA',
   NationalInstrumentsKorea = 'National Instruments Korea',
@@ -442,6 +443,7 @@ export const ManufacturerCodeValues: {[key: string]: number} = {
   [ManufacturerCode.NaviopSRL]: 0x1f7,
   [ManufacturerCode.VesperMarineLtd]: 0x1f8,
   [ManufacturerCode.MarinesoftCoLtd]: 0x1fe,
+  [ManufacturerCode.Simarine]: 0x201,
   [ManufacturerCode.NoLandEngineering]: 0x205,
   [ManufacturerCode.TransasUsa]: 0x206,
   [ManufacturerCode.NationalInstrumentsKorea]: 0x211,
@@ -2367,6 +2369,22 @@ export const SeatalkPilotHullTypeValues: {[key: string]: number} = {
   [SeatalkPilotHullType.PowerslowTurn]: 0x3,
   [SeatalkPilotHullType.PowerfastTurn]: 0x4,
   [SeatalkPilotHullType.Power]: 0x8,
+}
+
+/**
+ * @category Enumerations
+ */
+export enum SeatalkShared {
+  Shared = 'Shared',
+  NotShared = 'Not Shared',
+}
+
+/**
+ * @category Enumerations
+ */
+export const SeatalkSharedValues: {[key: string]: number} = {
+  [SeatalkShared.Shared]: 0x1,
+  [SeatalkShared.NotShared]: 0x2,
 }
 
 /**
@@ -6298,6 +6316,72 @@ export const MaretronStatusDeviationValues: {[key: string]: number} = {
 /**
  * @category Enumerations
  */
+export enum AutomaticManual {
+  Automatic = 'Automatic',
+  Manual = 'Manual',
+}
+
+/**
+ * @category Enumerations
+ */
+export const AutomaticManualValues: {[key: string]: number} = {
+  [AutomaticManual.Automatic]: 0x0,
+  [AutomaticManual.Manual]: 0x1,
+}
+
+/**
+ * @category Enumerations
+ */
+export enum SbasSv {
+  _120 = '120',
+  _121 = '121',
+  _122 = '122',
+  _123 = '123',
+  _124 = '124',
+  _125 = '125',
+  _126 = '126',
+  _127 = '127',
+  _128 = '128',
+  _129 = '129',
+  _130 = '130',
+  _131 = '131',
+  _132 = '132',
+  _133 = '133',
+  _134 = '134',
+  _135 = '135',
+  _136 = '136',
+  _137 = '137',
+  _138 = '138',
+}
+
+/**
+ * @category Enumerations
+ */
+export const SbasSvValues: {[key: string]: number} = {
+  [SbasSv._120]: 0x0,
+  [SbasSv._121]: 0x1,
+  [SbasSv._122]: 0x2,
+  [SbasSv._123]: 0x3,
+  [SbasSv._124]: 0x4,
+  [SbasSv._125]: 0x5,
+  [SbasSv._126]: 0x6,
+  [SbasSv._127]: 0x7,
+  [SbasSv._128]: 0x8,
+  [SbasSv._129]: 0x9,
+  [SbasSv._130]: 0xa,
+  [SbasSv._131]: 0xb,
+  [SbasSv._132]: 0xc,
+  [SbasSv._133]: 0xd,
+  [SbasSv._134]: 0xe,
+  [SbasSv._135]: 0xf,
+  [SbasSv._136]: 0x10,
+  [SbasSv._137]: 0x11,
+  [SbasSv._138]: 0x12,
+}
+
+/**
+ * @category Enumerations
+ */
 export enum DeviceFunction {
   Diagnostic = 'Diagnostic',
   BusTrafficLogger = 'Bus Traffic Logger',
@@ -6624,5 +6708,51 @@ export enum WpChange {
 export enum WpCriticalParameters {
   NavigationMethod = 'Navigation Method',
   XteLimit = 'XTE Limit',
+}
+
+/**
+ * @category Enumerations
+ */
+export enum DisabledSatellites {
+  DisableSv1 = 'Disable SV #1',
+  DisableSv2 = 'Disable SV #2',
+  DisableSv3 = 'Disable SV #3',
+  DisableSv4 = 'Disable SV #4',
+  DisableSv5 = 'Disable SV #5',
+  DisableSv6 = 'Disable SV #6',
+  DisableSv7 = 'Disable SV #7',
+  DisableSv8 = 'Disable SV #8',
+  DisableSv9 = 'Disable SV #9',
+  DisableSv10 = 'Disable SV #10',
+  DisableSv11 = 'Disable SV #11',
+  DisableSv12 = 'Disable SV #12',
+  DisableSv13 = 'Disable SV #13',
+  DisableSv14 = 'Disable SV #14',
+  DisableSv15 = 'Disable SV #15',
+  DisableSv16 = 'Disable SV #16',
+  DisableSv17 = 'Disable SV #17',
+  DisableSv18 = 'Disable SV #18',
+  DisableSv19 = 'Disable SV #19',
+  DisableSv20 = 'Disable SV #20',
+  DisableSv21 = 'Disable SV #21',
+  DisableSv22 = 'Disable SV #22',
+  DisableSv23 = 'Disable SV #23',
+  DisableSv24 = 'Disable SV #24',
+  DisableSv25 = 'Disable SV #25',
+  DisableSv26 = 'Disable SV #26',
+  DisableSv27 = 'Disable SV #27',
+  DisableSv28 = 'Disable SV #28',
+  DisableSv29 = 'Disable SV #29',
+  DisableSv30 = 'Disable SV #30',
+  DisableSv31 = 'Disable SV #31',
+  DisableSv32 = 'Disable SV #32',
+  DisableSv33 = 'Disable SV #33',
+  DisableSv34 = 'Disable SV #34',
+  DisableSv35 = 'Disable SV #35',
+  DisableSv36 = 'Disable SV #36',
+  DisableSv37 = 'Disable SV #37',
+  DisableSv38 = 'Disable SV #38',
+  DisableSv39 = 'Disable SV #39',
+  DisableSv40 = 'Disable SV #40',
 }
 

@@ -4529,12 +4529,15 @@ export const SimnetBacklightLevelValues: {[key: string]: number} = {
  * @category Enumerations
  */
 export enum SimnetApEvents {
+  FollownonFollow = 'Follow/Non Follow',
   Standby = 'Standby',
-  AutoMode = 'Auto mode',
+  HeadingMode = 'Heading mode',
   NavMode = 'Nav mode',
+  NoDriftMode = 'No Drift mode',
   NonFollowUpMode = 'Non Follow Up mode',
   FollowUpMode = 'Follow Up mode',
   WindMode = 'Wind mode',
+  Tack = 'Tack',
   Squareturn = 'Square (Turn)',
   CTurn = 'C-Turn',
   UTurn = 'U-Turn',
@@ -4552,12 +4555,15 @@ export enum SimnetApEvents {
  * @category Enumerations
  */
 export const SimnetApEventsValues: {[key: string]: number} = {
+  [SimnetApEvents.FollownonFollow]: 0x2,
   [SimnetApEvents.Standby]: 0x6,
-  [SimnetApEvents.AutoMode]: 0x9,
+  [SimnetApEvents.HeadingMode]: 0x9,
   [SimnetApEvents.NavMode]: 0xa,
+  [SimnetApEvents.NoDriftMode]: 0xc,
   [SimnetApEvents.NonFollowUpMode]: 0xd,
   [SimnetApEvents.FollowUpMode]: 0xe,
   [SimnetApEvents.WindMode]: 0xf,
+  [SimnetApEvents.Tack]: 0x11,
   [SimnetApEvents.Squareturn]: 0x12,
   [SimnetApEvents.CTurn]: 0x13,
   [SimnetApEvents.UTurn]: 0x14,
@@ -4594,9 +4600,26 @@ export const SimnetDirectionValues: {[key: string]: number} = {
 /**
  * @category Enumerations
  */
+export enum SimnetApCommandType {
+  FollowUp = 'Follow Up',
+  ApCommand = 'AP Command',
+}
+
+/**
+ * @category Enumerations
+ */
+export const SimnetApCommandTypeValues: {[key: string]: number} = {
+  [SimnetApCommandType.FollowUp]: 0x2,
+  [SimnetApCommandType.ApCommand]: 0xa,
+}
+
+/**
+ * @category Enumerations
+ */
 export enum SimnetAlarm {
   LowBoatSpeed = 'Low boat speed',
-  WindDataMissing = 'Wind data missing',
+  NoAutopilot = 'No Autopilot',
+  NavDataMissing = 'Nav data missing',
 }
 
 /**
@@ -4604,7 +4627,8 @@ export enum SimnetAlarm {
  */
 export const SimnetAlarmValues: {[key: string]: number} = {
   [SimnetAlarm.LowBoatSpeed]: 0x39,
-  [SimnetAlarm.WindDataMissing]: 0x3a,
+  [SimnetAlarm.NoAutopilot]: 0x38,
+  [SimnetAlarm.NavDataMissing]: 0x3a,
 }
 
 /**

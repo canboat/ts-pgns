@@ -2701,11 +2701,11 @@
         ]
       },
       {
-        "Name":"SIMNET_AP_COMMAND_TYPE",
+        "Name":"SIMNET_HEADING_AMMOUNT",
         "MaxValue":255,
         "EnumValues":[
-          {"Name":"Follow Up", "Value":2},
-          {"Name":"AP Command", "Value":10}
+          {"Name":"Ten Degrees", "Value":1745},
+          {"Name":"One Degree", "Value":174}
         ]
       },
       {
@@ -2713,7 +2713,6 @@
         "MaxValue":255,
         "EnumValues":[
           {"Name":"Low boat speed", "Value":57},
-          {"Name":"No Autopilot", "Value":56},
           {"Name":"Nav data missing", "Value":58}
         ]
       },
@@ -52709,8 +52708,8 @@
           },
           {
             "Order":7,
-            "Id":"commandType",
-            "Name":"Command Type",
+            "Id":"unknown",
+            "Name":"Unknown",
             "Description":"AP Command",
             "BitLength":8,
             "BitOffset":40,
@@ -52720,8 +52719,7 @@
             "Signed":false,
             "RangeMin":0,
             "RangeMax":252,
-            "FieldType":"LOOKUP",
-            "LookupEnumeration":"SIMNET_AP_COMMAND_TYPE"
+            "FieldType":"NUMBER"
           },
           {
             "Order":8,
@@ -52741,8 +52739,8 @@
           },
           {
             "Order":9,
-            "Id":"unknown",
-            "Name":"Unknown",
+            "Id":"unknownA",
+            "Name":"Unknown A",
             "BitLength":8,
             "BitOffset":56,
             "BitStart":0,
@@ -52881,8 +52879,8 @@
           },
           {
             "Order":7,
-            "Id":"commandType",
-            "Name":"Command Type",
+            "Id":"unknown",
+            "Name":"Unknown",
             "Description":"AP Command",
             "BitLength":8,
             "BitOffset":40,
@@ -52892,8 +52890,7 @@
             "Signed":false,
             "RangeMin":0,
             "RangeMax":252,
-            "FieldType":"LOOKUP",
-            "LookupEnumeration":"SIMNET_AP_COMMAND_TYPE"
+            "FieldType":"NUMBER"
           },
           {
             "Order":8,
@@ -52913,8 +52910,8 @@
           },
           {
             "Order":9,
-            "Id":"unknown",
-            "Name":"Unknown",
+            "Id":"unknownA",
+            "Name":"Unknown A",
             "BitLength":8,
             "BitOffset":56,
             "BitStart":0,
@@ -53053,8 +53050,8 @@
           },
           {
             "Order":7,
-            "Id":"commandType",
-            "Name":"Command Type",
+            "Id":"unknown",
+            "Name":"Unknown",
             "Description":"AP Command",
             "BitLength":8,
             "BitOffset":40,
@@ -53064,8 +53061,7 @@
             "Signed":false,
             "RangeMin":0,
             "RangeMax":252,
-            "FieldType":"LOOKUP",
-            "LookupEnumeration":"SIMNET_AP_COMMAND_TYPE"
+            "FieldType":"NUMBER"
           },
           {
             "Order":8,
@@ -53085,8 +53081,8 @@
           },
           {
             "Order":9,
-            "Id":"unknown",
-            "Name":"Unknown",
+            "Id":"unknownA",
+            "Name":"Unknown A",
             "BitLength":8,
             "BitOffset":56,
             "BitStart":0,
@@ -53225,8 +53221,8 @@
           },
           {
             "Order":7,
-            "Id":"commandType",
-            "Name":"Command Type",
+            "Id":"unknown",
+            "Name":"Unknown",
             "Description":"AP Command",
             "BitLength":8,
             "BitOffset":40,
@@ -53236,8 +53232,7 @@
             "Signed":false,
             "RangeMin":0,
             "RangeMax":252,
-            "FieldType":"LOOKUP",
-            "LookupEnumeration":"SIMNET_AP_COMMAND_TYPE"
+            "FieldType":"NUMBER"
           },
           {
             "Order":8,
@@ -53257,8 +53252,8 @@
           },
           {
             "Order":9,
-            "Id":"unknown",
-            "Name":"Unknown",
+            "Id":"unknownA",
+            "Name":"Unknown A",
             "BitLength":8,
             "BitOffset":56,
             "BitStart":0,
@@ -53397,8 +53392,8 @@
           },
           {
             "Order":7,
-            "Id":"commandType",
-            "Name":"Command Type",
+            "Id":"unknown",
+            "Name":"Unknown",
             "Description":"AP Command",
             "BitLength":8,
             "BitOffset":40,
@@ -53408,8 +53403,7 @@
             "Signed":false,
             "RangeMin":0,
             "RangeMax":252,
-            "FieldType":"LOOKUP",
-            "LookupEnumeration":"SIMNET_AP_COMMAND_TYPE"
+            "FieldType":"NUMBER"
           },
           {
             "Order":8,
@@ -53429,8 +53423,8 @@
           },
           {
             "Order":9,
-            "Id":"unknown",
-            "Name":"Unknown",
+            "Id":"unknownA",
+            "Name":"Unknown A",
             "BitLength":8,
             "BitOffset":56,
             "BitStart":0,
@@ -53569,8 +53563,8 @@
           },
           {
             "Order":7,
-            "Id":"commandType",
-            "Name":"Command Type",
+            "Id":"unknown",
+            "Name":"Unknown",
             "Description":"AP Command",
             "BitLength":8,
             "BitOffset":40,
@@ -53580,8 +53574,7 @@
             "Signed":false,
             "RangeMin":0,
             "RangeMax":252,
-            "FieldType":"LOOKUP",
-            "LookupEnumeration":"SIMNET_AP_COMMAND_TYPE"
+            "FieldType":"NUMBER"
           },
           {
             "Order":8,
@@ -53624,188 +53617,6 @@
             "RangeMin":0,
             "RangeMax":252,
             "FieldType":"NUMBER"
-          },
-          {
-            "Order":11,
-            "Id":"reserved11",
-            "Name":"Reserved",
-            "BitLength":8,
-            "BitOffset":72,
-            "BitStart":0,
-            "Resolution":1,
-            "FieldType":"RESERVED"
-          },
-          {
-            "Order":12,
-            "Id":"reserved12",
-            "Name":"Reserved",
-            "BitLength":8,
-            "BitOffset":80,
-            "BitStart":0,
-            "Resolution":1,
-            "FieldType":"RESERVED"
-          },
-          {
-            "Order":13,
-            "Id":"reserved13",
-            "Name":"Reserved",
-            "BitLength":8,
-            "BitOffset":88,
-            "BitStart":0,
-            "Resolution":1,
-            "FieldType":"RESERVED"
-          }
-        ]
-      },
-      {
-        "PGN":130850,
-        "Id":"simnetCommandApFollowUp",
-        "Description":"Simnet: Command AP Follow Up",
-        "Priority":2,
-        "Type":"Fast",
-        "Complete":false,
-        "Missing":["Fields","FieldLengths","Resolution","Interval"
-        ],
-        "FieldCount":13,
-        "Length":12,
-        "Fields":[
-          {
-            "Order":1,
-            "Id":"manufacturerCode",
-            "Name":"Manufacturer Code",
-            "Description":"Simrad",
-            "BitLength":11,
-            "BitOffset":0,
-            "BitStart":0,
-            "Match":1857,
-            "Resolution":1,
-            "Signed":false,
-            "RangeMin":0,
-            "RangeMax":2044,
-            "FieldType":"LOOKUP",
-            "LookupEnumeration":"MANUFACTURER_CODE"
-          },
-          {
-            "Order":2,
-            "Id":"reserved",
-            "Name":"Reserved",
-            "BitLength":2,
-            "BitOffset":11,
-            "BitStart":3,
-            "Resolution":1,
-            "FieldType":"RESERVED"
-          },
-          {
-            "Order":3,
-            "Id":"industryCode",
-            "Name":"Industry Code",
-            "Description":"Marine Industry",
-            "BitLength":3,
-            "BitOffset":13,
-            "BitStart":5,
-            "Match":4,
-            "Resolution":1,
-            "Signed":false,
-            "RangeMin":0,
-            "RangeMax":6,
-            "FieldType":"LOOKUP",
-            "LookupEnumeration":"INDUSTRY_CODE"
-          },
-          {
-            "Order":4,
-            "Id":"address",
-            "Name":"Address",
-            "Description":"NMEA 2000 address of commanded device",
-            "BitLength":8,
-            "BitOffset":16,
-            "BitStart":0,
-            "Resolution":1,
-            "Signed":false,
-            "RangeMin":0,
-            "RangeMax":252,
-            "FieldType":"NUMBER"
-          },
-          {
-            "Order":5,
-            "Id":"reserved5",
-            "Name":"Reserved",
-            "BitLength":8,
-            "BitOffset":24,
-            "BitStart":0,
-            "Resolution":1,
-            "FieldType":"RESERVED"
-          },
-          {
-            "Order":6,
-            "Id":"proprietaryId",
-            "Name":"Proprietary ID",
-            "Description":"Autopilot",
-            "BitLength":8,
-            "BitOffset":32,
-            "BitStart":0,
-            "Match":255,
-            "Resolution":1,
-            "Signed":false,
-            "RangeMin":0,
-            "RangeMax":255,
-            "FieldType":"LOOKUP",
-            "LookupEnumeration":"SIMNET_EVENT_COMMAND",
-            "PartOfPrimaryKey":true
-          },
-          {
-            "Order":7,
-            "Id":"commandType",
-            "Name":"Command Type",
-            "Description":"Follow Up",
-            "BitLength":8,
-            "BitOffset":40,
-            "BitStart":0,
-            "Match":2,
-            "Resolution":1,
-            "Signed":false,
-            "RangeMin":0,
-            "RangeMax":252,
-            "FieldType":"LOOKUP",
-            "LookupEnumeration":"SIMNET_AP_COMMAND_TYPE"
-          },
-          {
-            "Order":8,
-            "Id":"event",
-            "Name":"Event",
-            "Description":"Follow Up mode",
-            "BitLength":8,
-            "BitOffset":48,
-            "BitStart":0,
-            "Match":14,
-            "Resolution":1,
-            "Signed":false,
-            "RangeMin":0,
-            "RangeMax":252,
-            "FieldType":"LOOKUP",
-            "LookupEnumeration":"SIMNET_AP_EVENTS"
-          },
-          {
-            "Order":9,
-            "Id":"unknown",
-            "Name":"Unknown",
-            "BitLength":8,
-            "BitOffset":56,
-            "BitStart":0,
-            "Resolution":1,
-            "Signed":false,
-            "RangeMin":0,
-            "RangeMax":252,
-            "FieldType":"NUMBER"
-          },
-          {
-            "Order":10,
-            "Id":"reserved10",
-            "Name":"Reserved",
-            "BitLength":8,
-            "BitOffset":64,
-            "BitStart":0,
-            "Resolution":1,
-            "FieldType":"RESERVED"
           },
           {
             "Order":11,
@@ -53936,17 +53747,18 @@
           },
           {
             "Order":7,
-            "Id":"commandType",
-            "Name":"Command Type",
+            "Id":"unknown",
+            "Name":"Unknown",
+            "Description":"AP Command",
             "BitLength":8,
             "BitOffset":40,
             "BitStart":0,
+            "Match":10,
             "Resolution":1,
             "Signed":false,
             "RangeMin":0,
             "RangeMax":252,
-            "FieldType":"LOOKUP",
-            "LookupEnumeration":"SIMNET_AP_COMMAND_TYPE"
+            "FieldType":"NUMBER"
           },
           {
             "Order":8,
@@ -53966,8 +53778,8 @@
           },
           {
             "Order":9,
-            "Id":"unknown",
-            "Name":"Unknown",
+            "Id":"unknownA",
+            "Name":"Unknown A",
             "BitLength":8,
             "BitOffset":56,
             "BitStart":0,
@@ -53993,23 +53805,202 @@
           },
           {
             "Order":11,
-            "Id":"angle",
-            "Name":"Angle",
-            "Description":"Absolute change in desired attitude, generally 1 or 10 degrees",
+            "Id":"ammount",
+            "Name":"Ammount",
             "BitLength":16,
             "BitOffset":72,
             "BitStart":0,
-            "Unit":"rad",
-            "Resolution":0.0001,
+            "Resolution":1,
             "Signed":false,
             "RangeMin":0,
-            "RangeMax":6.2831852,
-            "FieldType":"NUMBER",
-            "PhysicalQuantity":"ANGLE"
+            "RangeMax":65532,
+            "FieldType":"LOOKUP",
+            "LookupEnumeration":"SIMNET_HEADING_AMMOUNT"
           },
           {
             "Order":12,
             "Id":"reserved12",
+            "Name":"Reserved",
+            "BitLength":8,
+            "BitOffset":88,
+            "BitStart":0,
+            "Resolution":1,
+            "FieldType":"RESERVED"
+          }
+        ]
+      },
+      {
+        "PGN":130850,
+        "Id":"simnetCommandApFollowUpMode",
+        "Description":"Simnet: Command AP Follow Up Mode",
+        "Priority":2,
+        "Type":"Fast",
+        "Complete":false,
+        "Missing":["Fields","FieldLengths","Resolution","Interval"
+        ],
+        "FieldCount":13,
+        "Length":12,
+        "Fields":[
+          {
+            "Order":1,
+            "Id":"manufacturerCode",
+            "Name":"Manufacturer Code",
+            "Description":"Simrad",
+            "BitLength":11,
+            "BitOffset":0,
+            "BitStart":0,
+            "Match":1857,
+            "Resolution":1,
+            "Signed":false,
+            "RangeMin":0,
+            "RangeMax":2044,
+            "FieldType":"LOOKUP",
+            "LookupEnumeration":"MANUFACTURER_CODE"
+          },
+          {
+            "Order":2,
+            "Id":"reserved",
+            "Name":"Reserved",
+            "BitLength":2,
+            "BitOffset":11,
+            "BitStart":3,
+            "Resolution":1,
+            "FieldType":"RESERVED"
+          },
+          {
+            "Order":3,
+            "Id":"industryCode",
+            "Name":"Industry Code",
+            "Description":"Marine Industry",
+            "BitLength":3,
+            "BitOffset":13,
+            "BitStart":5,
+            "Match":4,
+            "Resolution":1,
+            "Signed":false,
+            "RangeMin":0,
+            "RangeMax":6,
+            "FieldType":"LOOKUP",
+            "LookupEnumeration":"INDUSTRY_CODE"
+          },
+          {
+            "Order":4,
+            "Id":"address",
+            "Name":"Address",
+            "Description":"NMEA 2000 address of commanded device",
+            "BitLength":8,
+            "BitOffset":16,
+            "BitStart":0,
+            "Resolution":1,
+            "Signed":false,
+            "RangeMin":0,
+            "RangeMax":252,
+            "FieldType":"NUMBER"
+          },
+          {
+            "Order":5,
+            "Id":"reserved5",
+            "Name":"Reserved",
+            "BitLength":8,
+            "BitOffset":24,
+            "BitStart":0,
+            "Resolution":1,
+            "FieldType":"RESERVED"
+          },
+          {
+            "Order":6,
+            "Id":"proprietaryId",
+            "Name":"Proprietary ID",
+            "Description":"Autopilot",
+            "BitLength":8,
+            "BitOffset":32,
+            "BitStart":0,
+            "Match":255,
+            "Resolution":1,
+            "Signed":false,
+            "RangeMin":0,
+            "RangeMax":255,
+            "FieldType":"LOOKUP",
+            "LookupEnumeration":"SIMNET_EVENT_COMMAND",
+            "PartOfPrimaryKey":true
+          },
+          {
+            "Order":7,
+            "Id":"unknown",
+            "Name":"Unknown",
+            "Description":"Follow Up",
+            "BitLength":8,
+            "BitOffset":40,
+            "BitStart":0,
+            "Match":2,
+            "Resolution":1,
+            "Signed":false,
+            "RangeMin":0,
+            "RangeMax":252,
+            "FieldType":"NUMBER"
+          },
+          {
+            "Order":8,
+            "Id":"event",
+            "Name":"Event",
+            "Description":"Follow Up mode",
+            "BitLength":8,
+            "BitOffset":48,
+            "BitStart":0,
+            "Match":14,
+            "Resolution":1,
+            "Signed":false,
+            "RangeMin":0,
+            "RangeMax":252,
+            "FieldType":"LOOKUP",
+            "LookupEnumeration":"SIMNET_AP_EVENTS"
+          },
+          {
+            "Order":9,
+            "Id":"unknownB",
+            "Name":"Unknown B",
+            "BitLength":8,
+            "BitOffset":56,
+            "BitStart":0,
+            "Resolution":1,
+            "Signed":false,
+            "RangeMin":0,
+            "RangeMax":252,
+            "FieldType":"NUMBER"
+          },
+          {
+            "Order":10,
+            "Id":"reserved10",
+            "Name":"Reserved",
+            "BitLength":8,
+            "BitOffset":64,
+            "BitStart":0,
+            "Resolution":1,
+            "FieldType":"RESERVED"
+          },
+          {
+            "Order":11,
+            "Id":"reserved11",
+            "Name":"Reserved",
+            "BitLength":8,
+            "BitOffset":72,
+            "BitStart":0,
+            "Resolution":1,
+            "FieldType":"RESERVED"
+          },
+          {
+            "Order":12,
+            "Id":"reserved12",
+            "Name":"Reserved",
+            "BitLength":8,
+            "BitOffset":80,
+            "BitStart":0,
+            "Resolution":1,
+            "FieldType":"RESERVED"
+          },
+          {
+            "Order":13,
+            "Id":"reserved13",
             "Name":"Reserved",
             "BitLength":8,
             "BitOffset":88,
@@ -54178,370 +54169,6 @@
             "RangeMin":0,
             "RangeMax":252,
             "FieldType":"NUMBER"
-          }
-        ]
-      },
-      {
-        "PGN":130850,
-        "Id":"simnetApCommand",
-        "Description":"Simnet: AP command",
-        "Priority":2,
-        "Explanation":"Other Simnet AP command",
-        "Type":"Fast",
-        "Complete":false,
-        "Missing":["Fields","FieldLengths","Resolution"
-        ],
-        "FieldCount":15,
-        "Length":14,
-        "TransmissionIrregular":true,
-        "Fields":[
-          {
-            "Order":1,
-            "Id":"manufacturerCode",
-            "Name":"Manufacturer Code",
-            "Description":"Simrad",
-            "BitLength":11,
-            "BitOffset":0,
-            "BitStart":0,
-            "Match":1857,
-            "Resolution":1,
-            "Signed":false,
-            "RangeMin":0,
-            "RangeMax":2044,
-            "FieldType":"LOOKUP",
-            "LookupEnumeration":"MANUFACTURER_CODE"
-          },
-          {
-            "Order":2,
-            "Id":"reserved",
-            "Name":"Reserved",
-            "BitLength":2,
-            "BitOffset":11,
-            "BitStart":3,
-            "Resolution":1,
-            "FieldType":"RESERVED"
-          },
-          {
-            "Order":3,
-            "Id":"industryCode",
-            "Name":"Industry Code",
-            "Description":"Marine Industry",
-            "BitLength":3,
-            "BitOffset":13,
-            "BitStart":5,
-            "Match":4,
-            "Resolution":1,
-            "Signed":false,
-            "RangeMin":0,
-            "RangeMax":6,
-            "FieldType":"LOOKUP",
-            "LookupEnumeration":"INDUSTRY_CODE"
-          },
-          {
-            "Order":4,
-            "Id":"address",
-            "Name":"Address",
-            "Description":"NMEA 2000 address of commanded device",
-            "BitLength":8,
-            "BitOffset":16,
-            "BitStart":0,
-            "Resolution":1,
-            "Signed":false,
-            "RangeMin":0,
-            "RangeMax":252,
-            "FieldType":"NUMBER"
-          },
-          {
-            "Order":5,
-            "Id":"reserved5",
-            "Name":"Reserved",
-            "BitLength":8,
-            "BitOffset":24,
-            "BitStart":0,
-            "Resolution":1,
-            "FieldType":"RESERVED"
-          },
-          {
-            "Order":6,
-            "Id":"proprietaryId",
-            "Name":"Proprietary ID",
-            "Description":"Autopilot",
-            "BitLength":8,
-            "BitOffset":32,
-            "BitStart":0,
-            "Match":255,
-            "Resolution":1,
-            "Signed":false,
-            "RangeMin":0,
-            "RangeMax":255,
-            "FieldType":"LOOKUP",
-            "LookupEnumeration":"SIMNET_EVENT_COMMAND",
-            "PartOfPrimaryKey":true
-          },
-          {
-            "Order":7,
-            "Id":"commandType",
-            "Name":"Command Type",
-            "BitLength":8,
-            "BitOffset":40,
-            "BitStart":0,
-            "Resolution":1,
-            "Signed":false,
-            "RangeMin":0,
-            "RangeMax":252,
-            "FieldType":"LOOKUP",
-            "LookupEnumeration":"SIMNET_AP_COMMAND_TYPE"
-          },
-          {
-            "Order":8,
-            "Id":"event",
-            "Name":"Event",
-            "BitLength":8,
-            "BitOffset":48,
-            "BitStart":0,
-            "Resolution":1,
-            "Signed":false,
-            "RangeMin":0,
-            "RangeMax":252,
-            "FieldType":"LOOKUP",
-            "LookupEnumeration":"SIMNET_AP_EVENTS"
-          },
-          {
-            "Order":9,
-            "Id":"reserved9",
-            "Name":"Reserved",
-            "BitLength":8,
-            "BitOffset":56,
-            "BitStart":0,
-            "Resolution":1,
-            "FieldType":"RESERVED"
-          },
-          {
-            "Order":10,
-            "Id":"reserved10",
-            "Name":"Reserved",
-            "BitLength":8,
-            "BitOffset":64,
-            "BitStart":0,
-            "Resolution":1,
-            "FieldType":"RESERVED"
-          },
-          {
-            "Order":11,
-            "Id":"reserved11",
-            "Name":"Reserved",
-            "BitLength":8,
-            "BitOffset":72,
-            "BitStart":0,
-            "Resolution":1,
-            "FieldType":"RESERVED"
-          },
-          {
-            "Order":12,
-            "Id":"reserved12",
-            "Name":"Reserved",
-            "BitLength":8,
-            "BitOffset":80,
-            "BitStart":0,
-            "Resolution":1,
-            "FieldType":"RESERVED"
-          },
-          {
-            "Order":13,
-            "Id":"reserved13",
-            "Name":"Reserved",
-            "BitLength":8,
-            "BitOffset":88,
-            "BitStart":0,
-            "Resolution":1,
-            "FieldType":"RESERVED"
-          },
-          {
-            "Order":14,
-            "Id":"reserved14",
-            "Name":"Reserved",
-            "BitLength":8,
-            "BitOffset":96,
-            "BitStart":0,
-            "Resolution":1,
-            "FieldType":"RESERVED"
-          },
-          {
-            "Order":15,
-            "Id":"reserved15",
-            "Name":"Reserved",
-            "BitLength":8,
-            "BitOffset":104,
-            "BitStart":0,
-            "Resolution":1,
-            "FieldType":"RESERVED"
-          }
-        ]
-      },
-      {
-        "PGN":130850,
-        "Id":"simnetEvent",
-        "Description":"Simnet: Event",
-        "Priority":2,
-        "Explanation":"Other Simnet Event",
-        "Type":"Fast",
-        "Complete":false,
-        "Missing":["Fields","FieldLengths","Resolution"
-        ],
-        "FieldCount":13,
-        "Length":12,
-        "TransmissionIrregular":true,
-        "Fields":[
-          {
-            "Order":1,
-            "Id":"manufacturerCode",
-            "Name":"Manufacturer Code",
-            "Description":"Simrad",
-            "BitLength":11,
-            "BitOffset":0,
-            "BitStart":0,
-            "Match":1857,
-            "Resolution":1,
-            "Signed":false,
-            "RangeMin":0,
-            "RangeMax":2044,
-            "FieldType":"LOOKUP",
-            "LookupEnumeration":"MANUFACTURER_CODE"
-          },
-          {
-            "Order":2,
-            "Id":"reserved",
-            "Name":"Reserved",
-            "BitLength":2,
-            "BitOffset":11,
-            "BitStart":3,
-            "Resolution":1,
-            "FieldType":"RESERVED"
-          },
-          {
-            "Order":3,
-            "Id":"industryCode",
-            "Name":"Industry Code",
-            "Description":"Marine Industry",
-            "BitLength":3,
-            "BitOffset":13,
-            "BitStart":5,
-            "Match":4,
-            "Resolution":1,
-            "Signed":false,
-            "RangeMin":0,
-            "RangeMax":6,
-            "FieldType":"LOOKUP",
-            "LookupEnumeration":"INDUSTRY_CODE"
-          },
-          {
-            "Order":4,
-            "Id":"address",
-            "Name":"Address",
-            "Description":"NMEA 2000 address of commanded device",
-            "BitLength":8,
-            "BitOffset":16,
-            "BitStart":0,
-            "Resolution":1,
-            "Signed":false,
-            "RangeMin":0,
-            "RangeMax":252,
-            "FieldType":"NUMBER"
-          },
-          {
-            "Order":5,
-            "Id":"reserved5",
-            "Name":"Reserved",
-            "BitLength":8,
-            "BitOffset":24,
-            "BitStart":0,
-            "Resolution":1,
-            "FieldType":"RESERVED"
-          },
-          {
-            "Order":6,
-            "Id":"proprietaryId",
-            "Name":"Proprietary ID",
-            "BitLength":8,
-            "BitOffset":32,
-            "BitStart":0,
-            "Resolution":1,
-            "Signed":false,
-            "RangeMin":0,
-            "RangeMax":255,
-            "FieldType":"LOOKUP",
-            "LookupEnumeration":"SIMNET_EVENT_COMMAND",
-            "PartOfPrimaryKey":true
-          },
-          {
-            "Order":7,
-            "Id":"reserved7",
-            "Name":"Reserved",
-            "BitLength":8,
-            "BitOffset":40,
-            "BitStart":0,
-            "Resolution":1,
-            "FieldType":"RESERVED"
-          },
-          {
-            "Order":8,
-            "Id":"reserved8",
-            "Name":"Reserved",
-            "BitLength":8,
-            "BitOffset":48,
-            "BitStart":0,
-            "Resolution":1,
-            "FieldType":"RESERVED"
-          },
-          {
-            "Order":9,
-            "Id":"reserved9",
-            "Name":"Reserved",
-            "BitLength":8,
-            "BitOffset":56,
-            "BitStart":0,
-            "Resolution":1,
-            "FieldType":"RESERVED"
-          },
-          {
-            "Order":10,
-            "Id":"reserved10",
-            "Name":"Reserved",
-            "BitLength":8,
-            "BitOffset":64,
-            "BitStart":0,
-            "Resolution":1,
-            "FieldType":"RESERVED"
-          },
-          {
-            "Order":11,
-            "Id":"reserved11",
-            "Name":"Reserved",
-            "BitLength":8,
-            "BitOffset":72,
-            "BitStart":0,
-            "Resolution":1,
-            "FieldType":"RESERVED"
-          },
-          {
-            "Order":12,
-            "Id":"reserved12",
-            "Name":"Reserved",
-            "BitLength":8,
-            "BitOffset":80,
-            "BitStart":0,
-            "Resolution":1,
-            "FieldType":"RESERVED"
-          },
-          {
-            "Order":13,
-            "Id":"reserved13",
-            "Name":"Reserved",
-            "BitLength":8,
-            "BitOffset":88,
-            "BitStart":0,
-            "Resolution":1,
-            "FieldType":"RESERVED"
           }
         ]
       },

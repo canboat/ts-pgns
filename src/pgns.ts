@@ -23882,161 +23882,676 @@ pgnIdToCreator['seatalkWaypointInformation'] = (fields:any, dst:number) => new P
 /**
  * PGN: 130850
  *
- * Description: Simnet: AP Command
+ * Description: Simnet: Command AP Standby
  *
  * Match: Manufacturer Code == Simrad<br>
  * Match: Industry Code == Marine Industry<br>
  * Match: Proprietary ID == Autopilot<br>
+ * Match: Command Type == AP Command<br>
+ * Match: Event == Standby<br>
  *
- * @category PGN_130850_SimnetApCommand
+ * @category PGN_130850_SimnetCommandApStandby
  */
-export interface PGN_130850_SimnetApCommandInterface extends PGNInterface {
-  fields: PGN_130850_SimnetApCommandFields
+export interface PGN_130850_SimnetCommandApStandbyInterface extends PGNInterface {
+  fields: PGN_130850_SimnetCommandApStandbyFields
 }
 
 /**
- * @category PGN_130850_SimnetApCommand
+ * @category PGN_130850_SimnetCommandApStandby
  */
-export interface PGN_130850_SimnetApCommandFields {
+export interface PGN_130850_SimnetCommandApStandbyFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
   address?: N2K_Number
   reserved5?: number
   proprietaryId: enums.SimnetEventCommand | number
-  apStatus?: enums.SimnetApStatus | number
-  apCommand?: enums.SimnetApEvents | number
-  spare9?: number
-  direction?: enums.SimnetDirection | number
-  angle?: N2K_Number
+  commandType?: enums.SimnetApCommandType | number
+  event?: enums.SimnetApEvents | number
+  unknown?: N2K_Number
+  reserved10?: number
+  reserved11?: number
+  reserved12?: number
 }
 
 /**
- * @category PGN_130850_SimnetApCommand
+ * @category PGN_130850_SimnetCommandApStandby
  */
-export const PGN_130850_SimnetApCommandMatchFields = {
+export const PGN_130850_SimnetCommandApStandbyMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
   proprietaryId: enums.SimnetEventCommand.Autopilot,
+  commandType: enums.SimnetApCommandType.ApCommand,
+  event: enums.SimnetApEvents.Standby,
 }
 
 /**
- * @category PGN_130850_SimnetApCommand
+ * @category PGN_130850_SimnetCommandApStandby
  */
-export interface PGN_130850_SimnetApCommandCreateArgs {
+export interface PGN_130850_SimnetCommandApStandbyCreateArgs {
   reserved?: number
   address?: N2K_Number
   reserved5?: number
-  apStatus?: enums.SimnetApStatus | number
-  apCommand?: enums.SimnetApEvents | number
-  spare9?: number
-  direction?: enums.SimnetDirection | number
-  angle?: N2K_Number
+  unknown?: N2K_Number
+  reserved10?: number
+  reserved11?: number
+  reserved12?: number
 }
 
 /**
- * @category PGN_130850_SimnetApCommand
+ * @category PGN_130850_SimnetCommandApStandby
  */
-export class PGN_130850_SimnetApCommand extends PGN implements PGN_130850_SimnetApCommandInterface {
-  fields: PGN_130850_SimnetApCommandFields
+export class PGN_130850_SimnetCommandApStandby extends PGN implements PGN_130850_SimnetCommandApStandbyInterface {
+  fields: PGN_130850_SimnetCommandApStandbyFields
 
-  constructor(fields: PGN_130850_SimnetApCommandCreateArgs, dst: number = 255) {
+  constructor(fields: PGN_130850_SimnetCommandApStandbyCreateArgs, dst: number = 255) {
     super({
       pgn: 130850,
       prio: 2,
       dst
     })
-    this.fields = { ...PGN_130850_SimnetApCommandMatchFields, ...fields }
+    this.fields = { ...PGN_130850_SimnetCommandApStandbyMatchFields, ...fields }
   }
 
   static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_130850_SimnetApCommandMatchFields)
+    return isMatch(pgn, PGN_130850_SimnetCommandApStandbyMatchFields)
   }
   getDefinition(): Definition {
-    return getPGNWithId('simnetApCommand')!
+    return getPGNWithId('simnetCommandApStandby')!
   }
 }
-pgnIdToCreator['simnetApCommand'] = (fields:any, dst:number) => new PGN_130850_SimnetApCommand(fields, dst)
+pgnIdToCreator['simnetCommandApStandby'] = (fields:any, dst:number) => new PGN_130850_SimnetCommandApStandby(fields, dst)
 
 
 /**
  * PGN: 130850
  *
- * Description: Simnet: Event Command: AP command
+ * Description: Simnet: Command AP NoDrift
  *
  * Match: Manufacturer Code == Simrad<br>
  * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == AP command<br>
+ * Match: Proprietary ID == Autopilot<br>
+ * Match: Command Type == AP Command<br>
+ * Match: Event == No Drift mode<br>
  *
- * @category PGN_130850_SimnetEventCommandApCommand
+ * @category PGN_130850_SimnetCommandApNodrift
  */
-export interface PGN_130850_SimnetEventCommandApCommandInterface extends PGNInterface {
-  fields: PGN_130850_SimnetEventCommandApCommandFields
+export interface PGN_130850_SimnetCommandApNodriftInterface extends PGNInterface {
+  fields: PGN_130850_SimnetCommandApNodriftFields
 }
 
 /**
- * @category PGN_130850_SimnetEventCommandApCommand
+ * @category PGN_130850_SimnetCommandApNodrift
  */
-export interface PGN_130850_SimnetEventCommandApCommandFields {
+export interface PGN_130850_SimnetCommandApNodriftFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
+  address?: N2K_Number
+  reserved5?: number
   proprietaryId: enums.SimnetEventCommand | number
-  unusedA?: N2K_Number
-  controllingDevice?: N2K_Number
+  commandType?: enums.SimnetApCommandType | number
   event?: enums.SimnetApEvents | number
-  unusedB?: N2K_Number
-  direction?: enums.SimnetDirection | number
-  angle?: N2K_Number
-  unusedC?: N2K_Number
+  unknown?: N2K_Number
+  reserved10?: number
+  reserved11?: number
+  reserved12?: number
 }
 
 /**
- * @category PGN_130850_SimnetEventCommandApCommand
+ * @category PGN_130850_SimnetCommandApNodrift
  */
-export const PGN_130850_SimnetEventCommandApCommandMatchFields = {
+export const PGN_130850_SimnetCommandApNodriftMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
-  proprietaryId: enums.SimnetEventCommand.ApCommand,
+  proprietaryId: enums.SimnetEventCommand.Autopilot,
+  commandType: enums.SimnetApCommandType.ApCommand,
+  event: enums.SimnetApEvents.NoDriftMode,
 }
 
 /**
- * @category PGN_130850_SimnetEventCommandApCommand
+ * @category PGN_130850_SimnetCommandApNodrift
  */
-export interface PGN_130850_SimnetEventCommandApCommandCreateArgs {
+export interface PGN_130850_SimnetCommandApNodriftCreateArgs {
   reserved?: number
-  unusedA?: N2K_Number
-  controllingDevice?: N2K_Number
-  event?: enums.SimnetApEvents | number
-  unusedB?: N2K_Number
-  direction?: enums.SimnetDirection | number
-  angle?: N2K_Number
-  unusedC?: N2K_Number
+  address?: N2K_Number
+  reserved5?: number
+  unknown?: N2K_Number
+  reserved10?: number
+  reserved11?: number
+  reserved12?: number
 }
 
 /**
- * @category PGN_130850_SimnetEventCommandApCommand
+ * @category PGN_130850_SimnetCommandApNodrift
  */
-export class PGN_130850_SimnetEventCommandApCommand extends PGN implements PGN_130850_SimnetEventCommandApCommandInterface {
-  fields: PGN_130850_SimnetEventCommandApCommandFields
+export class PGN_130850_SimnetCommandApNodrift extends PGN implements PGN_130850_SimnetCommandApNodriftInterface {
+  fields: PGN_130850_SimnetCommandApNodriftFields
 
-  constructor(fields: PGN_130850_SimnetEventCommandApCommandCreateArgs, dst: number = 255) {
+  constructor(fields: PGN_130850_SimnetCommandApNodriftCreateArgs, dst: number = 255) {
     super({
       pgn: 130850,
       prio: 2,
       dst
     })
-    this.fields = { ...PGN_130850_SimnetEventCommandApCommandMatchFields, ...fields }
+    this.fields = { ...PGN_130850_SimnetCommandApNodriftMatchFields, ...fields }
   }
 
   static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_130850_SimnetEventCommandApCommandMatchFields)
+    return isMatch(pgn, PGN_130850_SimnetCommandApNodriftMatchFields)
   }
   getDefinition(): Definition {
-    return getPGNWithId('simnetEventCommandApCommand')!
+    return getPGNWithId('simnetCommandApNodrift')!
   }
 }
-pgnIdToCreator['simnetEventCommandApCommand'] = (fields:any, dst:number) => new PGN_130850_SimnetEventCommandApCommand(fields, dst)
+pgnIdToCreator['simnetCommandApNodrift'] = (fields:any, dst:number) => new PGN_130850_SimnetCommandApNodrift(fields, dst)
+
+
+/**
+ * PGN: 130850
+ *
+ * Description: Simnet: Command AP Wind
+ *
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Autopilot<br>
+ * Match: Command Type == AP Command<br>
+ * Match: Event == Wind mode<br>
+ *
+ * @category PGN_130850_SimnetCommandApWind
+ */
+export interface PGN_130850_SimnetCommandApWindInterface extends PGNInterface {
+  fields: PGN_130850_SimnetCommandApWindFields
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApWind
+ */
+export interface PGN_130850_SimnetCommandApWindFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  address?: N2K_Number
+  reserved5?: number
+  proprietaryId: enums.SimnetEventCommand | number
+  commandType?: enums.SimnetApCommandType | number
+  event?: enums.SimnetApEvents | number
+  unknown?: N2K_Number
+  reserved10?: number
+  reserved11?: number
+  reserved12?: number
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApWind
+ */
+export const PGN_130850_SimnetCommandApWindMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: enums.SimnetEventCommand.Autopilot,
+  commandType: enums.SimnetApCommandType.ApCommand,
+  event: enums.SimnetApEvents.WindMode,
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApWind
+ */
+export interface PGN_130850_SimnetCommandApWindCreateArgs {
+  reserved?: number
+  address?: N2K_Number
+  reserved5?: number
+  unknown?: N2K_Number
+  reserved10?: number
+  reserved11?: number
+  reserved12?: number
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApWind
+ */
+export class PGN_130850_SimnetCommandApWind extends PGN implements PGN_130850_SimnetCommandApWindInterface {
+  fields: PGN_130850_SimnetCommandApWindFields
+
+  constructor(fields: PGN_130850_SimnetCommandApWindCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130850,
+      prio: 2,
+      dst
+    })
+    this.fields = { ...PGN_130850_SimnetCommandApWindMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130850_SimnetCommandApWindMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetCommandApWind')!
+  }
+}
+pgnIdToCreator['simnetCommandApWind'] = (fields:any, dst:number) => new PGN_130850_SimnetCommandApWind(fields, dst)
+
+
+/**
+ * PGN: 130850
+ *
+ * Description: Simnet: Command AP Nav
+ *
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Autopilot<br>
+ * Match: Command Type == AP Command<br>
+ * Match: Event == Nav mode<br>
+ *
+ * @category PGN_130850_SimnetCommandApNav
+ */
+export interface PGN_130850_SimnetCommandApNavInterface extends PGNInterface {
+  fields: PGN_130850_SimnetCommandApNavFields
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApNav
+ */
+export interface PGN_130850_SimnetCommandApNavFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  address?: N2K_Number
+  reserved5?: number
+  proprietaryId: enums.SimnetEventCommand | number
+  commandType?: enums.SimnetApCommandType | number
+  event?: enums.SimnetApEvents | number
+  unknown?: N2K_Number
+  reserved10?: number
+  reserved11?: number
+  reserved12?: number
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApNav
+ */
+export const PGN_130850_SimnetCommandApNavMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: enums.SimnetEventCommand.Autopilot,
+  commandType: enums.SimnetApCommandType.ApCommand,
+  event: enums.SimnetApEvents.NavMode,
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApNav
+ */
+export interface PGN_130850_SimnetCommandApNavCreateArgs {
+  reserved?: number
+  address?: N2K_Number
+  reserved5?: number
+  unknown?: N2K_Number
+  reserved10?: number
+  reserved11?: number
+  reserved12?: number
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApNav
+ */
+export class PGN_130850_SimnetCommandApNav extends PGN implements PGN_130850_SimnetCommandApNavInterface {
+  fields: PGN_130850_SimnetCommandApNavFields
+
+  constructor(fields: PGN_130850_SimnetCommandApNavCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130850,
+      prio: 2,
+      dst
+    })
+    this.fields = { ...PGN_130850_SimnetCommandApNavMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130850_SimnetCommandApNavMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetCommandApNav')!
+  }
+}
+pgnIdToCreator['simnetCommandApNav'] = (fields:any, dst:number) => new PGN_130850_SimnetCommandApNav(fields, dst)
+
+
+/**
+ * PGN: 130850
+ *
+ * Description: Simnet: Command AP Heading
+ *
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Autopilot<br>
+ * Match: Command Type == AP Command<br>
+ * Match: Event == Heading mode<br>
+ *
+ * @category PGN_130850_SimnetCommandApHeading
+ */
+export interface PGN_130850_SimnetCommandApHeadingInterface extends PGNInterface {
+  fields: PGN_130850_SimnetCommandApHeadingFields
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApHeading
+ */
+export interface PGN_130850_SimnetCommandApHeadingFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  address?: N2K_Number
+  reserved5?: number
+  proprietaryId: enums.SimnetEventCommand | number
+  commandType?: enums.SimnetApCommandType | number
+  event?: enums.SimnetApEvents | number
+  unknown?: N2K_Number
+  reserved10?: number
+  reserved11?: number
+  reserved12?: number
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApHeading
+ */
+export const PGN_130850_SimnetCommandApHeadingMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: enums.SimnetEventCommand.Autopilot,
+  commandType: enums.SimnetApCommandType.ApCommand,
+  event: enums.SimnetApEvents.HeadingMode,
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApHeading
+ */
+export interface PGN_130850_SimnetCommandApHeadingCreateArgs {
+  reserved?: number
+  address?: N2K_Number
+  reserved5?: number
+  unknown?: N2K_Number
+  reserved10?: number
+  reserved11?: number
+  reserved12?: number
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApHeading
+ */
+export class PGN_130850_SimnetCommandApHeading extends PGN implements PGN_130850_SimnetCommandApHeadingInterface {
+  fields: PGN_130850_SimnetCommandApHeadingFields
+
+  constructor(fields: PGN_130850_SimnetCommandApHeadingCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130850,
+      prio: 2,
+      dst
+    })
+    this.fields = { ...PGN_130850_SimnetCommandApHeadingMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130850_SimnetCommandApHeadingMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetCommandApHeading')!
+  }
+}
+pgnIdToCreator['simnetCommandApHeading'] = (fields:any, dst:number) => new PGN_130850_SimnetCommandApHeading(fields, dst)
+
+
+/**
+ * PGN: 130850
+ *
+ * Description: Simnet: Command AP Tack
+ *
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Autopilot<br>
+ * Match: Command Type == AP Command<br>
+ * Match: Event == Tack<br>
+ *
+ * @category PGN_130850_SimnetCommandApTack
+ */
+export interface PGN_130850_SimnetCommandApTackInterface extends PGNInterface {
+  fields: PGN_130850_SimnetCommandApTackFields
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApTack
+ */
+export interface PGN_130850_SimnetCommandApTackFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  address?: N2K_Number
+  reserved5?: number
+  proprietaryId: enums.SimnetEventCommand | number
+  commandType?: enums.SimnetApCommandType | number
+  event?: enums.SimnetApEvents | number
+  unknownA?: N2K_Number
+  unknownB?: N2K_Number
+  reserved11?: number
+  reserved12?: number
+  reserved13?: number
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApTack
+ */
+export const PGN_130850_SimnetCommandApTackMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: enums.SimnetEventCommand.Autopilot,
+  commandType: enums.SimnetApCommandType.ApCommand,
+  event: enums.SimnetApEvents.Tack,
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApTack
+ */
+export interface PGN_130850_SimnetCommandApTackCreateArgs {
+  reserved?: number
+  address?: N2K_Number
+  reserved5?: number
+  unknownA?: N2K_Number
+  unknownB?: N2K_Number
+  reserved11?: number
+  reserved12?: number
+  reserved13?: number
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApTack
+ */
+export class PGN_130850_SimnetCommandApTack extends PGN implements PGN_130850_SimnetCommandApTackInterface {
+  fields: PGN_130850_SimnetCommandApTackFields
+
+  constructor(fields: PGN_130850_SimnetCommandApTackCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130850,
+      prio: 2,
+      dst
+    })
+    this.fields = { ...PGN_130850_SimnetCommandApTackMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130850_SimnetCommandApTackMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetCommandApTack')!
+  }
+}
+pgnIdToCreator['simnetCommandApTack'] = (fields:any, dst:number) => new PGN_130850_SimnetCommandApTack(fields, dst)
+
+
+/**
+ * PGN: 130850
+ *
+ * Description: Simnet: Command AP Follow Up
+ *
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Autopilot<br>
+ * Match: Command Type == Follow Up<br>
+ * Match: Event == Follow Up mode<br>
+ *
+ * @category PGN_130850_SimnetCommandApFollowUp
+ */
+export interface PGN_130850_SimnetCommandApFollowUpInterface extends PGNInterface {
+  fields: PGN_130850_SimnetCommandApFollowUpFields
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApFollowUp
+ */
+export interface PGN_130850_SimnetCommandApFollowUpFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  address?: N2K_Number
+  reserved5?: number
+  proprietaryId: enums.SimnetEventCommand | number
+  commandType?: enums.SimnetApCommandType | number
+  event?: enums.SimnetApEvents | number
+  unknown?: N2K_Number
+  reserved10?: number
+  reserved11?: number
+  reserved12?: number
+  reserved13?: number
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApFollowUp
+ */
+export const PGN_130850_SimnetCommandApFollowUpMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: enums.SimnetEventCommand.Autopilot,
+  commandType: enums.SimnetApCommandType.FollowUp,
+  event: enums.SimnetApEvents.FollowUpMode,
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApFollowUp
+ */
+export interface PGN_130850_SimnetCommandApFollowUpCreateArgs {
+  reserved?: number
+  address?: N2K_Number
+  reserved5?: number
+  unknown?: N2K_Number
+  reserved10?: number
+  reserved11?: number
+  reserved12?: number
+  reserved13?: number
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApFollowUp
+ */
+export class PGN_130850_SimnetCommandApFollowUp extends PGN implements PGN_130850_SimnetCommandApFollowUpInterface {
+  fields: PGN_130850_SimnetCommandApFollowUpFields
+
+  constructor(fields: PGN_130850_SimnetCommandApFollowUpCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130850,
+      prio: 2,
+      dst
+    })
+    this.fields = { ...PGN_130850_SimnetCommandApFollowUpMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130850_SimnetCommandApFollowUpMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetCommandApFollowUp')!
+  }
+}
+pgnIdToCreator['simnetCommandApFollowUp'] = (fields:any, dst:number) => new PGN_130850_SimnetCommandApFollowUp(fields, dst)
+
+
+/**
+ * PGN: 130850
+ *
+ * Description: Simnet: Command AP Change Course
+ *
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Autopilot<br>
+ * Match: Event == Change course<br>
+ *
+ * @category PGN_130850_SimnetCommandApChangeCourse
+ */
+export interface PGN_130850_SimnetCommandApChangeCourseInterface extends PGNInterface {
+  fields: PGN_130850_SimnetCommandApChangeCourseFields
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApChangeCourse
+ */
+export interface PGN_130850_SimnetCommandApChangeCourseFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  address?: N2K_Number
+  reserved5?: number
+  proprietaryId: enums.SimnetEventCommand | number
+  commandType?: enums.SimnetApCommandType | number
+  event?: enums.SimnetApEvents | number
+  unknown?: N2K_Number
+  direction?: enums.SimnetDirection | number
+  angle?: N2K_Number
+  reserved12?: number
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApChangeCourse
+ */
+export const PGN_130850_SimnetCommandApChangeCourseMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: enums.SimnetEventCommand.Autopilot,
+  event: enums.SimnetApEvents.ChangeCourse,
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApChangeCourse
+ */
+export interface PGN_130850_SimnetCommandApChangeCourseCreateArgs {
+  reserved?: number
+  address?: N2K_Number
+  reserved5?: number
+  commandType?: enums.SimnetApCommandType | number
+  unknown?: N2K_Number
+  direction?: enums.SimnetDirection | number
+  angle?: N2K_Number
+  reserved12?: number
+}
+
+/**
+ * @category PGN_130850_SimnetCommandApChangeCourse
+ */
+export class PGN_130850_SimnetCommandApChangeCourse extends PGN implements PGN_130850_SimnetCommandApChangeCourseInterface {
+  fields: PGN_130850_SimnetCommandApChangeCourseFields
+
+  constructor(fields: PGN_130850_SimnetCommandApChangeCourseCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130850,
+      prio: 2,
+      dst
+    })
+    this.fields = { ...PGN_130850_SimnetCommandApChangeCourseMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130850_SimnetCommandApChangeCourseMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetCommandApChangeCourse')!
+  }
+}
+pgnIdToCreator['simnetCommandApChangeCourse'] = (fields:any, dst:number) => new PGN_130850_SimnetCommandApChangeCourse(fields, dst)
 
 
 /**
@@ -24119,6 +24634,181 @@ export class PGN_130850_SimnetAlarm extends PGN implements PGN_130850_SimnetAlar
   }
 }
 pgnIdToCreator['simnetAlarm'] = (fields:any, dst:number) => new PGN_130850_SimnetAlarm(fields, dst)
+
+
+/**
+ * PGN: 130850
+ *
+ * Description: Simnet: AP command
+ *
+ * Explanation: Other Simnet AP command
+ *
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Autopilot<br>
+ *
+ * @category PGN_130850_SimnetApCommand
+ */
+export interface PGN_130850_SimnetApCommandInterface extends PGNInterface {
+  fields: PGN_130850_SimnetApCommandFields
+}
+
+/**
+ * @category PGN_130850_SimnetApCommand
+ */
+export interface PGN_130850_SimnetApCommandFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  address?: N2K_Number
+  reserved5?: number
+  proprietaryId: enums.SimnetEventCommand | number
+  commandType?: enums.SimnetApCommandType | number
+  event?: enums.SimnetApEvents | number
+  reserved9?: number
+  reserved10?: number
+  reserved11?: number
+  reserved12?: number
+  reserved13?: number
+  reserved14?: number
+  reserved15?: number
+}
+
+/**
+ * @category PGN_130850_SimnetApCommand
+ */
+export const PGN_130850_SimnetApCommandMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: enums.SimnetEventCommand.Autopilot,
+}
+
+/**
+ * @category PGN_130850_SimnetApCommand
+ */
+export interface PGN_130850_SimnetApCommandCreateArgs {
+  reserved?: number
+  address?: N2K_Number
+  reserved5?: number
+  commandType?: enums.SimnetApCommandType | number
+  event?: enums.SimnetApEvents | number
+  reserved9?: number
+  reserved10?: number
+  reserved11?: number
+  reserved12?: number
+  reserved13?: number
+  reserved14?: number
+  reserved15?: number
+}
+
+/**
+ * @category PGN_130850_SimnetApCommand
+ */
+export class PGN_130850_SimnetApCommand extends PGN implements PGN_130850_SimnetApCommandInterface {
+  fields: PGN_130850_SimnetApCommandFields
+
+  constructor(fields: PGN_130850_SimnetApCommandCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130850,
+      prio: 2,
+      dst
+    })
+    this.fields = { ...PGN_130850_SimnetApCommandMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130850_SimnetApCommandMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetApCommand')!
+  }
+}
+pgnIdToCreator['simnetApCommand'] = (fields:any, dst:number) => new PGN_130850_SimnetApCommand(fields, dst)
+
+
+/**
+ * PGN: 130850
+ *
+ * Description: Simnet: Event
+ *
+ * Explanation: Other Simnet Event
+ *
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130850_SimnetEvent
+ */
+export interface PGN_130850_SimnetEventInterface extends PGNInterface {
+  fields: PGN_130850_SimnetEventFields
+}
+
+/**
+ * @category PGN_130850_SimnetEvent
+ */
+export interface PGN_130850_SimnetEventFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  address?: N2K_Number
+  reserved5?: number
+  proprietaryId: enums.SimnetEventCommand | number
+  reserved7?: number
+  reserved8?: number
+  reserved9?: number
+  reserved10?: number
+  reserved11?: number
+  reserved12?: number
+  reserved13?: number
+}
+
+/**
+ * @category PGN_130850_SimnetEvent
+ */
+export const PGN_130850_SimnetEventMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130850_SimnetEvent
+ */
+export interface PGN_130850_SimnetEventCreateArgs {
+  reserved?: number
+  address?: N2K_Number
+  reserved5?: number
+  proprietaryId: enums.SimnetEventCommand | number
+  reserved7?: number
+  reserved8?: number
+  reserved9?: number
+  reserved10?: number
+  reserved11?: number
+  reserved12?: number
+  reserved13?: number
+}
+
+/**
+ * @category PGN_130850_SimnetEvent
+ */
+export class PGN_130850_SimnetEvent extends PGN implements PGN_130850_SimnetEventInterface {
+  fields: PGN_130850_SimnetEventFields
+
+  constructor(fields: PGN_130850_SimnetEventCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130850,
+      prio: 2,
+      dst
+    })
+    this.fields = { ...PGN_130850_SimnetEventMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130850_SimnetEventMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetEvent')!
+  }
+}
+pgnIdToCreator['simnetEvent'] = (fields:any, dst:number) => new PGN_130850_SimnetEvent(fields, dst)
 
 
 /**

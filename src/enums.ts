@@ -4618,7 +4618,7 @@ export const SimnetApCommandTypeValues: {[key: string]: number} = {
  */
 export enum SimnetAlarm {
   LowBoatSpeed = 'Low boat speed',
-  NoAutopilot = 'No Autopilot',
+  NoAutopilotComputer = 'No autopilot computer',
   NavDataMissing = 'Nav data missing',
 }
 
@@ -4627,7 +4627,7 @@ export enum SimnetAlarm {
  */
 export const SimnetAlarmValues: {[key: string]: number} = {
   [SimnetAlarm.LowBoatSpeed]: 0x39,
-  [SimnetAlarm.NoAutopilot]: 0x38,
+  [SimnetAlarm.NoAutopilotComputer]: 0x38,
   [SimnetAlarm.NavDataMissing]: 0x3a,
 }
 

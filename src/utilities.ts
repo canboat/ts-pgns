@@ -693,10 +693,11 @@ export const setSupportsCamelCaseCacheEnabled = (enabled: boolean) => {
   skServerSupportsCamelCase = undefined
 }
 
-function isCamelCaseSupported(app: any) {
+export function isCamelCaseSupported(app: any) {
   const check = () =>
-    satisfies(app.config.version, '>=2.15.0') ||
-    satisfies(app.config.version, '>=2.15.0-beta')
+    satisfies(app.config.version, '>=2.15.0', { includePrerelease: true }) ||
+    satisfies(app.config.version, '>=2.15.0-beta', { includePrerelease: true })
+
   if (skServerSupportsCamelCaseCacheEnabled) {
     if (skServerSupportsCamelCase === undefined) {
       skServerSupportsCamelCase = check()

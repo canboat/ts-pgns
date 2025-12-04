@@ -271,7 +271,7 @@ describe('utilities tests', () => {
 
   it(`isCamelCaseSupported 2.15.0 works`, (done) => {
     try {
-      const supported = isCamelCaseSupported({config: {version: "2.15.0"}})
+      const supported = isCamelCaseSupported({ config: { version: '2.15.0' } })
       expect(supported).to.equal(true)
       done()
     } catch (err) {
@@ -281,7 +281,7 @@ describe('utilities tests', () => {
 
   it(`isCamelCaseSupported 2.14.0 works`, (done) => {
     try {
-      const supported = isCamelCaseSupported({config: {version: "2.14.0"}})
+      const supported = isCamelCaseSupported({ config: { version: '2.14.0' } })
       expect(supported).to.equal(false)
       done()
     } catch (err) {
@@ -291,7 +291,9 @@ describe('utilities tests', () => {
 
   it(`isCamelCaseSupported 2.18.0-beta.1 works`, (done) => {
     try {
-      const supported = isCamelCaseSupported({config: {version: "2.18.0-beta.1"}})
+      const supported = isCamelCaseSupported({
+        config: { version: '2.18.0-beta.1' }
+      })
       expect(supported).to.equal(true)
       done()
     } catch (err) {
@@ -301,7 +303,9 @@ describe('utilities tests', () => {
 
   it(`isCamelCaseSupported 2.15.0-beta.2 works`, (done) => {
     try {
-      const supported = isCamelCaseSupported({config: {version: "2.15.0-beta.2"}})
+      const supported = isCamelCaseSupported({
+        config: { version: '2.15.0-beta.2' }
+      })
       expect(supported).to.equal(true)
       done()
     } catch (err) {
@@ -311,7 +315,9 @@ describe('utilities tests', () => {
 
   it(`isCamelCaseSupported 2.12.0-beta.2 works`, (done) => {
     try {
-      const supported = isCamelCaseSupported({config: {version: "2.12.0-beta.2"}})
+      const supported = isCamelCaseSupported({
+        config: { version: '2.12.0-beta.2' }
+      })
       expect(supported).to.equal(false)
       done()
     } catch (err) {

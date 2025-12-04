@@ -15,11 +15,14 @@ import {
   PGN_65379_SeatalkPilotMode,
   SeatalkPilotMode16,
   PGN_126208_NmeaCommandGroupFunction,
-  Priority
+  Priority,
+  isCamelCaseSupported,
+  setSupportsCamelCaseCacheEnabled
 } from '../dist/index'
 import { pgnToActisenseSerialFormat } from '@canboat/canboatjs'
 
 describe('utilities tests', () => {
+  setSupportsCamelCaseCacheEnabled(false)
   it(`findMatchingDefinition works`, (done) => {
     const pgn = new PGN_61184_VictronBatteryRegister({
       registerId: 1,
@@ -264,5 +267,55 @@ describe('utilities tests', () => {
 
     expect(result).to.be.undefined
     done()
+  })
+
+  it(`isCamelCaseSupported 2.15.0 works`, (done) => {
+    try {
+      const supported = isCamelCaseSupported({config: {version: "2.15.0"}})
+      expect(supported).to.equal(true)
+      done()
+    } catch (err) {
+      done(err)
+    }
+  })
+
+  it(`isCamelCaseSupported 2.14.0 works`, (done) => {
+    try {
+      const supported = isCamelCaseSupported({config: {version: "2.14.0"}})
+      expect(supported).to.equal(false)
+      done()
+    } catch (err) {
+      done(err)
+    }
+  })
+
+  it(`isCamelCaseSupported 2.18.0-beta.1 works`, (done) => {
+    try {
+      const supported = isCamelCaseSupported({config: {version: "2.18.0-beta.1"}})
+      expect(supported).to.equal(true)
+      done()
+    } catch (err) {
+      done(err)
+    }
+  })
+
+  it(`isCamelCaseSupported 2.15.0-beta.2 works`, (done) => {
+    try {
+      const supported = isCamelCaseSupported({config: {version: "2.15.0-beta.2"}})
+      expect(supported).to.equal(true)
+      done()
+    } catch (err) {
+      done(err)
+    }
+  })
+
+  it(`isCamelCaseSupported 2.12.0-beta.2 works`, (done) => {
+    try {
+      const supported = isCamelCaseSupported({config: {version: "2.12.0-beta.2"}})
+      expect(supported).to.equal(false)
+      done()
+    } catch (err) {
+      done(err)
+    }
   })
 })

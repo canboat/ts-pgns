@@ -1085,7 +1085,8 @@
           {"Name":"WMM 2005", "Value":5},
           {"Name":"WMM 2010", "Value":6},
           {"Name":"WMM 2015", "Value":7},
-          {"Name":"WMM 2020", "Value":8},{"Name":"WMM 2025", "Value":9}
+          {"Name":"WMM 2020", "Value":8},
+          {"Name":"WMM 2025", "Value":9}
         ]
       },
       {

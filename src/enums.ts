@@ -1358,6 +1358,7 @@ export enum MagneticVariation {
   Wmm2010 = 'WMM 2010',
   Wmm2015 = 'WMM 2015',
   Wmm2020 = 'WMM 2020',
+  Wmm2025 = 'WMM 2025',
 }
 
 /**
@@ -1373,6 +1374,7 @@ export const MagneticVariationValues: {[key: string]: number} = {
   [MagneticVariation.Wmm2010]: 0x6,
   [MagneticVariation.Wmm2015]: 0x7,
   [MagneticVariation.Wmm2020]: 0x8,
+  [MagneticVariation.Wmm2025]: 0x9,
 }
 
 /**

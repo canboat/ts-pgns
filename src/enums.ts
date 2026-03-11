@@ -6274,7 +6274,15 @@ export const ZoneSizeValues: {[key: string]: number} = {
  */
 export enum MaretronProductCode {
   Ssc200 = 'SSC200',
+  Tla100 = 'TLA100',
   Ssc300 = 'SSC300',
+  Nbe100 = 'NBE100',
+  Rim100 = 'RIM100',
+  Alm100 = 'ALM100',
+  Tmp100 = 'TMP100',
+  Dcr100 = 'DCR100',
+  Sim100 = 'SIM100',
+  Acm100 = 'ACM100',
 }
 
 /**
@@ -6282,7 +6290,15 @@ export enum MaretronProductCode {
  */
 export const MaretronProductCodeValues: {[key: string]: number} = {
   [MaretronProductCode.Ssc200]: 0x1b2,
+  [MaretronProductCode.Tla100]: 0xadd,
   [MaretronProductCode.Ssc300]: 0xa7e,
+  [MaretronProductCode.Nbe100]: 0xf8b,
+  [MaretronProductCode.Rim100]: 0xfee,
+  [MaretronProductCode.Alm100]: 0x1fe5,
+  [MaretronProductCode.Tmp100]: 0x4e63,
+  [MaretronProductCode.Dcr100]: 0x5839,
+  [MaretronProductCode.Sim100]: 0x5c33,
+  [MaretronProductCode.Acm100]: 0x677d,
 }
 
 /**
@@ -6335,6 +6351,60 @@ export const MaretronStatusDeviationValues: {[key: string]: number} = {
   [MaretronStatusDeviation.TurningTooFast]: 0x4,
   [MaretronStatusDeviation.TurningTooSlow]: 0x5,
   [MaretronStatusDeviation.InvalidMovement]: 0x6,
+}
+
+/**
+ * @category Enumerations
+ */
+export enum MaretronOpcode {
+  WriteConfig = 'Write Config',
+  ReadFilter = 'Read Filter',
+  WriteFilter = 'Write Filter',
+  Calibrate = 'Calibrate',
+  ReadConfig = 'Read Config',
+  ReadCalibration = 'Read Calibration',
+  ReadGaugeResistance = 'Read Gauge Resistance',
+  RealtimeCurrent = 'Realtime Current',
+  CurrentReading = 'Current Reading',
+  ReadAll = 'Read All',
+  WriteRegister = 'Write Register',
+  ReadAcConfig = 'Read AC Config',
+  WriteAcConfig = 'Write AC Config',
+  TestAnnunciator = 'Test Annunciator',
+  SetInstance = 'Set Instance',
+  ReadExtended = 'Read Extended',
+  WriteExtended = 'Write Extended',
+  CalibrationStatus = 'Calibration Status',
+  SwitchLock = 'Switch Lock',
+  Status = 'Status',
+  Debug = 'Debug',
+}
+
+/**
+ * @category Enumerations
+ */
+export const MaretronOpcodeValues: {[key: string]: number} = {
+  [MaretronOpcode.WriteConfig]: 0x20,
+  [MaretronOpcode.ReadFilter]: 0x21,
+  [MaretronOpcode.WriteFilter]: 0x22,
+  [MaretronOpcode.Calibrate]: 0x24,
+  [MaretronOpcode.ReadConfig]: 0x30,
+  [MaretronOpcode.ReadCalibration]: 0x31,
+  [MaretronOpcode.ReadGaugeResistance]: 0x35,
+  [MaretronOpcode.RealtimeCurrent]: 0x36,
+  [MaretronOpcode.CurrentReading]: 0x38,
+  [MaretronOpcode.ReadAll]: 0x56,
+  [MaretronOpcode.WriteRegister]: 0x57,
+  [MaretronOpcode.ReadAcConfig]: 0x5a,
+  [MaretronOpcode.WriteAcConfig]: 0x5b,
+  [MaretronOpcode.TestAnnunciator]: 0x60,
+  [MaretronOpcode.SetInstance]: 0x61,
+  [MaretronOpcode.ReadExtended]: 0x62,
+  [MaretronOpcode.WriteExtended]: 0x63,
+  [MaretronOpcode.CalibrationStatus]: 0x66,
+  [MaretronOpcode.SwitchLock]: 0x67,
+  [MaretronOpcode.Status]: 0xfa,
+  [MaretronOpcode.Debug]: 0xfc,
 }
 
 /**

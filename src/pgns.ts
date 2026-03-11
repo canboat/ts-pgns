@@ -2410,6 +2410,136 @@ pgnIdToCreator['furunoHeave'] = (fields:any, dst:number) => new PGN_65280_Furuno
 
 
 /**
+ * PGN: 65280
+ *
+ * Description: Maretron: Keel Position
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65280_MaretronKeelPosition
+ */
+export interface PGN_65280_MaretronKeelPositionInterface extends PGNInterface {
+  fields: PGN_65280_MaretronKeelPositionFields
+}
+
+/**
+ * @category PGN_65280_MaretronKeelPosition
+ */
+export interface PGN_65280_MaretronKeelPositionFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65280_MaretronKeelPosition
+ */
+export const PGN_65280_MaretronKeelPositionMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65280_MaretronKeelPosition
+ */
+export interface PGN_65280_MaretronKeelPositionCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65280_MaretronKeelPosition
+ */
+export class PGN_65280_MaretronKeelPosition extends PGN implements PGN_65280_MaretronKeelPositionInterface {
+  fields: PGN_65280_MaretronKeelPositionFields
+
+  constructor(fields: PGN_65280_MaretronKeelPositionCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65280,
+      prio: 6,
+      dst
+    })
+    this.fields = { ...PGN_65280_MaretronKeelPositionMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65280_MaretronKeelPositionMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronKeelPosition')!
+  }
+}
+pgnIdToCreator['maretronKeelPosition'] = (fields:any, dst:number) => new PGN_65280_MaretronKeelPosition(fields, dst)
+
+
+/**
+ * PGN: 65282
+ *
+ * Description: Maretron: Number of Channels
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65282_MaretronNumberOfChannels
+ */
+export interface PGN_65282_MaretronNumberOfChannelsInterface extends PGNInterface {
+  fields: PGN_65282_MaretronNumberOfChannelsFields
+}
+
+/**
+ * @category PGN_65282_MaretronNumberOfChannels
+ */
+export interface PGN_65282_MaretronNumberOfChannelsFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65282_MaretronNumberOfChannels
+ */
+export const PGN_65282_MaretronNumberOfChannelsMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65282_MaretronNumberOfChannels
+ */
+export interface PGN_65282_MaretronNumberOfChannelsCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65282_MaretronNumberOfChannels
+ */
+export class PGN_65282_MaretronNumberOfChannels extends PGN implements PGN_65282_MaretronNumberOfChannelsInterface {
+  fields: PGN_65282_MaretronNumberOfChannelsFields
+
+  constructor(fields: PGN_65282_MaretronNumberOfChannelsCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65282,
+      prio: 6,
+      dst
+    })
+    this.fields = { ...PGN_65282_MaretronNumberOfChannelsMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65282_MaretronNumberOfChannelsMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronNumberOfChannels')!
+  }
+}
+pgnIdToCreator['maretronNumberOfChannels'] = (fields:any, dst:number) => new PGN_65282_MaretronNumberOfChannels(fields, dst)
+
+
+/**
  * PGN: 65284
  *
  * Description: Maretron: Proprietary DC Breaker Current
@@ -2617,6 +2747,71 @@ pgnIdToCreator['lowranceTemperature'] = (fields:any, dst:number) => new PGN_6528
 
 
 /**
+ * PGN: 65285
+ *
+ * Description: Maretron: Universal Configuration
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65285_MaretronUniversalConfigurationSf
+ */
+export interface PGN_65285_MaretronUniversalConfigurationSfInterface extends PGNInterface {
+  fields: PGN_65285_MaretronUniversalConfigurationSfFields
+}
+
+/**
+ * @category PGN_65285_MaretronUniversalConfigurationSf
+ */
+export interface PGN_65285_MaretronUniversalConfigurationSfFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65285_MaretronUniversalConfigurationSf
+ */
+export const PGN_65285_MaretronUniversalConfigurationSfMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65285_MaretronUniversalConfigurationSf
+ */
+export interface PGN_65285_MaretronUniversalConfigurationSfCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65285_MaretronUniversalConfigurationSf
+ */
+export class PGN_65285_MaretronUniversalConfigurationSf extends PGN implements PGN_65285_MaretronUniversalConfigurationSfInterface {
+  fields: PGN_65285_MaretronUniversalConfigurationSfFields
+
+  constructor(fields: PGN_65285_MaretronUniversalConfigurationSfCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65285,
+      prio: 6,
+      dst
+    })
+    this.fields = { ...PGN_65285_MaretronUniversalConfigurationSfMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65285_MaretronUniversalConfigurationSfMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronUniversalConfigurationSf')!
+  }
+}
+pgnIdToCreator['maretronUniversalConfigurationSf'] = (fields:any, dst:number) => new PGN_65285_MaretronUniversalConfigurationSf(fields, dst)
+
+
+/**
  * PGN: 65286
  *
  * Description: Chetco: Dimmer
@@ -2757,6 +2952,71 @@ pgnIdToCreator['airmarBootStateRequest'] = (fields:any, dst:number) => new PGN_6
 
 
 /**
+ * PGN: 65286
+ *
+ * Description: Maretron: Fluid Flow Rate
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65286_MaretronFluidFlowRate
+ */
+export interface PGN_65286_MaretronFluidFlowRateInterface extends PGNInterface {
+  fields: PGN_65286_MaretronFluidFlowRateFields
+}
+
+/**
+ * @category PGN_65286_MaretronFluidFlowRate
+ */
+export interface PGN_65286_MaretronFluidFlowRateFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65286_MaretronFluidFlowRate
+ */
+export const PGN_65286_MaretronFluidFlowRateMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65286_MaretronFluidFlowRate
+ */
+export interface PGN_65286_MaretronFluidFlowRateCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65286_MaretronFluidFlowRate
+ */
+export class PGN_65286_MaretronFluidFlowRate extends PGN implements PGN_65286_MaretronFluidFlowRateInterface {
+  fields: PGN_65286_MaretronFluidFlowRateFields
+
+  constructor(fields: PGN_65286_MaretronFluidFlowRateCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65286,
+      prio: 6,
+      dst
+    })
+    this.fields = { ...PGN_65286_MaretronFluidFlowRateMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65286_MaretronFluidFlowRateMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronFluidFlowRate')!
+  }
+}
+pgnIdToCreator['maretronFluidFlowRate'] = (fields:any, dst:number) => new PGN_65286_MaretronFluidFlowRate(fields, dst)
+
+
+/**
  * PGN: 65287
  *
  * Description: Airmar: Access Level
@@ -2893,6 +3153,71 @@ pgnIdToCreator['simnetConfigureTemperatureSensor'] = (fields:any, dst:number) =>
 
 
 /**
+ * PGN: 65287
+ *
+ * Description: Maretron: Trip Volume
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65287_MaretronTripVolume
+ */
+export interface PGN_65287_MaretronTripVolumeInterface extends PGNInterface {
+  fields: PGN_65287_MaretronTripVolumeFields
+}
+
+/**
+ * @category PGN_65287_MaretronTripVolume
+ */
+export interface PGN_65287_MaretronTripVolumeFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65287_MaretronTripVolume
+ */
+export const PGN_65287_MaretronTripVolumeMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65287_MaretronTripVolume
+ */
+export interface PGN_65287_MaretronTripVolumeCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65287_MaretronTripVolume
+ */
+export class PGN_65287_MaretronTripVolume extends PGN implements PGN_65287_MaretronTripVolumeInterface {
+  fields: PGN_65287_MaretronTripVolumeFields
+
+  constructor(fields: PGN_65287_MaretronTripVolumeCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65287,
+      prio: 6,
+      dst
+    })
+    this.fields = { ...PGN_65287_MaretronTripVolumeMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65287_MaretronTripVolumeMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronTripVolume')!
+  }
+}
+pgnIdToCreator['maretronTripVolume'] = (fields:any, dst:number) => new PGN_65287_MaretronTripVolume(fields, dst)
+
+
+/**
  * PGN: 65288
  *
  * Description: Seatalk: Alarm
@@ -2966,6 +3291,71 @@ pgnIdToCreator['seatalkAlarm'] = (fields:any, dst:number) => new PGN_65288_Seata
 
 
 /**
+ * PGN: 65288
+ *
+ * Description: Maretron: 4-20 mA
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65288_Maretron420Ma
+ */
+export interface PGN_65288_Maretron420MaInterface extends PGNInterface {
+  fields: PGN_65288_Maretron420MaFields
+}
+
+/**
+ * @category PGN_65288_Maretron420Ma
+ */
+export interface PGN_65288_Maretron420MaFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65288_Maretron420Ma
+ */
+export const PGN_65288_Maretron420MaMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65288_Maretron420Ma
+ */
+export interface PGN_65288_Maretron420MaCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65288_Maretron420Ma
+ */
+export class PGN_65288_Maretron420Ma extends PGN implements PGN_65288_Maretron420MaInterface {
+  fields: PGN_65288_Maretron420MaFields
+
+  constructor(fields: PGN_65288_Maretron420MaCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65288,
+      prio: 6,
+      dst
+    })
+    this.fields = { ...PGN_65288_Maretron420MaMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65288_Maretron420MaMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretron420Ma')!
+  }
+}
+pgnIdToCreator['maretron420Ma'] = (fields:any, dst:number) => new PGN_65288_Maretron420Ma(fields, dst)
+
+
+/**
  * PGN: 65289
  *
  * Description: Simnet: Trim Tab Sensor Calibration
@@ -3028,6 +3418,71 @@ export class PGN_65289_SimnetTrimTabSensorCalibration extends PGN implements PGN
   }
 }
 pgnIdToCreator['simnetTrimTabSensorCalibration'] = (fields:any, dst:number) => new PGN_65289_SimnetTrimTabSensorCalibration(fields, dst)
+
+
+/**
+ * PGN: 65289
+ *
+ * Description: Maretron: 0-10 V
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65289_Maretron010V
+ */
+export interface PGN_65289_Maretron010VInterface extends PGNInterface {
+  fields: PGN_65289_Maretron010VFields
+}
+
+/**
+ * @category PGN_65289_Maretron010V
+ */
+export interface PGN_65289_Maretron010VFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65289_Maretron010V
+ */
+export const PGN_65289_Maretron010VMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65289_Maretron010V
+ */
+export interface PGN_65289_Maretron010VCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65289_Maretron010V
+ */
+export class PGN_65289_Maretron010V extends PGN implements PGN_65289_Maretron010VInterface {
+  fields: PGN_65289_Maretron010VFields
+
+  constructor(fields: PGN_65289_Maretron010VCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65289,
+      prio: 6,
+      dst
+    })
+    this.fields = { ...PGN_65289_Maretron010VMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65289_Maretron010VMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretron010V')!
+  }
+}
+pgnIdToCreator['maretron010V'] = (fields:any, dst:number) => new PGN_65289_Maretron010V(fields, dst)
 
 
 /**
@@ -3096,6 +3551,136 @@ pgnIdToCreator['simnetPaddleWheelSpeedConfiguration'] = (fields:any, dst:number)
 
 
 /**
+ * PGN: 65290
+ *
+ * Description: Maretron: Rotational Rate
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65290_MaretronRotationalRate
+ */
+export interface PGN_65290_MaretronRotationalRateInterface extends PGNInterface {
+  fields: PGN_65290_MaretronRotationalRateFields
+}
+
+/**
+ * @category PGN_65290_MaretronRotationalRate
+ */
+export interface PGN_65290_MaretronRotationalRateFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65290_MaretronRotationalRate
+ */
+export const PGN_65290_MaretronRotationalRateMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65290_MaretronRotationalRate
+ */
+export interface PGN_65290_MaretronRotationalRateCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65290_MaretronRotationalRate
+ */
+export class PGN_65290_MaretronRotationalRate extends PGN implements PGN_65290_MaretronRotationalRateInterface {
+  fields: PGN_65290_MaretronRotationalRateFields
+
+  constructor(fields: PGN_65290_MaretronRotationalRateCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65290,
+      prio: 6,
+      dst
+    })
+    this.fields = { ...PGN_65290_MaretronRotationalRateMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65290_MaretronRotationalRateMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronRotationalRate')!
+  }
+}
+pgnIdToCreator['maretronRotationalRate'] = (fields:any, dst:number) => new PGN_65290_MaretronRotationalRate(fields, dst)
+
+
+/**
+ * PGN: 65291
+ *
+ * Description: Maretron: Resistance
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65291_MaretronResistance
+ */
+export interface PGN_65291_MaretronResistanceInterface extends PGNInterface {
+  fields: PGN_65291_MaretronResistanceFields
+}
+
+/**
+ * @category PGN_65291_MaretronResistance
+ */
+export interface PGN_65291_MaretronResistanceFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65291_MaretronResistance
+ */
+export const PGN_65291_MaretronResistanceMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65291_MaretronResistance
+ */
+export interface PGN_65291_MaretronResistanceCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65291_MaretronResistance
+ */
+export class PGN_65291_MaretronResistance extends PGN implements PGN_65291_MaretronResistanceInterface {
+  fields: PGN_65291_MaretronResistanceFields
+
+  constructor(fields: PGN_65291_MaretronResistanceCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65291,
+      prio: 6,
+      dst
+    })
+    this.fields = { ...PGN_65291_MaretronResistanceMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65291_MaretronResistanceMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronResistance')!
+  }
+}
+pgnIdToCreator['maretronResistance'] = (fields:any, dst:number) => new PGN_65291_MaretronResistance(fields, dst)
+
+
+/**
  * PGN: 65292
  *
  * Description: Simnet: Clear Fluid Level Warnings
@@ -3158,6 +3743,71 @@ export class PGN_65292_SimnetClearFluidLevelWarnings extends PGN implements PGN_
   }
 }
 pgnIdToCreator['simnetClearFluidLevelWarnings'] = (fields:any, dst:number) => new PGN_65292_SimnetClearFluidLevelWarnings(fields, dst)
+
+
+/**
+ * PGN: 65292
+ *
+ * Description: Maretron: Automation Function Master
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65292_MaretronAutomationFunctionMaster
+ */
+export interface PGN_65292_MaretronAutomationFunctionMasterInterface extends PGNInterface {
+  fields: PGN_65292_MaretronAutomationFunctionMasterFields
+}
+
+/**
+ * @category PGN_65292_MaretronAutomationFunctionMaster
+ */
+export interface PGN_65292_MaretronAutomationFunctionMasterFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65292_MaretronAutomationFunctionMaster
+ */
+export const PGN_65292_MaretronAutomationFunctionMasterMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65292_MaretronAutomationFunctionMaster
+ */
+export interface PGN_65292_MaretronAutomationFunctionMasterCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65292_MaretronAutomationFunctionMaster
+ */
+export class PGN_65292_MaretronAutomationFunctionMaster extends PGN implements PGN_65292_MaretronAutomationFunctionMasterInterface {
+  fields: PGN_65292_MaretronAutomationFunctionMasterFields
+
+  constructor(fields: PGN_65292_MaretronAutomationFunctionMasterCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65292,
+      prio: 6,
+      dst
+    })
+    this.fields = { ...PGN_65292_MaretronAutomationFunctionMasterMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65292_MaretronAutomationFunctionMasterMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronAutomationFunctionMaster')!
+  }
+}
+pgnIdToCreator['maretronAutomationFunctionMaster'] = (fields:any, dst:number) => new PGN_65292_MaretronAutomationFunctionMaster(fields, dst)
 
 
 /**
@@ -7820,6 +8470,77 @@ export class PGN_126720_MaretronSlaveResponse extends PGN implements PGN_126720_
   }
 }
 pgnIdToCreator['maretronSlaveResponse'] = (fields:any, dst:number) => new PGN_126720_MaretronSlaveResponse(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Maretron: Proprietary Configuration
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_126720_MaretronProprietaryConfiguration
+ */
+export interface PGN_126720_MaretronProprietaryConfigurationInterface extends PGNInterface {
+  fields: PGN_126720_MaretronProprietaryConfigurationFields
+}
+
+/**
+ * @category PGN_126720_MaretronProprietaryConfiguration
+ */
+export interface PGN_126720_MaretronProprietaryConfigurationFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  productCode?: enums.MaretronProductCode | number
+  softwareCode?: N2K_Number
+  opcode?: enums.MaretronOpcode | number
+  payload?: N2K_Binary
+}
+
+/**
+ * @category PGN_126720_MaretronProprietaryConfiguration
+ */
+export const PGN_126720_MaretronProprietaryConfigurationMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_126720_MaretronProprietaryConfiguration
+ */
+export interface PGN_126720_MaretronProprietaryConfigurationCreateArgs {
+  reserved?: number
+  productCode?: enums.MaretronProductCode | number
+  softwareCode?: N2K_Number
+  opcode?: enums.MaretronOpcode | number
+  payload?: N2K_Binary
+}
+
+/**
+ * @category PGN_126720_MaretronProprietaryConfiguration
+ */
+export class PGN_126720_MaretronProprietaryConfiguration extends PGN implements PGN_126720_MaretronProprietaryConfigurationInterface {
+  fields: PGN_126720_MaretronProprietaryConfigurationFields
+
+  constructor(fields: PGN_126720_MaretronProprietaryConfigurationCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_MaretronProprietaryConfigurationMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_MaretronProprietaryConfigurationMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronProprietaryConfiguration')!
+  }
+}
+pgnIdToCreator['maretronProprietaryConfiguration'] = (fields:any, dst:number) => new PGN_126720_MaretronProprietaryConfiguration(fields, dst)
 
 
 /**
@@ -18569,6 +19290,71 @@ pgnIdToCreator['furunoSvControl'] = (fields:any, dst:number) => new PGN_130817_F
 
 
 /**
+ * PGN: 130817
+ *
+ * Description: Maretron: Annunciator Capabilities
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130817_MaretronAnnunciatorCapabilities
+ */
+export interface PGN_130817_MaretronAnnunciatorCapabilitiesInterface extends PGNInterface {
+  fields: PGN_130817_MaretronAnnunciatorCapabilitiesFields
+}
+
+/**
+ * @category PGN_130817_MaretronAnnunciatorCapabilities
+ */
+export interface PGN_130817_MaretronAnnunciatorCapabilitiesFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130817_MaretronAnnunciatorCapabilities
+ */
+export const PGN_130817_MaretronAnnunciatorCapabilitiesMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130817_MaretronAnnunciatorCapabilities
+ */
+export interface PGN_130817_MaretronAnnunciatorCapabilitiesCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130817_MaretronAnnunciatorCapabilities
+ */
+export class PGN_130817_MaretronAnnunciatorCapabilities extends PGN implements PGN_130817_MaretronAnnunciatorCapabilitiesInterface {
+  fields: PGN_130817_MaretronAnnunciatorCapabilitiesFields
+
+  constructor(fields: PGN_130817_MaretronAnnunciatorCapabilitiesCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130817,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130817_MaretronAnnunciatorCapabilitiesMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130817_MaretronAnnunciatorCapabilitiesMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronAnnunciatorCapabilities')!
+  }
+}
+pgnIdToCreator['maretronAnnunciatorCapabilities'] = (fields:any, dst:number) => new PGN_130817_MaretronAnnunciatorCapabilities(fields, dst)
+
+
+/**
  * PGN: 130818
  *
  * Description: Simnet: Reprogram Data
@@ -18725,6 +19511,71 @@ pgnIdToCreator['furunoSensorSetup'] = (fields:any, dst:number) => new PGN_130818
 
 
 /**
+ * PGN: 130818
+ *
+ * Description: Maretron: Label
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130818_MaretronLabel
+ */
+export interface PGN_130818_MaretronLabelInterface extends PGNInterface {
+  fields: PGN_130818_MaretronLabelFields
+}
+
+/**
+ * @category PGN_130818_MaretronLabel
+ */
+export interface PGN_130818_MaretronLabelFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130818_MaretronLabel
+ */
+export const PGN_130818_MaretronLabelMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130818_MaretronLabel
+ */
+export interface PGN_130818_MaretronLabelCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130818_MaretronLabel
+ */
+export class PGN_130818_MaretronLabel extends PGN implements PGN_130818_MaretronLabelInterface {
+  fields: PGN_130818_MaretronLabelFields
+
+  constructor(fields: PGN_130818_MaretronLabelCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130818,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130818_MaretronLabelMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130818_MaretronLabelMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronLabel')!
+  }
+}
+pgnIdToCreator['maretronLabel'] = (fields:any, dst:number) => new PGN_130818_MaretronLabel(fields, dst)
+
+
+/**
  * PGN: 130819
  *
  * Description: Simnet: Request Reprogram
@@ -18785,6 +19636,71 @@ export class PGN_130819_SimnetRequestReprogram extends PGN implements PGN_130819
   }
 }
 pgnIdToCreator['simnetRequestReprogram'] = (fields:any, dst:number) => new PGN_130819_SimnetRequestReprogram(fields, dst)
+
+
+/**
+ * PGN: 130819
+ *
+ * Description: Maretron: Alert Transmission
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130819_MaretronAlertTransmission
+ */
+export interface PGN_130819_MaretronAlertTransmissionInterface extends PGNInterface {
+  fields: PGN_130819_MaretronAlertTransmissionFields
+}
+
+/**
+ * @category PGN_130819_MaretronAlertTransmission
+ */
+export interface PGN_130819_MaretronAlertTransmissionFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130819_MaretronAlertTransmission
+ */
+export const PGN_130819_MaretronAlertTransmissionMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130819_MaretronAlertTransmission
+ */
+export interface PGN_130819_MaretronAlertTransmissionCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130819_MaretronAlertTransmission
+ */
+export class PGN_130819_MaretronAlertTransmission extends PGN implements PGN_130819_MaretronAlertTransmissionInterface {
+  fields: PGN_130819_MaretronAlertTransmissionFields
+
+  constructor(fields: PGN_130819_MaretronAlertTransmissionCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130819,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130819_MaretronAlertTransmissionMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130819_MaretronAlertTransmissionMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronAlertTransmission')!
+  }
+}
+pgnIdToCreator['maretronAlertTransmission'] = (fields:any, dst:number) => new PGN_130819_MaretronAlertTransmission(fields, dst)
 
 
 /**
@@ -21601,6 +22517,71 @@ pgnIdToCreator['fusionSiriusxmPresets'] = (fields:any, dst:number) => new PGN_13
 
 
 /**
+ * PGN: 130820
+ *
+ * Description: Maretron: Alert Response
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130820_MaretronAlertResponse
+ */
+export interface PGN_130820_MaretronAlertResponseInterface extends PGNInterface {
+  fields: PGN_130820_MaretronAlertResponseFields
+}
+
+/**
+ * @category PGN_130820_MaretronAlertResponse
+ */
+export interface PGN_130820_MaretronAlertResponseFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130820_MaretronAlertResponse
+ */
+export const PGN_130820_MaretronAlertResponseMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130820_MaretronAlertResponse
+ */
+export interface PGN_130820_MaretronAlertResponseCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130820_MaretronAlertResponse
+ */
+export class PGN_130820_MaretronAlertResponse extends PGN implements PGN_130820_MaretronAlertResponseInterface {
+  fields: PGN_130820_MaretronAlertResponseFields
+
+  constructor(fields: PGN_130820_MaretronAlertResponseCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130820,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130820_MaretronAlertResponseMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_MaretronAlertResponseMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronAlertResponse')!
+  }
+}
+pgnIdToCreator['maretronAlertResponse'] = (fields:any, dst:number) => new PGN_130820_MaretronAlertResponse(fields, dst)
+
+
+/**
  * PGN: 130821
  *
  * Description: Navico: ASCII Data
@@ -21751,6 +22732,71 @@ pgnIdToCreator['furunoUnknown130821'] = (fields:any, dst:number) => new PGN_1308
 
 
 /**
+ * PGN: 130821
+ *
+ * Description: Maretron: Alert Text
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130821_MaretronAlertText
+ */
+export interface PGN_130821_MaretronAlertTextInterface extends PGNInterface {
+  fields: PGN_130821_MaretronAlertTextFields
+}
+
+/**
+ * @category PGN_130821_MaretronAlertText
+ */
+export interface PGN_130821_MaretronAlertTextFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130821_MaretronAlertText
+ */
+export const PGN_130821_MaretronAlertTextMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130821_MaretronAlertText
+ */
+export interface PGN_130821_MaretronAlertTextCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130821_MaretronAlertText
+ */
+export class PGN_130821_MaretronAlertText extends PGN implements PGN_130821_MaretronAlertTextInterface {
+  fields: PGN_130821_MaretronAlertTextFields
+
+  constructor(fields: PGN_130821_MaretronAlertTextCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130821,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130821_MaretronAlertTextMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130821_MaretronAlertTextMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronAlertText')!
+  }
+}
+pgnIdToCreator['maretronAlertText'] = (fields:any, dst:number) => new PGN_130821_MaretronAlertText(fields, dst)
+
+
+/**
  * PGN: 130822
  *
  * Description: Navico: Unknown 1
@@ -21813,6 +22859,71 @@ export class PGN_130822_NavicoUnknown1 extends PGN implements PGN_130822_NavicoU
   }
 }
 pgnIdToCreator['navicoUnknown1'] = (fields:any, dst:number) => new PGN_130822_NavicoUnknown1(fields, dst)
+
+
+/**
+ * PGN: 130822
+ *
+ * Description: Maretron: Alert Control
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130822_MaretronAlertControl
+ */
+export interface PGN_130822_MaretronAlertControlInterface extends PGNInterface {
+  fields: PGN_130822_MaretronAlertControlFields
+}
+
+/**
+ * @category PGN_130822_MaretronAlertControl
+ */
+export interface PGN_130822_MaretronAlertControlFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130822_MaretronAlertControl
+ */
+export const PGN_130822_MaretronAlertControlMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130822_MaretronAlertControl
+ */
+export interface PGN_130822_MaretronAlertControlCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130822_MaretronAlertControl
+ */
+export class PGN_130822_MaretronAlertControl extends PGN implements PGN_130822_MaretronAlertControlInterface {
+  fields: PGN_130822_MaretronAlertControlFields
+
+  constructor(fields: PGN_130822_MaretronAlertControlCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130822,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130822_MaretronAlertControlMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130822_MaretronAlertControlMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronAlertControl')!
+  }
+}
+pgnIdToCreator['maretronAlertControl'] = (fields:any, dst:number) => new PGN_130822_MaretronAlertControl(fields, dst)
 
 
 /**
@@ -22102,6 +23213,136 @@ pgnIdToCreator['navicoUnknown2'] = (fields:any, dst:number) => new PGN_130825_Na
 
 
 /**
+ * PGN: 130825
+ *
+ * Description: Maretron: Data Instance/Channel Correlation
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130825_MaretronDataInstanceChannelCorrelation
+ */
+export interface PGN_130825_MaretronDataInstanceChannelCorrelationInterface extends PGNInterface {
+  fields: PGN_130825_MaretronDataInstanceChannelCorrelationFields
+}
+
+/**
+ * @category PGN_130825_MaretronDataInstanceChannelCorrelation
+ */
+export interface PGN_130825_MaretronDataInstanceChannelCorrelationFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130825_MaretronDataInstanceChannelCorrelation
+ */
+export const PGN_130825_MaretronDataInstanceChannelCorrelationMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130825_MaretronDataInstanceChannelCorrelation
+ */
+export interface PGN_130825_MaretronDataInstanceChannelCorrelationCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130825_MaretronDataInstanceChannelCorrelation
+ */
+export class PGN_130825_MaretronDataInstanceChannelCorrelation extends PGN implements PGN_130825_MaretronDataInstanceChannelCorrelationInterface {
+  fields: PGN_130825_MaretronDataInstanceChannelCorrelationFields
+
+  constructor(fields: PGN_130825_MaretronDataInstanceChannelCorrelationCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130825,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130825_MaretronDataInstanceChannelCorrelationMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130825_MaretronDataInstanceChannelCorrelationMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronDataInstanceChannelCorrelation')!
+  }
+}
+pgnIdToCreator['maretronDataInstanceChannelCorrelation'] = (fields:any, dst:number) => new PGN_130825_MaretronDataInstanceChannelCorrelation(fields, dst)
+
+
+/**
+ * PGN: 130826
+ *
+ * Description: Maretron: Switch Indicator Status
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130826_MaretronSwitchIndicatorStatus
+ */
+export interface PGN_130826_MaretronSwitchIndicatorStatusInterface extends PGNInterface {
+  fields: PGN_130826_MaretronSwitchIndicatorStatusFields
+}
+
+/**
+ * @category PGN_130826_MaretronSwitchIndicatorStatus
+ */
+export interface PGN_130826_MaretronSwitchIndicatorStatusFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130826_MaretronSwitchIndicatorStatus
+ */
+export const PGN_130826_MaretronSwitchIndicatorStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130826_MaretronSwitchIndicatorStatus
+ */
+export interface PGN_130826_MaretronSwitchIndicatorStatusCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130826_MaretronSwitchIndicatorStatus
+ */
+export class PGN_130826_MaretronSwitchIndicatorStatus extends PGN implements PGN_130826_MaretronSwitchIndicatorStatusInterface {
+  fields: PGN_130826_MaretronSwitchIndicatorStatusFields
+
+  constructor(fields: PGN_130826_MaretronSwitchIndicatorStatusCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130826,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130826_MaretronSwitchIndicatorStatusMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130826_MaretronSwitchIndicatorStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronSwitchIndicatorStatus')!
+  }
+}
+pgnIdToCreator['maretronSwitchIndicatorStatus'] = (fields:any, dst:number) => new PGN_130826_MaretronSwitchIndicatorStatus(fields, dst)
+
+
+/**
  * PGN: 130827
  *
  * Description: Lowrance: unknown
@@ -22303,6 +23544,71 @@ pgnIdToCreator['suzukiEngineAndStorageDeviceConfig'] = (fields:any, dst:number) 
 
 
 /**
+ * PGN: 130831
+ *
+ * Description: Maretron: Universal Configuration
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130831_MaretronUniversalConfigurationFp
+ */
+export interface PGN_130831_MaretronUniversalConfigurationFpInterface extends PGNInterface {
+  fields: PGN_130831_MaretronUniversalConfigurationFpFields
+}
+
+/**
+ * @category PGN_130831_MaretronUniversalConfigurationFp
+ */
+export interface PGN_130831_MaretronUniversalConfigurationFpFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130831_MaretronUniversalConfigurationFp
+ */
+export const PGN_130831_MaretronUniversalConfigurationFpMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130831_MaretronUniversalConfigurationFp
+ */
+export interface PGN_130831_MaretronUniversalConfigurationFpCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130831_MaretronUniversalConfigurationFp
+ */
+export class PGN_130831_MaretronUniversalConfigurationFp extends PGN implements PGN_130831_MaretronUniversalConfigurationFpInterface {
+  fields: PGN_130831_MaretronUniversalConfigurationFpFields
+
+  constructor(fields: PGN_130831_MaretronUniversalConfigurationFpCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130831,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130831_MaretronUniversalConfigurationFpMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130831_MaretronUniversalConfigurationFpMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronUniversalConfigurationFp')!
+  }
+}
+pgnIdToCreator['maretronUniversalConfigurationFp'] = (fields:any, dst:number) => new PGN_130831_MaretronUniversalConfigurationFp(fields, dst)
+
+
+/**
  * PGN: 130832
  *
  * Description: Simnet: Fuel Used - High Resolution
@@ -22363,6 +23669,71 @@ export class PGN_130832_SimnetFuelUsedHighResolution extends PGN implements PGN_
   }
 }
 pgnIdToCreator['simnetFuelUsedHighResolution'] = (fields:any, dst:number) => new PGN_130832_SimnetFuelUsedHighResolution(fields, dst)
+
+
+/**
+ * PGN: 130832
+ *
+ * Description: Maretron: Alert Operating Mode
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130832_MaretronAlertOperatingMode
+ */
+export interface PGN_130832_MaretronAlertOperatingModeInterface extends PGNInterface {
+  fields: PGN_130832_MaretronAlertOperatingModeFields
+}
+
+/**
+ * @category PGN_130832_MaretronAlertOperatingMode
+ */
+export interface PGN_130832_MaretronAlertOperatingModeFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130832_MaretronAlertOperatingMode
+ */
+export const PGN_130832_MaretronAlertOperatingModeMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130832_MaretronAlertOperatingMode
+ */
+export interface PGN_130832_MaretronAlertOperatingModeCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130832_MaretronAlertOperatingMode
+ */
+export class PGN_130832_MaretronAlertOperatingMode extends PGN implements PGN_130832_MaretronAlertOperatingModeInterface {
+  fields: PGN_130832_MaretronAlertOperatingModeFields
+
+  constructor(fields: PGN_130832_MaretronAlertOperatingModeCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130832,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130832_MaretronAlertOperatingModeMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130832_MaretronAlertOperatingModeMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronAlertOperatingMode')!
+  }
+}
+pgnIdToCreator['maretronAlertOperatingMode'] = (fields:any, dst:number) => new PGN_130832_MaretronAlertOperatingMode(fields, dst)
 
 
 /**
@@ -22441,6 +23812,71 @@ pgnIdToCreator['bGUserAndRemoteRename'] = (fields:any, dst:number) => new PGN_13
 
 
 /**
+ * PGN: 130833
+ *
+ * Description: Maretron: Vessel Data Recorder Status
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130833_MaretronVesselDataRecorderStatus
+ */
+export interface PGN_130833_MaretronVesselDataRecorderStatusInterface extends PGNInterface {
+  fields: PGN_130833_MaretronVesselDataRecorderStatusFields
+}
+
+/**
+ * @category PGN_130833_MaretronVesselDataRecorderStatus
+ */
+export interface PGN_130833_MaretronVesselDataRecorderStatusFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130833_MaretronVesselDataRecorderStatus
+ */
+export const PGN_130833_MaretronVesselDataRecorderStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130833_MaretronVesselDataRecorderStatus
+ */
+export interface PGN_130833_MaretronVesselDataRecorderStatusCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130833_MaretronVesselDataRecorderStatus
+ */
+export class PGN_130833_MaretronVesselDataRecorderStatus extends PGN implements PGN_130833_MaretronVesselDataRecorderStatusInterface {
+  fields: PGN_130833_MaretronVesselDataRecorderStatusFields
+
+  constructor(fields: PGN_130833_MaretronVesselDataRecorderStatusCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130833,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130833_MaretronVesselDataRecorderStatusMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130833_MaretronVesselDataRecorderStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronVesselDataRecorderStatus')!
+  }
+}
+pgnIdToCreator['maretronVesselDataRecorderStatus'] = (fields:any, dst:number) => new PGN_130833_MaretronVesselDataRecorderStatus(fields, dst)
+
+
+/**
  * PGN: 130834
  *
  * Description: Simnet: Engine and Tank Configuration
@@ -22504,6 +23940,71 @@ pgnIdToCreator['simnetEngineAndTankConfiguration'] = (fields:any, dst:number) =>
 
 
 /**
+ * PGN: 130834
+ *
+ * Description: Maretron: SMS Status
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130834_MaretronSmsStatus
+ */
+export interface PGN_130834_MaretronSmsStatusInterface extends PGNInterface {
+  fields: PGN_130834_MaretronSmsStatusFields
+}
+
+/**
+ * @category PGN_130834_MaretronSmsStatus
+ */
+export interface PGN_130834_MaretronSmsStatusFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130834_MaretronSmsStatus
+ */
+export const PGN_130834_MaretronSmsStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130834_MaretronSmsStatus
+ */
+export interface PGN_130834_MaretronSmsStatusCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130834_MaretronSmsStatus
+ */
+export class PGN_130834_MaretronSmsStatus extends PGN implements PGN_130834_MaretronSmsStatusInterface {
+  fields: PGN_130834_MaretronSmsStatusFields
+
+  constructor(fields: PGN_130834_MaretronSmsStatusCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130834,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130834_MaretronSmsStatusMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130834_MaretronSmsStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronSmsStatus')!
+  }
+}
+pgnIdToCreator['maretronSmsStatus'] = (fields:any, dst:number) => new PGN_130834_MaretronSmsStatus(fields, dst)
+
+
+/**
  * PGN: 130835
  *
  * Description: Simnet: Set Engine and Tank Configuration
@@ -22564,6 +24065,71 @@ export class PGN_130835_SimnetSetEngineAndTankConfiguration extends PGN implemen
   }
 }
 pgnIdToCreator['simnetSetEngineAndTankConfiguration'] = (fields:any, dst:number) => new PGN_130835_SimnetSetEngineAndTankConfiguration(fields, dst)
+
+
+/**
+ * PGN: 130835
+ *
+ * Description: Maretron: SMS Text Message
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130835_MaretronSmsTextMessage
+ */
+export interface PGN_130835_MaretronSmsTextMessageInterface extends PGNInterface {
+  fields: PGN_130835_MaretronSmsTextMessageFields
+}
+
+/**
+ * @category PGN_130835_MaretronSmsTextMessage
+ */
+export interface PGN_130835_MaretronSmsTextMessageFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130835_MaretronSmsTextMessage
+ */
+export const PGN_130835_MaretronSmsTextMessageMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130835_MaretronSmsTextMessage
+ */
+export interface PGN_130835_MaretronSmsTextMessageCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130835_MaretronSmsTextMessage
+ */
+export class PGN_130835_MaretronSmsTextMessage extends PGN implements PGN_130835_MaretronSmsTextMessageInterface {
+  fields: PGN_130835_MaretronSmsTextMessageFields
+
+  constructor(fields: PGN_130835_MaretronSmsTextMessageCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130835,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130835_MaretronSmsTextMessageMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130835_MaretronSmsTextMessageMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronSmsTextMessage')!
+  }
+}
+pgnIdToCreator['maretronSmsTextMessage'] = (fields:any, dst:number) => new PGN_130835_MaretronSmsTextMessage(fields, dst)
 
 
 /**
@@ -22936,6 +24502,71 @@ pgnIdToCreator['simnetFluidLevelWarning'] = (fields:any, dst:number) => new PGN_
 
 
 /**
+ * PGN: 130838
+ *
+ * Description: Maretron: BNWAS
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130838_MaretronBnwas
+ */
+export interface PGN_130838_MaretronBnwasInterface extends PGNInterface {
+  fields: PGN_130838_MaretronBnwasFields
+}
+
+/**
+ * @category PGN_130838_MaretronBnwas
+ */
+export interface PGN_130838_MaretronBnwasFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130838_MaretronBnwas
+ */
+export const PGN_130838_MaretronBnwasMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130838_MaretronBnwas
+ */
+export interface PGN_130838_MaretronBnwasCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130838_MaretronBnwas
+ */
+export class PGN_130838_MaretronBnwas extends PGN implements PGN_130838_MaretronBnwasInterface {
+  fields: PGN_130838_MaretronBnwasFields
+
+  constructor(fields: PGN_130838_MaretronBnwasCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130838,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130838_MaretronBnwasMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130838_MaretronBnwasMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronBnwas')!
+  }
+}
+pgnIdToCreator['maretronBnwas'] = (fields:any, dst:number) => new PGN_130838_MaretronBnwas(fields, dst)
+
+
+/**
  * PGN: 130839
  *
  * Description: Simnet: Pressure Sensor Configuration
@@ -23059,6 +24690,136 @@ export class PGN_130840_SimnetDataUserGroupConfiguration extends PGN implements 
   }
 }
 pgnIdToCreator['simnetDataUserGroupConfiguration'] = (fields:any, dst:number) => new PGN_130840_SimnetDataUserGroupConfiguration(fields, dst)
+
+
+/**
+ * PGN: 130840
+ *
+ * Description: Maretron: Generic Sensor
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130840_MaretronGenericSensor
+ */
+export interface PGN_130840_MaretronGenericSensorInterface extends PGNInterface {
+  fields: PGN_130840_MaretronGenericSensorFields
+}
+
+/**
+ * @category PGN_130840_MaretronGenericSensor
+ */
+export interface PGN_130840_MaretronGenericSensorFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130840_MaretronGenericSensor
+ */
+export const PGN_130840_MaretronGenericSensorMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130840_MaretronGenericSensor
+ */
+export interface PGN_130840_MaretronGenericSensorCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130840_MaretronGenericSensor
+ */
+export class PGN_130840_MaretronGenericSensor extends PGN implements PGN_130840_MaretronGenericSensorInterface {
+  fields: PGN_130840_MaretronGenericSensorFields
+
+  constructor(fields: PGN_130840_MaretronGenericSensorCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130840,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130840_MaretronGenericSensorMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130840_MaretronGenericSensorMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronGenericSensor')!
+  }
+}
+pgnIdToCreator['maretronGenericSensor'] = (fields:any, dst:number) => new PGN_130840_MaretronGenericSensor(fields, dst)
+
+
+/**
+ * PGN: 130841
+ *
+ * Description: Maretron: CAN Frame Forwarding
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130841_MaretronCanFrameForwarding
+ */
+export interface PGN_130841_MaretronCanFrameForwardingInterface extends PGNInterface {
+  fields: PGN_130841_MaretronCanFrameForwardingFields
+}
+
+/**
+ * @category PGN_130841_MaretronCanFrameForwarding
+ */
+export interface PGN_130841_MaretronCanFrameForwardingFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130841_MaretronCanFrameForwarding
+ */
+export const PGN_130841_MaretronCanFrameForwardingMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130841_MaretronCanFrameForwarding
+ */
+export interface PGN_130841_MaretronCanFrameForwardingCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130841_MaretronCanFrameForwarding
+ */
+export class PGN_130841_MaretronCanFrameForwarding extends PGN implements PGN_130841_MaretronCanFrameForwardingInterface {
+  fields: PGN_130841_MaretronCanFrameForwardingFields
+
+  constructor(fields: PGN_130841_MaretronCanFrameForwardingCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130841,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130841_MaretronCanFrameForwardingMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130841_MaretronCanFrameForwardingMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronCanFrameForwarding')!
+  }
+}
+pgnIdToCreator['maretronCanFrameForwarding'] = (fields:any, dst:number) => new PGN_130841_MaretronCanFrameForwarding(fields, dst)
 
 
 /**
@@ -23448,6 +25209,136 @@ pgnIdToCreator['simnetSonarStatusFrequencyAndDspVoltage'] = (fields:any, dst:num
 
 
 /**
+ * PGN: 130843
+ *
+ * Description: Maretron: Windlass Operating Status
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130843_MaretronWindlassOperatingStatus
+ */
+export interface PGN_130843_MaretronWindlassOperatingStatusInterface extends PGNInterface {
+  fields: PGN_130843_MaretronWindlassOperatingStatusFields
+}
+
+/**
+ * @category PGN_130843_MaretronWindlassOperatingStatus
+ */
+export interface PGN_130843_MaretronWindlassOperatingStatusFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130843_MaretronWindlassOperatingStatus
+ */
+export const PGN_130843_MaretronWindlassOperatingStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130843_MaretronWindlassOperatingStatus
+ */
+export interface PGN_130843_MaretronWindlassOperatingStatusCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130843_MaretronWindlassOperatingStatus
+ */
+export class PGN_130843_MaretronWindlassOperatingStatus extends PGN implements PGN_130843_MaretronWindlassOperatingStatusInterface {
+  fields: PGN_130843_MaretronWindlassOperatingStatusFields
+
+  constructor(fields: PGN_130843_MaretronWindlassOperatingStatusCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130843,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130843_MaretronWindlassOperatingStatusMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130843_MaretronWindlassOperatingStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronWindlassOperatingStatus')!
+  }
+}
+pgnIdToCreator['maretronWindlassOperatingStatus'] = (fields:any, dst:number) => new PGN_130843_MaretronWindlassOperatingStatus(fields, dst)
+
+
+/**
+ * PGN: 130844
+ *
+ * Description: Maretron: Windlass Control Command
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130844_MaretronWindlassControlCommand
+ */
+export interface PGN_130844_MaretronWindlassControlCommandInterface extends PGNInterface {
+  fields: PGN_130844_MaretronWindlassControlCommandFields
+}
+
+/**
+ * @category PGN_130844_MaretronWindlassControlCommand
+ */
+export interface PGN_130844_MaretronWindlassControlCommandFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130844_MaretronWindlassControlCommand
+ */
+export const PGN_130844_MaretronWindlassControlCommandMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130844_MaretronWindlassControlCommand
+ */
+export interface PGN_130844_MaretronWindlassControlCommandCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130844_MaretronWindlassControlCommand
+ */
+export class PGN_130844_MaretronWindlassControlCommand extends PGN implements PGN_130844_MaretronWindlassControlCommandInterface {
+  fields: PGN_130844_MaretronWindlassControlCommandFields
+
+  constructor(fields: PGN_130844_MaretronWindlassControlCommandCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130844,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130844_MaretronWindlassControlCommandMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130844_MaretronWindlassControlCommandMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronWindlassControlCommand')!
+  }
+}
+pgnIdToCreator['maretronWindlassControlCommand'] = (fields:any, dst:number) => new PGN_130844_MaretronWindlassControlCommand(fields, dst)
+
+
+/**
  * PGN: 130845
  *
  * Description: Furuno: Multi Sats In View Extended
@@ -23590,6 +25481,71 @@ pgnIdToCreator['simnetKeyValue'] = (fields:any, dst:number) => new PGN_130845_Si
 
 
 /**
+ * PGN: 130845
+ *
+ * Description: Maretron: DC Energy
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130845_MaretronDcEnergy
+ */
+export interface PGN_130845_MaretronDcEnergyInterface extends PGNInterface {
+  fields: PGN_130845_MaretronDcEnergyFields
+}
+
+/**
+ * @category PGN_130845_MaretronDcEnergy
+ */
+export interface PGN_130845_MaretronDcEnergyFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130845_MaretronDcEnergy
+ */
+export const PGN_130845_MaretronDcEnergyMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130845_MaretronDcEnergy
+ */
+export interface PGN_130845_MaretronDcEnergyCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130845_MaretronDcEnergy
+ */
+export class PGN_130845_MaretronDcEnergy extends PGN implements PGN_130845_MaretronDcEnergyInterface {
+  fields: PGN_130845_MaretronDcEnergyFields
+
+  constructor(fields: PGN_130845_MaretronDcEnergyCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130845,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130845_MaretronDcEnergyMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130845_MaretronDcEnergyMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronDcEnergy')!
+  }
+}
+pgnIdToCreator['maretronDcEnergy'] = (fields:any, dst:number) => new PGN_130845_MaretronDcEnergy(fields, dst)
+
+
+/**
  * PGN: 130846
  *
  * Description: Simnet: Parameter Set
@@ -23729,6 +25685,71 @@ export class PGN_130846_FurunoMotionSensorStatusExtended extends PGN implements 
   }
 }
 pgnIdToCreator['furunoMotionSensorStatusExtended'] = (fields:any, dst:number) => new PGN_130846_FurunoMotionSensorStatusExtended(fields, dst)
+
+
+/**
+ * PGN: 130846
+ *
+ * Description: Maretron: Battery Amp Hour Record
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130846_MaretronBatteryAmpHourRecord
+ */
+export interface PGN_130846_MaretronBatteryAmpHourRecordInterface extends PGNInterface {
+  fields: PGN_130846_MaretronBatteryAmpHourRecordFields
+}
+
+/**
+ * @category PGN_130846_MaretronBatteryAmpHourRecord
+ */
+export interface PGN_130846_MaretronBatteryAmpHourRecordFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130846_MaretronBatteryAmpHourRecord
+ */
+export const PGN_130846_MaretronBatteryAmpHourRecordMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130846_MaretronBatteryAmpHourRecord
+ */
+export interface PGN_130846_MaretronBatteryAmpHourRecordCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130846_MaretronBatteryAmpHourRecord
+ */
+export class PGN_130846_MaretronBatteryAmpHourRecord extends PGN implements PGN_130846_MaretronBatteryAmpHourRecordInterface {
+  fields: PGN_130846_MaretronBatteryAmpHourRecordFields
+
+  constructor(fields: PGN_130846_MaretronBatteryAmpHourRecordCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130846,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130846_MaretronBatteryAmpHourRecordMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130846_MaretronBatteryAmpHourRecordMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronBatteryAmpHourRecord')!
+  }
+}
+pgnIdToCreator['maretronBatteryAmpHourRecord'] = (fields:any, dst:number) => new PGN_130846_MaretronBatteryAmpHourRecord(fields, dst)
 
 
 /**

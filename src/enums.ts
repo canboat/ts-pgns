@@ -1358,6 +1358,7 @@ export enum MagneticVariation {
   Wmm2010 = 'WMM 2010',
   Wmm2015 = 'WMM 2015',
   Wmm2020 = 'WMM 2020',
+  Wmm2025 = 'WMM 2025',
 }
 
 /**
@@ -1373,6 +1374,7 @@ export const MagneticVariationValues: {[key: string]: number} = {
   [MagneticVariation.Wmm2010]: 0x6,
   [MagneticVariation.Wmm2015]: 0x7,
   [MagneticVariation.Wmm2020]: 0x8,
+  [MagneticVariation.Wmm2025]: 0x9,
 }
 
 /**
@@ -6275,6 +6277,14 @@ export const ZoneSizeValues: {[key: string]: number} = {
 export enum MaretronProductCode {
   Ssc200 = 'SSC200',
   Ssc300 = 'SSC300',
+  Tla100 = 'TLA100',
+  Nbe100 = 'NBE100',
+  Rim100 = 'RIM100',
+  Alm100 = 'ALM100',
+  Tmp100 = 'TMP100',
+  Dcr100 = 'DCR100',
+  Sim100 = 'SIM100',
+  Acm100 = 'ACM100',
 }
 
 /**
@@ -6283,6 +6293,70 @@ export enum MaretronProductCode {
 export const MaretronProductCodeValues: {[key: string]: number} = {
   [MaretronProductCode.Ssc200]: 0x1b2,
   [MaretronProductCode.Ssc300]: 0xa7e,
+  [MaretronProductCode.Tla100]: 0xadd,
+  [MaretronProductCode.Nbe100]: 0xf8b,
+  [MaretronProductCode.Rim100]: 0xfee,
+  [MaretronProductCode.Alm100]: 0x1fe5,
+  [MaretronProductCode.Tmp100]: 0x4e63,
+  [MaretronProductCode.Dcr100]: 0x5839,
+  [MaretronProductCode.Sim100]: 0x5c33,
+  [MaretronProductCode.Acm100]: 0x677d,
+}
+
+/**
+ * @category Enumerations
+ */
+export enum MaretronOpcode {
+  ReadAll = 'Read All',
+  WriteRegister = 'Write Register',
+  ReadConfig = 'Read Config',
+  WriteConfig = 'Write Config',
+  Calibrate = 'Calibrate',
+  ClearCalibration = 'Clear Calibration',
+  Status = 'Status',
+  ClearStatus = 'Clear Status',
+  ResetFactoryDefault = 'Reset Factory Default',
+  Debug = 'Debug',
+  WriteInstance = 'Write Instance',
+  ReadInstance = 'Read Instance',
+  WriteLabel = 'Write Label',
+  ReadLabel = 'Read Label',
+  WriteSwitchConfig = 'Write Switch Config',
+  ReadSwitchConfig = 'Read Switch Config',
+  WriteAlertConfig = 'Write Alert Config',
+  ReadAlertConfig = 'Read Alert Config',
+  WriteChannelConfig = 'Write Channel Config',
+  ReadChannelConfig = 'Read Channel Config',
+  ReadChannelConfigExtended = 'Read Channel Config Extended',
+  WriteChannelConfigExtended = 'Write Channel Config Extended',
+}
+
+/**
+ * @category Enumerations
+ */
+export const MaretronOpcodeValues: {[key: string]: number} = {
+  [MaretronOpcode.ReadAll]: 0x0,
+  [MaretronOpcode.WriteRegister]: 0x1,
+  [MaretronOpcode.ReadConfig]: 0x2,
+  [MaretronOpcode.WriteConfig]: 0x3,
+  [MaretronOpcode.Calibrate]: 0x4,
+  [MaretronOpcode.ClearCalibration]: 0x5,
+  [MaretronOpcode.Status]: 0x6,
+  [MaretronOpcode.ClearStatus]: 0x7,
+  [MaretronOpcode.ResetFactoryDefault]: 0x8,
+  [MaretronOpcode.Debug]: 0x9,
+  [MaretronOpcode.WriteInstance]: 0x10,
+  [MaretronOpcode.ReadInstance]: 0x11,
+  [MaretronOpcode.WriteLabel]: 0x20,
+  [MaretronOpcode.ReadLabel]: 0x21,
+  [MaretronOpcode.WriteSwitchConfig]: 0x30,
+  [MaretronOpcode.ReadSwitchConfig]: 0x31,
+  [MaretronOpcode.WriteAlertConfig]: 0x40,
+  [MaretronOpcode.ReadAlertConfig]: 0x41,
+  [MaretronOpcode.WriteChannelConfig]: 0x50,
+  [MaretronOpcode.ReadChannelConfig]: 0x51,
+  [MaretronOpcode.ReadChannelConfigExtended]: 0x56,
+  [MaretronOpcode.WriteChannelConfigExtended]: 0x57,
 }
 
 /**

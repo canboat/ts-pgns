@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-import canboat from '../canboat.json'
+import canboat from '../canboat-lookups.json'
 import {
   Enumeration,
   BitEnumeration,

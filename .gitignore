@@ -1,3 +1,6 @@
+# Generated lookup subset (built from canboat.json by scripts/extract-lookups.js)
+canboat-lookups.json
+
 # Logs
 logs
 *.log

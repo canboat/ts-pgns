@@ -16,11 +16,7 @@
  */
 
 import canboat from '../canboat-lookups.json'
-import {
-  Enumeration,
-  BitEnumeration,
-  FieldTypeEnumeration
-} from './definition'
+import { Enumeration, BitEnumeration, FieldTypeEnumeration } from './definition'
 
 /**
  * Retrieves the list of available enumerations from the Canboat library.

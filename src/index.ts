@@ -17,5 +17,6 @@
 export * from './enums'
 export * from './pgns'
 export * from './definition'
+export * from './lookups'
 export * from './utilities'
 export * from './pgnHeaderGenerator'

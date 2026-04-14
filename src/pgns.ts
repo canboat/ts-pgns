@@ -931,6 +931,86 @@ pgnIdToCreator['victronBatteryRegister'] = (fields:any, dst:number) => new PGN_6
 
 
 /**
+ * PGN: 61184
+ *
+ * Description: Carling: Breaker Command
+ *
+ * Explanation: Addresses up to 19 breakers on a Carling digital switching panel via three bitmap fields. Breakers 1 to 8 are in Breaker Mapping 1, 9 to 16 in Breaker Mapping 2, and 17 to 19 in Breaker Mapping 3.
+ *
+ * Match: Manufacturer Code == Carling Technologies Inc. (Moritz Aerospace)<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Message Type == Breaker Command<br>
+ *
+ * @category PGN_61184_CarlingBreakerCommand
+ */
+export interface PGN_61184_CarlingBreakerCommandInterface extends PGNInterface {
+  fields: PGN_61184_CarlingBreakerCommandFields
+}
+
+/**
+ * @category PGN_61184_CarlingBreakerCommand
+ */
+export interface PGN_61184_CarlingBreakerCommandFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  messageType: N2K_Number | string
+  breakerMapping1?: N2K_Number
+  breakerMapping2?: N2K_Number
+  reserved7?: number
+  breakerMapping3?: N2K_Number
+  breakerCommand?: N2K_Number
+  dimValue?: N2K_Number
+}
+
+/**
+ * @category PGN_61184_CarlingBreakerCommand
+ */
+export const PGN_61184_CarlingBreakerCommandMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.CarlingTechnologiesIncmoritzAerospace,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  messageType: "Breaker Command",
+}
+
+/**
+ * @category PGN_61184_CarlingBreakerCommand
+ */
+export interface PGN_61184_CarlingBreakerCommandCreateArgs {
+  reserved?: number
+  breakerMapping1?: N2K_Number
+  breakerMapping2?: N2K_Number
+  reserved7?: number
+  breakerMapping3?: N2K_Number
+  breakerCommand?: N2K_Number
+  dimValue?: N2K_Number
+}
+
+/**
+ * @category PGN_61184_CarlingBreakerCommand
+ */
+export class PGN_61184_CarlingBreakerCommand extends PGN implements PGN_61184_CarlingBreakerCommandInterface {
+  fields: PGN_61184_CarlingBreakerCommandFields
+
+  constructor(fields: PGN_61184_CarlingBreakerCommandCreateArgs, dst: number = 255) {
+    super({
+      pgn: 61184,
+      prio: 2,
+      dst
+    })
+    this.fields = { ...PGN_61184_CarlingBreakerCommandMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_61184_CarlingBreakerCommandMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('carlingBreakerCommand')!
+  }
+}
+pgnIdToCreator['carlingBreakerCommand'] = (fields:any, dst:number) => new PGN_61184_CarlingBreakerCommand(fields, dst)
+
+
+/**
  * PGN: 61440
  *
  * Description: 0xF000-0xFEFF: Standardized single-frame non-addressed
@@ -2412,6 +2492,136 @@ pgnIdToCreator['furunoHeave'] = (fields:any, dst:number) => new PGN_65280_Furuno
 /**
  * PGN: 65280
  *
+ * Description: Honda: Engine Data
+ *
+ * Match: Manufacturer Code == Honda Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65280_HondaEngineData
+ */
+export interface PGN_65280_HondaEngineDataInterface extends PGNInterface {
+  fields: PGN_65280_HondaEngineDataFields
+}
+
+/**
+ * @category PGN_65280_HondaEngineData
+ */
+export interface PGN_65280_HondaEngineDataFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65280_HondaEngineData
+ */
+export const PGN_65280_HondaEngineDataMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.HondaMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65280_HondaEngineData
+ */
+export interface PGN_65280_HondaEngineDataCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65280_HondaEngineData
+ */
+export class PGN_65280_HondaEngineData extends PGN implements PGN_65280_HondaEngineDataInterface {
+  fields: PGN_65280_HondaEngineDataFields
+
+  constructor(fields: PGN_65280_HondaEngineDataCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65280,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65280_HondaEngineDataMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65280_HondaEngineDataMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('hondaEngineData')!
+  }
+}
+pgnIdToCreator['hondaEngineData'] = (fields:any, dst:number) => new PGN_65280_HondaEngineData(fields, dst)
+
+
+/**
+ * PGN: 65280
+ *
+ * Description: Yanmar: Engine Data A
+ *
+ * Match: Manufacturer Code == Yanmar Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65280_YanmarEngineDataA
+ */
+export interface PGN_65280_YanmarEngineDataAInterface extends PGNInterface {
+  fields: PGN_65280_YanmarEngineDataAFields
+}
+
+/**
+ * @category PGN_65280_YanmarEngineDataA
+ */
+export interface PGN_65280_YanmarEngineDataAFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65280_YanmarEngineDataA
+ */
+export const PGN_65280_YanmarEngineDataAMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.YanmarMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65280_YanmarEngineDataA
+ */
+export interface PGN_65280_YanmarEngineDataACreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65280_YanmarEngineDataA
+ */
+export class PGN_65280_YanmarEngineDataA extends PGN implements PGN_65280_YanmarEngineDataAInterface {
+  fields: PGN_65280_YanmarEngineDataAFields
+
+  constructor(fields: PGN_65280_YanmarEngineDataACreateArgs, dst: number = 255) {
+    super({
+      pgn: 65280,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65280_YanmarEngineDataAMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65280_YanmarEngineDataAMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('yanmarEngineDataA')!
+  }
+}
+pgnIdToCreator['yanmarEngineDataA'] = (fields:any, dst:number) => new PGN_65280_YanmarEngineDataA(fields, dst)
+
+
+/**
+ * PGN: 65280
+ *
  * Description: Maretron: Keel Position
  *
  * Match: Manufacturer Code == Maretron<br>
@@ -2475,6 +2685,201 @@ pgnIdToCreator['maretronKeelPosition'] = (fields:any, dst:number) => new PGN_652
 
 
 /**
+ * PGN: 65280
+ *
+ * Description: Mercury: Engine Data
+ *
+ * Match: Manufacturer Code == Mercury Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65280_MercuryEngineData
+ */
+export interface PGN_65280_MercuryEngineDataInterface extends PGNInterface {
+  fields: PGN_65280_MercuryEngineDataFields
+}
+
+/**
+ * @category PGN_65280_MercuryEngineData
+ */
+export interface PGN_65280_MercuryEngineDataFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65280_MercuryEngineData
+ */
+export const PGN_65280_MercuryEngineDataMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.MercuryMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65280_MercuryEngineData
+ */
+export interface PGN_65280_MercuryEngineDataCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65280_MercuryEngineData
+ */
+export class PGN_65280_MercuryEngineData extends PGN implements PGN_65280_MercuryEngineDataInterface {
+  fields: PGN_65280_MercuryEngineDataFields
+
+  constructor(fields: PGN_65280_MercuryEngineDataCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65280,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65280_MercuryEngineDataMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65280_MercuryEngineDataMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('mercuryEngineData')!
+  }
+}
+pgnIdToCreator['mercuryEngineData'] = (fields:any, dst:number) => new PGN_65280_MercuryEngineData(fields, dst)
+
+
+/**
+ * PGN: 65281
+ *
+ * Description: Yanmar: Engine Data B
+ *
+ * Match: Manufacturer Code == Yanmar Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65281_YanmarEngineDataB
+ */
+export interface PGN_65281_YanmarEngineDataBInterface extends PGNInterface {
+  fields: PGN_65281_YanmarEngineDataBFields
+}
+
+/**
+ * @category PGN_65281_YanmarEngineDataB
+ */
+export interface PGN_65281_YanmarEngineDataBFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65281_YanmarEngineDataB
+ */
+export const PGN_65281_YanmarEngineDataBMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.YanmarMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65281_YanmarEngineDataB
+ */
+export interface PGN_65281_YanmarEngineDataBCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65281_YanmarEngineDataB
+ */
+export class PGN_65281_YanmarEngineDataB extends PGN implements PGN_65281_YanmarEngineDataBInterface {
+  fields: PGN_65281_YanmarEngineDataBFields
+
+  constructor(fields: PGN_65281_YanmarEngineDataBCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65281,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65281_YanmarEngineDataBMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65281_YanmarEngineDataBMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('yanmarEngineDataB')!
+  }
+}
+pgnIdToCreator['yanmarEngineDataB'] = (fields:any, dst:number) => new PGN_65281_YanmarEngineDataB(fields, dst)
+
+
+/**
+ * PGN: 65281
+ *
+ * Description: BEP Marine: Proprietary PGN 65281
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65281_BepMarineProprietaryPgn65281
+ */
+export interface PGN_65281_BepMarineProprietaryPgn65281Interface extends PGNInterface {
+  fields: PGN_65281_BepMarineProprietaryPgn65281Fields
+}
+
+/**
+ * @category PGN_65281_BepMarineProprietaryPgn65281
+ */
+export interface PGN_65281_BepMarineProprietaryPgn65281Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65281_BepMarineProprietaryPgn65281
+ */
+export const PGN_65281_BepMarineProprietaryPgn65281MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65281_BepMarineProprietaryPgn65281
+ */
+export interface PGN_65281_BepMarineProprietaryPgn65281CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65281_BepMarineProprietaryPgn65281
+ */
+export class PGN_65281_BepMarineProprietaryPgn65281 extends PGN implements PGN_65281_BepMarineProprietaryPgn65281Interface {
+  fields: PGN_65281_BepMarineProprietaryPgn65281Fields
+
+  constructor(fields: PGN_65281_BepMarineProprietaryPgn65281CreateArgs, dst: number = 255) {
+    super({
+      pgn: 65281,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65281_BepMarineProprietaryPgn65281MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65281_BepMarineProprietaryPgn65281MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn65281')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn65281'] = (fields:any, dst:number) => new PGN_65281_BepMarineProprietaryPgn65281(fields, dst)
+
+
+/**
  * PGN: 65282
  *
  * Description: Maretron: Number of Channels
@@ -2495,7 +2900,9 @@ export interface PGN_65282_MaretronNumberOfChannelsFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  pgn?: N2K_Pgn
+  numberOfChannels?: N2K_Number
+  reserved6?: number
 }
 
 /**
@@ -2511,7 +2918,9 @@ export const PGN_65282_MaretronNumberOfChannelsMatchFields = {
  */
 export interface PGN_65282_MaretronNumberOfChannelsCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  pgn?: N2K_Pgn
+  numberOfChannels?: N2K_Number
+  reserved6?: number
 }
 
 /**
@@ -2523,7 +2932,7 @@ export class PGN_65282_MaretronNumberOfChannels extends PGN implements PGN_65282
   constructor(fields: PGN_65282_MaretronNumberOfChannelsCreateArgs, dst: number = 255) {
     super({
       pgn: 65282,
-      prio: 3,
+      prio: 6,
       dst
     })
     this.fields = { ...PGN_65282_MaretronNumberOfChannelsMatchFields, ...fields }
@@ -2537,6 +2946,71 @@ export class PGN_65282_MaretronNumberOfChannels extends PGN implements PGN_65282
   }
 }
 pgnIdToCreator['maretronNumberOfChannels'] = (fields:any, dst:number) => new PGN_65282_MaretronNumberOfChannels(fields, dst)
+
+
+/**
+ * PGN: 65283
+ *
+ * Description: BEP Marine: Proprietary PGN 65283
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65283_BepMarineProprietaryPgn65283
+ */
+export interface PGN_65283_BepMarineProprietaryPgn65283Interface extends PGNInterface {
+  fields: PGN_65283_BepMarineProprietaryPgn65283Fields
+}
+
+/**
+ * @category PGN_65283_BepMarineProprietaryPgn65283
+ */
+export interface PGN_65283_BepMarineProprietaryPgn65283Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65283_BepMarineProprietaryPgn65283
+ */
+export const PGN_65283_BepMarineProprietaryPgn65283MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65283_BepMarineProprietaryPgn65283
+ */
+export interface PGN_65283_BepMarineProprietaryPgn65283CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65283_BepMarineProprietaryPgn65283
+ */
+export class PGN_65283_BepMarineProprietaryPgn65283 extends PGN implements PGN_65283_BepMarineProprietaryPgn65283Interface {
+  fields: PGN_65283_BepMarineProprietaryPgn65283Fields
+
+  constructor(fields: PGN_65283_BepMarineProprietaryPgn65283CreateArgs, dst: number = 255) {
+    super({
+      pgn: 65283,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65283_BepMarineProprietaryPgn65283MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65283_BepMarineProprietaryPgn65283MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn65283')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn65283'] = (fields:any, dst:number) => new PGN_65283_BepMarineProprietaryPgn65283(fields, dst)
 
 
 /**
@@ -2608,6 +3082,136 @@ export class PGN_65284_MaretronProprietaryDcBreakerCurrent extends PGN implement
   }
 }
 pgnIdToCreator['maretronProprietaryDcBreakerCurrent'] = (fields:any, dst:number) => new PGN_65284_MaretronProprietaryDcBreakerCurrent(fields, dst)
+
+
+/**
+ * PGN: 65284
+ *
+ * Description: Honda: Engine Alerts
+ *
+ * Match: Manufacturer Code == Honda Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65284_HondaEngineAlerts
+ */
+export interface PGN_65284_HondaEngineAlertsInterface extends PGNInterface {
+  fields: PGN_65284_HondaEngineAlertsFields
+}
+
+/**
+ * @category PGN_65284_HondaEngineAlerts
+ */
+export interface PGN_65284_HondaEngineAlertsFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65284_HondaEngineAlerts
+ */
+export const PGN_65284_HondaEngineAlertsMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.HondaMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65284_HondaEngineAlerts
+ */
+export interface PGN_65284_HondaEngineAlertsCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65284_HondaEngineAlerts
+ */
+export class PGN_65284_HondaEngineAlerts extends PGN implements PGN_65284_HondaEngineAlertsInterface {
+  fields: PGN_65284_HondaEngineAlertsFields
+
+  constructor(fields: PGN_65284_HondaEngineAlertsCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65284,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65284_HondaEngineAlertsMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65284_HondaEngineAlertsMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('hondaEngineAlerts')!
+  }
+}
+pgnIdToCreator['hondaEngineAlerts'] = (fields:any, dst:number) => new PGN_65284_HondaEngineAlerts(fields, dst)
+
+
+/**
+ * PGN: 65284
+ *
+ * Description: BEP Marine: CZone Circuit Status
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65284_BepMarineCzoneCircuitStatus
+ */
+export interface PGN_65284_BepMarineCzoneCircuitStatusInterface extends PGNInterface {
+  fields: PGN_65284_BepMarineCzoneCircuitStatusFields
+}
+
+/**
+ * @category PGN_65284_BepMarineCzoneCircuitStatus
+ */
+export interface PGN_65284_BepMarineCzoneCircuitStatusFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65284_BepMarineCzoneCircuitStatus
+ */
+export const PGN_65284_BepMarineCzoneCircuitStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65284_BepMarineCzoneCircuitStatus
+ */
+export interface PGN_65284_BepMarineCzoneCircuitStatusCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65284_BepMarineCzoneCircuitStatus
+ */
+export class PGN_65284_BepMarineCzoneCircuitStatus extends PGN implements PGN_65284_BepMarineCzoneCircuitStatusInterface {
+  fields: PGN_65284_BepMarineCzoneCircuitStatusFields
+
+  constructor(fields: PGN_65284_BepMarineCzoneCircuitStatusCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65284,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65284_BepMarineCzoneCircuitStatusMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65284_BepMarineCzoneCircuitStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineCzoneCircuitStatus')!
+  }
+}
+pgnIdToCreator['bepMarineCzoneCircuitStatus'] = (fields:any, dst:number) => new PGN_65284_BepMarineCzoneCircuitStatus(fields, dst)
 
 
 /**
@@ -2972,7 +3576,11 @@ export interface PGN_65286_MaretronFluidFlowRateFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  sid?: N2K_Number
+  flowRateInstance: N2K_Number
+  fluidType?: enums.TankType | number
+  reserved7?: number
+  fluidFlowRate?: N2K_Number
 }
 
 /**
@@ -2988,7 +3596,11 @@ export const PGN_65286_MaretronFluidFlowRateMatchFields = {
  */
 export interface PGN_65286_MaretronFluidFlowRateCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  sid?: N2K_Number
+  flowRateInstance: N2K_Number
+  fluidType?: enums.TankType | number
+  reserved7?: number
+  fluidFlowRate?: N2K_Number
 }
 
 /**
@@ -3000,7 +3612,7 @@ export class PGN_65286_MaretronFluidFlowRate extends PGN implements PGN_65286_Ma
   constructor(fields: PGN_65286_MaretronFluidFlowRateCreateArgs, dst: number = 255) {
     super({
       pgn: 65286,
-      prio: 3,
+      prio: 5,
       dst
     })
     this.fields = { ...PGN_65286_MaretronFluidFlowRateMatchFields, ...fields }
@@ -3173,7 +3785,11 @@ export interface PGN_65287_MaretronTripVolumeFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  sid?: N2K_Number
+  volumeInstance: N2K_Number
+  fluidType?: enums.TankType | number
+  reserved7?: number
+  tripVolume?: N2K_Number
 }
 
 /**
@@ -3189,7 +3805,11 @@ export const PGN_65287_MaretronTripVolumeMatchFields = {
  */
 export interface PGN_65287_MaretronTripVolumeCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  sid?: N2K_Number
+  volumeInstance: N2K_Number
+  fluidType?: enums.TankType | number
+  reserved7?: number
+  tripVolume?: N2K_Number
 }
 
 /**
@@ -3201,7 +3821,7 @@ export class PGN_65287_MaretronTripVolume extends PGN implements PGN_65287_Maret
   constructor(fields: PGN_65287_MaretronTripVolumeCreateArgs, dst: number = 255) {
     super({
       pgn: 65287,
-      prio: 3,
+      prio: 5,
       dst
     })
     this.fields = { ...PGN_65287_MaretronTripVolumeMatchFields, ...fields }
@@ -3311,7 +3931,10 @@ export interface PGN_65288_Maretron420MaFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  sid?: N2K_Number
+  dataInstance: N2K_Number
+  _420MaData?: N2K_Number
+  reserved7?: number
 }
 
 /**
@@ -3327,7 +3950,10 @@ export const PGN_65288_Maretron420MaMatchFields = {
  */
 export interface PGN_65288_Maretron420MaCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  sid?: N2K_Number
+  dataInstance: N2K_Number
+  _420MaData?: N2K_Number
+  reserved7?: number
 }
 
 /**
@@ -3339,7 +3965,7 @@ export class PGN_65288_Maretron420Ma extends PGN implements PGN_65288_Maretron42
   constructor(fields: PGN_65288_Maretron420MaCreateArgs, dst: number = 255) {
     super({
       pgn: 65288,
-      prio: 3,
+      prio: 5,
       dst
     })
     this.fields = { ...PGN_65288_Maretron420MaMatchFields, ...fields }
@@ -3441,7 +4067,10 @@ export interface PGN_65289_Maretron010VFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  sid?: N2K_Number
+  dataInstance: N2K_Number
+  _010VData?: N2K_Number
+  reserved7?: number
 }
 
 /**
@@ -3457,7 +4086,10 @@ export const PGN_65289_Maretron010VMatchFields = {
  */
 export interface PGN_65289_Maretron010VCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  sid?: N2K_Number
+  dataInstance: N2K_Number
+  _010VData?: N2K_Number
+  reserved7?: number
 }
 
 /**
@@ -3469,7 +4101,7 @@ export class PGN_65289_Maretron010V extends PGN implements PGN_65289_Maretron010
   constructor(fields: PGN_65289_Maretron010VCreateArgs, dst: number = 255) {
     super({
       pgn: 65289,
-      prio: 3,
+      prio: 5,
       dst
     })
     this.fields = { ...PGN_65289_Maretron010VMatchFields, ...fields }
@@ -3571,7 +4203,10 @@ export interface PGN_65290_MaretronRotationalRateFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  sid?: N2K_Number
+  dataInstance: N2K_Number
+  rotationalRate?: N2K_Number
+  reserved7?: number
 }
 
 /**
@@ -3587,7 +4222,10 @@ export const PGN_65290_MaretronRotationalRateMatchFields = {
  */
 export interface PGN_65290_MaretronRotationalRateCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  sid?: N2K_Number
+  dataInstance: N2K_Number
+  rotationalRate?: N2K_Number
+  reserved7?: number
 }
 
 /**
@@ -3599,7 +4237,7 @@ export class PGN_65290_MaretronRotationalRate extends PGN implements PGN_65290_M
   constructor(fields: PGN_65290_MaretronRotationalRateCreateArgs, dst: number = 255) {
     super({
       pgn: 65290,
-      prio: 3,
+      prio: 5,
       dst
     })
     this.fields = { ...PGN_65290_MaretronRotationalRateMatchFields, ...fields }
@@ -3636,7 +4274,10 @@ export interface PGN_65291_MaretronResistanceFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  sid?: N2K_Number
+  dataInstance: N2K_Number
+  resistance?: N2K_Number
+  reserved7?: number
 }
 
 /**
@@ -3652,7 +4293,10 @@ export const PGN_65291_MaretronResistanceMatchFields = {
  */
 export interface PGN_65291_MaretronResistanceCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  sid?: N2K_Number
+  dataInstance: N2K_Number
+  resistance?: N2K_Number
+  reserved7?: number
 }
 
 /**
@@ -3664,7 +4308,7 @@ export class PGN_65291_MaretronResistance extends PGN implements PGN_65291_Maret
   constructor(fields: PGN_65291_MaretronResistanceCreateArgs, dst: number = 255) {
     super({
       pgn: 65291,
-      prio: 3,
+      prio: 5,
       dst
     })
     this.fields = { ...PGN_65291_MaretronResistanceMatchFields, ...fields }
@@ -3945,6 +4589,725 @@ pgnIdToCreator['diverseYachtServicesLoadCell'] = (fields:any, dst:number) => new
 
 
 /**
+ * PGN: 65294
+ *
+ * Description: BEP Marine: Proprietary PGN 65294
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65294_BepMarineProprietaryPgn65294
+ */
+export interface PGN_65294_BepMarineProprietaryPgn65294Interface extends PGNInterface {
+  fields: PGN_65294_BepMarineProprietaryPgn65294Fields
+}
+
+/**
+ * @category PGN_65294_BepMarineProprietaryPgn65294
+ */
+export interface PGN_65294_BepMarineProprietaryPgn65294Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65294_BepMarineProprietaryPgn65294
+ */
+export const PGN_65294_BepMarineProprietaryPgn65294MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65294_BepMarineProprietaryPgn65294
+ */
+export interface PGN_65294_BepMarineProprietaryPgn65294CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65294_BepMarineProprietaryPgn65294
+ */
+export class PGN_65294_BepMarineProprietaryPgn65294 extends PGN implements PGN_65294_BepMarineProprietaryPgn65294Interface {
+  fields: PGN_65294_BepMarineProprietaryPgn65294Fields
+
+  constructor(fields: PGN_65294_BepMarineProprietaryPgn65294CreateArgs, dst: number = 255) {
+    super({
+      pgn: 65294,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65294_BepMarineProprietaryPgn65294MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65294_BepMarineProprietaryPgn65294MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn65294')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn65294'] = (fields:any, dst:number) => new PGN_65294_BepMarineProprietaryPgn65294(fields, dst)
+
+
+/**
+ * PGN: 65295
+ *
+ * Description: BEP Marine: Proprietary PGN 65295
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65295_BepMarineProprietaryPgn65295
+ */
+export interface PGN_65295_BepMarineProprietaryPgn65295Interface extends PGNInterface {
+  fields: PGN_65295_BepMarineProprietaryPgn65295Fields
+}
+
+/**
+ * @category PGN_65295_BepMarineProprietaryPgn65295
+ */
+export interface PGN_65295_BepMarineProprietaryPgn65295Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65295_BepMarineProprietaryPgn65295
+ */
+export const PGN_65295_BepMarineProprietaryPgn65295MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65295_BepMarineProprietaryPgn65295
+ */
+export interface PGN_65295_BepMarineProprietaryPgn65295CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65295_BepMarineProprietaryPgn65295
+ */
+export class PGN_65295_BepMarineProprietaryPgn65295 extends PGN implements PGN_65295_BepMarineProprietaryPgn65295Interface {
+  fields: PGN_65295_BepMarineProprietaryPgn65295Fields
+
+  constructor(fields: PGN_65295_BepMarineProprietaryPgn65295CreateArgs, dst: number = 255) {
+    super({
+      pgn: 65295,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65295_BepMarineProprietaryPgn65295MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65295_BepMarineProprietaryPgn65295MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn65295')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn65295'] = (fields:any, dst:number) => new PGN_65295_BepMarineProprietaryPgn65295(fields, dst)
+
+
+/**
+ * PGN: 65296
+ *
+ * Description: BEP Marine: Proprietary PGN 65296
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65296_BepMarineProprietaryPgn65296
+ */
+export interface PGN_65296_BepMarineProprietaryPgn65296Interface extends PGNInterface {
+  fields: PGN_65296_BepMarineProprietaryPgn65296Fields
+}
+
+/**
+ * @category PGN_65296_BepMarineProprietaryPgn65296
+ */
+export interface PGN_65296_BepMarineProprietaryPgn65296Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65296_BepMarineProprietaryPgn65296
+ */
+export const PGN_65296_BepMarineProprietaryPgn65296MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65296_BepMarineProprietaryPgn65296
+ */
+export interface PGN_65296_BepMarineProprietaryPgn65296CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65296_BepMarineProprietaryPgn65296
+ */
+export class PGN_65296_BepMarineProprietaryPgn65296 extends PGN implements PGN_65296_BepMarineProprietaryPgn65296Interface {
+  fields: PGN_65296_BepMarineProprietaryPgn65296Fields
+
+  constructor(fields: PGN_65296_BepMarineProprietaryPgn65296CreateArgs, dst: number = 255) {
+    super({
+      pgn: 65296,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65296_BepMarineProprietaryPgn65296MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65296_BepMarineProprietaryPgn65296MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn65296')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn65296'] = (fields:any, dst:number) => new PGN_65296_BepMarineProprietaryPgn65296(fields, dst)
+
+
+/**
+ * PGN: 65297
+ *
+ * Description: BEP Marine: Proprietary PGN 65297
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65297_BepMarineProprietaryPgn65297
+ */
+export interface PGN_65297_BepMarineProprietaryPgn65297Interface extends PGNInterface {
+  fields: PGN_65297_BepMarineProprietaryPgn65297Fields
+}
+
+/**
+ * @category PGN_65297_BepMarineProprietaryPgn65297
+ */
+export interface PGN_65297_BepMarineProprietaryPgn65297Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65297_BepMarineProprietaryPgn65297
+ */
+export const PGN_65297_BepMarineProprietaryPgn65297MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65297_BepMarineProprietaryPgn65297
+ */
+export interface PGN_65297_BepMarineProprietaryPgn65297CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65297_BepMarineProprietaryPgn65297
+ */
+export class PGN_65297_BepMarineProprietaryPgn65297 extends PGN implements PGN_65297_BepMarineProprietaryPgn65297Interface {
+  fields: PGN_65297_BepMarineProprietaryPgn65297Fields
+
+  constructor(fields: PGN_65297_BepMarineProprietaryPgn65297CreateArgs, dst: number = 255) {
+    super({
+      pgn: 65297,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65297_BepMarineProprietaryPgn65297MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65297_BepMarineProprietaryPgn65297MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn65297')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn65297'] = (fields:any, dst:number) => new PGN_65297_BepMarineProprietaryPgn65297(fields, dst)
+
+
+/**
+ * PGN: 65298
+ *
+ * Description: Suzuki: Engine Data A
+ *
+ * Match: Manufacturer Code == Suzuki Motor Corporation<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65298_SuzukiEngineDataA
+ */
+export interface PGN_65298_SuzukiEngineDataAInterface extends PGNInterface {
+  fields: PGN_65298_SuzukiEngineDataAFields
+}
+
+/**
+ * @category PGN_65298_SuzukiEngineDataA
+ */
+export interface PGN_65298_SuzukiEngineDataAFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65298_SuzukiEngineDataA
+ */
+export const PGN_65298_SuzukiEngineDataAMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.SuzukiMotorCorporation,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65298_SuzukiEngineDataA
+ */
+export interface PGN_65298_SuzukiEngineDataACreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65298_SuzukiEngineDataA
+ */
+export class PGN_65298_SuzukiEngineDataA extends PGN implements PGN_65298_SuzukiEngineDataAInterface {
+  fields: PGN_65298_SuzukiEngineDataAFields
+
+  constructor(fields: PGN_65298_SuzukiEngineDataACreateArgs, dst: number = 255) {
+    super({
+      pgn: 65298,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65298_SuzukiEngineDataAMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65298_SuzukiEngineDataAMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('suzukiEngineDataA')!
+  }
+}
+pgnIdToCreator['suzukiEngineDataA'] = (fields:any, dst:number) => new PGN_65298_SuzukiEngineDataA(fields, dst)
+
+
+/**
+ * PGN: 65299
+ *
+ * Description: Suzuki: Engine Data B
+ *
+ * Match: Manufacturer Code == Suzuki Motor Corporation<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65299_SuzukiEngineDataB
+ */
+export interface PGN_65299_SuzukiEngineDataBInterface extends PGNInterface {
+  fields: PGN_65299_SuzukiEngineDataBFields
+}
+
+/**
+ * @category PGN_65299_SuzukiEngineDataB
+ */
+export interface PGN_65299_SuzukiEngineDataBFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65299_SuzukiEngineDataB
+ */
+export const PGN_65299_SuzukiEngineDataBMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.SuzukiMotorCorporation,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65299_SuzukiEngineDataB
+ */
+export interface PGN_65299_SuzukiEngineDataBCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65299_SuzukiEngineDataB
+ */
+export class PGN_65299_SuzukiEngineDataB extends PGN implements PGN_65299_SuzukiEngineDataBInterface {
+  fields: PGN_65299_SuzukiEngineDataBFields
+
+  constructor(fields: PGN_65299_SuzukiEngineDataBCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65299,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65299_SuzukiEngineDataBMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65299_SuzukiEngineDataBMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('suzukiEngineDataB')!
+  }
+}
+pgnIdToCreator['suzukiEngineDataB'] = (fields:any, dst:number) => new PGN_65299_SuzukiEngineDataB(fields, dst)
+
+
+/**
+ * PGN: 65299
+ *
+ * Description: BEP Marine: Proprietary PGN 65299
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65299_BepMarineProprietaryPgn65299
+ */
+export interface PGN_65299_BepMarineProprietaryPgn65299Interface extends PGNInterface {
+  fields: PGN_65299_BepMarineProprietaryPgn65299Fields
+}
+
+/**
+ * @category PGN_65299_BepMarineProprietaryPgn65299
+ */
+export interface PGN_65299_BepMarineProprietaryPgn65299Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65299_BepMarineProprietaryPgn65299
+ */
+export const PGN_65299_BepMarineProprietaryPgn65299MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65299_BepMarineProprietaryPgn65299
+ */
+export interface PGN_65299_BepMarineProprietaryPgn65299CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65299_BepMarineProprietaryPgn65299
+ */
+export class PGN_65299_BepMarineProprietaryPgn65299 extends PGN implements PGN_65299_BepMarineProprietaryPgn65299Interface {
+  fields: PGN_65299_BepMarineProprietaryPgn65299Fields
+
+  constructor(fields: PGN_65299_BepMarineProprietaryPgn65299CreateArgs, dst: number = 255) {
+    super({
+      pgn: 65299,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65299_BepMarineProprietaryPgn65299MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65299_BepMarineProprietaryPgn65299MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn65299')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn65299'] = (fields:any, dst:number) => new PGN_65299_BepMarineProprietaryPgn65299(fields, dst)
+
+
+/**
+ * PGN: 65300
+ *
+ * Description: Suzuki: Engine Data C
+ *
+ * Match: Manufacturer Code == Suzuki Motor Corporation<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65300_SuzukiEngineDataC
+ */
+export interface PGN_65300_SuzukiEngineDataCInterface extends PGNInterface {
+  fields: PGN_65300_SuzukiEngineDataCFields
+}
+
+/**
+ * @category PGN_65300_SuzukiEngineDataC
+ */
+export interface PGN_65300_SuzukiEngineDataCFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65300_SuzukiEngineDataC
+ */
+export const PGN_65300_SuzukiEngineDataCMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.SuzukiMotorCorporation,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65300_SuzukiEngineDataC
+ */
+export interface PGN_65300_SuzukiEngineDataCCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65300_SuzukiEngineDataC
+ */
+export class PGN_65300_SuzukiEngineDataC extends PGN implements PGN_65300_SuzukiEngineDataCInterface {
+  fields: PGN_65300_SuzukiEngineDataCFields
+
+  constructor(fields: PGN_65300_SuzukiEngineDataCCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65300,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65300_SuzukiEngineDataCMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65300_SuzukiEngineDataCMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('suzukiEngineDataC')!
+  }
+}
+pgnIdToCreator['suzukiEngineDataC'] = (fields:any, dst:number) => new PGN_65300_SuzukiEngineDataC(fields, dst)
+
+
+/**
+ * PGN: 65300
+ *
+ * Description: BEP Marine: Proprietary PGN 65300
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65300_BepMarineProprietaryPgn65300
+ */
+export interface PGN_65300_BepMarineProprietaryPgn65300Interface extends PGNInterface {
+  fields: PGN_65300_BepMarineProprietaryPgn65300Fields
+}
+
+/**
+ * @category PGN_65300_BepMarineProprietaryPgn65300
+ */
+export interface PGN_65300_BepMarineProprietaryPgn65300Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65300_BepMarineProprietaryPgn65300
+ */
+export const PGN_65300_BepMarineProprietaryPgn65300MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65300_BepMarineProprietaryPgn65300
+ */
+export interface PGN_65300_BepMarineProprietaryPgn65300CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65300_BepMarineProprietaryPgn65300
+ */
+export class PGN_65300_BepMarineProprietaryPgn65300 extends PGN implements PGN_65300_BepMarineProprietaryPgn65300Interface {
+  fields: PGN_65300_BepMarineProprietaryPgn65300Fields
+
+  constructor(fields: PGN_65300_BepMarineProprietaryPgn65300CreateArgs, dst: number = 255) {
+    super({
+      pgn: 65300,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65300_BepMarineProprietaryPgn65300MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65300_BepMarineProprietaryPgn65300MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn65300')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn65300'] = (fields:any, dst:number) => new PGN_65300_BepMarineProprietaryPgn65300(fields, dst)
+
+
+/**
+ * PGN: 65300
+ *
+ * Description: Carling: Switchboard Status
+ *
+ * Explanation: Multi-purpose Carling digital switching PGN with 16+ message types: box status, breaker status, configuration, power information, AC GenII status, uptime reports, and solenoid profiles. The Message Type field selects the variant.
+ *
+ * Match: Manufacturer Code == Carling Technologies Inc. (Moritz Aerospace)<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65300_CarlingSwitchboardStatus
+ */
+export interface PGN_65300_CarlingSwitchboardStatusInterface extends PGNInterface {
+  fields: PGN_65300_CarlingSwitchboardStatusFields
+}
+
+/**
+ * @category PGN_65300_CarlingSwitchboardStatus
+ */
+export interface PGN_65300_CarlingSwitchboardStatusFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  messageType: N2K_Number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65300_CarlingSwitchboardStatus
+ */
+export const PGN_65300_CarlingSwitchboardStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.CarlingTechnologiesIncmoritzAerospace,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65300_CarlingSwitchboardStatus
+ */
+export interface PGN_65300_CarlingSwitchboardStatusCreateArgs {
+  reserved?: number
+  messageType: N2K_Number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65300_CarlingSwitchboardStatus
+ */
+export class PGN_65300_CarlingSwitchboardStatus extends PGN implements PGN_65300_CarlingSwitchboardStatusInterface {
+  fields: PGN_65300_CarlingSwitchboardStatusFields
+
+  constructor(fields: PGN_65300_CarlingSwitchboardStatusCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65300,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65300_CarlingSwitchboardStatusMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65300_CarlingSwitchboardStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('carlingSwitchboardStatus')!
+  }
+}
+pgnIdToCreator['carlingSwitchboardStatus'] = (fields:any, dst:number) => new PGN_65300_CarlingSwitchboardStatus(fields, dst)
+
+
+/**
+ * PGN: 65301
+ *
+ * Description: BEP Marine: Proprietary PGN 65301
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65301_BepMarineProprietaryPgn65301
+ */
+export interface PGN_65301_BepMarineProprietaryPgn65301Interface extends PGNInterface {
+  fields: PGN_65301_BepMarineProprietaryPgn65301Fields
+}
+
+/**
+ * @category PGN_65301_BepMarineProprietaryPgn65301
+ */
+export interface PGN_65301_BepMarineProprietaryPgn65301Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65301_BepMarineProprietaryPgn65301
+ */
+export const PGN_65301_BepMarineProprietaryPgn65301MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65301_BepMarineProprietaryPgn65301
+ */
+export interface PGN_65301_BepMarineProprietaryPgn65301CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65301_BepMarineProprietaryPgn65301
+ */
+export class PGN_65301_BepMarineProprietaryPgn65301 extends PGN implements PGN_65301_BepMarineProprietaryPgn65301Interface {
+  fields: PGN_65301_BepMarineProprietaryPgn65301Fields
+
+  constructor(fields: PGN_65301_BepMarineProprietaryPgn65301CreateArgs, dst: number = 255) {
+    super({
+      pgn: 65301,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65301_BepMarineProprietaryPgn65301MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65301_BepMarineProprietaryPgn65301MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn65301')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn65301'] = (fields:any, dst:number) => new PGN_65301_BepMarineProprietaryPgn65301(fields, dst)
+
+
+/**
  * PGN: 65302
  *
  * Description: Simnet: AP Unknown 1
@@ -4017,6 +5380,201 @@ export class PGN_65302_SimnetApUnknown1 extends PGN implements PGN_65302_SimnetA
   }
 }
 pgnIdToCreator['simnetApUnknown1'] = (fields:any, dst:number) => new PGN_65302_SimnetApUnknown1(fields, dst)
+
+
+/**
+ * PGN: 65303
+ *
+ * Description: Suzuki: Engine Data D
+ *
+ * Match: Manufacturer Code == Suzuki Motor Corporation<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65303_SuzukiEngineDataD
+ */
+export interface PGN_65303_SuzukiEngineDataDInterface extends PGNInterface {
+  fields: PGN_65303_SuzukiEngineDataDFields
+}
+
+/**
+ * @category PGN_65303_SuzukiEngineDataD
+ */
+export interface PGN_65303_SuzukiEngineDataDFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65303_SuzukiEngineDataD
+ */
+export const PGN_65303_SuzukiEngineDataDMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.SuzukiMotorCorporation,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65303_SuzukiEngineDataD
+ */
+export interface PGN_65303_SuzukiEngineDataDCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65303_SuzukiEngineDataD
+ */
+export class PGN_65303_SuzukiEngineDataD extends PGN implements PGN_65303_SuzukiEngineDataDInterface {
+  fields: PGN_65303_SuzukiEngineDataDFields
+
+  constructor(fields: PGN_65303_SuzukiEngineDataDCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65303,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65303_SuzukiEngineDataDMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65303_SuzukiEngineDataDMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('suzukiEngineDataD')!
+  }
+}
+pgnIdToCreator['suzukiEngineDataD'] = (fields:any, dst:number) => new PGN_65303_SuzukiEngineDataD(fields, dst)
+
+
+/**
+ * PGN: 65304
+ *
+ * Description: Suzuki: Engine Data E
+ *
+ * Match: Manufacturer Code == Suzuki Motor Corporation<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65304_SuzukiEngineDataE
+ */
+export interface PGN_65304_SuzukiEngineDataEInterface extends PGNInterface {
+  fields: PGN_65304_SuzukiEngineDataEFields
+}
+
+/**
+ * @category PGN_65304_SuzukiEngineDataE
+ */
+export interface PGN_65304_SuzukiEngineDataEFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65304_SuzukiEngineDataE
+ */
+export const PGN_65304_SuzukiEngineDataEMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.SuzukiMotorCorporation,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65304_SuzukiEngineDataE
+ */
+export interface PGN_65304_SuzukiEngineDataECreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65304_SuzukiEngineDataE
+ */
+export class PGN_65304_SuzukiEngineDataE extends PGN implements PGN_65304_SuzukiEngineDataEInterface {
+  fields: PGN_65304_SuzukiEngineDataEFields
+
+  constructor(fields: PGN_65304_SuzukiEngineDataECreateArgs, dst: number = 255) {
+    super({
+      pgn: 65304,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65304_SuzukiEngineDataEMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65304_SuzukiEngineDataEMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('suzukiEngineDataE')!
+  }
+}
+pgnIdToCreator['suzukiEngineDataE'] = (fields:any, dst:number) => new PGN_65304_SuzukiEngineDataE(fields, dst)
+
+
+/**
+ * PGN: 65304
+ *
+ * Description: BEP Marine: Proprietary PGN 65304
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65304_BepMarineProprietaryPgn65304
+ */
+export interface PGN_65304_BepMarineProprietaryPgn65304Interface extends PGNInterface {
+  fields: PGN_65304_BepMarineProprietaryPgn65304Fields
+}
+
+/**
+ * @category PGN_65304_BepMarineProprietaryPgn65304
+ */
+export interface PGN_65304_BepMarineProprietaryPgn65304Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65304_BepMarineProprietaryPgn65304
+ */
+export const PGN_65304_BepMarineProprietaryPgn65304MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65304_BepMarineProprietaryPgn65304
+ */
+export interface PGN_65304_BepMarineProprietaryPgn65304CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65304_BepMarineProprietaryPgn65304
+ */
+export class PGN_65304_BepMarineProprietaryPgn65304 extends PGN implements PGN_65304_BepMarineProprietaryPgn65304Interface {
+  fields: PGN_65304_BepMarineProprietaryPgn65304Fields
+
+  constructor(fields: PGN_65304_BepMarineProprietaryPgn65304CreateArgs, dst: number = 255) {
+    super({
+      pgn: 65304,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65304_BepMarineProprietaryPgn65304MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65304_BepMarineProprietaryPgn65304MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn65304')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn65304'] = (fields:any, dst:number) => new PGN_65304_BepMarineProprietaryPgn65304(fields, dst)
 
 
 /**
@@ -4384,6 +5942,136 @@ pgnIdToCreator['simnetSailingProcessorStatus'] = (fields:any, dst:number) => new
 
 
 /**
+ * PGN: 65306
+ *
+ * Description: BEP Marine: Proprietary PGN 65306
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65306_BepMarineProprietaryPgn65306
+ */
+export interface PGN_65306_BepMarineProprietaryPgn65306Interface extends PGNInterface {
+  fields: PGN_65306_BepMarineProprietaryPgn65306Fields
+}
+
+/**
+ * @category PGN_65306_BepMarineProprietaryPgn65306
+ */
+export interface PGN_65306_BepMarineProprietaryPgn65306Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65306_BepMarineProprietaryPgn65306
+ */
+export const PGN_65306_BepMarineProprietaryPgn65306MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65306_BepMarineProprietaryPgn65306
+ */
+export interface PGN_65306_BepMarineProprietaryPgn65306CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65306_BepMarineProprietaryPgn65306
+ */
+export class PGN_65306_BepMarineProprietaryPgn65306 extends PGN implements PGN_65306_BepMarineProprietaryPgn65306Interface {
+  fields: PGN_65306_BepMarineProprietaryPgn65306Fields
+
+  constructor(fields: PGN_65306_BepMarineProprietaryPgn65306CreateArgs, dst: number = 255) {
+    super({
+      pgn: 65306,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65306_BepMarineProprietaryPgn65306MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65306_BepMarineProprietaryPgn65306MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn65306')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn65306'] = (fields:any, dst:number) => new PGN_65306_BepMarineProprietaryPgn65306(fields, dst)
+
+
+/**
+ * PGN: 65308
+ *
+ * Description: BEP Marine: Proprietary PGN 65308
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65308_BepMarineProprietaryPgn65308
+ */
+export interface PGN_65308_BepMarineProprietaryPgn65308Interface extends PGNInterface {
+  fields: PGN_65308_BepMarineProprietaryPgn65308Fields
+}
+
+/**
+ * @category PGN_65308_BepMarineProprietaryPgn65308
+ */
+export interface PGN_65308_BepMarineProprietaryPgn65308Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65308_BepMarineProprietaryPgn65308
+ */
+export const PGN_65308_BepMarineProprietaryPgn65308MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65308_BepMarineProprietaryPgn65308
+ */
+export interface PGN_65308_BepMarineProprietaryPgn65308CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65308_BepMarineProprietaryPgn65308
+ */
+export class PGN_65308_BepMarineProprietaryPgn65308 extends PGN implements PGN_65308_BepMarineProprietaryPgn65308Interface {
+  fields: PGN_65308_BepMarineProprietaryPgn65308Fields
+
+  constructor(fields: PGN_65308_BepMarineProprietaryPgn65308CreateArgs, dst: number = 255) {
+    super({
+      pgn: 65308,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65308_BepMarineProprietaryPgn65308MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65308_BepMarineProprietaryPgn65308MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn65308')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn65308'] = (fields:any, dst:number) => new PGN_65308_BepMarineProprietaryPgn65308(fields, dst)
+
+
+/**
  * PGN: 65309
  *
  * Description: Navico: Wireless Battery Status
@@ -4455,6 +6143,136 @@ pgnIdToCreator['navicoWirelessBatteryStatus'] = (fields:any, dst:number) => new 
 
 
 /**
+ * PGN: 65310
+ *
+ * Description: BEP Marine: Proprietary PGN 65310
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65310_BepMarineProprietaryPgn65310
+ */
+export interface PGN_65310_BepMarineProprietaryPgn65310Interface extends PGNInterface {
+  fields: PGN_65310_BepMarineProprietaryPgn65310Fields
+}
+
+/**
+ * @category PGN_65310_BepMarineProprietaryPgn65310
+ */
+export interface PGN_65310_BepMarineProprietaryPgn65310Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65310_BepMarineProprietaryPgn65310
+ */
+export const PGN_65310_BepMarineProprietaryPgn65310MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65310_BepMarineProprietaryPgn65310
+ */
+export interface PGN_65310_BepMarineProprietaryPgn65310CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65310_BepMarineProprietaryPgn65310
+ */
+export class PGN_65310_BepMarineProprietaryPgn65310 extends PGN implements PGN_65310_BepMarineProprietaryPgn65310Interface {
+  fields: PGN_65310_BepMarineProprietaryPgn65310Fields
+
+  constructor(fields: PGN_65310_BepMarineProprietaryPgn65310CreateArgs, dst: number = 255) {
+    super({
+      pgn: 65310,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65310_BepMarineProprietaryPgn65310MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65310_BepMarineProprietaryPgn65310MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn65310')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn65310'] = (fields:any, dst:number) => new PGN_65310_BepMarineProprietaryPgn65310(fields, dst)
+
+
+/**
+ * PGN: 65311
+ *
+ * Description: BEP Marine: Proprietary PGN 65311
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65311_BepMarineProprietaryPgn65311
+ */
+export interface PGN_65311_BepMarineProprietaryPgn65311Interface extends PGNInterface {
+  fields: PGN_65311_BepMarineProprietaryPgn65311Fields
+}
+
+/**
+ * @category PGN_65311_BepMarineProprietaryPgn65311
+ */
+export interface PGN_65311_BepMarineProprietaryPgn65311Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65311_BepMarineProprietaryPgn65311
+ */
+export const PGN_65311_BepMarineProprietaryPgn65311MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65311_BepMarineProprietaryPgn65311
+ */
+export interface PGN_65311_BepMarineProprietaryPgn65311CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65311_BepMarineProprietaryPgn65311
+ */
+export class PGN_65311_BepMarineProprietaryPgn65311 extends PGN implements PGN_65311_BepMarineProprietaryPgn65311Interface {
+  fields: PGN_65311_BepMarineProprietaryPgn65311Fields
+
+  constructor(fields: PGN_65311_BepMarineProprietaryPgn65311CreateArgs, dst: number = 255) {
+    super({
+      pgn: 65311,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65311_BepMarineProprietaryPgn65311MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65311_BepMarineProprietaryPgn65311MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn65311')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn65311'] = (fields:any, dst:number) => new PGN_65311_BepMarineProprietaryPgn65311(fields, dst)
+
+
+/**
  * PGN: 65312
  *
  * Description: Navico: Wireless Signal Status
@@ -4521,6 +6339,591 @@ export class PGN_65312_NavicoWirelessSignalStatus extends PGN implements PGN_653
   }
 }
 pgnIdToCreator['navicoWirelessSignalStatus'] = (fields:any, dst:number) => new PGN_65312_NavicoWirelessSignalStatus(fields, dst)
+
+
+/**
+ * PGN: 65313
+ *
+ * Description: Navico: Proprietary
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65313_NavicoProprietary
+ */
+export interface PGN_65313_NavicoProprietaryInterface extends PGNInterface {
+  fields: PGN_65313_NavicoProprietaryFields
+}
+
+/**
+ * @category PGN_65313_NavicoProprietary
+ */
+export interface PGN_65313_NavicoProprietaryFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65313_NavicoProprietary
+ */
+export const PGN_65313_NavicoProprietaryMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65313_NavicoProprietary
+ */
+export interface PGN_65313_NavicoProprietaryCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65313_NavicoProprietary
+ */
+export class PGN_65313_NavicoProprietary extends PGN implements PGN_65313_NavicoProprietaryInterface {
+  fields: PGN_65313_NavicoProprietaryFields
+
+  constructor(fields: PGN_65313_NavicoProprietaryCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65313,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65313_NavicoProprietaryMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65313_NavicoProprietaryMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoProprietary')!
+  }
+}
+pgnIdToCreator['navicoProprietary'] = (fields:any, dst:number) => new PGN_65313_NavicoProprietary(fields, dst)
+
+
+/**
+ * PGN: 65314
+ *
+ * Description: BEP Marine: Proprietary PGN 65314
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65314_BepMarineProprietaryPgn65314
+ */
+export interface PGN_65314_BepMarineProprietaryPgn65314Interface extends PGNInterface {
+  fields: PGN_65314_BepMarineProprietaryPgn65314Fields
+}
+
+/**
+ * @category PGN_65314_BepMarineProprietaryPgn65314
+ */
+export interface PGN_65314_BepMarineProprietaryPgn65314Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65314_BepMarineProprietaryPgn65314
+ */
+export const PGN_65314_BepMarineProprietaryPgn65314MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65314_BepMarineProprietaryPgn65314
+ */
+export interface PGN_65314_BepMarineProprietaryPgn65314CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65314_BepMarineProprietaryPgn65314
+ */
+export class PGN_65314_BepMarineProprietaryPgn65314 extends PGN implements PGN_65314_BepMarineProprietaryPgn65314Interface {
+  fields: PGN_65314_BepMarineProprietaryPgn65314Fields
+
+  constructor(fields: PGN_65314_BepMarineProprietaryPgn65314CreateArgs, dst: number = 255) {
+    super({
+      pgn: 65314,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65314_BepMarineProprietaryPgn65314MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65314_BepMarineProprietaryPgn65314MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn65314')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn65314'] = (fields:any, dst:number) => new PGN_65314_BepMarineProprietaryPgn65314(fields, dst)
+
+
+/**
+ * PGN: 65315
+ *
+ * Description: Suzuki: Troll Mode Control
+ *
+ * Match: Manufacturer Code == Suzuki Motor Corporation<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65315_SuzukiTrollModeControl
+ */
+export interface PGN_65315_SuzukiTrollModeControlInterface extends PGNInterface {
+  fields: PGN_65315_SuzukiTrollModeControlFields
+}
+
+/**
+ * @category PGN_65315_SuzukiTrollModeControl
+ */
+export interface PGN_65315_SuzukiTrollModeControlFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65315_SuzukiTrollModeControl
+ */
+export const PGN_65315_SuzukiTrollModeControlMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.SuzukiMotorCorporation,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65315_SuzukiTrollModeControl
+ */
+export interface PGN_65315_SuzukiTrollModeControlCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65315_SuzukiTrollModeControl
+ */
+export class PGN_65315_SuzukiTrollModeControl extends PGN implements PGN_65315_SuzukiTrollModeControlInterface {
+  fields: PGN_65315_SuzukiTrollModeControlFields
+
+  constructor(fields: PGN_65315_SuzukiTrollModeControlCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65315,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65315_SuzukiTrollModeControlMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65315_SuzukiTrollModeControlMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('suzukiTrollModeControl')!
+  }
+}
+pgnIdToCreator['suzukiTrollModeControl'] = (fields:any, dst:number) => new PGN_65315_SuzukiTrollModeControl(fields, dst)
+
+
+/**
+ * PGN: 65316
+ *
+ * Description: BEP Marine: Proprietary PGN 65316
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65316_BepMarineProprietaryPgn65316
+ */
+export interface PGN_65316_BepMarineProprietaryPgn65316Interface extends PGNInterface {
+  fields: PGN_65316_BepMarineProprietaryPgn65316Fields
+}
+
+/**
+ * @category PGN_65316_BepMarineProprietaryPgn65316
+ */
+export interface PGN_65316_BepMarineProprietaryPgn65316Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65316_BepMarineProprietaryPgn65316
+ */
+export const PGN_65316_BepMarineProprietaryPgn65316MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65316_BepMarineProprietaryPgn65316
+ */
+export interface PGN_65316_BepMarineProprietaryPgn65316CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65316_BepMarineProprietaryPgn65316
+ */
+export class PGN_65316_BepMarineProprietaryPgn65316 extends PGN implements PGN_65316_BepMarineProprietaryPgn65316Interface {
+  fields: PGN_65316_BepMarineProprietaryPgn65316Fields
+
+  constructor(fields: PGN_65316_BepMarineProprietaryPgn65316CreateArgs, dst: number = 255) {
+    super({
+      pgn: 65316,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65316_BepMarineProprietaryPgn65316MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65316_BepMarineProprietaryPgn65316MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn65316')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn65316'] = (fields:any, dst:number) => new PGN_65316_BepMarineProprietaryPgn65316(fields, dst)
+
+
+/**
+ * PGN: 65317
+ *
+ * Description: Navico: Proprietary 2
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65317_NavicoProprietary2
+ */
+export interface PGN_65317_NavicoProprietary2Interface extends PGNInterface {
+  fields: PGN_65317_NavicoProprietary2Fields
+}
+
+/**
+ * @category PGN_65317_NavicoProprietary2
+ */
+export interface PGN_65317_NavicoProprietary2Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65317_NavicoProprietary2
+ */
+export const PGN_65317_NavicoProprietary2MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65317_NavicoProprietary2
+ */
+export interface PGN_65317_NavicoProprietary2CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65317_NavicoProprietary2
+ */
+export class PGN_65317_NavicoProprietary2 extends PGN implements PGN_65317_NavicoProprietary2Interface {
+  fields: PGN_65317_NavicoProprietary2Fields
+
+  constructor(fields: PGN_65317_NavicoProprietary2CreateArgs, dst: number = 255) {
+    super({
+      pgn: 65317,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65317_NavicoProprietary2MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65317_NavicoProprietary2MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoProprietary2')!
+  }
+}
+pgnIdToCreator['navicoProprietary2'] = (fields:any, dst:number) => new PGN_65317_NavicoProprietary2(fields, dst)
+
+
+/**
+ * PGN: 65325
+ *
+ * Description: BEP Marine: Proprietary PGN 65325
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65325_BepMarineProprietaryPgn65325
+ */
+export interface PGN_65325_BepMarineProprietaryPgn65325Interface extends PGNInterface {
+  fields: PGN_65325_BepMarineProprietaryPgn65325Fields
+}
+
+/**
+ * @category PGN_65325_BepMarineProprietaryPgn65325
+ */
+export interface PGN_65325_BepMarineProprietaryPgn65325Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65325_BepMarineProprietaryPgn65325
+ */
+export const PGN_65325_BepMarineProprietaryPgn65325MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65325_BepMarineProprietaryPgn65325
+ */
+export interface PGN_65325_BepMarineProprietaryPgn65325CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65325_BepMarineProprietaryPgn65325
+ */
+export class PGN_65325_BepMarineProprietaryPgn65325 extends PGN implements PGN_65325_BepMarineProprietaryPgn65325Interface {
+  fields: PGN_65325_BepMarineProprietaryPgn65325Fields
+
+  constructor(fields: PGN_65325_BepMarineProprietaryPgn65325CreateArgs, dst: number = 255) {
+    super({
+      pgn: 65325,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65325_BepMarineProprietaryPgn65325MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65325_BepMarineProprietaryPgn65325MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn65325')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn65325'] = (fields:any, dst:number) => new PGN_65325_BepMarineProprietaryPgn65325(fields, dst)
+
+
+/**
+ * PGN: 65329
+ *
+ * Description: Yamaha: Engine Data A
+ *
+ * Match: Manufacturer Code == Mystic Valley Communications<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65329_YamahaEngineDataA
+ */
+export interface PGN_65329_YamahaEngineDataAInterface extends PGNInterface {
+  fields: PGN_65329_YamahaEngineDataAFields
+}
+
+/**
+ * @category PGN_65329_YamahaEngineDataA
+ */
+export interface PGN_65329_YamahaEngineDataAFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65329_YamahaEngineDataA
+ */
+export const PGN_65329_YamahaEngineDataAMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.MysticValleyCommunications,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65329_YamahaEngineDataA
+ */
+export interface PGN_65329_YamahaEngineDataACreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65329_YamahaEngineDataA
+ */
+export class PGN_65329_YamahaEngineDataA extends PGN implements PGN_65329_YamahaEngineDataAInterface {
+  fields: PGN_65329_YamahaEngineDataAFields
+
+  constructor(fields: PGN_65329_YamahaEngineDataACreateArgs, dst: number = 255) {
+    super({
+      pgn: 65329,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65329_YamahaEngineDataAMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65329_YamahaEngineDataAMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('yamahaEngineDataA')!
+  }
+}
+pgnIdToCreator['yamahaEngineDataA'] = (fields:any, dst:number) => new PGN_65329_YamahaEngineDataA(fields, dst)
+
+
+/**
+ * PGN: 65330
+ *
+ * Description: B&G: Proprietary
+ *
+ * Match: Manufacturer Code == B & G<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65330_BGProprietary
+ */
+export interface PGN_65330_BGProprietaryInterface extends PGNInterface {
+  fields: PGN_65330_BGProprietaryFields
+}
+
+/**
+ * @category PGN_65330_BGProprietary
+ */
+export interface PGN_65330_BGProprietaryFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65330_BGProprietary
+ */
+export const PGN_65330_BGProprietaryMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BG,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65330_BGProprietary
+ */
+export interface PGN_65330_BGProprietaryCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65330_BGProprietary
+ */
+export class PGN_65330_BGProprietary extends PGN implements PGN_65330_BGProprietaryInterface {
+  fields: PGN_65330_BGProprietaryFields
+
+  constructor(fields: PGN_65330_BGProprietaryCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65330,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65330_BGProprietaryMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65330_BGProprietaryMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bGProprietary')!
+  }
+}
+pgnIdToCreator['bGProprietary'] = (fields:any, dst:number) => new PGN_65330_BGProprietary(fields, dst)
+
+
+/**
+ * PGN: 65332
+ *
+ * Description: Yanmar: Engine Data C
+ *
+ * Match: Manufacturer Code == Yanmar Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65332_YanmarEngineDataC
+ */
+export interface PGN_65332_YanmarEngineDataCInterface extends PGNInterface {
+  fields: PGN_65332_YanmarEngineDataCFields
+}
+
+/**
+ * @category PGN_65332_YanmarEngineDataC
+ */
+export interface PGN_65332_YanmarEngineDataCFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65332_YanmarEngineDataC
+ */
+export const PGN_65332_YanmarEngineDataCMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.YanmarMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65332_YanmarEngineDataC
+ */
+export interface PGN_65332_YanmarEngineDataCCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65332_YanmarEngineDataC
+ */
+export class PGN_65332_YanmarEngineDataC extends PGN implements PGN_65332_YanmarEngineDataCInterface {
+  fields: PGN_65332_YanmarEngineDataCFields
+
+  constructor(fields: PGN_65332_YanmarEngineDataCCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65332,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65332_YanmarEngineDataCMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65332_YanmarEngineDataCMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('yanmarEngineDataC')!
+  }
+}
+pgnIdToCreator['yanmarEngineDataC'] = (fields:any, dst:number) => new PGN_65332_YanmarEngineDataC(fields, dst)
 
 
 /**
@@ -4672,6 +7075,71 @@ pgnIdToCreator['simnetAutopilotAngle'] = (fields:any, dst:number) => new PGN_653
 
 
 /**
+ * PGN: 65344
+ *
+ * Description: Yamaha: Engine Data B
+ *
+ * Match: Manufacturer Code == Mystic Valley Communications<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65344_YamahaEngineDataB
+ */
+export interface PGN_65344_YamahaEngineDataBInterface extends PGNInterface {
+  fields: PGN_65344_YamahaEngineDataBFields
+}
+
+/**
+ * @category PGN_65344_YamahaEngineDataB
+ */
+export interface PGN_65344_YamahaEngineDataBFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65344_YamahaEngineDataB
+ */
+export const PGN_65344_YamahaEngineDataBMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.MysticValleyCommunications,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65344_YamahaEngineDataB
+ */
+export interface PGN_65344_YamahaEngineDataBCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65344_YamahaEngineDataB
+ */
+export class PGN_65344_YamahaEngineDataB extends PGN implements PGN_65344_YamahaEngineDataBInterface {
+  fields: PGN_65344_YamahaEngineDataBFields
+
+  constructor(fields: PGN_65344_YamahaEngineDataBCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65344,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65344_YamahaEngineDataBMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65344_YamahaEngineDataBMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('yamahaEngineDataB')!
+  }
+}
+pgnIdToCreator['yamahaEngineDataB'] = (fields:any, dst:number) => new PGN_65344_YamahaEngineDataB(fields, dst)
+
+
+/**
  * PGN: 65345
  *
  * Description: Seatalk: Pilot Wind Datum
@@ -4738,6 +7206,201 @@ export class PGN_65345_SeatalkPilotWindDatum extends PGN implements PGN_65345_Se
   }
 }
 pgnIdToCreator['seatalkPilotWindDatum'] = (fields:any, dst:number) => new PGN_65345_SeatalkPilotWindDatum(fields, dst)
+
+
+/**
+ * PGN: 65346
+ *
+ * Description: Yanmar: Engine Data D
+ *
+ * Match: Manufacturer Code == Yanmar Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65346_YanmarEngineDataD
+ */
+export interface PGN_65346_YanmarEngineDataDInterface extends PGNInterface {
+  fields: PGN_65346_YanmarEngineDataDFields
+}
+
+/**
+ * @category PGN_65346_YanmarEngineDataD
+ */
+export interface PGN_65346_YanmarEngineDataDFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65346_YanmarEngineDataD
+ */
+export const PGN_65346_YanmarEngineDataDMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.YanmarMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65346_YanmarEngineDataD
+ */
+export interface PGN_65346_YanmarEngineDataDCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65346_YanmarEngineDataD
+ */
+export class PGN_65346_YanmarEngineDataD extends PGN implements PGN_65346_YanmarEngineDataDInterface {
+  fields: PGN_65346_YanmarEngineDataDFields
+
+  constructor(fields: PGN_65346_YanmarEngineDataDCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65346,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65346_YanmarEngineDataDMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65346_YanmarEngineDataDMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('yanmarEngineDataD')!
+  }
+}
+pgnIdToCreator['yanmarEngineDataD'] = (fields:any, dst:number) => new PGN_65346_YanmarEngineDataD(fields, dst)
+
+
+/**
+ * PGN: 65348
+ *
+ * Description: Yanmar: Engine Data E
+ *
+ * Match: Manufacturer Code == Yanmar Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65348_YanmarEngineDataE
+ */
+export interface PGN_65348_YanmarEngineDataEInterface extends PGNInterface {
+  fields: PGN_65348_YanmarEngineDataEFields
+}
+
+/**
+ * @category PGN_65348_YanmarEngineDataE
+ */
+export interface PGN_65348_YanmarEngineDataEFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65348_YanmarEngineDataE
+ */
+export const PGN_65348_YanmarEngineDataEMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.YanmarMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65348_YanmarEngineDataE
+ */
+export interface PGN_65348_YanmarEngineDataECreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65348_YanmarEngineDataE
+ */
+export class PGN_65348_YanmarEngineDataE extends PGN implements PGN_65348_YanmarEngineDataEInterface {
+  fields: PGN_65348_YanmarEngineDataEFields
+
+  constructor(fields: PGN_65348_YanmarEngineDataECreateArgs, dst: number = 255) {
+    super({
+      pgn: 65348,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65348_YanmarEngineDataEMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65348_YanmarEngineDataEMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('yanmarEngineDataE')!
+  }
+}
+pgnIdToCreator['yanmarEngineDataE'] = (fields:any, dst:number) => new PGN_65348_YanmarEngineDataE(fields, dst)
+
+
+/**
+ * PGN: 65349
+ *
+ * Description: Yanmar: Engine Data F
+ *
+ * Match: Manufacturer Code == Yanmar Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65349_YanmarEngineDataF
+ */
+export interface PGN_65349_YanmarEngineDataFInterface extends PGNInterface {
+  fields: PGN_65349_YanmarEngineDataFFields
+}
+
+/**
+ * @category PGN_65349_YanmarEngineDataF
+ */
+export interface PGN_65349_YanmarEngineDataFFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65349_YanmarEngineDataF
+ */
+export const PGN_65349_YanmarEngineDataFMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.YanmarMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65349_YanmarEngineDataF
+ */
+export interface PGN_65349_YanmarEngineDataFCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65349_YanmarEngineDataF
+ */
+export class PGN_65349_YanmarEngineDataF extends PGN implements PGN_65349_YanmarEngineDataFInterface {
+  fields: PGN_65349_YanmarEngineDataFFields
+
+  constructor(fields: PGN_65349_YanmarEngineDataFCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65349,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65349_YanmarEngineDataFMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65349_YanmarEngineDataFMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('yanmarEngineDataF')!
+  }
+}
+pgnIdToCreator['yanmarEngineDataF'] = (fields:any, dst:number) => new PGN_65349_YanmarEngineDataF(fields, dst)
 
 
 /**
@@ -5217,6 +7880,81 @@ pgnIdToCreator['seatalkPilotMode'] = (fields:any, dst:number) => new PGN_65379_S
 
 
 /**
+ * PGN: 65403
+ *
+ * Description: Lumishore: Light Status
+ *
+ * Match: Manufacturer Code == Lumishore<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65403_LumishoreLightStatus
+ */
+export interface PGN_65403_LumishoreLightStatusInterface extends PGNInterface {
+  fields: PGN_65403_LumishoreLightStatusFields
+}
+
+/**
+ * @category PGN_65403_LumishoreLightStatus
+ */
+export interface PGN_65403_LumishoreLightStatusFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  zoneIndex: N2K_Number
+  red?: N2K_Number
+  green?: N2K_Number
+  blue?: N2K_Number
+  coldWhite?: N2K_Number
+  warmWhite?: N2K_Number
+}
+
+/**
+ * @category PGN_65403_LumishoreLightStatus
+ */
+export const PGN_65403_LumishoreLightStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Lumishore,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65403_LumishoreLightStatus
+ */
+export interface PGN_65403_LumishoreLightStatusCreateArgs {
+  reserved?: number
+  zoneIndex: N2K_Number
+  red?: N2K_Number
+  green?: N2K_Number
+  blue?: N2K_Number
+  coldWhite?: N2K_Number
+  warmWhite?: N2K_Number
+}
+
+/**
+ * @category PGN_65403_LumishoreLightStatus
+ */
+export class PGN_65403_LumishoreLightStatus extends PGN implements PGN_65403_LumishoreLightStatusInterface {
+  fields: PGN_65403_LumishoreLightStatusFields
+
+  constructor(fields: PGN_65403_LumishoreLightStatusCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65403,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65403_LumishoreLightStatusMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65403_LumishoreLightStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('lumishoreLightStatus')!
+  }
+}
+pgnIdToCreator['lumishoreLightStatus'] = (fields:any, dst:number) => new PGN_65403_LumishoreLightStatus(fields, dst)
+
+
+/**
  * PGN: 65408
  *
  * Description: Airmar: Depth Quality Factor
@@ -5502,6 +8240,266 @@ export class PGN_65420_SimnetApUnknown3 extends PGN implements PGN_65420_SimnetA
   }
 }
 pgnIdToCreator['simnetApUnknown3'] = (fields:any, dst:number) => new PGN_65420_SimnetApUnknown3(fields, dst)
+
+
+/**
+ * PGN: 65424
+ *
+ * Description: Yamaha: Engine Data C
+ *
+ * Match: Manufacturer Code == Mystic Valley Communications<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65424_YamahaEngineDataC
+ */
+export interface PGN_65424_YamahaEngineDataCInterface extends PGNInterface {
+  fields: PGN_65424_YamahaEngineDataCFields
+}
+
+/**
+ * @category PGN_65424_YamahaEngineDataC
+ */
+export interface PGN_65424_YamahaEngineDataCFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65424_YamahaEngineDataC
+ */
+export const PGN_65424_YamahaEngineDataCMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.MysticValleyCommunications,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65424_YamahaEngineDataC
+ */
+export interface PGN_65424_YamahaEngineDataCCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65424_YamahaEngineDataC
+ */
+export class PGN_65424_YamahaEngineDataC extends PGN implements PGN_65424_YamahaEngineDataCInterface {
+  fields: PGN_65424_YamahaEngineDataCFields
+
+  constructor(fields: PGN_65424_YamahaEngineDataCCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65424,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65424_YamahaEngineDataCMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65424_YamahaEngineDataCMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('yamahaEngineDataC')!
+  }
+}
+pgnIdToCreator['yamahaEngineDataC'] = (fields:any, dst:number) => new PGN_65424_YamahaEngineDataC(fields, dst)
+
+
+/**
+ * PGN: 65440
+ *
+ * Description: Navico: Naviop Switch Status
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65440_NavicoNaviopSwitchStatus
+ */
+export interface PGN_65440_NavicoNaviopSwitchStatusInterface extends PGNInterface {
+  fields: PGN_65440_NavicoNaviopSwitchStatusFields
+}
+
+/**
+ * @category PGN_65440_NavicoNaviopSwitchStatus
+ */
+export interface PGN_65440_NavicoNaviopSwitchStatusFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65440_NavicoNaviopSwitchStatus
+ */
+export const PGN_65440_NavicoNaviopSwitchStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65440_NavicoNaviopSwitchStatus
+ */
+export interface PGN_65440_NavicoNaviopSwitchStatusCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65440_NavicoNaviopSwitchStatus
+ */
+export class PGN_65440_NavicoNaviopSwitchStatus extends PGN implements PGN_65440_NavicoNaviopSwitchStatusInterface {
+  fields: PGN_65440_NavicoNaviopSwitchStatusFields
+
+  constructor(fields: PGN_65440_NavicoNaviopSwitchStatusCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65440,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65440_NavicoNaviopSwitchStatusMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65440_NavicoNaviopSwitchStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoNaviopSwitchStatus')!
+  }
+}
+pgnIdToCreator['navicoNaviopSwitchStatus'] = (fields:any, dst:number) => new PGN_65440_NavicoNaviopSwitchStatus(fields, dst)
+
+
+/**
+ * PGN: 65441
+ *
+ * Description: Navico: Naviop Switch Control
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65441_NavicoNaviopSwitchControl
+ */
+export interface PGN_65441_NavicoNaviopSwitchControlInterface extends PGNInterface {
+  fields: PGN_65441_NavicoNaviopSwitchControlFields
+}
+
+/**
+ * @category PGN_65441_NavicoNaviopSwitchControl
+ */
+export interface PGN_65441_NavicoNaviopSwitchControlFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65441_NavicoNaviopSwitchControl
+ */
+export const PGN_65441_NavicoNaviopSwitchControlMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65441_NavicoNaviopSwitchControl
+ */
+export interface PGN_65441_NavicoNaviopSwitchControlCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65441_NavicoNaviopSwitchControl
+ */
+export class PGN_65441_NavicoNaviopSwitchControl extends PGN implements PGN_65441_NavicoNaviopSwitchControlInterface {
+  fields: PGN_65441_NavicoNaviopSwitchControlFields
+
+  constructor(fields: PGN_65441_NavicoNaviopSwitchControlCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65441,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65441_NavicoNaviopSwitchControlMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65441_NavicoNaviopSwitchControlMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoNaviopSwitchControl')!
+  }
+}
+pgnIdToCreator['navicoNaviopSwitchControl'] = (fields:any, dst:number) => new PGN_65441_NavicoNaviopSwitchControl(fields, dst)
+
+
+/**
+ * PGN: 65472
+ *
+ * Description: Yamaha: Engine Data D
+ *
+ * Match: Manufacturer Code == Mystic Valley Communications<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65472_YamahaEngineDataD
+ */
+export interface PGN_65472_YamahaEngineDataDInterface extends PGNInterface {
+  fields: PGN_65472_YamahaEngineDataDFields
+}
+
+/**
+ * @category PGN_65472_YamahaEngineDataD
+ */
+export interface PGN_65472_YamahaEngineDataDFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65472_YamahaEngineDataD
+ */
+export const PGN_65472_YamahaEngineDataDMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.MysticValleyCommunications,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65472_YamahaEngineDataD
+ */
+export interface PGN_65472_YamahaEngineDataDCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65472_YamahaEngineDataD
+ */
+export class PGN_65472_YamahaEngineDataD extends PGN implements PGN_65472_YamahaEngineDataDInterface {
+  fields: PGN_65472_YamahaEngineDataDFields
+
+  constructor(fields: PGN_65472_YamahaEngineDataDCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65472,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65472_YamahaEngineDataDMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65472_YamahaEngineDataDMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('yamahaEngineDataD')!
+  }
+}
+pgnIdToCreator['yamahaEngineDataD'] = (fields:any, dst:number) => new PGN_65472_YamahaEngineDataD(fields, dst)
 
 
 /**
@@ -8541,6 +11539,164 @@ export class PGN_126720_MaretronProprietaryConfiguration extends PGN implements 
   }
 }
 pgnIdToCreator['maretronProprietaryConfiguration'] = (fields:any, dst:number) => new PGN_126720_MaretronProprietaryConfiguration(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Carling: DC Configuration Command
+ *
+ * Match: Manufacturer Code == Carling Technologies Inc. (Moritz Aerospace)<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_126720_CarlingDcConfigurationCommand
+ */
+export interface PGN_126720_CarlingDcConfigurationCommandInterface extends PGNInterface {
+  fields: PGN_126720_CarlingDcConfigurationCommandFields
+}
+
+/**
+ * @category PGN_126720_CarlingDcConfigurationCommand
+ */
+export interface PGN_126720_CarlingDcConfigurationCommandFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  messageType?: N2K_Number
+  breakerMapping1?: N2K_Number
+  breakerMapping2?: N2K_Number
+  reserved7?: number
+  breakerMapping3?: N2K_Number
+  inrushDelay?: N2K_Number
+  tripDelay?: N2K_Number
+  configurationFlags?: N2K_Number
+  currentRating?: N2K_Number
+  factoryMaxRating?: N2K_Number
+  scheduleBLoadShedPriority?: N2K_Number
+  scheduleALoadShedPriority?: N2K_Number
+  dimValue?: N2K_Number
+  breakerGroup?: N2K_Number
+  flashMapIndex?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_CarlingDcConfigurationCommand
+ */
+export const PGN_126720_CarlingDcConfigurationCommandMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.CarlingTechnologiesIncmoritzAerospace,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_126720_CarlingDcConfigurationCommand
+ */
+export interface PGN_126720_CarlingDcConfigurationCommandCreateArgs {
+  reserved?: number
+  messageType?: N2K_Number
+  breakerMapping1?: N2K_Number
+  breakerMapping2?: N2K_Number
+  reserved7?: number
+  breakerMapping3?: N2K_Number
+  inrushDelay?: N2K_Number
+  tripDelay?: N2K_Number
+  configurationFlags?: N2K_Number
+  currentRating?: N2K_Number
+  factoryMaxRating?: N2K_Number
+  scheduleBLoadShedPriority?: N2K_Number
+  scheduleALoadShedPriority?: N2K_Number
+  dimValue?: N2K_Number
+  breakerGroup?: N2K_Number
+  flashMapIndex?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_CarlingDcConfigurationCommand
+ */
+export class PGN_126720_CarlingDcConfigurationCommand extends PGN implements PGN_126720_CarlingDcConfigurationCommandInterface {
+  fields: PGN_126720_CarlingDcConfigurationCommandFields
+
+  constructor(fields: PGN_126720_CarlingDcConfigurationCommandCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_CarlingDcConfigurationCommandMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_CarlingDcConfigurationCommandMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('carlingDcConfigurationCommand')!
+  }
+}
+pgnIdToCreator['carlingDcConfigurationCommand'] = (fields:any, dst:number) => new PGN_126720_CarlingDcConfigurationCommand(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Lumishore: Proprietary
+ *
+ * Match: Manufacturer Code == Lumishore<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_126720_LumishoreProprietary
+ */
+export interface PGN_126720_LumishoreProprietaryInterface extends PGNInterface {
+  fields: PGN_126720_LumishoreProprietaryFields
+}
+
+/**
+ * @category PGN_126720_LumishoreProprietary
+ */
+export interface PGN_126720_LumishoreProprietaryFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_126720_LumishoreProprietary
+ */
+export const PGN_126720_LumishoreProprietaryMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Lumishore,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_126720_LumishoreProprietary
+ */
+export interface PGN_126720_LumishoreProprietaryCreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_126720_LumishoreProprietary
+ */
+export class PGN_126720_LumishoreProprietary extends PGN implements PGN_126720_LumishoreProprietaryInterface {
+  fields: PGN_126720_LumishoreProprietaryFields
+
+  constructor(fields: PGN_126720_LumishoreProprietaryCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_LumishoreProprietaryMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_LumishoreProprietaryMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('lumishoreProprietary')!
+  }
+}
+pgnIdToCreator['lumishoreProprietary'] = (fields:any, dst:number) => new PGN_126720_LumishoreProprietary(fields, dst)
 
 
 /**
@@ -16220,6 +19376,71 @@ pgnIdToCreator['mooredBuoyStationData'] = (fields:any, dst:number) => new PGN_13
 
 
 /**
+ * PGN: 130329
+ *
+ * Description: HVAC Status
+ *
+ * @category PGN_130329
+ */
+export interface PGN_130329Interface extends PGNInterface {
+  fields: PGN_130329Fields
+}
+
+/**
+ * @category PGN_130329
+ */
+export interface PGN_130329Fields {
+  hvacIdentifier: N2K_Number
+  location?: N2K_Number
+  operatingMode?: N2K_Number
+  controlOperatingState?: N2K_Number
+  power?: enums.OffOn | number
+  fanSpeedModeChangeable?: N2K_Number
+  fanSpeedMode?: N2K_Number
+  fanOperationMode?: N2K_Number
+  fanSpeedAvailable?: N2K_Number
+  fanSpeed?: N2K_Number
+  setpointType?: N2K_Number
+  lowerTemperatureSetpoint?: N2K_Number
+  upperTemperatureSetpoint?: N2K_Number
+  lowerHumiditySetpoint?: N2K_Number
+  upperHumiditySetpoint?: N2K_Number
+  auxiliaryHeatControlSupported?: N2K_Number
+  auxiliaryHeatAutomaticMode?: N2K_Number
+  auxiliaryHeatState?: N2K_Number
+  currentTemperature?: N2K_Number
+  currentHumidity?: N2K_Number
+  supportedModes?: N2K_Number
+  seaWaterTemperature?: N2K_Number
+  loopTemperature?: N2K_Number
+  evaporatorTemperature?: N2K_Number
+  inletTemperature?: N2K_Number
+  inletHumidity?: N2K_Number
+}
+
+/**
+ * @category PGN_130329
+ */
+export class PGN_130329 extends PGN implements PGN_130329Interface {
+  fields: PGN_130329Fields
+
+  constructor(fields: PGN_130329Fields, dst: number = 255) {
+    super({
+      pgn: 130329,
+      prio: 6,
+      dst
+    })
+    this.fields = fields
+  }
+
+  getDefinition(): Definition {
+    return getPGNWithId('hvacStatus')!
+  }
+}
+pgnIdToCreator['hvacStatus'] = (fields:any, dst:number) => new PGN_130329(fields, dst)
+
+
+/**
  * PGN: 130330
  *
  * Description: Lighting System Settings
@@ -19057,6 +22278,225 @@ pgnIdToCreator['simradTextMessage'] = (fields:any, dst:number) => new PGN_130816
 
 
 /**
+ * PGN: 130816
+ *
+ * Description: BEP Marine: Proprietary PGN 130816
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130816_BepMarineProprietaryPgn130816
+ */
+export interface PGN_130816_BepMarineProprietaryPgn130816Interface extends PGNInterface {
+  fields: PGN_130816_BepMarineProprietaryPgn130816Fields
+}
+
+/**
+ * @category PGN_130816_BepMarineProprietaryPgn130816
+ */
+export interface PGN_130816_BepMarineProprietaryPgn130816Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130816_BepMarineProprietaryPgn130816
+ */
+export const PGN_130816_BepMarineProprietaryPgn130816MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130816_BepMarineProprietaryPgn130816
+ */
+export interface PGN_130816_BepMarineProprietaryPgn130816CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130816_BepMarineProprietaryPgn130816
+ */
+export class PGN_130816_BepMarineProprietaryPgn130816 extends PGN implements PGN_130816_BepMarineProprietaryPgn130816Interface {
+  fields: PGN_130816_BepMarineProprietaryPgn130816Fields
+
+  constructor(fields: PGN_130816_BepMarineProprietaryPgn130816CreateArgs, dst: number = 255) {
+    super({
+      pgn: 130816,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130816_BepMarineProprietaryPgn130816MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_BepMarineProprietaryPgn130816MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn130816')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn130816'] = (fields:any, dst:number) => new PGN_130816_BepMarineProprietaryPgn130816(fields, dst)
+
+
+/**
+ * PGN: 130816
+ *
+ * Description: Honda: Engine Status
+ *
+ * Match: Manufacturer Code == Honda Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130816_HondaEngineStatus
+ */
+export interface PGN_130816_HondaEngineStatusInterface extends PGNInterface {
+  fields: PGN_130816_HondaEngineStatusFields
+}
+
+/**
+ * @category PGN_130816_HondaEngineStatus
+ */
+export interface PGN_130816_HondaEngineStatusFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+}
+
+/**
+ * @category PGN_130816_HondaEngineStatus
+ */
+export const PGN_130816_HondaEngineStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.HondaMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130816_HondaEngineStatus
+ */
+export interface PGN_130816_HondaEngineStatusCreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_130816_HondaEngineStatus
+ */
+export class PGN_130816_HondaEngineStatus extends PGN implements PGN_130816_HondaEngineStatusInterface {
+  fields: PGN_130816_HondaEngineStatusFields
+
+  constructor(fields: PGN_130816_HondaEngineStatusCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130816,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130816_HondaEngineStatusMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_HondaEngineStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('hondaEngineStatus')!
+  }
+}
+pgnIdToCreator['hondaEngineStatus'] = (fields:any, dst:number) => new PGN_130816_HondaEngineStatus(fields, dst)
+
+
+/**
+ * PGN: 130816
+ *
+ * Description: Sea Recovery: Watermaker Status
+ *
+ * Match: Manufacturer Code == Sea Recovery<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130816_SeaRecoveryWatermakerStatus
+ */
+export interface PGN_130816_SeaRecoveryWatermakerStatusInterface extends PGNInterface {
+  fields: PGN_130816_SeaRecoveryWatermakerStatusFields
+}
+
+/**
+ * @category PGN_130816_SeaRecoveryWatermakerStatus
+ */
+export interface PGN_130816_SeaRecoveryWatermakerStatusFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  messageId?: N2K_Number
+  watermakerInstance?: N2K_Number
+  operationState?: N2K_Number
+  prefilterPressure?: N2K_Number
+  postfilterPressure?: N2K_Number
+  operationPressure?: N2K_Number
+  productFlow?: N2K_Number
+  prefilterPressureStatus?: N2K_Number
+  postfilterPressureStatus?: N2K_Number
+  operationPressureStatus?: N2K_Number
+  productSalinityStatus?: N2K_Number
+  filterStatus?: N2K_Number
+  systemStatus?: N2K_Number
+  reserved17?: number
+}
+
+/**
+ * @category PGN_130816_SeaRecoveryWatermakerStatus
+ */
+export const PGN_130816_SeaRecoveryWatermakerStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.SeaRecovery,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130816_SeaRecoveryWatermakerStatus
+ */
+export interface PGN_130816_SeaRecoveryWatermakerStatusCreateArgs {
+  reserved?: number
+  messageId?: N2K_Number
+  watermakerInstance?: N2K_Number
+  operationState?: N2K_Number
+  prefilterPressure?: N2K_Number
+  postfilterPressure?: N2K_Number
+  operationPressure?: N2K_Number
+  productFlow?: N2K_Number
+  prefilterPressureStatus?: N2K_Number
+  postfilterPressureStatus?: N2K_Number
+  operationPressureStatus?: N2K_Number
+  productSalinityStatus?: N2K_Number
+  filterStatus?: N2K_Number
+  systemStatus?: N2K_Number
+  reserved17?: number
+}
+
+/**
+ * @category PGN_130816_SeaRecoveryWatermakerStatus
+ */
+export class PGN_130816_SeaRecoveryWatermakerStatus extends PGN implements PGN_130816_SeaRecoveryWatermakerStatusInterface {
+  fields: PGN_130816_SeaRecoveryWatermakerStatusFields
+
+  constructor(fields: PGN_130816_SeaRecoveryWatermakerStatusCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130816,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130816_SeaRecoveryWatermakerStatusMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_SeaRecoveryWatermakerStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('seaRecoveryWatermakerStatus')!
+  }
+}
+pgnIdToCreator['seaRecoveryWatermakerStatus'] = (fields:any, dst:number) => new PGN_130816_SeaRecoveryWatermakerStatus(fields, dst)
+
+
+/**
  * PGN: 130817
  *
  * Description: Navico: Unknown
@@ -19310,7 +22750,11 @@ export interface PGN_130817_MaretronAnnunciatorCapabilitiesFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  annunciatorInstance: N2K_Number
+  numberOfTones?: N2K_Number
+  list: {
+    tone?: N2K_Number
+  }[]
 }
 
 /**
@@ -19326,7 +22770,11 @@ export const PGN_130817_MaretronAnnunciatorCapabilitiesMatchFields = {
  */
 export interface PGN_130817_MaretronAnnunciatorCapabilitiesCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  annunciatorInstance: N2K_Number
+  numberOfTones?: N2K_Number
+  list: {
+    tone?: N2K_Number
+  }[]
 }
 
 /**
@@ -19338,7 +22786,7 @@ export class PGN_130817_MaretronAnnunciatorCapabilities extends PGN implements P
   constructor(fields: PGN_130817_MaretronAnnunciatorCapabilitiesCreateArgs, dst: number = 255) {
     super({
       pgn: 130817,
-      prio: 3,
+      prio: 6,
       dst
     })
     this.fields = { ...PGN_130817_MaretronAnnunciatorCapabilitiesMatchFields, ...fields }
@@ -19352,6 +22800,71 @@ export class PGN_130817_MaretronAnnunciatorCapabilities extends PGN implements P
   }
 }
 pgnIdToCreator['maretronAnnunciatorCapabilities'] = (fields:any, dst:number) => new PGN_130817_MaretronAnnunciatorCapabilities(fields, dst)
+
+
+/**
+ * PGN: 130817
+ *
+ * Description: BEP Marine: Proprietary PGN 130817
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130817_BepMarineProprietaryPgn130817
+ */
+export interface PGN_130817_BepMarineProprietaryPgn130817Interface extends PGNInterface {
+  fields: PGN_130817_BepMarineProprietaryPgn130817Fields
+}
+
+/**
+ * @category PGN_130817_BepMarineProprietaryPgn130817
+ */
+export interface PGN_130817_BepMarineProprietaryPgn130817Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130817_BepMarineProprietaryPgn130817
+ */
+export const PGN_130817_BepMarineProprietaryPgn130817MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130817_BepMarineProprietaryPgn130817
+ */
+export interface PGN_130817_BepMarineProprietaryPgn130817CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130817_BepMarineProprietaryPgn130817
+ */
+export class PGN_130817_BepMarineProprietaryPgn130817 extends PGN implements PGN_130817_BepMarineProprietaryPgn130817Interface {
+  fields: PGN_130817_BepMarineProprietaryPgn130817Fields
+
+  constructor(fields: PGN_130817_BepMarineProprietaryPgn130817CreateArgs, dst: number = 255) {
+    super({
+      pgn: 130817,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130817_BepMarineProprietaryPgn130817MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130817_BepMarineProprietaryPgn130817MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn130817')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn130817'] = (fields:any, dst:number) => new PGN_130817_BepMarineProprietaryPgn130817(fields, dst)
 
 
 /**
@@ -19531,7 +23044,11 @@ export interface PGN_130818_MaretronLabelFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  instance: N2K_Number
+  dataSource?: N2K_Number
+  dataIndicator?: N2K_Number
+  label?: N2K_StringLau
+  hardwareChannel?: N2K_Number
 }
 
 /**
@@ -19547,7 +23064,11 @@ export const PGN_130818_MaretronLabelMatchFields = {
  */
 export interface PGN_130818_MaretronLabelCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  instance: N2K_Number
+  dataSource?: N2K_Number
+  dataIndicator?: N2K_Number
+  label?: N2K_StringLau
+  hardwareChannel?: N2K_Number
 }
 
 /**
@@ -19559,7 +23080,7 @@ export class PGN_130818_MaretronLabel extends PGN implements PGN_130818_Maretron
   constructor(fields: PGN_130818_MaretronLabelCreateArgs, dst: number = 255) {
     super({
       pgn: 130818,
-      prio: 3,
+      prio: 7,
       dst
     })
     this.fields = { ...PGN_130818_MaretronLabelMatchFields, ...fields }
@@ -19573,6 +23094,146 @@ export class PGN_130818_MaretronLabel extends PGN implements PGN_130818_Maretron
   }
 }
 pgnIdToCreator['maretronLabel'] = (fields:any, dst:number) => new PGN_130818_MaretronLabel(fields, dst)
+
+
+/**
+ * PGN: 130818
+ *
+ * Description: BEP Marine: Proprietary PGN 130818
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130818_BepMarineProprietaryPgn130818
+ */
+export interface PGN_130818_BepMarineProprietaryPgn130818Interface extends PGNInterface {
+  fields: PGN_130818_BepMarineProprietaryPgn130818Fields
+}
+
+/**
+ * @category PGN_130818_BepMarineProprietaryPgn130818
+ */
+export interface PGN_130818_BepMarineProprietaryPgn130818Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130818_BepMarineProprietaryPgn130818
+ */
+export const PGN_130818_BepMarineProprietaryPgn130818MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130818_BepMarineProprietaryPgn130818
+ */
+export interface PGN_130818_BepMarineProprietaryPgn130818CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130818_BepMarineProprietaryPgn130818
+ */
+export class PGN_130818_BepMarineProprietaryPgn130818 extends PGN implements PGN_130818_BepMarineProprietaryPgn130818Interface {
+  fields: PGN_130818_BepMarineProprietaryPgn130818Fields
+
+  constructor(fields: PGN_130818_BepMarineProprietaryPgn130818CreateArgs, dst: number = 255) {
+    super({
+      pgn: 130818,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130818_BepMarineProprietaryPgn130818MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130818_BepMarineProprietaryPgn130818MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn130818')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn130818'] = (fields:any, dst:number) => new PGN_130818_BepMarineProprietaryPgn130818(fields, dst)
+
+
+/**
+ * PGN: 130818
+ *
+ * Description: Webasto: Status 2
+ *
+ * Match: Manufacturer Code == Webasto<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130818_WebastoStatus2
+ */
+export interface PGN_130818_WebastoStatus2Interface extends PGNInterface {
+  fields: PGN_130818_WebastoStatus2Fields
+}
+
+/**
+ * @category PGN_130818_WebastoStatus2
+ */
+export interface PGN_130818_WebastoStatus2Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  canAddress?: N2K_Number
+  deviceId?: N2K_Number
+  systemError?: N2K_Number
+  systemStatus?: N2K_Number
+  freshAirBlowerSpeed?: N2K_Number
+  vSeriesOutput?: N2K_Number
+}
+
+/**
+ * @category PGN_130818_WebastoStatus2
+ */
+export const PGN_130818_WebastoStatus2MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Webasto,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130818_WebastoStatus2
+ */
+export interface PGN_130818_WebastoStatus2CreateArgs {
+  reserved?: number
+  canAddress?: N2K_Number
+  deviceId?: N2K_Number
+  systemError?: N2K_Number
+  systemStatus?: N2K_Number
+  freshAirBlowerSpeed?: N2K_Number
+  vSeriesOutput?: N2K_Number
+}
+
+/**
+ * @category PGN_130818_WebastoStatus2
+ */
+export class PGN_130818_WebastoStatus2 extends PGN implements PGN_130818_WebastoStatus2Interface {
+  fields: PGN_130818_WebastoStatus2Fields
+
+  constructor(fields: PGN_130818_WebastoStatus2CreateArgs, dst: number = 255) {
+    super({
+      pgn: 130818,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130818_WebastoStatus2MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130818_WebastoStatus2MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('webastoStatus2')!
+  }
+}
+pgnIdToCreator['webastoStatus2'] = (fields:any, dst:number) => new PGN_130818_WebastoStatus2(fields, dst)
 
 
 /**
@@ -19659,7 +23320,16 @@ export interface PGN_130819_MaretronAlertTransmissionFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  alertType?: enums.AlertType | number
+  alertCategory?: enums.AlertCategory | number
+  alertSystem?: N2K_Number
+  alertSubSystem?: N2K_Number
+  alertId?: N2K_Number
+  dataSourceNetworkIdName?: N2K_IsoName
+  dataSourceInstance: N2K_Number
+  dataSourceIndexSource?: N2K_Number
+  alertOccurrenceNumber?: N2K_Number
+  maretronExtension?: N2K_Binary
 }
 
 /**
@@ -19675,7 +23345,16 @@ export const PGN_130819_MaretronAlertTransmissionMatchFields = {
  */
 export interface PGN_130819_MaretronAlertTransmissionCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  alertType?: enums.AlertType | number
+  alertCategory?: enums.AlertCategory | number
+  alertSystem?: N2K_Number
+  alertSubSystem?: N2K_Number
+  alertId?: N2K_Number
+  dataSourceNetworkIdName?: N2K_IsoName
+  dataSourceInstance: N2K_Number
+  dataSourceIndexSource?: N2K_Number
+  alertOccurrenceNumber?: N2K_Number
+  maretronExtension?: N2K_Binary
 }
 
 /**
@@ -19687,7 +23366,7 @@ export class PGN_130819_MaretronAlertTransmission extends PGN implements PGN_130
   constructor(fields: PGN_130819_MaretronAlertTransmissionCreateArgs, dst: number = 255) {
     super({
       pgn: 130819,
-      prio: 3,
+      prio: 7,
       dst
     })
     this.fields = { ...PGN_130819_MaretronAlertTransmissionMatchFields, ...fields }
@@ -19701,6 +23380,217 @@ export class PGN_130819_MaretronAlertTransmission extends PGN implements PGN_130
   }
 }
 pgnIdToCreator['maretronAlertTransmission'] = (fields:any, dst:number) => new PGN_130819_MaretronAlertTransmission(fields, dst)
+
+
+/**
+ * PGN: 130819
+ *
+ * Description: Webasto: HVAC Command
+ *
+ * Match: Manufacturer Code == Webasto<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130819_WebastoHvacCommand
+ */
+export interface PGN_130819_WebastoHvacCommandInterface extends PGNInterface {
+  fields: PGN_130819_WebastoHvacCommandFields
+}
+
+/**
+ * @category PGN_130819_WebastoHvacCommand
+ */
+export interface PGN_130819_WebastoHvacCommandFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  canAddress?: N2K_Number
+  blowerSpeed?: N2K_Number
+  unitOnOff?: enums.OffOn | number
+  reserved7?: number
+  setTemperature?: N2K_Number
+  ecoMode?: N2K_Number
+  functionalMode?: N2K_Number
+  compressor?: N2K_Number
+  reserved12?: number
+  mask?: N2K_Number
+}
+
+/**
+ * @category PGN_130819_WebastoHvacCommand
+ */
+export const PGN_130819_WebastoHvacCommandMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Webasto,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130819_WebastoHvacCommand
+ */
+export interface PGN_130819_WebastoHvacCommandCreateArgs {
+  reserved?: number
+  canAddress?: N2K_Number
+  blowerSpeed?: N2K_Number
+  unitOnOff?: enums.OffOn | number
+  reserved7?: number
+  setTemperature?: N2K_Number
+  ecoMode?: N2K_Number
+  functionalMode?: N2K_Number
+  compressor?: N2K_Number
+  reserved12?: number
+  mask?: N2K_Number
+}
+
+/**
+ * @category PGN_130819_WebastoHvacCommand
+ */
+export class PGN_130819_WebastoHvacCommand extends PGN implements PGN_130819_WebastoHvacCommandInterface {
+  fields: PGN_130819_WebastoHvacCommandFields
+
+  constructor(fields: PGN_130819_WebastoHvacCommandCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130819,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130819_WebastoHvacCommandMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130819_WebastoHvacCommandMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('webastoHvacCommand')!
+  }
+}
+pgnIdToCreator['webastoHvacCommand'] = (fields:any, dst:number) => new PGN_130819_WebastoHvacCommand(fields, dst)
+
+
+/**
+ * PGN: 130819
+ *
+ * Description: BEP Marine: Proprietary PGN 130819
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130819_BepMarineProprietaryPgn130819
+ */
+export interface PGN_130819_BepMarineProprietaryPgn130819Interface extends PGNInterface {
+  fields: PGN_130819_BepMarineProprietaryPgn130819Fields
+}
+
+/**
+ * @category PGN_130819_BepMarineProprietaryPgn130819
+ */
+export interface PGN_130819_BepMarineProprietaryPgn130819Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130819_BepMarineProprietaryPgn130819
+ */
+export const PGN_130819_BepMarineProprietaryPgn130819MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130819_BepMarineProprietaryPgn130819
+ */
+export interface PGN_130819_BepMarineProprietaryPgn130819CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130819_BepMarineProprietaryPgn130819
+ */
+export class PGN_130819_BepMarineProprietaryPgn130819 extends PGN implements PGN_130819_BepMarineProprietaryPgn130819Interface {
+  fields: PGN_130819_BepMarineProprietaryPgn130819Fields
+
+  constructor(fields: PGN_130819_BepMarineProprietaryPgn130819CreateArgs, dst: number = 255) {
+    super({
+      pgn: 130819,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130819_BepMarineProprietaryPgn130819MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130819_BepMarineProprietaryPgn130819MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn130819')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn130819'] = (fields:any, dst:number) => new PGN_130819_BepMarineProprietaryPgn130819(fields, dst)
+
+
+/**
+ * PGN: 130820
+ *
+ * Description: BEP Marine: CZone Configuration
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130820_BepMarineCzoneConfiguration
+ */
+export interface PGN_130820_BepMarineCzoneConfigurationInterface extends PGNInterface {
+  fields: PGN_130820_BepMarineCzoneConfigurationFields
+}
+
+/**
+ * @category PGN_130820_BepMarineCzoneConfiguration
+ */
+export interface PGN_130820_BepMarineCzoneConfigurationFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+}
+
+/**
+ * @category PGN_130820_BepMarineCzoneConfiguration
+ */
+export const PGN_130820_BepMarineCzoneConfigurationMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130820_BepMarineCzoneConfiguration
+ */
+export interface PGN_130820_BepMarineCzoneConfigurationCreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_130820_BepMarineCzoneConfiguration
+ */
+export class PGN_130820_BepMarineCzoneConfiguration extends PGN implements PGN_130820_BepMarineCzoneConfigurationInterface {
+  fields: PGN_130820_BepMarineCzoneConfigurationFields
+
+  constructor(fields: PGN_130820_BepMarineCzoneConfigurationCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130820,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130820_BepMarineCzoneConfigurationMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_BepMarineCzoneConfigurationMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineCzoneConfiguration')!
+  }
+}
+pgnIdToCreator['bepMarineCzoneConfiguration'] = (fields:any, dst:number) => new PGN_130820_BepMarineCzoneConfiguration(fields, dst)
 
 
 /**
@@ -22537,7 +26427,18 @@ export interface PGN_130820_MaretronAlertResponseFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  alertType?: enums.AlertType | number
+  alertCategory?: enums.AlertCategory | number
+  alertSystem?: N2K_Number
+  alertSubSystem?: N2K_Number
+  alertId?: N2K_Number
+  dataSourceNetworkIdName?: N2K_IsoName
+  dataSourceInstance: N2K_Number
+  dataSourceIndexSource?: N2K_Number
+  alertOccurrenceNumber?: N2K_Number
+  acknowledgeSourceNetworkIdName?: N2K_IsoName
+  responseCommand?: enums.AlertResponseCommand | number
+  reserved15?: number
 }
 
 /**
@@ -22553,7 +26454,18 @@ export const PGN_130820_MaretronAlertResponseMatchFields = {
  */
 export interface PGN_130820_MaretronAlertResponseCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  alertType?: enums.AlertType | number
+  alertCategory?: enums.AlertCategory | number
+  alertSystem?: N2K_Number
+  alertSubSystem?: N2K_Number
+  alertId?: N2K_Number
+  dataSourceNetworkIdName?: N2K_IsoName
+  dataSourceInstance: N2K_Number
+  dataSourceIndexSource?: N2K_Number
+  alertOccurrenceNumber?: N2K_Number
+  acknowledgeSourceNetworkIdName?: N2K_IsoName
+  responseCommand?: enums.AlertResponseCommand | number
+  reserved15?: number
 }
 
 /**
@@ -22565,7 +26477,7 @@ export class PGN_130820_MaretronAlertResponse extends PGN implements PGN_130820_
   constructor(fields: PGN_130820_MaretronAlertResponseCreateArgs, dst: number = 255) {
     super({
       pgn: 130820,
-      prio: 3,
+      prio: 7,
       dst
     })
     this.fields = { ...PGN_130820_MaretronAlertResponseMatchFields, ...fields }
@@ -22579,6 +26491,71 @@ export class PGN_130820_MaretronAlertResponse extends PGN implements PGN_130820_
   }
 }
 pgnIdToCreator['maretronAlertResponse'] = (fields:any, dst:number) => new PGN_130820_MaretronAlertResponse(fields, dst)
+
+
+/**
+ * PGN: 130820
+ *
+ * Description: BEP Marine: Proprietary PGN 130820
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130820_BepMarineProprietaryPgn130820
+ */
+export interface PGN_130820_BepMarineProprietaryPgn130820Interface extends PGNInterface {
+  fields: PGN_130820_BepMarineProprietaryPgn130820Fields
+}
+
+/**
+ * @category PGN_130820_BepMarineProprietaryPgn130820
+ */
+export interface PGN_130820_BepMarineProprietaryPgn130820Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130820_BepMarineProprietaryPgn130820
+ */
+export const PGN_130820_BepMarineProprietaryPgn130820MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130820_BepMarineProprietaryPgn130820
+ */
+export interface PGN_130820_BepMarineProprietaryPgn130820CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130820_BepMarineProprietaryPgn130820
+ */
+export class PGN_130820_BepMarineProprietaryPgn130820 extends PGN implements PGN_130820_BepMarineProprietaryPgn130820Interface {
+  fields: PGN_130820_BepMarineProprietaryPgn130820Fields
+
+  constructor(fields: PGN_130820_BepMarineProprietaryPgn130820CreateArgs, dst: number = 255) {
+    super({
+      pgn: 130820,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130820_BepMarineProprietaryPgn130820MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_BepMarineProprietaryPgn130820MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn130820')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn130820'] = (fields:any, dst:number) => new PGN_130820_BepMarineProprietaryPgn130820(fields, dst)
 
 
 /**
@@ -22752,7 +26729,18 @@ export interface PGN_130821_MaretronAlertTextFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  alertType?: enums.AlertType | number
+  alertCategory?: enums.AlertCategory | number
+  alertSystem?: N2K_Number
+  alertSubSystem?: N2K_Number
+  alertId?: N2K_Number
+  dataSourceNetworkIdName?: N2K_IsoName
+  dataSourceInstance: N2K_Number
+  dataSourceIndexSource?: N2K_Number
+  alertOccurrenceNumber?: N2K_Number
+  languageId?: enums.AlertLanguageId | number
+  alertTextDescription?: N2K_StringLau
+  alertLocationTextDescription?: N2K_StringLau
 }
 
 /**
@@ -22768,7 +26756,18 @@ export const PGN_130821_MaretronAlertTextMatchFields = {
  */
 export interface PGN_130821_MaretronAlertTextCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  alertType?: enums.AlertType | number
+  alertCategory?: enums.AlertCategory | number
+  alertSystem?: N2K_Number
+  alertSubSystem?: N2K_Number
+  alertId?: N2K_Number
+  dataSourceNetworkIdName?: N2K_IsoName
+  dataSourceInstance: N2K_Number
+  dataSourceIndexSource?: N2K_Number
+  alertOccurrenceNumber?: N2K_Number
+  languageId?: enums.AlertLanguageId | number
+  alertTextDescription?: N2K_StringLau
+  alertLocationTextDescription?: N2K_StringLau
 }
 
 /**
@@ -22780,7 +26779,7 @@ export class PGN_130821_MaretronAlertText extends PGN implements PGN_130821_Mare
   constructor(fields: PGN_130821_MaretronAlertTextCreateArgs, dst: number = 255) {
     super({
       pgn: 130821,
-      prio: 3,
+      prio: 7,
       dst
     })
     this.fields = { ...PGN_130821_MaretronAlertTextMatchFields, ...fields }
@@ -22794,6 +26793,71 @@ export class PGN_130821_MaretronAlertText extends PGN implements PGN_130821_Mare
   }
 }
 pgnIdToCreator['maretronAlertText'] = (fields:any, dst:number) => new PGN_130821_MaretronAlertText(fields, dst)
+
+
+/**
+ * PGN: 130821
+ *
+ * Description: BEP Marine: Proprietary PGN 130821
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130821_BepMarineProprietaryPgn130821
+ */
+export interface PGN_130821_BepMarineProprietaryPgn130821Interface extends PGNInterface {
+  fields: PGN_130821_BepMarineProprietaryPgn130821Fields
+}
+
+/**
+ * @category PGN_130821_BepMarineProprietaryPgn130821
+ */
+export interface PGN_130821_BepMarineProprietaryPgn130821Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130821_BepMarineProprietaryPgn130821
+ */
+export const PGN_130821_BepMarineProprietaryPgn130821MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130821_BepMarineProprietaryPgn130821
+ */
+export interface PGN_130821_BepMarineProprietaryPgn130821CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130821_BepMarineProprietaryPgn130821
+ */
+export class PGN_130821_BepMarineProprietaryPgn130821 extends PGN implements PGN_130821_BepMarineProprietaryPgn130821Interface {
+  fields: PGN_130821_BepMarineProprietaryPgn130821Fields
+
+  constructor(fields: PGN_130821_BepMarineProprietaryPgn130821CreateArgs, dst: number = 255) {
+    super({
+      pgn: 130821,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130821_BepMarineProprietaryPgn130821MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130821_BepMarineProprietaryPgn130821MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn130821')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn130821'] = (fields:any, dst:number) => new PGN_130821_BepMarineProprietaryPgn130821(fields, dst)
 
 
 /**
@@ -22882,7 +26946,16 @@ export interface PGN_130822_MaretronAlertControlFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  alertType?: enums.AlertType | number
+  alertCategory?: enums.AlertCategory | number
+  alertSystem?: N2K_Number
+  alertSubSystem?: N2K_Number
+  alertId?: N2K_Number
+  dataSourceNetworkIdName?: N2K_IsoName
+  dataSourceInstance: N2K_Number
+  dataSourceIndexSource?: N2K_Number
+  alertOccurrenceNumber?: N2K_Number
+  maretronExtension?: N2K_Binary
 }
 
 /**
@@ -22898,7 +26971,16 @@ export const PGN_130822_MaretronAlertControlMatchFields = {
  */
 export interface PGN_130822_MaretronAlertControlCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  alertType?: enums.AlertType | number
+  alertCategory?: enums.AlertCategory | number
+  alertSystem?: N2K_Number
+  alertSubSystem?: N2K_Number
+  alertId?: N2K_Number
+  dataSourceNetworkIdName?: N2K_IsoName
+  dataSourceInstance: N2K_Number
+  dataSourceIndexSource?: N2K_Number
+  alertOccurrenceNumber?: N2K_Number
+  maretronExtension?: N2K_Binary
 }
 
 /**
@@ -22910,7 +26992,7 @@ export class PGN_130822_MaretronAlertControl extends PGN implements PGN_130822_M
   constructor(fields: PGN_130822_MaretronAlertControlCreateArgs, dst: number = 255) {
     super({
       pgn: 130822,
-      prio: 3,
+      prio: 7,
       dst
     })
     this.fields = { ...PGN_130822_MaretronAlertControlMatchFields, ...fields }
@@ -22924,6 +27006,71 @@ export class PGN_130822_MaretronAlertControl extends PGN implements PGN_130822_M
   }
 }
 pgnIdToCreator['maretronAlertControl'] = (fields:any, dst:number) => new PGN_130822_MaretronAlertControl(fields, dst)
+
+
+/**
+ * PGN: 130822
+ *
+ * Description: BEP Marine: Proprietary PGN 130822
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130822_BepMarineProprietaryPgn130822
+ */
+export interface PGN_130822_BepMarineProprietaryPgn130822Interface extends PGNInterface {
+  fields: PGN_130822_BepMarineProprietaryPgn130822Fields
+}
+
+/**
+ * @category PGN_130822_BepMarineProprietaryPgn130822
+ */
+export interface PGN_130822_BepMarineProprietaryPgn130822Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130822_BepMarineProprietaryPgn130822
+ */
+export const PGN_130822_BepMarineProprietaryPgn130822MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130822_BepMarineProprietaryPgn130822
+ */
+export interface PGN_130822_BepMarineProprietaryPgn130822CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130822_BepMarineProprietaryPgn130822
+ */
+export class PGN_130822_BepMarineProprietaryPgn130822 extends PGN implements PGN_130822_BepMarineProprietaryPgn130822Interface {
+  fields: PGN_130822_BepMarineProprietaryPgn130822Fields
+
+  constructor(fields: PGN_130822_BepMarineProprietaryPgn130822CreateArgs, dst: number = 255) {
+    super({
+      pgn: 130822,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130822_BepMarineProprietaryPgn130822MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130822_BepMarineProprietaryPgn130822MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn130822')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn130822'] = (fields:any, dst:number) => new PGN_130822_BepMarineProprietaryPgn130822(fields, dst)
 
 
 /**
@@ -23168,7 +27315,11 @@ export interface PGN_130825_MaretronDataInstanceChannelCorrelationFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  pgn?: N2K_Pgn
+  hardwareChannel: N2K_Number
+  instance?: N2K_Number
+  dataSource?: N2K_Number
+  dataIndicator?: N2K_Number
 }
 
 /**
@@ -23184,7 +27335,11 @@ export const PGN_130825_MaretronDataInstanceChannelCorrelationMatchFields = {
  */
 export interface PGN_130825_MaretronDataInstanceChannelCorrelationCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  pgn?: N2K_Pgn
+  hardwareChannel: N2K_Number
+  instance?: N2K_Number
+  dataSource?: N2K_Number
+  dataIndicator?: N2K_Number
 }
 
 /**
@@ -23196,7 +27351,7 @@ export class PGN_130825_MaretronDataInstanceChannelCorrelation extends PGN imple
   constructor(fields: PGN_130825_MaretronDataInstanceChannelCorrelationCreateArgs, dst: number = 255) {
     super({
       pgn: 130825,
-      prio: 3,
+      prio: 6,
       dst
     })
     this.fields = { ...PGN_130825_MaretronDataInstanceChannelCorrelationMatchFields, ...fields }
@@ -23278,9 +27433,76 @@ pgnIdToCreator['navicoUnknown2'] = (fields:any, dst:number) => new PGN_130825_Na
 
 
 /**
+ * PGN: 130825
+ *
+ * Description: BEP Marine: Proprietary PGN 130825
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130825_BepMarineProprietaryPgn130825
+ */
+export interface PGN_130825_BepMarineProprietaryPgn130825Interface extends PGNInterface {
+  fields: PGN_130825_BepMarineProprietaryPgn130825Fields
+}
+
+/**
+ * @category PGN_130825_BepMarineProprietaryPgn130825
+ */
+export interface PGN_130825_BepMarineProprietaryPgn130825Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130825_BepMarineProprietaryPgn130825
+ */
+export const PGN_130825_BepMarineProprietaryPgn130825MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130825_BepMarineProprietaryPgn130825
+ */
+export interface PGN_130825_BepMarineProprietaryPgn130825CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130825_BepMarineProprietaryPgn130825
+ */
+export class PGN_130825_BepMarineProprietaryPgn130825 extends PGN implements PGN_130825_BepMarineProprietaryPgn130825Interface {
+  fields: PGN_130825_BepMarineProprietaryPgn130825Fields
+
+  constructor(fields: PGN_130825_BepMarineProprietaryPgn130825CreateArgs, dst: number = 255) {
+    super({
+      pgn: 130825,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130825_BepMarineProprietaryPgn130825MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130825_BepMarineProprietaryPgn130825MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn130825')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn130825'] = (fields:any, dst:number) => new PGN_130825_BepMarineProprietaryPgn130825(fields, dst)
+
+
+/**
  * PGN: 130826
  *
  * Description: Maretron: Switch Indicator Status
+ *
+ * Explanation: Broadcast by Maretron switching devices alongside PGN 127501. Each indicator status byte carries the state of one switch channel, encoded as 0 = Off, 1 = On, 2 = Tripped, 3 = Unknown.
  *
  * Match: Manufacturer Code == Maretron<br>
  * Match: Industry Code == Marine Industry<br>
@@ -23298,7 +27520,11 @@ export interface PGN_130826_MaretronSwitchIndicatorStatusFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  indicatorBankInstance: N2K_Number
+  numberOfStatusFields?: N2K_Number
+  list: {
+    indicatorStatus?: N2K_Number
+  }[]
 }
 
 /**
@@ -23314,7 +27540,11 @@ export const PGN_130826_MaretronSwitchIndicatorStatusMatchFields = {
  */
 export interface PGN_130826_MaretronSwitchIndicatorStatusCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  indicatorBankInstance: N2K_Number
+  numberOfStatusFields?: N2K_Number
+  list: {
+    indicatorStatus?: N2K_Number
+  }[]
 }
 
 /**
@@ -23326,7 +27556,7 @@ export class PGN_130826_MaretronSwitchIndicatorStatus extends PGN implements PGN
   constructor(fields: PGN_130826_MaretronSwitchIndicatorStatusCreateArgs, dst: number = 255) {
     super({
       pgn: 130826,
-      prio: 3,
+      prio: 2,
       dst
     })
     this.fields = { ...PGN_130826_MaretronSwitchIndicatorStatusMatchFields, ...fields }
@@ -23340,6 +27570,71 @@ export class PGN_130826_MaretronSwitchIndicatorStatus extends PGN implements PGN
   }
 }
 pgnIdToCreator['maretronSwitchIndicatorStatus'] = (fields:any, dst:number) => new PGN_130826_MaretronSwitchIndicatorStatus(fields, dst)
+
+
+/**
+ * PGN: 130826
+ *
+ * Description: BEP Marine: Proprietary PGN 130826
+ *
+ * Match: Manufacturer Code == BEP Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130826_BepMarineProprietaryPgn130826
+ */
+export interface PGN_130826_BepMarineProprietaryPgn130826Interface extends PGNInterface {
+  fields: PGN_130826_BepMarineProprietaryPgn130826Fields
+}
+
+/**
+ * @category PGN_130826_BepMarineProprietaryPgn130826
+ */
+export interface PGN_130826_BepMarineProprietaryPgn130826Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130826_BepMarineProprietaryPgn130826
+ */
+export const PGN_130826_BepMarineProprietaryPgn130826MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130826_BepMarineProprietaryPgn130826
+ */
+export interface PGN_130826_BepMarineProprietaryPgn130826CreateArgs {
+  reserved?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130826_BepMarineProprietaryPgn130826
+ */
+export class PGN_130826_BepMarineProprietaryPgn130826 extends PGN implements PGN_130826_BepMarineProprietaryPgn130826Interface {
+  fields: PGN_130826_BepMarineProprietaryPgn130826Fields
+
+  constructor(fields: PGN_130826_BepMarineProprietaryPgn130826CreateArgs, dst: number = 255) {
+    super({
+      pgn: 130826,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130826_BepMarineProprietaryPgn130826MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130826_BepMarineProprietaryPgn130826MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineProprietaryPgn130826')!
+  }
+}
+pgnIdToCreator['bepMarineProprietaryPgn130826'] = (fields:any, dst:number) => new PGN_130826_BepMarineProprietaryPgn130826(fields, dst)
 
 
 /**
@@ -23481,6 +27776,290 @@ pgnIdToCreator['simnetSetSerialNumber'] = (fields:any, dst:number) => new PGN_13
 
 
 /**
+ * PGN: 130828
+ *
+ * Description: Maretron: Dometic HVAC Control Status
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130828_MaretronDometicHvacControlStatus
+ */
+export interface PGN_130828_MaretronDometicHvacControlStatusInterface extends PGNInterface {
+  fields: PGN_130828_MaretronDometicHvacControlStatusFields
+}
+
+/**
+ * @category PGN_130828_MaretronDometicHvacControlStatus
+ */
+export interface PGN_130828_MaretronDometicHvacControlStatusFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  canId?: N2K_Number
+  configurationMode?: N2K_Number
+  status?: N2K_Number
+  fanModeSpeed?: N2K_Number
+  setpointTemperature?: N2K_Number
+  ambientTemperature?: N2K_Number
+  outdoorTemperature?: N2K_Number
+  faultStatus?: N2K_Number
+  additionalSensorTemperature?: N2K_Number
+}
+
+/**
+ * @category PGN_130828_MaretronDometicHvacControlStatus
+ */
+export const PGN_130828_MaretronDometicHvacControlStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130828_MaretronDometicHvacControlStatus
+ */
+export interface PGN_130828_MaretronDometicHvacControlStatusCreateArgs {
+  reserved?: number
+  canId?: N2K_Number
+  configurationMode?: N2K_Number
+  status?: N2K_Number
+  fanModeSpeed?: N2K_Number
+  setpointTemperature?: N2K_Number
+  ambientTemperature?: N2K_Number
+  outdoorTemperature?: N2K_Number
+  faultStatus?: N2K_Number
+  additionalSensorTemperature?: N2K_Number
+}
+
+/**
+ * @category PGN_130828_MaretronDometicHvacControlStatus
+ */
+export class PGN_130828_MaretronDometicHvacControlStatus extends PGN implements PGN_130828_MaretronDometicHvacControlStatusInterface {
+  fields: PGN_130828_MaretronDometicHvacControlStatusFields
+
+  constructor(fields: PGN_130828_MaretronDometicHvacControlStatusCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130828,
+      prio: 2,
+      dst
+    })
+    this.fields = { ...PGN_130828_MaretronDometicHvacControlStatusMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130828_MaretronDometicHvacControlStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronDometicHvacControlStatus')!
+  }
+}
+pgnIdToCreator['maretronDometicHvacControlStatus'] = (fields:any, dst:number) => new PGN_130828_MaretronDometicHvacControlStatus(fields, dst)
+
+
+/**
+ * PGN: 130829
+ *
+ * Description: Mercury: Engine Status
+ *
+ * Match: Manufacturer Code == Mercury Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130829_MercuryEngineStatus
+ */
+export interface PGN_130829_MercuryEngineStatusInterface extends PGNInterface {
+  fields: PGN_130829_MercuryEngineStatusFields
+}
+
+/**
+ * @category PGN_130829_MercuryEngineStatus
+ */
+export interface PGN_130829_MercuryEngineStatusFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+}
+
+/**
+ * @category PGN_130829_MercuryEngineStatus
+ */
+export const PGN_130829_MercuryEngineStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.MercuryMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130829_MercuryEngineStatus
+ */
+export interface PGN_130829_MercuryEngineStatusCreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_130829_MercuryEngineStatus
+ */
+export class PGN_130829_MercuryEngineStatus extends PGN implements PGN_130829_MercuryEngineStatusInterface {
+  fields: PGN_130829_MercuryEngineStatusFields
+
+  constructor(fields: PGN_130829_MercuryEngineStatusCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130829,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130829_MercuryEngineStatusMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130829_MercuryEngineStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('mercuryEngineStatus')!
+  }
+}
+pgnIdToCreator['mercuryEngineStatus'] = (fields:any, dst:number) => new PGN_130829_MercuryEngineStatus(fields, dst)
+
+
+/**
+ * PGN: 130830
+ *
+ * Description: Maretron: Dometic HVAC Status
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130830_MaretronDometicHvacStatus
+ */
+export interface PGN_130830_MaretronDometicHvacStatusInterface extends PGNInterface {
+  fields: PGN_130830_MaretronDometicHvacStatusFields
+}
+
+/**
+ * @category PGN_130830_MaretronDometicHvacStatus
+ */
+export interface PGN_130830_MaretronDometicHvacStatusFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  additionalSensorTemperature?: N2K_Number
+  canId?: N2K_Number
+  state?: N2K_Number
+  hardwareStatus?: N2K_Number
+  faults?: N2K_Number
+  lineVoltage?: N2K_Number
+  compressorCurrent?: N2K_Number
+}
+
+/**
+ * @category PGN_130830_MaretronDometicHvacStatus
+ */
+export const PGN_130830_MaretronDometicHvacStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130830_MaretronDometicHvacStatus
+ */
+export interface PGN_130830_MaretronDometicHvacStatusCreateArgs {
+  reserved?: number
+  additionalSensorTemperature?: N2K_Number
+  canId?: N2K_Number
+  state?: N2K_Number
+  hardwareStatus?: N2K_Number
+  faults?: N2K_Number
+  lineVoltage?: N2K_Number
+  compressorCurrent?: N2K_Number
+}
+
+/**
+ * @category PGN_130830_MaretronDometicHvacStatus
+ */
+export class PGN_130830_MaretronDometicHvacStatus extends PGN implements PGN_130830_MaretronDometicHvacStatusInterface {
+  fields: PGN_130830_MaretronDometicHvacStatusFields
+
+  constructor(fields: PGN_130830_MaretronDometicHvacStatusCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130830,
+      prio: 5,
+      dst
+    })
+    this.fields = { ...PGN_130830_MaretronDometicHvacStatusMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130830_MaretronDometicHvacStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronDometicHvacStatus')!
+  }
+}
+pgnIdToCreator['maretronDometicHvacStatus'] = (fields:any, dst:number) => new PGN_130830_MaretronDometicHvacStatus(fields, dst)
+
+
+/**
+ * PGN: 130830
+ *
+ * Description: Suzuki: Engine Data
+ *
+ * Match: Manufacturer Code == Suzuki Motor Corporation<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130830_SuzukiEngineData
+ */
+export interface PGN_130830_SuzukiEngineDataInterface extends PGNInterface {
+  fields: PGN_130830_SuzukiEngineDataFields
+}
+
+/**
+ * @category PGN_130830_SuzukiEngineData
+ */
+export interface PGN_130830_SuzukiEngineDataFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+}
+
+/**
+ * @category PGN_130830_SuzukiEngineData
+ */
+export const PGN_130830_SuzukiEngineDataMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.SuzukiMotorCorporation,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130830_SuzukiEngineData
+ */
+export interface PGN_130830_SuzukiEngineDataCreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_130830_SuzukiEngineData
+ */
+export class PGN_130830_SuzukiEngineData extends PGN implements PGN_130830_SuzukiEngineDataInterface {
+  fields: PGN_130830_SuzukiEngineDataFields
+
+  constructor(fields: PGN_130830_SuzukiEngineDataCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130830,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130830_SuzukiEngineDataMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130830_SuzukiEngineDataMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('suzukiEngineData')!
+  }
+}
+pgnIdToCreator['suzukiEngineData'] = (fields:any, dst:number) => new PGN_130830_SuzukiEngineData(fields, dst)
+
+
+/**
  * PGN: 130831
  *
  * Description: Maretron: Universal Configuration FP
@@ -23611,66 +28190,80 @@ pgnIdToCreator['suzukiEngineAndStorageDeviceConfig'] = (fields:any, dst:number) 
 /**
  * PGN: 130832
  *
- * Description: Maretron: Alert Operating Mode
+ * Description: Maretron: Vessel Operating Mode
  *
  * Match: Manufacturer Code == Maretron<br>
  * Match: Industry Code == Marine Industry<br>
  *
- * @category PGN_130832_MaretronAlertOperatingMode
+ * @category PGN_130832_MaretronVesselOperatingMode
  */
-export interface PGN_130832_MaretronAlertOperatingModeInterface extends PGNInterface {
-  fields: PGN_130832_MaretronAlertOperatingModeFields
+export interface PGN_130832_MaretronVesselOperatingModeInterface extends PGNInterface {
+  fields: PGN_130832_MaretronVesselOperatingModeFields
 }
 
 /**
- * @category PGN_130832_MaretronAlertOperatingMode
+ * @category PGN_130832_MaretronVesselOperatingMode
  */
-export interface PGN_130832_MaretronAlertOperatingModeFields {
+export interface PGN_130832_MaretronVesselOperatingModeFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  alertSystem?: N2K_Number
+  alertSubSystem?: N2K_Number
+  alertSystemInstance: N2K_Number
+  operatingMode?: N2K_Number
+  generatingGlobalAlerts: N2K_Number
+  userChanged: N2K_Number
+  inIndependentMode: N2K_Number
+  reserved11?: number
 }
 
 /**
- * @category PGN_130832_MaretronAlertOperatingMode
+ * @category PGN_130832_MaretronVesselOperatingMode
  */
-export const PGN_130832_MaretronAlertOperatingModeMatchFields = {
+export const PGN_130832_MaretronVesselOperatingModeMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Maretron,
   industryCode: enums.IndustryCode.MarineIndustry,
 }
 
 /**
- * @category PGN_130832_MaretronAlertOperatingMode
+ * @category PGN_130832_MaretronVesselOperatingMode
  */
-export interface PGN_130832_MaretronAlertOperatingModeCreateArgs {
+export interface PGN_130832_MaretronVesselOperatingModeCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  alertSystem?: N2K_Number
+  alertSubSystem?: N2K_Number
+  alertSystemInstance: N2K_Number
+  operatingMode?: N2K_Number
+  generatingGlobalAlerts: N2K_Number
+  userChanged: N2K_Number
+  inIndependentMode: N2K_Number
+  reserved11?: number
 }
 
 /**
- * @category PGN_130832_MaretronAlertOperatingMode
+ * @category PGN_130832_MaretronVesselOperatingMode
  */
-export class PGN_130832_MaretronAlertOperatingMode extends PGN implements PGN_130832_MaretronAlertOperatingModeInterface {
-  fields: PGN_130832_MaretronAlertOperatingModeFields
+export class PGN_130832_MaretronVesselOperatingMode extends PGN implements PGN_130832_MaretronVesselOperatingModeInterface {
+  fields: PGN_130832_MaretronVesselOperatingModeFields
 
-  constructor(fields: PGN_130832_MaretronAlertOperatingModeCreateArgs, dst: number = 255) {
+  constructor(fields: PGN_130832_MaretronVesselOperatingModeCreateArgs, dst: number = 255) {
     super({
       pgn: 130832,
-      prio: 3,
+      prio: 7,
       dst
     })
-    this.fields = { ...PGN_130832_MaretronAlertOperatingModeMatchFields, ...fields }
+    this.fields = { ...PGN_130832_MaretronVesselOperatingModeMatchFields, ...fields }
   }
 
   static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_130832_MaretronAlertOperatingModeMatchFields)
+    return isMatch(pgn, PGN_130832_MaretronVesselOperatingModeMatchFields)
   }
   getDefinition(): Definition {
-    return getPGNWithId('maretronAlertOperatingMode')!
+    return getPGNWithId('maretronVesselOperatingMode')!
   }
 }
-pgnIdToCreator['maretronAlertOperatingMode'] = (fields:any, dst:number) => new PGN_130832_MaretronAlertOperatingMode(fields, dst)
+pgnIdToCreator['maretronVesselOperatingMode'] = (fields:any, dst:number) => new PGN_130832_MaretronVesselOperatingMode(fields, dst)
 
 
 /**
@@ -23757,7 +28350,9 @@ export interface PGN_130833_MaretronVesselDataRecorderStatusFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  vdrRecordingStatus?: N2K_Number
+  memoryCapacity?: N2K_Number
+  memoryUsed?: N2K_Number
 }
 
 /**
@@ -23773,7 +28368,9 @@ export const PGN_130833_MaretronVesselDataRecorderStatusMatchFields = {
  */
 export interface PGN_130833_MaretronVesselDataRecorderStatusCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  vdrRecordingStatus?: N2K_Number
+  memoryCapacity?: N2K_Number
+  memoryUsed?: N2K_Number
 }
 
 /**
@@ -23785,7 +28382,7 @@ export class PGN_130833_MaretronVesselDataRecorderStatus extends PGN implements 
   constructor(fields: PGN_130833_MaretronVesselDataRecorderStatusCreateArgs, dst: number = 255) {
     super({
       pgn: 130833,
-      prio: 3,
+      prio: 7,
       dst
     })
     this.fields = { ...PGN_130833_MaretronVesselDataRecorderStatusMatchFields, ...fields }
@@ -23897,7 +28494,12 @@ export interface PGN_130834_MaretronSmsStatusFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  simCardStatus?: N2K_Number
+  gsmBand?: N2K_Number
+  signalStrength?: N2K_Number
+  bitErrorRate?: N2K_Number
+  simCardPhoneNumber?: N2K_StringLau
+  networkOperatorName?: N2K_StringLau
 }
 
 /**
@@ -23913,7 +28515,12 @@ export const PGN_130834_MaretronSmsStatusMatchFields = {
  */
 export interface PGN_130834_MaretronSmsStatusCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  simCardStatus?: N2K_Number
+  gsmBand?: N2K_Number
+  signalStrength?: N2K_Number
+  bitErrorRate?: N2K_Number
+  simCardPhoneNumber?: N2K_StringLau
+  networkOperatorName?: N2K_StringLau
 }
 
 /**
@@ -23925,7 +28532,7 @@ export class PGN_130834_MaretronSmsStatus extends PGN implements PGN_130834_Mare
   constructor(fields: PGN_130834_MaretronSmsStatusCreateArgs, dst: number = 255) {
     super({
       pgn: 130834,
-      prio: 3,
+      prio: 6,
       dst
     })
     this.fields = { ...PGN_130834_MaretronSmsStatusMatchFields, ...fields }
@@ -24025,7 +28632,9 @@ export interface PGN_130835_MaretronSmsTextMessageFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  messageType?: N2K_Number
+  phoneNumber?: N2K_StringLau
+  message?: N2K_StringLau
 }
 
 /**
@@ -24041,7 +28650,9 @@ export const PGN_130835_MaretronSmsTextMessageMatchFields = {
  */
 export interface PGN_130835_MaretronSmsTextMessageCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  messageType?: N2K_Number
+  phoneNumber?: N2K_StringLau
+  message?: N2K_StringLau
 }
 
 /**
@@ -24053,7 +28664,7 @@ export class PGN_130835_MaretronSmsTextMessage extends PGN implements PGN_130835
   constructor(fields: PGN_130835_MaretronSmsTextMessageCreateArgs, dst: number = 255) {
     super({
       pgn: 130835,
-      prio: 3,
+      prio: 6,
       dst
     })
     this.fields = { ...PGN_130835_MaretronSmsTextMessageMatchFields, ...fields }
@@ -24297,6 +28908,69 @@ pgnIdToCreator['maretronSwitchStatusCounter'] = (fields:any, dst:number) => new 
 /**
  * PGN: 130837
  *
+ * Description: Suzuki: Engine Sensor Data
+ *
+ * Match: Manufacturer Code == Suzuki Motor Corporation<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130837_SuzukiEngineSensorData
+ */
+export interface PGN_130837_SuzukiEngineSensorDataInterface extends PGNInterface {
+  fields: PGN_130837_SuzukiEngineSensorDataFields
+}
+
+/**
+ * @category PGN_130837_SuzukiEngineSensorData
+ */
+export interface PGN_130837_SuzukiEngineSensorDataFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+}
+
+/**
+ * @category PGN_130837_SuzukiEngineSensorData
+ */
+export const PGN_130837_SuzukiEngineSensorDataMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.SuzukiMotorCorporation,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130837_SuzukiEngineSensorData
+ */
+export interface PGN_130837_SuzukiEngineSensorDataCreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_130837_SuzukiEngineSensorData
+ */
+export class PGN_130837_SuzukiEngineSensorData extends PGN implements PGN_130837_SuzukiEngineSensorDataInterface {
+  fields: PGN_130837_SuzukiEngineSensorDataFields
+
+  constructor(fields: PGN_130837_SuzukiEngineSensorDataCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130837,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130837_SuzukiEngineSensorDataMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130837_SuzukiEngineSensorDataMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('suzukiEngineSensorData')!
+  }
+}
+pgnIdToCreator['suzukiEngineSensorData'] = (fields:any, dst:number) => new PGN_130837_SuzukiEngineSensorData(fields, dst)
+
+
+/**
+ * PGN: 130837
+ *
  * Description: Simnet: Fuel Flow Turbine Configuration
  *
  * Match: Manufacturer Code == Simrad<br>
@@ -24506,6 +29180,69 @@ pgnIdToCreator['maretronBnwas'] = (fields:any, dst:number) => new PGN_130838_Mar
 /**
  * PGN: 130838
  *
+ * Description: Suzuki: Fuel Management
+ *
+ * Match: Manufacturer Code == Suzuki Motor Corporation<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130838_SuzukiFuelManagement
+ */
+export interface PGN_130838_SuzukiFuelManagementInterface extends PGNInterface {
+  fields: PGN_130838_SuzukiFuelManagementFields
+}
+
+/**
+ * @category PGN_130838_SuzukiFuelManagement
+ */
+export interface PGN_130838_SuzukiFuelManagementFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+}
+
+/**
+ * @category PGN_130838_SuzukiFuelManagement
+ */
+export const PGN_130838_SuzukiFuelManagementMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.SuzukiMotorCorporation,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130838_SuzukiFuelManagement
+ */
+export interface PGN_130838_SuzukiFuelManagementCreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_130838_SuzukiFuelManagement
+ */
+export class PGN_130838_SuzukiFuelManagement extends PGN implements PGN_130838_SuzukiFuelManagementInterface {
+  fields: PGN_130838_SuzukiFuelManagementFields
+
+  constructor(fields: PGN_130838_SuzukiFuelManagementCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130838,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130838_SuzukiFuelManagementMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130838_SuzukiFuelManagementMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('suzukiFuelManagement')!
+  }
+}
+pgnIdToCreator['suzukiFuelManagement'] = (fields:any, dst:number) => new PGN_130838_SuzukiFuelManagement(fields, dst)
+
+
+/**
+ * PGN: 130838
+ *
  * Description: Simnet: Fluid Level Warning
  *
  * Match: Manufacturer Code == Simrad<br>
@@ -24650,7 +29387,9 @@ export interface PGN_130840_MaretronGenericSensorFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  dataInstance: N2K_Number
+  dataFormat?: N2K_Number
+  value?: N2K_Binary
 }
 
 /**
@@ -24666,7 +29405,9 @@ export const PGN_130840_MaretronGenericSensorMatchFields = {
  */
 export interface PGN_130840_MaretronGenericSensorCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  dataInstance: N2K_Number
+  dataFormat?: N2K_Number
+  value?: N2K_Binary
 }
 
 /**
@@ -24820,6 +29561,95 @@ export class PGN_130841_MaretronCanFrameForwarding extends PGN implements PGN_13
   }
 }
 pgnIdToCreator['maretronCanFrameForwarding'] = (fields:any, dst:number) => new PGN_130841_MaretronCanFrameForwarding(fields, dst)
+
+
+/**
+ * PGN: 130842
+ *
+ * Description: Maretron: Windlass Operating Status
+ *
+ * Match: Manufacturer Code == Maretron<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130842_MaretronWindlassOperatingStatus
+ */
+export interface PGN_130842_MaretronWindlassOperatingStatusInterface extends PGNInterface {
+  fields: PGN_130842_MaretronWindlassOperatingStatusFields
+}
+
+/**
+ * @category PGN_130842_MaretronWindlassOperatingStatus
+ */
+export interface PGN_130842_MaretronWindlassOperatingStatusFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  windlassOperatingEvents?: N2K_Number
+  windlassInstance?: N2K_Number
+  windlassDirectionControl?: N2K_Number
+  speedControl?: N2K_Number
+  powerEnable?: enums.OffOn | number
+  mechanicalEnable?: enums.OffOn | number
+  anchorDockingControl?: enums.OffOn | number
+  deckAndAnchorWash?: enums.OffOn | number
+  anchorLight?: enums.OffOn | number
+  auxiliaryAControl?: enums.OffOn | number
+  auxiliaryBControl?: enums.OffOn | number
+  auxiliaryCControl?: enums.OffOn | number
+  auxiliaryDControl?: enums.OffOn | number
+}
+
+/**
+ * @category PGN_130842_MaretronWindlassOperatingStatus
+ */
+export const PGN_130842_MaretronWindlassOperatingStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Maretron,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130842_MaretronWindlassOperatingStatus
+ */
+export interface PGN_130842_MaretronWindlassOperatingStatusCreateArgs {
+  reserved?: number
+  windlassOperatingEvents?: N2K_Number
+  windlassInstance?: N2K_Number
+  windlassDirectionControl?: N2K_Number
+  speedControl?: N2K_Number
+  powerEnable?: enums.OffOn | number
+  mechanicalEnable?: enums.OffOn | number
+  anchorDockingControl?: enums.OffOn | number
+  deckAndAnchorWash?: enums.OffOn | number
+  anchorLight?: enums.OffOn | number
+  auxiliaryAControl?: enums.OffOn | number
+  auxiliaryBControl?: enums.OffOn | number
+  auxiliaryCControl?: enums.OffOn | number
+  auxiliaryDControl?: enums.OffOn | number
+}
+
+/**
+ * @category PGN_130842_MaretronWindlassOperatingStatus
+ */
+export class PGN_130842_MaretronWindlassOperatingStatus extends PGN implements PGN_130842_MaretronWindlassOperatingStatusInterface {
+  fields: PGN_130842_MaretronWindlassOperatingStatusFields
+
+  constructor(fields: PGN_130842_MaretronWindlassOperatingStatusCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130842,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130842_MaretronWindlassOperatingStatusMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130842_MaretronWindlassOperatingStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('maretronWindlassOperatingStatus')!
+  }
+}
+pgnIdToCreator['maretronWindlassOperatingStatus'] = (fields:any, dst:number) => new PGN_130842_MaretronWindlassOperatingStatus(fields, dst)
 
 
 /**
@@ -25075,21 +29905,21 @@ pgnIdToCreator['simnetAisClassBStaticDataMsg24PartB'] = (fields:any, dst:number)
 /**
  * PGN: 130843
  *
- * Description: Maretron: Windlass Operating Status
+ * Description: Maretron: Windlass Control Command
  *
  * Match: Manufacturer Code == Maretron<br>
  * Match: Industry Code == Marine Industry<br>
  *
- * @category PGN_130843_MaretronWindlassOperatingStatus
+ * @category PGN_130843_MaretronWindlassControlCommand
  */
-export interface PGN_130843_MaretronWindlassOperatingStatusInterface extends PGNInterface {
-  fields: PGN_130843_MaretronWindlassOperatingStatusFields
+export interface PGN_130843_MaretronWindlassControlCommandInterface extends PGNInterface {
+  fields: PGN_130843_MaretronWindlassControlCommandFields
 }
 
 /**
- * @category PGN_130843_MaretronWindlassOperatingStatus
+ * @category PGN_130843_MaretronWindlassControlCommand
  */
-export interface PGN_130843_MaretronWindlassOperatingStatusFields {
+export interface PGN_130843_MaretronWindlassControlCommandFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
@@ -25097,44 +29927,44 @@ export interface PGN_130843_MaretronWindlassOperatingStatusFields {
 }
 
 /**
- * @category PGN_130843_MaretronWindlassOperatingStatus
+ * @category PGN_130843_MaretronWindlassControlCommand
  */
-export const PGN_130843_MaretronWindlassOperatingStatusMatchFields = {
+export const PGN_130843_MaretronWindlassControlCommandMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Maretron,
   industryCode: enums.IndustryCode.MarineIndustry,
 }
 
 /**
- * @category PGN_130843_MaretronWindlassOperatingStatus
+ * @category PGN_130843_MaretronWindlassControlCommand
  */
-export interface PGN_130843_MaretronWindlassOperatingStatusCreateArgs {
+export interface PGN_130843_MaretronWindlassControlCommandCreateArgs {
   reserved?: number
   data?: N2K_Binary
 }
 
 /**
- * @category PGN_130843_MaretronWindlassOperatingStatus
+ * @category PGN_130843_MaretronWindlassControlCommand
  */
-export class PGN_130843_MaretronWindlassOperatingStatus extends PGN implements PGN_130843_MaretronWindlassOperatingStatusInterface {
-  fields: PGN_130843_MaretronWindlassOperatingStatusFields
+export class PGN_130843_MaretronWindlassControlCommand extends PGN implements PGN_130843_MaretronWindlassControlCommandInterface {
+  fields: PGN_130843_MaretronWindlassControlCommandFields
 
-  constructor(fields: PGN_130843_MaretronWindlassOperatingStatusCreateArgs, dst: number = 255) {
+  constructor(fields: PGN_130843_MaretronWindlassControlCommandCreateArgs, dst: number = 255) {
     super({
       pgn: 130843,
       prio: 3,
       dst
     })
-    this.fields = { ...PGN_130843_MaretronWindlassOperatingStatusMatchFields, ...fields }
+    this.fields = { ...PGN_130843_MaretronWindlassControlCommandMatchFields, ...fields }
   }
 
   static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_130843_MaretronWindlassOperatingStatusMatchFields)
+    return isMatch(pgn, PGN_130843_MaretronWindlassControlCommandMatchFields)
   }
   getDefinition(): Definition {
-    return getPGNWithId('maretronWindlassOperatingStatus')!
+    return getPGNWithId('maretronWindlassControlCommand')!
   }
 }
-pgnIdToCreator['maretronWindlassOperatingStatus'] = (fields:any, dst:number) => new PGN_130843_MaretronWindlassOperatingStatus(fields, dst)
+pgnIdToCreator['maretronWindlassControlCommand'] = (fields:any, dst:number) => new PGN_130843_MaretronWindlassControlCommand(fields, dst)
 
 
 /**
@@ -25276,21 +30106,21 @@ pgnIdToCreator['simnetSonarStatusFrequencyAndDspVoltage'] = (fields:any, dst:num
 /**
  * PGN: 130844
  *
- * Description: Maretron: Windlass Control Command
+ * Description: Carling: Proprietary
  *
- * Match: Manufacturer Code == Maretron<br>
+ * Match: Manufacturer Code == Carling Technologies Inc. (Moritz Aerospace)<br>
  * Match: Industry Code == Marine Industry<br>
  *
- * @category PGN_130844_MaretronWindlassControlCommand
+ * @category PGN_130844_CarlingProprietary
  */
-export interface PGN_130844_MaretronWindlassControlCommandInterface extends PGNInterface {
-  fields: PGN_130844_MaretronWindlassControlCommandFields
+export interface PGN_130844_CarlingProprietaryInterface extends PGNInterface {
+  fields: PGN_130844_CarlingProprietaryFields
 }
 
 /**
- * @category PGN_130844_MaretronWindlassControlCommand
+ * @category PGN_130844_CarlingProprietary
  */
-export interface PGN_130844_MaretronWindlassControlCommandFields {
+export interface PGN_130844_CarlingProprietaryFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
@@ -25298,44 +30128,44 @@ export interface PGN_130844_MaretronWindlassControlCommandFields {
 }
 
 /**
- * @category PGN_130844_MaretronWindlassControlCommand
+ * @category PGN_130844_CarlingProprietary
  */
-export const PGN_130844_MaretronWindlassControlCommandMatchFields = {
-  manufacturerCode: enums.ManufacturerCode.Maretron,
+export const PGN_130844_CarlingProprietaryMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.CarlingTechnologiesIncmoritzAerospace,
   industryCode: enums.IndustryCode.MarineIndustry,
 }
 
 /**
- * @category PGN_130844_MaretronWindlassControlCommand
+ * @category PGN_130844_CarlingProprietary
  */
-export interface PGN_130844_MaretronWindlassControlCommandCreateArgs {
+export interface PGN_130844_CarlingProprietaryCreateArgs {
   reserved?: number
   data?: N2K_Binary
 }
 
 /**
- * @category PGN_130844_MaretronWindlassControlCommand
+ * @category PGN_130844_CarlingProprietary
  */
-export class PGN_130844_MaretronWindlassControlCommand extends PGN implements PGN_130844_MaretronWindlassControlCommandInterface {
-  fields: PGN_130844_MaretronWindlassControlCommandFields
+export class PGN_130844_CarlingProprietary extends PGN implements PGN_130844_CarlingProprietaryInterface {
+  fields: PGN_130844_CarlingProprietaryFields
 
-  constructor(fields: PGN_130844_MaretronWindlassControlCommandCreateArgs, dst: number = 255) {
+  constructor(fields: PGN_130844_CarlingProprietaryCreateArgs, dst: number = 255) {
     super({
       pgn: 130844,
       prio: 3,
       dst
     })
-    this.fields = { ...PGN_130844_MaretronWindlassControlCommandMatchFields, ...fields }
+    this.fields = { ...PGN_130844_CarlingProprietaryMatchFields, ...fields }
   }
 
   static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_130844_MaretronWindlassControlCommandMatchFields)
+    return isMatch(pgn, PGN_130844_CarlingProprietaryMatchFields)
   }
   getDefinition(): Definition {
-    return getPGNWithId('maretronWindlassControlCommand')!
+    return getPGNWithId('carlingProprietary')!
   }
 }
-pgnIdToCreator['maretronWindlassControlCommand'] = (fields:any, dst:number) => new PGN_130844_MaretronWindlassControlCommand(fields, dst)
+pgnIdToCreator['carlingProprietary'] = (fields:any, dst:number) => new PGN_130844_CarlingProprietary(fields, dst)
 
 
 /**
@@ -25898,6 +30728,69 @@ export class PGN_130848_SeatalkWaypointInformation extends PGN implements PGN_13
   }
 }
 pgnIdToCreator['seatalkWaypointInformation'] = (fields:any, dst:number) => new PGN_130848_SeatalkWaypointInformation(fields, dst)
+
+
+/**
+ * PGN: 130849
+ *
+ * Description: Navico: Proprietary FP
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130849_NavicoProprietaryFp
+ */
+export interface PGN_130849_NavicoProprietaryFpInterface extends PGNInterface {
+  fields: PGN_130849_NavicoProprietaryFpFields
+}
+
+/**
+ * @category PGN_130849_NavicoProprietaryFp
+ */
+export interface PGN_130849_NavicoProprietaryFpFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+}
+
+/**
+ * @category PGN_130849_NavicoProprietaryFp
+ */
+export const PGN_130849_NavicoProprietaryFpMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130849_NavicoProprietaryFp
+ */
+export interface PGN_130849_NavicoProprietaryFpCreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_130849_NavicoProprietaryFp
+ */
+export class PGN_130849_NavicoProprietaryFp extends PGN implements PGN_130849_NavicoProprietaryFpInterface {
+  fields: PGN_130849_NavicoProprietaryFpFields
+
+  constructor(fields: PGN_130849_NavicoProprietaryFpCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130849,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130849_NavicoProprietaryFpMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130849_NavicoProprietaryFpMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoProprietaryFp')!
+  }
+}
+pgnIdToCreator['navicoProprietaryFp'] = (fields:any, dst:number) => new PGN_130849_NavicoProprietaryFp(fields, dst)
 
 
 /**
@@ -26913,6 +31806,69 @@ pgnIdToCreator['simnetEventReplyApCommand'] = (fields:any, dst:number) => new PG
 
 
 /**
+ * PGN: 130852
+ *
+ * Description: Navico: Proprietary 2 FP
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130852_NavicoProprietary2Fp
+ */
+export interface PGN_130852_NavicoProprietary2FpInterface extends PGNInterface {
+  fields: PGN_130852_NavicoProprietary2FpFields
+}
+
+/**
+ * @category PGN_130852_NavicoProprietary2Fp
+ */
+export interface PGN_130852_NavicoProprietary2FpFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+}
+
+/**
+ * @category PGN_130852_NavicoProprietary2Fp
+ */
+export const PGN_130852_NavicoProprietary2FpMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130852_NavicoProprietary2Fp
+ */
+export interface PGN_130852_NavicoProprietary2FpCreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_130852_NavicoProprietary2Fp
+ */
+export class PGN_130852_NavicoProprietary2Fp extends PGN implements PGN_130852_NavicoProprietary2FpInterface {
+  fields: PGN_130852_NavicoProprietary2FpFields
+
+  constructor(fields: PGN_130852_NavicoProprietary2FpCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130852,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130852_NavicoProprietary2FpMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130852_NavicoProprietary2FpMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoProprietary2Fp')!
+  }
+}
+pgnIdToCreator['navicoProprietary2Fp'] = (fields:any, dst:number) => new PGN_130852_NavicoProprietary2Fp(fields, dst)
+
+
+/**
  * PGN: 130856
  *
  * Description: Simnet: Alarm Message
@@ -27063,6 +32019,69 @@ pgnIdToCreator['simnetApUnknown4'] = (fields:any, dst:number) => new PGN_130860_
 
 
 /**
+ * PGN: 130861
+ *
+ * Description: Simrad: Engine Data
+ *
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130861_SimradEngineData
+ */
+export interface PGN_130861_SimradEngineDataInterface extends PGNInterface {
+  fields: PGN_130861_SimradEngineDataFields
+}
+
+/**
+ * @category PGN_130861_SimradEngineData
+ */
+export interface PGN_130861_SimradEngineDataFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+}
+
+/**
+ * @category PGN_130861_SimradEngineData
+ */
+export const PGN_130861_SimradEngineDataMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130861_SimradEngineData
+ */
+export interface PGN_130861_SimradEngineDataCreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_130861_SimradEngineData
+ */
+export class PGN_130861_SimradEngineData extends PGN implements PGN_130861_SimradEngineDataInterface {
+  fields: PGN_130861_SimradEngineDataFields
+
+  constructor(fields: PGN_130861_SimradEngineDataCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130861,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130861_SimradEngineDataMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130861_SimradEngineDataMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('simradEngineData')!
+  }
+}
+pgnIdToCreator['simradEngineData'] = (fields:any, dst:number) => new PGN_130861_SimradEngineData(fields, dst)
+
+
+/**
  * PGN: 130880
  *
  * Description: Airmar: Additional Weather Data
@@ -27205,6 +32224,431 @@ pgnIdToCreator['airmarHeaterControl'] = (fields:any, dst:number) => new PGN_1308
 
 
 /**
+ * PGN: 130900
+ *
+ * Description: Xantrex: AC Status
+ *
+ * Match: Manufacturer Code == Xantrex Technology Inc.<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130900_XantrexAcStatus
+ */
+export interface PGN_130900_XantrexAcStatusInterface extends PGNInterface {
+  fields: PGN_130900_XantrexAcStatusFields
+}
+
+/**
+ * @category PGN_130900_XantrexAcStatus
+ */
+export interface PGN_130900_XantrexAcStatusFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  acInstance: N2K_Number
+  numberOfLines?: N2K_Number
+  line?: N2K_Number
+  acceptability?: N2K_Number
+  waveform?: N2K_Number
+  reserved9?: number
+  voltage?: N2K_Number
+  current?: N2K_Number
+  frequency?: N2K_Number
+  realPower?: N2K_Number
+  reactivePower?: N2K_Number
+  powerFactor?: N2K_Number
+}
+
+/**
+ * @category PGN_130900_XantrexAcStatus
+ */
+export const PGN_130900_XantrexAcStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.XantrexTechnologyInc,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130900_XantrexAcStatus
+ */
+export interface PGN_130900_XantrexAcStatusCreateArgs {
+  reserved?: number
+  acInstance: N2K_Number
+  numberOfLines?: N2K_Number
+  line?: N2K_Number
+  acceptability?: N2K_Number
+  waveform?: N2K_Number
+  reserved9?: number
+  voltage?: N2K_Number
+  current?: N2K_Number
+  frequency?: N2K_Number
+  realPower?: N2K_Number
+  reactivePower?: N2K_Number
+  powerFactor?: N2K_Number
+}
+
+/**
+ * @category PGN_130900_XantrexAcStatus
+ */
+export class PGN_130900_XantrexAcStatus extends PGN implements PGN_130900_XantrexAcStatusInterface {
+  fields: PGN_130900_XantrexAcStatusFields
+
+  constructor(fields: PGN_130900_XantrexAcStatusCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130900,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130900_XantrexAcStatusMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130900_XantrexAcStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('xantrexAcStatus')!
+  }
+}
+pgnIdToCreator['xantrexAcStatus'] = (fields:any, dst:number) => new PGN_130900_XantrexAcStatus(fields, dst)
+
+
+/**
+ * PGN: 130910
+ *
+ * Description: Xantrex: DC Source Configuration Status
+ *
+ * Match: Manufacturer Code == Xantrex Technology Inc.<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130910_XantrexDcSourceConfigurationStatus
+ */
+export interface PGN_130910_XantrexDcSourceConfigurationStatusInterface extends PGNInterface {
+  fields: PGN_130910_XantrexDcSourceConfigurationStatusFields
+}
+
+/**
+ * @category PGN_130910_XantrexDcSourceConfigurationStatus
+ */
+export interface PGN_130910_XantrexDcSourceConfigurationStatusFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  dcSourceInstance: N2K_Number
+  dcUvShutdownLevel?: N2K_Number
+  dcUvWarningLevel?: N2K_Number
+  dcUvShutdownDelay?: N2K_Number
+  dcUvRecoverLevel?: N2K_Number
+  dcOvShutdownLevel?: N2K_Number
+  dcOvWarningLevel?: N2K_Number
+  dcOvShutdownDelay?: N2K_Number
+  dcOvRecoverLevel?: N2K_Number
+}
+
+/**
+ * @category PGN_130910_XantrexDcSourceConfigurationStatus
+ */
+export const PGN_130910_XantrexDcSourceConfigurationStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.XantrexTechnologyInc,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130910_XantrexDcSourceConfigurationStatus
+ */
+export interface PGN_130910_XantrexDcSourceConfigurationStatusCreateArgs {
+  reserved?: number
+  dcSourceInstance: N2K_Number
+  dcUvShutdownLevel?: N2K_Number
+  dcUvWarningLevel?: N2K_Number
+  dcUvShutdownDelay?: N2K_Number
+  dcUvRecoverLevel?: N2K_Number
+  dcOvShutdownLevel?: N2K_Number
+  dcOvWarningLevel?: N2K_Number
+  dcOvShutdownDelay?: N2K_Number
+  dcOvRecoverLevel?: N2K_Number
+}
+
+/**
+ * @category PGN_130910_XantrexDcSourceConfigurationStatus
+ */
+export class PGN_130910_XantrexDcSourceConfigurationStatus extends PGN implements PGN_130910_XantrexDcSourceConfigurationStatusInterface {
+  fields: PGN_130910_XantrexDcSourceConfigurationStatusFields
+
+  constructor(fields: PGN_130910_XantrexDcSourceConfigurationStatusCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130910,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130910_XantrexDcSourceConfigurationStatusMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130910_XantrexDcSourceConfigurationStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('xantrexDcSourceConfigurationStatus')!
+  }
+}
+pgnIdToCreator['xantrexDcSourceConfigurationStatus'] = (fields:any, dst:number) => new PGN_130910_XantrexDcSourceConfigurationStatus(fields, dst)
+
+
+/**
+ * PGN: 130911
+ *
+ * Description: Xantrex: AC Output Configuration Status
+ *
+ * Match: Manufacturer Code == Xantrex Technology Inc.<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130911_XantrexAcOutputConfigurationStatus
+ */
+export interface PGN_130911_XantrexAcOutputConfigurationStatusInterface extends PGNInterface {
+  fields: PGN_130911_XantrexAcOutputConfigurationStatusFields
+}
+
+/**
+ * @category PGN_130911_XantrexAcOutputConfigurationStatus
+ */
+export interface PGN_130911_XantrexAcOutputConfigurationStatusFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  acSourceInstance: N2K_Number
+  numberOfLines?: N2K_Number
+  line?: N2K_Number
+  reserved7?: number
+  voltage?: N2K_Number
+  frequency?: N2K_Number
+  powerLimit?: N2K_Number
+  ovFaultLevel?: N2K_Number
+  uvFaultLevel?: N2K_Number
+}
+
+/**
+ * @category PGN_130911_XantrexAcOutputConfigurationStatus
+ */
+export const PGN_130911_XantrexAcOutputConfigurationStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.XantrexTechnologyInc,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130911_XantrexAcOutputConfigurationStatus
+ */
+export interface PGN_130911_XantrexAcOutputConfigurationStatusCreateArgs {
+  reserved?: number
+  acSourceInstance: N2K_Number
+  numberOfLines?: N2K_Number
+  line?: N2K_Number
+  reserved7?: number
+  voltage?: N2K_Number
+  frequency?: N2K_Number
+  powerLimit?: N2K_Number
+  ovFaultLevel?: N2K_Number
+  uvFaultLevel?: N2K_Number
+}
+
+/**
+ * @category PGN_130911_XantrexAcOutputConfigurationStatus
+ */
+export class PGN_130911_XantrexAcOutputConfigurationStatus extends PGN implements PGN_130911_XantrexAcOutputConfigurationStatusInterface {
+  fields: PGN_130911_XantrexAcOutputConfigurationStatusFields
+
+  constructor(fields: PGN_130911_XantrexAcOutputConfigurationStatusCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130911,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130911_XantrexAcOutputConfigurationStatusMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130911_XantrexAcOutputConfigurationStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('xantrexAcOutputConfigurationStatus')!
+  }
+}
+pgnIdToCreator['xantrexAcOutputConfigurationStatus'] = (fields:any, dst:number) => new PGN_130911_XantrexAcOutputConfigurationStatus(fields, dst)
+
+
+/**
+ * PGN: 130912
+ *
+ * Description: Xantrex: Charger Configuration Status
+ *
+ * Match: Manufacturer Code == Xantrex Technology Inc.<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130912_XantrexChargerConfigurationStatus
+ */
+export interface PGN_130912_XantrexChargerConfigurationStatusInterface extends PGNInterface {
+  fields: PGN_130912_XantrexChargerConfigurationStatusFields
+}
+
+/**
+ * @category PGN_130912_XantrexChargerConfigurationStatus
+ */
+export interface PGN_130912_XantrexChargerConfigurationStatusFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  chargeInstance: N2K_Number
+  batteryInstance?: N2K_Number
+  bulkVoltage?: N2K_Number
+  bulkTime?: N2K_Number
+  absorptionVoltage?: N2K_Number
+  absorptionTime?: N2K_Number
+  floatVoltage?: N2K_Number
+  floatTime?: N2K_Number
+  equalizationVoltage?: N2K_Number
+  genericChargeVoltage?: N2K_Number
+  genericChargeCurrent?: N2K_Number
+}
+
+/**
+ * @category PGN_130912_XantrexChargerConfigurationStatus
+ */
+export const PGN_130912_XantrexChargerConfigurationStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.XantrexTechnologyInc,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130912_XantrexChargerConfigurationStatus
+ */
+export interface PGN_130912_XantrexChargerConfigurationStatusCreateArgs {
+  reserved?: number
+  chargeInstance: N2K_Number
+  batteryInstance?: N2K_Number
+  bulkVoltage?: N2K_Number
+  bulkTime?: N2K_Number
+  absorptionVoltage?: N2K_Number
+  absorptionTime?: N2K_Number
+  floatVoltage?: N2K_Number
+  floatTime?: N2K_Number
+  equalizationVoltage?: N2K_Number
+  genericChargeVoltage?: N2K_Number
+  genericChargeCurrent?: N2K_Number
+}
+
+/**
+ * @category PGN_130912_XantrexChargerConfigurationStatus
+ */
+export class PGN_130912_XantrexChargerConfigurationStatus extends PGN implements PGN_130912_XantrexChargerConfigurationStatusInterface {
+  fields: PGN_130912_XantrexChargerConfigurationStatusFields
+
+  constructor(fields: PGN_130912_XantrexChargerConfigurationStatusCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130912,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130912_XantrexChargerConfigurationStatusMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130912_XantrexChargerConfigurationStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('xantrexChargerConfigurationStatus')!
+  }
+}
+pgnIdToCreator['xantrexChargerConfigurationStatus'] = (fields:any, dst:number) => new PGN_130912_XantrexChargerConfigurationStatus(fields, dst)
+
+
+/**
+ * PGN: 130913
+ *
+ * Description: Xantrex: AC Input Configuration Status
+ *
+ * Match: Manufacturer Code == Xantrex Technology Inc.<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130913_XantrexAcInputConfigurationStatus
+ */
+export interface PGN_130913_XantrexAcInputConfigurationStatusInterface extends PGNInterface {
+  fields: PGN_130913_XantrexAcInputConfigurationStatusFields
+}
+
+/**
+ * @category PGN_130913_XantrexAcInputConfigurationStatus
+ */
+export interface PGN_130913_XantrexAcInputConfigurationStatusFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  acSourceInstance: N2K_Number
+  numberOfLines?: N2K_Number
+  line?: N2K_Number
+  reserved7?: number
+  breakerSize?: N2K_Number
+  acLostLevel?: N2K_Number
+  acUvLevel?: N2K_Number
+  acUvWarningLevel?: N2K_Number
+  acUvDelay?: N2K_Number
+  acOvLevel?: N2K_Number
+  acOvWarningLevel?: N2K_Number
+  acOvDelay?: N2K_Number
+  acUfLevel?: N2K_Number
+  acOfLevel?: N2K_Number
+}
+
+/**
+ * @category PGN_130913_XantrexAcInputConfigurationStatus
+ */
+export const PGN_130913_XantrexAcInputConfigurationStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.XantrexTechnologyInc,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130913_XantrexAcInputConfigurationStatus
+ */
+export interface PGN_130913_XantrexAcInputConfigurationStatusCreateArgs {
+  reserved?: number
+  acSourceInstance: N2K_Number
+  numberOfLines?: N2K_Number
+  line?: N2K_Number
+  reserved7?: number
+  breakerSize?: N2K_Number
+  acLostLevel?: N2K_Number
+  acUvLevel?: N2K_Number
+  acUvWarningLevel?: N2K_Number
+  acUvDelay?: N2K_Number
+  acOvLevel?: N2K_Number
+  acOvWarningLevel?: N2K_Number
+  acOvDelay?: N2K_Number
+  acUfLevel?: N2K_Number
+  acOfLevel?: N2K_Number
+}
+
+/**
+ * @category PGN_130913_XantrexAcInputConfigurationStatus
+ */
+export class PGN_130913_XantrexAcInputConfigurationStatus extends PGN implements PGN_130913_XantrexAcInputConfigurationStatusInterface {
+  fields: PGN_130913_XantrexAcInputConfigurationStatusFields
+
+  constructor(fields: PGN_130913_XantrexAcInputConfigurationStatusCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130913,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130913_XantrexAcInputConfigurationStatusMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130913_XantrexAcInputConfigurationStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('xantrexAcInputConfigurationStatus')!
+  }
+}
+pgnIdToCreator['xantrexAcInputConfigurationStatus'] = (fields:any, dst:number) => new PGN_130913_XantrexAcInputConfigurationStatus(fields, dst)
+
+
+/**
  * PGN: 130918
  *
  * Description: SeaTalk: Route Information
@@ -27284,6 +32728,156 @@ pgnIdToCreator['seatalkRouteInformation'] = (fields:any, dst:number) => new PGN_
 
 
 /**
+ * PGN: 130921
+ *
+ * Description: Carling: Breaker Status and Configuration
+ *
+ * Explanation: Multi-purpose Carling digital switching fast-packet PGN with 8+ message types: breaker status with electrical values, breaker configuration, discrete I/O configuration, solenoid drive sequence, system alarm and alert messages. The Message Type field selects the variant.
+ *
+ * Match: Manufacturer Code == Carling Technologies Inc. (Moritz Aerospace)<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130921_CarlingBreakerStatusAndConfiguration
+ */
+export interface PGN_130921_CarlingBreakerStatusAndConfigurationInterface extends PGNInterface {
+  fields: PGN_130921_CarlingBreakerStatusAndConfigurationFields
+}
+
+/**
+ * @category PGN_130921_CarlingBreakerStatusAndConfiguration
+ */
+export interface PGN_130921_CarlingBreakerStatusAndConfigurationFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  messageType: N2K_Number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130921_CarlingBreakerStatusAndConfiguration
+ */
+export const PGN_130921_CarlingBreakerStatusAndConfigurationMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.CarlingTechnologiesIncmoritzAerospace,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130921_CarlingBreakerStatusAndConfiguration
+ */
+export interface PGN_130921_CarlingBreakerStatusAndConfigurationCreateArgs {
+  reserved?: number
+  messageType: N2K_Number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130921_CarlingBreakerStatusAndConfiguration
+ */
+export class PGN_130921_CarlingBreakerStatusAndConfiguration extends PGN implements PGN_130921_CarlingBreakerStatusAndConfigurationInterface {
+  fields: PGN_130921_CarlingBreakerStatusAndConfigurationFields
+
+  constructor(fields: PGN_130921_CarlingBreakerStatusAndConfigurationCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130921,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130921_CarlingBreakerStatusAndConfigurationMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130921_CarlingBreakerStatusAndConfigurationMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('carlingBreakerStatusAndConfiguration')!
+  }
+}
+pgnIdToCreator['carlingBreakerStatusAndConfiguration'] = (fields:any, dst:number) => new PGN_130921_CarlingBreakerStatusAndConfiguration(fields, dst)
+
+
+/**
+ * PGN: 130939
+ *
+ * Description: Lumishore: Light Control
+ *
+ * Match: Manufacturer Code == Lumishore<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130939_LumishoreLightControl
+ */
+export interface PGN_130939_LumishoreLightControlInterface extends PGNInterface {
+  fields: PGN_130939_LumishoreLightControlFields
+}
+
+/**
+ * @category PGN_130939_LumishoreLightControl
+ */
+export interface PGN_130939_LumishoreLightControlFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  zoneIndex: N2K_Number
+  red?: N2K_Number
+  green?: N2K_Number
+  blue?: N2K_Number
+  coldWhite?: N2K_Number
+  warmWhite?: N2K_Number
+  intensity?: N2K_Number
+  onOff?: N2K_Number
+  status?: N2K_Number
+}
+
+/**
+ * @category PGN_130939_LumishoreLightControl
+ */
+export const PGN_130939_LumishoreLightControlMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Lumishore,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130939_LumishoreLightControl
+ */
+export interface PGN_130939_LumishoreLightControlCreateArgs {
+  reserved?: number
+  zoneIndex: N2K_Number
+  red?: N2K_Number
+  green?: N2K_Number
+  blue?: N2K_Number
+  coldWhite?: N2K_Number
+  warmWhite?: N2K_Number
+  intensity?: N2K_Number
+  onOff?: N2K_Number
+  status?: N2K_Number
+}
+
+/**
+ * @category PGN_130939_LumishoreLightControl
+ */
+export class PGN_130939_LumishoreLightControl extends PGN implements PGN_130939_LumishoreLightControlInterface {
+  fields: PGN_130939_LumishoreLightControlFields
+
+  constructor(fields: PGN_130939_LumishoreLightControlCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130939,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130939_LumishoreLightControlMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130939_LumishoreLightControlMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('lumishoreLightControl')!
+  }
+}
+pgnIdToCreator['lumishoreLightControl'] = (fields:any, dst:number) => new PGN_130939_LumishoreLightControl(fields, dst)
+
+
+/**
  * PGN: 130944
  *
  * Description: Airmar: POST
@@ -27354,5 +32948,446 @@ export class PGN_130944_AirmarPost extends PGN implements PGN_130944_AirmarPostI
   }
 }
 pgnIdToCreator['airmarPost'] = (fields:any, dst:number) => new PGN_130944_AirmarPost(fields, dst)
+
+
+/**
+ * PGN: 130945
+ *
+ * Description: Yamaha: Engine Data
+ *
+ * Match: Manufacturer Code == Mystic Valley Communications<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130945_YamahaEngineData
+ */
+export interface PGN_130945_YamahaEngineDataInterface extends PGNInterface {
+  fields: PGN_130945_YamahaEngineDataFields
+}
+
+/**
+ * @category PGN_130945_YamahaEngineData
+ */
+export interface PGN_130945_YamahaEngineDataFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+}
+
+/**
+ * @category PGN_130945_YamahaEngineData
+ */
+export const PGN_130945_YamahaEngineDataMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.MysticValleyCommunications,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130945_YamahaEngineData
+ */
+export interface PGN_130945_YamahaEngineDataCreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_130945_YamahaEngineData
+ */
+export class PGN_130945_YamahaEngineData extends PGN implements PGN_130945_YamahaEngineDataInterface {
+  fields: PGN_130945_YamahaEngineDataFields
+
+  constructor(fields: PGN_130945_YamahaEngineDataCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130945,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130945_YamahaEngineDataMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130945_YamahaEngineDataMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('yamahaEngineData')!
+  }
+}
+pgnIdToCreator['yamahaEngineData'] = (fields:any, dst:number) => new PGN_130945_YamahaEngineData(fields, dst)
+
+
+/**
+ * PGN: 130946
+ *
+ * Description: Yamaha: Engine Data 2
+ *
+ * Match: Manufacturer Code == Mystic Valley Communications<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130946_YamahaEngineData2
+ */
+export interface PGN_130946_YamahaEngineData2Interface extends PGNInterface {
+  fields: PGN_130946_YamahaEngineData2Fields
+}
+
+/**
+ * @category PGN_130946_YamahaEngineData2
+ */
+export interface PGN_130946_YamahaEngineData2Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+}
+
+/**
+ * @category PGN_130946_YamahaEngineData2
+ */
+export const PGN_130946_YamahaEngineData2MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.MysticValleyCommunications,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130946_YamahaEngineData2
+ */
+export interface PGN_130946_YamahaEngineData2CreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_130946_YamahaEngineData2
+ */
+export class PGN_130946_YamahaEngineData2 extends PGN implements PGN_130946_YamahaEngineData2Interface {
+  fields: PGN_130946_YamahaEngineData2Fields
+
+  constructor(fields: PGN_130946_YamahaEngineData2CreateArgs, dst: number = 255) {
+    super({
+      pgn: 130946,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130946_YamahaEngineData2MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130946_YamahaEngineData2MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('yamahaEngineData2')!
+  }
+}
+pgnIdToCreator['yamahaEngineData2'] = (fields:any, dst:number) => new PGN_130946_YamahaEngineData2(fields, dst)
+
+
+/**
+ * PGN: 130947
+ *
+ * Description: Yamaha: Engine Data 3
+ *
+ * Match: Manufacturer Code == Mystic Valley Communications<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130947_YamahaEngineData3
+ */
+export interface PGN_130947_YamahaEngineData3Interface extends PGNInterface {
+  fields: PGN_130947_YamahaEngineData3Fields
+}
+
+/**
+ * @category PGN_130947_YamahaEngineData3
+ */
+export interface PGN_130947_YamahaEngineData3Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+}
+
+/**
+ * @category PGN_130947_YamahaEngineData3
+ */
+export const PGN_130947_YamahaEngineData3MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.MysticValleyCommunications,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130947_YamahaEngineData3
+ */
+export interface PGN_130947_YamahaEngineData3CreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_130947_YamahaEngineData3
+ */
+export class PGN_130947_YamahaEngineData3 extends PGN implements PGN_130947_YamahaEngineData3Interface {
+  fields: PGN_130947_YamahaEngineData3Fields
+
+  constructor(fields: PGN_130947_YamahaEngineData3CreateArgs, dst: number = 255) {
+    super({
+      pgn: 130947,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130947_YamahaEngineData3MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130947_YamahaEngineData3MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('yamahaEngineData3')!
+  }
+}
+pgnIdToCreator['yamahaEngineData3'] = (fields:any, dst:number) => new PGN_130947_YamahaEngineData3(fields, dst)
+
+
+/**
+ * PGN: 130951
+ *
+ * Description: Yamaha: Engine Data 4
+ *
+ * Match: Manufacturer Code == Mystic Valley Communications<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130951_YamahaEngineData4
+ */
+export interface PGN_130951_YamahaEngineData4Interface extends PGNInterface {
+  fields: PGN_130951_YamahaEngineData4Fields
+}
+
+/**
+ * @category PGN_130951_YamahaEngineData4
+ */
+export interface PGN_130951_YamahaEngineData4Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+}
+
+/**
+ * @category PGN_130951_YamahaEngineData4
+ */
+export const PGN_130951_YamahaEngineData4MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.MysticValleyCommunications,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130951_YamahaEngineData4
+ */
+export interface PGN_130951_YamahaEngineData4CreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_130951_YamahaEngineData4
+ */
+export class PGN_130951_YamahaEngineData4 extends PGN implements PGN_130951_YamahaEngineData4Interface {
+  fields: PGN_130951_YamahaEngineData4Fields
+
+  constructor(fields: PGN_130951_YamahaEngineData4CreateArgs, dst: number = 255) {
+    super({
+      pgn: 130951,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130951_YamahaEngineData4MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130951_YamahaEngineData4MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('yamahaEngineData4')!
+  }
+}
+pgnIdToCreator['yamahaEngineData4'] = (fields:any, dst:number) => new PGN_130951_YamahaEngineData4(fields, dst)
+
+
+/**
+ * PGN: 131008
+ *
+ * Description: Yamaha: Engine Data 5
+ *
+ * Match: Manufacturer Code == Mystic Valley Communications<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_131008_YamahaEngineData5
+ */
+export interface PGN_131008_YamahaEngineData5Interface extends PGNInterface {
+  fields: PGN_131008_YamahaEngineData5Fields
+}
+
+/**
+ * @category PGN_131008_YamahaEngineData5
+ */
+export interface PGN_131008_YamahaEngineData5Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+}
+
+/**
+ * @category PGN_131008_YamahaEngineData5
+ */
+export const PGN_131008_YamahaEngineData5MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.MysticValleyCommunications,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_131008_YamahaEngineData5
+ */
+export interface PGN_131008_YamahaEngineData5CreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_131008_YamahaEngineData5
+ */
+export class PGN_131008_YamahaEngineData5 extends PGN implements PGN_131008_YamahaEngineData5Interface {
+  fields: PGN_131008_YamahaEngineData5Fields
+
+  constructor(fields: PGN_131008_YamahaEngineData5CreateArgs, dst: number = 255) {
+    super({
+      pgn: 131008,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_131008_YamahaEngineData5MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_131008_YamahaEngineData5MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('yamahaEngineData5')!
+  }
+}
+pgnIdToCreator['yamahaEngineData5'] = (fields:any, dst:number) => new PGN_131008_YamahaEngineData5(fields, dst)
+
+
+/**
+ * PGN: 131011
+ *
+ * Description: Yamaha: Engine Data 6
+ *
+ * Match: Manufacturer Code == Mystic Valley Communications<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_131011_YamahaEngineData6
+ */
+export interface PGN_131011_YamahaEngineData6Interface extends PGNInterface {
+  fields: PGN_131011_YamahaEngineData6Fields
+}
+
+/**
+ * @category PGN_131011_YamahaEngineData6
+ */
+export interface PGN_131011_YamahaEngineData6Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+}
+
+/**
+ * @category PGN_131011_YamahaEngineData6
+ */
+export const PGN_131011_YamahaEngineData6MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.MysticValleyCommunications,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_131011_YamahaEngineData6
+ */
+export interface PGN_131011_YamahaEngineData6CreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_131011_YamahaEngineData6
+ */
+export class PGN_131011_YamahaEngineData6 extends PGN implements PGN_131011_YamahaEngineData6Interface {
+  fields: PGN_131011_YamahaEngineData6Fields
+
+  constructor(fields: PGN_131011_YamahaEngineData6CreateArgs, dst: number = 255) {
+    super({
+      pgn: 131011,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_131011_YamahaEngineData6MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_131011_YamahaEngineData6MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('yamahaEngineData6')!
+  }
+}
+pgnIdToCreator['yamahaEngineData6'] = (fields:any, dst:number) => new PGN_131011_YamahaEngineData6(fields, dst)
+
+
+/**
+ * PGN: 131012
+ *
+ * Description: Yamaha: Engine Data 7
+ *
+ * Match: Manufacturer Code == Mystic Valley Communications<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_131012_YamahaEngineData7
+ */
+export interface PGN_131012_YamahaEngineData7Interface extends PGNInterface {
+  fields: PGN_131012_YamahaEngineData7Fields
+}
+
+/**
+ * @category PGN_131012_YamahaEngineData7
+ */
+export interface PGN_131012_YamahaEngineData7Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+}
+
+/**
+ * @category PGN_131012_YamahaEngineData7
+ */
+export const PGN_131012_YamahaEngineData7MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.MysticValleyCommunications,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_131012_YamahaEngineData7
+ */
+export interface PGN_131012_YamahaEngineData7CreateArgs {
+  reserved?: number
+}
+
+/**
+ * @category PGN_131012_YamahaEngineData7
+ */
+export class PGN_131012_YamahaEngineData7 extends PGN implements PGN_131012_YamahaEngineData7Interface {
+  fields: PGN_131012_YamahaEngineData7Fields
+
+  constructor(fields: PGN_131012_YamahaEngineData7CreateArgs, dst: number = 255) {
+    super({
+      pgn: 131012,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_131012_YamahaEngineData7MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_131012_YamahaEngineData7MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('yamahaEngineData7')!
+  }
+}
+pgnIdToCreator['yamahaEngineData7'] = (fields:any, dst:number) => new PGN_131012_YamahaEngineData7(fields, dst)
 
 

@@ -3858,7 +3858,7 @@ export interface PGN_65288_SeatalkAlarmFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  sid?: N2K_Binary
+  sid?: N2K_Number
   alarmStatus?: enums.SeatalkAlarmStatus | number
   alarmId?: enums.SeatalkAlarmId | number
   alarmGroup?: enums.SeatalkAlarmGroup | number
@@ -3878,7 +3878,7 @@ export const PGN_65288_SeatalkAlarmMatchFields = {
  */
 export interface PGN_65288_SeatalkAlarmCreateArgs {
   reserved?: number
-  sid?: N2K_Binary
+  sid?: N2K_Number
   alarmStatus?: enums.SeatalkAlarmStatus | number
   alarmId?: enums.SeatalkAlarmId | number
   alarmGroup?: enums.SeatalkAlarmGroup | number
@@ -7468,7 +7468,7 @@ export interface PGN_65359_SeatalkPilotHeadingFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  sid?: N2K_Binary
+  sid?: N2K_Number
   headingTrue?: N2K_Number
   headingMagnetic?: N2K_Number
   reserved7?: number
@@ -7487,7 +7487,7 @@ export const PGN_65359_SeatalkPilotHeadingMatchFields = {
  */
 export interface PGN_65359_SeatalkPilotHeadingCreateArgs {
   reserved?: number
-  sid?: N2K_Binary
+  sid?: N2K_Number
   headingTrue?: N2K_Number
   headingMagnetic?: N2K_Number
   reserved7?: number
@@ -7539,7 +7539,7 @@ export interface PGN_65360_SeatalkPilotLockedHeadingFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  sid?: N2K_Binary
+  sid?: N2K_Number
   targetHeadingTrue?: N2K_Number
   targetHeadingMagnetic?: N2K_Number
   reserved7?: number
@@ -7558,7 +7558,7 @@ export const PGN_65360_SeatalkPilotLockedHeadingMatchFields = {
  */
 export interface PGN_65360_SeatalkPilotLockedHeadingCreateArgs {
   reserved?: number
-  sid?: N2K_Binary
+  sid?: N2K_Number
   targetHeadingTrue?: N2K_Number
   targetHeadingMagnetic?: N2K_Number
   reserved7?: number
@@ -14403,7 +14403,7 @@ export interface PGN_127750Interface extends PGNInterface {
  * @category PGN_127750
  */
 export interface PGN_127750Fields {
-  sid?: N2K_Binary
+  sid?: N2K_Number
   connectionNumber?: N2K_Number
   operatingState?: enums.ConverterState | number
   temperatureState?: enums.GoodWarningError | number
@@ -14450,7 +14450,7 @@ export interface PGN_127751Interface extends PGNInterface {
  * @category PGN_127751
  */
 export interface PGN_127751Fields {
-  sid?: N2K_Binary
+  sid?: N2K_Number
   connectionNumber?: N2K_Number
   dcVoltage?: N2K_Number
   dcCurrent?: N2K_Number

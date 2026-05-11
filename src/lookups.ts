@@ -18,6 +18,17 @@
 import canboat from '../canboat-lookups.json'
 import { Enumeration, BitEnumeration, FieldTypeEnumeration } from './definition'
 
+let enumByName: Map<string, Enumeration> | undefined
+let bitEnumByName: Map<string, BitEnumeration> | undefined
+let fieldTypeEnumByName: Map<string, FieldTypeEnumeration> | undefined
+
+const invalidateEnumCache = () => {
+  enumByName = undefined
+}
+const invalidateBitEnumCache = () => {
+  bitEnumByName = undefined
+}
+
 /**
  * Retrieves the list of available enumerations from the Canboat library.
  *
@@ -36,7 +47,13 @@ export const getEnumerations = (): Enumeration[] => {
  * @category PGN Definition Access
  */
 export const getEnumeration = (enumName: string): Enumeration | undefined => {
-  return getEnumerations().find((e) => e.Name === enumName)
+  if (enumByName === undefined) {
+    enumByName = new Map()
+    for (const e of getEnumerations()) {
+      enumByName.set(e.Name, e)
+    }
+  }
+  return enumByName.get(enumName)
 }
 
 /**
@@ -111,7 +128,13 @@ export const getBitEnumerations = (): BitEnumeration[] => {
 export const getBitEnumeration = (
   enumName: string
 ): BitEnumeration | undefined => {
-  return getBitEnumerations().find((e) => e.Name === enumName)
+  if (bitEnumByName === undefined) {
+    bitEnumByName = new Map()
+    for (const e of getBitEnumerations()) {
+      bitEnumByName.set(e.Name, e)
+    }
+  }
+  return bitEnumByName.get(enumName)
 }
 
 /**
@@ -169,6 +192,7 @@ export const updateLookup = (enumeration: Enumeration) => {
     }
   }
   canboat.LookupEnumerations.push(enumeration as any)
+  invalidateEnumCache()
 }
 
 /**
@@ -180,6 +204,7 @@ export const removeLookup = (enumeration: Enumeration) => {
   )
   if (index !== -1) {
     canboat.LookupEnumerations.splice(index, 1)
+    invalidateEnumCache()
   }
 }
 
@@ -194,6 +219,7 @@ export const updateBitLookup = (enumeration: BitEnumeration) => {
     }
   }
   canboat.LookupBitEnumerations.push(enumeration as any)
+  invalidateBitEnumCache()
 }
 
 /**
@@ -205,6 +231,7 @@ export const removeBitLookup = (enumeration: BitEnumeration) => {
   )
   if (index !== -1) {
     canboat.LookupBitEnumerations.splice(index, 1)
+    invalidateBitEnumCache()
   }
 }
 
@@ -228,7 +255,13 @@ export const getFieldTypeEnumerations = (): FieldTypeEnumeration[] => {
 export const getFieldTypeEnumeration = (
   enumName: string
 ): FieldTypeEnumeration | undefined => {
-  return getFieldTypeEnumerations().find((e) => e.Name === enumName)
+  if (fieldTypeEnumByName === undefined) {
+    fieldTypeEnumByName = new Map()
+    for (const e of getFieldTypeEnumerations()) {
+      fieldTypeEnumByName.set(e.Name, e)
+    }
+  }
+  return fieldTypeEnumByName.get(enumName)
 }
 
 /**

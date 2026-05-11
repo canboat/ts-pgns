@@ -3036,68 +3036,169 @@ pgnIdToCreator['maretronNumberOfChannels'] = (fields:any, dst:number) => new PGN
 
 
 /**
- * PGN: 65283
+ * PGN: 65282
  *
- * Description: BEP Marine: Proprietary PGN 65283
+ * Description: BEP Marine: CZone Alarm Event
+ *
+ * Explanation: CZone alarm-event PGN. A CZone module emits this single-frame PGN to assert or clear an alarm condition on the bus; the plotter's alarm engine routes it through a 3-sample debounce before raising or clearing the alarm in the UI. Modules originate this PGN themselves (the host CZone library is unpack-only). The byte at offset 2 is read by the unpacker but ignored by the alarm classifier; its per-source semantics are not yet observed in real captures (likely a sub-type / channel index, an alarm-state polarity flag, or a frame counter).
  *
  * Match: Manufacturer Code == BEP Marine 2<br>
  * Match: Industry Code == Marine Industry<br>
  *
- * @category PGN_65283_BepMarineProprietaryPgn65283
+ * @category PGN_65282_BepMarineCzoneAlarmEvent
  */
-export interface PGN_65283_BepMarineProprietaryPgn65283Interface extends PGNInterface {
-  fields: PGN_65283_BepMarineProprietaryPgn65283Fields
+export interface PGN_65282_BepMarineCzoneAlarmEventInterface extends PGNInterface {
+  fields: PGN_65282_BepMarineCzoneAlarmEventFields
 }
 
 /**
- * @category PGN_65283_BepMarineProprietaryPgn65283
+ * @category PGN_65282_BepMarineCzoneAlarmEvent
  */
-export interface PGN_65283_BepMarineProprietaryPgn65283Fields {
+export interface PGN_65282_BepMarineCzoneAlarmEventFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  reserved4?: number
+  dipswitch?: N2K_Number
+  reserved6?: number
 }
 
 /**
- * @category PGN_65283_BepMarineProprietaryPgn65283
+ * @category PGN_65282_BepMarineCzoneAlarmEvent
  */
-export const PGN_65283_BepMarineProprietaryPgn65283MatchFields = {
+export const PGN_65282_BepMarineCzoneAlarmEventMatchFields = {
   manufacturerCode: enums.ManufacturerCode.BepMarine2,
   industryCode: enums.IndustryCode.MarineIndustry,
 }
 
 /**
- * @category PGN_65283_BepMarineProprietaryPgn65283
+ * @category PGN_65282_BepMarineCzoneAlarmEvent
  */
-export interface PGN_65283_BepMarineProprietaryPgn65283CreateArgs {
+export interface PGN_65282_BepMarineCzoneAlarmEventCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  reserved4?: number
+  dipswitch?: N2K_Number
+  reserved6?: number
 }
 
 /**
- * @category PGN_65283_BepMarineProprietaryPgn65283
+ * @category PGN_65282_BepMarineCzoneAlarmEvent
  */
-export class PGN_65283_BepMarineProprietaryPgn65283 extends PGN implements PGN_65283_BepMarineProprietaryPgn65283Interface {
-  fields: PGN_65283_BepMarineProprietaryPgn65283Fields
+export class PGN_65282_BepMarineCzoneAlarmEvent extends PGN implements PGN_65282_BepMarineCzoneAlarmEventInterface {
+  fields: PGN_65282_BepMarineCzoneAlarmEventFields
 
-  constructor(fields: PGN_65283_BepMarineProprietaryPgn65283CreateArgs, dst: number = 255) {
+  constructor(fields: PGN_65282_BepMarineCzoneAlarmEventCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65282,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65282_BepMarineCzoneAlarmEventMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65282_BepMarineCzoneAlarmEventMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('bepMarineCzoneAlarmEvent')!
+  }
+}
+pgnIdToCreator['bepMarineCzoneAlarmEvent'] = (fields:any, dst:number) => new PGN_65282_BepMarineCzoneAlarmEvent(fields, dst)
+
+
+/**
+ * PGN: 65283
+ *
+ * Description: BEP Marine: CZone Channel State
+ *
+ * Explanation: Per-channel state report for one CZone module's six output channels. Each channel has a 2-bit Mode and a 4-bit Value; the reporting module emits this periodically or on state change so other devices on the bus can mirror its outputs. The Mode and Value field semantics are inferred from context (likely circuit-type/fault state for Mode and dim-level/state-code for Value) but have not yet been verified against captures with known channel states.
+ *
+ * Match: Manufacturer Code == BEP Marine 2<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65283_BepMarineCzoneChannelState
+ */
+export interface PGN_65283_BepMarineCzoneChannelStateInterface extends PGNInterface {
+  fields: PGN_65283_BepMarineCzoneChannelStateFields
+}
+
+/**
+ * @category PGN_65283_BepMarineCzoneChannelState
+ */
+export interface PGN_65283_BepMarineCzoneChannelStateFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  dipswitch?: N2K_Number
+  channel0Mode?: N2K_Number
+  channel1Mode?: N2K_Number
+  channel2Mode?: N2K_Number
+  channel3Mode?: N2K_Number
+  channel4Mode?: N2K_Number
+  channel5Mode?: N2K_Number
+  channel0Value?: N2K_Number
+  channel1Value?: N2K_Number
+  channel2Value?: N2K_Number
+  channel3Value?: N2K_Number
+  channel4Value?: N2K_Number
+  channel5Value?: N2K_Number
+  flag: N2K_Number
+  reserved18?: number
+}
+
+/**
+ * @category PGN_65283_BepMarineCzoneChannelState
+ */
+export const PGN_65283_BepMarineCzoneChannelStateMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.BepMarine2,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65283_BepMarineCzoneChannelState
+ */
+export interface PGN_65283_BepMarineCzoneChannelStateCreateArgs {
+  reserved?: number
+  dipswitch?: N2K_Number
+  channel0Mode?: N2K_Number
+  channel1Mode?: N2K_Number
+  channel2Mode?: N2K_Number
+  channel3Mode?: N2K_Number
+  channel4Mode?: N2K_Number
+  channel5Mode?: N2K_Number
+  channel0Value?: N2K_Number
+  channel1Value?: N2K_Number
+  channel2Value?: N2K_Number
+  channel3Value?: N2K_Number
+  channel4Value?: N2K_Number
+  channel5Value?: N2K_Number
+  flag: N2K_Number
+  reserved18?: number
+}
+
+/**
+ * @category PGN_65283_BepMarineCzoneChannelState
+ */
+export class PGN_65283_BepMarineCzoneChannelState extends PGN implements PGN_65283_BepMarineCzoneChannelStateInterface {
+  fields: PGN_65283_BepMarineCzoneChannelStateFields
+
+  constructor(fields: PGN_65283_BepMarineCzoneChannelStateCreateArgs, dst: number = 255) {
     super({
       pgn: 65283,
       prio: 3,
       dst
     })
-    this.fields = { ...PGN_65283_BepMarineProprietaryPgn65283MatchFields, ...fields }
+    this.fields = { ...PGN_65283_BepMarineCzoneChannelStateMatchFields, ...fields }
   }
 
   static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_65283_BepMarineProprietaryPgn65283MatchFields)
+    return isMatch(pgn, PGN_65283_BepMarineCzoneChannelStateMatchFields)
   }
   getDefinition(): Definition {
-    return getPGNWithId('bepMarineProprietaryPgn65283')!
+    return getPGNWithId('bepMarineCzoneChannelState')!
   }
 }
-pgnIdToCreator['bepMarineProprietaryPgn65283'] = (fields:any, dst:number) => new PGN_65283_BepMarineProprietaryPgn65283(fields, dst)
+pgnIdToCreator['bepMarineCzoneChannelState'] = (fields:any, dst:number) => new PGN_65283_BepMarineCzoneChannelState(fields, dst)
 
 
 /**
@@ -6638,6 +6739,79 @@ pgnIdToCreator['bepMarineProprietaryPgn65314'] = (fields:any, dst:number) => new
 
 
 /**
+ * PGN: 65314
+ *
+ * Description: Yamaha: Gear Status
+ *
+ * Match: Manufacturer Code == Mystic Valley Communications<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65314_YamahaGearStatus
+ */
+export interface PGN_65314_YamahaGearStatusInterface extends PGNInterface {
+  fields: PGN_65314_YamahaGearStatusFields
+}
+
+/**
+ * @category PGN_65314_YamahaGearStatus
+ */
+export interface PGN_65314_YamahaGearStatusFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  reserved4?: number
+  reserved5?: number
+  neutral: enums.YesNo | number
+  reserved7?: number
+  reserved8?: number
+}
+
+/**
+ * @category PGN_65314_YamahaGearStatus
+ */
+export const PGN_65314_YamahaGearStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.MysticValleyCommunications,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65314_YamahaGearStatus
+ */
+export interface PGN_65314_YamahaGearStatusCreateArgs {
+  reserved?: number
+  reserved4?: number
+  reserved5?: number
+  neutral: enums.YesNo | number
+  reserved7?: number
+  reserved8?: number
+}
+
+/**
+ * @category PGN_65314_YamahaGearStatus
+ */
+export class PGN_65314_YamahaGearStatus extends PGN implements PGN_65314_YamahaGearStatusInterface {
+  fields: PGN_65314_YamahaGearStatusFields
+
+  constructor(fields: PGN_65314_YamahaGearStatusCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65314,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65314_YamahaGearStatusMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65314_YamahaGearStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('yamahaGearStatus')!
+  }
+}
+pgnIdToCreator['yamahaGearStatus'] = (fields:any, dst:number) => new PGN_65314_YamahaGearStatus(fields, dst)
+
+
+/**
  * PGN: 65315
  *
  * Description: Suzuki: Troll Mode Control
@@ -9391,6 +9565,314 @@ export class PGN_126464 extends PGN implements PGN_126464Interface {
   }
 }
 pgnIdToCreator['pgnListTransmitAndReceive'] = (fields:any, dst:number) => new PGN_126464(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Garmin AHRS ATT: COG Source Valid Flag
+ *
+ * Match: Manufacturer Code == Garmin<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Sub-protocol ID == Garmin ATT transport<br>
+ * Match: Wrapper Byte 1 == 1<br>
+ * Match: Wrapper Byte 2 == 2<br>
+ * Match: ATT Message ID == ID<br>
+ *
+ * @category PGN_126720_GarminAhrsAttCogSourceValidFlag
+ */
+export interface PGN_126720_GarminAhrsAttCogSourceValidFlagInterface extends PGNInterface {
+  fields: PGN_126720_GarminAhrsAttCogSourceValidFlagFields
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttCogSourceValidFlag
+ */
+export interface PGN_126720_GarminAhrsAttCogSourceValidFlagFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  subProtocolId: N2K_Number | string
+  wrapperByte1?: N2K_Number | string
+  wrapperByte2?: N2K_Number | string
+  attMessageId: N2K_Number | string
+  cogSourceFlags?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttCogSourceValidFlag
+ */
+export const PGN_126720_GarminAhrsAttCogSourceValidFlagMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  subProtocolId: "Garmin ATT transport",
+  wrapperByte1: 2,
+  wrapperByte2: 2,
+  attMessageId: "ID",
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttCogSourceValidFlag
+ */
+export interface PGN_126720_GarminAhrsAttCogSourceValidFlagCreateArgs {
+  reserved?: number
+  cogSourceFlags?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttCogSourceValidFlag
+ */
+export class PGN_126720_GarminAhrsAttCogSourceValidFlag extends PGN implements PGN_126720_GarminAhrsAttCogSourceValidFlagInterface {
+  fields: PGN_126720_GarminAhrsAttCogSourceValidFlagFields
+
+  constructor(fields: PGN_126720_GarminAhrsAttCogSourceValidFlagCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_GarminAhrsAttCogSourceValidFlagMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminAhrsAttCogSourceValidFlagMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('garminAhrsAttCogSourceValidFlag')!
+  }
+}
+pgnIdToCreator['garminAhrsAttCogSourceValidFlag'] = (fields:any, dst:number) => new PGN_126720_GarminAhrsAttCogSourceValidFlag(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Garmin AHRS ATT: Device Flags
+ *
+ * Match: Manufacturer Code == Garmin<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Sub-protocol ID == Garmin ATT transport<br>
+ * Match: Wrapper Byte 1 == 1<br>
+ * Match: Wrapper Byte 2 == 2<br>
+ * Match: ATT Message ID == ID<br>
+ *
+ * @category PGN_126720_GarminAhrsAttDeviceFlags
+ */
+export interface PGN_126720_GarminAhrsAttDeviceFlagsInterface extends PGNInterface {
+  fields: PGN_126720_GarminAhrsAttDeviceFlagsFields
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttDeviceFlags
+ */
+export interface PGN_126720_GarminAhrsAttDeviceFlagsFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  subProtocolId: N2K_Number | string
+  wrapperByte1?: N2K_Number | string
+  wrapperByte2?: N2K_Number | string
+  attMessageId: N2K_Number | string
+  deviceFlags?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttDeviceFlags
+ */
+export const PGN_126720_GarminAhrsAttDeviceFlagsMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  subProtocolId: "Garmin ATT transport",
+  wrapperByte1: 2,
+  wrapperByte2: 2,
+  attMessageId: "ID",
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttDeviceFlags
+ */
+export interface PGN_126720_GarminAhrsAttDeviceFlagsCreateArgs {
+  reserved?: number
+  deviceFlags?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttDeviceFlags
+ */
+export class PGN_126720_GarminAhrsAttDeviceFlags extends PGN implements PGN_126720_GarminAhrsAttDeviceFlagsInterface {
+  fields: PGN_126720_GarminAhrsAttDeviceFlagsFields
+
+  constructor(fields: PGN_126720_GarminAhrsAttDeviceFlagsCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_GarminAhrsAttDeviceFlagsMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminAhrsAttDeviceFlagsMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('garminAhrsAttDeviceFlags')!
+  }
+}
+pgnIdToCreator['garminAhrsAttDeviceFlags'] = (fields:any, dst:number) => new PGN_126720_GarminAhrsAttDeviceFlags(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Garmin AHRS ATT: Non-default Calibration Matrix Present
+ *
+ * Match: Manufacturer Code == Garmin<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Sub-protocol ID == Garmin ATT transport<br>
+ * Match: Wrapper Byte 1 == 1<br>
+ * Match: Wrapper Byte 2 == 2<br>
+ * Match: ATT Message ID == ID<br>
+ *
+ * @category PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresent
+ */
+export interface PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentInterface extends PGNInterface {
+  fields: PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentFields
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresent
+ */
+export interface PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  subProtocolId: N2K_Number | string
+  wrapperByte1?: N2K_Number | string
+  wrapperByte2?: N2K_Number | string
+  attMessageId: N2K_Number | string
+  calibrationMatrixPresent?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresent
+ */
+export const PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  subProtocolId: "Garmin ATT transport",
+  wrapperByte1: 2,
+  wrapperByte2: 2,
+  attMessageId: "ID",
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresent
+ */
+export interface PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentCreateArgs {
+  reserved?: number
+  calibrationMatrixPresent?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresent
+ */
+export class PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresent extends PGN implements PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentInterface {
+  fields: PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentFields
+
+  constructor(fields: PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('garminAhrsAttNonDefaultCalibrationMatrixPresent')!
+  }
+}
+pgnIdToCreator['garminAhrsAttNonDefaultCalibrationMatrixPresent'] = (fields:any, dst:number) => new PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresent(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Garmin AHRS ATT: Set North State
+ *
+ * Match: Manufacturer Code == Garmin<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Sub-protocol ID == Garmin ATT transport<br>
+ * Match: Wrapper Byte 1 == 1<br>
+ * Match: Wrapper Byte 2 == 2<br>
+ * Match: ATT Message ID == ID<br>
+ *
+ * @category PGN_126720_GarminAhrsAttSetNorthState
+ */
+export interface PGN_126720_GarminAhrsAttSetNorthStateInterface extends PGNInterface {
+  fields: PGN_126720_GarminAhrsAttSetNorthStateFields
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttSetNorthState
+ */
+export interface PGN_126720_GarminAhrsAttSetNorthStateFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  subProtocolId: N2K_Number | string
+  wrapperByte1?: N2K_Number | string
+  wrapperByte2?: N2K_Number | string
+  attMessageId: N2K_Number | string
+  setNorthState?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttSetNorthState
+ */
+export const PGN_126720_GarminAhrsAttSetNorthStateMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  subProtocolId: "Garmin ATT transport",
+  wrapperByte1: 2,
+  wrapperByte2: 2,
+  attMessageId: "ID",
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttSetNorthState
+ */
+export interface PGN_126720_GarminAhrsAttSetNorthStateCreateArgs {
+  reserved?: number
+  setNorthState?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttSetNorthState
+ */
+export class PGN_126720_GarminAhrsAttSetNorthState extends PGN implements PGN_126720_GarminAhrsAttSetNorthStateInterface {
+  fields: PGN_126720_GarminAhrsAttSetNorthStateFields
+
+  constructor(fields: PGN_126720_GarminAhrsAttSetNorthStateCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_GarminAhrsAttSetNorthStateMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminAhrsAttSetNorthStateMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('garminAhrsAttSetNorthState')!
+  }
+}
+pgnIdToCreator['garminAhrsAttSetNorthState'] = (fields:any, dst:number) => new PGN_126720_GarminAhrsAttSetNorthState(fields, dst)
 
 
 /**

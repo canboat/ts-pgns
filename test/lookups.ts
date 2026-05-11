@@ -13,18 +13,27 @@ describe('updateBitLookup', () => {
   it('updates an existing bit enumeration in place', () => {
     const before = getBitEnumeration('ENGINE_STATUS_1')
     expect(before).to.exist
-    const originalLength = before!.EnumBitValues.length
+    const originalMaxValue = before!.MaxValue
+    const originalValues = before!.EnumBitValues
 
-    updateBitLookup({
-      Name: 'ENGINE_STATUS_1',
-      MaxValue: 0xffff,
-      EnumBitValues: before!.EnumBitValues
-    } as BitEnumeration)
+    try {
+      updateBitLookup({
+        Name: 'ENGINE_STATUS_1',
+        MaxValue: 0xffff,
+        EnumBitValues: originalValues
+      } as BitEnumeration)
 
-    const after = getBitEnumeration('ENGINE_STATUS_1')
-    expect(after).to.exist
-    expect(after!.MaxValue).to.equal(0xffff)
-    expect(after!.EnumBitValues).to.have.length(originalLength)
+      const after = getBitEnumeration('ENGINE_STATUS_1')
+      expect(after).to.exist
+      expect(after!.MaxValue).to.equal(0xffff)
+      expect(after!.EnumBitValues).to.have.length(originalValues.length)
+    } finally {
+      updateBitLookup({
+        Name: 'ENGINE_STATUS_1',
+        MaxValue: originalMaxValue,
+        EnumBitValues: originalValues
+      } as BitEnumeration)
+    }
   })
 
   it('adds a new bit enumeration into the bit-enum list (not the regular enum list)', () => {

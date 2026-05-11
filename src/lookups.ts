@@ -193,7 +193,7 @@ export const updateBitLookup = (enumeration: BitEnumeration) => {
       return
     }
   }
-  canboat.LookupEnumerations.push(enumeration as any)
+  canboat.LookupBitEnumerations.push(enumeration as any)
 }
 
 /**

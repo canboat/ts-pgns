@@ -31492,10 +31492,8 @@ export interface PGN_130850_SimnetCommandApStandbyFields {
   proprietaryId: enums.SimnetEventCommand | number
   commandType?: enums.SimnetApCommandType | number
   event?: enums.SimnetApEvents | number
-  unknown?: N2K_Number
+  spare9?: number
   reserved10?: number
-  reserved11?: number
-  reserved12?: number
 }
 
 /**
@@ -31516,10 +31514,8 @@ export interface PGN_130850_SimnetCommandApStandbyCreateArgs {
   reserved?: number
   address?: N2K_Number
   reserved5?: number
-  unknown?: N2K_Number
+  spare9?: number
   reserved10?: number
-  reserved11?: number
-  reserved12?: number
 }
 
 /**
@@ -31576,10 +31572,8 @@ export interface PGN_130850_SimnetCommandApNodriftFields {
   proprietaryId: enums.SimnetEventCommand | number
   commandType?: enums.SimnetApCommandType | number
   event?: enums.SimnetApEvents | number
-  unknown?: N2K_Number
+  spare9?: number
   reserved10?: number
-  reserved11?: number
-  reserved12?: number
 }
 
 /**
@@ -31600,10 +31594,8 @@ export interface PGN_130850_SimnetCommandApNodriftCreateArgs {
   reserved?: number
   address?: N2K_Number
   reserved5?: number
-  unknown?: N2K_Number
+  spare9?: number
   reserved10?: number
-  reserved11?: number
-  reserved12?: number
 }
 
 /**
@@ -31660,10 +31652,8 @@ export interface PGN_130850_SimnetCommandApWindFields {
   proprietaryId: enums.SimnetEventCommand | number
   commandType?: enums.SimnetApCommandType | number
   event?: enums.SimnetApEvents | number
-  unknown?: N2K_Number
+  spare9?: number
   reserved10?: number
-  reserved11?: number
-  reserved12?: number
 }
 
 /**
@@ -31684,10 +31674,8 @@ export interface PGN_130850_SimnetCommandApWindCreateArgs {
   reserved?: number
   address?: N2K_Number
   reserved5?: number
-  unknown?: N2K_Number
+  spare9?: number
   reserved10?: number
-  reserved11?: number
-  reserved12?: number
 }
 
 /**
@@ -31744,10 +31732,8 @@ export interface PGN_130850_SimnetCommandApNavFields {
   proprietaryId: enums.SimnetEventCommand | number
   commandType?: enums.SimnetApCommandType | number
   event?: enums.SimnetApEvents | number
-  unknown?: N2K_Number
+  spare9?: number
   reserved10?: number
-  reserved11?: number
-  reserved12?: number
 }
 
 /**
@@ -31768,10 +31754,8 @@ export interface PGN_130850_SimnetCommandApNavCreateArgs {
   reserved?: number
   address?: N2K_Number
   reserved5?: number
-  unknown?: N2K_Number
+  spare9?: number
   reserved10?: number
-  reserved11?: number
-  reserved12?: number
 }
 
 /**
@@ -31828,10 +31812,8 @@ export interface PGN_130850_SimnetCommandApHeadingFields {
   proprietaryId: enums.SimnetEventCommand | number
   commandType?: enums.SimnetApCommandType | number
   event?: enums.SimnetApEvents | number
-  unknown?: N2K_Number
+  spare9?: number
   reserved10?: number
-  reserved11?: number
-  reserved12?: number
 }
 
 /**
@@ -31852,10 +31834,8 @@ export interface PGN_130850_SimnetCommandApHeadingCreateArgs {
   reserved?: number
   address?: N2K_Number
   reserved5?: number
-  unknown?: N2K_Number
+  spare9?: number
   reserved10?: number
-  reserved11?: number
-  reserved12?: number
 }
 
 /**
@@ -31915,8 +31895,6 @@ export interface PGN_130850_SimnetCommandApTackFields {
   unknownA?: N2K_Number
   unknownB?: N2K_Number
   reserved11?: number
-  reserved12?: number
-  reserved13?: number
 }
 
 /**
@@ -31940,8 +31918,6 @@ export interface PGN_130850_SimnetCommandApTackCreateArgs {
   unknownA?: N2K_Number
   unknownB?: N2K_Number
   reserved11?: number
-  reserved12?: number
-  reserved13?: number
 }
 
 /**
@@ -31998,11 +31974,8 @@ export interface PGN_130850_SimnetCommandApFollowUpFields {
   proprietaryId: enums.SimnetEventCommand | number
   commandType?: enums.SimnetApCommandType | number
   event?: enums.SimnetApEvents | number
-  unknown?: N2K_Number
+  spare9?: number
   reserved10?: number
-  reserved11?: number
-  reserved12?: number
-  reserved13?: number
 }
 
 /**
@@ -32023,11 +31996,8 @@ export interface PGN_130850_SimnetCommandApFollowUpCreateArgs {
   reserved?: number
   address?: N2K_Number
   reserved5?: number
-  unknown?: N2K_Number
+  spare9?: number
   reserved10?: number
-  reserved11?: number
-  reserved12?: number
-  reserved13?: number
 }
 
 /**
@@ -32063,6 +32033,7 @@ pgnIdToCreator['simnetCommandApFollowUp'] = (fields:any, dst:number) => new PGN_
  * Match: Manufacturer Code == Simrad<br>
  * Match: Industry Code == Marine Industry<br>
  * Match: Proprietary ID == Autopilot<br>
+ * Match: Command Type == AP Command<br>
  * Match: Event == Change course<br>
  *
  * @category PGN_130850_SimnetCommandApChangeCourse
@@ -32083,7 +32054,7 @@ export interface PGN_130850_SimnetCommandApChangeCourseFields {
   proprietaryId: enums.SimnetEventCommand | number
   commandType?: enums.SimnetApCommandType | number
   event?: enums.SimnetApEvents | number
-  unknown?: N2K_Number
+  spare9?: number
   direction?: enums.SimnetDirection | number
   angle?: N2K_Number
   reserved12?: number
@@ -32096,6 +32067,7 @@ export const PGN_130850_SimnetCommandApChangeCourseMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
   proprietaryId: enums.SimnetEventCommand.Autopilot,
+  commandType: enums.SimnetApCommandType.ApCommand,
   event: enums.SimnetApEvents.ChangeCourse,
 }
 
@@ -32106,8 +32078,7 @@ export interface PGN_130850_SimnetCommandApChangeCourseCreateArgs {
   reserved?: number
   address?: N2K_Number
   reserved5?: number
-  commandType?: enums.SimnetApCommandType | number
-  unknown?: N2K_Number
+  spare9?: number
   direction?: enums.SimnetDirection | number
   angle?: N2K_Number
   reserved12?: number
@@ -32249,7 +32220,7 @@ export interface PGN_130850_SimnetApCommandFields {
   proprietaryId: enums.SimnetEventCommand | number
   commandType?: enums.SimnetApCommandType | number
   event?: enums.SimnetApEvents | number
-  reserved9?: number
+  spare9?: number
   reserved10?: number
   reserved11?: number
   reserved12?: number
@@ -32276,7 +32247,7 @@ export interface PGN_130850_SimnetApCommandCreateArgs {
   reserved5?: number
   commandType?: enums.SimnetApCommandType | number
   event?: enums.SimnetApEvents | number
-  reserved9?: number
+  spare9?: number
   reserved10?: number
   reserved11?: number
   reserved12?: number

@@ -644,6 +644,137 @@ export const ManufacturerCodeValues: {[key: string]: number} = {
 /**
  * @category Enumerations
  */
+export enum CzoneAlarmType {
+  AcVoltageError = 'AC Voltage Error',
+  AcFrequencyError = 'AC Frequency Error',
+  AcHighPower = 'AC High Power',
+  DcLowVoltage = 'DC Low Voltage',
+  DcVeryLowVoltage = 'DC Very Low Voltage',
+  DcHighVoltage = 'DC High Voltage',
+  DcLowBatteryCapacity = 'DC Low Battery Capacity',
+  OutOfRange = 'Out of Range',
+  LowRunCurrent = 'Low Run Current',
+  OverCurrent = 'Over Current',
+  ShortCircuit = 'Short Circuit',
+  MissingCommander = 'Missing Commander',
+  ReverseCurrent = 'Reverse Current',
+  CalibrationError = 'Calibration Error',
+  MissingOutput = 'Missing Output',
+  SystemsOn = 'Systems On',
+  AcVeryHighPower = 'AC Very High Power',
+  AcLowPower = 'AC Low Power',
+  DcVeryLowBatteryCapacity = 'DC Very Low Battery Capacity',
+  BatteryFull = 'Battery Full',
+  DcLoadShedLow = 'DC Load Shed Low',
+  DcLoadShedVeryLow = 'DC Load Shed Very Low',
+  AcLoadShedLow = 'AC Load Shed Low',
+  AcLoadShedVeryLow = 'AC Load Shed Very Low',
+  ReversePolarity = 'Reverse Polarity',
+  ManualOverride = 'Manual Override',
+  Mastervolt = 'Mastervolt',
+  HardwareFault = 'Hardware Fault',
+  NoAcSupply = 'No AC Supply',
+  PgnSwitchingOn = 'PGN Switching On',
+  LowCanbusVoltage = 'Low Canbus Voltage',
+  BlownFuse = 'Blown Fuse',
+  ManualBypass = 'Manual Bypass',
+  GenericAlarm = 'Generic Alarm',
+  BatteryTemperatureAlarm = 'Battery Temperature Alarm',
+  TemperatureSensorError = 'Temperature Sensor Error',
+  AcInOutOfRange = 'AC IN Out Of Range',
+  DeviceInOverload = 'Device In Overload',
+  HighTemperature = 'High Temperature',
+  InverterchargerInstallationError = 'Inverter/Charger Installation Error',
+  InverterInstallationError = 'Inverter Installation Error',
+  ChargerInstallationError = 'Charger Installation Error',
+  CableVoltageDropTooHigh = 'Cable Voltage Drop Too High',
+  ShuntMistmatch = 'Shunt mistmatch',
+  CoolingFanError = 'Cooling Fan Error',
+  MastershuntFuseBlown = 'Mastershunt Fuse Blown',
+  OverPressure = 'Over Pressure',
+  LowPressure = 'Low Pressure',
+  RapidDeflation = 'Rapid Deflation',
+  InverterchargerOverTemperature = 'Inverter/Charger Over Temperature',
+  ConfirmOn = 'Confirm On',
+  BatterySafety = 'Battery Safety',
+  StopCharging = 'Stop Charging',
+  CheckBatteryRelay = 'Check Battery Relay',
+  BatteryHardwareFailure = 'Battery Hardware Failure',
+  BatteryOverCurrent = 'Battery Over Current',
+  BatteryTemperatureLow = 'Battery Temperature Low',
+  BatteryTemperatureHigh = 'Battery Temperature High',
+  BatteryLast100 = 'Battery Last 100',
+}
+
+/**
+ * @category Enumerations
+ */
+export const CzoneAlarmTypeValues: {[key: string]: number} = {
+  [CzoneAlarmType.AcVoltageError]: 0x1,
+  [CzoneAlarmType.AcFrequencyError]: 0x2,
+  [CzoneAlarmType.AcHighPower]: 0x3,
+  [CzoneAlarmType.DcLowVoltage]: 0x4,
+  [CzoneAlarmType.DcVeryLowVoltage]: 0x5,
+  [CzoneAlarmType.DcHighVoltage]: 0x6,
+  [CzoneAlarmType.DcLowBatteryCapacity]: 0x7,
+  [CzoneAlarmType.OutOfRange]: 0xa,
+  [CzoneAlarmType.LowRunCurrent]: 0xb,
+  [CzoneAlarmType.OverCurrent]: 0xc,
+  [CzoneAlarmType.ShortCircuit]: 0xd,
+  [CzoneAlarmType.MissingCommander]: 0xe,
+  [CzoneAlarmType.ReverseCurrent]: 0xf,
+  [CzoneAlarmType.CalibrationError]: 0x10,
+  [CzoneAlarmType.MissingOutput]: 0x11,
+  [CzoneAlarmType.SystemsOn]: 0x12,
+  [CzoneAlarmType.AcVeryHighPower]: 0x13,
+  [CzoneAlarmType.AcLowPower]: 0x14,
+  [CzoneAlarmType.DcVeryLowBatteryCapacity]: 0x15,
+  [CzoneAlarmType.BatteryFull]: 0x16,
+  [CzoneAlarmType.DcLoadShedLow]: 0x17,
+  [CzoneAlarmType.DcLoadShedVeryLow]: 0x18,
+  [CzoneAlarmType.AcLoadShedLow]: 0x19,
+  [CzoneAlarmType.AcLoadShedVeryLow]: 0x1a,
+  [CzoneAlarmType.ReversePolarity]: 0x1b,
+  [CzoneAlarmType.ManualOverride]: 0x1c,
+  [CzoneAlarmType.Mastervolt]: 0x1d,
+  [CzoneAlarmType.HardwareFault]: 0x1e,
+  [CzoneAlarmType.NoAcSupply]: 0x1f,
+  [CzoneAlarmType.PgnSwitchingOn]: 0x22,
+  [CzoneAlarmType.LowCanbusVoltage]: 0x23,
+  [CzoneAlarmType.BlownFuse]: 0x24,
+  [CzoneAlarmType.ManualBypass]: 0x25,
+  [CzoneAlarmType.GenericAlarm]: 0x26,
+  [CzoneAlarmType.BatteryTemperatureAlarm]: 0x27,
+  [CzoneAlarmType.TemperatureSensorError]: 0x28,
+  [CzoneAlarmType.AcInOutOfRange]: 0x29,
+  [CzoneAlarmType.DeviceInOverload]: 0x2a,
+  [CzoneAlarmType.HighTemperature]: 0x2b,
+  [CzoneAlarmType.InverterchargerInstallationError]: 0x2c,
+  [CzoneAlarmType.InverterInstallationError]: 0x2d,
+  [CzoneAlarmType.ChargerInstallationError]: 0x2e,
+  [CzoneAlarmType.CableVoltageDropTooHigh]: 0x2f,
+  [CzoneAlarmType.ShuntMistmatch]: 0x30,
+  [CzoneAlarmType.CoolingFanError]: 0x31,
+  [CzoneAlarmType.MastershuntFuseBlown]: 0x32,
+  HighTemperature2: 0x33,
+  [CzoneAlarmType.OverPressure]: 0x34,
+  [CzoneAlarmType.LowPressure]: 0x35,
+  [CzoneAlarmType.RapidDeflation]: 0x36,
+  [CzoneAlarmType.InverterchargerOverTemperature]: 0x37,
+  [CzoneAlarmType.ConfirmOn]: 0x38,
+  [CzoneAlarmType.BatterySafety]: 0x39,
+  [CzoneAlarmType.StopCharging]: 0x3a,
+  [CzoneAlarmType.CheckBatteryRelay]: 0x3b,
+  [CzoneAlarmType.BatteryHardwareFailure]: 0x3c,
+  [CzoneAlarmType.BatteryOverCurrent]: 0x3d,
+  [CzoneAlarmType.BatteryTemperatureLow]: 0x3e,
+  [CzoneAlarmType.BatteryTemperatureHigh]: 0x3f,
+  [CzoneAlarmType.BatteryLast100]: 0x40,
+}
+
+/**
+ * @category Enumerations
+ */
 export enum AisMessageId {
   ScheduledClassAPositionReport = 'Scheduled Class A position report',
   AssignedScheduledClassAPositionReport = 'Assigned scheduled Class A position report',
@@ -4417,6 +4548,72 @@ export const SimnetApStatusValues: {[key: string]: number} = {
 /**
  * @category Enumerations
  */
+export enum SimnetAutopilotModeClass {
+  Standby = 'Standby',
+  Engaged = 'Engaged',
+}
+
+/**
+ * @category Enumerations
+ */
+export const SimnetAutopilotModeClassValues: {[key: string]: number} = {
+  [SimnetAutopilotModeClass.Standby]: 0x0,
+  [SimnetAutopilotModeClass.Engaged]: 0x10,
+}
+
+/**
+ * @category Enumerations
+ */
+export enum SimnetAutopilotMode {
+  Standby = 'Standby',
+  Heading = 'Heading',
+  Mode4 = 'Mode 4',
+  Wind = 'Wind',
+  NonFollowUp = 'Non-Follow-Up',
+  Navigation = 'Navigation',
+}
+
+/**
+ * @category Enumerations
+ */
+export const SimnetAutopilotModeValues: {[key: string]: number} = {
+  [SimnetAutopilotMode.Standby]: 0x0,
+  [SimnetAutopilotMode.Heading]: 0x1,
+  [SimnetAutopilotMode.Mode4]: 0x3,
+  [SimnetAutopilotMode.Wind]: 0x4,
+  [SimnetAutopilotMode.NonFollowUp]: 0x5,
+  [SimnetAutopilotMode.Navigation]: 0x6,
+}
+
+/**
+ * @category Enumerations
+ */
+export enum SimnetDataSource {
+  RudderFeedback = 'Rudder Feedback',
+  Position = 'Position',
+  Heading = 'Heading',
+  Depth = 'Depth',
+  BoatSpeed = 'Boat Speed',
+  ApparentWind = 'Apparent Wind',
+  BarometricPressure = 'Barometric Pressure',
+}
+
+/**
+ * @category Enumerations
+ */
+export const SimnetDataSourceValues: {[key: string]: number} = {
+  [SimnetDataSource.RudderFeedback]: 0x11,
+  [SimnetDataSource.Position]: 0x13,
+  [SimnetDataSource.Heading]: 0x1b,
+  [SimnetDataSource.Depth]: 0x23,
+  [SimnetDataSource.BoatSpeed]: 0x24,
+  [SimnetDataSource.ApparentWind]: 0x2a,
+  [SimnetDataSource.BarometricPressure]: 0x2b,
+}
+
+/**
+ * @category Enumerations
+ */
 export enum SimnetCommand {
   Text = 'Text',
 }
@@ -4976,6 +5173,18 @@ export enum FusionStatusMessageId {
   SiriusXmDiagnostics = 'SiriusXM Diagnostics',
   SiriusXmPresets = 'SiriusXM Presets',
   ZoneName = 'Zone Name',
+  IpSetting = 'IP Setting',
+  Multiroom = 'Multiroom',
+  MultiroomStatus = 'Multiroom Status',
+  SystemCapabilities = 'System Capabilities',
+  PartNumber = 'Part Number',
+  ProcessingBypass = 'Processing Bypass',
+  ServerInfo = 'Server Info',
+  RdsData = 'RDS Data',
+  IgnitionSwitchState = 'Ignition Switch State',
+  Mono = 'Mono',
+  SpeedVolumeCurrentSpeed = 'Speed Volume Current Speed',
+  ZoneCapabilitiesExtended = 'Zone Capabilities Extended',
 }
 
 /**
@@ -5028,6 +5237,18 @@ export const FusionStatusMessageIdValues: {[key: string]: number} = {
   [FusionStatusMessageId.SiriusXmDiagnostics]: 0x802b,
   [FusionStatusMessageId.SiriusXmPresets]: 0x802c,
   [FusionStatusMessageId.ZoneName]: 0x802d,
+  [FusionStatusMessageId.IpSetting]: 0x8033,
+  [FusionStatusMessageId.Multiroom]: 0x8038,
+  [FusionStatusMessageId.MultiroomStatus]: 0x8039,
+  [FusionStatusMessageId.SystemCapabilities]: 0x803d,
+  [FusionStatusMessageId.PartNumber]: 0x803e,
+  [FusionStatusMessageId.ProcessingBypass]: 0x8040,
+  [FusionStatusMessageId.ServerInfo]: 0x804e,
+  [FusionStatusMessageId.RdsData]: 0x8052,
+  [FusionStatusMessageId.IgnitionSwitchState]: 0x805b,
+  [FusionStatusMessageId.Mono]: 0x805e,
+  [FusionStatusMessageId.SpeedVolumeCurrentSpeed]: 0x805f,
+  [FusionStatusMessageId.ZoneCapabilitiesExtended]: 0x8061,
 }
 
 /**
@@ -6717,6 +6938,17 @@ export enum EngineStatus2 {
   SubOrSecondaryThrottle = 'Sub or Secondary Throttle',
   NeutralStartProtect = 'Neutral Start Protect',
   EngineShuttingDown = 'Engine Shutting Down',
+}
+
+/**
+ * @category Enumerations
+ */
+export enum TransmissionStatus1 {
+  CheckTransmission = 'Check Transmission',
+  OverTemperature = 'Over Temperature',
+  LowOilPressure = 'Low Oil Pressure',
+  LowOilLevel = 'Low Oil Level',
+  SailDrive = 'Sail Drive',
 }
 
 /**

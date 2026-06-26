@@ -2,7 +2,7 @@ import { expect, assert } from 'chai'
 import {
   PGN,
   PGN_129029,
-  PGN_61184_VictronBatteryRegister,
+  PGN_61184_VictronVeCanRegister,
   findMatchingDefinition,
   findFallBackPGN,
   mapCamelCaseKeys,
@@ -24,15 +24,15 @@ import { pgnToActisenseSerialFormat } from '@canboat/canboatjs'
 describe('utilities tests', () => {
   setSupportsCamelCaseCacheEnabled(false)
   it(`findMatchingDefinition works`, (done) => {
-    const pgn = new PGN_61184_VictronBatteryRegister({
-      registerId: 1,
-      payload: 100
+    const pgn = new PGN_61184_VictronVeCanRegister({
+      registerId: 'DC Voltage',
+      value: 12.34
     })
 
     try {
       const def = findMatchingDefinition(pgn)
       expect(def).to.exist
-      expect(def.Description).to.equal('Victron Battery Register')
+      expect(def.Description).to.equal('Victron: VE.Can Register')
       done()
     } catch (err) {
       done(err)

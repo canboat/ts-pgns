@@ -2,8 +2,8 @@
 
 import {
   PGN_65305_SimnetDeviceModeRequest,
-  PGN_61184_VictronBatteryRegister,
-  PGN_61184_VictronBatteryRegisterMatchFields,
+  PGN_61184_VictronVeCanRegister,
+  PGN_61184_VictronVeCanRegisterMatchFields,
   SimnetDeviceModel,
   SimnetDeviceReport,
   ManufacturerCode,
@@ -59,30 +59,30 @@ const b = PGN_65305_SimnetDeviceModeRequest.constructor({
   payload: 100
 })
 
-const battery = new PGN_61184_VictronBatteryRegister(
+const battery = new PGN_61184_VictronVeCanRegister(
   {
-    registerId: 1,
-    payload: 100
+    registerId: 'DC Voltage',
+    value: 12.34
   },
   212
 )
 console.log(battery)
-console.log(battery instanceof PGN_61184_VictronBatteryRegister)
+console.log(battery instanceof PGN_61184_VictronVeCanRegister)
 
 console.log((battery as any)['fields'])
 
 /*
-function myfunc(): PGN_61184_VictronBatteryRegister {
+function myfunc(): PGN_61184_VictronVeCanRegister {
   return {
-    ...PGN_61184_VictronBatteryRegisterDefaults,
+    ...PGN_61184_VictronVeCanRegisterDefaults,
     fields: {
-      ...PGN_61184_VictronBatteryRegisterMatchFields,
-      registerId: 1
+      ...PGN_61184_VictronVeCanRegisterMatchFields,
+      registerId: 'DC Voltage'
     }
   }
   }
 
 const m = myfunc()
-console.log(m instanceof PGN_61184_VictronBatteryRegister)
+console.log(m instanceof PGN_61184_VictronVeCanRegister)
 console.log(m.fields.manufacturerCode)
 */

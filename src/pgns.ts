@@ -648,7 +648,7 @@ export interface PGN_60928Fields {
   deviceClass?: enums.DeviceClass | number
   systemInstance?: N2K_Number
   industryGroup?: enums.IndustryCode | number
-  arbitraryAddressCapable: enums.YesNo | number
+  arbitraryAddressCapable: enums.YesNo1Bit | number
 }
 
 /**
@@ -1010,6 +1010,79 @@ export class PGN_61184_CarlingBreakerCommand extends PGN implements PGN_61184_Ca
   }
 }
 pgnIdToCreator['carlingBreakerCommand'] = (fields:any, dst:number) => new PGN_61184_CarlingBreakerCommand(fields, dst)
+
+
+/**
+ * PGN: 61184
+ *
+ * Description: Simnet: Keep Alive
+ *
+ * Explanation: Addressed keep-alive a display sends to a device - for example a wireless masthead wind sensor - to keep it from entering NMEA 2000 sleep while its data is in use. The display renews it periodically and re-sends it when it boots. Usually only the request form is seen (empty Session/Status); the reply carries a status.
+ *
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_61184_SimnetKeepAlive
+ */
+export interface PGN_61184_SimnetKeepAliveInterface extends PGNInterface {
+  fields: PGN_61184_SimnetKeepAliveFields
+}
+
+/**
+ * @category PGN_61184_SimnetKeepAlive
+ */
+export interface PGN_61184_SimnetKeepAliveFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  command?: N2K_Number
+  reserved5?: number
+  reply: N2K_Number
+  value?: N2K_Binary
+}
+
+/**
+ * @category PGN_61184_SimnetKeepAlive
+ */
+export const PGN_61184_SimnetKeepAliveMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_61184_SimnetKeepAlive
+ */
+export interface PGN_61184_SimnetKeepAliveCreateArgs {
+  reserved?: number
+  command?: N2K_Number
+  reserved5?: number
+  reply: N2K_Number
+  value?: N2K_Binary
+}
+
+/**
+ * @category PGN_61184_SimnetKeepAlive
+ */
+export class PGN_61184_SimnetKeepAlive extends PGN implements PGN_61184_SimnetKeepAliveInterface {
+  fields: PGN_61184_SimnetKeepAliveFields
+
+  constructor(fields: PGN_61184_SimnetKeepAliveCreateArgs, dst: number = 255) {
+    super({
+      pgn: 61184,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_61184_SimnetKeepAliveMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_61184_SimnetKeepAliveMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetKeepAlive')!
+  }
+}
+pgnIdToCreator['simnetKeepAlive'] = (fields:any, dst:number) => new PGN_61184_SimnetKeepAlive(fields, dst)
 
 
 /**
@@ -2749,6 +2822,75 @@ export class PGN_65280_MercuryEngineData extends PGN implements PGN_65280_Mercur
   }
 }
 pgnIdToCreator['mercuryEngineData'] = (fields:any, dst:number) => new PGN_65280_MercuryEngineData(fields, dst)
+
+
+/**
+ * PGN: 65280
+ *
+ * Description: Navico: Device Status
+ *
+ * Explanation: Low-rate proprietary status broadcast seen from Navico/B&G/Simrad devices (MFDs, autopilots). The first payload byte distinguishes the sender's software platform - NOS-generation devices emit it at about 4 Hz, NEON-generation devices far less often. The remaining bytes are constant in all observed traffic, so their meaning is not yet known.
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65280_NavicoDeviceStatus
+ */
+export interface PGN_65280_NavicoDeviceStatusInterface extends PGNInterface {
+  fields: PGN_65280_NavicoDeviceStatusFields
+}
+
+/**
+ * @category PGN_65280_NavicoDeviceStatus
+ */
+export interface PGN_65280_NavicoDeviceStatusFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  reportType?: N2K_Number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65280_NavicoDeviceStatus
+ */
+export const PGN_65280_NavicoDeviceStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65280_NavicoDeviceStatus
+ */
+export interface PGN_65280_NavicoDeviceStatusCreateArgs {
+  reserved?: number
+  reportType?: N2K_Number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_65280_NavicoDeviceStatus
+ */
+export class PGN_65280_NavicoDeviceStatus extends PGN implements PGN_65280_NavicoDeviceStatusInterface {
+  fields: PGN_65280_NavicoDeviceStatusFields
+
+  constructor(fields: PGN_65280_NavicoDeviceStatusCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65280,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_65280_NavicoDeviceStatusMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65280_NavicoDeviceStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoDeviceStatus')!
+  }
+}
+pgnIdToCreator['navicoDeviceStatus'] = (fields:any, dst:number) => new PGN_65280_NavicoDeviceStatus(fields, dst)
 
 
 /**
@@ -4791,6 +4933,93 @@ pgnIdToCreator['simnetLgc2000Configuration'] = (fields:any, dst:number) => new P
 /**
  * PGN: 65293
  *
+ * Description: Lowrance: GPS Configuration
+ *
+ * Explanation: GPS antenna configuration broadcast by Navico GPS/navigation sources - the Lowrance-manufacturer counterpart of the Simnet LGC-2000 Configuration. The field boundaries are known but the individual settings are not yet identified. The first byte matches the sender's source address in the observed traffic.
+ *
+ * Match: Manufacturer Code == Lowrance<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65293_LowranceGpsConfiguration
+ */
+export interface PGN_65293_LowranceGpsConfigurationInterface extends PGNInterface {
+  fields: PGN_65293_LowranceGpsConfigurationFields
+}
+
+/**
+ * @category PGN_65293_LowranceGpsConfiguration
+ */
+export interface PGN_65293_LowranceGpsConfigurationFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  a?: N2K_Number
+  b?: N2K_Number
+  c?: N2K_Number
+  d?: N2K_Number
+  reserved8?: number
+  e?: N2K_Number
+  f?: N2K_Number
+  g: N2K_Number
+  reserved12?: number
+  h?: N2K_Number
+  i?: N2K_Number
+}
+
+/**
+ * @category PGN_65293_LowranceGpsConfiguration
+ */
+export const PGN_65293_LowranceGpsConfigurationMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Lowrance,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65293_LowranceGpsConfiguration
+ */
+export interface PGN_65293_LowranceGpsConfigurationCreateArgs {
+  reserved?: number
+  a?: N2K_Number
+  b?: N2K_Number
+  c?: N2K_Number
+  d?: N2K_Number
+  reserved8?: number
+  e?: N2K_Number
+  f?: N2K_Number
+  g: N2K_Number
+  reserved12?: number
+  h?: N2K_Number
+  i?: N2K_Number
+}
+
+/**
+ * @category PGN_65293_LowranceGpsConfiguration
+ */
+export class PGN_65293_LowranceGpsConfiguration extends PGN implements PGN_65293_LowranceGpsConfigurationInterface {
+  fields: PGN_65293_LowranceGpsConfigurationFields
+
+  constructor(fields: PGN_65293_LowranceGpsConfigurationCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65293,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65293_LowranceGpsConfigurationMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65293_LowranceGpsConfigurationMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('lowranceGpsConfiguration')!
+  }
+}
+pgnIdToCreator['lowranceGpsConfiguration'] = (fields:any, dst:number) => new PGN_65293_LowranceGpsConfiguration(fields, dst)
+
+
+/**
+ * PGN: 65293
+ *
  * Description: Diverse Yacht Services: Load Cell
  *
  * Match: Manufacturer Code == Diverse Yacht Services<br>
@@ -5741,6 +5970,79 @@ pgnIdToCreator['suzukiEngineDataD'] = (fields:any, dst:number) => new PGN_65303_
 
 
 /**
+ * PGN: 65303
+ *
+ * Description: Lowrance: Vessel Setup - Engine and Tank Configuration
+ *
+ * Explanation: Vessel-setup configuration sent by a Lowrance/Navico display when the operator changes the number of engines, number of fuel tanks, or total fuel capacity on the Vessel Setup page. Confirmed against a capture where the values were changed from (1 engine, 1 tank, 1200 L) to (2 engines, 3 tanks, 200 L).
+ *
+ * Match: Manufacturer Code == Lowrance<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65303_LowranceVesselSetupEngineAndTankConfiguration
+ */
+export interface PGN_65303_LowranceVesselSetupEngineAndTankConfigurationInterface extends PGNInterface {
+  fields: PGN_65303_LowranceVesselSetupEngineAndTankConfigurationFields
+}
+
+/**
+ * @category PGN_65303_LowranceVesselSetupEngineAndTankConfiguration
+ */
+export interface PGN_65303_LowranceVesselSetupEngineAndTankConfigurationFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  numberOfEngines?: N2K_Number
+  numberOfFuelTanks?: N2K_Number
+  totalFuelCapacity?: N2K_Number
+  reserved7?: number
+}
+
+/**
+ * @category PGN_65303_LowranceVesselSetupEngineAndTankConfiguration
+ */
+export const PGN_65303_LowranceVesselSetupEngineAndTankConfigurationMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Lowrance,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65303_LowranceVesselSetupEngineAndTankConfiguration
+ */
+export interface PGN_65303_LowranceVesselSetupEngineAndTankConfigurationCreateArgs {
+  reserved?: number
+  numberOfEngines?: N2K_Number
+  numberOfFuelTanks?: N2K_Number
+  totalFuelCapacity?: N2K_Number
+  reserved7?: number
+}
+
+/**
+ * @category PGN_65303_LowranceVesselSetupEngineAndTankConfiguration
+ */
+export class PGN_65303_LowranceVesselSetupEngineAndTankConfiguration extends PGN implements PGN_65303_LowranceVesselSetupEngineAndTankConfigurationInterface {
+  fields: PGN_65303_LowranceVesselSetupEngineAndTankConfigurationFields
+
+  constructor(fields: PGN_65303_LowranceVesselSetupEngineAndTankConfigurationCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65303,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65303_LowranceVesselSetupEngineAndTankConfigurationMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65303_LowranceVesselSetupEngineAndTankConfigurationMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('lowranceVesselSetupEngineAndTankConfiguration')!
+  }
+}
+pgnIdToCreator['lowranceVesselSetupEngineAndTankConfiguration'] = (fields:any, dst:number) => new PGN_65303_LowranceVesselSetupEngineAndTankConfiguration(fields, dst)
+
+
+/**
  * PGN: 65304
  *
  * Description: Suzuki: Engine Data E
@@ -5871,6 +6173,79 @@ pgnIdToCreator['bepMarineProprietaryPgn65304'] = (fields:any, dst:number) => new
 
 
 /**
+ * PGN: 65304
+ *
+ * Description: Lowrance: Vessel Setup - Engine and Tank Configuration Broadcast
+ *
+ * Explanation: Periodic broadcast of the current vessel-setup configuration (number of engines, number of fuel tanks and total fuel capacity). Same layout as the on-change variant (PGN 65303); observed broadcast at the default (1 engine, 1 tank, 1200 L) by autopilot-computer and display devices.
+ *
+ * Match: Manufacturer Code == Lowrance<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65304_LowranceVesselSetupEngineAndTankConfigurationBroadcast
+ */
+export interface PGN_65304_LowranceVesselSetupEngineAndTankConfigurationBroadcastInterface extends PGNInterface {
+  fields: PGN_65304_LowranceVesselSetupEngineAndTankConfigurationBroadcastFields
+}
+
+/**
+ * @category PGN_65304_LowranceVesselSetupEngineAndTankConfigurationBroadcast
+ */
+export interface PGN_65304_LowranceVesselSetupEngineAndTankConfigurationBroadcastFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  numberOfEngines?: N2K_Number
+  numberOfFuelTanks?: N2K_Number
+  totalFuelCapacity?: N2K_Number
+  reserved7?: number
+}
+
+/**
+ * @category PGN_65304_LowranceVesselSetupEngineAndTankConfigurationBroadcast
+ */
+export const PGN_65304_LowranceVesselSetupEngineAndTankConfigurationBroadcastMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Lowrance,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65304_LowranceVesselSetupEngineAndTankConfigurationBroadcast
+ */
+export interface PGN_65304_LowranceVesselSetupEngineAndTankConfigurationBroadcastCreateArgs {
+  reserved?: number
+  numberOfEngines?: N2K_Number
+  numberOfFuelTanks?: N2K_Number
+  totalFuelCapacity?: N2K_Number
+  reserved7?: number
+}
+
+/**
+ * @category PGN_65304_LowranceVesselSetupEngineAndTankConfigurationBroadcast
+ */
+export class PGN_65304_LowranceVesselSetupEngineAndTankConfigurationBroadcast extends PGN implements PGN_65304_LowranceVesselSetupEngineAndTankConfigurationBroadcastInterface {
+  fields: PGN_65304_LowranceVesselSetupEngineAndTankConfigurationBroadcastFields
+
+  constructor(fields: PGN_65304_LowranceVesselSetupEngineAndTankConfigurationBroadcastCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65304,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65304_LowranceVesselSetupEngineAndTankConfigurationBroadcastMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65304_LowranceVesselSetupEngineAndTankConfigurationBroadcastMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('lowranceVesselSetupEngineAndTankConfigurationBroadcast')!
+  }
+}
+pgnIdToCreator['lowranceVesselSetupEngineAndTankConfigurationBroadcast'] = (fields:any, dst:number) => new PGN_65304_LowranceVesselSetupEngineAndTankConfigurationBroadcast(fields, dst)
+
+
+/**
  * PGN: 65305
  *
  * Description: Simnet: Device Status
@@ -5895,7 +6270,7 @@ export interface PGN_65305_SimnetDeviceStatusFields {
   reserved?: number
   industryCode?: enums.IndustryCode | number
   model?: enums.SimnetDeviceModel | number
-  report?: enums.SimnetDeviceReport | number
+  report: enums.SimnetDeviceReport | number
   status?: enums.SimnetApStatus | number
   spare7?: number
 }
@@ -5969,7 +6344,7 @@ export interface PGN_65305_SimnetDeviceStatusRequestFields {
   reserved?: number
   industryCode?: enums.IndustryCode | number
   model?: enums.SimnetDeviceModel | number
-  report?: enums.SimnetDeviceReport | number
+  report: enums.SimnetDeviceReport | number
   spare6?: number
 }
 
@@ -6041,7 +6416,7 @@ export interface PGN_65305_SimnetPilotModeFields {
   reserved?: number
   industryCode?: enums.IndustryCode | number
   model?: enums.SimnetDeviceModel | number
-  report?: enums.SimnetDeviceReport | number
+  report: enums.SimnetDeviceReport | number
   mode?: enums.SimnetApModeBitfield[]
   spare7?: number
 }
@@ -6115,7 +6490,7 @@ export interface PGN_65305_SimnetDeviceModeRequestFields {
   reserved?: number
   industryCode?: enums.IndustryCode | number
   model?: enums.SimnetDeviceModel | number
-  report?: enums.SimnetDeviceReport | number
+  report: enums.SimnetDeviceReport | number
   spare6?: number
 }
 
@@ -6187,7 +6562,7 @@ export interface PGN_65305_SimnetSailingProcessorStatusFields {
   reserved?: number
   industryCode?: enums.IndustryCode | number
   model?: enums.SimnetDeviceModel | number
-  report?: enums.SimnetDeviceReport | number
+  report: enums.SimnetDeviceReport | number
   data?: N2K_Binary
 }
 
@@ -6389,6 +6764,7 @@ export interface PGN_65309_NavicoWirelessBatteryStatusFields {
   batteryStatus?: N2K_Number
   batteryChargeStatus?: N2K_Number
   reserved7?: number
+  a?: N2K_Number
 }
 
 /**
@@ -6408,6 +6784,7 @@ export interface PGN_65309_NavicoWirelessBatteryStatusCreateArgs {
   batteryStatus?: N2K_Number
   batteryChargeStatus?: N2K_Number
   reserved7?: number
+  a?: N2K_Number
 }
 
 /**
@@ -6588,7 +6965,8 @@ export interface PGN_65312_NavicoWirelessSignalStatusFields {
   industryCode?: enums.IndustryCode | number
   unknown?: N2K_Number
   signalStrength?: N2K_Number
-  reserved6?: number
+  a?: N2K_Number
+  reserved7?: number
 }
 
 /**
@@ -6606,7 +6984,8 @@ export interface PGN_65312_NavicoWirelessSignalStatusCreateArgs {
   reserved?: number
   unknown?: N2K_Number
   signalStrength?: N2K_Number
-  reserved6?: number
+  a?: N2K_Number
+  reserved7?: number
 }
 
 /**
@@ -6637,66 +7016,70 @@ pgnIdToCreator['navicoWirelessSignalStatus'] = (fields:any, dst:number) => new P
 /**
  * PGN: 65313
  *
- * Description: Navico: Proprietary
+ * Description: Navico: Depth Quality
  *
  * Match: Manufacturer Code == Navico<br>
  * Match: Industry Code == Marine Industry<br>
  *
- * @category PGN_65313_NavicoProprietary
+ * @category PGN_65313_NavicoDepthQuality
  */
-export interface PGN_65313_NavicoProprietaryInterface extends PGNInterface {
-  fields: PGN_65313_NavicoProprietaryFields
+export interface PGN_65313_NavicoDepthQualityInterface extends PGNInterface {
+  fields: PGN_65313_NavicoDepthQualityFields
 }
 
 /**
- * @category PGN_65313_NavicoProprietary
+ * @category PGN_65313_NavicoDepthQuality
  */
-export interface PGN_65313_NavicoProprietaryFields {
+export interface PGN_65313_NavicoDepthQualityFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  instance?: N2K_Number
+  depthQuality?: N2K_Number
+  reserved6?: number
 }
 
 /**
- * @category PGN_65313_NavicoProprietary
+ * @category PGN_65313_NavicoDepthQuality
  */
-export const PGN_65313_NavicoProprietaryMatchFields = {
+export const PGN_65313_NavicoDepthQualityMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
 }
 
 /**
- * @category PGN_65313_NavicoProprietary
+ * @category PGN_65313_NavicoDepthQuality
  */
-export interface PGN_65313_NavicoProprietaryCreateArgs {
+export interface PGN_65313_NavicoDepthQualityCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  instance?: N2K_Number
+  depthQuality?: N2K_Number
+  reserved6?: number
 }
 
 /**
- * @category PGN_65313_NavicoProprietary
+ * @category PGN_65313_NavicoDepthQuality
  */
-export class PGN_65313_NavicoProprietary extends PGN implements PGN_65313_NavicoProprietaryInterface {
-  fields: PGN_65313_NavicoProprietaryFields
+export class PGN_65313_NavicoDepthQuality extends PGN implements PGN_65313_NavicoDepthQualityInterface {
+  fields: PGN_65313_NavicoDepthQualityFields
 
-  constructor(fields: PGN_65313_NavicoProprietaryCreateArgs, dst: number = 255) {
+  constructor(fields: PGN_65313_NavicoDepthQualityCreateArgs, dst: number = 255) {
     super({
       pgn: 65313,
       prio: 3,
       dst
     })
-    this.fields = { ...PGN_65313_NavicoProprietaryMatchFields, ...fields }
+    this.fields = { ...PGN_65313_NavicoDepthQualityMatchFields, ...fields }
   }
 
   static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_65313_NavicoProprietaryMatchFields)
+    return isMatch(pgn, PGN_65313_NavicoDepthQualityMatchFields)
   }
   getDefinition(): Definition {
-    return getPGNWithId('navicoProprietary')!
+    return getPGNWithId('navicoDepthQuality')!
   }
 }
-pgnIdToCreator['navicoProprietary'] = (fields:any, dst:number) => new PGN_65313_NavicoProprietary(fields, dst)
+pgnIdToCreator['navicoDepthQuality'] = (fields:any, dst:number) => new PGN_65313_NavicoDepthQuality(fields, dst)
 
 
 /**
@@ -6787,7 +7170,7 @@ export interface PGN_65314_YamahaGearStatusFields {
   industryCode?: enums.IndustryCode | number
   reserved4?: number
   reserved5?: number
-  neutral: enums.YesNo | number
+  neutral: enums.YesNo1Bit | number
   reserved7?: number
   reserved8?: number
 }
@@ -6807,7 +7190,7 @@ export interface PGN_65314_YamahaGearStatusCreateArgs {
   reserved?: number
   reserved4?: number
   reserved5?: number
-  neutral: enums.YesNo | number
+  neutral: enums.YesNo1Bit | number
   reserved7?: number
   reserved8?: number
 }
@@ -7035,74 +7418,145 @@ pgnIdToCreator['navicoProprietary2'] = (fields:any, dst:number) => new PGN_65317
 /**
  * PGN: 65323
  *
- * Description: Simnet: AP Unknown 5
+ * Description: Simnet: Data Source Selection Request
  *
- * Explanation: Single-frame Simnet frame emitted by autopilot control heads (AP48, Triton2, ZEUS). The frame builder writes a fixed 0xFF, then two bytes A and B, then padding 0xFF; the meaning of A and B is not yet identified. The autopilot receives it. Observed in live captures.
+ * Explanation: Single-frame poll/announce half of the Simnet source-selection subsystem; the fast-packet half is PGN 130840, which shares the same Data Type namespace. Data Type selects the quantity (heading, depth, wind, ...); Source Class tags the class of source for that quantity (1 = a direct sensor/navigation source, 100 = an autopilot-provided source) and is constant per Data Type - it does not identify the selected device. A node answers with a 130840 record naming the source (Source Address plus NAME) it has selected for that (Data Type, Source Class) channel. Emitted by autopilot heads and instruments (AP48, Triton2, ZEUS); the autopilot and MFDs receive it.
  *
  * Match: Manufacturer Code == Simrad<br>
  * Match: Industry Code == Marine Industry<br>
  *
- * @category PGN_65323_SimnetApUnknown5
+ * @category PGN_65323_SimnetDataSourceSelectionRequest
  */
-export interface PGN_65323_SimnetApUnknown5Interface extends PGNInterface {
-  fields: PGN_65323_SimnetApUnknown5Fields
+export interface PGN_65323_SimnetDataSourceSelectionRequestInterface extends PGNInterface {
+  fields: PGN_65323_SimnetDataSourceSelectionRequestFields
 }
 
 /**
- * @category PGN_65323_SimnetApUnknown5
+ * @category PGN_65323_SimnetDataSourceSelectionRequest
  */
-export interface PGN_65323_SimnetApUnknown5Fields {
+export interface PGN_65323_SimnetDataSourceSelectionRequestFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
   reserved4?: number
-  a?: N2K_Number
-  b?: N2K_Number
+  dataType?: enums.SimnetDataSource | number
+  sourceClass?: N2K_Number
   reserved7?: number
 }
 
 /**
- * @category PGN_65323_SimnetApUnknown5
+ * @category PGN_65323_SimnetDataSourceSelectionRequest
  */
-export const PGN_65323_SimnetApUnknown5MatchFields = {
+export const PGN_65323_SimnetDataSourceSelectionRequestMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
 }
 
 /**
- * @category PGN_65323_SimnetApUnknown5
+ * @category PGN_65323_SimnetDataSourceSelectionRequest
  */
-export interface PGN_65323_SimnetApUnknown5CreateArgs {
+export interface PGN_65323_SimnetDataSourceSelectionRequestCreateArgs {
   reserved?: number
   reserved4?: number
-  a?: N2K_Number
-  b?: N2K_Number
+  dataType?: enums.SimnetDataSource | number
+  sourceClass?: N2K_Number
   reserved7?: number
 }
 
 /**
- * @category PGN_65323_SimnetApUnknown5
+ * @category PGN_65323_SimnetDataSourceSelectionRequest
  */
-export class PGN_65323_SimnetApUnknown5 extends PGN implements PGN_65323_SimnetApUnknown5Interface {
-  fields: PGN_65323_SimnetApUnknown5Fields
+export class PGN_65323_SimnetDataSourceSelectionRequest extends PGN implements PGN_65323_SimnetDataSourceSelectionRequestInterface {
+  fields: PGN_65323_SimnetDataSourceSelectionRequestFields
 
-  constructor(fields: PGN_65323_SimnetApUnknown5CreateArgs, dst: number = 255) {
+  constructor(fields: PGN_65323_SimnetDataSourceSelectionRequestCreateArgs, dst: number = 255) {
     super({
       pgn: 65323,
       prio: 3,
       dst
     })
-    this.fields = { ...PGN_65323_SimnetApUnknown5MatchFields, ...fields }
+    this.fields = { ...PGN_65323_SimnetDataSourceSelectionRequestMatchFields, ...fields }
   }
 
   static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_65323_SimnetApUnknown5MatchFields)
+    return isMatch(pgn, PGN_65323_SimnetDataSourceSelectionRequestMatchFields)
   }
   getDefinition(): Definition {
-    return getPGNWithId('simnetApUnknown5')!
+    return getPGNWithId('simnetDataSourceSelectionRequest')!
   }
 }
-pgnIdToCreator['simnetApUnknown5'] = (fields:any, dst:number) => new PGN_65323_SimnetApUnknown5(fields, dst)
+pgnIdToCreator['simnetDataSourceSelectionRequest'] = (fields:any, dst:number) => new PGN_65323_SimnetDataSourceSelectionRequest(fields, dst)
+
+
+/**
+ * PGN: 65324
+ *
+ * Description: Simnet: Analog Telemetry
+ *
+ * Explanation: Diagnostic telemetry emitted by the AutoPilot Computer, one analog channel per frame in round-robin. The Channel field selects the quantity (drive/heatsink temperature, drive supply voltage, drive current, rudder-feedback angle, ...) and Value carries its raw reading. Used by commissioning and diagnostic tools; observed in live captures.
+ *
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65324_SimnetAnalogTelemetry
+ */
+export interface PGN_65324_SimnetAnalogTelemetryInterface extends PGNInterface {
+  fields: PGN_65324_SimnetAnalogTelemetryFields
+}
+
+/**
+ * @category PGN_65324_SimnetAnalogTelemetry
+ */
+export interface PGN_65324_SimnetAnalogTelemetryFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  subType?: N2K_Number
+  channel?: N2K_Number
+  value?: N2K_Number
+}
+
+/**
+ * @category PGN_65324_SimnetAnalogTelemetry
+ */
+export const PGN_65324_SimnetAnalogTelemetryMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65324_SimnetAnalogTelemetry
+ */
+export interface PGN_65324_SimnetAnalogTelemetryCreateArgs {
+  reserved?: number
+  subType?: N2K_Number
+  channel?: N2K_Number
+  value?: N2K_Number
+}
+
+/**
+ * @category PGN_65324_SimnetAnalogTelemetry
+ */
+export class PGN_65324_SimnetAnalogTelemetry extends PGN implements PGN_65324_SimnetAnalogTelemetryInterface {
+  fields: PGN_65324_SimnetAnalogTelemetryFields
+
+  constructor(fields: PGN_65324_SimnetAnalogTelemetryCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65324,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65324_SimnetAnalogTelemetryMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65324_SimnetAnalogTelemetryMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetAnalogTelemetry')!
+  }
+}
+pgnIdToCreator['simnetAnalogTelemetry'] = (fields:any, dst:number) => new PGN_65324_SimnetAnalogTelemetry(fields, dst)
 
 
 /**
@@ -7857,10 +8311,10 @@ export interface PGN_65350Interface extends PGNInterface {
  * @category PGN_65350
  */
 export interface PGN_65350Fields {
-  a?: N2K_Number
-  b?: N2K_Number
-  c?: N2K_Number
-  d?: N2K_Number
+  fieldX?: N2K_Number
+  fieldY?: N2K_Number
+  fieldZ?: N2K_Number
+  marker?: N2K_Number
   reserved?: number
 }
 
@@ -9638,7 +10092,7 @@ export interface PGN_126464Interface extends PGNInterface {
  * @category PGN_126464
  */
 export interface PGN_126464Fields {
-  functionCode?: enums.PgnListFunction | number
+  functionCode: enums.PgnListFunction | number
   list: {
     pgn?: N2K_Pgn
   }[]
@@ -9664,314 +10118,6 @@ export class PGN_126464 extends PGN implements PGN_126464Interface {
   }
 }
 pgnIdToCreator['pgnListTransmitAndReceive'] = (fields:any, dst:number) => new PGN_126464(fields, dst)
-
-
-/**
- * PGN: 126720
- *
- * Description: Garmin AHRS ATT: COG Source Valid Flag
- *
- * Match: Manufacturer Code == Garmin<br>
- * Match: Industry Code == Marine Industry<br>
- * Match: Sub-protocol ID == Garmin ATT transport<br>
- * Match: Wrapper Byte 1 == 1<br>
- * Match: Wrapper Byte 2 == 2<br>
- * Match: ATT Message ID == ID<br>
- *
- * @category PGN_126720_GarminAhrsAttCogSourceValidFlag
- */
-export interface PGN_126720_GarminAhrsAttCogSourceValidFlagInterface extends PGNInterface {
-  fields: PGN_126720_GarminAhrsAttCogSourceValidFlagFields
-}
-
-/**
- * @category PGN_126720_GarminAhrsAttCogSourceValidFlag
- */
-export interface PGN_126720_GarminAhrsAttCogSourceValidFlagFields {
-  manufacturerCode?: enums.ManufacturerCode | number
-  reserved?: number
-  industryCode?: enums.IndustryCode | number
-  subProtocolId: N2K_Number | string
-  wrapperByte1?: N2K_Number | string
-  wrapperByte2?: N2K_Number | string
-  attMessageId: N2K_Number | string
-  cogSourceFlags?: N2K_Number
-}
-
-/**
- * @category PGN_126720_GarminAhrsAttCogSourceValidFlag
- */
-export const PGN_126720_GarminAhrsAttCogSourceValidFlagMatchFields = {
-  manufacturerCode: enums.ManufacturerCode.Garmin,
-  industryCode: enums.IndustryCode.MarineIndustry,
-  subProtocolId: "Garmin ATT transport",
-  wrapperByte1: 2,
-  wrapperByte2: 2,
-  attMessageId: "ID",
-}
-
-/**
- * @category PGN_126720_GarminAhrsAttCogSourceValidFlag
- */
-export interface PGN_126720_GarminAhrsAttCogSourceValidFlagCreateArgs {
-  reserved?: number
-  cogSourceFlags?: N2K_Number
-}
-
-/**
- * @category PGN_126720_GarminAhrsAttCogSourceValidFlag
- */
-export class PGN_126720_GarminAhrsAttCogSourceValidFlag extends PGN implements PGN_126720_GarminAhrsAttCogSourceValidFlagInterface {
-  fields: PGN_126720_GarminAhrsAttCogSourceValidFlagFields
-
-  constructor(fields: PGN_126720_GarminAhrsAttCogSourceValidFlagCreateArgs, dst: number = 255) {
-    super({
-      pgn: 126720,
-      prio: 3,
-      dst
-    })
-    this.fields = { ...PGN_126720_GarminAhrsAttCogSourceValidFlagMatchFields, ...fields }
-  }
-
-  static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_126720_GarminAhrsAttCogSourceValidFlagMatchFields)
-  }
-  getDefinition(): Definition {
-    return getPGNWithId('garminAhrsAttCogSourceValidFlag')!
-  }
-}
-pgnIdToCreator['garminAhrsAttCogSourceValidFlag'] = (fields:any, dst:number) => new PGN_126720_GarminAhrsAttCogSourceValidFlag(fields, dst)
-
-
-/**
- * PGN: 126720
- *
- * Description: Garmin AHRS ATT: Device Flags
- *
- * Match: Manufacturer Code == Garmin<br>
- * Match: Industry Code == Marine Industry<br>
- * Match: Sub-protocol ID == Garmin ATT transport<br>
- * Match: Wrapper Byte 1 == 1<br>
- * Match: Wrapper Byte 2 == 2<br>
- * Match: ATT Message ID == ID<br>
- *
- * @category PGN_126720_GarminAhrsAttDeviceFlags
- */
-export interface PGN_126720_GarminAhrsAttDeviceFlagsInterface extends PGNInterface {
-  fields: PGN_126720_GarminAhrsAttDeviceFlagsFields
-}
-
-/**
- * @category PGN_126720_GarminAhrsAttDeviceFlags
- */
-export interface PGN_126720_GarminAhrsAttDeviceFlagsFields {
-  manufacturerCode?: enums.ManufacturerCode | number
-  reserved?: number
-  industryCode?: enums.IndustryCode | number
-  subProtocolId: N2K_Number | string
-  wrapperByte1?: N2K_Number | string
-  wrapperByte2?: N2K_Number | string
-  attMessageId: N2K_Number | string
-  deviceFlags?: N2K_Number
-}
-
-/**
- * @category PGN_126720_GarminAhrsAttDeviceFlags
- */
-export const PGN_126720_GarminAhrsAttDeviceFlagsMatchFields = {
-  manufacturerCode: enums.ManufacturerCode.Garmin,
-  industryCode: enums.IndustryCode.MarineIndustry,
-  subProtocolId: "Garmin ATT transport",
-  wrapperByte1: 2,
-  wrapperByte2: 2,
-  attMessageId: "ID",
-}
-
-/**
- * @category PGN_126720_GarminAhrsAttDeviceFlags
- */
-export interface PGN_126720_GarminAhrsAttDeviceFlagsCreateArgs {
-  reserved?: number
-  deviceFlags?: N2K_Number
-}
-
-/**
- * @category PGN_126720_GarminAhrsAttDeviceFlags
- */
-export class PGN_126720_GarminAhrsAttDeviceFlags extends PGN implements PGN_126720_GarminAhrsAttDeviceFlagsInterface {
-  fields: PGN_126720_GarminAhrsAttDeviceFlagsFields
-
-  constructor(fields: PGN_126720_GarminAhrsAttDeviceFlagsCreateArgs, dst: number = 255) {
-    super({
-      pgn: 126720,
-      prio: 3,
-      dst
-    })
-    this.fields = { ...PGN_126720_GarminAhrsAttDeviceFlagsMatchFields, ...fields }
-  }
-
-  static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_126720_GarminAhrsAttDeviceFlagsMatchFields)
-  }
-  getDefinition(): Definition {
-    return getPGNWithId('garminAhrsAttDeviceFlags')!
-  }
-}
-pgnIdToCreator['garminAhrsAttDeviceFlags'] = (fields:any, dst:number) => new PGN_126720_GarminAhrsAttDeviceFlags(fields, dst)
-
-
-/**
- * PGN: 126720
- *
- * Description: Garmin AHRS ATT: Non-default Calibration Matrix Present
- *
- * Match: Manufacturer Code == Garmin<br>
- * Match: Industry Code == Marine Industry<br>
- * Match: Sub-protocol ID == Garmin ATT transport<br>
- * Match: Wrapper Byte 1 == 1<br>
- * Match: Wrapper Byte 2 == 2<br>
- * Match: ATT Message ID == ID<br>
- *
- * @category PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresent
- */
-export interface PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentInterface extends PGNInterface {
-  fields: PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentFields
-}
-
-/**
- * @category PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresent
- */
-export interface PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentFields {
-  manufacturerCode?: enums.ManufacturerCode | number
-  reserved?: number
-  industryCode?: enums.IndustryCode | number
-  subProtocolId: N2K_Number | string
-  wrapperByte1?: N2K_Number | string
-  wrapperByte2?: N2K_Number | string
-  attMessageId: N2K_Number | string
-  calibrationMatrixPresent?: N2K_Number
-}
-
-/**
- * @category PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresent
- */
-export const PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentMatchFields = {
-  manufacturerCode: enums.ManufacturerCode.Garmin,
-  industryCode: enums.IndustryCode.MarineIndustry,
-  subProtocolId: "Garmin ATT transport",
-  wrapperByte1: 2,
-  wrapperByte2: 2,
-  attMessageId: "ID",
-}
-
-/**
- * @category PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresent
- */
-export interface PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentCreateArgs {
-  reserved?: number
-  calibrationMatrixPresent?: N2K_Number
-}
-
-/**
- * @category PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresent
- */
-export class PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresent extends PGN implements PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentInterface {
-  fields: PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentFields
-
-  constructor(fields: PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentCreateArgs, dst: number = 255) {
-    super({
-      pgn: 126720,
-      prio: 3,
-      dst
-    })
-    this.fields = { ...PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentMatchFields, ...fields }
-  }
-
-  static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentMatchFields)
-  }
-  getDefinition(): Definition {
-    return getPGNWithId('garminAhrsAttNonDefaultCalibrationMatrixPresent')!
-  }
-}
-pgnIdToCreator['garminAhrsAttNonDefaultCalibrationMatrixPresent'] = (fields:any, dst:number) => new PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresent(fields, dst)
-
-
-/**
- * PGN: 126720
- *
- * Description: Garmin AHRS ATT: Set North State
- *
- * Match: Manufacturer Code == Garmin<br>
- * Match: Industry Code == Marine Industry<br>
- * Match: Sub-protocol ID == Garmin ATT transport<br>
- * Match: Wrapper Byte 1 == 1<br>
- * Match: Wrapper Byte 2 == 2<br>
- * Match: ATT Message ID == ID<br>
- *
- * @category PGN_126720_GarminAhrsAttSetNorthState
- */
-export interface PGN_126720_GarminAhrsAttSetNorthStateInterface extends PGNInterface {
-  fields: PGN_126720_GarminAhrsAttSetNorthStateFields
-}
-
-/**
- * @category PGN_126720_GarminAhrsAttSetNorthState
- */
-export interface PGN_126720_GarminAhrsAttSetNorthStateFields {
-  manufacturerCode?: enums.ManufacturerCode | number
-  reserved?: number
-  industryCode?: enums.IndustryCode | number
-  subProtocolId: N2K_Number | string
-  wrapperByte1?: N2K_Number | string
-  wrapperByte2?: N2K_Number | string
-  attMessageId: N2K_Number | string
-  setNorthState?: N2K_Number
-}
-
-/**
- * @category PGN_126720_GarminAhrsAttSetNorthState
- */
-export const PGN_126720_GarminAhrsAttSetNorthStateMatchFields = {
-  manufacturerCode: enums.ManufacturerCode.Garmin,
-  industryCode: enums.IndustryCode.MarineIndustry,
-  subProtocolId: "Garmin ATT transport",
-  wrapperByte1: 2,
-  wrapperByte2: 2,
-  attMessageId: "ID",
-}
-
-/**
- * @category PGN_126720_GarminAhrsAttSetNorthState
- */
-export interface PGN_126720_GarminAhrsAttSetNorthStateCreateArgs {
-  reserved?: number
-  setNorthState?: N2K_Number
-}
-
-/**
- * @category PGN_126720_GarminAhrsAttSetNorthState
- */
-export class PGN_126720_GarminAhrsAttSetNorthState extends PGN implements PGN_126720_GarminAhrsAttSetNorthStateInterface {
-  fields: PGN_126720_GarminAhrsAttSetNorthStateFields
-
-  constructor(fields: PGN_126720_GarminAhrsAttSetNorthStateCreateArgs, dst: number = 255) {
-    super({
-      pgn: 126720,
-      prio: 3,
-      dst
-    })
-    this.fields = { ...PGN_126720_GarminAhrsAttSetNorthStateMatchFields, ...fields }
-  }
-
-  static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_126720_GarminAhrsAttSetNorthStateMatchFields)
-  }
-  getDefinition(): Definition {
-    return getPGNWithId('garminAhrsAttSetNorthState')!
-  }
-}
-pgnIdToCreator['garminAhrsAttSetNorthState'] = (fields:any, dst:number) => new PGN_126720_GarminAhrsAttSetNorthState(fields, dst)
 
 
 /**
@@ -10017,6 +10163,1373 @@ export class PGN_126720 extends PGN implements PGN_126720Interface {
   }
 }
 pgnIdToCreator['0x1ef00ManufacturerProprietaryFastPacketAddressed'] = (fields:any, dst:number) => new PGN_126720(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Garmin AHRS ATT: COG Source Valid Flag
+ *
+ * Match: Manufacturer Code == Garmin<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Sub-protocol ID == AHRS ATT transport<br>
+ * Match: Wrapper Byte 1 == 1<br>
+ * Match: Wrapper Byte 2 == 2<br>
+ * Match: ATT Message ID == COG Source Valid Flag<br>
+ *
+ * @category PGN_126720_GarminAhrsAttCogSourceValidFlag
+ */
+export interface PGN_126720_GarminAhrsAttCogSourceValidFlagInterface extends PGNInterface {
+  fields: PGN_126720_GarminAhrsAttCogSourceValidFlagFields
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttCogSourceValidFlag
+ */
+export interface PGN_126720_GarminAhrsAttCogSourceValidFlagFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  subProtocolId: enums.GarminMessageId | number
+  wrapperByte1?: N2K_Number | string
+  wrapperByte2?: N2K_Number | string
+  attMessageId: enums.GarminAttMessageId | number
+  cogSourceFlags?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttCogSourceValidFlag
+ */
+export const PGN_126720_GarminAhrsAttCogSourceValidFlagMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  subProtocolId: enums.GarminMessageId.AhrsAttTransport,
+  wrapperByte1: 2,
+  wrapperByte2: 2,
+  attMessageId: enums.GarminAttMessageId.CogSourceValidFlag,
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttCogSourceValidFlag
+ */
+export interface PGN_126720_GarminAhrsAttCogSourceValidFlagCreateArgs {
+  reserved?: number
+  cogSourceFlags?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttCogSourceValidFlag
+ */
+export class PGN_126720_GarminAhrsAttCogSourceValidFlag extends PGN implements PGN_126720_GarminAhrsAttCogSourceValidFlagInterface {
+  fields: PGN_126720_GarminAhrsAttCogSourceValidFlagFields
+
+  constructor(fields: PGN_126720_GarminAhrsAttCogSourceValidFlagCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_GarminAhrsAttCogSourceValidFlagMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminAhrsAttCogSourceValidFlagMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('garminAhrsAttCogSourceValidFlag')!
+  }
+}
+pgnIdToCreator['garminAhrsAttCogSourceValidFlag'] = (fields:any, dst:number) => new PGN_126720_GarminAhrsAttCogSourceValidFlag(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Garmin AHRS ATT: Device Flags
+ *
+ * Match: Manufacturer Code == Garmin<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Sub-protocol ID == AHRS ATT transport<br>
+ * Match: Wrapper Byte 1 == 1<br>
+ * Match: Wrapper Byte 2 == 2<br>
+ * Match: ATT Message ID == Device Flags<br>
+ *
+ * @category PGN_126720_GarminAhrsAttDeviceFlags
+ */
+export interface PGN_126720_GarminAhrsAttDeviceFlagsInterface extends PGNInterface {
+  fields: PGN_126720_GarminAhrsAttDeviceFlagsFields
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttDeviceFlags
+ */
+export interface PGN_126720_GarminAhrsAttDeviceFlagsFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  subProtocolId: enums.GarminMessageId | number
+  wrapperByte1?: N2K_Number | string
+  wrapperByte2?: N2K_Number | string
+  attMessageId: enums.GarminAttMessageId | number
+  deviceFlags?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttDeviceFlags
+ */
+export const PGN_126720_GarminAhrsAttDeviceFlagsMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  subProtocolId: enums.GarminMessageId.AhrsAttTransport,
+  wrapperByte1: 2,
+  wrapperByte2: 2,
+  attMessageId: enums.GarminAttMessageId.DeviceFlags,
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttDeviceFlags
+ */
+export interface PGN_126720_GarminAhrsAttDeviceFlagsCreateArgs {
+  reserved?: number
+  deviceFlags?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttDeviceFlags
+ */
+export class PGN_126720_GarminAhrsAttDeviceFlags extends PGN implements PGN_126720_GarminAhrsAttDeviceFlagsInterface {
+  fields: PGN_126720_GarminAhrsAttDeviceFlagsFields
+
+  constructor(fields: PGN_126720_GarminAhrsAttDeviceFlagsCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_GarminAhrsAttDeviceFlagsMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminAhrsAttDeviceFlagsMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('garminAhrsAttDeviceFlags')!
+  }
+}
+pgnIdToCreator['garminAhrsAttDeviceFlags'] = (fields:any, dst:number) => new PGN_126720_GarminAhrsAttDeviceFlags(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Garmin AHRS ATT: Non-default Calibration Matrix Present
+ *
+ * Match: Manufacturer Code == Garmin<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Sub-protocol ID == AHRS ATT transport<br>
+ * Match: Wrapper Byte 1 == 1<br>
+ * Match: Wrapper Byte 2 == 2<br>
+ * Match: ATT Message ID == Calibration Matrix Present<br>
+ *
+ * @category PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresent
+ */
+export interface PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentInterface extends PGNInterface {
+  fields: PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentFields
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresent
+ */
+export interface PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  subProtocolId: enums.GarminMessageId | number
+  wrapperByte1?: N2K_Number | string
+  wrapperByte2?: N2K_Number | string
+  attMessageId: enums.GarminAttMessageId | number
+  calibrationMatrixPresent?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresent
+ */
+export const PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  subProtocolId: enums.GarminMessageId.AhrsAttTransport,
+  wrapperByte1: 2,
+  wrapperByte2: 2,
+  attMessageId: enums.GarminAttMessageId.CalibrationMatrixPresent,
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresent
+ */
+export interface PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentCreateArgs {
+  reserved?: number
+  calibrationMatrixPresent?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresent
+ */
+export class PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresent extends PGN implements PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentInterface {
+  fields: PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentFields
+
+  constructor(fields: PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresentMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('garminAhrsAttNonDefaultCalibrationMatrixPresent')!
+  }
+}
+pgnIdToCreator['garminAhrsAttNonDefaultCalibrationMatrixPresent'] = (fields:any, dst:number) => new PGN_126720_GarminAhrsAttNonDefaultCalibrationMatrixPresent(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Garmin AHRS ATT: Set North State
+ *
+ * Match: Manufacturer Code == Garmin<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Sub-protocol ID == AHRS ATT transport<br>
+ * Match: Wrapper Byte 1 == 1<br>
+ * Match: Wrapper Byte 2 == 2<br>
+ * Match: ATT Message ID == Set North State<br>
+ *
+ * @category PGN_126720_GarminAhrsAttSetNorthState
+ */
+export interface PGN_126720_GarminAhrsAttSetNorthStateInterface extends PGNInterface {
+  fields: PGN_126720_GarminAhrsAttSetNorthStateFields
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttSetNorthState
+ */
+export interface PGN_126720_GarminAhrsAttSetNorthStateFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  subProtocolId: enums.GarminMessageId | number
+  wrapperByte1?: N2K_Number | string
+  wrapperByte2?: N2K_Number | string
+  attMessageId: enums.GarminAttMessageId | number
+  setNorthState?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttSetNorthState
+ */
+export const PGN_126720_GarminAhrsAttSetNorthStateMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  subProtocolId: enums.GarminMessageId.AhrsAttTransport,
+  wrapperByte1: 2,
+  wrapperByte2: 2,
+  attMessageId: enums.GarminAttMessageId.SetNorthState,
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttSetNorthState
+ */
+export interface PGN_126720_GarminAhrsAttSetNorthStateCreateArgs {
+  reserved?: number
+  setNorthState?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAhrsAttSetNorthState
+ */
+export class PGN_126720_GarminAhrsAttSetNorthState extends PGN implements PGN_126720_GarminAhrsAttSetNorthStateInterface {
+  fields: PGN_126720_GarminAhrsAttSetNorthStateFields
+
+  constructor(fields: PGN_126720_GarminAhrsAttSetNorthStateCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_GarminAhrsAttSetNorthStateMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminAhrsAttSetNorthStateMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('garminAhrsAttSetNorthState')!
+  }
+}
+pgnIdToCreator['garminAhrsAttSetNorthState'] = (fields:any, dst:number) => new PGN_126720_GarminAhrsAttSetNorthState(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Garmin Autopilot: Heading to Steer
+ *
+ * Match: Manufacturer Code == Garmin<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Sub-protocol ID == Autopilot transport<br>
+ * Match: Wrapper Byte 1 == 4<br>
+ * Match: Wrapper Byte 2 == 4<br>
+ * Match: Field == Heading to Steer<br>
+ *
+ * @category PGN_126720_GarminAutopilotHeadingToSteer
+ */
+export interface PGN_126720_GarminAutopilotHeadingToSteerInterface extends PGNInterface {
+  fields: PGN_126720_GarminAutopilotHeadingToSteerFields
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotHeadingToSteer
+ */
+export interface PGN_126720_GarminAutopilotHeadingToSteerFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  subProtocolId: enums.GarminMessageId | number
+  wrapperByte1?: N2K_Number | string
+  wrapperByte2?: N2K_Number | string
+  fieldGroup?: N2K_Number | string
+  field: enums.GarminAutopilotField | number
+  reserved9?: number
+  headingToSteer?: N2K_Float
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotHeadingToSteer
+ */
+export const PGN_126720_GarminAutopilotHeadingToSteerMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  subProtocolId: enums.GarminMessageId.AutopilotTransport,
+  wrapperByte1: 4,
+  wrapperByte2: 4,
+  fieldGroup: 0,
+  field: enums.GarminAutopilotField.HeadingToSteer,
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotHeadingToSteer
+ */
+export interface PGN_126720_GarminAutopilotHeadingToSteerCreateArgs {
+  reserved?: number
+  reserved9?: number
+  headingToSteer?: N2K_Float
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotHeadingToSteer
+ */
+export class PGN_126720_GarminAutopilotHeadingToSteer extends PGN implements PGN_126720_GarminAutopilotHeadingToSteerInterface {
+  fields: PGN_126720_GarminAutopilotHeadingToSteerFields
+
+  constructor(fields: PGN_126720_GarminAutopilotHeadingToSteerCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_126720_GarminAutopilotHeadingToSteerMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminAutopilotHeadingToSteerMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('garminAutopilotHeadingToSteer')!
+  }
+}
+pgnIdToCreator['garminAutopilotHeadingToSteer'] = (fields:any, dst:number) => new PGN_126720_GarminAutopilotHeadingToSteer(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Garmin Autopilot: Rate of Turn
+ *
+ * Match: Manufacturer Code == Garmin<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Sub-protocol ID == Autopilot transport<br>
+ * Match: Wrapper Byte 1 == 4<br>
+ * Match: Wrapper Byte 2 == 4<br>
+ * Match: Field == Rate of Turn<br>
+ *
+ * @category PGN_126720_GarminAutopilotRateOfTurn
+ */
+export interface PGN_126720_GarminAutopilotRateOfTurnInterface extends PGNInterface {
+  fields: PGN_126720_GarminAutopilotRateOfTurnFields
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotRateOfTurn
+ */
+export interface PGN_126720_GarminAutopilotRateOfTurnFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  subProtocolId: enums.GarminMessageId | number
+  wrapperByte1?: N2K_Number | string
+  wrapperByte2?: N2K_Number | string
+  fieldGroup?: N2K_Number | string
+  field: enums.GarminAutopilotField | number
+  reserved9?: number
+  rateOfTurn?: N2K_Float
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotRateOfTurn
+ */
+export const PGN_126720_GarminAutopilotRateOfTurnMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  subProtocolId: enums.GarminMessageId.AutopilotTransport,
+  wrapperByte1: 4,
+  wrapperByte2: 4,
+  fieldGroup: 0,
+  field: enums.GarminAutopilotField.RateOfTurn,
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotRateOfTurn
+ */
+export interface PGN_126720_GarminAutopilotRateOfTurnCreateArgs {
+  reserved?: number
+  reserved9?: number
+  rateOfTurn?: N2K_Float
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotRateOfTurn
+ */
+export class PGN_126720_GarminAutopilotRateOfTurn extends PGN implements PGN_126720_GarminAutopilotRateOfTurnInterface {
+  fields: PGN_126720_GarminAutopilotRateOfTurnFields
+
+  constructor(fields: PGN_126720_GarminAutopilotRateOfTurnCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_126720_GarminAutopilotRateOfTurnMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminAutopilotRateOfTurnMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('garminAutopilotRateOfTurn')!
+  }
+}
+pgnIdToCreator['garminAutopilotRateOfTurn'] = (fields:any, dst:number) => new PGN_126720_GarminAutopilotRateOfTurn(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Garmin Autopilot: Rate of Turn Order
+ *
+ * Match: Manufacturer Code == Garmin<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Sub-protocol ID == Autopilot transport<br>
+ * Match: Wrapper Byte 1 == 4<br>
+ * Match: Wrapper Byte 2 == 4<br>
+ * Match: Field == Rate of Turn Order<br>
+ *
+ * @category PGN_126720_GarminAutopilotRateOfTurnOrder
+ */
+export interface PGN_126720_GarminAutopilotRateOfTurnOrderInterface extends PGNInterface {
+  fields: PGN_126720_GarminAutopilotRateOfTurnOrderFields
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotRateOfTurnOrder
+ */
+export interface PGN_126720_GarminAutopilotRateOfTurnOrderFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  subProtocolId: enums.GarminMessageId | number
+  wrapperByte1?: N2K_Number | string
+  wrapperByte2?: N2K_Number | string
+  fieldGroup?: N2K_Number | string
+  field: enums.GarminAutopilotField | number
+  reserved9?: number
+  rateOfTurnOrder?: N2K_Float
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotRateOfTurnOrder
+ */
+export const PGN_126720_GarminAutopilotRateOfTurnOrderMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  subProtocolId: enums.GarminMessageId.AutopilotTransport,
+  wrapperByte1: 4,
+  wrapperByte2: 4,
+  fieldGroup: 0,
+  field: enums.GarminAutopilotField.RateOfTurnOrder,
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotRateOfTurnOrder
+ */
+export interface PGN_126720_GarminAutopilotRateOfTurnOrderCreateArgs {
+  reserved?: number
+  reserved9?: number
+  rateOfTurnOrder?: N2K_Float
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotRateOfTurnOrder
+ */
+export class PGN_126720_GarminAutopilotRateOfTurnOrder extends PGN implements PGN_126720_GarminAutopilotRateOfTurnOrderInterface {
+  fields: PGN_126720_GarminAutopilotRateOfTurnOrderFields
+
+  constructor(fields: PGN_126720_GarminAutopilotRateOfTurnOrderCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_126720_GarminAutopilotRateOfTurnOrderMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminAutopilotRateOfTurnOrderMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('garminAutopilotRateOfTurnOrder')!
+  }
+}
+pgnIdToCreator['garminAutopilotRateOfTurnOrder'] = (fields:any, dst:number) => new PGN_126720_GarminAutopilotRateOfTurnOrder(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Garmin Autopilot: Speed
+ *
+ * Match: Manufacturer Code == Garmin<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Sub-protocol ID == Autopilot transport<br>
+ * Match: Wrapper Byte 1 == 4<br>
+ * Match: Wrapper Byte 2 == 4<br>
+ * Match: Field == Speed<br>
+ *
+ * @category PGN_126720_GarminAutopilotSpeed
+ */
+export interface PGN_126720_GarminAutopilotSpeedInterface extends PGNInterface {
+  fields: PGN_126720_GarminAutopilotSpeedFields
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotSpeed
+ */
+export interface PGN_126720_GarminAutopilotSpeedFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  subProtocolId: enums.GarminMessageId | number
+  wrapperByte1?: N2K_Number | string
+  wrapperByte2?: N2K_Number | string
+  fieldGroup?: N2K_Number | string
+  field: enums.GarminAutopilotField | number
+  reserved9?: number
+  speed?: N2K_Float
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotSpeed
+ */
+export const PGN_126720_GarminAutopilotSpeedMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  subProtocolId: enums.GarminMessageId.AutopilotTransport,
+  wrapperByte1: 4,
+  wrapperByte2: 4,
+  fieldGroup: 0,
+  field: enums.GarminAutopilotField.Speed,
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotSpeed
+ */
+export interface PGN_126720_GarminAutopilotSpeedCreateArgs {
+  reserved?: number
+  reserved9?: number
+  speed?: N2K_Float
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotSpeed
+ */
+export class PGN_126720_GarminAutopilotSpeed extends PGN implements PGN_126720_GarminAutopilotSpeedInterface {
+  fields: PGN_126720_GarminAutopilotSpeedFields
+
+  constructor(fields: PGN_126720_GarminAutopilotSpeedCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_126720_GarminAutopilotSpeedMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminAutopilotSpeedMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('garminAutopilotSpeed')!
+  }
+}
+pgnIdToCreator['garminAutopilotSpeed'] = (fields:any, dst:number) => new PGN_126720_GarminAutopilotSpeed(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Garmin Autopilot: System Voltage
+ *
+ * Match: Manufacturer Code == Garmin<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Sub-protocol ID == Autopilot transport<br>
+ * Match: Wrapper Byte 1 == 4<br>
+ * Match: Wrapper Byte 2 == 4<br>
+ * Match: Field Group == 2<br>
+ * Match: Field == System Voltage<br>
+ *
+ * @category PGN_126720_GarminAutopilotSystemVoltage
+ */
+export interface PGN_126720_GarminAutopilotSystemVoltageInterface extends PGNInterface {
+  fields: PGN_126720_GarminAutopilotSystemVoltageFields
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotSystemVoltage
+ */
+export interface PGN_126720_GarminAutopilotSystemVoltageFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  subProtocolId: enums.GarminMessageId | number
+  wrapperByte1?: N2K_Number | string
+  wrapperByte2?: N2K_Number | string
+  fieldGroup?: N2K_Number | string
+  field: enums.GarminAutopilotField | number
+  reserved9?: number
+  systemVoltage?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotSystemVoltage
+ */
+export const PGN_126720_GarminAutopilotSystemVoltageMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  subProtocolId: enums.GarminMessageId.AutopilotTransport,
+  wrapperByte1: 4,
+  wrapperByte2: 4,
+  fieldGroup: 2,
+  field: enums.GarminAutopilotField.SystemVoltage,
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotSystemVoltage
+ */
+export interface PGN_126720_GarminAutopilotSystemVoltageCreateArgs {
+  reserved?: number
+  reserved9?: number
+  systemVoltage?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotSystemVoltage
+ */
+export class PGN_126720_GarminAutopilotSystemVoltage extends PGN implements PGN_126720_GarminAutopilotSystemVoltageInterface {
+  fields: PGN_126720_GarminAutopilotSystemVoltageFields
+
+  constructor(fields: PGN_126720_GarminAutopilotSystemVoltageCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_126720_GarminAutopilotSystemVoltageMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminAutopilotSystemVoltageMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('garminAutopilotSystemVoltage')!
+  }
+}
+pgnIdToCreator['garminAutopilotSystemVoltage'] = (fields:any, dst:number) => new PGN_126720_GarminAutopilotSystemVoltage(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Garmin Autopilot: Turn Angle Order
+ *
+ * Match: Manufacturer Code == Garmin<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Sub-protocol ID == Autopilot transport<br>
+ * Match: Wrapper Byte 1 == 4<br>
+ * Match: Wrapper Byte 2 == 4<br>
+ * Match: Field Group == 2<br>
+ * Match: Field == Turn Angle Order<br>
+ *
+ * @category PGN_126720_GarminAutopilotTurnAngleOrder
+ */
+export interface PGN_126720_GarminAutopilotTurnAngleOrderInterface extends PGNInterface {
+  fields: PGN_126720_GarminAutopilotTurnAngleOrderFields
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotTurnAngleOrder
+ */
+export interface PGN_126720_GarminAutopilotTurnAngleOrderFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  subProtocolId: enums.GarminMessageId | number
+  wrapperByte1?: N2K_Number | string
+  wrapperByte2?: N2K_Number | string
+  fieldGroup?: N2K_Number | string
+  field: enums.GarminAutopilotField | number
+  reserved9?: number
+  turnAngleOrder?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotTurnAngleOrder
+ */
+export const PGN_126720_GarminAutopilotTurnAngleOrderMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  subProtocolId: enums.GarminMessageId.AutopilotTransport,
+  wrapperByte1: 4,
+  wrapperByte2: 4,
+  fieldGroup: 2,
+  field: enums.GarminAutopilotField.TurnAngleOrder,
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotTurnAngleOrder
+ */
+export interface PGN_126720_GarminAutopilotTurnAngleOrderCreateArgs {
+  reserved?: number
+  reserved9?: number
+  turnAngleOrder?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotTurnAngleOrder
+ */
+export class PGN_126720_GarminAutopilotTurnAngleOrder extends PGN implements PGN_126720_GarminAutopilotTurnAngleOrderInterface {
+  fields: PGN_126720_GarminAutopilotTurnAngleOrderFields
+
+  constructor(fields: PGN_126720_GarminAutopilotTurnAngleOrderCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_126720_GarminAutopilotTurnAngleOrderMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminAutopilotTurnAngleOrderMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('garminAutopilotTurnAngleOrder')!
+  }
+}
+pgnIdToCreator['garminAutopilotTurnAngleOrder'] = (fields:any, dst:number) => new PGN_126720_GarminAutopilotTurnAngleOrder(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Garmin Autopilot: Turn Angle Measured
+ *
+ * Match: Manufacturer Code == Garmin<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Sub-protocol ID == Autopilot transport<br>
+ * Match: Wrapper Byte 1 == 4<br>
+ * Match: Wrapper Byte 2 == 4<br>
+ * Match: Field Group == 2<br>
+ * Match: Field == Turn Angle Measured<br>
+ *
+ * @category PGN_126720_GarminAutopilotTurnAngleMeasured
+ */
+export interface PGN_126720_GarminAutopilotTurnAngleMeasuredInterface extends PGNInterface {
+  fields: PGN_126720_GarminAutopilotTurnAngleMeasuredFields
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotTurnAngleMeasured
+ */
+export interface PGN_126720_GarminAutopilotTurnAngleMeasuredFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  subProtocolId: enums.GarminMessageId | number
+  wrapperByte1?: N2K_Number | string
+  wrapperByte2?: N2K_Number | string
+  fieldGroup?: N2K_Number | string
+  field: enums.GarminAutopilotField | number
+  reserved9?: number
+  turnAngleMeasured?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotTurnAngleMeasured
+ */
+export const PGN_126720_GarminAutopilotTurnAngleMeasuredMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  subProtocolId: enums.GarminMessageId.AutopilotTransport,
+  wrapperByte1: 4,
+  wrapperByte2: 4,
+  fieldGroup: 2,
+  field: enums.GarminAutopilotField.TurnAngleMeasured,
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotTurnAngleMeasured
+ */
+export interface PGN_126720_GarminAutopilotTurnAngleMeasuredCreateArgs {
+  reserved?: number
+  reserved9?: number
+  turnAngleMeasured?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotTurnAngleMeasured
+ */
+export class PGN_126720_GarminAutopilotTurnAngleMeasured extends PGN implements PGN_126720_GarminAutopilotTurnAngleMeasuredInterface {
+  fields: PGN_126720_GarminAutopilotTurnAngleMeasuredFields
+
+  constructor(fields: PGN_126720_GarminAutopilotTurnAngleMeasuredCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_126720_GarminAutopilotTurnAngleMeasuredMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminAutopilotTurnAngleMeasuredMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('garminAutopilotTurnAngleMeasured')!
+  }
+}
+pgnIdToCreator['garminAutopilotTurnAngleMeasured'] = (fields:any, dst:number) => new PGN_126720_GarminAutopilotTurnAngleMeasured(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Garmin Autopilot: Engine RPM A
+ *
+ * Match: Manufacturer Code == Garmin<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Sub-protocol ID == Autopilot transport<br>
+ * Match: Wrapper Byte 1 == 4<br>
+ * Match: Wrapper Byte 2 == 4<br>
+ * Match: Field Group == 5<br>
+ * Match: Field == Engine RPM A<br>
+ *
+ * @category PGN_126720_GarminAutopilotEngineRpmA
+ */
+export interface PGN_126720_GarminAutopilotEngineRpmAInterface extends PGNInterface {
+  fields: PGN_126720_GarminAutopilotEngineRpmAFields
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotEngineRpmA
+ */
+export interface PGN_126720_GarminAutopilotEngineRpmAFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  subProtocolId: enums.GarminMessageId | number
+  wrapperByte1?: N2K_Number | string
+  wrapperByte2?: N2K_Number | string
+  fieldGroup?: N2K_Number | string
+  field: enums.GarminAutopilotField | number
+  reserved9?: number
+  engineSpeed?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotEngineRpmA
+ */
+export const PGN_126720_GarminAutopilotEngineRpmAMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  subProtocolId: enums.GarminMessageId.AutopilotTransport,
+  wrapperByte1: 4,
+  wrapperByte2: 4,
+  fieldGroup: 5,
+  field: enums.GarminAutopilotField.EngineRpmA,
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotEngineRpmA
+ */
+export interface PGN_126720_GarminAutopilotEngineRpmACreateArgs {
+  reserved?: number
+  reserved9?: number
+  engineSpeed?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotEngineRpmA
+ */
+export class PGN_126720_GarminAutopilotEngineRpmA extends PGN implements PGN_126720_GarminAutopilotEngineRpmAInterface {
+  fields: PGN_126720_GarminAutopilotEngineRpmAFields
+
+  constructor(fields: PGN_126720_GarminAutopilotEngineRpmACreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_126720_GarminAutopilotEngineRpmAMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminAutopilotEngineRpmAMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('garminAutopilotEngineRpmA')!
+  }
+}
+pgnIdToCreator['garminAutopilotEngineRpmA'] = (fields:any, dst:number) => new PGN_126720_GarminAutopilotEngineRpmA(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Garmin Autopilot: Engine RPM B
+ *
+ * Match: Manufacturer Code == Garmin<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Sub-protocol ID == Autopilot transport<br>
+ * Match: Wrapper Byte 1 == 4<br>
+ * Match: Wrapper Byte 2 == 4<br>
+ * Match: Field Group == 5<br>
+ * Match: Field == Engine RPM B<br>
+ *
+ * @category PGN_126720_GarminAutopilotEngineRpmB
+ */
+export interface PGN_126720_GarminAutopilotEngineRpmBInterface extends PGNInterface {
+  fields: PGN_126720_GarminAutopilotEngineRpmBFields
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotEngineRpmB
+ */
+export interface PGN_126720_GarminAutopilotEngineRpmBFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  subProtocolId: enums.GarminMessageId | number
+  wrapperByte1?: N2K_Number | string
+  wrapperByte2?: N2K_Number | string
+  fieldGroup?: N2K_Number | string
+  field: enums.GarminAutopilotField | number
+  reserved9?: number
+  engineSpeed?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotEngineRpmB
+ */
+export const PGN_126720_GarminAutopilotEngineRpmBMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  subProtocolId: enums.GarminMessageId.AutopilotTransport,
+  wrapperByte1: 4,
+  wrapperByte2: 4,
+  fieldGroup: 5,
+  field: enums.GarminAutopilotField.EngineRpmB,
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotEngineRpmB
+ */
+export interface PGN_126720_GarminAutopilotEngineRpmBCreateArgs {
+  reserved?: number
+  reserved9?: number
+  engineSpeed?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotEngineRpmB
+ */
+export class PGN_126720_GarminAutopilotEngineRpmB extends PGN implements PGN_126720_GarminAutopilotEngineRpmBInterface {
+  fields: PGN_126720_GarminAutopilotEngineRpmBFields
+
+  constructor(fields: PGN_126720_GarminAutopilotEngineRpmBCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_126720_GarminAutopilotEngineRpmBMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminAutopilotEngineRpmBMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('garminAutopilotEngineRpmB')!
+  }
+}
+pgnIdToCreator['garminAutopilotEngineRpmB'] = (fields:any, dst:number) => new PGN_126720_GarminAutopilotEngineRpmB(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Garmin Autopilot: Response Setting
+ *
+ * Match: Manufacturer Code == Garmin<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Sub-protocol ID == Autopilot transport<br>
+ * Match: Wrapper Byte 1 == 4<br>
+ * Match: Wrapper Byte 2 == 4<br>
+ * Match: Field Group == 1<br>
+ * Match: Field == Response Setting<br>
+ *
+ * @category PGN_126720_GarminAutopilotResponseSetting
+ */
+export interface PGN_126720_GarminAutopilotResponseSettingInterface extends PGNInterface {
+  fields: PGN_126720_GarminAutopilotResponseSettingFields
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotResponseSetting
+ */
+export interface PGN_126720_GarminAutopilotResponseSettingFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  subProtocolId: enums.GarminMessageId | number
+  wrapperByte1?: N2K_Number | string
+  wrapperByte2?: N2K_Number | string
+  fieldGroup?: N2K_Number | string
+  field: enums.GarminAutopilotField | number
+  reserved9?: number
+  responseSetting?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotResponseSetting
+ */
+export const PGN_126720_GarminAutopilotResponseSettingMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  subProtocolId: enums.GarminMessageId.AutopilotTransport,
+  wrapperByte1: 4,
+  wrapperByte2: 4,
+  fieldGroup: 1,
+  field: enums.GarminAutopilotField.ResponseSetting,
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotResponseSetting
+ */
+export interface PGN_126720_GarminAutopilotResponseSettingCreateArgs {
+  reserved?: number
+  reserved9?: number
+  responseSetting?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotResponseSetting
+ */
+export class PGN_126720_GarminAutopilotResponseSetting extends PGN implements PGN_126720_GarminAutopilotResponseSettingInterface {
+  fields: PGN_126720_GarminAutopilotResponseSettingFields
+
+  constructor(fields: PGN_126720_GarminAutopilotResponseSettingCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_126720_GarminAutopilotResponseSettingMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminAutopilotResponseSettingMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('garminAutopilotResponseSetting')!
+  }
+}
+pgnIdToCreator['garminAutopilotResponseSetting'] = (fields:any, dst:number) => new PGN_126720_GarminAutopilotResponseSetting(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Garmin Autopilot: Mode State
+ *
+ * Match: Manufacturer Code == Garmin<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Sub-protocol ID == Autopilot transport<br>
+ * Match: Wrapper Byte 1 == 4<br>
+ * Match: Wrapper Byte 2 == 4<br>
+ * Match: Field Group == 5<br>
+ * Match: Field == Mode State<br>
+ *
+ * @category PGN_126720_GarminAutopilotModeState
+ */
+export interface PGN_126720_GarminAutopilotModeStateInterface extends PGNInterface {
+  fields: PGN_126720_GarminAutopilotModeStateFields
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotModeState
+ */
+export interface PGN_126720_GarminAutopilotModeStateFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  subProtocolId: enums.GarminMessageId | number
+  wrapperByte1?: N2K_Number | string
+  wrapperByte2?: N2K_Number | string
+  fieldGroup?: N2K_Number | string
+  field: enums.GarminAutopilotField | number
+  reserved9?: number
+  modeState?: enums.GarminAutopilotModeState | number
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotModeState
+ */
+export const PGN_126720_GarminAutopilotModeStateMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  subProtocolId: enums.GarminMessageId.AutopilotTransport,
+  wrapperByte1: 4,
+  wrapperByte2: 4,
+  fieldGroup: 5,
+  field: enums.GarminAutopilotField.ModeState,
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotModeState
+ */
+export interface PGN_126720_GarminAutopilotModeStateCreateArgs {
+  reserved?: number
+  reserved9?: number
+  modeState?: enums.GarminAutopilotModeState | number
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotModeState
+ */
+export class PGN_126720_GarminAutopilotModeState extends PGN implements PGN_126720_GarminAutopilotModeStateInterface {
+  fields: PGN_126720_GarminAutopilotModeStateFields
+
+  constructor(fields: PGN_126720_GarminAutopilotModeStateCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_126720_GarminAutopilotModeStateMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminAutopilotModeStateMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('garminAutopilotModeState')!
+  }
+}
+pgnIdToCreator['garminAutopilotModeState'] = (fields:any, dst:number) => new PGN_126720_GarminAutopilotModeState(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Garmin Autopilot: Heartbeat
+ *
+ * Match: Manufacturer Code == Garmin<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Sub-protocol ID == Autopilot transport<br>
+ * Match: Wrapper Byte 1 == 4<br>
+ * Match: Wrapper Byte 2 == 4<br>
+ * Match: Field Group == 21<br>
+ * Match: Field == Heartbeat<br>
+ *
+ * @category PGN_126720_GarminAutopilotHeartbeat
+ */
+export interface PGN_126720_GarminAutopilotHeartbeatInterface extends PGNInterface {
+  fields: PGN_126720_GarminAutopilotHeartbeatFields
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotHeartbeat
+ */
+export interface PGN_126720_GarminAutopilotHeartbeatFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  subProtocolId: enums.GarminMessageId | number
+  wrapperByte1?: N2K_Number | string
+  wrapperByte2?: N2K_Number | string
+  fieldGroup?: N2K_Number | string
+  field: enums.GarminAutopilotField | number
+  heartbeatData?: N2K_Binary
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotHeartbeat
+ */
+export const PGN_126720_GarminAutopilotHeartbeatMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  subProtocolId: enums.GarminMessageId.AutopilotTransport,
+  wrapperByte1: 4,
+  wrapperByte2: 4,
+  fieldGroup: 21,
+  field: enums.GarminAutopilotField.Heartbeat,
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotHeartbeat
+ */
+export interface PGN_126720_GarminAutopilotHeartbeatCreateArgs {
+  reserved?: number
+  heartbeatData?: N2K_Binary
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotHeartbeat
+ */
+export class PGN_126720_GarminAutopilotHeartbeat extends PGN implements PGN_126720_GarminAutopilotHeartbeatInterface {
+  fields: PGN_126720_GarminAutopilotHeartbeatFields
+
+  constructor(fields: PGN_126720_GarminAutopilotHeartbeatCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_126720_GarminAutopilotHeartbeatMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminAutopilotHeartbeatMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('garminAutopilotHeartbeat')!
+  }
+}
+pgnIdToCreator['garminAutopilotHeartbeat'] = (fields:any, dst:number) => new PGN_126720_GarminAutopilotHeartbeat(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Garmin Autopilot: Maneuver
+ *
+ * Match: Manufacturer Code == Garmin<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Sub-protocol ID == Autopilot transport<br>
+ * Match: Wrapper Byte 1 == 4<br>
+ * Match: Wrapper Byte 2 == 4<br>
+ * Match: Field Group == 38<br>
+ *
+ * @category PGN_126720_GarminAutopilotManeuver
+ */
+export interface PGN_126720_GarminAutopilotManeuverInterface extends PGNInterface {
+  fields: PGN_126720_GarminAutopilotManeuverFields
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotManeuver
+ */
+export interface PGN_126720_GarminAutopilotManeuverFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  subProtocolId: enums.GarminMessageId | number
+  wrapperByte1?: N2K_Number | string
+  wrapperByte2?: N2K_Number | string
+  fieldGroup?: N2K_Number | string
+  maneuverCode?: N2K_Number
+  reserved9?: number
+  value?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotManeuver
+ */
+export const PGN_126720_GarminAutopilotManeuverMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Garmin,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  subProtocolId: enums.GarminMessageId.AutopilotTransport,
+  wrapperByte1: 4,
+  wrapperByte2: 4,
+  fieldGroup: 38,
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotManeuver
+ */
+export interface PGN_126720_GarminAutopilotManeuverCreateArgs {
+  reserved?: number
+  maneuverCode?: N2K_Number
+  reserved9?: number
+  value?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_GarminAutopilotManeuver
+ */
+export class PGN_126720_GarminAutopilotManeuver extends PGN implements PGN_126720_GarminAutopilotManeuverInterface {
+  fields: PGN_126720_GarminAutopilotManeuverFields
+
+  constructor(fields: PGN_126720_GarminAutopilotManeuverCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_126720_GarminAutopilotManeuverMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_GarminAutopilotManeuverMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('garminAutopilotManeuver')!
+  }
+}
+pgnIdToCreator['garminAutopilotManeuver'] = (fields:any, dst:number) => new PGN_126720_GarminAutopilotManeuver(fields, dst)
 
 
 /**
@@ -12149,77 +13662,6 @@ pgnIdToCreator['maretronDeviationCalibrationResponse'] = (fields:any, dst:number
 /**
  * PGN: 126720
  *
- * Description: Maretron: Slave Response
- *
- * Match: Manufacturer Code == Maretron<br>
- * Match: Industry Code == Marine Industry<br>
- *
- * @category PGN_126720_MaretronSlaveResponse
- */
-export interface PGN_126720_MaretronSlaveResponseInterface extends PGNInterface {
-  fields: PGN_126720_MaretronSlaveResponseFields
-}
-
-/**
- * @category PGN_126720_MaretronSlaveResponse
- */
-export interface PGN_126720_MaretronSlaveResponseFields {
-  manufacturerCode?: enums.ManufacturerCode | number
-  reserved?: number
-  industryCode?: enums.IndustryCode | number
-  productCode?: N2K_Number
-  softwareCode?: N2K_Number
-  command?: N2K_Number
-  status?: N2K_Number
-}
-
-/**
- * @category PGN_126720_MaretronSlaveResponse
- */
-export const PGN_126720_MaretronSlaveResponseMatchFields = {
-  manufacturerCode: enums.ManufacturerCode.Maretron,
-  industryCode: enums.IndustryCode.MarineIndustry,
-}
-
-/**
- * @category PGN_126720_MaretronSlaveResponse
- */
-export interface PGN_126720_MaretronSlaveResponseCreateArgs {
-  reserved?: number
-  productCode?: N2K_Number
-  softwareCode?: N2K_Number
-  command?: N2K_Number
-  status?: N2K_Number
-}
-
-/**
- * @category PGN_126720_MaretronSlaveResponse
- */
-export class PGN_126720_MaretronSlaveResponse extends PGN implements PGN_126720_MaretronSlaveResponseInterface {
-  fields: PGN_126720_MaretronSlaveResponseFields
-
-  constructor(fields: PGN_126720_MaretronSlaveResponseCreateArgs, dst: number = 255) {
-    super({
-      pgn: 126720,
-      prio: 3,
-      dst
-    })
-    this.fields = { ...PGN_126720_MaretronSlaveResponseMatchFields, ...fields }
-  }
-
-  static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_126720_MaretronSlaveResponseMatchFields)
-  }
-  getDefinition(): Definition {
-    return getPGNWithId('maretronSlaveResponse')!
-  }
-}
-pgnIdToCreator['maretronSlaveResponse'] = (fields:any, dst:number) => new PGN_126720_MaretronSlaveResponse(fields, dst)
-
-
-/**
- * PGN: 126720
- *
  * Description: Maretron: Proprietary Configuration
  *
  * Match: Manufacturer Code == Maretron<br>
@@ -12763,12 +14205,12 @@ export interface PGN_126983Fields {
   dataSourceInstance: N2K_Number
   dataSourceIndexSource?: N2K_Number
   alertOccurrenceNumber?: N2K_Number
-  temporarySilenceStatus: enums.YesNo | number
-  acknowledgeStatus: enums.YesNo | number
-  escalationStatus: enums.YesNo | number
-  temporarySilenceSupport: enums.YesNo | number
-  acknowledgeSupport: enums.YesNo | number
-  escalationSupport: enums.YesNo | number
+  temporarySilenceStatus: enums.YesNo1Bit | number
+  acknowledgeStatus: enums.YesNo1Bit | number
+  escalationStatus: enums.YesNo1Bit | number
+  temporarySilenceSupport: enums.YesNo1Bit | number
+  acknowledgeSupport: enums.YesNo1Bit | number
+  escalationSupport: enums.YesNo1Bit | number
   reserved?: number
   acknowledgeSourceNetworkIdName?: N2K_IsoName
   triggerCondition?: enums.AlertTriggerCondition | number
@@ -15701,7 +17143,7 @@ export interface PGN_128520Fields {
   sid?: N2K_Number
   targetId?: N2K_Number
   trackStatus?: enums.Tracking | number
-  reportedTarget: enums.YesNo | number
+  reportedTarget: enums.YesNo1Bit | number
   targetAcquisition: enums.TargetAcquisition | number
   bearingReference?: enums.DirectionReference | number
   reserved?: number
@@ -16467,10 +17909,10 @@ export interface PGN_129039Fields {
   regionalApplication?: number
   regionalApplicationB?: number
   unitType: enums.AisType | number
-  integratedDisplay: enums.YesNo | number
-  dsc: enums.YesNo | number
+  integratedDisplay: enums.YesNo1Bit | number
+  dsc: enums.YesNo1Bit | number
   band: enums.AisBand | number
-  canHandleMsg22: enums.YesNo | number
+  canHandleMsg22: enums.YesNo1Bit | number
   aisMode: enums.AisMode | number
   aisCommunicationState: enums.AisCommunicationState | number
   reserved?: number
@@ -16592,8 +18034,8 @@ export interface PGN_129041Fields {
   positionReferenceFromStarboardEdge?: N2K_Number
   positionReferenceFromTrueNorthFacingEdge?: N2K_Number
   atonType?: enums.AtonType | number
-  offPositionIndicator: enums.YesNo | number
-  virtualAtonFlag: enums.YesNo | number
+  offPositionIndicator: enums.YesNo1Bit | number
+  virtualAtonFlag: enums.YesNo1Bit | number
   assignedModeFlag: enums.AisAssignedMode | number
   spare?: number
   positionFixingDeviceType?: enums.PositionFixDevice | number
@@ -17132,7 +18574,7 @@ export interface PGN_129540Fields {
     snr?: N2K_Number
     rangeResiduals?: N2K_Number
     status?: enums.SatelliteStatus | number
-    reserved11?: number
+    gnssSystem?: enums.GnssSystem | number
   }[]
 }
 
@@ -17789,7 +19231,7 @@ export interface PGN_129795Fields {
   sequenceNumber?: N2K_Number
   destinationId: N2K_Mmsi
   reserved8?: number
-  retransmitFlag: enums.YesNo | number
+  retransmitFlag: enums.YesNo1Bit | number
   reserved10?: number
   numberOfBitsInBinaryDataField?: N2K_Number
   binaryData?: N2K_Binary
@@ -18086,7 +19528,7 @@ export interface PGN_129801Fields {
   sequenceNumber?: N2K_Number
   destinationId: N2K_Mmsi
   reserved8?: number
-  retransmitFlag: enums.YesNo | number
+  retransmitFlag: enums.YesNo1Bit | number
   spare10?: number
   safetyRelatedText?: N2K_StringLau
 }
@@ -23682,74 +25124,72 @@ pgnIdToCreator['seaRecoveryWatermakerStatus'] = (fields:any, dst:number) => new 
 /**
  * PGN: 130817
  *
- * Description: Navico: Unknown
+ * Description: Navico: Feature Unlock
+ *
+ * Explanation: Feature-unlock / capability report emitted by Navico devices, and the target of the 126208 Request seen on the bus (the requester filters on Feature Id as field 4). The payload is a 2-byte Feature Id and a record count; a non-zero count is believed to be followed by that many 3-byte records (never observed on the wire, so their layout is left undecoded here) and two trailing bytes.
  *
  * Match: Manufacturer Code == Navico<br>
  * Match: Industry Code == Marine Industry<br>
  *
- * @category PGN_130817_NavicoUnknown
+ * @category PGN_130817_NavicoFeatureUnlock
  */
-export interface PGN_130817_NavicoUnknownInterface extends PGNInterface {
-  fields: PGN_130817_NavicoUnknownFields
+export interface PGN_130817_NavicoFeatureUnlockInterface extends PGNInterface {
+  fields: PGN_130817_NavicoFeatureUnlockFields
 }
 
 /**
- * @category PGN_130817_NavicoUnknown
+ * @category PGN_130817_NavicoFeatureUnlock
  */
-export interface PGN_130817_NavicoUnknownFields {
+export interface PGN_130817_NavicoFeatureUnlockFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  a?: N2K_Number
-  b?: N2K_Number
-  c?: N2K_Number
-  d?: N2K_Number
-  e?: N2K_Number
+  featureId?: N2K_Number
+  recordCount?: N2K_Number
+  data?: N2K_Number
 }
 
 /**
- * @category PGN_130817_NavicoUnknown
+ * @category PGN_130817_NavicoFeatureUnlock
  */
-export const PGN_130817_NavicoUnknownMatchFields = {
+export const PGN_130817_NavicoFeatureUnlockMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
 }
 
 /**
- * @category PGN_130817_NavicoUnknown
+ * @category PGN_130817_NavicoFeatureUnlock
  */
-export interface PGN_130817_NavicoUnknownCreateArgs {
+export interface PGN_130817_NavicoFeatureUnlockCreateArgs {
   reserved?: number
-  a?: N2K_Number
-  b?: N2K_Number
-  c?: N2K_Number
-  d?: N2K_Number
-  e?: N2K_Number
+  featureId?: N2K_Number
+  recordCount?: N2K_Number
+  data?: N2K_Number
 }
 
 /**
- * @category PGN_130817_NavicoUnknown
+ * @category PGN_130817_NavicoFeatureUnlock
  */
-export class PGN_130817_NavicoUnknown extends PGN implements PGN_130817_NavicoUnknownInterface {
-  fields: PGN_130817_NavicoUnknownFields
+export class PGN_130817_NavicoFeatureUnlock extends PGN implements PGN_130817_NavicoFeatureUnlockInterface {
+  fields: PGN_130817_NavicoFeatureUnlockFields
 
-  constructor(fields: PGN_130817_NavicoUnknownCreateArgs, dst: number = 255) {
+  constructor(fields: PGN_130817_NavicoFeatureUnlockCreateArgs, dst: number = 255) {
     super({
       pgn: 130817,
       prio: 7,
       dst
     })
-    this.fields = { ...PGN_130817_NavicoUnknownMatchFields, ...fields }
+    this.fields = { ...PGN_130817_NavicoFeatureUnlockMatchFields, ...fields }
   }
 
   static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_130817_NavicoUnknownMatchFields)
+    return isMatch(pgn, PGN_130817_NavicoFeatureUnlockMatchFields)
   }
   getDefinition(): Definition {
-    return getPGNWithId('navicoUnknown')!
+    return getPGNWithId('navicoFeatureUnlock')!
   }
 }
-pgnIdToCreator['navicoUnknown'] = (fields:any, dst:number) => new PGN_130817_NavicoUnknown(fields, dst)
+pgnIdToCreator['navicoFeatureUnlock'] = (fields:any, dst:number) => new PGN_130817_NavicoFeatureUnlock(fields, dst)
 
 
 /**
@@ -24817,7 +26257,7 @@ pgnIdToCreator['bepMarineCzone130819'] = (fields:any, dst:number) => new PGN_130
  *
  * Description: BEP Marine: CZone Alarm String Response
  *
- * Explanation: Response form of PGN 65299 (CZone alarm string request). The device and channel/alarm id are echoed back from the request, followed by the matching alarm string text. The string is NUL-terminated; the encoding (ASCII vs UTF-8) is not yet confirmed.
+ * Explanation: Response form of PGN 65299 (CZone alarm string request). The device and channel/alarm id are echoed back from the request, followed by the matching alarm string text. The string is NUL-terminated; the encoding (ASCII vs UTF-8) is not yet confirmed. This is the only BEP Marine (manufacturer 295) variant of PGN 130820, so it matches on the manufacturer code alone and will also catch other BEP 130820 traffic; e.g. a NAC-3 autopilot emits 130820 once a second carrying comma-separated telemetry such as "1720.0,3,0.0,0.1,0.0,1.8,0.00,358.0,..." rather than an alarm string.
  *
  * Match: Manufacturer Code == BEP Marine 2<br>
  * Match: Industry Code == Marine Industry<br>
@@ -28350,71 +29790,6 @@ pgnIdToCreator['maretronAlertResponse'] = (fields:any, dst:number) => new PGN_13
 
 
 /**
- * PGN: 130820
- *
- * Description: BEP Marine: Proprietary PGN 130820
- *
- * Match: Manufacturer Code == BEP Marine 2<br>
- * Match: Industry Code == Marine Industry<br>
- *
- * @category PGN_130820_BepMarineProprietaryPgn130820
- */
-export interface PGN_130820_BepMarineProprietaryPgn130820Interface extends PGNInterface {
-  fields: PGN_130820_BepMarineProprietaryPgn130820Fields
-}
-
-/**
- * @category PGN_130820_BepMarineProprietaryPgn130820
- */
-export interface PGN_130820_BepMarineProprietaryPgn130820Fields {
-  manufacturerCode?: enums.ManufacturerCode | number
-  reserved?: number
-  industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
-}
-
-/**
- * @category PGN_130820_BepMarineProprietaryPgn130820
- */
-export const PGN_130820_BepMarineProprietaryPgn130820MatchFields = {
-  manufacturerCode: enums.ManufacturerCode.BepMarine2,
-  industryCode: enums.IndustryCode.MarineIndustry,
-}
-
-/**
- * @category PGN_130820_BepMarineProprietaryPgn130820
- */
-export interface PGN_130820_BepMarineProprietaryPgn130820CreateArgs {
-  reserved?: number
-  data?: N2K_Binary
-}
-
-/**
- * @category PGN_130820_BepMarineProprietaryPgn130820
- */
-export class PGN_130820_BepMarineProprietaryPgn130820 extends PGN implements PGN_130820_BepMarineProprietaryPgn130820Interface {
-  fields: PGN_130820_BepMarineProprietaryPgn130820Fields
-
-  constructor(fields: PGN_130820_BepMarineProprietaryPgn130820CreateArgs, dst: number = 255) {
-    super({
-      pgn: 130820,
-      prio: 3,
-      dst
-    })
-    this.fields = { ...PGN_130820_BepMarineProprietaryPgn130820MatchFields, ...fields }
-  }
-
-  static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_130820_BepMarineProprietaryPgn130820MatchFields)
-  }
-  getDefinition(): Definition {
-    return getPGNWithId('bepMarineProprietaryPgn130820')!
-  }
-}
-pgnIdToCreator['bepMarineProprietaryPgn130820'] = (fields:any, dst:number) => new PGN_130820_BepMarineProprietaryPgn130820(fields, dst)
-
-
-/**
  * PGN: 130821
  *
  * Description: Navico: ASCII Data
@@ -28719,66 +30094,666 @@ pgnIdToCreator['bepMarineProprietaryPgn130821'] = (fields:any, dst:number) => ne
 /**
  * PGN: 130822
  *
- * Description: Navico: Unknown 1
+ * Description: Navico: UDB Database, Object Ping
+ *
+ * Explanation: Header-only form of the Navico/SimNet UDB database broadcast (Command 0; Commands 8 and 9 are equivalent reserved pings). The object is addressed by (Address, Section, Item).
  *
  * Match: Manufacturer Code == Navico<br>
  * Match: Industry Code == Marine Industry<br>
  *
- * @category PGN_130822_NavicoUnknown1
+ * @category PGN_130822_NavicoUdbDatabaseObjectPing
  */
-export interface PGN_130822_NavicoUnknown1Interface extends PGNInterface {
-  fields: PGN_130822_NavicoUnknown1Fields
+export interface PGN_130822_NavicoUdbDatabaseObjectPingInterface extends PGNInterface {
+  fields: PGN_130822_NavicoUdbDatabaseObjectPingFields
 }
 
 /**
- * @category PGN_130822_NavicoUnknown1
+ * @category PGN_130822_NavicoUdbDatabaseObjectPing
  */
-export interface PGN_130822_NavicoUnknown1Fields {
+export interface PGN_130822_NavicoUdbDatabaseObjectPingFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  marker?: N2K_Number
+  command: N2K_Number | string
+  reserved6?: number
+  address?: N2K_Number
+  section?: N2K_Number
+  item?: N2K_Number
 }
 
 /**
- * @category PGN_130822_NavicoUnknown1
+ * @category PGN_130822_NavicoUdbDatabaseObjectPing
  */
-export const PGN_130822_NavicoUnknown1MatchFields = {
+export const PGN_130822_NavicoUdbDatabaseObjectPingMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
+  command: "Object Ping",
 }
 
 /**
- * @category PGN_130822_NavicoUnknown1
+ * @category PGN_130822_NavicoUdbDatabaseObjectPing
  */
-export interface PGN_130822_NavicoUnknown1CreateArgs {
+export interface PGN_130822_NavicoUdbDatabaseObjectPingCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  marker?: N2K_Number
+  reserved6?: number
+  address?: N2K_Number
+  section?: N2K_Number
+  item?: N2K_Number
 }
 
 /**
- * @category PGN_130822_NavicoUnknown1
+ * @category PGN_130822_NavicoUdbDatabaseObjectPing
  */
-export class PGN_130822_NavicoUnknown1 extends PGN implements PGN_130822_NavicoUnknown1Interface {
-  fields: PGN_130822_NavicoUnknown1Fields
+export class PGN_130822_NavicoUdbDatabaseObjectPing extends PGN implements PGN_130822_NavicoUdbDatabaseObjectPingInterface {
+  fields: PGN_130822_NavicoUdbDatabaseObjectPingFields
 
-  constructor(fields: PGN_130822_NavicoUnknown1CreateArgs, dst: number = 255) {
+  constructor(fields: PGN_130822_NavicoUdbDatabaseObjectPingCreateArgs, dst: number = 255) {
     super({
       pgn: 130822,
       prio: 3,
       dst
     })
-    this.fields = { ...PGN_130822_NavicoUnknown1MatchFields, ...fields }
+    this.fields = { ...PGN_130822_NavicoUdbDatabaseObjectPingMatchFields, ...fields }
   }
 
   static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_130822_NavicoUnknown1MatchFields)
+    return isMatch(pgn, PGN_130822_NavicoUdbDatabaseObjectPingMatchFields)
   }
   getDefinition(): Definition {
-    return getPGNWithId('navicoUnknown1')!
+    return getPGNWithId('navicoUdbDatabaseObjectPing')!
   }
 }
-pgnIdToCreator['navicoUnknown1'] = (fields:any, dst:number) => new PGN_130822_NavicoUnknown1(fields, dst)
+pgnIdToCreator['navicoUdbDatabaseObjectPing'] = (fields:any, dst:number) => new PGN_130822_NavicoUdbDatabaseObjectPing(fields, dst)
+
+
+/**
+ * PGN: 130822
+ *
+ * Description: Navico: UDB Database, Source Report
+ *
+ * Explanation: Per-object value report (Command 1), the form that accounts for essentially all observed 130822 traffic. Each frame reports one object's current 'Object Value' (0xFC00 = no value), addressed by (Address, Source Setting Id, Item). The trailing 'Sub' and 'Token' are the object's identity metadata, byte-identical to the same object's Command 6 dump and constant per object; 'Token' is a stable per-object-definition handle (only a couple dozen distinct values on a typical bus) that tracks the object independently of its local Section/Item address. The selected source DEVICE for each data type is not carried here - it appears only in the Command 6 dump (as a NAME) and in PGN 130840. 'Source Setting Id' uses a different id space from the data-type ids carried by the Command 6 dump and PGN 130845.
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Command == Source Report<br>
+ *
+ * @category PGN_130822_NavicoUdbDatabaseSourceReport
+ */
+export interface PGN_130822_NavicoUdbDatabaseSourceReportInterface extends PGNInterface {
+  fields: PGN_130822_NavicoUdbDatabaseSourceReportFields
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseSourceReport
+ */
+export interface PGN_130822_NavicoUdbDatabaseSourceReportFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  marker?: N2K_Number
+  command: N2K_Number | string
+  spare6?: number
+  address?: N2K_Number
+  sourceSettingId?: N2K_Number
+  item?: N2K_Number
+  objectValue?: N2K_Number
+  instance?: N2K_Number
+  sourceSelectionMaster: N2K_Number
+  spare13?: number
+  sub?: N2K_Binary
+  token?: N2K_Number
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseSourceReport
+ */
+export const PGN_130822_NavicoUdbDatabaseSourceReportMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  command: "Source Report",
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseSourceReport
+ */
+export interface PGN_130822_NavicoUdbDatabaseSourceReportCreateArgs {
+  reserved?: number
+  marker?: N2K_Number
+  spare6?: number
+  address?: N2K_Number
+  sourceSettingId?: N2K_Number
+  item?: N2K_Number
+  objectValue?: N2K_Number
+  instance?: N2K_Number
+  sourceSelectionMaster: N2K_Number
+  spare13?: number
+  sub?: N2K_Binary
+  token?: N2K_Number
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseSourceReport
+ */
+export class PGN_130822_NavicoUdbDatabaseSourceReport extends PGN implements PGN_130822_NavicoUdbDatabaseSourceReportInterface {
+  fields: PGN_130822_NavicoUdbDatabaseSourceReportFields
+
+  constructor(fields: PGN_130822_NavicoUdbDatabaseSourceReportCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130822,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130822_NavicoUdbDatabaseSourceReportMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130822_NavicoUdbDatabaseSourceReportMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoUdbDatabaseSourceReport')!
+  }
+}
+pgnIdToCreator['navicoUdbDatabaseSourceReport'] = (fields:any, dst:number) => new PGN_130822_NavicoUdbDatabaseSourceReport(fields, dst)
+
+
+/**
+ * PGN: 130822
+ *
+ * Description: Navico: UDB Database, Bulk Report 2
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Command == Bulk Report 2<br>
+ *
+ * @category PGN_130822_NavicoUdbDatabaseBulkReport2
+ */
+export interface PGN_130822_NavicoUdbDatabaseBulkReport2Interface extends PGNInterface {
+  fields: PGN_130822_NavicoUdbDatabaseBulkReport2Fields
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseBulkReport2
+ */
+export interface PGN_130822_NavicoUdbDatabaseBulkReport2Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  marker?: N2K_Number
+  command: N2K_Number | string
+  spare6?: number
+  address?: N2K_Number
+  section?: N2K_Number
+  item?: N2K_Number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseBulkReport2
+ */
+export const PGN_130822_NavicoUdbDatabaseBulkReport2MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  command: "Bulk Report 2",
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseBulkReport2
+ */
+export interface PGN_130822_NavicoUdbDatabaseBulkReport2CreateArgs {
+  reserved?: number
+  marker?: N2K_Number
+  spare6?: number
+  address?: N2K_Number
+  section?: N2K_Number
+  item?: N2K_Number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseBulkReport2
+ */
+export class PGN_130822_NavicoUdbDatabaseBulkReport2 extends PGN implements PGN_130822_NavicoUdbDatabaseBulkReport2Interface {
+  fields: PGN_130822_NavicoUdbDatabaseBulkReport2Fields
+
+  constructor(fields: PGN_130822_NavicoUdbDatabaseBulkReport2CreateArgs, dst: number = 255) {
+    super({
+      pgn: 130822,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130822_NavicoUdbDatabaseBulkReport2MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130822_NavicoUdbDatabaseBulkReport2MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoUdbDatabaseBulkReport2')!
+  }
+}
+pgnIdToCreator['navicoUdbDatabaseBulkReport2'] = (fields:any, dst:number) => new PGN_130822_NavicoUdbDatabaseBulkReport2(fields, dst)
+
+
+/**
+ * PGN: 130822
+ *
+ * Description: Navico: Configuration Set
+ *
+ * Explanation: Command 3, formerly documented as 'Bulk Report 3'; despite that name it carries a single small per-object update, not a bulk/multi-item transfer. Unlike Command 1 'Source Report' (which continually re-broadcasts its whole table), Command 3 is change-driven - it is only sent when the object's value changes. Every frame observed so far carries exactly one Section 10 (0x0A) record at Item 1. Most Navico/Simnet parameter settings are read/written over PGN 130845 (Simnet: Key Value) instead; this PGN only carries the handful of settings - wind/depth-speed source selection and True wind direction damping - that PGN 130845 does not.
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Command == Configuration Set<br>
+ *
+ * @category PGN_130822_NavicoConfigurationSet
+ */
+export interface PGN_130822_NavicoConfigurationSetInterface extends PGNInterface {
+  fields: PGN_130822_NavicoConfigurationSetFields
+}
+
+/**
+ * @category PGN_130822_NavicoConfigurationSet
+ */
+export interface PGN_130822_NavicoConfigurationSetFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  marker?: N2K_Number
+  command: N2K_Number | string
+  spare6?: number
+  address?: N2K_Number
+  section?: N2K_Number
+  item?: N2K_Number
+  spare10?: number
+  sourceSettingId: N2K_DynamicFieldKey
+  spare12?: number
+  token?: N2K_Number
+  length?: N2K_DynamicFieldLength
+  value?: N2K_DynamicFieldValue
+}
+
+/**
+ * @category PGN_130822_NavicoConfigurationSet
+ */
+export const PGN_130822_NavicoConfigurationSetMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  command: "Configuration Set",
+}
+
+/**
+ * @category PGN_130822_NavicoConfigurationSet
+ */
+export interface PGN_130822_NavicoConfigurationSetCreateArgs {
+  reserved?: number
+  marker?: N2K_Number
+  spare6?: number
+  address?: N2K_Number
+  section?: N2K_Number
+  item?: N2K_Number
+  spare10?: number
+  sourceSettingId: N2K_DynamicFieldKey
+  spare12?: number
+  token?: N2K_Number
+  length?: N2K_DynamicFieldLength
+  value?: N2K_DynamicFieldValue
+}
+
+/**
+ * @category PGN_130822_NavicoConfigurationSet
+ */
+export class PGN_130822_NavicoConfigurationSet extends PGN implements PGN_130822_NavicoConfigurationSetInterface {
+  fields: PGN_130822_NavicoConfigurationSetFields
+
+  constructor(fields: PGN_130822_NavicoConfigurationSetCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130822,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130822_NavicoConfigurationSetMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130822_NavicoConfigurationSetMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoConfigurationSet')!
+  }
+}
+pgnIdToCreator['navicoConfigurationSet'] = (fields:any, dst:number) => new PGN_130822_NavicoConfigurationSet(fields, dst)
+
+
+/**
+ * PGN: 130822
+ *
+ * Description: Navico: UDB Database, Bulk Report 4
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Command == Bulk Report 4<br>
+ *
+ * @category PGN_130822_NavicoUdbDatabaseBulkReport4
+ */
+export interface PGN_130822_NavicoUdbDatabaseBulkReport4Interface extends PGNInterface {
+  fields: PGN_130822_NavicoUdbDatabaseBulkReport4Fields
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseBulkReport4
+ */
+export interface PGN_130822_NavicoUdbDatabaseBulkReport4Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  marker?: N2K_Number
+  command: N2K_Number | string
+  reserved6?: number
+  address?: N2K_Number
+  section?: N2K_Number
+  item?: N2K_Number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseBulkReport4
+ */
+export const PGN_130822_NavicoUdbDatabaseBulkReport4MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  command: "Bulk Report 4",
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseBulkReport4
+ */
+export interface PGN_130822_NavicoUdbDatabaseBulkReport4CreateArgs {
+  reserved?: number
+  marker?: N2K_Number
+  reserved6?: number
+  address?: N2K_Number
+  section?: N2K_Number
+  item?: N2K_Number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseBulkReport4
+ */
+export class PGN_130822_NavicoUdbDatabaseBulkReport4 extends PGN implements PGN_130822_NavicoUdbDatabaseBulkReport4Interface {
+  fields: PGN_130822_NavicoUdbDatabaseBulkReport4Fields
+
+  constructor(fields: PGN_130822_NavicoUdbDatabaseBulkReport4CreateArgs, dst: number = 255) {
+    super({
+      pgn: 130822,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130822_NavicoUdbDatabaseBulkReport4MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130822_NavicoUdbDatabaseBulkReport4MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoUdbDatabaseBulkReport4')!
+  }
+}
+pgnIdToCreator['navicoUdbDatabaseBulkReport4'] = (fields:any, dst:number) => new PGN_130822_NavicoUdbDatabaseBulkReport4(fields, dst)
+
+
+/**
+ * PGN: 130822
+ *
+ * Description: Navico: UDB Database, Short Report 5
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Command == Short Report 5<br>
+ *
+ * @category PGN_130822_NavicoUdbDatabaseShortReport5
+ */
+export interface PGN_130822_NavicoUdbDatabaseShortReport5Interface extends PGNInterface {
+  fields: PGN_130822_NavicoUdbDatabaseShortReport5Fields
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseShortReport5
+ */
+export interface PGN_130822_NavicoUdbDatabaseShortReport5Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  marker?: N2K_Number
+  command: N2K_Number | string
+  reserved6?: number
+  address?: N2K_Number
+  section?: N2K_Number
+  item?: N2K_Number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseShortReport5
+ */
+export const PGN_130822_NavicoUdbDatabaseShortReport5MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  command: "Short Report 5",
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseShortReport5
+ */
+export interface PGN_130822_NavicoUdbDatabaseShortReport5CreateArgs {
+  reserved?: number
+  marker?: N2K_Number
+  reserved6?: number
+  address?: N2K_Number
+  section?: N2K_Number
+  item?: N2K_Number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseShortReport5
+ */
+export class PGN_130822_NavicoUdbDatabaseShortReport5 extends PGN implements PGN_130822_NavicoUdbDatabaseShortReport5Interface {
+  fields: PGN_130822_NavicoUdbDatabaseShortReport5Fields
+
+  constructor(fields: PGN_130822_NavicoUdbDatabaseShortReport5CreateArgs, dst: number = 255) {
+    super({
+      pgn: 130822,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130822_NavicoUdbDatabaseShortReport5MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130822_NavicoUdbDatabaseShortReport5MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoUdbDatabaseShortReport5')!
+  }
+}
+pgnIdToCreator['navicoUdbDatabaseShortReport5'] = (fields:any, dst:number) => new PGN_130822_NavicoUdbDatabaseShortReport5(fields, dst)
+
+
+/**
+ * PGN: 130822
+ *
+ * Description: Navico: UDB Database, Object Dump
+ *
+ * Explanation: Verbose dump (Command 6) of a source-selection object: it carries the same Value and Token as the Command 1 report for the object, followed by a list of every data type the object covers and the selected source for each. Each record is a length, a constant class byte, a data-type id and the selected source's value.
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Command == Object Dump<br>
+ *
+ * @category PGN_130822_NavicoUdbDatabaseObjectDump
+ */
+export interface PGN_130822_NavicoUdbDatabaseObjectDumpInterface extends PGNInterface {
+  fields: PGN_130822_NavicoUdbDatabaseObjectDumpFields
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseObjectDump
+ */
+export interface PGN_130822_NavicoUdbDatabaseObjectDumpFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  marker?: N2K_Number
+  command: N2K_Number | string
+  reserved6?: number
+  address?: N2K_Number
+  section?: N2K_Number
+  item?: N2K_Number
+  objectValue?: N2K_Number
+  sub?: N2K_Binary
+  token?: N2K_Number
+  list: {
+    length?: N2K_DynamicFieldLength
+    class?: N2K_Number
+    dataType?: enums.NavicoDataType | number
+    value?: N2K_DynamicFieldValue
+  }[]
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseObjectDump
+ */
+export const PGN_130822_NavicoUdbDatabaseObjectDumpMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  command: "Object Dump",
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseObjectDump
+ */
+export interface PGN_130822_NavicoUdbDatabaseObjectDumpCreateArgs {
+  reserved?: number
+  marker?: N2K_Number
+  reserved6?: number
+  address?: N2K_Number
+  section?: N2K_Number
+  item?: N2K_Number
+  objectValue?: N2K_Number
+  sub?: N2K_Binary
+  token?: N2K_Number
+  list: {
+    length?: N2K_DynamicFieldLength
+    class?: N2K_Number
+    dataType?: enums.NavicoDataType | number
+    value?: N2K_DynamicFieldValue
+  }[]
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseObjectDump
+ */
+export class PGN_130822_NavicoUdbDatabaseObjectDump extends PGN implements PGN_130822_NavicoUdbDatabaseObjectDumpInterface {
+  fields: PGN_130822_NavicoUdbDatabaseObjectDumpFields
+
+  constructor(fields: PGN_130822_NavicoUdbDatabaseObjectDumpCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130822,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130822_NavicoUdbDatabaseObjectDumpMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130822_NavicoUdbDatabaseObjectDumpMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoUdbDatabaseObjectDump')!
+  }
+}
+pgnIdToCreator['navicoUdbDatabaseObjectDump'] = (fields:any, dst:number) => new PGN_130822_NavicoUdbDatabaseObjectDump(fields, dst)
+
+
+/**
+ * PGN: 130822
+ *
+ * Description: Navico: UDB Database, Short Report 7
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Command == Short Report 7<br>
+ *
+ * @category PGN_130822_NavicoUdbDatabaseShortReport7
+ */
+export interface PGN_130822_NavicoUdbDatabaseShortReport7Interface extends PGNInterface {
+  fields: PGN_130822_NavicoUdbDatabaseShortReport7Fields
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseShortReport7
+ */
+export interface PGN_130822_NavicoUdbDatabaseShortReport7Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  marker?: N2K_Number
+  command: N2K_Number | string
+  reserved6?: number
+  address?: N2K_Number
+  section?: N2K_Number
+  item?: N2K_Number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseShortReport7
+ */
+export const PGN_130822_NavicoUdbDatabaseShortReport7MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  command: "Short Report 7",
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseShortReport7
+ */
+export interface PGN_130822_NavicoUdbDatabaseShortReport7CreateArgs {
+  reserved?: number
+  marker?: N2K_Number
+  reserved6?: number
+  address?: N2K_Number
+  section?: N2K_Number
+  item?: N2K_Number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseShortReport7
+ */
+export class PGN_130822_NavicoUdbDatabaseShortReport7 extends PGN implements PGN_130822_NavicoUdbDatabaseShortReport7Interface {
+  fields: PGN_130822_NavicoUdbDatabaseShortReport7Fields
+
+  constructor(fields: PGN_130822_NavicoUdbDatabaseShortReport7CreateArgs, dst: number = 255) {
+    super({
+      pgn: 130822,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130822_NavicoUdbDatabaseShortReport7MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130822_NavicoUdbDatabaseShortReport7MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoUdbDatabaseShortReport7')!
+  }
+}
+pgnIdToCreator['navicoUdbDatabaseShortReport7'] = (fields:any, dst:number) => new PGN_130822_NavicoUdbDatabaseShortReport7(fields, dst)
 
 
 /**
@@ -28930,6 +30905,83 @@ pgnIdToCreator['bepMarineProprietaryPgn130822'] = (fields:any, dst:number) => ne
 
 
 /**
+ * PGN: 130822
+ *
+ * Description: Mercury: Engine Telemetry, Low Speed
+ *
+ * Explanation: Low-speed engine telemetry broadcast by Mercury engine gateways. Carries the malfunction-indicator (check-engine) state, intake-air and exhaust-gas temperatures (raw, Mercury-specific scaling), a 'GPL' fraction (raw / 128) and an engine run-state code. This is a flat fixed record, unrelated to the Navico and BEP variants of this PGN number; the manufacturer code in the first two bytes is the only disambiguator. Observed on live engine networks.
+ *
+ * Match: Manufacturer Code == Mercury Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130822_MercuryEngineTelemetryLowSpeed
+ */
+export interface PGN_130822_MercuryEngineTelemetryLowSpeedInterface extends PGNInterface {
+  fields: PGN_130822_MercuryEngineTelemetryLowSpeedFields
+}
+
+/**
+ * @category PGN_130822_MercuryEngineTelemetryLowSpeed
+ */
+export interface PGN_130822_MercuryEngineTelemetryLowSpeedFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  engineInstance?: N2K_Number
+  malfunctionIndicator?: N2K_Number
+  intakeAirTemperature?: N2K_Number
+  exhaustGasTemperature?: N2K_Number
+  gpl?: N2K_Number
+  engineState?: N2K_Number
+}
+
+/**
+ * @category PGN_130822_MercuryEngineTelemetryLowSpeed
+ */
+export const PGN_130822_MercuryEngineTelemetryLowSpeedMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.MercuryMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130822_MercuryEngineTelemetryLowSpeed
+ */
+export interface PGN_130822_MercuryEngineTelemetryLowSpeedCreateArgs {
+  reserved?: number
+  engineInstance?: N2K_Number
+  malfunctionIndicator?: N2K_Number
+  intakeAirTemperature?: N2K_Number
+  exhaustGasTemperature?: N2K_Number
+  gpl?: N2K_Number
+  engineState?: N2K_Number
+}
+
+/**
+ * @category PGN_130822_MercuryEngineTelemetryLowSpeed
+ */
+export class PGN_130822_MercuryEngineTelemetryLowSpeed extends PGN implements PGN_130822_MercuryEngineTelemetryLowSpeedInterface {
+  fields: PGN_130822_MercuryEngineTelemetryLowSpeedFields
+
+  constructor(fields: PGN_130822_MercuryEngineTelemetryLowSpeedCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130822,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130822_MercuryEngineTelemetryLowSpeedMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130822_MercuryEngineTelemetryLowSpeedMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('mercuryEngineTelemetryLowSpeed')!
+  }
+}
+pgnIdToCreator['mercuryEngineTelemetryLowSpeed'] = (fields:any, dst:number) => new PGN_130822_MercuryEngineTelemetryLowSpeed(fields, dst)
+
+
+/**
  * PGN: 130823
  *
  * Description: Maretron: Proprietary Temperature High Range
@@ -29000,6 +31052,260 @@ export class PGN_130823_MaretronProprietaryTemperatureHighRange extends PGN impl
   }
 }
 pgnIdToCreator['maretronProprietaryTemperatureHighRange'] = (fields:any, dst:number) => new PGN_130823_MaretronProprietaryTemperatureHighRange(fields, dst)
+
+
+/**
+ * PGN: 130823
+ *
+ * Description: Navico: Data Type Source Directory
+ *
+ * Explanation: Directory mapping the Navico data types a device tracks to their currently-selected source device, broadcast by NEON-generation displays (e.g. Nemesis, ZEUS SR-16 MFD) roughly every 5 seconds. After the fixed FF/00 marker, Report Type 5 and a part number, the frame carries a list of {Length, Type, Data Type, Value} records that run to the end of the fast-packet. Length counts the three header bytes (Type plus the 16-bit Data Type) as well as the trailing Value. Data Type indexes the NAVICO_DATA_TYPE table (the NEON DataType enumeration). When a source is bound to a data type the Value is a NAME wrapper (0x0A 0x00 followed by the source device's 8-byte NMEA 2000 NAME); most entries carry a short typed value or none. This is the same record format as the Report Type 6 full report and the PGN 130822 Command 6 Object Dump, and matches the layout observed across all captured traffic.
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Report Type == Data-type source directory<br>
+ *
+ * @category PGN_130823_NavicoDataTypeSourceDirectory
+ */
+export interface PGN_130823_NavicoDataTypeSourceDirectoryInterface extends PGNInterface {
+  fields: PGN_130823_NavicoDataTypeSourceDirectoryFields
+}
+
+/**
+ * @category PGN_130823_NavicoDataTypeSourceDirectory
+ */
+export interface PGN_130823_NavicoDataTypeSourceDirectoryFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  reserved4?: number
+  spare5?: number
+  reportType?: N2K_Number | string
+  part?: N2K_Number
+  spare8?: number
+  list: {
+    length?: N2K_DynamicFieldLength
+    type?: N2K_Number
+    dataType?: enums.NavicoDataType | number
+    value?: N2K_DynamicFieldValue
+  }[]
+}
+
+/**
+ * @category PGN_130823_NavicoDataTypeSourceDirectory
+ */
+export const PGN_130823_NavicoDataTypeSourceDirectoryMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  reportType: "Data-type source directory",
+}
+
+/**
+ * @category PGN_130823_NavicoDataTypeSourceDirectory
+ */
+export interface PGN_130823_NavicoDataTypeSourceDirectoryCreateArgs {
+  reserved?: number
+  reserved4?: number
+  spare5?: number
+  part?: N2K_Number
+  spare8?: number
+  list: {
+    length?: N2K_DynamicFieldLength
+    type?: N2K_Number
+    dataType?: enums.NavicoDataType | number
+    value?: N2K_DynamicFieldValue
+  }[]
+}
+
+/**
+ * @category PGN_130823_NavicoDataTypeSourceDirectory
+ */
+export class PGN_130823_NavicoDataTypeSourceDirectory extends PGN implements PGN_130823_NavicoDataTypeSourceDirectoryInterface {
+  fields: PGN_130823_NavicoDataTypeSourceDirectoryFields
+
+  constructor(fields: PGN_130823_NavicoDataTypeSourceDirectoryCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130823,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130823_NavicoDataTypeSourceDirectoryMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130823_NavicoDataTypeSourceDirectoryMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoDataTypeSourceDirectory')!
+  }
+}
+pgnIdToCreator['navicoDataTypeSourceDirectory'] = (fields:any, dst:number) => new PGN_130823_NavicoDataTypeSourceDirectory(fields, dst)
+
+
+/**
+ * PGN: 130823
+ *
+ * Description: Navico: Data Type Source Directory, Full Report
+ *
+ * Explanation: Fuller counterpart to the Report Type 5 directory: the same {Length, Type, Data Type, Value} record list, but covering every data type the reporting object owns rather than a summary subset, so it typically carries the bound-source NAME entries. Uses the identical record format as Report Type 5 and the PGN 130822 Command 6 Object Dump.
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Report Type == Data-type source directory (full report)<br>
+ *
+ * @category PGN_130823_NavicoDataTypeSourceDirectoryFullReport
+ */
+export interface PGN_130823_NavicoDataTypeSourceDirectoryFullReportInterface extends PGNInterface {
+  fields: PGN_130823_NavicoDataTypeSourceDirectoryFullReportFields
+}
+
+/**
+ * @category PGN_130823_NavicoDataTypeSourceDirectoryFullReport
+ */
+export interface PGN_130823_NavicoDataTypeSourceDirectoryFullReportFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  reserved4?: number
+  spare5?: number
+  reportType?: N2K_Number | string
+  part?: N2K_Number
+  spare8?: number
+  list: {
+    length?: N2K_DynamicFieldLength
+    type?: N2K_Number
+    dataType?: enums.NavicoDataType | number
+    value?: N2K_DynamicFieldValue
+  }[]
+}
+
+/**
+ * @category PGN_130823_NavicoDataTypeSourceDirectoryFullReport
+ */
+export const PGN_130823_NavicoDataTypeSourceDirectoryFullReportMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  reportType: "Data-type source directory (full report)",
+}
+
+/**
+ * @category PGN_130823_NavicoDataTypeSourceDirectoryFullReport
+ */
+export interface PGN_130823_NavicoDataTypeSourceDirectoryFullReportCreateArgs {
+  reserved?: number
+  reserved4?: number
+  spare5?: number
+  part?: N2K_Number
+  spare8?: number
+  list: {
+    length?: N2K_DynamicFieldLength
+    type?: N2K_Number
+    dataType?: enums.NavicoDataType | number
+    value?: N2K_DynamicFieldValue
+  }[]
+}
+
+/**
+ * @category PGN_130823_NavicoDataTypeSourceDirectoryFullReport
+ */
+export class PGN_130823_NavicoDataTypeSourceDirectoryFullReport extends PGN implements PGN_130823_NavicoDataTypeSourceDirectoryFullReportInterface {
+  fields: PGN_130823_NavicoDataTypeSourceDirectoryFullReportFields
+
+  constructor(fields: PGN_130823_NavicoDataTypeSourceDirectoryFullReportCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130823,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130823_NavicoDataTypeSourceDirectoryFullReportMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130823_NavicoDataTypeSourceDirectoryFullReportMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoDataTypeSourceDirectoryFullReport')!
+  }
+}
+pgnIdToCreator['navicoDataTypeSourceDirectoryFullReport'] = (fields:any, dst:number) => new PGN_130823_NavicoDataTypeSourceDirectoryFullReport(fields, dst)
+
+
+/**
+ * PGN: 130823
+ *
+ * Description: Navico: Boat Speed Polar Table
+ *
+ * Explanation: Boat-speed (target performance) polar table, produced only by the B&G Hercules performance processor. It is emitted as a one-shot burst of several parts (Report Type 15, Part numbers 1..N, ~20 ms apart) that must be concatenated by Part number beyond normal fast-packet reassembly. The reassembled stream is a 3-float preamble followed by repeating {uint16 count}{count x (0x04, float32)} rows; a typical table is 8 rows x 22 columns, the rows stepping the true wind speed 7.5, 10, 12.5 ... 25 kn and each row ending at true wind angle 180 deg. Because the payload is a stateful multi-part numeric table rather than per-frame fields, each part is shown here as raw bytes; reassemble the parts to recover the polar. This report is Hercules-only; NEON displays emit the Report Type 5 data-type directory instead.
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Report Type == Boat-speed polar / performance table<br>
+ *
+ * @category PGN_130823_NavicoBoatSpeedPolarTable
+ */
+export interface PGN_130823_NavicoBoatSpeedPolarTableInterface extends PGNInterface {
+  fields: PGN_130823_NavicoBoatSpeedPolarTableFields
+}
+
+/**
+ * @category PGN_130823_NavicoBoatSpeedPolarTable
+ */
+export interface PGN_130823_NavicoBoatSpeedPolarTableFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  reserved4?: number
+  spare5?: number
+  reportType?: N2K_Number | string
+  part?: N2K_Number
+  spare8?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130823_NavicoBoatSpeedPolarTable
+ */
+export const PGN_130823_NavicoBoatSpeedPolarTableMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  reportType: "Boat-speed polar / performance table",
+}
+
+/**
+ * @category PGN_130823_NavicoBoatSpeedPolarTable
+ */
+export interface PGN_130823_NavicoBoatSpeedPolarTableCreateArgs {
+  reserved?: number
+  reserved4?: number
+  spare5?: number
+  part?: N2K_Number
+  spare8?: number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130823_NavicoBoatSpeedPolarTable
+ */
+export class PGN_130823_NavicoBoatSpeedPolarTable extends PGN implements PGN_130823_NavicoBoatSpeedPolarTableInterface {
+  fields: PGN_130823_NavicoBoatSpeedPolarTableFields
+
+  constructor(fields: PGN_130823_NavicoBoatSpeedPolarTableCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130823,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130823_NavicoBoatSpeedPolarTableMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130823_NavicoBoatSpeedPolarTableMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoBoatSpeedPolarTable')!
+  }
+}
+pgnIdToCreator['navicoBoatSpeedPolarTable'] = (fields:any, dst:number) => new PGN_130823_NavicoBoatSpeedPolarTable(fields, dst)
 
 
 /**
@@ -29151,6 +31457,81 @@ pgnIdToCreator['maretronAnnunciator'] = (fields:any, dst:number) => new PGN_1308
 
 
 /**
+ * PGN: 130824
+ *
+ * Description: Mercury: Engine Key-Value Data
+ *
+ * Explanation: Engine diagnostic key/value pairs (distance, runtime, fuel and other cumulative counters, configuration) sent by the Mercury VesselView-Link gateway. Uses the same key/length/value scheme as the B&G PGN 130824. Keys are only partially identified.
+ *
+ * Match: Manufacturer Code == Mercury Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130824_MercuryEngineKeyValueData
+ */
+export interface PGN_130824_MercuryEngineKeyValueDataInterface extends PGNInterface {
+  fields: PGN_130824_MercuryEngineKeyValueDataFields
+}
+
+/**
+ * @category PGN_130824_MercuryEngineKeyValueData
+ */
+export interface PGN_130824_MercuryEngineKeyValueDataFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  list: {
+    key: N2K_DynamicFieldKey
+    length?: N2K_DynamicFieldLength
+    value?: N2K_DynamicFieldValue
+  }[]
+}
+
+/**
+ * @category PGN_130824_MercuryEngineKeyValueData
+ */
+export const PGN_130824_MercuryEngineKeyValueDataMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.MercuryMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130824_MercuryEngineKeyValueData
+ */
+export interface PGN_130824_MercuryEngineKeyValueDataCreateArgs {
+  reserved?: number
+  list: {
+    key: N2K_DynamicFieldKey
+    length?: N2K_DynamicFieldLength
+    value?: N2K_DynamicFieldValue
+  }[]
+}
+
+/**
+ * @category PGN_130824_MercuryEngineKeyValueData
+ */
+export class PGN_130824_MercuryEngineKeyValueData extends PGN implements PGN_130824_MercuryEngineKeyValueDataInterface {
+  fields: PGN_130824_MercuryEngineKeyValueDataFields
+
+  constructor(fields: PGN_130824_MercuryEngineKeyValueDataCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130824,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_130824_MercuryEngineKeyValueDataMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130824_MercuryEngineKeyValueDataMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('mercuryEngineKeyValueData')!
+  }
+}
+pgnIdToCreator['mercuryEngineKeyValueData'] = (fields:any, dst:number) => new PGN_130824_MercuryEngineKeyValueData(fields, dst)
+
+
+/**
  * PGN: 130825
  *
  * Description: Maretron: Data Instance Channel Correlation
@@ -29226,66 +31607,82 @@ pgnIdToCreator['maretronDataInstanceChannelCorrelation'] = (fields:any, dst:numb
 /**
  * PGN: 130825
  *
- * Description: Navico: Unknown 2
+ * Description: Navico: Alarm
+ *
+ * Explanation: Navico alarm status record (mfg 275): Alarm Type + Alarm ID identify the fault, Alarm State tracks its lifecycle (Normal -> Active -> Silenced -> Acknowledged), and Alarm Severity classifies it.
  *
  * Match: Manufacturer Code == Navico<br>
  * Match: Industry Code == Marine Industry<br>
  *
- * @category PGN_130825_NavicoUnknown2
+ * @category PGN_130825_NavicoAlarm
  */
-export interface PGN_130825_NavicoUnknown2Interface extends PGNInterface {
-  fields: PGN_130825_NavicoUnknown2Fields
+export interface PGN_130825_NavicoAlarmInterface extends PGNInterface {
+  fields: PGN_130825_NavicoAlarmFields
 }
 
 /**
- * @category PGN_130825_NavicoUnknown2
+ * @category PGN_130825_NavicoAlarm
  */
-export interface PGN_130825_NavicoUnknown2Fields {
+export interface PGN_130825_NavicoAlarmFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  instance?: N2K_Number
+  recordId?: N2K_Number
+  alarmType?: N2K_Number
+  alarmId?: enums.SimnetAlarmId | number
+  alarmState?: enums.AlertState | number
+  actionFlag: N2K_Number
+  alarmSeverity?: enums.AlertType | number
+  value?: N2K_Number
 }
 
 /**
- * @category PGN_130825_NavicoUnknown2
+ * @category PGN_130825_NavicoAlarm
  */
-export const PGN_130825_NavicoUnknown2MatchFields = {
+export const PGN_130825_NavicoAlarmMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
 }
 
 /**
- * @category PGN_130825_NavicoUnknown2
+ * @category PGN_130825_NavicoAlarm
  */
-export interface PGN_130825_NavicoUnknown2CreateArgs {
+export interface PGN_130825_NavicoAlarmCreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  instance?: N2K_Number
+  recordId?: N2K_Number
+  alarmType?: N2K_Number
+  alarmId?: enums.SimnetAlarmId | number
+  alarmState?: enums.AlertState | number
+  actionFlag: N2K_Number
+  alarmSeverity?: enums.AlertType | number
+  value?: N2K_Number
 }
 
 /**
- * @category PGN_130825_NavicoUnknown2
+ * @category PGN_130825_NavicoAlarm
  */
-export class PGN_130825_NavicoUnknown2 extends PGN implements PGN_130825_NavicoUnknown2Interface {
-  fields: PGN_130825_NavicoUnknown2Fields
+export class PGN_130825_NavicoAlarm extends PGN implements PGN_130825_NavicoAlarmInterface {
+  fields: PGN_130825_NavicoAlarmFields
 
-  constructor(fields: PGN_130825_NavicoUnknown2CreateArgs, dst: number = 255) {
+  constructor(fields: PGN_130825_NavicoAlarmCreateArgs, dst: number = 255) {
     super({
       pgn: 130825,
-      prio: 3,
+      prio: 7,
       dst
     })
-    this.fields = { ...PGN_130825_NavicoUnknown2MatchFields, ...fields }
+    this.fields = { ...PGN_130825_NavicoAlarmMatchFields, ...fields }
   }
 
   static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_130825_NavicoUnknown2MatchFields)
+    return isMatch(pgn, PGN_130825_NavicoAlarmMatchFields)
   }
   getDefinition(): Definition {
-    return getPGNWithId('navicoUnknown2')!
+    return getPGNWithId('navicoAlarm')!
   }
 }
-pgnIdToCreator['navicoUnknown2'] = (fields:any, dst:number) => new PGN_130825_NavicoUnknown2(fields, dst)
+pgnIdToCreator['navicoAlarm'] = (fields:any, dst:number) => new PGN_130825_NavicoAlarm(fields, dst)
 
 
 /**
@@ -29351,6 +31748,155 @@ export class PGN_130825_BepMarineProprietaryPgn130825 extends PGN implements PGN
   }
 }
 pgnIdToCreator['bepMarineProprietaryPgn130825'] = (fields:any, dst:number) => new PGN_130825_BepMarineProprietaryPgn130825(fields, dst)
+
+
+/**
+ * PGN: 130825
+ *
+ * Description: Mercury: Cruise Control Data
+ *
+ * Explanation: Opcode 4 (Cruise Control) sub-message of Mercury PGN 130825: engine instance, a cruise engagement/mode byte (0 = disengaged, 5 = engaged), and the cruise RPM and speed setpoints (0xFFFF = not available). Some payload bytes are not yet identified.
+ *
+ * Match: Manufacturer Code == Mercury Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Opcode == Cruise Control<br>
+ *
+ * @category PGN_130825_MercuryCruiseControlData
+ */
+export interface PGN_130825_MercuryCruiseControlDataInterface extends PGNInterface {
+  fields: PGN_130825_MercuryCruiseControlDataFields
+}
+
+/**
+ * @category PGN_130825_MercuryCruiseControlData
+ */
+export interface PGN_130825_MercuryCruiseControlDataFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  opcode?: enums.MercuryCommandOpcode | number
+  engineInstance?: N2K_Number
+  reserved6?: number
+  cruiseState?: N2K_Number
+  cruiseRpmSetpoint?: N2K_Number
+  cruiseSpeedSetpoint?: N2K_Number
+  reserved10?: number
+}
+
+/**
+ * @category PGN_130825_MercuryCruiseControlData
+ */
+export const PGN_130825_MercuryCruiseControlDataMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.MercuryMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  opcode: enums.MercuryCommandOpcode.CruiseControl,
+}
+
+/**
+ * @category PGN_130825_MercuryCruiseControlData
+ */
+export interface PGN_130825_MercuryCruiseControlDataCreateArgs {
+  reserved?: number
+  engineInstance?: N2K_Number
+  reserved6?: number
+  cruiseState?: N2K_Number
+  cruiseRpmSetpoint?: N2K_Number
+  cruiseSpeedSetpoint?: N2K_Number
+  reserved10?: number
+}
+
+/**
+ * @category PGN_130825_MercuryCruiseControlData
+ */
+export class PGN_130825_MercuryCruiseControlData extends PGN implements PGN_130825_MercuryCruiseControlDataInterface {
+  fields: PGN_130825_MercuryCruiseControlDataFields
+
+  constructor(fields: PGN_130825_MercuryCruiseControlDataCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130825,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_130825_MercuryCruiseControlDataMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130825_MercuryCruiseControlDataMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('mercuryCruiseControlData')!
+  }
+}
+pgnIdToCreator['mercuryCruiseControlData'] = (fields:any, dst:number) => new PGN_130825_MercuryCruiseControlData(fields, dst)
+
+
+/**
+ * PGN: 130825
+ *
+ * Description: Mercury: Command/Response
+ *
+ * Explanation: Opcode-dispatched Mercury command/response channel: the Opcode field selects the sub-function and the following data is opcode-specific. Several opcodes are the proprietary-PGN equivalents of the corresponding Mercury manufacturer commands carried in PGN 126720: opcode 4 (Cruise Control), opcodes 6/7 (Active Trim command/status), opcode 8 (Autopilot), opcode 9 (Active Exhaust) and opcodes 12/13 (Oil Level check/reset).
+ *
+ * Match: Manufacturer Code == Mercury Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130825_MercuryCommandResponse
+ */
+export interface PGN_130825_MercuryCommandResponseInterface extends PGNInterface {
+  fields: PGN_130825_MercuryCommandResponseFields
+}
+
+/**
+ * @category PGN_130825_MercuryCommandResponse
+ */
+export interface PGN_130825_MercuryCommandResponseFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  opcode?: enums.MercuryCommandOpcode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130825_MercuryCommandResponse
+ */
+export const PGN_130825_MercuryCommandResponseMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.MercuryMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130825_MercuryCommandResponse
+ */
+export interface PGN_130825_MercuryCommandResponseCreateArgs {
+  reserved?: number
+  opcode?: enums.MercuryCommandOpcode | number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130825_MercuryCommandResponse
+ */
+export class PGN_130825_MercuryCommandResponse extends PGN implements PGN_130825_MercuryCommandResponseInterface {
+  fields: PGN_130825_MercuryCommandResponseFields
+
+  constructor(fields: PGN_130825_MercuryCommandResponseCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130825,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_130825_MercuryCommandResponseMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130825_MercuryCommandResponseMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('mercuryCommandResponse')!
+  }
+}
+pgnIdToCreator['mercuryCommandResponse'] = (fields:any, dst:number) => new PGN_130825_MercuryCommandResponse(fields, dst)
 
 
 /**
@@ -29494,6 +32040,83 @@ pgnIdToCreator['bepMarineProprietaryPgn130826'] = (fields:any, dst:number) => ne
 
 
 /**
+ * PGN: 130826
+ *
+ * Description: Mercury: BAM Digital-Data Proxy
+ *
+ * Explanation: Variable-length Mercury Bridge Alert Management (BAM) digital-data proxy channel; the trailing data block is opcode/instance-specific, may be empty, and its block semantics are defined by an external BAM specification rather than being locally decodable.
+ *
+ * Match: Manufacturer Code == Mercury Marine<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130826_MercuryBamDigitalDataProxy
+ */
+export interface PGN_130826_MercuryBamDigitalDataProxyInterface extends PGNInterface {
+  fields: PGN_130826_MercuryBamDigitalDataProxyFields
+}
+
+/**
+ * @category PGN_130826_MercuryBamDigitalDataProxy
+ */
+export interface PGN_130826_MercuryBamDigitalDataProxyFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  type?: N2K_Number
+  instance?: N2K_Number
+  field4?: N2K_Number
+  reserved7?: number
+  flag?: N2K_Number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130826_MercuryBamDigitalDataProxy
+ */
+export const PGN_130826_MercuryBamDigitalDataProxyMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.MercuryMarine,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130826_MercuryBamDigitalDataProxy
+ */
+export interface PGN_130826_MercuryBamDigitalDataProxyCreateArgs {
+  reserved?: number
+  type?: N2K_Number
+  instance?: N2K_Number
+  field4?: N2K_Number
+  reserved7?: number
+  flag?: N2K_Number
+  data?: N2K_Binary
+}
+
+/**
+ * @category PGN_130826_MercuryBamDigitalDataProxy
+ */
+export class PGN_130826_MercuryBamDigitalDataProxy extends PGN implements PGN_130826_MercuryBamDigitalDataProxyInterface {
+  fields: PGN_130826_MercuryBamDigitalDataProxyFields
+
+  constructor(fields: PGN_130826_MercuryBamDigitalDataProxyCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130826,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_130826_MercuryBamDigitalDataProxyMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130826_MercuryBamDigitalDataProxyMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('mercuryBamDigitalDataProxy')!
+  }
+}
+pgnIdToCreator['mercuryBamDigitalDataProxy'] = (fields:any, dst:number) => new PGN_130826_MercuryBamDigitalDataProxy(fields, dst)
+
+
+/**
  * PGN: 130827
  *
  * Description: Lowrance: unknown
@@ -29566,6 +32189,86 @@ export class PGN_130827_LowranceUnknown extends PGN implements PGN_130827_Lowran
   }
 }
 pgnIdToCreator['lowranceUnknown'] = (fields:any, dst:number) => new PGN_130827_LowranceUnknown(fields, dst)
+
+
+/**
+ * PGN: 130827
+ *
+ * Description: Furuno: NavPilot Status
+ *
+ * Explanation: Broadcast by Furuno NavPilot autopilots. Carries the current rudder angle and, while engaged, the commanded course to steer; the commanded course reads unset (0xFFFF) in standby. Fields A, B, C, D are not yet fully understood.
+ *
+ * Match: Manufacturer Code == Furuno<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Message ID == NavPilot Status<br>
+ *
+ * @category PGN_130827_FurunoNavpilotStatus
+ */
+export interface PGN_130827_FurunoNavpilotStatusInterface extends PGNInterface {
+  fields: PGN_130827_FurunoNavpilotStatusFields
+}
+
+/**
+ * @category PGN_130827_FurunoNavpilotStatus
+ */
+export interface PGN_130827_FurunoNavpilotStatusFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  messageId: N2K_Number | string
+  rudderAngle?: N2K_Number
+  a?: N2K_Number
+  b?: N2K_Number
+  commandedCourse?: N2K_Number
+  c?: N2K_Number
+  d?: N2K_Number
+}
+
+/**
+ * @category PGN_130827_FurunoNavpilotStatus
+ */
+export const PGN_130827_FurunoNavpilotStatusMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Furuno,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  messageId: "NavPilot Status",
+}
+
+/**
+ * @category PGN_130827_FurunoNavpilotStatus
+ */
+export interface PGN_130827_FurunoNavpilotStatusCreateArgs {
+  reserved?: number
+  rudderAngle?: N2K_Number
+  a?: N2K_Number
+  b?: N2K_Number
+  commandedCourse?: N2K_Number
+  c?: N2K_Number
+  d?: N2K_Number
+}
+
+/**
+ * @category PGN_130827_FurunoNavpilotStatus
+ */
+export class PGN_130827_FurunoNavpilotStatus extends PGN implements PGN_130827_FurunoNavpilotStatusInterface {
+  fields: PGN_130827_FurunoNavpilotStatusFields
+
+  constructor(fields: PGN_130827_FurunoNavpilotStatusCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130827,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130827_FurunoNavpilotStatusMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130827_FurunoNavpilotStatusMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('furunoNavpilotStatus')!
+  }
+}
+pgnIdToCreator['furunoNavpilotStatus'] = (fields:any, dst:number) => new PGN_130827_FurunoNavpilotStatus(fields, dst)
 
 
 /**
@@ -29717,6 +32420,8 @@ pgnIdToCreator['maretronDometicHvacControlStatus'] = (fields:any, dst:number) =>
  *
  * Description: Mercury: Engine Status
  *
+ * Explanation: Per-engine capability-advertisement beacon sent by the Mercury VesselView-Link gateway (one source address per engine). The last byte is a capability bitmask (bit0 = Beacon enabled, bit1 = Cruise Control capability); when bit1 is set the device also emits the Cruise Control PGN 130824. Byte 3 carries the Helm and Sub Helm station addresses for Mercury multi-helm installations.
+ *
  * Match: Manufacturer Code == Mercury Marine<br>
  * Match: Industry Code == Marine Industry<br>
  *
@@ -29733,6 +32438,11 @@ export interface PGN_130829_MercuryEngineStatusFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
+  reserved4?: number
+  fieldA?: N2K_Binary
+  subHelm?: N2K_Binary
+  helm?: N2K_Binary
+  capabilities?: N2K_Binary
 }
 
 /**
@@ -29748,6 +32458,11 @@ export const PGN_130829_MercuryEngineStatusMatchFields = {
  */
 export interface PGN_130829_MercuryEngineStatusCreateArgs {
   reserved?: number
+  reserved4?: number
+  fieldA?: N2K_Binary
+  subHelm?: N2K_Binary
+  helm?: N2K_Binary
+  capabilities?: N2K_Binary
 }
 
 /**
@@ -29759,7 +32474,7 @@ export class PGN_130829_MercuryEngineStatus extends PGN implements PGN_130829_Me
   constructor(fields: PGN_130829_MercuryEngineStatusCreateArgs, dst: number = 255) {
     super({
       pgn: 130829,
-      prio: 3,
+      prio: 7,
       dst
     })
     this.fields = { ...PGN_130829_MercuryEngineStatusMatchFields, ...fields }
@@ -31444,7 +34159,7 @@ pgnIdToCreator['maretronGenericSensor'] = (fields:any, dst:number) => new PGN_13
  *
  * Description: Simnet: Data Source Selection
  *
- * Explanation: Broadcast by Navico displays/heads to share which source (by NMEA 2000 NAME) is selected for each data type across the instrument network. 'Data Type' identifies the quantity (heading, depth, wind, ...); 'Source' is the 64-bit NAME of the selected device. Emitted on change. The data-type ids were mapped from a live source-selection probe; see also the compact form in PGN 130822.
+ * Explanation: Change-driven broadcast announcing which source is selected for each Data Type across the instrument network; it is the fast-packet answer to the single-frame PGN 65323 poll and shares its Data Type/Source Class namespace. Data Type identifies the quantity (heading, depth, wind, ...); Source Class tags the class of source for that quantity (1 = a direct sensor/navigation source, 100 = an autopilot-provided source) and is constant per Data Type. Source Address is the current NMEA 2000 address of the selected device and Source is that same device's 64-bit NAME (address and NAME both identify the one selected source); Change Counter increments on each selection change. See also the periodic UDB table dump in PGN 130822.
  *
  * Match: Manufacturer Code == Simrad<br>
  * Match: Industry Code == Marine Industry<br>
@@ -31463,11 +34178,11 @@ export interface PGN_130840_SimnetDataSourceSelectionFields {
   reserved?: number
   industryCode?: enums.IndustryCode | number
   reserved4?: number
-  sequence?: N2K_Number
-  b?: N2K_Number
   dataType?: enums.SimnetDataSource | number
+  sourceClass?: N2K_Number
+  sourceAddress?: N2K_Number
   reserved8?: number
-  c?: N2K_Number
+  changeCounter?: N2K_Number
   source?: N2K_IsoName
   reserved11?: number
 }
@@ -31486,11 +34201,11 @@ export const PGN_130840_SimnetDataSourceSelectionMatchFields = {
 export interface PGN_130840_SimnetDataSourceSelectionCreateArgs {
   reserved?: number
   reserved4?: number
-  sequence?: N2K_Number
-  b?: N2K_Number
   dataType?: enums.SimnetDataSource | number
+  sourceClass?: N2K_Number
+  sourceAddress?: N2K_Number
   reserved8?: number
-  c?: N2K_Number
+  changeCounter?: N2K_Number
   source?: N2K_IsoName
   reserved11?: number
 }
@@ -31925,6 +34640,80 @@ pgnIdToCreator['simnetAisClassBStaticDataMsg24PartB'] = (fields:any, dst:number)
 
 
 /**
+ * PGN: 130842
+ *
+ * Description: Simnet: AIS Silent Mode
+ *
+ * Explanation: Simnet AIS silent-mode read/reply (Message ID 4 of the 130842 family, alongside the Class B static-data Part A/B forms). A source reads (Operation = Read) or reports (Operation = Reply) the AIS transceiver's silent-mode state; the two trailing bytes carry the state and are constant in the observed traffic.
+ *
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Message ID == AIS Silent Mode<br>
+ *
+ * @category PGN_130842_SimnetAisSilentMode
+ */
+export interface PGN_130842_SimnetAisSilentModeInterface extends PGNInterface {
+  fields: PGN_130842_SimnetAisSilentModeFields
+}
+
+/**
+ * @category PGN_130842_SimnetAisSilentMode
+ */
+export interface PGN_130842_SimnetAisSilentModeFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  messageId: N2K_Number | string
+  operation?: enums.SimnetKeyOperation | number
+  d?: N2K_Number
+  e?: N2K_Number
+}
+
+/**
+ * @category PGN_130842_SimnetAisSilentMode
+ */
+export const PGN_130842_SimnetAisSilentModeMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  messageId: "AIS Silent Mode",
+}
+
+/**
+ * @category PGN_130842_SimnetAisSilentMode
+ */
+export interface PGN_130842_SimnetAisSilentModeCreateArgs {
+  reserved?: number
+  operation?: enums.SimnetKeyOperation | number
+  d?: N2K_Number
+  e?: N2K_Number
+}
+
+/**
+ * @category PGN_130842_SimnetAisSilentMode
+ */
+export class PGN_130842_SimnetAisSilentMode extends PGN implements PGN_130842_SimnetAisSilentModeInterface {
+  fields: PGN_130842_SimnetAisSilentModeFields
+
+  constructor(fields: PGN_130842_SimnetAisSilentModeCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130842,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130842_SimnetAisSilentModeMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130842_SimnetAisSilentModeMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetAisSilentMode')!
+  }
+}
+pgnIdToCreator['simnetAisSilentMode'] = (fields:any, dst:number) => new PGN_130842_SimnetAisSilentMode(fields, dst)
+
+
+/**
  * PGN: 130843
  *
  * Description: Maretron: Windlass Control Command
@@ -32279,14 +35068,15 @@ export interface PGN_130845_FurunoMultiSatsInViewExtendedFields {
   pageType?: N2K_Number
   page?: N2K_Number
   reserved8?: number
+  satsInUse?: N2K_Number
   satsInView?: N2K_Number
   list: {
-    status?: N2K_Number
     prn?: N2K_Number
     elevation?: N2K_Number
     azimuth?: N2K_Number
     snr?: N2K_Number
     rangeResidual?: N2K_Number
+    baselineStatus?: enums.FurunoBaselineStatus[]
   }[]
 }
 
@@ -32308,14 +35098,15 @@ export interface PGN_130845_FurunoMultiSatsInViewExtendedCreateArgs {
   pageType?: N2K_Number
   page?: N2K_Number
   reserved8?: number
+  satsInUse?: N2K_Number
   satsInView?: N2K_Number
   list: {
-    status?: N2K_Number
     prn?: N2K_Number
     elevation?: N2K_Number
     azimuth?: N2K_Number
     snr?: N2K_Number
     rangeResidual?: N2K_Number
+    baselineStatus?: enums.FurunoBaselineStatus[]
   }[]
 }
 
@@ -32349,6 +35140,8 @@ pgnIdToCreator['furunoMultiSatsInViewExtended'] = (fields:any, dst:number) => ne
  *
  * Description: Simnet: Key Value
  *
+ * Explanation: Navico/Simrad get-set protocol for instrument and autopilot settings. The Key selects which parameter (and thus the data type of the Value); the Operation byte selects read/set/reply. The Operation byte is NOT a value length (the Value width comes from the resolved data type); it is only ever 0/1/2, confirmed against NAC3 and AC42 autopilot and MFD capture corpus.
+ *
  * Match: Manufacturer Code == Simrad<br>
  * Match: Industry Code == Marine Industry<br>
  *
@@ -32366,12 +35159,11 @@ export interface PGN_130845_SimnetKeyValueFields {
   reserved?: number
   industryCode?: enums.IndustryCode | number
   address?: N2K_Number
-  repeatIndicator?: enums.RepeatIndicator | number
-  displayGroup?: enums.SimnetDisplayGroup | number
-  reserved7?: number
+  instance?: N2K_Number
+  networkGroup?: enums.SimnetNetworkGroup | number
+  source?: N2K_Number
   key: N2K_DynamicFieldKey
-  spare9?: number
-  minlength?: N2K_Number
+  operation?: enums.SimnetKeyOperation | number
   value?: N2K_DynamicFieldValue
 }
 
@@ -32389,12 +35181,11 @@ export const PGN_130845_SimnetKeyValueMatchFields = {
 export interface PGN_130845_SimnetKeyValueCreateArgs {
   reserved?: number
   address?: N2K_Number
-  repeatIndicator?: enums.RepeatIndicator | number
-  displayGroup?: enums.SimnetDisplayGroup | number
-  reserved7?: number
+  instance?: N2K_Number
+  networkGroup?: enums.SimnetNetworkGroup | number
+  source?: N2K_Number
   key: N2K_DynamicFieldKey
-  spare9?: number
-  minlength?: N2K_Number
+  operation?: enums.SimnetKeyOperation | number
   value?: N2K_DynamicFieldValue
 }
 
@@ -32426,7 +35217,9 @@ pgnIdToCreator['simnetKeyValue'] = (fields:any, dst:number) => new PGN_130845_Si
 /**
  * PGN: 130846
  *
- * Description: Simnet: Parameter Set
+ * Description: Simnet: Key Value - Long
+ *
+ * Explanation: Variable-length companion to PGN 130845 (Simnet: Key Value). The header is identical to 130845 (Address, Display Group, the 24-bit composite Key and the Read/Set/Reply Operation byte), but the fixed 4-byte value is replaced by an explicit Length byte followed by that many bytes of Value. Devices switch from 130845 to 130846 whenever a parameter's value will not fit in 4 bytes, so 130846 is also the echo/reply form (Operation = 2) for wide parameters. Observed in the nac3-operations capture corpus.
  *
  * Match: Manufacturer Code == Simrad<br>
  * Match: Industry Code == Marine Industry<br>
@@ -32445,12 +35238,12 @@ export interface PGN_130846_SimnetParameterSetFields {
   reserved?: number
   industryCode?: enums.IndustryCode | number
   address?: N2K_Number
-  b?: N2K_Number
-  displayGroup?: enums.SimnetDisplayGroup | number
-  d?: N2K_Number
+  instance?: N2K_Number
+  networkGroup?: enums.SimnetNetworkGroup | number
+  source?: N2K_Number
   key: N2K_DynamicFieldKey
-  spare9?: number
-  length?: N2K_Number
+  operation?: enums.SimnetKeyOperation | number
+  length?: N2K_DynamicFieldLength
   value?: N2K_DynamicFieldValue
 }
 
@@ -32468,12 +35261,12 @@ export const PGN_130846_SimnetParameterSetMatchFields = {
 export interface PGN_130846_SimnetParameterSetCreateArgs {
   reserved?: number
   address?: N2K_Number
-  b?: N2K_Number
-  displayGroup?: enums.SimnetDisplayGroup | number
-  d?: N2K_Number
+  instance?: N2K_Number
+  networkGroup?: enums.SimnetNetworkGroup | number
+  source?: N2K_Number
   key: N2K_DynamicFieldKey
-  spare9?: number
-  length?: N2K_Number
+  operation?: enums.SimnetKeyOperation | number
+  length?: N2K_DynamicFieldLength
   value?: N2K_DynamicFieldValue
 }
 
@@ -32919,7 +35712,6 @@ pgnIdToCreator['navicoProprietaryFp'] = (fields:any, dst:number) => new PGN_1308
  *
  * Match: Manufacturer Code == Simrad<br>
  * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == Autopilot<br>
  * Match: Command Type == AP Command<br>
  * Match: Event == Standby<br>
  *
@@ -32938,8 +35730,8 @@ export interface PGN_130850_SimnetCommandApStandbyFields {
   industryCode?: enums.IndustryCode | number
   address?: N2K_Number
   reserved5?: number
-  proprietaryId: enums.SimnetEventCommand | number
-  commandType?: enums.SimnetApCommandType | number
+  networkGroup?: enums.SimnetNetworkGroup | number
+  commandType: enums.SimnetEventType | number
   event?: enums.SimnetApEvents | number
   spare9?: number
   reserved10?: number
@@ -32951,8 +35743,7 @@ export interface PGN_130850_SimnetCommandApStandbyFields {
 export const PGN_130850_SimnetCommandApStandbyMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
-  proprietaryId: enums.SimnetEventCommand.Autopilot,
-  commandType: enums.SimnetApCommandType.ApCommand,
+  commandType: enums.SimnetEventType.ApCommand,
   event: enums.SimnetApEvents.Standby,
 }
 
@@ -32963,6 +35754,7 @@ export interface PGN_130850_SimnetCommandApStandbyCreateArgs {
   reserved?: number
   address?: N2K_Number
   reserved5?: number
+  networkGroup?: enums.SimnetNetworkGroup | number
   spare9?: number
   reserved10?: number
 }
@@ -32999,7 +35791,6 @@ pgnIdToCreator['simnetCommandApStandby'] = (fields:any, dst:number) => new PGN_1
  *
  * Match: Manufacturer Code == Simrad<br>
  * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == Autopilot<br>
  * Match: Command Type == AP Command<br>
  * Match: Event == No Drift mode<br>
  *
@@ -33018,8 +35809,8 @@ export interface PGN_130850_SimnetCommandApNodriftFields {
   industryCode?: enums.IndustryCode | number
   address?: N2K_Number
   reserved5?: number
-  proprietaryId: enums.SimnetEventCommand | number
-  commandType?: enums.SimnetApCommandType | number
+  networkGroup?: enums.SimnetNetworkGroup | number
+  commandType: enums.SimnetEventType | number
   event?: enums.SimnetApEvents | number
   spare9?: number
   reserved10?: number
@@ -33031,8 +35822,7 @@ export interface PGN_130850_SimnetCommandApNodriftFields {
 export const PGN_130850_SimnetCommandApNodriftMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
-  proprietaryId: enums.SimnetEventCommand.Autopilot,
-  commandType: enums.SimnetApCommandType.ApCommand,
+  commandType: enums.SimnetEventType.ApCommand,
   event: enums.SimnetApEvents.NoDriftMode,
 }
 
@@ -33043,6 +35833,7 @@ export interface PGN_130850_SimnetCommandApNodriftCreateArgs {
   reserved?: number
   address?: N2K_Number
   reserved5?: number
+  networkGroup?: enums.SimnetNetworkGroup | number
   spare9?: number
   reserved10?: number
 }
@@ -33079,7 +35870,6 @@ pgnIdToCreator['simnetCommandApNodrift'] = (fields:any, dst:number) => new PGN_1
  *
  * Match: Manufacturer Code == Simrad<br>
  * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == Autopilot<br>
  * Match: Command Type == AP Command<br>
  * Match: Event == Wind mode<br>
  *
@@ -33098,8 +35888,8 @@ export interface PGN_130850_SimnetCommandApWindFields {
   industryCode?: enums.IndustryCode | number
   address?: N2K_Number
   reserved5?: number
-  proprietaryId: enums.SimnetEventCommand | number
-  commandType?: enums.SimnetApCommandType | number
+  networkGroup?: enums.SimnetNetworkGroup | number
+  commandType: enums.SimnetEventType | number
   event?: enums.SimnetApEvents | number
   spare9?: number
   reserved10?: number
@@ -33111,8 +35901,7 @@ export interface PGN_130850_SimnetCommandApWindFields {
 export const PGN_130850_SimnetCommandApWindMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
-  proprietaryId: enums.SimnetEventCommand.Autopilot,
-  commandType: enums.SimnetApCommandType.ApCommand,
+  commandType: enums.SimnetEventType.ApCommand,
   event: enums.SimnetApEvents.WindMode,
 }
 
@@ -33123,6 +35912,7 @@ export interface PGN_130850_SimnetCommandApWindCreateArgs {
   reserved?: number
   address?: N2K_Number
   reserved5?: number
+  networkGroup?: enums.SimnetNetworkGroup | number
   spare9?: number
   reserved10?: number
 }
@@ -33159,7 +35949,6 @@ pgnIdToCreator['simnetCommandApWind'] = (fields:any, dst:number) => new PGN_1308
  *
  * Match: Manufacturer Code == Simrad<br>
  * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == Autopilot<br>
  * Match: Command Type == AP Command<br>
  * Match: Event == Nav mode<br>
  *
@@ -33178,8 +35967,8 @@ export interface PGN_130850_SimnetCommandApNavFields {
   industryCode?: enums.IndustryCode | number
   address?: N2K_Number
   reserved5?: number
-  proprietaryId: enums.SimnetEventCommand | number
-  commandType?: enums.SimnetApCommandType | number
+  networkGroup?: enums.SimnetNetworkGroup | number
+  commandType: enums.SimnetEventType | number
   event?: enums.SimnetApEvents | number
   spare9?: number
   reserved10?: number
@@ -33191,8 +35980,7 @@ export interface PGN_130850_SimnetCommandApNavFields {
 export const PGN_130850_SimnetCommandApNavMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
-  proprietaryId: enums.SimnetEventCommand.Autopilot,
-  commandType: enums.SimnetApCommandType.ApCommand,
+  commandType: enums.SimnetEventType.ApCommand,
   event: enums.SimnetApEvents.NavMode,
 }
 
@@ -33203,6 +35991,7 @@ export interface PGN_130850_SimnetCommandApNavCreateArgs {
   reserved?: number
   address?: N2K_Number
   reserved5?: number
+  networkGroup?: enums.SimnetNetworkGroup | number
   spare9?: number
   reserved10?: number
 }
@@ -33239,7 +36028,6 @@ pgnIdToCreator['simnetCommandApNav'] = (fields:any, dst:number) => new PGN_13085
  *
  * Match: Manufacturer Code == Simrad<br>
  * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == Autopilot<br>
  * Match: Command Type == AP Command<br>
  * Match: Event == Heading mode<br>
  *
@@ -33258,8 +36046,8 @@ export interface PGN_130850_SimnetCommandApHeadingFields {
   industryCode?: enums.IndustryCode | number
   address?: N2K_Number
   reserved5?: number
-  proprietaryId: enums.SimnetEventCommand | number
-  commandType?: enums.SimnetApCommandType | number
+  networkGroup?: enums.SimnetNetworkGroup | number
+  commandType: enums.SimnetEventType | number
   event?: enums.SimnetApEvents | number
   spare9?: number
   reserved10?: number
@@ -33271,8 +36059,7 @@ export interface PGN_130850_SimnetCommandApHeadingFields {
 export const PGN_130850_SimnetCommandApHeadingMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
-  proprietaryId: enums.SimnetEventCommand.Autopilot,
-  commandType: enums.SimnetApCommandType.ApCommand,
+  commandType: enums.SimnetEventType.ApCommand,
   event: enums.SimnetApEvents.HeadingMode,
 }
 
@@ -33283,6 +36070,7 @@ export interface PGN_130850_SimnetCommandApHeadingCreateArgs {
   reserved?: number
   address?: N2K_Number
   reserved5?: number
+  networkGroup?: enums.SimnetNetworkGroup | number
   spare9?: number
   reserved10?: number
 }
@@ -33319,7 +36107,6 @@ pgnIdToCreator['simnetCommandApHeading'] = (fields:any, dst:number) => new PGN_1
  *
  * Match: Manufacturer Code == Simrad<br>
  * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == Autopilot<br>
  * Match: Command Type == AP Command<br>
  * Match: Event == Tack<br>
  *
@@ -33338,8 +36125,8 @@ export interface PGN_130850_SimnetCommandApTackFields {
   industryCode?: enums.IndustryCode | number
   address?: N2K_Number
   reserved5?: number
-  proprietaryId: enums.SimnetEventCommand | number
-  commandType?: enums.SimnetApCommandType | number
+  networkGroup?: enums.SimnetNetworkGroup | number
+  commandType: enums.SimnetEventType | number
   event?: enums.SimnetApEvents | number
   unknownA?: N2K_Number
   unknownB?: N2K_Number
@@ -33352,8 +36139,7 @@ export interface PGN_130850_SimnetCommandApTackFields {
 export const PGN_130850_SimnetCommandApTackMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
-  proprietaryId: enums.SimnetEventCommand.Autopilot,
-  commandType: enums.SimnetApCommandType.ApCommand,
+  commandType: enums.SimnetEventType.ApCommand,
   event: enums.SimnetApEvents.Tack,
 }
 
@@ -33364,6 +36150,7 @@ export interface PGN_130850_SimnetCommandApTackCreateArgs {
   reserved?: number
   address?: N2K_Number
   reserved5?: number
+  networkGroup?: enums.SimnetNetworkGroup | number
   unknownA?: N2K_Number
   unknownB?: N2K_Number
   reserved11?: number
@@ -33401,7 +36188,6 @@ pgnIdToCreator['simnetCommandApTack'] = (fields:any, dst:number) => new PGN_1308
  *
  * Match: Manufacturer Code == Simrad<br>
  * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == Autopilot<br>
  * Match: Command Type == Follow Up<br>
  * Match: Event == Follow Up mode<br>
  *
@@ -33420,8 +36206,8 @@ export interface PGN_130850_SimnetCommandApFollowUpFields {
   industryCode?: enums.IndustryCode | number
   address?: N2K_Number
   reserved5?: number
-  proprietaryId: enums.SimnetEventCommand | number
-  commandType?: enums.SimnetApCommandType | number
+  networkGroup?: enums.SimnetNetworkGroup | number
+  commandType: enums.SimnetEventType | number
   event?: enums.SimnetApEvents | number
   spare9?: number
   reserved10?: number
@@ -33433,8 +36219,7 @@ export interface PGN_130850_SimnetCommandApFollowUpFields {
 export const PGN_130850_SimnetCommandApFollowUpMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
-  proprietaryId: enums.SimnetEventCommand.Autopilot,
-  commandType: enums.SimnetApCommandType.FollowUp,
+  commandType: enums.SimnetEventType.FollowUp,
   event: enums.SimnetApEvents.FollowUpMode,
 }
 
@@ -33445,6 +36230,7 @@ export interface PGN_130850_SimnetCommandApFollowUpCreateArgs {
   reserved?: number
   address?: N2K_Number
   reserved5?: number
+  networkGroup?: enums.SimnetNetworkGroup | number
   spare9?: number
   reserved10?: number
 }
@@ -33481,7 +36267,6 @@ pgnIdToCreator['simnetCommandApFollowUp'] = (fields:any, dst:number) => new PGN_
  *
  * Match: Manufacturer Code == Simrad<br>
  * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == Autopilot<br>
  * Match: Command Type == AP Command<br>
  * Match: Event == Change course<br>
  *
@@ -33500,8 +36285,8 @@ export interface PGN_130850_SimnetCommandApChangeCourseFields {
   industryCode?: enums.IndustryCode | number
   address?: N2K_Number
   reserved5?: number
-  proprietaryId: enums.SimnetEventCommand | number
-  commandType?: enums.SimnetApCommandType | number
+  networkGroup?: enums.SimnetNetworkGroup | number
+  commandType: enums.SimnetEventType | number
   event?: enums.SimnetApEvents | number
   spare9?: number
   direction?: enums.SimnetDirection | number
@@ -33515,8 +36300,7 @@ export interface PGN_130850_SimnetCommandApChangeCourseFields {
 export const PGN_130850_SimnetCommandApChangeCourseMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
-  proprietaryId: enums.SimnetEventCommand.Autopilot,
-  commandType: enums.SimnetApCommandType.ApCommand,
+  commandType: enums.SimnetEventType.ApCommand,
   event: enums.SimnetApEvents.ChangeCourse,
 }
 
@@ -33527,6 +36311,7 @@ export interface PGN_130850_SimnetCommandApChangeCourseCreateArgs {
   reserved?: number
   address?: N2K_Number
   reserved5?: number
+  networkGroup?: enums.SimnetNetworkGroup | number
   spare9?: number
   direction?: enums.SimnetDirection | number
   angle?: N2K_Number
@@ -33561,13 +36346,95 @@ pgnIdToCreator['simnetCommandApChangeCourse'] = (fields:any, dst:number) => new 
 /**
  * PGN: 130850
  *
- * Description: Simnet: Alarm
+ * Description: Simnet: Event Command: Timer
  *
- * Explanation: There may follow a PGN 130856 'Simnet: Alarm Text' message with a textual explanation of the alarm
+ * Explanation: Race and trip timer commands sent by a Navico MFD, all observed live: race start/stop/sync/reset and trip enable/disable/reset, with Parameter 1 selecting the trip (0 = Trip 1, 1 = Trip 2). Broadcast to a display group, so every device in the group acts.
  *
  * Match: Manufacturer Code == Simrad<br>
  * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == Alarm<br>
+ * Match: Event Type == Timer<br>
+ *
+ * @category PGN_130850_SimnetEventCommandTimer
+ */
+export interface PGN_130850_SimnetEventCommandTimerInterface extends PGNInterface {
+  fields: PGN_130850_SimnetEventCommandTimerFields
+}
+
+/**
+ * @category PGN_130850_SimnetEventCommandTimer
+ */
+export interface PGN_130850_SimnetEventCommandTimerFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  address?: N2K_Number
+  reserved5?: number
+  networkGroup?: enums.SimnetNetworkGroup | number
+  eventType: enums.SimnetEventType | number
+  event?: enums.SimnetTimerEvent | number
+  parameter1?: N2K_Number
+  parameter2?: N2K_Number
+  parameter3?: N2K_Number
+}
+
+/**
+ * @category PGN_130850_SimnetEventCommandTimer
+ */
+export const PGN_130850_SimnetEventCommandTimerMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  eventType: enums.SimnetEventType.Timer,
+}
+
+/**
+ * @category PGN_130850_SimnetEventCommandTimer
+ */
+export interface PGN_130850_SimnetEventCommandTimerCreateArgs {
+  reserved?: number
+  address?: N2K_Number
+  reserved5?: number
+  networkGroup?: enums.SimnetNetworkGroup | number
+  event?: enums.SimnetTimerEvent | number
+  parameter1?: N2K_Number
+  parameter2?: N2K_Number
+  parameter3?: N2K_Number
+}
+
+/**
+ * @category PGN_130850_SimnetEventCommandTimer
+ */
+export class PGN_130850_SimnetEventCommandTimer extends PGN implements PGN_130850_SimnetEventCommandTimerInterface {
+  fields: PGN_130850_SimnetEventCommandTimerFields
+
+  constructor(fields: PGN_130850_SimnetEventCommandTimerCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130850,
+      prio: 2,
+      dst
+    })
+    this.fields = { ...PGN_130850_SimnetEventCommandTimerMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130850_SimnetEventCommandTimerMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetEventCommandTimer')!
+  }
+}
+pgnIdToCreator['simnetEventCommandTimer'] = (fields:any, dst:number) => new PGN_130850_SimnetEventCommandTimer(fields, dst)
+
+
+/**
+ * PGN: 130850
+ *
+ * Description: Simnet: Alarm
+ *
+ * Explanation: An alarm lifecycle command (Activate when it triggers, Acknowledge/Silence on user action, Deactivate when it clears) for the alarm named by 'Alarm ID'. Any device may issue these, which is why acknowledging an alarm on one display clears it on the others. There may follow a PGN 130856 'Simnet: Alarm Message' with a textual explanation of the alarm.
+ *
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Event Type == Alarm<br>
  *
  * @category PGN_130850_SimnetAlarm
  */
@@ -33584,10 +36451,11 @@ export interface PGN_130850_SimnetAlarmFields {
   industryCode?: enums.IndustryCode | number
   address?: N2K_Number
   reserved5?: number
-  proprietaryId: enums.SimnetEventCommand | number
-  reserved7?: number
-  alarm?: enums.SimnetAlarm | number
-  messageId?: N2K_Number
+  networkGroup?: enums.SimnetNetworkGroup | number
+  eventType: enums.SimnetEventType | number
+  command?: enums.SimnetAlarmCommand | number
+  spare9?: number
+  alarmId?: enums.SimnetAlarmId | number
   f?: N2K_Number
   g?: N2K_Number
 }
@@ -33598,7 +36466,7 @@ export interface PGN_130850_SimnetAlarmFields {
 export const PGN_130850_SimnetAlarmMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
-  proprietaryId: enums.SimnetEventCommand.Alarm,
+  eventType: enums.SimnetEventType.Alarm,
 }
 
 /**
@@ -33608,9 +36476,10 @@ export interface PGN_130850_SimnetAlarmCreateArgs {
   reserved?: number
   address?: N2K_Number
   reserved5?: number
-  reserved7?: number
-  alarm?: enums.SimnetAlarm | number
-  messageId?: N2K_Number
+  networkGroup?: enums.SimnetNetworkGroup | number
+  command?: enums.SimnetAlarmCommand | number
+  spare9?: number
+  alarmId?: enums.SimnetAlarmId | number
   f?: N2K_Number
   g?: N2K_Number
 }
@@ -33649,7 +36518,7 @@ pgnIdToCreator['simnetAlarm'] = (fields:any, dst:number) => new PGN_130850_Simne
  *
  * Match: Manufacturer Code == Simrad<br>
  * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == Autopilot<br>
+ * Match: Command Type == AP Command<br>
  *
  * @category PGN_130850_SimnetApCommand
  */
@@ -33666,8 +36535,8 @@ export interface PGN_130850_SimnetApCommandFields {
   industryCode?: enums.IndustryCode | number
   address?: N2K_Number
   reserved5?: number
-  proprietaryId: enums.SimnetEventCommand | number
-  commandType?: enums.SimnetApCommandType | number
+  networkGroup?: enums.SimnetNetworkGroup | number
+  commandType: enums.SimnetEventType | number
   event?: enums.SimnetApEvents | number
   spare9?: number
   reserved10?: number
@@ -33684,7 +36553,7 @@ export interface PGN_130850_SimnetApCommandFields {
 export const PGN_130850_SimnetApCommandMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
-  proprietaryId: enums.SimnetEventCommand.Autopilot,
+  commandType: enums.SimnetEventType.ApCommand,
 }
 
 /**
@@ -33694,7 +36563,7 @@ export interface PGN_130850_SimnetApCommandCreateArgs {
   reserved?: number
   address?: N2K_Number
   reserved5?: number
-  commandType?: enums.SimnetApCommandType | number
+  networkGroup?: enums.SimnetNetworkGroup | number
   event?: enums.SimnetApEvents | number
   spare9?: number
   reserved10?: number
@@ -33755,7 +36624,7 @@ export interface PGN_130850_SimnetEventFields {
   industryCode?: enums.IndustryCode | number
   address?: N2K_Number
   reserved5?: number
-  proprietaryId: enums.SimnetEventCommand | number
+  networkGroup?: enums.SimnetNetworkGroup | number
   reserved7?: number
   reserved8?: number
   reserved9?: number
@@ -33780,7 +36649,7 @@ export interface PGN_130850_SimnetEventCreateArgs {
   reserved?: number
   address?: N2K_Number
   reserved5?: number
-  proprietaryId: enums.SimnetEventCommand | number
+  networkGroup?: enums.SimnetNetworkGroup | number
   reserved7?: number
   reserved8?: number
   reserved9?: number
@@ -33818,93 +36687,12 @@ pgnIdToCreator['simnetEvent'] = (fields:any, dst:number) => new PGN_130850_Simne
 /**
  * PGN: 130851
  *
- * Description: Simnet: Event Reply: AP command
- *
- * Match: Manufacturer Code == Simrad<br>
- * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == AP command<br>
- *
- * @category PGN_130851_SimnetEventReplyApCommand
- */
-export interface PGN_130851_SimnetEventReplyApCommandInterface extends PGNInterface {
-  fields: PGN_130851_SimnetEventReplyApCommandFields
-}
-
-/**
- * @category PGN_130851_SimnetEventReplyApCommand
- */
-export interface PGN_130851_SimnetEventReplyApCommandFields {
-  manufacturerCode?: enums.ManufacturerCode | number
-  reserved?: number
-  industryCode?: enums.IndustryCode | number
-  proprietaryId: enums.SimnetEventCommand | number
-  b?: N2K_Number
-  address?: N2K_Number
-  event?: enums.SimnetApEvents | number
-  c?: N2K_Number
-  direction?: enums.SimnetDirection | number
-  angle?: N2K_Number
-  g?: N2K_Number
-}
-
-/**
- * @category PGN_130851_SimnetEventReplyApCommand
- */
-export const PGN_130851_SimnetEventReplyApCommandMatchFields = {
-  manufacturerCode: enums.ManufacturerCode.Simrad,
-  industryCode: enums.IndustryCode.MarineIndustry,
-  proprietaryId: enums.SimnetEventCommand.ApCommand,
-}
-
-/**
- * @category PGN_130851_SimnetEventReplyApCommand
- */
-export interface PGN_130851_SimnetEventReplyApCommandCreateArgs {
-  reserved?: number
-  b?: N2K_Number
-  address?: N2K_Number
-  event?: enums.SimnetApEvents | number
-  c?: N2K_Number
-  direction?: enums.SimnetDirection | number
-  angle?: N2K_Number
-  g?: N2K_Number
-}
-
-/**
- * @category PGN_130851_SimnetEventReplyApCommand
- */
-export class PGN_130851_SimnetEventReplyApCommand extends PGN implements PGN_130851_SimnetEventReplyApCommandInterface {
-  fields: PGN_130851_SimnetEventReplyApCommandFields
-
-  constructor(fields: PGN_130851_SimnetEventReplyApCommandCreateArgs, dst: number = 255) {
-    super({
-      pgn: 130851,
-      prio: 7,
-      dst
-    })
-    this.fields = { ...PGN_130851_SimnetEventReplyApCommandMatchFields, ...fields }
-  }
-
-  static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_130851_SimnetEventReplyApCommandMatchFields)
-  }
-  getDefinition(): Definition {
-    return getPGNWithId('simnetEventReplyApCommand')!
-  }
-}
-pgnIdToCreator['simnetEventReplyApCommand'] = (fields:any, dst:number) => new PGN_130851_SimnetEventReplyApCommand(fields, dst)
-
-
-/**
- * PGN: 130851
- *
  * Description: Simnet: AP command Reply: Change Course
  *
  * Explanation: Reply emitted by the autopilot (NAC-3/AC-42) echoing a 130850 'Command AP Change Course' that was addressed to it.
  *
  * Match: Manufacturer Code == Simrad<br>
  * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == Autopilot<br>
  * Match: Command Type == AP Command<br>
  * Match: Event == Change course<br>
  *
@@ -33923,8 +36711,8 @@ export interface PGN_130851_SimnetApCommandReplyChangeCourseFields {
   industryCode?: enums.IndustryCode | number
   address?: N2K_Number
   reserved5?: number
-  proprietaryId: enums.SimnetEventCommand | number
-  commandType?: enums.SimnetApCommandType | number
+  networkGroup?: enums.SimnetNetworkGroup | number
+  commandType: enums.SimnetEventType | number
   event?: enums.SimnetApEvents | number
   spare9?: number
   direction?: enums.SimnetDirection | number
@@ -33938,8 +36726,7 @@ export interface PGN_130851_SimnetApCommandReplyChangeCourseFields {
 export const PGN_130851_SimnetApCommandReplyChangeCourseMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
-  proprietaryId: enums.SimnetEventCommand.Autopilot,
-  commandType: enums.SimnetApCommandType.ApCommand,
+  commandType: enums.SimnetEventType.ApCommand,
   event: enums.SimnetApEvents.ChangeCourse,
 }
 
@@ -33950,6 +36737,7 @@ export interface PGN_130851_SimnetApCommandReplyChangeCourseCreateArgs {
   reserved?: number
   address?: N2K_Number
   reserved5?: number
+  networkGroup?: enums.SimnetNetworkGroup | number
   spare9?: number
   direction?: enums.SimnetDirection | number
   angle?: N2K_Number
@@ -33990,7 +36778,7 @@ pgnIdToCreator['simnetApCommandReplyChangeCourse'] = (fields:any, dst:number) =>
  *
  * Match: Manufacturer Code == Simrad<br>
  * Match: Industry Code == Marine Industry<br>
- * Match: Proprietary ID == Autopilot<br>
+ * Match: Command Type == AP Command<br>
  *
  * @category PGN_130851_SimnetApCommandReply
  */
@@ -34007,8 +36795,8 @@ export interface PGN_130851_SimnetApCommandReplyFields {
   industryCode?: enums.IndustryCode | number
   address?: N2K_Number
   reserved5?: number
-  proprietaryId: enums.SimnetEventCommand | number
-  commandType?: enums.SimnetApCommandType | number
+  networkGroup?: enums.SimnetNetworkGroup | number
+  commandType: enums.SimnetEventType | number
   event?: enums.SimnetApEvents | number
   spare9?: number
   d?: N2K_Number
@@ -34022,7 +36810,7 @@ export interface PGN_130851_SimnetApCommandReplyFields {
 export const PGN_130851_SimnetApCommandReplyMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Simrad,
   industryCode: enums.IndustryCode.MarineIndustry,
-  proprietaryId: enums.SimnetEventCommand.Autopilot,
+  commandType: enums.SimnetEventType.ApCommand,
 }
 
 /**
@@ -34032,7 +36820,7 @@ export interface PGN_130851_SimnetApCommandReplyCreateArgs {
   reserved?: number
   address?: N2K_Number
   reserved5?: number
-  commandType?: enums.SimnetApCommandType | number
+  networkGroup?: enums.SimnetNetworkGroup | number
   event?: enums.SimnetApEvents | number
   spare9?: number
   d?: N2K_Number
@@ -34068,64 +36856,78 @@ pgnIdToCreator['simnetApCommandReply'] = (fields:any, dst:number) => new PGN_130
 /**
  * PGN: 130852
  *
- * Description: Navico: Proprietary 2 FP
+ * Description: Navico: Diagnostic Data
+ *
+ * Explanation: Device diagnostic report, returned in reply to a PGN 126208 Request Group Function for PGN 130852 that carries the Navico manufacturer (275) and Marine industry parameters. Emitted by both NEON- and Triton-generation Navico devices. After the manufacturer field and an Instance/channel byte, the frame carries a list of {Field ID, Length, Value} records to the end of the fast-packet; Length is the value width (1, 2 or 4 bytes). Field IDs index a set of CAN bus diagnostic counters; ids 4/5/7 (Rx Messages, Tx Messages, Fast Packet Errors) are confirmed against a device's on-screen bus statistics. Ids 0-3 are the rx/tx overflow and error counters (zero on a healthy bus, so their order is not yet distinguished) and id 22 relates to bus state; those are shown numerically. Bus Load shown in the device UI is computed locally and is not carried here.
  *
  * Match: Manufacturer Code == Navico<br>
  * Match: Industry Code == Marine Industry<br>
  *
- * @category PGN_130852_NavicoProprietary2Fp
+ * @category PGN_130852_NavicoDiagnosticData
  */
-export interface PGN_130852_NavicoProprietary2FpInterface extends PGNInterface {
-  fields: PGN_130852_NavicoProprietary2FpFields
+export interface PGN_130852_NavicoDiagnosticDataInterface extends PGNInterface {
+  fields: PGN_130852_NavicoDiagnosticDataFields
 }
 
 /**
- * @category PGN_130852_NavicoProprietary2Fp
+ * @category PGN_130852_NavicoDiagnosticData
  */
-export interface PGN_130852_NavicoProprietary2FpFields {
+export interface PGN_130852_NavicoDiagnosticDataFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
+  instance?: N2K_Number
+  list: {
+    fieldId: N2K_DynamicFieldKey
+    length?: N2K_DynamicFieldLength
+    value?: N2K_DynamicFieldValue
+  }[]
 }
 
 /**
- * @category PGN_130852_NavicoProprietary2Fp
+ * @category PGN_130852_NavicoDiagnosticData
  */
-export const PGN_130852_NavicoProprietary2FpMatchFields = {
+export const PGN_130852_NavicoDiagnosticDataMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
 }
 
 /**
- * @category PGN_130852_NavicoProprietary2Fp
+ * @category PGN_130852_NavicoDiagnosticData
  */
-export interface PGN_130852_NavicoProprietary2FpCreateArgs {
+export interface PGN_130852_NavicoDiagnosticDataCreateArgs {
   reserved?: number
+  instance?: N2K_Number
+  list: {
+    fieldId: N2K_DynamicFieldKey
+    length?: N2K_DynamicFieldLength
+    value?: N2K_DynamicFieldValue
+  }[]
 }
 
 /**
- * @category PGN_130852_NavicoProprietary2Fp
+ * @category PGN_130852_NavicoDiagnosticData
  */
-export class PGN_130852_NavicoProprietary2Fp extends PGN implements PGN_130852_NavicoProprietary2FpInterface {
-  fields: PGN_130852_NavicoProprietary2FpFields
+export class PGN_130852_NavicoDiagnosticData extends PGN implements PGN_130852_NavicoDiagnosticDataInterface {
+  fields: PGN_130852_NavicoDiagnosticDataFields
 
-  constructor(fields: PGN_130852_NavicoProprietary2FpCreateArgs, dst: number = 255) {
+  constructor(fields: PGN_130852_NavicoDiagnosticDataCreateArgs, dst: number = 255) {
     super({
       pgn: 130852,
       prio: 3,
       dst
     })
-    this.fields = { ...PGN_130852_NavicoProprietary2FpMatchFields, ...fields }
+    this.fields = { ...PGN_130852_NavicoDiagnosticDataMatchFields, ...fields }
   }
 
   static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_130852_NavicoProprietary2FpMatchFields)
+    return isMatch(pgn, PGN_130852_NavicoDiagnosticDataMatchFields)
   }
   getDefinition(): Definition {
-    return getPGNWithId('navicoProprietary2Fp')!
+    return getPGNWithId('navicoDiagnosticData')!
   }
 }
-pgnIdToCreator['navicoProprietary2Fp'] = (fields:any, dst:number) => new PGN_130852_NavicoProprietary2Fp(fields, dst)
+pgnIdToCreator['navicoDiagnosticData'] = (fields:any, dst:number) => new PGN_130852_NavicoDiagnosticData(fields, dst)
 
 
 /**
@@ -34151,7 +36953,7 @@ export interface PGN_130856_SimnetAlarmMessageFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  messageId?: N2K_Number
+  alarmId?: enums.SimnetAlarmId | number
   b?: N2K_Number
   c?: N2K_Number
   text?: N2K_StringFix
@@ -34170,7 +36972,7 @@ export const PGN_130856_SimnetAlarmMessageMatchFields = {
  */
 export interface PGN_130856_SimnetAlarmMessageCreateArgs {
   reserved?: number
-  messageId?: N2K_Number
+  alarmId?: enums.SimnetAlarmId | number
   b?: N2K_Number
   c?: N2K_Number
   text?: N2K_StringFix
@@ -34276,69 +37078,6 @@ export class PGN_130860_SimnetApUnknown4 extends PGN implements PGN_130860_Simne
   }
 }
 pgnIdToCreator['simnetApUnknown4'] = (fields:any, dst:number) => new PGN_130860_SimnetApUnknown4(fields, dst)
-
-
-/**
- * PGN: 130861
- *
- * Description: Simrad: Engine Data
- *
- * Match: Manufacturer Code == Simrad<br>
- * Match: Industry Code == Marine Industry<br>
- *
- * @category PGN_130861_SimradEngineData
- */
-export interface PGN_130861_SimradEngineDataInterface extends PGNInterface {
-  fields: PGN_130861_SimradEngineDataFields
-}
-
-/**
- * @category PGN_130861_SimradEngineData
- */
-export interface PGN_130861_SimradEngineDataFields {
-  manufacturerCode?: enums.ManufacturerCode | number
-  reserved?: number
-  industryCode?: enums.IndustryCode | number
-}
-
-/**
- * @category PGN_130861_SimradEngineData
- */
-export const PGN_130861_SimradEngineDataMatchFields = {
-  manufacturerCode: enums.ManufacturerCode.Simrad,
-  industryCode: enums.IndustryCode.MarineIndustry,
-}
-
-/**
- * @category PGN_130861_SimradEngineData
- */
-export interface PGN_130861_SimradEngineDataCreateArgs {
-  reserved?: number
-}
-
-/**
- * @category PGN_130861_SimradEngineData
- */
-export class PGN_130861_SimradEngineData extends PGN implements PGN_130861_SimradEngineDataInterface {
-  fields: PGN_130861_SimradEngineDataFields
-
-  constructor(fields: PGN_130861_SimradEngineDataCreateArgs, dst: number = 255) {
-    super({
-      pgn: 130861,
-      prio: 3,
-      dst
-    })
-    this.fields = { ...PGN_130861_SimradEngineDataMatchFields, ...fields }
-  }
-
-  static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_130861_SimradEngineDataMatchFields)
-  }
-  getDefinition(): Definition {
-    return getPGNWithId('simradEngineData')!
-  }
-}
-pgnIdToCreator['simradEngineData'] = (fields:any, dst:number) => new PGN_130861_SimradEngineData(fields, dst)
 
 
 /**

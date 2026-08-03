@@ -10173,7 +10173,7 @@ pgnIdToCreator['0x1ef00ManufacturerProprietaryFastPacketAddressed'] = (fields:an
  * Match: Manufacturer Code == Garmin<br>
  * Match: Industry Code == Marine Industry<br>
  * Match: Sub-protocol ID == AHRS ATT transport<br>
- * Match: Wrapper Byte 1 == 1<br>
+ * Match: Wrapper Byte 1 == 2<br>
  * Match: Wrapper Byte 2 == 2<br>
  * Match: ATT Message ID == COG Source Valid Flag<br>
  *
@@ -10250,7 +10250,7 @@ pgnIdToCreator['garminAhrsAttCogSourceValidFlag'] = (fields:any, dst:number) => 
  * Match: Manufacturer Code == Garmin<br>
  * Match: Industry Code == Marine Industry<br>
  * Match: Sub-protocol ID == AHRS ATT transport<br>
- * Match: Wrapper Byte 1 == 1<br>
+ * Match: Wrapper Byte 1 == 2<br>
  * Match: Wrapper Byte 2 == 2<br>
  * Match: ATT Message ID == Device Flags<br>
  *
@@ -10327,7 +10327,7 @@ pgnIdToCreator['garminAhrsAttDeviceFlags'] = (fields:any, dst:number) => new PGN
  * Match: Manufacturer Code == Garmin<br>
  * Match: Industry Code == Marine Industry<br>
  * Match: Sub-protocol ID == AHRS ATT transport<br>
- * Match: Wrapper Byte 1 == 1<br>
+ * Match: Wrapper Byte 1 == 2<br>
  * Match: Wrapper Byte 2 == 2<br>
  * Match: ATT Message ID == Calibration Matrix Present<br>
  *
@@ -10404,7 +10404,7 @@ pgnIdToCreator['garminAhrsAttNonDefaultCalibrationMatrixPresent'] = (fields:any,
  * Match: Manufacturer Code == Garmin<br>
  * Match: Industry Code == Marine Industry<br>
  * Match: Sub-protocol ID == AHRS ATT transport<br>
- * Match: Wrapper Byte 1 == 1<br>
+ * Match: Wrapper Byte 1 == 2<br>
  * Match: Wrapper Byte 2 == 2<br>
  * Match: ATT Message ID == Set North State<br>
  *

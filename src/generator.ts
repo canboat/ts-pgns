@@ -33,6 +33,21 @@ function enumName(name: string) {
   return fixIdentifier(camelCase(name, { pascalCase: true }), '_')
 }
 
+/**
+ * The canonical name of a lookup field's Match value, taken from the
+ * enumeration itself. A field's Description is a copy of that name and can go
+ * stale when an enumeration is renamed upstream, so the enumeration wins.
+ */
+function matchValueName(field: Field): string | undefined {
+  if (field.LookupEnumeration === undefined || field.Match === undefined) {
+    return undefined
+  }
+  const enumeration = pgns.LookupEnumerations.find(
+    (en: any) => en.Name === field.LookupEnumeration
+  ) as any
+  return enumeration?.EnumValues.find((v: any) => v.Value === field.Match)?.Name
+}
+
 const organized: { [key: number]: Definition[] } = {}
 const pgnNumbers: number[] = []
 
@@ -334,9 +349,8 @@ export abstract class PGN implements PGNInterface {
       console.log(' *')
       pgn.Fields.forEach((field: Field) => {
         if (field.Match) {
-          console.log(
-            ` * Match: ${field.Name} == ${field.Description || field.Match}<br>`
-          )
+          const name = matchValueName(field) ?? field.Description
+          console.log(` * Match: ${field.Name} == ${name || field.Match}<br>`)
         }
       })
     }
@@ -393,9 +407,15 @@ export abstract class PGN implements PGNInterface {
       pgn.Fields.forEach((field: Field) => {
         if (field.Match !== undefined) {
           let value: any
-          if (field.FieldType === FieldType.Lookup && field.Description) {
-            const ename = enumName(field.Description)
-            enumName(field.Description)
+          const lookupName =
+            field.FieldType === FieldType.Lookup
+              ? (matchValueName(field) ??
+                (typeof field.Description === 'string'
+                  ? field.Description
+                  : undefined))
+              : undefined
+          if (lookupName !== undefined) {
+            const ename = enumName(lookupName)
             value = `enums.${enumName(field.LookupEnumeration!)}.${ename}`
           } else {
             value =

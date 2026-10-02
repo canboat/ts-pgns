@@ -57,6 +57,15 @@ export {
 } from './lookups'
 
 /**
+ * The canboat release these definitions were generated from, e.g. `'8.3.0'`.
+ * The package keeps its own semver, so this is the way to tell which
+ * canboat database a given ts-pgns version carries.
+ *
+ * @category PGN Definition Access
+ */
+export const canboatVersion: string = canboat.Version
+
+/**
  * @category PGN Definition Access
  */
 export const getAllPGNs = (): Definition[] => {

@@ -43,6 +43,7 @@ export enum Type {
  * @category PGN Definitions
  */
 export enum FieldType {
+  Address = 'ADDRESS',
   Binary = 'BINARY',
   BitLookup = 'BITLOOKUP',
   Date = 'DATE',
@@ -197,6 +198,8 @@ export interface FieldTypeEnumeration extends EnumBase {
  * @property LookupIndirectEnumerationFieldOrder - Optional order for indirect enumeration fields.
  * @property LookupBitEnumeration - Optional reference to a bit enumeration.
  * @property LookupFieldTypeEnumeration - Reference to the field type enumeration.
+ * @property Encoding - Optional character set of an 8-bit string field, for
+ *   bytes that are not well-formed UTF-8 (e.g. `RDS_G0`). Absent means Latin-1.
  * @category PGN Definitions
  */
 export type Field = {
@@ -224,6 +227,7 @@ export type Field = {
   LookupIndirectEnumerationFieldOrder?: number
   LookupBitEnumeration?: string
   LookupFieldTypeEnumeration: string
+  Encoding?: string
 }
 
 /**

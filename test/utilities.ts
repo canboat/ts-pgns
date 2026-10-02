@@ -17,12 +17,16 @@ import {
   PGN_126208_NmeaCommandGroupFunction,
   Priority,
   isCamelCaseSupported,
-  setSupportsCamelCaseCacheEnabled
+  setSupportsCamelCaseCacheEnabled,
+  canboatVersion
 } from '../dist/index'
 import { pgnToActisenseSerialFormat } from '@canboat/canboatjs'
 
 describe('utilities tests', () => {
   setSupportsCamelCaseCacheEnabled(false)
+  it(`canboatVersion names the canboat release`, () => {
+    expect(canboatVersion).to.match(/^\d+\.\d+\.\d+/)
+  })
   it(`findMatchingDefinition works`, (done) => {
     const pgn = new PGN_61184_VictronVeCanRegister({
       registerId: 'DC Voltage',

@@ -109,6 +109,10 @@ export type N2K_Variable = any
  * @category Field Types
  */
 export type N2K_FieldIndex = number
+/**
+ * @category Field Types
+ */
+export type N2K_Address = number
 
 /**
  * @category PGN Definitions
@@ -2405,7 +2409,7 @@ pgnIdToCreator['generatorAverageBasicAcQuantities'] = (fields:any, dst:number) =
  *
  * Description: ISO Commanded Address
  *
- * Explanation: ISO 11783 defined this message to provide a mechanism for assigning a network address to a node. The NAME information in the data portion of the message must match the name information of the node whose network address is to be set. ISO 11783-5 requires that this mesage to be sent using the BAM Transport Protocol method. The appropriate response to this message is defined in section 5.2.3 of 11783-5.
+ * Explanation: ISO 11783 defined this message to provide a mechanism for assigning a network address to a node. The NAME information in the data portion of the message must match the name information of the node whose network address is to be set. ISO 11783-5 requires that this message to be sent using the BAM Transport Protocol method. The appropriate response to this message is defined in section 5.2.3 of 11783-5.
  *
  * @category PGN_65240
  */
@@ -2427,7 +2431,7 @@ export interface PGN_65240Fields {
   systemInstance?: N2K_Number
   industryCode?: enums.IndustryCode | number
   reserved10?: number
-  newSourceAddress?: N2K_Number
+  newSourceAddress?: N2K_Address
 }
 
 /**
@@ -8002,6 +8006,160 @@ pgnIdToCreator['bGProprietary'] = (fields:any, dst:number) => new PGN_65330_BGPr
 /**
  * PGN: 65332
  *
+ * Description: Simnet: ZC1/OP40 Key
+ *
+ * Explanation: Manufacturer-proprietary single frame used by B&G ZC1 / Simrad OP40 style remotes (and software that emulates them) to send a key to an MFD. Manufacturer Code 1857 (Simrad) distinguishes this from Yanmar Engine Data C on PGN 65332. Function 0x84 is a keypad key; 0x85 is the rotary encoder (see simnetZcKnob). Parameter is 0x320E on every observed key frame; meaning unknown. Several key codes match USB HID keyboard usages (digits 0x1E-0x27, arrows 0x4F-0x52, Enter/Escape 0x28/0x29) but MOB/Display/etc. are Navico specific. Radar uses the same key code as Chart (0x1A).
+
+ *
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Function == Key<br>
+ *
+ * @category PGN_65332_SimnetZcKey
+ */
+export interface PGN_65332_SimnetZcKeyInterface extends PGNInterface {
+  fields: PGN_65332_SimnetZcKeyFields
+}
+
+/**
+ * @category PGN_65332_SimnetZcKey
+ */
+export interface PGN_65332_SimnetZcKeyFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  address?: N2K_Address
+  function: enums.SimnetZcFunction | number
+  parameter?: N2K_Number
+  keyEvent?: enums.SimnetZcKeyEvent | number
+  key?: enums.SimnetZcKey | number
+}
+
+/**
+ * @category PGN_65332_SimnetZcKey
+ */
+export const PGN_65332_SimnetZcKeyMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  function: enums.SimnetZcFunction.Key,
+}
+
+/**
+ * @category PGN_65332_SimnetZcKey
+ */
+export interface PGN_65332_SimnetZcKeyCreateArgs {
+  reserved?: number
+  address?: N2K_Address
+  parameter?: N2K_Number
+  keyEvent?: enums.SimnetZcKeyEvent | number
+  key?: enums.SimnetZcKey | number
+}
+
+/**
+ * @category PGN_65332_SimnetZcKey
+ */
+export class PGN_65332_SimnetZcKey extends PGN implements PGN_65332_SimnetZcKeyInterface {
+  fields: PGN_65332_SimnetZcKeyFields
+
+  constructor(fields: PGN_65332_SimnetZcKeyCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65332,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65332_SimnetZcKeyMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65332_SimnetZcKeyMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetZcKey')!
+  }
+}
+pgnIdToCreator['simnetZcKey'] = (fields:any, dst:number) => new PGN_65332_SimnetZcKey(fields, dst)
+
+
+/**
+ * PGN: 65332
+ *
+ * Description: Simnet: ZC1/OP40 Knob
+ *
+ * Explanation: Rotary encoder half of Simnet ZC1/OP40 PGN 65332 (Function 0x85). Address is 0xFE, the null address, on observed frames: a knob turn is not aimed at one MFD. Ticks are a signed step (+1 / -1). The last byte is 0x08 on every observed encoder frame; meaning unknown.
+
+ *
+ * Match: Manufacturer Code == Simrad<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Function == Knob<br>
+ *
+ * @category PGN_65332_SimnetZcKnob
+ */
+export interface PGN_65332_SimnetZcKnobInterface extends PGNInterface {
+  fields: PGN_65332_SimnetZcKnobFields
+}
+
+/**
+ * @category PGN_65332_SimnetZcKnob
+ */
+export interface PGN_65332_SimnetZcKnobFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  address?: N2K_Address
+  function: enums.SimnetZcFunction | number
+  parameter?: N2K_Number
+  ticks?: N2K_Number
+  unknown?: N2K_Number
+}
+
+/**
+ * @category PGN_65332_SimnetZcKnob
+ */
+export const PGN_65332_SimnetZcKnobMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Simrad,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  function: enums.SimnetZcFunction.Knob,
+}
+
+/**
+ * @category PGN_65332_SimnetZcKnob
+ */
+export interface PGN_65332_SimnetZcKnobCreateArgs {
+  reserved?: number
+  address?: N2K_Address
+  parameter?: N2K_Number
+  ticks?: N2K_Number
+  unknown?: N2K_Number
+}
+
+/**
+ * @category PGN_65332_SimnetZcKnob
+ */
+export class PGN_65332_SimnetZcKnob extends PGN implements PGN_65332_SimnetZcKnobInterface {
+  fields: PGN_65332_SimnetZcKnobFields
+
+  constructor(fields: PGN_65332_SimnetZcKnobCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65332,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_65332_SimnetZcKnobMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65332_SimnetZcKnobMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('simnetZcKnob')!
+  }
+}
+pgnIdToCreator['simnetZcKnob'] = (fields:any, dst:number) => new PGN_65332_SimnetZcKnob(fields, dst)
+
+
+/**
+ * PGN: 65332
+ *
  * Description: Yanmar: Engine Data C
  *
  * Match: Manufacturer Code == Yanmar Marine<br>
@@ -12026,7 +12184,7 @@ pgnIdToCreator['seatalkPilotAutoTurn'] = (fields:any, dst:number) => new PGN_126
  * Match: Industry Code == Marine Industry<br>
  * Match: Proprietary ID == Seatalk 1 Encoded<br>
  * Match: command == Seatalk1<br>
- * Match: Seatalk1 Command == Device Indentification<br>
+ * Match: Seatalk1 Command == Device Identification<br>
  *
  * @category PGN_126720_Seatalk1DeviceIdentification
  */
@@ -12056,7 +12214,7 @@ export const PGN_126720_Seatalk1DeviceIdentificationMatchFields = {
   industryCode: enums.IndustryCode.MarineIndustry,
   proprietaryId: enums.SeatalkMessageId.Seatalk1Encoded,
   command: enums.SeatalkCommand.Seatalk1,
-  seatalk1Command: enums.Seatalk1Command.DeviceIndentification,
+  seatalk1Command: enums.Seatalk1Command.DeviceIdentification,
 }
 
 /**
@@ -14609,6 +14767,852 @@ pgnIdToCreator['fusionRequestMenuItems'] = (fields:any, dst:number) => new PGN_1
 
 
 /**
+ * PGN: 126720
+ *
+ * Description: Fusion: Request Menu Lock ID
+ *
+ * Match: Manufacturer Code == Fusion Electronics<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Request Menu Lock ID<br>
+ *
+ * @category PGN_126720_FusionRequestMenuLockId
+ */
+export interface PGN_126720_FusionRequestMenuLockIdInterface extends PGNInterface {
+  fields: PGN_126720_FusionRequestMenuLockIdFields
+}
+
+/**
+ * @category PGN_126720_FusionRequestMenuLockId
+ */
+export interface PGN_126720_FusionRequestMenuLockIdFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: enums.FusionMessageId | number
+  requestToken?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_FusionRequestMenuLockId
+ */
+export const PGN_126720_FusionRequestMenuLockIdMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: enums.FusionMessageId.RequestMenuLockId,
+}
+
+/**
+ * @category PGN_126720_FusionRequestMenuLockId
+ */
+export interface PGN_126720_FusionRequestMenuLockIdCreateArgs {
+  reserved?: number
+  requestToken?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_FusionRequestMenuLockId
+ */
+export class PGN_126720_FusionRequestMenuLockId extends PGN implements PGN_126720_FusionRequestMenuLockIdInterface {
+  fields: PGN_126720_FusionRequestMenuLockIdFields
+
+  constructor(fields: PGN_126720_FusionRequestMenuLockIdCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_FusionRequestMenuLockIdMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_FusionRequestMenuLockIdMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionRequestMenuLockId')!
+  }
+}
+pgnIdToCreator['fusionRequestMenuLockId'] = (fields:any, dst:number) => new PGN_126720_FusionRequestMenuLockId(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Fusion: Set Setting
+ *
+ * Match: Manufacturer Code == Fusion Electronics<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Set Settings<br>
+ *
+ * @category PGN_126720_FusionSetSetting
+ */
+export interface PGN_126720_FusionSetSettingInterface extends PGNInterface {
+  fields: PGN_126720_FusionSetSettingFields
+}
+
+/**
+ * @category PGN_126720_FusionSetSetting
+ */
+export interface PGN_126720_FusionSetSettingFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: enums.FusionMessageId | number
+  id?: enums.FusionSetting | number
+  value?: enums.FusionSettingValue | number
+}
+
+/**
+ * @category PGN_126720_FusionSetSetting
+ */
+export const PGN_126720_FusionSetSettingMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: enums.FusionMessageId.SetSettings,
+}
+
+/**
+ * @category PGN_126720_FusionSetSetting
+ */
+export interface PGN_126720_FusionSetSettingCreateArgs {
+  reserved?: number
+  id?: enums.FusionSetting | number
+  value?: enums.FusionSettingValue | number
+}
+
+/**
+ * @category PGN_126720_FusionSetSetting
+ */
+export class PGN_126720_FusionSetSetting extends PGN implements PGN_126720_FusionSetSettingInterface {
+  fields: PGN_126720_FusionSetSettingFields
+
+  constructor(fields: PGN_126720_FusionSetSettingCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_FusionSetSettingMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_FusionSetSettingMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSetSetting')!
+  }
+}
+pgnIdToCreator['fusionSetSetting'] = (fields:any, dst:number) => new PGN_126720_FusionSetSetting(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Fusion: Tuner Command
+ *
+ * Match: Manufacturer Code == Fusion Electronics<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Tuner Command<br>
+ *
+ * @category PGN_126720_FusionTunerCommand
+ */
+export interface PGN_126720_FusionTunerCommandInterface extends PGNInterface {
+  fields: PGN_126720_FusionTunerCommandFields
+}
+
+/**
+ * @category PGN_126720_FusionTunerCommand
+ */
+export interface PGN_126720_FusionTunerCommandFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: enums.FusionMessageId | number
+  tunerSource?: enums.FusionRadioSource | number
+  command?: enums.FusionTunerCommand | number
+  frequency?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_FusionTunerCommand
+ */
+export const PGN_126720_FusionTunerCommandMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: enums.FusionMessageId.TunerCommand,
+}
+
+/**
+ * @category PGN_126720_FusionTunerCommand
+ */
+export interface PGN_126720_FusionTunerCommandCreateArgs {
+  reserved?: number
+  tunerSource?: enums.FusionRadioSource | number
+  command?: enums.FusionTunerCommand | number
+  frequency?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_FusionTunerCommand
+ */
+export class PGN_126720_FusionTunerCommand extends PGN implements PGN_126720_FusionTunerCommandInterface {
+  fields: PGN_126720_FusionTunerCommandFields
+
+  constructor(fields: PGN_126720_FusionTunerCommandCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_FusionTunerCommandMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_FusionTunerCommandMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionTunerCommand')!
+  }
+}
+pgnIdToCreator['fusionTunerCommand'] = (fields:any, dst:number) => new PGN_126720_FusionTunerCommand(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Fusion: Set Aux Gain
+ *
+ * Match: Manufacturer Code == Fusion Electronics<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Set Aux Gain<br>
+ *
+ * @category PGN_126720_FusionSetAuxGain
+ */
+export interface PGN_126720_FusionSetAuxGainInterface extends PGNInterface {
+  fields: PGN_126720_FusionSetAuxGainFields
+}
+
+/**
+ * @category PGN_126720_FusionSetAuxGain
+ */
+export interface PGN_126720_FusionSetAuxGainFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: enums.FusionMessageId | number
+  sourceId: N2K_Number
+  gain?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_FusionSetAuxGain
+ */
+export const PGN_126720_FusionSetAuxGainMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: enums.FusionMessageId.SetAuxGain,
+}
+
+/**
+ * @category PGN_126720_FusionSetAuxGain
+ */
+export interface PGN_126720_FusionSetAuxGainCreateArgs {
+  reserved?: number
+  sourceId: N2K_Number
+  gain?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_FusionSetAuxGain
+ */
+export class PGN_126720_FusionSetAuxGain extends PGN implements PGN_126720_FusionSetAuxGainInterface {
+  fields: PGN_126720_FusionSetAuxGainFields
+
+  constructor(fields: PGN_126720_FusionSetAuxGainCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_FusionSetAuxGainMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_FusionSetAuxGainMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSetAuxGain')!
+  }
+}
+pgnIdToCreator['fusionSetAuxGain'] = (fields:any, dst:number) => new PGN_126720_FusionSetAuxGain(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Fusion: Set Balance
+ *
+ * Match: Manufacturer Code == Fusion Electronics<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Set Balance<br>
+ *
+ * @category PGN_126720_FusionSetBalance
+ */
+export interface PGN_126720_FusionSetBalanceInterface extends PGNInterface {
+  fields: PGN_126720_FusionSetBalanceFields
+}
+
+/**
+ * @category PGN_126720_FusionSetBalance
+ */
+export interface PGN_126720_FusionSetBalanceFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: enums.FusionMessageId | number
+  zone?: N2K_Number
+  value?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_FusionSetBalance
+ */
+export const PGN_126720_FusionSetBalanceMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: enums.FusionMessageId.SetBalance,
+}
+
+/**
+ * @category PGN_126720_FusionSetBalance
+ */
+export interface PGN_126720_FusionSetBalanceCreateArgs {
+  reserved?: number
+  zone?: N2K_Number
+  value?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_FusionSetBalance
+ */
+export class PGN_126720_FusionSetBalance extends PGN implements PGN_126720_FusionSetBalanceInterface {
+  fields: PGN_126720_FusionSetBalanceFields
+
+  constructor(fields: PGN_126720_FusionSetBalanceCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_FusionSetBalanceMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_FusionSetBalanceMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSetBalance')!
+  }
+}
+pgnIdToCreator['fusionSetBalance'] = (fields:any, dst:number) => new PGN_126720_FusionSetBalance(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Fusion: Set Low Pass Filter
+ *
+ * Match: Manufacturer Code == Fusion Electronics<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Set Low Pass Filter<br>
+ *
+ * @category PGN_126720_FusionSetLowPassFilter
+ */
+export interface PGN_126720_FusionSetLowPassFilterInterface extends PGNInterface {
+  fields: PGN_126720_FusionSetLowPassFilterFields
+}
+
+/**
+ * @category PGN_126720_FusionSetLowPassFilter
+ */
+export interface PGN_126720_FusionSetLowPassFilterFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: enums.FusionMessageId | number
+  zone?: N2K_Number
+  filter?: enums.FusionLowPassFilter | number
+}
+
+/**
+ * @category PGN_126720_FusionSetLowPassFilter
+ */
+export const PGN_126720_FusionSetLowPassFilterMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: enums.FusionMessageId.SetLowPassFilter,
+}
+
+/**
+ * @category PGN_126720_FusionSetLowPassFilter
+ */
+export interface PGN_126720_FusionSetLowPassFilterCreateArgs {
+  reserved?: number
+  zone?: N2K_Number
+  filter?: enums.FusionLowPassFilter | number
+}
+
+/**
+ * @category PGN_126720_FusionSetLowPassFilter
+ */
+export class PGN_126720_FusionSetLowPassFilter extends PGN implements PGN_126720_FusionSetLowPassFilterInterface {
+  fields: PGN_126720_FusionSetLowPassFilterFields
+
+  constructor(fields: PGN_126720_FusionSetLowPassFilterCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_FusionSetLowPassFilterMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_FusionSetLowPassFilterMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSetLowPassFilter')!
+  }
+}
+pgnIdToCreator['fusionSetLowPassFilter'] = (fields:any, dst:number) => new PGN_126720_FusionSetLowPassFilter(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Fusion: Set Sublevel
+ *
+ * Match: Manufacturer Code == Fusion Electronics<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Set Sublevel<br>
+ *
+ * @category PGN_126720_FusionSetSublevel
+ */
+export interface PGN_126720_FusionSetSublevelInterface extends PGNInterface {
+  fields: PGN_126720_FusionSetSublevelFields
+}
+
+/**
+ * @category PGN_126720_FusionSetSublevel
+ */
+export interface PGN_126720_FusionSetSublevelFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: enums.FusionMessageId | number
+  zone?: N2K_Number
+  level?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_FusionSetSublevel
+ */
+export const PGN_126720_FusionSetSublevelMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: enums.FusionMessageId.SetSublevel,
+}
+
+/**
+ * @category PGN_126720_FusionSetSublevel
+ */
+export interface PGN_126720_FusionSetSublevelCreateArgs {
+  reserved?: number
+  zone?: N2K_Number
+  level?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_FusionSetSublevel
+ */
+export class PGN_126720_FusionSetSublevel extends PGN implements PGN_126720_FusionSetSublevelInterface {
+  fields: PGN_126720_FusionSetSublevelFields
+
+  constructor(fields: PGN_126720_FusionSetSublevelCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_FusionSetSublevelMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_FusionSetSublevelMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSetSublevel')!
+  }
+}
+pgnIdToCreator['fusionSetSublevel'] = (fields:any, dst:number) => new PGN_126720_FusionSetSublevel(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Fusion: Set Volume Limit
+ *
+ * Match: Manufacturer Code == Fusion Electronics<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Set Volume Limit<br>
+ *
+ * @category PGN_126720_FusionSetVolumeLimit
+ */
+export interface PGN_126720_FusionSetVolumeLimitInterface extends PGNInterface {
+  fields: PGN_126720_FusionSetVolumeLimitFields
+}
+
+/**
+ * @category PGN_126720_FusionSetVolumeLimit
+ */
+export interface PGN_126720_FusionSetVolumeLimitFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: enums.FusionMessageId | number
+  zone?: N2K_Number
+  limit?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_FusionSetVolumeLimit
+ */
+export const PGN_126720_FusionSetVolumeLimitMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: enums.FusionMessageId.SetVolumeLimit,
+}
+
+/**
+ * @category PGN_126720_FusionSetVolumeLimit
+ */
+export interface PGN_126720_FusionSetVolumeLimitCreateArgs {
+  reserved?: number
+  zone?: N2K_Number
+  limit?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_FusionSetVolumeLimit
+ */
+export class PGN_126720_FusionSetVolumeLimit extends PGN implements PGN_126720_FusionSetVolumeLimitInterface {
+  fields: PGN_126720_FusionSetVolumeLimitFields
+
+  constructor(fields: PGN_126720_FusionSetVolumeLimitCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_FusionSetVolumeLimitMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_FusionSetVolumeLimitMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSetVolumeLimit')!
+  }
+}
+pgnIdToCreator['fusionSetVolumeLimit'] = (fields:any, dst:number) => new PGN_126720_FusionSetVolumeLimit(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Fusion: Set Zone Name
+ *
+ * Match: Manufacturer Code == Fusion Electronics<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Set Zone Name<br>
+ *
+ * @category PGN_126720_FusionSetZoneName
+ */
+export interface PGN_126720_FusionSetZoneNameInterface extends PGNInterface {
+  fields: PGN_126720_FusionSetZoneNameFields
+}
+
+/**
+ * @category PGN_126720_FusionSetZoneName
+ */
+export interface PGN_126720_FusionSetZoneNameFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: enums.FusionMessageId | number
+  zone?: N2K_Number
+  name?: N2K_StringLz
+}
+
+/**
+ * @category PGN_126720_FusionSetZoneName
+ */
+export const PGN_126720_FusionSetZoneNameMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: enums.FusionMessageId.SetZoneName,
+}
+
+/**
+ * @category PGN_126720_FusionSetZoneName
+ */
+export interface PGN_126720_FusionSetZoneNameCreateArgs {
+  reserved?: number
+  zone?: N2K_Number
+  name?: N2K_StringLz
+}
+
+/**
+ * @category PGN_126720_FusionSetZoneName
+ */
+export class PGN_126720_FusionSetZoneName extends PGN implements PGN_126720_FusionSetZoneNameInterface {
+  fields: PGN_126720_FusionSetZoneNameFields
+
+  constructor(fields: PGN_126720_FusionSetZoneNameCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_FusionSetZoneNameMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_FusionSetZoneNameMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSetZoneName')!
+  }
+}
+pgnIdToCreator['fusionSetZoneName'] = (fields:any, dst:number) => new PGN_126720_FusionSetZoneName(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Fusion: Set Equalizer
+ *
+ * Match: Manufacturer Code == Fusion Electronics<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Set Equalizer<br>
+ *
+ * @category PGN_126720_FusionSetEqualizer
+ */
+export interface PGN_126720_FusionSetEqualizerInterface extends PGNInterface {
+  fields: PGN_126720_FusionSetEqualizerFields
+}
+
+/**
+ * @category PGN_126720_FusionSetEqualizer
+ */
+export interface PGN_126720_FusionSetEqualizerFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: enums.FusionMessageId | number
+  zone?: N2K_Number
+  bass?: N2K_Number
+  mid?: N2K_Number
+  treble?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_FusionSetEqualizer
+ */
+export const PGN_126720_FusionSetEqualizerMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: enums.FusionMessageId.SetEqualizer,
+}
+
+/**
+ * @category PGN_126720_FusionSetEqualizer
+ */
+export interface PGN_126720_FusionSetEqualizerCreateArgs {
+  reserved?: number
+  zone?: N2K_Number
+  bass?: N2K_Number
+  mid?: N2K_Number
+  treble?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_FusionSetEqualizer
+ */
+export class PGN_126720_FusionSetEqualizer extends PGN implements PGN_126720_FusionSetEqualizerInterface {
+  fields: PGN_126720_FusionSetEqualizerFields
+
+  constructor(fields: PGN_126720_FusionSetEqualizerCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_FusionSetEqualizerMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_FusionSetEqualizerMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSetEqualizer')!
+  }
+}
+pgnIdToCreator['fusionSetEqualizer'] = (fields:any, dst:number) => new PGN_126720_FusionSetEqualizer(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Fusion: Set All Sublevels
+ *
+ * Match: Manufacturer Code == Fusion Electronics<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Set All Sublevels<br>
+ *
+ * @category PGN_126720_FusionSetAllSublevels
+ */
+export interface PGN_126720_FusionSetAllSublevelsInterface extends PGNInterface {
+  fields: PGN_126720_FusionSetAllSublevelsFields
+}
+
+/**
+ * @category PGN_126720_FusionSetAllSublevels
+ */
+export interface PGN_126720_FusionSetAllSublevelsFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: enums.FusionMessageId | number
+  zone1?: N2K_Number
+  zone2?: N2K_Number
+  zone3?: N2K_Number
+  zone4?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_FusionSetAllSublevels
+ */
+export const PGN_126720_FusionSetAllSublevelsMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: enums.FusionMessageId.SetAllSublevels,
+}
+
+/**
+ * @category PGN_126720_FusionSetAllSublevels
+ */
+export interface PGN_126720_FusionSetAllSublevelsCreateArgs {
+  reserved?: number
+  zone1?: N2K_Number
+  zone2?: N2K_Number
+  zone3?: N2K_Number
+  zone4?: N2K_Number
+}
+
+/**
+ * @category PGN_126720_FusionSetAllSublevels
+ */
+export class PGN_126720_FusionSetAllSublevels extends PGN implements PGN_126720_FusionSetAllSublevelsInterface {
+  fields: PGN_126720_FusionSetAllSublevelsFields
+
+  constructor(fields: PGN_126720_FusionSetAllSublevelsCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_FusionSetAllSublevelsMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_FusionSetAllSublevelsMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSetAllSublevels')!
+  }
+}
+pgnIdToCreator['fusionSetAllSublevels'] = (fields:any, dst:number) => new PGN_126720_FusionSetAllSublevels(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Fusion: Set Device Name
+ *
+ * Match: Manufacturer Code == Fusion Electronics<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Set Device Name<br>
+ *
+ * @category PGN_126720_FusionSetDeviceName
+ */
+export interface PGN_126720_FusionSetDeviceNameInterface extends PGNInterface {
+  fields: PGN_126720_FusionSetDeviceNameFields
+}
+
+/**
+ * @category PGN_126720_FusionSetDeviceName
+ */
+export interface PGN_126720_FusionSetDeviceNameFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: enums.FusionMessageId | number
+  name?: N2K_StringLz
+}
+
+/**
+ * @category PGN_126720_FusionSetDeviceName
+ */
+export const PGN_126720_FusionSetDeviceNameMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: enums.FusionMessageId.SetDeviceName,
+}
+
+/**
+ * @category PGN_126720_FusionSetDeviceName
+ */
+export interface PGN_126720_FusionSetDeviceNameCreateArgs {
+  reserved?: number
+  name?: N2K_StringLz
+}
+
+/**
+ * @category PGN_126720_FusionSetDeviceName
+ */
+export class PGN_126720_FusionSetDeviceName extends PGN implements PGN_126720_FusionSetDeviceNameInterface {
+  fields: PGN_126720_FusionSetDeviceNameFields
+
+  constructor(fields: PGN_126720_FusionSetDeviceNameCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_FusionSetDeviceNameMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_FusionSetDeviceNameMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSetDeviceName')!
+  }
+}
+pgnIdToCreator['fusionSetDeviceName'] = (fields:any, dst:number) => new PGN_126720_FusionSetDeviceName(fields, dst)
+
+
+/**
  * PGN: 126976
  *
  * Description: 0x1F000-0x1FEFF: Standardized mixed single/fast packet non-addressed
@@ -15175,7 +16179,7 @@ If a Request Group Function (PGN 126208) requesting this PGN (127233) is receive
 * If no requested fields have been included with the Request Group Function then the response is to return one or more PGNs, just like responding to the ISO Request (PGN 055904) described above.
 * If the Request Group Function (PGN 126208) includes the MOB Emitter ID field or MOB Status field, then the response shall be filtered by these fields contained within this request resulting in one or more PGN (127233) responses.
 If the MOB Emitter ID requested is not considered a valid MOB Emitter ID by the receiving device, then the appropriate response would be the Acknowledge Group Function (PGN 126208), containing the error state for PGN error code (Field 3) of '0x3 = Access denied.' And the requested MOB Emitter ID field parameter error code (Field 6) of '0x3 = Requested or command parameter out-of- range;'.
-The Default update rate of this PGN is autonomous, as it is dependant upon notification rates of MOB devices.
+The Default update rate of this PGN is autonomous, as it is dependent upon notification rates of MOB devices.
  *
  * @category PGN_127233
  */
@@ -16509,7 +17513,7 @@ pgnIdToCreator['batteryStatus'] = (fields:any, dst:number) => new PGN_127508(fie
  *
  * Description: Inverter Status
  *
- * Explanation: The NMEA wrote in the link in the URL that this PGN is obsolete and superceded by PGN 127751, but that PGN reference is obviously incorrect. They probably meant PGN 127511. The other interesting thing is that this PGN is only four bytes long but still referenced as a Fast PGN, which matches various sources; see github issue #428.
+ * Explanation: The NMEA wrote in the link in the URL that this PGN is obsolete and superseded by PGN 127751, but that PGN reference is obviously incorrect. They probably meant PGN 127511. The other interesting thing is that this PGN is only four bytes long but still referenced as a Fast PGN, which matches various sources; see github issue #428.
  *
  * @category PGN_127509
  */
@@ -19464,7 +20468,7 @@ pgnIdToCreator['gnssDifferentialCorrectionReceiverSignal'] = (fields:any, dst:nu
  *
  * Description: GLONASS Almanac Data
  *
- * Explanation: Almanac data for GLONASS products. The alamant contains satellite vehicle course orbital parameters. These parameters are described in the GLONASS ICS Section 4.5 Table 4.3. See URL.
+ * Explanation: Almanac data for GLONASS products. The almanac contains satellite vehicle course orbital parameters. These parameters are described in the GLONASS ICS Section 4.5 Table 4.3. See URL.
  *
  * @category PGN_129556
  */
@@ -27720,7 +28724,7 @@ export interface PGN_130820_FusionZoneNameFields {
   reserved?: number
   industryCode?: enums.IndustryCode | number
   messageId: enums.FusionStatusMessageId | number
-  number: N2K_Number
+  zone: N2K_Number
   name?: N2K_StringLz
 }
 
@@ -27738,7 +28742,7 @@ export const PGN_130820_FusionZoneNameMatchFields = {
  */
 export interface PGN_130820_FusionZoneNameCreateArgs {
   reserved?: number
-  number: N2K_Number
+  zone: N2K_Number
   name?: N2K_StringLz
 }
 
@@ -27910,7 +28914,7 @@ pgnIdToCreator['fusionIgnitionSwitchState'] = (fields:any, dst:number) => new PG
 /**
  * PGN: 130820
  *
- * Description: Fusion: Menu Lock Id
+ * Description: Fusion: Menu Lock ID
  *
  * Match: Manufacturer Code == Fusion Electronics<br>
  * Match: Industry Code == Marine Industry<br>
@@ -27930,8 +28934,8 @@ export interface PGN_130820_FusionMenuLockIdFields {
   reserved?: number
   industryCode?: enums.IndustryCode | number
   messageId: enums.FusionStatusMessageId | number
+  requestToken?: N2K_Number
   lockId?: N2K_Number
-  flags?: N2K_Number
 }
 
 /**
@@ -27948,8 +28952,8 @@ export const PGN_130820_FusionMenuLockIdMatchFields = {
  */
 export interface PGN_130820_FusionMenuLockIdCreateArgs {
   reserved?: number
+  requestToken?: N2K_Number
   lockId?: N2K_Number
-  flags?: N2K_Number
 }
 
 /**
@@ -28286,7 +29290,7 @@ export interface PGN_130820_FusionMonoFields {
   reserved?: number
   industryCode?: enums.IndustryCode | number
   messageId: enums.FusionStatusMessageId | number
-  zone?: N2K_Number
+  zone: N2K_Number
   enabled?: enums.YesNo | number
 }
 
@@ -28304,7 +29308,7 @@ export const PGN_130820_FusionMonoMatchFields = {
  */
 export interface PGN_130820_FusionMonoCreateArgs {
   reserved?: number
-  zone?: N2K_Number
+  zone: N2K_Number
   enabled?: enums.YesNo | number
 }
 
@@ -28482,7 +29486,7 @@ pgnIdToCreator['fusionTuner'] = (fields:any, dst:number) => new PGN_130820_Fusio
 /**
  * PGN: 130820
  *
- * Description: Fusion: MARINE_TUNER
+ * Description: Fusion: Marine Tuner
  *
  * Match: Manufacturer Code == Fusion Electronics<br>
  * Match: Industry Code == Marine Industry<br>
@@ -28718,7 +29722,7 @@ export interface PGN_130820_FusionMenuItemFields {
   messageId: enums.FusionStatusMessageId | number
   sourceId: N2K_Number
   itemIndex?: N2K_Number
-  flags?: N2K_Number
+  flags?: enums.FusionMenuItemFlags[]
   lockId?: N2K_Number
   text?: N2K_StringLz
 }
@@ -28739,7 +29743,7 @@ export interface PGN_130820_FusionMenuItemCreateArgs {
   reserved?: number
   sourceId: N2K_Number
   itemIndex?: N2K_Number
-  flags?: N2K_Number
+  flags?: enums.FusionMenuItemFlags[]
   lockId?: N2K_Number
   text?: N2K_StringLz
 }
@@ -28847,7 +29851,7 @@ pgnIdToCreator['fusionAuxGain'] = (fields:any, dst:number) => new PGN_130820_Fus
  * Match: Manufacturer Code == Fusion Electronics<br>
  * Match: Industry Code == Marine Industry<br>
  * Match: Message ID == Setting<br>
- * Match: ID == USB repeat<br>
+ * Match: ID == USB Repeat<br>
  *
  * @category PGN_130820_FusionUsbRepeatStatus
  */
@@ -28934,7 +29938,7 @@ export interface PGN_130820_FusionSettingFields {
   industryCode?: enums.IndustryCode | number
   messageId: enums.FusionStatusMessageId | number
   id?: enums.FusionSetting | number
-  value?: N2K_Number
+  value?: enums.FusionSettingValue | number
 }
 
 /**
@@ -28952,7 +29956,7 @@ export const PGN_130820_FusionSettingMatchFields = {
 export interface PGN_130820_FusionSettingCreateArgs {
   reserved?: number
   id?: enums.FusionSetting | number
-  value?: N2K_Number
+  value?: enums.FusionSettingValue | number
 }
 
 /**
@@ -29006,7 +30010,7 @@ export interface PGN_130820_FusionSettingsFields {
   count?: N2K_Number
   list: {
     id?: enums.FusionSetting | number
-    value?: N2K_Number
+    value?: enums.FusionSettingValue | number
   }[]
 }
 
@@ -29027,7 +30031,7 @@ export interface PGN_130820_FusionSettingsCreateArgs {
   count?: N2K_Number
   list: {
     id?: enums.FusionSetting | number
-    value?: N2K_Number
+    value?: enums.FusionSettingValue | number
   }[]
 }
 
@@ -29218,7 +30222,7 @@ export interface PGN_130820_FusionLowPassFilterFields {
   industryCode?: enums.IndustryCode | number
   messageId: enums.FusionStatusMessageId | number
   zone: N2K_Number
-  filter?: N2K_Number
+  filter?: enums.FusionLowPassFilter | number
 }
 
 /**
@@ -29236,7 +30240,7 @@ export const PGN_130820_FusionLowPassFilterMatchFields = {
 export interface PGN_130820_FusionLowPassFilterCreateArgs {
   reserved?: number
   zone: N2K_Number
-  filter?: N2K_Number
+  filter?: enums.FusionLowPassFilter | number
 }
 
 /**
@@ -29583,11 +30587,11 @@ export interface PGN_130820_FusionCapabilitiesFields {
   reserved?: number
   industryCode?: enums.IndustryCode | number
   messageId: enums.FusionStatusMessageId | number
-  zone1?: N2K_Number
-  zone2?: N2K_Number
-  zone3?: N2K_Number
-  zone4?: N2K_Number
-  global?: N2K_Number
+  zone1?: enums.FusionCapabilityBitfield[]
+  zone2?: enums.FusionCapabilityBitfield[]
+  zone3?: enums.FusionCapabilityBitfield[]
+  zone4?: enums.FusionCapabilityBitfield[]
+  global?: enums.FusionCapabilityBitfield[]
 }
 
 /**
@@ -29604,11 +30608,11 @@ export const PGN_130820_FusionCapabilitiesMatchFields = {
  */
 export interface PGN_130820_FusionCapabilitiesCreateArgs {
   reserved?: number
-  zone1?: N2K_Number
-  zone2?: N2K_Number
-  zone3?: N2K_Number
-  zone4?: N2K_Number
-  global?: N2K_Number
+  zone1?: enums.FusionCapabilityBitfield[]
+  zone2?: enums.FusionCapabilityBitfield[]
+  zone3?: enums.FusionCapabilityBitfield[]
+  zone4?: enums.FusionCapabilityBitfield[]
+  global?: enums.FusionCapabilityBitfield[]
 }
 
 /**
@@ -30217,7 +31221,7 @@ pgnIdToCreator['fusionSiriusxmCategory'] = (fields:any, dst:number) => new PGN_1
  *
  * Match: Manufacturer Code == Fusion Electronics<br>
  * Match: Industry Code == Marine Industry<br>
- * Match: Message ID == SiriusXm Signal<br>
+ * Match: Message ID == SiriusXM Signal<br>
  *
  * @category PGN_130820_FusionSiriusxmSignal
  */
@@ -30464,7 +31468,7 @@ export interface PGN_130820_FusionMenuActionStatusFields {
   messageId: enums.FusionStatusMessageId | number
   sourceId: N2K_Number
   itemIndex?: N2K_Number
-  action?: enums.FusionMenuAction | number
+  action?: enums.FusionMenuStatus | number
   lockId?: N2K_Number
 }
 
@@ -30484,7 +31488,7 @@ export interface PGN_130820_FusionMenuActionStatusCreateArgs {
   reserved?: number
   sourceId: N2K_Number
   itemIndex?: N2K_Number
-  action?: enums.FusionMenuAction | number
+  action?: enums.FusionMenuStatus | number
   lockId?: N2K_Number
 }
 
@@ -30583,6 +31587,370 @@ export class PGN_130820_FusionMenuCount extends PGN implements PGN_130820_Fusion
   }
 }
 pgnIdToCreator['fusionMenuCount'] = (fields:any, dst:number) => new PGN_130820_FusionMenuCount(fields, dst)
+
+
+/**
+ * PGN: 130820
+ *
+ * Description: Fusion: Loudness
+ *
+ * Match: Manufacturer Code == Fusion Electronics<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Message ID == Loudness<br>
+ *
+ * @category PGN_130820_FusionLoudness
+ */
+export interface PGN_130820_FusionLoudnessInterface extends PGNInterface {
+  fields: PGN_130820_FusionLoudnessFields
+}
+
+/**
+ * @category PGN_130820_FusionLoudness
+ */
+export interface PGN_130820_FusionLoudnessFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  messageId: enums.FusionStatusMessageId | number
+  zone: N2K_Number
+  enabled?: enums.YesNo | number
+}
+
+/**
+ * @category PGN_130820_FusionLoudness
+ */
+export const PGN_130820_FusionLoudnessMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  messageId: enums.FusionStatusMessageId.Loudness,
+}
+
+/**
+ * @category PGN_130820_FusionLoudness
+ */
+export interface PGN_130820_FusionLoudnessCreateArgs {
+  reserved?: number
+  zone: N2K_Number
+  enabled?: enums.YesNo | number
+}
+
+/**
+ * @category PGN_130820_FusionLoudness
+ */
+export class PGN_130820_FusionLoudness extends PGN implements PGN_130820_FusionLoudnessInterface {
+  fields: PGN_130820_FusionLoudnessFields
+
+  constructor(fields: PGN_130820_FusionLoudnessCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_130820_FusionLoudnessMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionLoudnessMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionLoudness')!
+  }
+}
+pgnIdToCreator['fusionLoudness'] = (fields:any, dst:number) => new PGN_130820_FusionLoudness(fields, dst)
+
+
+/**
+ * PGN: 130820
+ *
+ * Description: Fusion: Zone Capabilities Extended
+ *
+ * Match: Manufacturer Code == Fusion Electronics<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Message ID == Zone Capabilities Extended<br>
+ *
+ * @category PGN_130820_FusionZoneCapabilitiesExtended
+ */
+export interface PGN_130820_FusionZoneCapabilitiesExtendedInterface extends PGNInterface {
+  fields: PGN_130820_FusionZoneCapabilitiesExtendedFields
+}
+
+/**
+ * @category PGN_130820_FusionZoneCapabilitiesExtended
+ */
+export interface PGN_130820_FusionZoneCapabilitiesExtendedFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  messageId: enums.FusionStatusMessageId | number
+  zone1Capabilities?: enums.FusionCapabilityBitfield[]
+  zone1Extra?: N2K_Binary
+  zone2Capabilities?: enums.FusionCapabilityBitfield[]
+  zone2Extra?: N2K_Binary
+  zone3Capabilities?: enums.FusionCapabilityBitfield[]
+  zone3Extra?: N2K_Binary
+  zone4Capabilities?: enums.FusionCapabilityBitfield[]
+  zone4Extra?: N2K_Binary
+  globalCapabilities?: enums.FusionCapabilityBitfield[]
+  globalExtra?: N2K_Binary
+}
+
+/**
+ * @category PGN_130820_FusionZoneCapabilitiesExtended
+ */
+export const PGN_130820_FusionZoneCapabilitiesExtendedMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  messageId: enums.FusionStatusMessageId.ZoneCapabilitiesExtended,
+}
+
+/**
+ * @category PGN_130820_FusionZoneCapabilitiesExtended
+ */
+export interface PGN_130820_FusionZoneCapabilitiesExtendedCreateArgs {
+  reserved?: number
+  zone1Capabilities?: enums.FusionCapabilityBitfield[]
+  zone1Extra?: N2K_Binary
+  zone2Capabilities?: enums.FusionCapabilityBitfield[]
+  zone2Extra?: N2K_Binary
+  zone3Capabilities?: enums.FusionCapabilityBitfield[]
+  zone3Extra?: N2K_Binary
+  zone4Capabilities?: enums.FusionCapabilityBitfield[]
+  zone4Extra?: N2K_Binary
+  globalCapabilities?: enums.FusionCapabilityBitfield[]
+  globalExtra?: N2K_Binary
+}
+
+/**
+ * @category PGN_130820_FusionZoneCapabilitiesExtended
+ */
+export class PGN_130820_FusionZoneCapabilitiesExtended extends PGN implements PGN_130820_FusionZoneCapabilitiesExtendedInterface {
+  fields: PGN_130820_FusionZoneCapabilitiesExtendedFields
+
+  constructor(fields: PGN_130820_FusionZoneCapabilitiesExtendedCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_130820_FusionZoneCapabilitiesExtendedMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionZoneCapabilitiesExtendedMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionZoneCapabilitiesExtended')!
+  }
+}
+pgnIdToCreator['fusionZoneCapabilitiesExtended'] = (fields:any, dst:number) => new PGN_130820_FusionZoneCapabilitiesExtended(fields, dst)
+
+
+/**
+ * PGN: 130820
+ *
+ * Description: Fusion: External Amp Gain
+ *
+ * Match: Manufacturer Code == Fusion Electronics<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Message ID == External Amp Gain<br>
+ *
+ * @category PGN_130820_FusionExternalAmpGain
+ */
+export interface PGN_130820_FusionExternalAmpGainInterface extends PGNInterface {
+  fields: PGN_130820_FusionExternalAmpGainFields
+}
+
+/**
+ * @category PGN_130820_FusionExternalAmpGain
+ */
+export interface PGN_130820_FusionExternalAmpGainFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  messageId: enums.FusionStatusMessageId | number
+  zone: N2K_Number
+  gain?: N2K_Number
+}
+
+/**
+ * @category PGN_130820_FusionExternalAmpGain
+ */
+export const PGN_130820_FusionExternalAmpGainMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  messageId: enums.FusionStatusMessageId.ExternalAmpGain,
+}
+
+/**
+ * @category PGN_130820_FusionExternalAmpGain
+ */
+export interface PGN_130820_FusionExternalAmpGainCreateArgs {
+  reserved?: number
+  zone: N2K_Number
+  gain?: N2K_Number
+}
+
+/**
+ * @category PGN_130820_FusionExternalAmpGain
+ */
+export class PGN_130820_FusionExternalAmpGain extends PGN implements PGN_130820_FusionExternalAmpGainInterface {
+  fields: PGN_130820_FusionExternalAmpGainFields
+
+  constructor(fields: PGN_130820_FusionExternalAmpGainCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_130820_FusionExternalAmpGainMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionExternalAmpGainMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionExternalAmpGain')!
+  }
+}
+pgnIdToCreator['fusionExternalAmpGain'] = (fields:any, dst:number) => new PGN_130820_FusionExternalAmpGain(fields, dst)
+
+
+/**
+ * PGN: 130820
+ *
+ * Description: Fusion: Internal Amp Gain
+ *
+ * Match: Manufacturer Code == Fusion Electronics<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Message ID == Internal Amp Gain<br>
+ *
+ * @category PGN_130820_FusionInternalAmpGain
+ */
+export interface PGN_130820_FusionInternalAmpGainInterface extends PGNInterface {
+  fields: PGN_130820_FusionInternalAmpGainFields
+}
+
+/**
+ * @category PGN_130820_FusionInternalAmpGain
+ */
+export interface PGN_130820_FusionInternalAmpGainFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  messageId: enums.FusionStatusMessageId | number
+  zone: N2K_Number
+  gain?: N2K_Number
+}
+
+/**
+ * @category PGN_130820_FusionInternalAmpGain
+ */
+export const PGN_130820_FusionInternalAmpGainMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  messageId: enums.FusionStatusMessageId.InternalAmpGain,
+}
+
+/**
+ * @category PGN_130820_FusionInternalAmpGain
+ */
+export interface PGN_130820_FusionInternalAmpGainCreateArgs {
+  reserved?: number
+  zone: N2K_Number
+  gain?: N2K_Number
+}
+
+/**
+ * @category PGN_130820_FusionInternalAmpGain
+ */
+export class PGN_130820_FusionInternalAmpGain extends PGN implements PGN_130820_FusionInternalAmpGainInterface {
+  fields: PGN_130820_FusionInternalAmpGainFields
+
+  constructor(fields: PGN_130820_FusionInternalAmpGainCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_130820_FusionInternalAmpGainMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionInternalAmpGainMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionInternalAmpGain')!
+  }
+}
+pgnIdToCreator['fusionInternalAmpGain'] = (fields:any, dst:number) => new PGN_130820_FusionInternalAmpGain(fields, dst)
+
+
+/**
+ * PGN: 130820
+ *
+ * Description: Fusion: System Capabilities
+ *
+ * Match: Manufacturer Code == Fusion Electronics<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Message ID == System Capabilities<br>
+ *
+ * @category PGN_130820_FusionSystemCapabilities
+ */
+export interface PGN_130820_FusionSystemCapabilitiesInterface extends PGNInterface {
+  fields: PGN_130820_FusionSystemCapabilitiesFields
+}
+
+/**
+ * @category PGN_130820_FusionSystemCapabilities
+ */
+export interface PGN_130820_FusionSystemCapabilitiesFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  messageId: enums.FusionStatusMessageId | number
+  capabilities?: enums.FusionSystemCapabilityBitfield[]
+}
+
+/**
+ * @category PGN_130820_FusionSystemCapabilities
+ */
+export const PGN_130820_FusionSystemCapabilitiesMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.FusionElectronics,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  messageId: enums.FusionStatusMessageId.SystemCapabilities,
+}
+
+/**
+ * @category PGN_130820_FusionSystemCapabilities
+ */
+export interface PGN_130820_FusionSystemCapabilitiesCreateArgs {
+  reserved?: number
+  capabilities?: enums.FusionSystemCapabilityBitfield[]
+}
+
+/**
+ * @category PGN_130820_FusionSystemCapabilities
+ */
+export class PGN_130820_FusionSystemCapabilities extends PGN implements PGN_130820_FusionSystemCapabilitiesInterface {
+  fields: PGN_130820_FusionSystemCapabilitiesFields
+
+  constructor(fields: PGN_130820_FusionSystemCapabilitiesCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130820,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_130820_FusionSystemCapabilitiesMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130820_FusionSystemCapabilitiesMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('fusionSystemCapabilities')!
+  }
+}
+pgnIdToCreator['fusionSystemCapabilities'] = (fields:any, dst:number) => new PGN_130820_FusionSystemCapabilities(fields, dst)
 
 
 /**
@@ -35136,7 +36504,7 @@ export interface PGN_130840_SimnetDataSourceSelectionFields {
   reserved4?: number
   dataType?: enums.SimnetDataSource | number
   sourceClass?: N2K_Number
-  sourceAddress?: N2K_Number
+  sourceAddress?: N2K_Address
   reserved8?: number
   changeCounter?: N2K_Number
   source?: N2K_IsoName
@@ -35159,7 +36527,7 @@ export interface PGN_130840_SimnetDataSourceSelectionCreateArgs {
   reserved4?: number
   dataType?: enums.SimnetDataSource | number
   sourceClass?: N2K_Number
-  sourceAddress?: N2K_Number
+  sourceAddress?: N2K_Address
   reserved8?: number
   changeCounter?: N2K_Number
   source?: N2K_IsoName
@@ -36112,7 +37480,7 @@ export interface PGN_130845_SimnetKeyValueFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  address?: N2K_Number
+  address?: N2K_Address
   instance?: N2K_Number
   networkGroup?: enums.SimnetNetworkGroup | number
   source?: N2K_Number
@@ -36134,7 +37502,7 @@ export const PGN_130845_SimnetKeyValueMatchFields = {
  */
 export interface PGN_130845_SimnetKeyValueCreateArgs {
   reserved?: number
-  address?: N2K_Number
+  address?: N2K_Address
   instance?: N2K_Number
   networkGroup?: enums.SimnetNetworkGroup | number
   source?: N2K_Number
@@ -36191,7 +37559,7 @@ export interface PGN_130846_SimnetParameterSetFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  address?: N2K_Number
+  address?: N2K_Address
   instance?: N2K_Number
   networkGroup?: enums.SimnetNetworkGroup | number
   source?: N2K_Number
@@ -36214,7 +37582,7 @@ export const PGN_130846_SimnetParameterSetMatchFields = {
  */
 export interface PGN_130846_SimnetParameterSetCreateArgs {
   reserved?: number
-  address?: N2K_Number
+  address?: N2K_Address
   instance?: N2K_Number
   networkGroup?: enums.SimnetNetworkGroup | number
   source?: N2K_Number
@@ -36682,7 +38050,7 @@ export interface PGN_130850_SimnetCommandApStandbyFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   commandType: enums.SimnetEventType | number
@@ -36706,7 +38074,7 @@ export const PGN_130850_SimnetCommandApStandbyMatchFields = {
  */
 export interface PGN_130850_SimnetCommandApStandbyCreateArgs {
   reserved?: number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   spare9?: number
@@ -36761,7 +38129,7 @@ export interface PGN_130850_SimnetCommandApNodriftFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   commandType: enums.SimnetEventType | number
@@ -36785,7 +38153,7 @@ export const PGN_130850_SimnetCommandApNodriftMatchFields = {
  */
 export interface PGN_130850_SimnetCommandApNodriftCreateArgs {
   reserved?: number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   spare9?: number
@@ -36840,7 +38208,7 @@ export interface PGN_130850_SimnetCommandApWindFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   commandType: enums.SimnetEventType | number
@@ -36864,7 +38232,7 @@ export const PGN_130850_SimnetCommandApWindMatchFields = {
  */
 export interface PGN_130850_SimnetCommandApWindCreateArgs {
   reserved?: number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   spare9?: number
@@ -36919,7 +38287,7 @@ export interface PGN_130850_SimnetCommandApNavFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   commandType: enums.SimnetEventType | number
@@ -36943,7 +38311,7 @@ export const PGN_130850_SimnetCommandApNavMatchFields = {
  */
 export interface PGN_130850_SimnetCommandApNavCreateArgs {
   reserved?: number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   spare9?: number
@@ -36998,7 +38366,7 @@ export interface PGN_130850_SimnetCommandApHeadingFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   commandType: enums.SimnetEventType | number
@@ -37022,7 +38390,7 @@ export const PGN_130850_SimnetCommandApHeadingMatchFields = {
  */
 export interface PGN_130850_SimnetCommandApHeadingCreateArgs {
   reserved?: number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   spare9?: number
@@ -37077,7 +38445,7 @@ export interface PGN_130850_SimnetCommandApTackFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   commandType: enums.SimnetEventType | number
@@ -37102,7 +38470,7 @@ export const PGN_130850_SimnetCommandApTackMatchFields = {
  */
 export interface PGN_130850_SimnetCommandApTackCreateArgs {
   reserved?: number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   unknownA?: N2K_Number
@@ -37158,7 +38526,7 @@ export interface PGN_130850_SimnetCommandApFollowUpFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   commandType: enums.SimnetEventType | number
@@ -37182,7 +38550,7 @@ export const PGN_130850_SimnetCommandApFollowUpMatchFields = {
  */
 export interface PGN_130850_SimnetCommandApFollowUpCreateArgs {
   reserved?: number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   spare9?: number
@@ -37237,7 +38605,7 @@ export interface PGN_130850_SimnetCommandApChangeCourseFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   commandType: enums.SimnetEventType | number
@@ -37263,7 +38631,7 @@ export const PGN_130850_SimnetCommandApChangeCourseMatchFields = {
  */
 export interface PGN_130850_SimnetCommandApChangeCourseCreateArgs {
   reserved?: number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   spare9?: number
@@ -37321,7 +38689,7 @@ export interface PGN_130850_SimnetEventCommandTimerFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   eventType: enums.SimnetEventType | number
@@ -37345,7 +38713,7 @@ export const PGN_130850_SimnetEventCommandTimerMatchFields = {
  */
 export interface PGN_130850_SimnetEventCommandTimerCreateArgs {
   reserved?: number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   event?: enums.SimnetTimerEvent | number
@@ -37403,7 +38771,7 @@ export interface PGN_130850_SimnetAlarmFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   eventType: enums.SimnetEventType | number
@@ -37428,7 +38796,7 @@ export const PGN_130850_SimnetAlarmMatchFields = {
  */
 export interface PGN_130850_SimnetAlarmCreateArgs {
   reserved?: number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   command?: enums.SimnetAlarmCommand | number
@@ -37487,7 +38855,7 @@ export interface PGN_130850_SimnetApCommandFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   commandType: enums.SimnetEventType | number
@@ -37513,7 +38881,7 @@ export const PGN_130850_SimnetApCommandMatchFields = {
  */
 export interface PGN_130850_SimnetApCommandCreateArgs {
   reserved?: number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   event?: enums.SimnetApEvents | number
@@ -37572,7 +38940,7 @@ export interface PGN_130850_SimnetEventFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   reserved7?: number
@@ -37597,7 +38965,7 @@ export const PGN_130850_SimnetEventMatchFields = {
  */
 export interface PGN_130850_SimnetEventCreateArgs {
   reserved?: number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   reserved7?: number
@@ -37659,7 +39027,7 @@ export interface PGN_130851_SimnetApCommandReplyChangeCourseFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   commandType: enums.SimnetEventType | number
@@ -37685,7 +39053,7 @@ export const PGN_130851_SimnetApCommandReplyChangeCourseMatchFields = {
  */
 export interface PGN_130851_SimnetApCommandReplyChangeCourseCreateArgs {
   reserved?: number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   spare9?: number
@@ -37743,7 +39111,7 @@ export interface PGN_130851_SimnetApCommandReplyFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   commandType: enums.SimnetEventType | number
@@ -37768,7 +39136,7 @@ export const PGN_130851_SimnetApCommandReplyMatchFields = {
  */
 export interface PGN_130851_SimnetApCommandReplyCreateArgs {
   reserved?: number
-  address?: N2K_Number
+  address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
   event?: enums.SimnetApEvents | number

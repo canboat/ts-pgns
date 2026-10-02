@@ -1291,7 +1291,7 @@ export enum CzoneAlarmType {
   InverterInstallationError = 'Inverter Installation Error',
   ChargerInstallationError = 'Charger Installation Error',
   CableVoltageDropTooHigh = 'Cable Voltage Drop Too High',
-  ShuntMistmatch = 'Shunt mistmatch',
+  ShuntMismatch = 'Shunt mismatch',
   CoolingFanError = 'Cooling Fan Error',
   MastershuntFuseBlown = 'Mastershunt Fuse Blown',
   OverPressure = 'Over Pressure',
@@ -1356,7 +1356,7 @@ export const CzoneAlarmTypeValues: {[key: string]: number} = {
   [CzoneAlarmType.InverterInstallationError]: 0x2d,
   [CzoneAlarmType.ChargerInstallationError]: 0x2e,
   [CzoneAlarmType.CableVoltageDropTooHigh]: 0x2f,
-  [CzoneAlarmType.ShuntMistmatch]: 0x30,
+  [CzoneAlarmType.ShuntMismatch]: 0x30,
   [CzoneAlarmType.CoolingFanError]: 0x31,
   [CzoneAlarmType.MastershuntFuseBlown]: 0x32,
   HighTemperature2: 0x33,
@@ -2302,10 +2302,32 @@ export const FusionCommandValues: {[key: string]: number} = {
 /**
  * @category Enumerations
  */
+export enum FusionLowPassFilter {
+  _50Hz = '50 Hz',
+  _80Hz = '80 Hz',
+  _120Hz = '120 Hz',
+  _160Hz = '160 Hz',
+}
+
+/**
+ * @category Enumerations
+ */
+export const FusionLowPassFilterValues: {[key: string]: number} = {
+  [FusionLowPassFilter._50Hz]: 0x1,
+  [FusionLowPassFilter._80Hz]: 0x2,
+  [FusionLowPassFilter._120Hz]: 0x3,
+  [FusionLowPassFilter._160Hz]: 0x4,
+}
+
+/**
+ * @category Enumerations
+ */
 export enum FusionMenuAction {
   Open = 'Open',
   Select = 'Select',
+  StepBack = 'Step Back',
   Close = 'Close',
+  Exit = 'Exit',
 }
 
 /**
@@ -2314,7 +2336,31 @@ export enum FusionMenuAction {
 export const FusionMenuActionValues: {[key: string]: number} = {
   [FusionMenuAction.Open]: 0x1,
   [FusionMenuAction.Select]: 0x2,
+  [FusionMenuAction.StepBack]: 0x3,
   [FusionMenuAction.Close]: 0x4,
+  [FusionMenuAction.Exit]: 0x5,
+}
+
+/**
+ * @category Enumerations
+ */
+export enum FusionMenuStatus {
+  OpenedAtRoot = 'Opened At Root',
+  Opened = 'Opened',
+  ItemUpdated = 'Item Updated',
+  Closed = 'Closed',
+  Locked = 'Locked',
+}
+
+/**
+ * @category Enumerations
+ */
+export const FusionMenuStatusValues: {[key: string]: number} = {
+  [FusionMenuStatus.OpenedAtRoot]: 0x1,
+  [FusionMenuStatus.Opened]: 0x2,
+  [FusionMenuStatus.ItemUpdated]: 0x3,
+  [FusionMenuStatus.Closed]: 0x4,
+  [FusionMenuStatus.Locked]: 0x5,
 }
 
 /**
@@ -2334,11 +2380,12 @@ export enum FusionMessageId {
   RequestMenuLockId = 'Request Menu Lock ID',
   SetAuxGain = 'Set Aux Gain',
   SetSettings = 'Set Settings',
-  DabUpdtateCommand = 'DAB Updtate Command',
+  DabUpdateCommand = 'DAB Update Command',
   SetMute = 'Set Mute',
   SetBalance = 'Set Balance',
-  SetLowPassFiler = 'Set Low Pass Filer',
+  SetLowPassFilter = 'Set Low Pass Filter',
   SetSublevel = 'Set Sublevel',
+  SetAllSublevels = 'Set All Sublevels',
   SetEqualizer = 'Set Equalizer',
   SetVolumeLimit = 'Set Volume Limit',
   SetZoneVolume = 'Set Zone Volume',
@@ -2350,23 +2397,23 @@ export enum FusionMessageId {
   SetSiriusParental = 'Set Sirius Parental',
   SendFactoryResetCommand = 'Send Factory Reset Command',
   SetZoneName = 'Set Zone Name',
-  SendDvdCommand = 'Send Dvd Command',
-  DvdPressIrKey = 'Dvd Press Ir Key',
+  SendDvdCommand = 'Send DVD Command',
+  DvdPressIrKey = 'DVD Press IR Key',
   SendSelectSiriusTeam = 'Send Select Sirius Team',
   SendSelectSiriusArtist = 'Send Select Sirius Artist',
   SendSiriusSportAlertUserAction = 'Send Sirius Sport Alert User Action',
   SendSiriusArtistSongUserAction = 'Send Sirius Artist Song User Action',
   SendMultiroomCommand = 'Send Multiroom Command',
   GetMultiroomDeviceRecord = 'Get Multiroom Device Record',
-  ScanMultirooomDevices = 'Scan Multirooom Devices',
+  ScanMultiroomDevices = 'Scan Multiroom Devices',
   SendFileTransfer = 'Send File Transfer',
   SetLoud = 'Set Loud',
-  FapiSetSourceMultiroomEnabled = 'Fapi Set Source Multiroom Enabled',
-  RequestHeadUnitDspSettings = 'Request Head Unit Dsp Settings',
+  SetSourceMultiroomEnabled = 'Set Source Multiroom Enabled',
+  RequestHeadUnitDspSettings = 'Request Head Unit DSP Settings',
   SendTransferStatus = 'Send Transfer Status',
-  FapiGetServerInfo = 'Fapi Get Server Info',
-  FapiSetSourceEnabled = 'Fapi Set Source Enabled',
-  FapiSetSourceName = 'Fapi Set Source Name',
+  GetServerInfo = 'Get Server Info',
+  SetSourceEnabled = 'Set Source Enabled',
+  SetSourceName = 'Set Source Name',
   SendExternalAmpGain = 'Send External Amp Gain',
   SendInternalAmpGain = 'Send Internal Amp Gain',
   SendMono = 'Send Mono',
@@ -2389,11 +2436,12 @@ export const FusionMessageIdValues: {[key: string]: number} = {
   [FusionMessageId.RequestMenuLockId]: 0xc,
   [FusionMessageId.SetAuxGain]: 0xd,
   [FusionMessageId.SetSettings]: 0xf,
-  [FusionMessageId.DabUpdtateCommand]: 0x10,
+  [FusionMessageId.DabUpdateCommand]: 0x10,
   [FusionMessageId.SetMute]: 0x11,
   [FusionMessageId.SetBalance]: 0x12,
-  [FusionMessageId.SetLowPassFiler]: 0x13,
+  [FusionMessageId.SetLowPassFilter]: 0x13,
   [FusionMessageId.SetSublevel]: 0x14,
+  [FusionMessageId.SetAllSublevels]: 0x15,
   [FusionMessageId.SetEqualizer]: 0x16,
   [FusionMessageId.SetVolumeLimit]: 0x17,
   [FusionMessageId.SetZoneVolume]: 0x18,
@@ -2413,15 +2461,15 @@ export const FusionMessageIdValues: {[key: string]: number} = {
   [FusionMessageId.SendSiriusArtistSongUserAction]: 0x2d,
   [FusionMessageId.SendMultiroomCommand]: 0x32,
   [FusionMessageId.GetMultiroomDeviceRecord]: 0x33,
-  [FusionMessageId.ScanMultirooomDevices]: 0x34,
+  [FusionMessageId.ScanMultiroomDevices]: 0x34,
   [FusionMessageId.SendFileTransfer]: 0x35,
   [FusionMessageId.SetLoud]: 0x36,
-  [FusionMessageId.FapiSetSourceMultiroomEnabled]: 0x38,
+  [FusionMessageId.SetSourceMultiroomEnabled]: 0x38,
   [FusionMessageId.RequestHeadUnitDspSettings]: 0x39,
   [FusionMessageId.SendTransferStatus]: 0x40,
-  [FusionMessageId.FapiGetServerInfo]: 0x41,
-  [FusionMessageId.FapiSetSourceEnabled]: 0x45,
-  [FusionMessageId.FapiSetSourceName]: 0x46,
+  [FusionMessageId.GetServerInfo]: 0x41,
+  [FusionMessageId.SetSourceEnabled]: 0x45,
+  [FusionMessageId.SetSourceName]: 0x46,
   [FusionMessageId.SendExternalAmpGain]: 0x49,
   [FusionMessageId.SendInternalAmpGain]: 0x4a,
   [FusionMessageId.SendMono]: 0x4b,
@@ -2504,8 +2552,8 @@ export const FusionRadioSourceValues: {[key: string]: number} = {
  */
 export enum FusionRepeatStatus {
   Off = 'Off',
-  Onetrack = 'One/track',
-  Allalbum = 'All/album',
+  Onetrack = 'One/Track',
+  Allalbum = 'All/Album',
 }
 
 /**
@@ -2530,11 +2578,11 @@ export enum FusionSetting {
   Telemute = 'Telemute',
   TunerRegion = 'Tuner Region',
   MarineZone = 'Marine Zone',
-  UsbRepeat = 'USB repeat',
-  UsbShuffle = 'USB shuffle',
+  UsbRepeat = 'USB Repeat',
+  UsbShuffle = 'USB Shuffle',
   IPodAlbumArtwork = 'iPod Album Artwork',
-  IPodRepeat = 'iPod repeat',
-  IPodShuffle = 'iPod shuffle',
+  IPodRepeat = 'iPod Repeat',
+  IPodShuffle = 'iPod Shuffle',
   AmPreset0 = 'AM Preset 0',
   AmPreset1 = 'AM Preset 1',
   AmPreset2 = 'AM Preset 2',
@@ -2591,13 +2639,21 @@ export enum FusionSetting {
   InternalAmpsOn = 'Internal Amps On',
   MtpRepeat = 'MTP Repeat',
   MtpShuffle = 'MTP Shuffle',
-  IdAccessorySource = 'Id Accessory Source',
+  IdAccessorySource = 'ID Accessory Source',
   NmeaPower = 'NMEA Power',
   LowPowerMode = 'Low Power Mode',
-  DvdRegion = 'DVD region',
+  DvdRegion = 'DVD Region',
   VolumeZoneSync = 'Volume Zone Sync',
   MaxVolumeStart = 'Max Volume Start',
   BtAutoConnect = 'BT Auto Connect',
+  TunerAntennasPowerStatus = 'Tuner Antennas Power Status',
+  FmAntennaIndex = 'FM Antenna Index',
+  DabAntennaIndex = 'DAB Antenna Index',
+  DabServiceFollowing = 'DAB Service Following',
+  FmFrequencyFollowing = 'FM Frequency Following',
+  DabFmServiceFollowing = 'DAB FM Service Following',
+  HdmiVolumeZoneSync = 'HDMI Volume Zone Sync',
+  ArcInputAudioDelay = 'ARC Input Audio Delay',
   NullSetting = 'Null Setting',
 }
 
@@ -2680,9 +2736,17 @@ export const FusionSettingValues: {[key: string]: number} = {
   [FusionSetting.LowPowerMode]: 0x48,
   [FusionSetting.DvdRegion]: 0x49,
   [FusionSetting.VolumeZoneSync]: 0x4a,
-  [FusionSetting.MaxVolumeStart]: 0x4b,
-  [FusionSetting.BtAutoConnect]: 0x4c,
-  [FusionSetting.NullSetting]: 0x4d,
+  [FusionSetting.MaxVolumeStart]: 0x4c,
+  [FusionSetting.BtAutoConnect]: 0x4d,
+  [FusionSetting.TunerAntennasPowerStatus]: 0x4f,
+  [FusionSetting.FmAntennaIndex]: 0x50,
+  [FusionSetting.DabAntennaIndex]: 0x51,
+  [FusionSetting.DabServiceFollowing]: 0x52,
+  [FusionSetting.FmFrequencyFollowing]: 0x53,
+  [FusionSetting.DabFmServiceFollowing]: 0x73,
+  [FusionSetting.HdmiVolumeZoneSync]: 0x7d,
+  [FusionSetting.ArcInputAudioDelay]: 0x7e,
+  [FusionSetting.NullSetting]: 0x3e8,
 }
 
 /**
@@ -2747,7 +2811,7 @@ export enum FusionSourceType {
   Fm = 'FM',
   Aux = 'Aux',
   Sirius = 'Sirius',
-  Ipod = 'Ipod',
+  IPod = 'iPod',
   Usb = 'USB',
   Dvd = 'DVD',
   Vhf = 'VHF',
@@ -2771,7 +2835,7 @@ export const FusionSourceTypeValues: {[key: string]: number} = {
   [FusionSourceType.Fm]: 0x1,
   [FusionSourceType.Aux]: 0x2,
   [FusionSourceType.Sirius]: 0x3,
-  [FusionSourceType.Ipod]: 0x4,
+  [FusionSourceType.IPod]: 0x4,
   [FusionSourceType.Usb]: 0x5,
   [FusionSourceType.Dvd]: 0x6,
   [FusionSourceType.Vhf]: 0x7,
@@ -2832,23 +2896,52 @@ export enum FusionStatusMessageId {
   SiriusXmArtist = 'SiriusXM Artist',
   SiriusXmGenre = 'SiriusXM Genre',
   SiriusXmCategory = 'SiriusXM Category',
-  SiriusXmSignal = 'SiriusXm Signal',
+  SiriusXmSignal = 'SiriusXM Signal',
   SiriusXmParentalRequest = 'SiriusXM Parental Request',
   SiriusXmDiagnostics = 'SiriusXM Diagnostics',
   SiriusXmPresets = 'SiriusXM Presets',
   ZoneName = 'Zone Name',
+  DvdState = 'DVD State',
+  DvdTrack = 'DVD Track',
+  DvdTrackPosition = 'DVD Track Position',
+  DvdTrackName = 'DVD Track Name',
+  DvdArtistName = 'DVD Artist Name',
   IpSetting = 'IP Setting',
+  MediaLoadingProgress = 'Media Loading Progress',
+  MediaUserNotification = 'Media User Notification',
+  SystemAlert = 'System Alert',
   Multiroom = 'Multiroom',
   MultiroomStatus = 'Multiroom Status',
+  MultiroomDeviceCount = 'Multiroom Device Count',
+  MultiroomDeviceRecord = 'Multiroom Device Record',
   SystemCapabilities = 'System Capabilities',
   PartNumber = 'Part Number',
+  Loudness = 'Loudness',
   ProcessingBypass = 'Processing Bypass',
+  ReceivedFileCount = 'Received File Count',
+  ReceivedFileTransfer = 'Received File Transfer',
+  SiriusXmReplayIndicator = 'SiriusXM Replay Indicator',
+  SiriusXmTeamInfo = 'SiriusXM Team Info',
+  SiriusXmTeamEvent = 'SiriusXM Team Event',
+  SiriusXmArtistSongInfo = 'SiriusXM Artist Song Info',
+  SiriusXmArtistSongEvent = 'SiriusXM Artist Song Event',
+  SiriusXmSportAlert = 'SiriusXM Sport Alert',
+  SiriusXmArtistSongAlert = 'SiriusXM Artist Song Alert',
+  SiriusXmTunemixChanged = 'SiriusXM Tunemix Changed',
+  SiriusXmTunemix = 'SiriusXM Tunemix',
   ServerInfo = 'Server Info',
   RdsData = 'RDS Data',
+  SourceName = 'Source Name',
+  RemoteUpgradeStatus = 'Remote Upgrade Status',
+  BtPairingPopup = 'BT Pairing Popup',
+  FileTransferConfiguration = 'File Transfer Configuration',
   IgnitionSwitchState = 'Ignition Switch State',
+  ExternalAmpGain = 'External Amp Gain',
+  InternalAmpGain = 'Internal Amp Gain',
   Mono = 'Mono',
   SpeedVolumeCurrentSpeed = 'Speed Volume Current Speed',
   ZoneCapabilitiesExtended = 'Zone Capabilities Extended',
+  BtPairingRequestDone = 'BT Pairing Request Done',
 }
 
 /**
@@ -2901,18 +2994,69 @@ export const FusionStatusMessageIdValues: {[key: string]: number} = {
   [FusionStatusMessageId.SiriusXmDiagnostics]: 0x802b,
   [FusionStatusMessageId.SiriusXmPresets]: 0x802c,
   [FusionStatusMessageId.ZoneName]: 0x802d,
+  [FusionStatusMessageId.DvdState]: 0x802e,
+  [FusionStatusMessageId.DvdTrack]: 0x802f,
+  [FusionStatusMessageId.DvdTrackPosition]: 0x8030,
+  [FusionStatusMessageId.DvdTrackName]: 0x8031,
+  [FusionStatusMessageId.DvdArtistName]: 0x8032,
   [FusionStatusMessageId.IpSetting]: 0x8033,
+  [FusionStatusMessageId.MediaLoadingProgress]: 0x8034,
+  [FusionStatusMessageId.MediaUserNotification]: 0x8035,
+  [FusionStatusMessageId.SystemAlert]: 0x8036,
   [FusionStatusMessageId.Multiroom]: 0x8038,
   [FusionStatusMessageId.MultiroomStatus]: 0x8039,
+  [FusionStatusMessageId.MultiroomDeviceCount]: 0x803a,
+  [FusionStatusMessageId.MultiroomDeviceRecord]: 0x803b,
   [FusionStatusMessageId.SystemCapabilities]: 0x803d,
   [FusionStatusMessageId.PartNumber]: 0x803e,
+  [FusionStatusMessageId.Loudness]: 0x803f,
   [FusionStatusMessageId.ProcessingBypass]: 0x8040,
+  [FusionStatusMessageId.ReceivedFileCount]: 0x8041,
+  [FusionStatusMessageId.ReceivedFileTransfer]: 0x8042,
+  [FusionStatusMessageId.SiriusXmReplayIndicator]: 0x8043,
+  [FusionStatusMessageId.SiriusXmTeamInfo]: 0x8045,
+  [FusionStatusMessageId.SiriusXmTeamEvent]: 0x8046,
+  [FusionStatusMessageId.SiriusXmArtistSongInfo]: 0x8047,
+  [FusionStatusMessageId.SiriusXmArtistSongEvent]: 0x8048,
+  [FusionStatusMessageId.SiriusXmSportAlert]: 0x8049,
+  [FusionStatusMessageId.SiriusXmArtistSongAlert]: 0x804a,
+  [FusionStatusMessageId.SiriusXmTunemixChanged]: 0x804b,
+  [FusionStatusMessageId.SiriusXmTunemix]: 0x804c,
   [FusionStatusMessageId.ServerInfo]: 0x804e,
   [FusionStatusMessageId.RdsData]: 0x8052,
+  [FusionStatusMessageId.SourceName]: 0x8056,
+  [FusionStatusMessageId.RemoteUpgradeStatus]: 0x8057,
+  [FusionStatusMessageId.BtPairingPopup]: 0x8058,
+  [FusionStatusMessageId.FileTransferConfiguration]: 0x805a,
   [FusionStatusMessageId.IgnitionSwitchState]: 0x805b,
+  [FusionStatusMessageId.ExternalAmpGain]: 0x805c,
+  [FusionStatusMessageId.InternalAmpGain]: 0x805d,
   [FusionStatusMessageId.Mono]: 0x805e,
   [FusionStatusMessageId.SpeedVolumeCurrentSpeed]: 0x805f,
   [FusionStatusMessageId.ZoneCapabilitiesExtended]: 0x8061,
+  [FusionStatusMessageId.BtPairingRequestDone]: 0x806d,
+}
+
+/**
+ * @category Enumerations
+ */
+export enum FusionTunerCommand {
+  SeekUp = 'Seek Up',
+  TuneUp = 'Tune Up',
+  SeekDown = 'Seek Down',
+  TuneDown = 'Tune Down',
+  TuneDirect = 'Tune Direct',
+}
+
+/**
+ * @category Enumerations
+ */
+export const FusionTunerCommandValues: {[key: string]: number} = {
+  [FusionTunerCommand.SeekUp]: 0x1,
+  [FusionTunerCommand.TuneUp]: 0x2,
+  [FusionTunerCommand.SeekDown]: 0x3,
+  [FusionTunerCommand.TuneDown]: 0x4,
+  [FusionTunerCommand.TuneDirect]: 0x5,
 }
 
 /**
@@ -4381,7 +4525,7 @@ export enum NavicoDataType {
   Vdop = 'VDOP',
   Tdop = 'TDOP',
   Pdop = 'PDOP',
-  GeoidalSeperation = 'Geoidal Seperation',
+  GeoidalSeparation = 'Geoidal Separation',
   Cog = 'COG',
   PositionQuality = 'Position Quality',
   PositionIntegrity = 'Position Integrity',
@@ -5114,7 +5258,7 @@ export const NavicoDataTypeValues: {[key: string]: number} = {
   [NavicoDataType.Vdop]: 0x4,
   [NavicoDataType.Tdop]: 0x5,
   [NavicoDataType.Pdop]: 0x6,
-  [NavicoDataType.GeoidalSeperation]: 0x7,
+  [NavicoDataType.GeoidalSeparation]: 0x7,
   [NavicoDataType.Cog]: 0x8,
   [NavicoDataType.PositionQuality]: 0x9,
   [NavicoDataType.PositionIntegrity]: 0xa,
@@ -6384,7 +6528,7 @@ export enum Seatalk1Command {
   SetResponseLevel = 'Set Response level',
   AutopilotParameter = 'Autopilot Parameter',
   CompassHeadingSentBySt40CompassInstrument = 'Compass heading sent by ST40 compass instrument',
-  DeviceIndentification = 'Device Indentification',
+  DeviceIdentification = 'Device Identification',
   SetRudderGain = 'Set Rudder gain',
   SetAutopilotParameter = 'Set Autopilot Parameter',
   EnterApSetup = 'Enter AP-Setup',
@@ -6448,7 +6592,7 @@ export const Seatalk1CommandValues: {[key: string]: number} = {
   [Seatalk1Command.SetResponseLevel]: 0x87,
   [Seatalk1Command.AutopilotParameter]: 0x88,
   [Seatalk1Command.CompassHeadingSentBySt40CompassInstrument]: 0x89,
-  [Seatalk1Command.DeviceIndentification]: 0x90,
+  [Seatalk1Command.DeviceIdentification]: 0x90,
   [Seatalk1Command.SetRudderGain]: 0x91,
   [Seatalk1Command.SetAutopilotParameter]: 0x92,
   [Seatalk1Command.EnterApSetup]: 0x93,
@@ -8260,6 +8404,116 @@ export const SimnetWindSpeedUnitValues: {[key: string]: number} = {
 /**
  * @category Enumerations
  */
+export enum SimnetZcFunction {
+  Key = 'Key',
+  Knob = 'Knob',
+}
+
+/**
+ * @category Enumerations
+ */
+export const SimnetZcFunctionValues: {[key: string]: number} = {
+  [SimnetZcFunction.Key]: 0x84,
+  [SimnetZcFunction.Knob]: 0x85,
+}
+
+/**
+ * @category Enumerations
+ */
+export enum SimnetZcKey {
+  StandbyAuto = 'Standby Auto',
+  Win = 'Win',
+  Display = 'Display',
+  Goto = 'Goto',
+  Pages = 'Pages',
+  Menu = 'Menu',
+  Power = 'Power',
+  Echo = 'Echo',
+  Nav = 'Nav',
+  Chart = 'Chart',
+  Plot = 'Plot',
+  Info = 'Info',
+  Mob = 'MOB',
+  _1 = '1',
+  _2 = '2',
+  _3 = '3',
+  _4 = '4',
+  _5 = '5',
+  _6 = '6',
+  _7 = '7',
+  _8 = '8',
+  _9 = '9',
+  _0 = '0',
+  Check = 'Check',
+  Cancel = 'Cancel',
+  Right = 'Right',
+  Left = 'Left',
+  Down = 'Down',
+  Up = 'Up',
+  ZoomOut = 'Zoom out',
+  ZoomIn = 'Zoom in',
+  KnobPush = 'Knob push',
+}
+
+/**
+ * @category Enumerations
+ */
+export const SimnetZcKeyValues: {[key: string]: number} = {
+  [SimnetZcKey.StandbyAuto]: 0x4,
+  [SimnetZcKey.Win]: 0x6,
+  [SimnetZcKey.Display]: 0x7,
+  [SimnetZcKey.Goto]: 0xa,
+  [SimnetZcKey.Pages]: 0xd,
+  [SimnetZcKey.Menu]: 0x10,
+  [SimnetZcKey.Power]: 0x14,
+  [SimnetZcKey.Echo]: 0x15,
+  [SimnetZcKey.Nav]: 0x17,
+  [SimnetZcKey.Chart]: 0x1a,
+  [SimnetZcKey.Plot]: 0x1b,
+  [SimnetZcKey.Info]: 0x1c,
+  [SimnetZcKey.Mob]: 0x1d,
+  [SimnetZcKey._1]: 0x1e,
+  [SimnetZcKey._2]: 0x1f,
+  [SimnetZcKey._3]: 0x20,
+  [SimnetZcKey._4]: 0x21,
+  [SimnetZcKey._5]: 0x22,
+  [SimnetZcKey._6]: 0x23,
+  [SimnetZcKey._7]: 0x24,
+  [SimnetZcKey._8]: 0x25,
+  [SimnetZcKey._9]: 0x26,
+  [SimnetZcKey._0]: 0x27,
+  [SimnetZcKey.Check]: 0x28,
+  [SimnetZcKey.Cancel]: 0x29,
+  [SimnetZcKey.Right]: 0x4f,
+  [SimnetZcKey.Left]: 0x50,
+  [SimnetZcKey.Down]: 0x51,
+  [SimnetZcKey.Up]: 0x52,
+  [SimnetZcKey.ZoomOut]: 0x56,
+  [SimnetZcKey.ZoomIn]: 0x57,
+  [SimnetZcKey.KnobPush]: 0x58,
+}
+
+/**
+ * @category Enumerations
+ */
+export enum SimnetZcKeyEvent {
+  Release = 'Release',
+  LongPress = 'Long press',
+  Press = 'Press',
+}
+
+/**
+ * @category Enumerations
+ */
+export const SimnetZcKeyEventValues: {[key: string]: number} = {
+  [SimnetZcKeyEvent.Release]: 0x33,
+  [SimnetZcKeyEvent.LongPress]: 0x80,
+  [SimnetZcKeyEvent.Press]: 0xb3,
+}
+
+/**
+ * @category Enumerations
+ */
 export enum SleipnerThrusterAction {
   Active = 'Active',
   Standby = 'Standby',
@@ -9225,6 +9479,16 @@ export enum DeviceFunction {
 /**
  * @category Enumerations
  */
+export enum FusionSettingValue {
+  Usa = 'USA',
+  Europe = 'Europe',
+  Japan = 'Japan',
+  Australasia = 'Australasia',
+}
+
+/**
+ * @category Enumerations
+ */
 export enum DisabledSatellites {
   DisableSv1 = 'Disable SV #1',
   DisableSv2 = 'Disable SV #2',
@@ -9379,6 +9643,84 @@ export enum FurunoBaselineStatus {
   BaselineAntenna41 = 'Baseline Antenna 4-1',
   BaselineAntenna13 = 'Baseline Antenna 1-3',
   BaselineAntenna24 = 'Baseline Antenna 2-4',
+}
+
+/**
+ * @category Enumerations
+ */
+export enum FusionCapabilityBitfield {
+  Volume = 'Volume',
+  VolumeLimit = 'Volume Limit',
+  Balance = 'Balance',
+  Subwoofer = 'Subwoofer',
+  LowPassFilter = 'Low Pass Filter',
+  HighPassFilter = 'High Pass Filter',
+  EqBass = 'EQ Bass',
+  EqMid = 'EQ Mid',
+  EqTreble = 'EQ Treble',
+  LineOut = 'Line Out',
+  Dsp = 'DSP',
+  InternalAmp = 'Internal Amp',
+  Loudness = 'Loudness',
+  Tweeter = 'Tweeter',
+  SubwooferOnAmp = 'Subwoofer On Amp',
+  Mono = 'Mono',
+}
+
+/**
+ * @category Enumerations
+ */
+export enum FusionMenuItemFlags {
+  Selected = 'Selected',
+}
+
+/**
+ * @category Enumerations
+ */
+export enum FusionSystemCapabilityBitfield {
+  Ant = 'ANT',
+  Bluetooth = 'Bluetooth',
+  WiFi = 'Wi-Fi',
+  Ethernet = 'Ethernet',
+  Nmea2000 = 'NMEA 2000',
+  RvVisPort = 'RV VIS Port',
+  Lcd = 'LCD',
+  PowerButton = 'Power Button',
+  ButtonMatrix = 'Button Matrix',
+  TouchPanel = 'Touch Panel',
+  UsbConnector = 'USB Connector',
+  UsbConnector2 = 'USB Connector 2',
+  Dsp = 'DSP',
+  AmfmAntenna = 'AM/FM Antenna',
+  DabAntenna = 'DAB Antenna',
+  SiriusXmConnector = 'SiriusXM Connector',
+  Spdif = 'S/PDIF',
+  HdmiArc = 'HDMI ARC',
+  Hdmi = 'HDMI',
+  TelephoneMute = 'Telephone Mute',
+  DimmerWire = 'Dimmer Wire',
+  IgnitionWire = 'Ignition Wire',
+  Nmea2000Power = 'NMEA 2000 Power',
+  Stm32Coprocessor = 'STM32 Coprocessor',
+  Standby = 'Standby',
+  MultiroomSource = 'Multiroom Source',
+  MultiroomRenderer = 'Multiroom Renderer',
+  AmplifierAndLineOutIndependent = 'Amplifier and Line Out Independent',
+  WakeOnLan = 'Wake on LAN',
+  SiriusXmInstantReplay = 'SiriusXM Instant Replay',
+  SiriusXmTuneMix = 'SiriusXM TuneMix',
+  ArtistAndSongAlert = 'Artist and Song Alert',
+  GameAlert = 'Game Alert',
+  SportsFlash = 'Sports Flash',
+  Zone1Amplifier2OhmStable = 'Zone 1 Amplifier 2 Ohm Stable',
+  Zone1Amplifier4OhmStable = 'Zone 1 Amplifier 4 Ohm Stable',
+  Zone2Amplifier2OhmStable = 'Zone 2 Amplifier 2 Ohm Stable',
+  Zone2Amplifier4OhmStable = 'Zone 2 Amplifier 4 Ohm Stable',
+  AppleAirPlay = 'Apple AirPlay',
+  VolumeSyncZone = 'Volume Sync Zone',
+  SourceDisable = 'Source Disable',
+  SourceRename = 'Source Rename',
+  InternalDabModule = 'Internal DAB Module',
 }
 
 /**

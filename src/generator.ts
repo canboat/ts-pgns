@@ -188,7 +188,7 @@ if (argv.pgns) {
         return
 
       case 'DATE':
-      case 'TIME':
+      case 'DECIMAL':
       case 'DYNAMIC_FIELD_KEY':
       case 'STRING_FIX':
       case 'STRING_LZ':

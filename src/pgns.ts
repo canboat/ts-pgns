@@ -40,7 +40,7 @@ export type N2K_Float = number
 /**
  * @category Field Types
  */
-export type N2K_Decimal = number
+export type N2K_Decimal = string
 /**
  * @category Field Types
  */
@@ -56,7 +56,7 @@ export type N2K_DynamicFieldValue = any
 /**
  * @category Field Types
  */
-export type N2K_Time = string
+export type N2K_Time = number
 /**
  * @category Field Types
  */
@@ -13863,6 +13863,76 @@ pgnIdToCreator['airmarTemperatureFilterIir'] = (fields:any, dst:number) => new P
 /**
  * PGN: 126720
  *
+ * Description: Airmar: Master Reset
+ *
+ * Explanation: Received by the device, which then performs a master CPU reset as though power had been cycled. Requires Access Level 1 (see PGN 65287).
+ *
+ * Match: Manufacturer Code == Airmar<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Master Reset<br>
+ *
+ * @category PGN_126720_AirmarMasterReset
+ */
+export interface PGN_126720_AirmarMasterResetInterface extends PGNInterface {
+  fields: PGN_126720_AirmarMasterResetFields
+}
+
+/**
+ * @category PGN_126720_AirmarMasterReset
+ */
+export interface PGN_126720_AirmarMasterResetFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: enums.AirmarCommand | number
+  reserved5?: number
+}
+
+/**
+ * @category PGN_126720_AirmarMasterReset
+ */
+export const PGN_126720_AirmarMasterResetMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: enums.AirmarCommand.MasterReset,
+}
+
+/**
+ * @category PGN_126720_AirmarMasterReset
+ */
+export interface PGN_126720_AirmarMasterResetCreateArgs {
+  reserved?: number
+  reserved5?: number
+}
+
+/**
+ * @category PGN_126720_AirmarMasterReset
+ */
+export class PGN_126720_AirmarMasterReset extends PGN implements PGN_126720_AirmarMasterResetInterface {
+  fields: PGN_126720_AirmarMasterResetFields
+
+  constructor(fields: PGN_126720_AirmarMasterResetCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_AirmarMasterResetMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_AirmarMasterResetMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('airmarMasterReset')!
+  }
+}
+pgnIdToCreator['airmarMasterReset'] = (fields:any, dst:number) => new PGN_126720_AirmarMasterReset(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
  * Description: Airmar: NMEA 2000 options
  *
  * Match: Manufacturer Code == Airmar<br>
@@ -13928,6 +13998,78 @@ export class PGN_126720_AirmarNmea2000Options extends PGN implements PGN_126720_
   }
 }
 pgnIdToCreator['airmarNmea2000Options'] = (fields:any, dst:number) => new PGN_126720_AirmarNmea2000Options(fields, dst)
+
+
+/**
+ * PGN: 126720
+ *
+ * Description: Airmar: Reset EEPROM
+ *
+ * Explanation: Received by the device, which then restores part of its user EEPROM to factory defaults, as selected by the Options field. Requires Access Level 1 (see PGN 65287), including for restoring the Unique Number.
+ *
+ * Match: Manufacturer Code == Airmar<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Reset EEPROM<br>
+ *
+ * @category PGN_126720_AirmarResetEeprom
+ */
+export interface PGN_126720_AirmarResetEepromInterface extends PGNInterface {
+  fields: PGN_126720_AirmarResetEepromFields
+}
+
+/**
+ * @category PGN_126720_AirmarResetEeprom
+ */
+export interface PGN_126720_AirmarResetEepromFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: enums.AirmarCommand | number
+  options?: enums.AirmarResetEepromOptions | number
+  reserved6?: number
+}
+
+/**
+ * @category PGN_126720_AirmarResetEeprom
+ */
+export const PGN_126720_AirmarResetEepromMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Airmar,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: enums.AirmarCommand.ResetEeprom,
+}
+
+/**
+ * @category PGN_126720_AirmarResetEeprom
+ */
+export interface PGN_126720_AirmarResetEepromCreateArgs {
+  reserved?: number
+  options?: enums.AirmarResetEepromOptions | number
+  reserved6?: number
+}
+
+/**
+ * @category PGN_126720_AirmarResetEeprom
+ */
+export class PGN_126720_AirmarResetEeprom extends PGN implements PGN_126720_AirmarResetEepromInterface {
+  fields: PGN_126720_AirmarResetEepromFields
+
+  constructor(fields: PGN_126720_AirmarResetEepromCreateArgs, dst: number = 255) {
+    super({
+      pgn: 126720,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_126720_AirmarResetEepromMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_126720_AirmarResetEepromMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('airmarResetEeprom')!
+  }
+}
+pgnIdToCreator['airmarResetEeprom'] = (fields:any, dst:number) => new PGN_126720_AirmarResetEeprom(fields, dst)
 
 
 /**
@@ -37462,7 +37604,7 @@ pgnIdToCreator['furunoMultiSatsInViewExtended'] = (fields:any, dst:number) => ne
  *
  * Description: Simnet: Key Value
  *
- * Explanation: Navico/Simrad get-set protocol for instrument and autopilot settings. The Key selects which parameter (and thus the data type of the Value); the Operation byte selects read/set/reply. The Operation byte is NOT a value length (the Value width comes from the resolved data type); it is only ever 0/1/2, confirmed against NAC3 and AC42 autopilot and MFD capture corpus.
+ * Explanation: Navico/Simrad get-set protocol for instrument and autopilot settings. The Key selects which parameter (and thus the data type of the Value); the Operation byte selects read/set/reply. The Operation byte is NOT a value length (the Value width comes from the resolved data type); it is only ever 0/1/2, confirmed against NAC3 and AC42 autopilot and MFD capture corpus. Backlight level (key 4863) is a 0-99 scale, 99 being the brightest. Its labels (10% at 0 up to 100% at 99, in steps of 11) are the levels set by older-generation devices, namely B&G Triton and Triton2 and their Simrad counterparts (IS35, IS40), the AP24, AP28 and AP48 autopilot controllers, and NOS-based MFDs. The NEON-based chartplotters set it in steps of 1, so a value between the labels is valid and decodes as a plain number. Day and night mode are a separate key, 9983 (Night mode).
  *
  * Match: Manufacturer Code == Simrad<br>
  * Match: Industry Code == Marine Industry<br>
@@ -40218,8 +40360,10 @@ export interface PGN_130944_AirmarPostFields {
   control: enums.AirmarPostControl | number
   reserved5?: number
   numberOfIdTestResultPairsToFollow?: N2K_Number
-  testId?: enums.AirmarPostId | number
-  testResult?: N2K_Number
+  list: {
+    testId?: enums.AirmarPostId | number
+    testResult?: N2K_Number
+  }[]
 }
 
 /**
@@ -40238,8 +40382,10 @@ export interface PGN_130944_AirmarPostCreateArgs {
   control: enums.AirmarPostControl | number
   reserved5?: number
   numberOfIdTestResultPairsToFollow?: N2K_Number
-  testId?: enums.AirmarPostId | number
-  testResult?: N2K_Number
+  list: {
+    testId?: enums.AirmarPostId | number
+    testResult?: N2K_Number
+  }[]
 }
 
 /**

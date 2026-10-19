@@ -39,6 +39,58 @@ export const AccessLevelValues: {[key: string]: number} = {
 /**
  * @category Enumerations
  */
+export enum ActisenseOperatingMode {
+  Undefined = 'Undefined',
+  NgtTransferNormalMode = 'NGT Transfer Normal Mode',
+  NgtTransferRxAllMode = 'NGT Transfer Rx All Mode',
+  NgtTransferRawMode = 'NGT Transfer Raw Mode',
+  NgwConvertNormalMode = 'NGW Convert Normal Mode',
+  CanPacketMode = 'CAN Packet Mode',
+  CanPacketAsciiMode = 'CAN Packet ASCII Mode',
+  BufferMode1 = 'Buffer Mode 1',
+  BufferMode2 = 'Buffer Mode 2',
+  BufferMode3 = 'Buffer Mode 3',
+  AutoswitchDirectMode = 'Autoswitch Direct Mode',
+  AutoswitchSmartMode = 'Autoswitch Smart Mode',
+  CombineSlowMode = 'Combine Slow Mode',
+  CombineFastMode = 'Combine Fast Mode',
+  TestMode1 = 'Test Mode 1',
+  NsiMode1 = 'NSI Mode 1',
+  Iec61162450Mode1 = 'IEC 61162-450 Mode 1',
+  Normal = 'Normal',
+  PredefinedMode1 = 'Predefined Mode 1',
+  PredefinedMode2 = 'Predefined Mode 2',
+}
+
+/**
+ * @category Enumerations
+ */
+export const ActisenseOperatingModeValues: {[key: string]: number} = {
+  [ActisenseOperatingMode.Undefined]: 0x0,
+  [ActisenseOperatingMode.NgtTransferNormalMode]: 0x1,
+  [ActisenseOperatingMode.NgtTransferRxAllMode]: 0x2,
+  [ActisenseOperatingMode.NgtTransferRawMode]: 0x3,
+  [ActisenseOperatingMode.NgwConvertNormalMode]: 0x4,
+  [ActisenseOperatingMode.CanPacketMode]: 0x5,
+  [ActisenseOperatingMode.CanPacketAsciiMode]: 0x6,
+  [ActisenseOperatingMode.BufferMode1]: 0x10,
+  [ActisenseOperatingMode.BufferMode2]: 0x11,
+  [ActisenseOperatingMode.BufferMode3]: 0x12,
+  [ActisenseOperatingMode.AutoswitchDirectMode]: 0x13,
+  [ActisenseOperatingMode.AutoswitchSmartMode]: 0x14,
+  [ActisenseOperatingMode.CombineSlowMode]: 0x15,
+  [ActisenseOperatingMode.CombineFastMode]: 0x16,
+  [ActisenseOperatingMode.TestMode1]: 0x17,
+  [ActisenseOperatingMode.NsiMode1]: 0x18,
+  [ActisenseOperatingMode.Iec61162450Mode1]: 0x19,
+  [ActisenseOperatingMode.Normal]: 0x200,
+  [ActisenseOperatingMode.PredefinedMode1]: 0x9c40,
+  [ActisenseOperatingMode.PredefinedMode2]: 0x9c41,
+}
+
+/**
+ * @category Enumerations
+ */
 export enum AcLine {
   Line1 = 'Line 1',
   Line2 = 'Line 2',
@@ -276,6 +328,7 @@ export const AirmarCalibrateStatusValues: {[key: string]: number} = {
  * @category Enumerations
  */
 export enum AirmarCommand {
+  MasterReset = 'Master Reset',
   AttitudeOffsets = 'Attitude Offsets',
   CalibrateCompass = 'Calibrate Compass',
   TrueWindOptions = 'True Wind Options',
@@ -286,12 +339,14 @@ export enum AirmarCommand {
   SpeedFilter = 'Speed Filter',
   TemperatureFilter = 'Temperature Filter',
   Nmea2000Options = 'NMEA 2000 options',
+  ResetEeprom = 'Reset EEPROM',
 }
 
 /**
  * @category Enumerations
  */
 export const AirmarCommandValues: {[key: string]: number} = {
+  [AirmarCommand.MasterReset]: 0x1,
   [AirmarCommand.AttitudeOffsets]: 0x20,
   [AirmarCommand.CalibrateCompass]: 0x21,
   [AirmarCommand.TrueWindOptions]: 0x22,
@@ -302,6 +357,7 @@ export const AirmarCommandValues: {[key: string]: number} = {
   [AirmarCommand.SpeedFilter]: 0x2b,
   [AirmarCommand.TemperatureFilter]: 0x2c,
   [AirmarCommand.Nmea2000Options]: 0x2e,
+  [AirmarCommand.ResetEeprom]: 0x82,
 }
 
 /**
@@ -380,6 +436,28 @@ export const AirmarPostIdValues: {[key: string]: number} = {
   [AirmarPostId.SpeedSensor]: 0x6,
   [AirmarPostId.InternalTemperatureSensor]: 0x7,
   [AirmarPostId.BatteryVoltageSensor]: 0x8,
+}
+
+/**
+ * @category Enumerations
+ */
+export enum AirmarResetEepromOptions {
+  RestoreEntireUserEepromExceptUniqueNumber = 'Restore entire user EEPROM except Unique Number',
+  RestoreAllMessagePriorities = 'Restore all message priorities',
+  RestoreAllMessageUpdateRates = 'Restore all message update rates',
+  RestoreAllMessagePrioritiesAndUpdateRates = 'Restore all message priorities and update rates',
+  RestoreUserUniqueNumber = 'Restore user Unique Number',
+}
+
+/**
+ * @category Enumerations
+ */
+export const AirmarResetEepromOptionsValues: {[key: string]: number} = {
+  [AirmarResetEepromOptions.RestoreEntireUserEepromExceptUniqueNumber]: 0x0,
+  [AirmarResetEepromOptions.RestoreAllMessagePriorities]: 0x1,
+  [AirmarResetEepromOptions.RestoreAllMessageUpdateRates]: 0x2,
+  [AirmarResetEepromOptions.RestoreAllMessagePrioritiesAndUpdateRates]: 0x3,
+  [AirmarResetEepromOptions.RestoreUserUniqueNumber]: 0x4,
 }
 
 /**
@@ -7868,8 +7946,6 @@ export const SimnetAutopilotModeClassValues: {[key: string]: number} = {
  */
 export enum SimnetBacklightLevel {
   _10min = '10% (Min)',
-  DayMode = 'Day mode',
-  NightMode = 'Night mode',
   _20 = '20%',
   _30 = '30%',
   _40 = '40%',
@@ -7886,8 +7962,6 @@ export enum SimnetBacklightLevel {
  */
 export const SimnetBacklightLevelValues: {[key: string]: number} = {
   [SimnetBacklightLevel._10min]: 0x0,
-  [SimnetBacklightLevel.DayMode]: 0x1,
-  [SimnetBacklightLevel.NightMode]: 0x4,
   [SimnetBacklightLevel._20]: 0xb,
   [SimnetBacklightLevel._30]: 0x16,
   [SimnetBacklightLevel._40]: 0x21,

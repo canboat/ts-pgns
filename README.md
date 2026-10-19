@@ -143,9 +143,7 @@ const alertBit = getBitEnumerationValue('ENGINE_ALERT', 'Warning')
 import { mapCamelCaseKeys, mapNameKeysToCamelCase } from '@canboat/ts-pgns'
 
 // Convert PGN field IDs to camelCase names
-const pgn = new PGN_129029({
-  /* ... */
-})
+const pgn = new PGN_129029({/* ... */})
 const camelCasePgn = mapCamelCaseKeys(pgn)
 
 // Now you can access fields by name instead of ID

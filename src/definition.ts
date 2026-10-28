@@ -200,9 +200,15 @@ export interface FieldTypeEnumeration extends EnumBase {
  * @property LookupFieldTypeEnumeration - Reference to the field type enumeration.
  * @property Encoding - Optional character set of an 8-bit string field, for
  *   bytes that are not well-formed UTF-8 (e.g. `RDS_G0`). Absent means Latin-1.
+ * @property Order - Position of the field in the PGN, starting at 1.
+ * @property TrailingZeroIsDigitField - On a DECIMAL: the Order of the field
+ *   that decides whether its trailing zero is a digit rather than padding.
+ * @property TrailingZeroIsDigitValue - The value that field holds when the
+ *   trailing zero is a digit (PGN 129808: DSC Format 102, geographical area).
  * @category PGN Definitions
  */
 export type Field = {
+  Order?: number
   Id: string
   Name: string
   Description?: string
@@ -228,6 +234,8 @@ export type Field = {
   LookupBitEnumeration?: string
   LookupFieldTypeEnumeration: string
   Encoding?: string
+  TrailingZeroIsDigitField?: number
+  TrailingZeroIsDigitValue?: number
 }
 
 /**

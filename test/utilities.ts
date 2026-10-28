@@ -3,6 +3,9 @@ import {
   PGN,
   PGN_129029,
   PGN_61184_VictronVeCanRegister,
+  PGN_129808,
+  PGN_129808_DscDistressCallInformation,
+  PGN_129808_DscDistressAcknowledgementOrRelay,
   findMatchingDefinition,
   findFallBackPGN,
   mapCamelCaseKeys,
@@ -41,6 +44,36 @@ describe('utilities tests', () => {
     } catch (err) {
       done(err)
     }
+  })
+
+  // PGN 129808's definitions name the same fields differently: the distress
+  // alert has dscFormat/dscCategory, the others dscFormatSymbol/
+  // dscCategorySymbol. Each must be found by its own field ids.
+  it(`findMatchingDefinition picks each PGN 129808 variant`, () => {
+    const distress = new PGN_129808_DscDistressCallInformation({
+      dscFormat: 'Distress',
+      dscCategory: 'Distress',
+      natureOfDistress: 'Fire'
+    })
+    expect(findMatchingDefinition(distress).Id).to.equal(
+      'dscDistressCallInformation'
+    )
+
+    const ack = new PGN_129808_DscDistressAcknowledgementOrRelay({
+      dscFormatSymbol: 'All ships',
+      dscCategorySymbol: 'Distress',
+      natureOfDistress: 'Fire'
+    })
+    expect(findMatchingDefinition(ack).Id).to.equal(
+      'dscDistressAcknowledgementOrRelay'
+    )
+    expect(mapCamelCaseKeys(ack).fields['Nature of Distress']).to.equal('Fire')
+
+    const general = new PGN_129808({
+      dscFormatSymbol: 'Geographical area',
+      dscCategorySymbol: 'Routine'
+    })
+    expect(findMatchingDefinition(general).Id).to.equal('dscCallInformation')
   })
 
   it(`mapCamelCaseKeys works`, (done) => {

@@ -336,13 +336,13 @@ export const mapNameKeysToCamelCase = (pgn: any) => {
  * Finds and returns the matching PGN definition for a given PGN object.
  *
  * This function retrieves possible definitions for the provided PGN, filters out fallback definitions,
- * and iteratively matches fields with specific criteria. If a field has a `Match` property, it compares
- * the numeric value of the field in the PGN with the definition. Throws an error if no matching definition
- * is found or if a field value is invalid.
+ * and keeps those whose every field with a `Match` property holds that value in the PGN, read by that
+ * definition's own field id (or name). Of those it returns the one with the most match fields. Throws an
+ * error if no definition matches.
  *
  * @param pgn - The PGN object containing the PGN string and associated fields to match against definitions.
  * @returns The matching `Definition` object for the provided PGN.
- * @throws If the PGN is unknown, if a field value is invalid, or if no matching definition is found.
+ * @throws If the PGN is unknown, or if no matching definition is found.
  * @category PGN Definition Access
  */
 export const findMatchingDefinition = (pgn: PGN): Definition => {
@@ -359,42 +359,27 @@ export const findMatchingDefinition = (pgn: PGN): Definition => {
     (pgn: any) => pgn.Fallback === undefined || pgn.Fallback === false
   )
 
-  let def = defs[0]
-  let repeatingSize = def.RepeatingFieldSet1Size || 0
+  // Each definition is tested against the values for its own field ids, as
+  // variants can name the same field differently: PGN 129808's distress
+  // alert has dscFormat where its other variants have dscFormatSymbol.
+  const values: any = pgn.fields !== undefined ? pgn.fields : pgn
+  const matchFields = (def: Definition) =>
+    def.Fields.filter((field) => field.Match !== undefined)
+  const matches = (def: Definition) =>
+    matchFields(def).every((field) => {
+      const num = getNumericValue(field, values[field.Id] ?? values[field.Name])
+      return typeof num === 'string'
+        ? field.Description == num
+        : field.Match == num
+    })
 
-  for (let i = 0; i < def.Fields.length - repeatingSize; i++) {
-    const field = def.Fields[i]
-    const hasMatch = field.Match !== undefined
-    let value =
-      pgn.fields !== undefined
-        ? (pgn.fields as any)[field.Id] || (pgn.fields as any)[field.Name]
-        : (pgn as any)[field.Id] || (pgn as any)[field.Name]
-
-    if (hasMatch) {
-      const num = getNumericValue(field, value)
-
-      if (num === undefined) {
-        throw Error(`invalid value for field ${field.Id}: ${value}`)
-      }
-
-      if (typeof num === 'string') {
-        defs = defs.filter((f) => f.Fields[i].Description == num)
-      } else {
-        defs = defs.filter((f) => f.Fields[i].Match == num)
-      }
-
-      if (defs.length == 0) {
-        throw Error('no matching pgn found')
-      } else {
-        def = defs[0]
-        value = def.Fields[i].Description
-
-        if (value == null) {
-          value = def.Fields[i].Match
-        }
-        repeatingSize = def.RepeatingFieldSet1Size || 0
-      }
-    }
+  // The most specific definition that matches: the one with the most match
+  // fields, so a catch-all variant without any is picked last.
+  const def = defs
+    .filter(matches)
+    .sort((a, b) => matchFields(b).length - matchFields(a).length)[0]
+  if (def === undefined) {
+    throw Error('no matching pgn found')
   }
   return def
 }

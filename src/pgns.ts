@@ -1090,6 +1090,239 @@ pgnIdToCreator['simnetKeepAlive'] = (fields:any, dst:number) => new PGN_61184_Si
 
 
 /**
+ * PGN: 61184
+ *
+ * Description: Furuno: Command
+ *
+ * Explanation: A command to an addressed Furuno device, and the device's reply. The Furuno Setting Tool sends command 0 to an SCX-20, which replies 3; an MCU-006 remote accepts commands 0 to 2 from its MFD and replies 3 to command 0, 4 to the others.
+ *
+ * Match: Manufacturer Code == Furuno<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_61184_FurunoCommand
+ */
+export interface PGN_61184_FurunoCommandInterface extends PGNInterface {
+  fields: PGN_61184_FurunoCommandFields
+}
+
+/**
+ * @category PGN_61184_FurunoCommand
+ */
+export interface PGN_61184_FurunoCommandFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: N2K_Number | string
+  command?: N2K_Number
+  reserved6?: number
+}
+
+/**
+ * @category PGN_61184_FurunoCommand
+ */
+export const PGN_61184_FurunoCommandMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Furuno,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: "Command",
+}
+
+/**
+ * @category PGN_61184_FurunoCommand
+ */
+export interface PGN_61184_FurunoCommandCreateArgs {
+  reserved?: number
+  command?: N2K_Number
+  reserved6?: number
+}
+
+/**
+ * @category PGN_61184_FurunoCommand
+ */
+export class PGN_61184_FurunoCommand extends PGN implements PGN_61184_FurunoCommandInterface {
+  fields: PGN_61184_FurunoCommandFields
+
+  constructor(fields: PGN_61184_FurunoCommandCreateArgs, dst: number = 255) {
+    super({
+      pgn: 61184,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_61184_FurunoCommandMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_61184_FurunoCommandMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('furunoCommand')!
+  }
+}
+pgnIdToCreator['furunoCommand'] = (fields:any, dst:number) => new PGN_61184_FurunoCommand(fields, dst)
+
+
+/**
+ * PGN: 61184
+ *
+ * Description: Furuno: Remote Keyboard Report
+ *
+ * Explanation: The keys a Furuno MCU-006 remote holds, as USB HID keyboard usage IDs in the order pressed, sent to its MFD when they change and every second. An unused slot is 0xFF; all 0xFF means no key is held.
+ *
+ * Match: Manufacturer Code == Furuno<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Keyboard Report<br>
+ *
+ * @category PGN_61184_FurunoRemoteKeyboardReport
+ */
+export interface PGN_61184_FurunoRemoteKeyboardReportInterface extends PGNInterface {
+  fields: PGN_61184_FurunoRemoteKeyboardReportFields
+}
+
+/**
+ * @category PGN_61184_FurunoRemoteKeyboardReport
+ */
+export interface PGN_61184_FurunoRemoteKeyboardReportFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: N2K_Number | string
+  key1?: N2K_Number
+  key2?: N2K_Number
+  key3?: N2K_Number
+  key4?: N2K_Number
+  key5?: N2K_Number
+}
+
+/**
+ * @category PGN_61184_FurunoRemoteKeyboardReport
+ */
+export const PGN_61184_FurunoRemoteKeyboardReportMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Furuno,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: "Keyboard Report",
+}
+
+/**
+ * @category PGN_61184_FurunoRemoteKeyboardReport
+ */
+export interface PGN_61184_FurunoRemoteKeyboardReportCreateArgs {
+  reserved?: number
+  key1?: N2K_Number
+  key2?: N2K_Number
+  key3?: N2K_Number
+  key4?: N2K_Number
+  key5?: N2K_Number
+}
+
+/**
+ * @category PGN_61184_FurunoRemoteKeyboardReport
+ */
+export class PGN_61184_FurunoRemoteKeyboardReport extends PGN implements PGN_61184_FurunoRemoteKeyboardReportInterface {
+  fields: PGN_61184_FurunoRemoteKeyboardReportFields
+
+  constructor(fields: PGN_61184_FurunoRemoteKeyboardReportCreateArgs, dst: number = 255) {
+    super({
+      pgn: 61184,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_61184_FurunoRemoteKeyboardReportMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_61184_FurunoRemoteKeyboardReportMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('furunoRemoteKeyboardReport')!
+  }
+}
+pgnIdToCreator['furunoRemoteKeyboardReport'] = (fields:any, dst:number) => new PGN_61184_FurunoRemoteKeyboardReport(fields, dst)
+
+
+/**
+ * PGN: 61184
+ *
+ * Description: Furuno: Remote Pointer Report
+ *
+ * Explanation: A Furuno MCU-006 remote's joystick and knob, sent to its MFD on movement and every second. dx and dy move the MFD's cursor, Wheel is knob detents (zoom on a chart). Field A is always 1.
+ *
+ * Match: Manufacturer Code == Furuno<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Pointer Report<br>
+ *
+ * @category PGN_61184_FurunoRemotePointerReport
+ */
+export interface PGN_61184_FurunoRemotePointerReportInterface extends PGNInterface {
+  fields: PGN_61184_FurunoRemotePointerReportFields
+}
+
+/**
+ * @category PGN_61184_FurunoRemotePointerReport
+ */
+export interface PGN_61184_FurunoRemotePointerReportFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: N2K_Number | string
+  dx?: N2K_Number
+  dy?: N2K_Number
+  wheel?: N2K_Number
+  a?: N2K_Number
+  button: enums.YesNo1Bit | number
+  spare10?: number
+  keypadMode: enums.YesNo1Bit | number
+  spare12?: number
+}
+
+/**
+ * @category PGN_61184_FurunoRemotePointerReport
+ */
+export const PGN_61184_FurunoRemotePointerReportMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Furuno,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: "Pointer Report",
+}
+
+/**
+ * @category PGN_61184_FurunoRemotePointerReport
+ */
+export interface PGN_61184_FurunoRemotePointerReportCreateArgs {
+  reserved?: number
+  dx?: N2K_Number
+  dy?: N2K_Number
+  wheel?: N2K_Number
+  a?: N2K_Number
+  button: enums.YesNo1Bit | number
+  spare10?: number
+  keypadMode: enums.YesNo1Bit | number
+  spare12?: number
+}
+
+/**
+ * @category PGN_61184_FurunoRemotePointerReport
+ */
+export class PGN_61184_FurunoRemotePointerReport extends PGN implements PGN_61184_FurunoRemotePointerReportInterface {
+  fields: PGN_61184_FurunoRemotePointerReportFields
+
+  constructor(fields: PGN_61184_FurunoRemotePointerReportCreateArgs, dst: number = 255) {
+    super({
+      pgn: 61184,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_61184_FurunoRemotePointerReportMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_61184_FurunoRemotePointerReportMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('furunoRemotePointerReport')!
+  }
+}
+pgnIdToCreator['furunoRemotePointerReport'] = (fields:any, dst:number) => new PGN_61184_FurunoRemotePointerReport(fields, dst)
+
+
+/**
  * PGN: 61440
  *
  * Description: 0xF000-0xFEFF: Standardized single-frame non-addressed
@@ -4350,6 +4583,79 @@ pgnIdToCreator['maretronTripVolume'] = (fields:any, dst:number) => new PGN_65287
 
 
 /**
+ * PGN: 65287
+ *
+ * Description: Furuno: Remote Announce
+ *
+ * Explanation: Broadcast every 5 s. A TimeZero MFD sends it with Host set, offering to pair; an unpaired Furuno MCU-006 remote pairs with the first one it hears. The remote sends it with Device set.
+ *
+ * Match: Manufacturer Code == Furuno<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65287_FurunoRemoteAnnounce
+ */
+export interface PGN_65287_FurunoRemoteAnnounceInterface extends PGNInterface {
+  fields: PGN_65287_FurunoRemoteAnnounceFields
+}
+
+/**
+ * @category PGN_65287_FurunoRemoteAnnounce
+ */
+export interface PGN_65287_FurunoRemoteAnnounceFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  host: enums.YesNo1Bit | number
+  device: enums.YesNo1Bit | number
+  spare6?: number
+  reserved7?: number
+}
+
+/**
+ * @category PGN_65287_FurunoRemoteAnnounce
+ */
+export const PGN_65287_FurunoRemoteAnnounceMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Furuno,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65287_FurunoRemoteAnnounce
+ */
+export interface PGN_65287_FurunoRemoteAnnounceCreateArgs {
+  reserved?: number
+  host: enums.YesNo1Bit | number
+  device: enums.YesNo1Bit | number
+  spare6?: number
+  reserved7?: number
+}
+
+/**
+ * @category PGN_65287_FurunoRemoteAnnounce
+ */
+export class PGN_65287_FurunoRemoteAnnounce extends PGN implements PGN_65287_FurunoRemoteAnnounceInterface {
+  fields: PGN_65287_FurunoRemoteAnnounceFields
+
+  constructor(fields: PGN_65287_FurunoRemoteAnnounceCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65287,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_65287_FurunoRemoteAnnounceMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65287_FurunoRemoteAnnounceMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('furunoRemoteAnnounce')!
+  }
+}
+pgnIdToCreator['furunoRemoteAnnounce'] = (fields:any, dst:number) => new PGN_65287_FurunoRemoteAnnounce(fields, dst)
+
+
+/**
  * PGN: 65288
  *
  * Description: Seatalk: Alarm
@@ -4491,6 +4797,81 @@ export class PGN_65288_Maretron420Ma extends PGN implements PGN_65288_Maretron42
   }
 }
 pgnIdToCreator['maretron420Ma'] = (fields:any, dst:number) => new PGN_65288_Maretron420Ma(fields, dst)
+
+
+/**
+ * PGN: 65288
+ *
+ * Description: Furuno: Remote Backlight
+ *
+ * Explanation: A Furuno MCU-006 remote's backlight, broadcast at boot and when it changes. The MFD sets it with a 126208 Command on this PGN right after pairing, to its own brightness; the field numbers there are 4 to 7 for the fields after the header.
+ *
+ * Match: Manufacturer Code == Furuno<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_65288_FurunoRemoteBacklight
+ */
+export interface PGN_65288_FurunoRemoteBacklightInterface extends PGNInterface {
+  fields: PGN_65288_FurunoRemoteBacklightFields
+}
+
+/**
+ * @category PGN_65288_FurunoRemoteBacklight
+ */
+export interface PGN_65288_FurunoRemoteBacklightFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  a?: N2K_Number
+  b?: N2K_Number
+  preset?: N2K_Number
+  brightness?: N2K_Number
+  reserved8?: number
+}
+
+/**
+ * @category PGN_65288_FurunoRemoteBacklight
+ */
+export const PGN_65288_FurunoRemoteBacklightMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Furuno,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_65288_FurunoRemoteBacklight
+ */
+export interface PGN_65288_FurunoRemoteBacklightCreateArgs {
+  reserved?: number
+  a?: N2K_Number
+  b?: N2K_Number
+  preset?: N2K_Number
+  brightness?: N2K_Number
+  reserved8?: number
+}
+
+/**
+ * @category PGN_65288_FurunoRemoteBacklight
+ */
+export class PGN_65288_FurunoRemoteBacklight extends PGN implements PGN_65288_FurunoRemoteBacklightInterface {
+  fields: PGN_65288_FurunoRemoteBacklightFields
+
+  constructor(fields: PGN_65288_FurunoRemoteBacklightCreateArgs, dst: number = 255) {
+    super({
+      pgn: 65288,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_65288_FurunoRemoteBacklightMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_65288_FurunoRemoteBacklightMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('furunoRemoteBacklight')!
+  }
+}
+pgnIdToCreator['furunoRemoteBacklight'] = (fields:any, dst:number) => new PGN_65288_FurunoRemoteBacklight(fields, dst)
 
 
 /**
@@ -5265,6 +5646,8 @@ pgnIdToCreator['diverseYachtServicesLoadCell'] = (fields:any, dst:number) => new
  *
  * Description: BEP Marine: Proprietary PGN 65294
  *
+ * Explanation: Carries a display brightness. A Furuno TZMAP9 broadcasts it with every step of its brightness slider, Brightness running from 83 down to 1 and back; the other bytes stayed the same.
+ *
  * Match: Manufacturer Code == BEP Marine<br>
  * Match: Industry Code == Marine Industry<br>
  *
@@ -5281,6 +5664,7 @@ export interface PGN_65294_BepMarineProprietaryPgn65294Fields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
+  brightness?: N2K_Number
   data?: N2K_Binary
 }
 
@@ -5297,6 +5681,7 @@ export const PGN_65294_BepMarineProprietaryPgn65294MatchFields = {
  */
 export interface PGN_65294_BepMarineProprietaryPgn65294CreateArgs {
   reserved?: number
+  brightness?: N2K_Number
   data?: N2K_Binary
 }
 
@@ -21511,7 +21896,7 @@ pgnIdToCreator['aisClassBGroupAssignment'] = (fields:any, dst:number) => new PGN
  *
  * Description: DSC Distress Call Information
  *
- * Match: DSC Category == Distress<br>
+ * Match: DSC Format == Distress<br>
  *
  * @category PGN_129808_DscDistressCallInformation
  */
@@ -21553,14 +21938,14 @@ export interface PGN_129808_DscDistressCallInformationFields {
  * @category PGN_129808_DscDistressCallInformation
  */
 export const PGN_129808_DscDistressCallInformationMatchFields = {
-  dscCategory: enums.DscCategory.Distress,
+  dscFormat: enums.DscFormat.Distress,
 }
 
 /**
  * @category PGN_129808_DscDistressCallInformation
  */
 export interface PGN_129808_DscDistressCallInformationCreateArgs {
-  dscFormat?: enums.DscFormat | number
+  dscCategory?: enums.DscCategory | number
   dscMessageAddress?: N2K_Decimal
   natureOfDistress?: enums.DscNature | number
   subsequentCommunicationModeOr2ndTelecommand?: enums.DscSecondTelecommand | number
@@ -21608,6 +21993,110 @@ export class PGN_129808_DscDistressCallInformation extends PGN implements PGN_12
   }
 }
 pgnIdToCreator['dscDistressCallInformation'] = (fields:any, dst:number) => new PGN_129808_DscDistressCallInformation(fields, dst)
+
+
+/**
+ * PGN: 129808
+ *
+ * Description: DSC Distress Acknowledgement or Relay
+ *
+ * Match: DSC Category Symbol == Distress<br>
+ *
+ * @category PGN_129808_DscDistressAcknowledgementOrRelay
+ */
+export interface PGN_129808_DscDistressAcknowledgementOrRelayInterface extends PGNInterface {
+  fields: PGN_129808_DscDistressAcknowledgementOrRelayFields
+}
+
+/**
+ * @category PGN_129808_DscDistressAcknowledgementOrRelay
+ */
+export interface PGN_129808_DscDistressAcknowledgementOrRelayFields {
+  dscFormatSymbol?: enums.DscFormat | number
+  dscCategorySymbol?: enums.DscCategory | number
+  dscMessageAddress?: N2K_Decimal
+  _1stTelecommand?: enums.DscFirstTelecommand | number
+  natureOfDistress?: enums.DscNature | number
+  proposedRxFrequencyChannel?: N2K_StringFix
+  proposedTxFrequencyChannel?: N2K_StringFix
+  telephoneNumber?: N2K_StringLau
+  latitudeOfVesselReported?: N2K_Number
+  longitudeOfVesselReported?: N2K_Number
+  timeOfPosition?: N2K_Time
+  mmsiOfShipInDistress?: N2K_Decimal
+  dscEosSymbol?: N2K_Number
+  expansionEnabled?: enums.YesNo | number
+  reserved?: number
+  callingRxFrequencyChannel?: N2K_StringFix
+  callingTxFrequencyChannel?: N2K_StringFix
+  timeOfReceipt?: N2K_Time
+  dateOfReceipt?: N2K_Date
+  dscEquipmentAssignedMessageId?: N2K_Number
+  list: {
+    dscExpansionFieldSymbol?: enums.DscExpansionData | number
+    dscExpansionFieldData?: N2K_StringLau
+  }[]
+}
+
+/**
+ * @category PGN_129808_DscDistressAcknowledgementOrRelay
+ */
+export const PGN_129808_DscDistressAcknowledgementOrRelayMatchFields = {
+  dscCategorySymbol: enums.DscCategory.Distress,
+}
+
+/**
+ * @category PGN_129808_DscDistressAcknowledgementOrRelay
+ */
+export interface PGN_129808_DscDistressAcknowledgementOrRelayCreateArgs {
+  dscFormatSymbol?: enums.DscFormat | number
+  dscMessageAddress?: N2K_Decimal
+  _1stTelecommand?: enums.DscFirstTelecommand | number
+  natureOfDistress?: enums.DscNature | number
+  proposedRxFrequencyChannel?: N2K_StringFix
+  proposedTxFrequencyChannel?: N2K_StringFix
+  telephoneNumber?: N2K_StringLau
+  latitudeOfVesselReported?: N2K_Number
+  longitudeOfVesselReported?: N2K_Number
+  timeOfPosition?: N2K_Time
+  mmsiOfShipInDistress?: N2K_Decimal
+  dscEosSymbol?: N2K_Number
+  expansionEnabled?: enums.YesNo | number
+  reserved?: number
+  callingRxFrequencyChannel?: N2K_StringFix
+  callingTxFrequencyChannel?: N2K_StringFix
+  timeOfReceipt?: N2K_Time
+  dateOfReceipt?: N2K_Date
+  dscEquipmentAssignedMessageId?: N2K_Number
+  list: {
+    dscExpansionFieldSymbol?: enums.DscExpansionData | number
+    dscExpansionFieldData?: N2K_StringLau
+  }[]
+}
+
+/**
+ * @category PGN_129808_DscDistressAcknowledgementOrRelay
+ */
+export class PGN_129808_DscDistressAcknowledgementOrRelay extends PGN implements PGN_129808_DscDistressAcknowledgementOrRelayInterface {
+  fields: PGN_129808_DscDistressAcknowledgementOrRelayFields
+
+  constructor(fields: PGN_129808_DscDistressAcknowledgementOrRelayCreateArgs, dst: number = 255) {
+    super({
+      pgn: 129808,
+      prio: 4,
+      dst
+    })
+    this.fields = { ...PGN_129808_DscDistressAcknowledgementOrRelayMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_129808_DscDistressAcknowledgementOrRelayMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('dscDistressAcknowledgementOrRelay')!
+  }
+}
+pgnIdToCreator['dscDistressAcknowledgementOrRelay'] = (fields:any, dst:number) => new PGN_129808_DscDistressAcknowledgementOrRelay(fields, dst)
 
 
 /**
@@ -26739,6 +27228,80 @@ export class PGN_130816_SeaRecoveryWatermakerStatus extends PGN implements PGN_1
   }
 }
 pgnIdToCreator['seaRecoveryWatermakerStatus'] = (fields:any, dst:number) => new PGN_130816_SeaRecoveryWatermakerStatus(fields, dst)
+
+
+/**
+ * PGN: 130816
+ *
+ * Description: Furuno: Remote Info
+ *
+ * Explanation: Broadcast by a Furuno MCU-006 remote after its MFD sends it Remote Command 0. Known from the firmware only.
+ *
+ * Match: Manufacturer Code == Furuno<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Proprietary ID == Remote Info<br>
+ *
+ * @category PGN_130816_FurunoRemoteInfo
+ */
+export interface PGN_130816_FurunoRemoteInfoInterface extends PGNInterface {
+  fields: PGN_130816_FurunoRemoteInfoFields
+}
+
+/**
+ * @category PGN_130816_FurunoRemoteInfo
+ */
+export interface PGN_130816_FurunoRemoteInfoFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  proprietaryId: N2K_Number | string
+  reserved5?: number
+  a?: N2K_Number
+  b?: N2K_Number
+}
+
+/**
+ * @category PGN_130816_FurunoRemoteInfo
+ */
+export const PGN_130816_FurunoRemoteInfoMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Furuno,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  proprietaryId: "Remote Info",
+}
+
+/**
+ * @category PGN_130816_FurunoRemoteInfo
+ */
+export interface PGN_130816_FurunoRemoteInfoCreateArgs {
+  reserved?: number
+  reserved5?: number
+  a?: N2K_Number
+  b?: N2K_Number
+}
+
+/**
+ * @category PGN_130816_FurunoRemoteInfo
+ */
+export class PGN_130816_FurunoRemoteInfo extends PGN implements PGN_130816_FurunoRemoteInfoInterface {
+  fields: PGN_130816_FurunoRemoteInfoFields
+
+  constructor(fields: PGN_130816_FurunoRemoteInfoCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130816,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_130816_FurunoRemoteInfoMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130816_FurunoRemoteInfoMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('furunoRemoteInfo')!
+  }
+}
+pgnIdToCreator['furunoRemoteInfo'] = (fields:any, dst:number) => new PGN_130816_FurunoRemoteInfo(fields, dst)
 
 
 /**
@@ -38167,6 +38730,73 @@ export class PGN_130849_NavicoProprietaryFp extends PGN implements PGN_130849_Na
   }
 }
 pgnIdToCreator['navicoProprietaryFp'] = (fields:any, dst:number) => new PGN_130849_NavicoProprietaryFp(fields, dst)
+
+
+/**
+ * PGN: 130849
+ *
+ * Description: Furuno: Remote Host
+ *
+ * Explanation: The NAME of the MFD a Furuno MCU-006 remote is paired with, broadcast once the pairing is made.
+ *
+ * Match: Manufacturer Code == Furuno<br>
+ * Match: Industry Code == Marine Industry<br>
+ *
+ * @category PGN_130849_FurunoRemoteHost
+ */
+export interface PGN_130849_FurunoRemoteHostInterface extends PGNInterface {
+  fields: PGN_130849_FurunoRemoteHostFields
+}
+
+/**
+ * @category PGN_130849_FurunoRemoteHost
+ */
+export interface PGN_130849_FurunoRemoteHostFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  host?: N2K_IsoName
+}
+
+/**
+ * @category PGN_130849_FurunoRemoteHost
+ */
+export const PGN_130849_FurunoRemoteHostMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Furuno,
+  industryCode: enums.IndustryCode.MarineIndustry,
+}
+
+/**
+ * @category PGN_130849_FurunoRemoteHost
+ */
+export interface PGN_130849_FurunoRemoteHostCreateArgs {
+  reserved?: number
+  host?: N2K_IsoName
+}
+
+/**
+ * @category PGN_130849_FurunoRemoteHost
+ */
+export class PGN_130849_FurunoRemoteHost extends PGN implements PGN_130849_FurunoRemoteHostInterface {
+  fields: PGN_130849_FurunoRemoteHostFields
+
+  constructor(fields: PGN_130849_FurunoRemoteHostCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130849,
+      prio: 7,
+      dst
+    })
+    this.fields = { ...PGN_130849_FurunoRemoteHostMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130849_FurunoRemoteHostMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('furunoRemoteHost')!
+  }
+}
+pgnIdToCreator['furunoRemoteHost'] = (fields:any, dst:number) => new PGN_130849_FurunoRemoteHost(fields, dst)
 
 
 /**

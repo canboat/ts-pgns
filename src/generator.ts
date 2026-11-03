@@ -194,6 +194,9 @@ if (argv.pgns) {
       case 'STRING_LZ':
       case 'STRING_LAU':
       case 'MMSI':
+      // A 64-bit NAME is more than a number holds exactly; canboatjs gives
+      // its decimal digits, as canboat's JSON has them.
+      case 'ISO_NAME':
         type = 'string'
         break
 

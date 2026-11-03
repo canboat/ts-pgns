@@ -72,7 +72,7 @@ export type N2K_Pgn = number
 /**
  * @category Field Types
  */
-export type N2K_IsoName = number
+export type N2K_IsoName = string
 /**
  * @category Field Types
  */

@@ -1478,6 +1478,26 @@ export const DcSourceValues: {[key: string]: number} = {
 /**
  * @category Enumerations
  */
+export enum DelaySource {
+  UserDefined = 'User defined',
+  MinimumDefined = 'Minimum defined',
+  FactoryDefault = 'Factory default',
+  MaximumSupported = 'Maximum supported',
+}
+
+/**
+ * @category Enumerations
+ */
+export const DelaySourceValues: {[key: string]: number} = {
+  [DelaySource.UserDefined]: 0x0,
+  [DelaySource.MinimumDefined]: 0x1,
+  [DelaySource.FactoryDefault]: 0x2,
+  [DelaySource.MaximumSupported]: 0x3,
+}
+
+/**
+ * @category Enumerations
+ */
 export enum DeviceClass {
   ReservedFor2000Use = 'Reserved for 2000 Use',
   SystemTools = 'System tools',

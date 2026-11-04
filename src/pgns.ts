@@ -16966,7 +16966,10 @@ export interface PGN_127252Interface extends PGNInterface {
 export interface PGN_127252Fields {
   sid?: N2K_Number
   heave?: N2K_Number
+  delay?: N2K_Duration
+  delaySource?: enums.DelaySource | number
   reserved?: number
+  reserved6?: number
 }
 
 /**
@@ -27611,9 +27614,9 @@ pgnIdToCreator['maretronAnnunciatorCapabilities'] = (fields:any, dst:number) => 
 /**
  * PGN: 130817
  *
- * Description: BEP Marine: CZone Status Extended
+ * Description: BEP Marine: CZone AC Output Interface status
  *
- * Explanation: Periodic extended-status frame from a CZone module. Real CZone modules use it to report per-circuit measurements (e.g. breaker current); the YDAB-01 sends a stub form for module-presence purposes only. Each per-circuit record is 3 bytes: byte 0 = circuit_id (8-bit), byte 1 = value low, byte 2 = bits 0..1 are value high (10-bit magnitude total) + bit 2 = sign (set => positive) + bit 3 = per-frame flag (only meaningful with N>=6 records) + bits 4..7 = unknown. Value is most plausibly current in 0.1 A units, but unverified. Periodic at ~2 s intervals.
+ * Explanation: Some Yacht Devices YDAB-01 adapters have been observed sending a shorter stub form of PGN 130817 for module presence; the full eight-output record layout described here is based on the captured ACOI status frame.
  *
  * Match: Manufacturer Code == BEP Marine<br>
  * Match: Industry Code == Marine Industry<br>
@@ -27633,7 +27636,30 @@ export interface PGN_130817_BepMarineCzoneStatusExtendedFields {
   industryCode?: enums.IndustryCode | number
   page?: N2K_Number
   dipswitch?: N2K_Number
-  records?: N2K_Binary
+  outputCurrent0?: N2K_Number
+  outputLevel0?: N2K_Number
+  outputUnknownFlags0?: N2K_Binary
+  outputCurrent1?: N2K_Number
+  outputLevel1?: N2K_Number
+  outputUnknownFlags1?: N2K_Binary
+  outputCurrent2?: N2K_Number
+  outputLevel2?: N2K_Number
+  outputUnknownFlags2?: N2K_Binary
+  outputCurrent3?: N2K_Number
+  outputLevel3?: N2K_Number
+  outputUnknownFlags3?: N2K_Binary
+  outputCurrent4?: N2K_Number
+  outputLevel4?: N2K_Number
+  outputUnknownFlags4?: N2K_Binary
+  outputCurrent5?: N2K_Number
+  outputLevel5?: N2K_Number
+  outputUnknownFlags5?: N2K_Binary
+  outputCurrent6?: N2K_Number
+  outputLevel6?: N2K_Number
+  outputUnknownFlags6?: N2K_Binary
+  outputCurrent7?: N2K_Number
+  outputLevel7?: N2K_Number
+  outputUnknownFlags7?: N2K_Binary
 }
 
 /**
@@ -27651,7 +27677,30 @@ export interface PGN_130817_BepMarineCzoneStatusExtendedCreateArgs {
   reserved?: number
   page?: N2K_Number
   dipswitch?: N2K_Number
-  records?: N2K_Binary
+  outputCurrent0?: N2K_Number
+  outputLevel0?: N2K_Number
+  outputUnknownFlags0?: N2K_Binary
+  outputCurrent1?: N2K_Number
+  outputLevel1?: N2K_Number
+  outputUnknownFlags1?: N2K_Binary
+  outputCurrent2?: N2K_Number
+  outputLevel2?: N2K_Number
+  outputUnknownFlags2?: N2K_Binary
+  outputCurrent3?: N2K_Number
+  outputLevel3?: N2K_Number
+  outputUnknownFlags3?: N2K_Binary
+  outputCurrent4?: N2K_Number
+  outputLevel4?: N2K_Number
+  outputUnknownFlags4?: N2K_Binary
+  outputCurrent5?: N2K_Number
+  outputLevel5?: N2K_Number
+  outputUnknownFlags5?: N2K_Binary
+  outputCurrent6?: N2K_Number
+  outputLevel6?: N2K_Number
+  outputUnknownFlags6?: N2K_Binary
+  outputCurrent7?: N2K_Number
+  outputLevel7?: N2K_Number
+  outputUnknownFlags7?: N2K_Binary
 }
 
 /**
@@ -33711,7 +33760,7 @@ pgnIdToCreator['maretronAlertControl'] = (fields:any, dst:number) => new PGN_130
 /**
  * PGN: 130822
  *
- * Description: BEP Marine: Proprietary PGN 130822
+ * Description: BEP Marine: CZone DC Output Interface status
  *
  * Match: Manufacturer Code == BEP Marine<br>
  * Match: Industry Code == Marine Industry<br>
@@ -33729,7 +33778,32 @@ export interface PGN_130822_BepMarineProprietaryPgn130822Fields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  moduleId?: N2K_Number
+  page?: N2K_Number
+  outputCurrent0?: N2K_Number
+  outputLevel0?: N2K_Number
+  outputUnknownFlags0?: N2K_Binary
+  outputCurrent1?: N2K_Number
+  outputLevel1?: N2K_Number
+  outputUnknownFlags1?: N2K_Binary
+  outputCurrent2?: N2K_Number
+  outputLevel2?: N2K_Number
+  outputUnknownFlags2?: N2K_Binary
+  outputCurrent3?: N2K_Number
+  outputLevel3?: N2K_Number
+  outputUnknownFlags3?: N2K_Binary
+  outputCurrent4?: N2K_Number
+  outputLevel4?: N2K_Number
+  outputUnknownFlags4?: N2K_Binary
+  outputCurrent5?: N2K_Number
+  outputLevel5?: N2K_Number
+  outputUnknownFlags5?: N2K_Binary
+  outputCurrent6?: N2K_Number
+  outputLevel6?: N2K_Number
+  outputUnknownFlags6?: N2K_Binary
+  outputCurrent7?: N2K_Number
+  outputLevel7?: N2K_Number
+  outputUnknownFlags7?: N2K_Binary
 }
 
 /**
@@ -33745,7 +33819,32 @@ export const PGN_130822_BepMarineProprietaryPgn130822MatchFields = {
  */
 export interface PGN_130822_BepMarineProprietaryPgn130822CreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  moduleId?: N2K_Number
+  page?: N2K_Number
+  outputCurrent0?: N2K_Number
+  outputLevel0?: N2K_Number
+  outputUnknownFlags0?: N2K_Binary
+  outputCurrent1?: N2K_Number
+  outputLevel1?: N2K_Number
+  outputUnknownFlags1?: N2K_Binary
+  outputCurrent2?: N2K_Number
+  outputLevel2?: N2K_Number
+  outputUnknownFlags2?: N2K_Binary
+  outputCurrent3?: N2K_Number
+  outputLevel3?: N2K_Number
+  outputUnknownFlags3?: N2K_Binary
+  outputCurrent4?: N2K_Number
+  outputLevel4?: N2K_Number
+  outputUnknownFlags4?: N2K_Binary
+  outputCurrent5?: N2K_Number
+  outputLevel5?: N2K_Number
+  outputUnknownFlags5?: N2K_Binary
+  outputCurrent6?: N2K_Number
+  outputLevel6?: N2K_Number
+  outputUnknownFlags6?: N2K_Binary
+  outputCurrent7?: N2K_Number
+  outputLevel7?: N2K_Number
+  outputUnknownFlags7?: N2K_Binary
 }
 
 /**
@@ -34557,7 +34656,7 @@ pgnIdToCreator['navicoAlarm'] = (fields:any, dst:number) => new PGN_130825_Navic
 /**
  * PGN: 130825
  *
- * Description: BEP Marine: Proprietary PGN 130825
+ * Description: BEP Marine: CZone Control X Plus output status
  *
  * Match: Manufacturer Code == BEP Marine<br>
  * Match: Industry Code == Marine Industry<br>
@@ -34575,7 +34674,25 @@ export interface PGN_130825_BepMarineProprietaryPgn130825Fields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  moduleId?: N2K_Number
+  page?: N2K_Number
+  unknownHeaderByte?: N2K_Binary
+  outputCurrentRaw0?: N2K_Number
+  outputLevelRaw0?: N2K_Number
+  outputCurrentRaw1?: N2K_Number
+  outputLevelRaw1?: N2K_Number
+  outputCurrentRaw2?: N2K_Number
+  outputLevelRaw2?: N2K_Number
+  outputCurrentRaw3?: N2K_Number
+  outputLevelRaw3?: N2K_Number
+  outputCurrentRaw4?: N2K_Number
+  outputLevelRaw4?: N2K_Number
+  outputCurrentRaw5?: N2K_Number
+  outputLevelRaw5?: N2K_Number
+  outputCurrentRaw6?: N2K_Number
+  outputLevelRaw6?: N2K_Number
+  outputCurrentRaw7?: N2K_Number
+  outputLevelRaw7?: N2K_Number
 }
 
 /**
@@ -34591,7 +34708,25 @@ export const PGN_130825_BepMarineProprietaryPgn130825MatchFields = {
  */
 export interface PGN_130825_BepMarineProprietaryPgn130825CreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  moduleId?: N2K_Number
+  page?: N2K_Number
+  unknownHeaderByte?: N2K_Binary
+  outputCurrentRaw0?: N2K_Number
+  outputLevelRaw0?: N2K_Number
+  outputCurrentRaw1?: N2K_Number
+  outputLevelRaw1?: N2K_Number
+  outputCurrentRaw2?: N2K_Number
+  outputLevelRaw2?: N2K_Number
+  outputCurrentRaw3?: N2K_Number
+  outputLevelRaw3?: N2K_Number
+  outputCurrentRaw4?: N2K_Number
+  outputLevelRaw4?: N2K_Number
+  outputCurrentRaw5?: N2K_Number
+  outputLevelRaw5?: N2K_Number
+  outputCurrentRaw6?: N2K_Number
+  outputLevelRaw6?: N2K_Number
+  outputCurrentRaw7?: N2K_Number
+  outputLevelRaw7?: N2K_Number
 }
 
 /**
@@ -39715,8 +39850,8 @@ export interface PGN_130850_SimnetEventFields {
   address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
-  reserved7?: number
-  reserved8?: number
+  commandType?: enums.SimnetEventType | number
+  event?: N2K_Number
   reserved9?: number
   reserved10?: number
   reserved11?: number
@@ -39740,8 +39875,8 @@ export interface PGN_130850_SimnetEventCreateArgs {
   address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
-  reserved7?: number
-  reserved8?: number
+  commandType?: enums.SimnetEventType | number
+  event?: N2K_Number
   reserved9?: number
   reserved10?: number
   reserved11?: number

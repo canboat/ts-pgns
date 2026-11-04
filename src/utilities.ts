@@ -31,6 +31,7 @@ import {
 } from './pgns'
 import { GroupFunction } from './enums'
 import canboat from '../canboat.json'
+import pseudo from '../canboat-pseudo.json'
 import { fixIdentifier } from './internals'
 import { Field, Definition } from './definition'
 import { satisfies } from 'semver'
@@ -64,6 +65,18 @@ export {
  * @category PGN Definition Access
  */
 export const canboatVersion: string = canboat.Version
+
+// canboat's pseudo PGNs, which it publishes apart in canboat-pseudo.json:
+// the gateways' own messages (the Actisense BEM answers, from 0x40000 on,
+// and the gateway network status, 0x40100) and canboat's. They are
+// definitions like the others, so they are added to the same list, once:
+// the JSON module is shared by every copy of this module that loads it.
+{
+  const ids = new Set(canboat.PGNs.map((def) => def.Id))
+  canboat.PGNs.push(
+    ...(pseudo.PGNs as typeof canboat.PGNs).filter((def) => !ids.has(def.Id))
+  )
+}
 
 /**
  * @category PGN Definition Access

@@ -16966,7 +16966,10 @@ export interface PGN_127252Interface extends PGNInterface {
 export interface PGN_127252Fields {
   sid?: N2K_Number
   heave?: N2K_Number
+  delay?: N2K_Duration
+  delaySource?: enums.DelaySource | number
   reserved?: number
+  reserved6?: number
 }
 
 /**
@@ -27611,9 +27614,9 @@ pgnIdToCreator['maretronAnnunciatorCapabilities'] = (fields:any, dst:number) => 
 /**
  * PGN: 130817
  *
- * Description: BEP Marine: CZone Status Extended
+ * Description: BEP Marine: CZone AC Output Interface status
  *
- * Explanation: Periodic extended-status frame from a CZone module. Real CZone modules use it to report per-circuit measurements (e.g. breaker current); the YDAB-01 sends a stub form for module-presence purposes only. Each per-circuit record is 3 bytes: byte 0 = circuit_id (8-bit), byte 1 = value low, byte 2 = bits 0..1 are value high (10-bit magnitude total) + bit 2 = sign (set => positive) + bit 3 = per-frame flag (only meaningful with N>=6 records) + bits 4..7 = unknown. Value is most plausibly current in 0.1 A units, but unverified. Periodic at ~2 s intervals.
+ * Explanation: Some Yacht Devices YDAB-01 adapters have been observed sending a shorter stub form of PGN 130817 for module presence; the full eight-output record layout described here is based on the captured ACOI status frame.
  *
  * Match: Manufacturer Code == BEP Marine<br>
  * Match: Industry Code == Marine Industry<br>
@@ -27633,7 +27636,30 @@ export interface PGN_130817_BepMarineCzoneStatusExtendedFields {
   industryCode?: enums.IndustryCode | number
   page?: N2K_Number
   dipswitch?: N2K_Number
-  records?: N2K_Binary
+  outputCurrent0?: N2K_Number
+  outputLevel0?: N2K_Number
+  outputUnknownFlags0?: N2K_Binary
+  outputCurrent1?: N2K_Number
+  outputLevel1?: N2K_Number
+  outputUnknownFlags1?: N2K_Binary
+  outputCurrent2?: N2K_Number
+  outputLevel2?: N2K_Number
+  outputUnknownFlags2?: N2K_Binary
+  outputCurrent3?: N2K_Number
+  outputLevel3?: N2K_Number
+  outputUnknownFlags3?: N2K_Binary
+  outputCurrent4?: N2K_Number
+  outputLevel4?: N2K_Number
+  outputUnknownFlags4?: N2K_Binary
+  outputCurrent5?: N2K_Number
+  outputLevel5?: N2K_Number
+  outputUnknownFlags5?: N2K_Binary
+  outputCurrent6?: N2K_Number
+  outputLevel6?: N2K_Number
+  outputUnknownFlags6?: N2K_Binary
+  outputCurrent7?: N2K_Number
+  outputLevel7?: N2K_Number
+  outputUnknownFlags7?: N2K_Binary
 }
 
 /**
@@ -27651,7 +27677,30 @@ export interface PGN_130817_BepMarineCzoneStatusExtendedCreateArgs {
   reserved?: number
   page?: N2K_Number
   dipswitch?: N2K_Number
-  records?: N2K_Binary
+  outputCurrent0?: N2K_Number
+  outputLevel0?: N2K_Number
+  outputUnknownFlags0?: N2K_Binary
+  outputCurrent1?: N2K_Number
+  outputLevel1?: N2K_Number
+  outputUnknownFlags1?: N2K_Binary
+  outputCurrent2?: N2K_Number
+  outputLevel2?: N2K_Number
+  outputUnknownFlags2?: N2K_Binary
+  outputCurrent3?: N2K_Number
+  outputLevel3?: N2K_Number
+  outputUnknownFlags3?: N2K_Binary
+  outputCurrent4?: N2K_Number
+  outputLevel4?: N2K_Number
+  outputUnknownFlags4?: N2K_Binary
+  outputCurrent5?: N2K_Number
+  outputLevel5?: N2K_Number
+  outputUnknownFlags5?: N2K_Binary
+  outputCurrent6?: N2K_Number
+  outputLevel6?: N2K_Number
+  outputUnknownFlags6?: N2K_Binary
+  outputCurrent7?: N2K_Number
+  outputLevel7?: N2K_Number
+  outputUnknownFlags7?: N2K_Binary
 }
 
 /**
@@ -33711,7 +33760,7 @@ pgnIdToCreator['maretronAlertControl'] = (fields:any, dst:number) => new PGN_130
 /**
  * PGN: 130822
  *
- * Description: BEP Marine: Proprietary PGN 130822
+ * Description: BEP Marine: CZone DC Output Interface status
  *
  * Match: Manufacturer Code == BEP Marine<br>
  * Match: Industry Code == Marine Industry<br>
@@ -33729,7 +33778,32 @@ export interface PGN_130822_BepMarineProprietaryPgn130822Fields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  moduleId?: N2K_Number
+  page?: N2K_Number
+  outputCurrent0?: N2K_Number
+  outputLevel0?: N2K_Number
+  outputUnknownFlags0?: N2K_Binary
+  outputCurrent1?: N2K_Number
+  outputLevel1?: N2K_Number
+  outputUnknownFlags1?: N2K_Binary
+  outputCurrent2?: N2K_Number
+  outputLevel2?: N2K_Number
+  outputUnknownFlags2?: N2K_Binary
+  outputCurrent3?: N2K_Number
+  outputLevel3?: N2K_Number
+  outputUnknownFlags3?: N2K_Binary
+  outputCurrent4?: N2K_Number
+  outputLevel4?: N2K_Number
+  outputUnknownFlags4?: N2K_Binary
+  outputCurrent5?: N2K_Number
+  outputLevel5?: N2K_Number
+  outputUnknownFlags5?: N2K_Binary
+  outputCurrent6?: N2K_Number
+  outputLevel6?: N2K_Number
+  outputUnknownFlags6?: N2K_Binary
+  outputCurrent7?: N2K_Number
+  outputLevel7?: N2K_Number
+  outputUnknownFlags7?: N2K_Binary
 }
 
 /**
@@ -33745,7 +33819,32 @@ export const PGN_130822_BepMarineProprietaryPgn130822MatchFields = {
  */
 export interface PGN_130822_BepMarineProprietaryPgn130822CreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  moduleId?: N2K_Number
+  page?: N2K_Number
+  outputCurrent0?: N2K_Number
+  outputLevel0?: N2K_Number
+  outputUnknownFlags0?: N2K_Binary
+  outputCurrent1?: N2K_Number
+  outputLevel1?: N2K_Number
+  outputUnknownFlags1?: N2K_Binary
+  outputCurrent2?: N2K_Number
+  outputLevel2?: N2K_Number
+  outputUnknownFlags2?: N2K_Binary
+  outputCurrent3?: N2K_Number
+  outputLevel3?: N2K_Number
+  outputUnknownFlags3?: N2K_Binary
+  outputCurrent4?: N2K_Number
+  outputLevel4?: N2K_Number
+  outputUnknownFlags4?: N2K_Binary
+  outputCurrent5?: N2K_Number
+  outputLevel5?: N2K_Number
+  outputUnknownFlags5?: N2K_Binary
+  outputCurrent6?: N2K_Number
+  outputLevel6?: N2K_Number
+  outputUnknownFlags6?: N2K_Binary
+  outputCurrent7?: N2K_Number
+  outputLevel7?: N2K_Number
+  outputUnknownFlags7?: N2K_Binary
 }
 
 /**
@@ -34557,7 +34656,7 @@ pgnIdToCreator['navicoAlarm'] = (fields:any, dst:number) => new PGN_130825_Navic
 /**
  * PGN: 130825
  *
- * Description: BEP Marine: Proprietary PGN 130825
+ * Description: BEP Marine: CZone Control X Plus output status
  *
  * Match: Manufacturer Code == BEP Marine<br>
  * Match: Industry Code == Marine Industry<br>
@@ -34575,7 +34674,25 @@ export interface PGN_130825_BepMarineProprietaryPgn130825Fields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
-  data?: N2K_Binary
+  moduleId?: N2K_Number
+  page?: N2K_Number
+  unknownHeaderByte?: N2K_Binary
+  outputCurrentRaw0?: N2K_Number
+  outputLevelRaw0?: N2K_Number
+  outputCurrentRaw1?: N2K_Number
+  outputLevelRaw1?: N2K_Number
+  outputCurrentRaw2?: N2K_Number
+  outputLevelRaw2?: N2K_Number
+  outputCurrentRaw3?: N2K_Number
+  outputLevelRaw3?: N2K_Number
+  outputCurrentRaw4?: N2K_Number
+  outputLevelRaw4?: N2K_Number
+  outputCurrentRaw5?: N2K_Number
+  outputLevelRaw5?: N2K_Number
+  outputCurrentRaw6?: N2K_Number
+  outputLevelRaw6?: N2K_Number
+  outputCurrentRaw7?: N2K_Number
+  outputLevelRaw7?: N2K_Number
 }
 
 /**
@@ -34591,7 +34708,25 @@ export const PGN_130825_BepMarineProprietaryPgn130825MatchFields = {
  */
 export interface PGN_130825_BepMarineProprietaryPgn130825CreateArgs {
   reserved?: number
-  data?: N2K_Binary
+  moduleId?: N2K_Number
+  page?: N2K_Number
+  unknownHeaderByte?: N2K_Binary
+  outputCurrentRaw0?: N2K_Number
+  outputLevelRaw0?: N2K_Number
+  outputCurrentRaw1?: N2K_Number
+  outputLevelRaw1?: N2K_Number
+  outputCurrentRaw2?: N2K_Number
+  outputLevelRaw2?: N2K_Number
+  outputCurrentRaw3?: N2K_Number
+  outputLevelRaw3?: N2K_Number
+  outputCurrentRaw4?: N2K_Number
+  outputLevelRaw4?: N2K_Number
+  outputCurrentRaw5?: N2K_Number
+  outputLevelRaw5?: N2K_Number
+  outputCurrentRaw6?: N2K_Number
+  outputLevelRaw6?: N2K_Number
+  outputCurrentRaw7?: N2K_Number
+  outputLevelRaw7?: N2K_Number
 }
 
 /**
@@ -39715,8 +39850,8 @@ export interface PGN_130850_SimnetEventFields {
   address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
-  reserved7?: number
-  reserved8?: number
+  commandType?: enums.SimnetEventType | number
+  event?: N2K_Number
   reserved9?: number
   reserved10?: number
   reserved11?: number
@@ -39740,8 +39875,8 @@ export interface PGN_130850_SimnetEventCreateArgs {
   address?: N2K_Address
   reserved5?: number
   networkGroup?: enums.SimnetNetworkGroup | number
-  reserved7?: number
-  reserved8?: number
+  commandType?: enums.SimnetEventType | number
+  event?: N2K_Number
   reserved9?: number
   reserved10?: number
   reserved11?: number
@@ -41482,5 +41617,862 @@ export class PGN_131012_YamahaEngineData7 extends PGN implements PGN_131012_Yama
   }
 }
 pgnIdToCreator['yamahaEngineData7'] = (fields:any, dst:number) => new PGN_131012_YamahaEngineData7(fields, dst)
+
+
+/**
+ * PGN: 262161
+ *
+ * Description: Actisense: Operating mode
+ *
+ * @category PGN_262161
+ */
+export interface PGN_262161Interface extends PGNInterface {
+  fields: PGN_262161Fields
+}
+
+/**
+ * @category PGN_262161
+ */
+export interface PGN_262161Fields {
+  sid?: N2K_Number
+  modelId?: N2K_Number
+  serialId?: N2K_Number
+  errorId?: N2K_Number
+  operatingMode?: enums.ActisenseOperatingMode | number
+}
+
+/**
+ * @category PGN_262161
+ */
+export class PGN_262161 extends PGN implements PGN_262161Interface {
+  fields: PGN_262161Fields
+
+  constructor(fields: PGN_262161Fields, dst: number = 255) {
+    super({
+      pgn: 262161,
+      prio: 3,
+      dst
+    })
+    this.fields = fields
+  }
+
+  getDefinition(): Definition {
+    return getPGNWithId('actisenseOperatingMode')!
+  }
+}
+pgnIdToCreator['actisenseOperatingMode'] = (fields:any, dst:number) => new PGN_262161(fields, dst)
+
+
+/**
+ * PGN: 262209
+ *
+ * Description: Actisense: Product info, main
+ *
+ * Explanation: BEM 41H, an Actisense gateway's answer to Get Product Info. Older firmware, including the NGT-1 and NGW-1, answers in five parts numbered by the SID; firmware from v2.500 on may answer in one message with SID 6. See the Actisense SDK, https://github.com/Actisense/SDK/blob/main/docs/DataFormats/Binary/bem-detail/product-info.md.
+ *
+ * Match: SID == Part 1 of 5<br>
+ *
+ * @category PGN_262209_ActisenseProductInfoMain
+ */
+export interface PGN_262209_ActisenseProductInfoMainInterface extends PGNInterface {
+  fields: PGN_262209_ActisenseProductInfoMainFields
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfoMain
+ */
+export interface PGN_262209_ActisenseProductInfoMainFields {
+  sid?: N2K_Number | string
+  modelId?: N2K_Number
+  serialId?: N2K_Number
+  errorId?: N2K_Number
+  nmea2000Version?: N2K_Number
+  productCode?: N2K_Number
+  certificationLevel?: enums.CertificationLevel | number
+  loadEquivalency?: N2K_Number
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfoMain
+ */
+export const PGN_262209_ActisenseProductInfoMainMatchFields = {
+  sid: "Part 1 of 5",
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfoMain
+ */
+export interface PGN_262209_ActisenseProductInfoMainCreateArgs {
+  modelId?: N2K_Number
+  serialId?: N2K_Number
+  errorId?: N2K_Number
+  nmea2000Version?: N2K_Number
+  productCode?: N2K_Number
+  certificationLevel?: enums.CertificationLevel | number
+  loadEquivalency?: N2K_Number
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfoMain
+ */
+export class PGN_262209_ActisenseProductInfoMain extends PGN implements PGN_262209_ActisenseProductInfoMainInterface {
+  fields: PGN_262209_ActisenseProductInfoMainFields
+
+  constructor(fields: PGN_262209_ActisenseProductInfoMainCreateArgs, dst: number = 255) {
+    super({
+      pgn: 262209,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_262209_ActisenseProductInfoMainMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_262209_ActisenseProductInfoMainMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('actisenseProductInfoMain')!
+  }
+}
+pgnIdToCreator['actisenseProductInfoMain'] = (fields:any, dst:number) => new PGN_262209_ActisenseProductInfoMain(fields, dst)
+
+
+/**
+ * PGN: 262209
+ *
+ * Description: Actisense: Product info, model ID
+ *
+ * Explanation: BEM 41H, an Actisense gateway's answer to Get Product Info. Older firmware, including the NGT-1 and NGW-1, answers in five parts numbered by the SID; firmware from v2.500 on may answer in one message with SID 6. See the Actisense SDK, https://github.com/Actisense/SDK/blob/main/docs/DataFormats/Binary/bem-detail/product-info.md.
+ *
+ * Match: SID == Part 2 of 5<br>
+ *
+ * @category PGN_262209_ActisenseProductInfoModelId
+ */
+export interface PGN_262209_ActisenseProductInfoModelIdInterface extends PGNInterface {
+  fields: PGN_262209_ActisenseProductInfoModelIdFields
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfoModelId
+ */
+export interface PGN_262209_ActisenseProductInfoModelIdFields {
+  sid?: N2K_Number | string
+  modelId?: N2K_Number
+  serialId?: N2K_Number
+  errorId?: N2K_Number
+  modelIdString?: N2K_StringFix
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfoModelId
+ */
+export const PGN_262209_ActisenseProductInfoModelIdMatchFields = {
+  sid: "Part 2 of 5",
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfoModelId
+ */
+export interface PGN_262209_ActisenseProductInfoModelIdCreateArgs {
+  modelId?: N2K_Number
+  serialId?: N2K_Number
+  errorId?: N2K_Number
+  modelIdString?: N2K_StringFix
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfoModelId
+ */
+export class PGN_262209_ActisenseProductInfoModelId extends PGN implements PGN_262209_ActisenseProductInfoModelIdInterface {
+  fields: PGN_262209_ActisenseProductInfoModelIdFields
+
+  constructor(fields: PGN_262209_ActisenseProductInfoModelIdCreateArgs, dst: number = 255) {
+    super({
+      pgn: 262209,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_262209_ActisenseProductInfoModelIdMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_262209_ActisenseProductInfoModelIdMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('actisenseProductInfoModelId')!
+  }
+}
+pgnIdToCreator['actisenseProductInfoModelId'] = (fields:any, dst:number) => new PGN_262209_ActisenseProductInfoModelId(fields, dst)
+
+
+/**
+ * PGN: 262209
+ *
+ * Description: Actisense: Product info, software version
+ *
+ * Explanation: BEM 41H, an Actisense gateway's answer to Get Product Info. Older firmware, including the NGT-1 and NGW-1, answers in five parts numbered by the SID; firmware from v2.500 on may answer in one message with SID 6. See the Actisense SDK, https://github.com/Actisense/SDK/blob/main/docs/DataFormats/Binary/bem-detail/product-info.md.
+ *
+ * Match: SID == Part 3 of 5<br>
+ *
+ * @category PGN_262209_ActisenseProductInfoSoftwareVersion
+ */
+export interface PGN_262209_ActisenseProductInfoSoftwareVersionInterface extends PGNInterface {
+  fields: PGN_262209_ActisenseProductInfoSoftwareVersionFields
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfoSoftwareVersion
+ */
+export interface PGN_262209_ActisenseProductInfoSoftwareVersionFields {
+  sid?: N2K_Number | string
+  modelId?: N2K_Number
+  serialId?: N2K_Number
+  errorId?: N2K_Number
+  softwareVersion?: N2K_StringFix
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfoSoftwareVersion
+ */
+export const PGN_262209_ActisenseProductInfoSoftwareVersionMatchFields = {
+  sid: "Part 3 of 5",
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfoSoftwareVersion
+ */
+export interface PGN_262209_ActisenseProductInfoSoftwareVersionCreateArgs {
+  modelId?: N2K_Number
+  serialId?: N2K_Number
+  errorId?: N2K_Number
+  softwareVersion?: N2K_StringFix
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfoSoftwareVersion
+ */
+export class PGN_262209_ActisenseProductInfoSoftwareVersion extends PGN implements PGN_262209_ActisenseProductInfoSoftwareVersionInterface {
+  fields: PGN_262209_ActisenseProductInfoSoftwareVersionFields
+
+  constructor(fields: PGN_262209_ActisenseProductInfoSoftwareVersionCreateArgs, dst: number = 255) {
+    super({
+      pgn: 262209,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_262209_ActisenseProductInfoSoftwareVersionMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_262209_ActisenseProductInfoSoftwareVersionMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('actisenseProductInfoSoftwareVersion')!
+  }
+}
+pgnIdToCreator['actisenseProductInfoSoftwareVersion'] = (fields:any, dst:number) => new PGN_262209_ActisenseProductInfoSoftwareVersion(fields, dst)
+
+
+/**
+ * PGN: 262209
+ *
+ * Description: Actisense: Product info, hardware version
+ *
+ * Explanation: BEM 41H, an Actisense gateway's answer to Get Product Info. Older firmware, including the NGT-1 and NGW-1, answers in five parts numbered by the SID; firmware from v2.500 on may answer in one message with SID 6. See the Actisense SDK, https://github.com/Actisense/SDK/blob/main/docs/DataFormats/Binary/bem-detail/product-info.md.
+ *
+ * Match: SID == Part 4 of 5<br>
+ *
+ * @category PGN_262209_ActisenseProductInfoHardwareVersion
+ */
+export interface PGN_262209_ActisenseProductInfoHardwareVersionInterface extends PGNInterface {
+  fields: PGN_262209_ActisenseProductInfoHardwareVersionFields
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfoHardwareVersion
+ */
+export interface PGN_262209_ActisenseProductInfoHardwareVersionFields {
+  sid?: N2K_Number | string
+  modelId?: N2K_Number
+  serialId?: N2K_Number
+  errorId?: N2K_Number
+  hardwareVersion?: N2K_StringFix
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfoHardwareVersion
+ */
+export const PGN_262209_ActisenseProductInfoHardwareVersionMatchFields = {
+  sid: "Part 4 of 5",
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfoHardwareVersion
+ */
+export interface PGN_262209_ActisenseProductInfoHardwareVersionCreateArgs {
+  modelId?: N2K_Number
+  serialId?: N2K_Number
+  errorId?: N2K_Number
+  hardwareVersion?: N2K_StringFix
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfoHardwareVersion
+ */
+export class PGN_262209_ActisenseProductInfoHardwareVersion extends PGN implements PGN_262209_ActisenseProductInfoHardwareVersionInterface {
+  fields: PGN_262209_ActisenseProductInfoHardwareVersionFields
+
+  constructor(fields: PGN_262209_ActisenseProductInfoHardwareVersionCreateArgs, dst: number = 255) {
+    super({
+      pgn: 262209,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_262209_ActisenseProductInfoHardwareVersionMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_262209_ActisenseProductInfoHardwareVersionMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('actisenseProductInfoHardwareVersion')!
+  }
+}
+pgnIdToCreator['actisenseProductInfoHardwareVersion'] = (fields:any, dst:number) => new PGN_262209_ActisenseProductInfoHardwareVersion(fields, dst)
+
+
+/**
+ * PGN: 262209
+ *
+ * Description: Actisense: Product info, serial number
+ *
+ * Explanation: BEM 41H, an Actisense gateway's answer to Get Product Info. Older firmware, including the NGT-1 and NGW-1, answers in five parts numbered by the SID; firmware from v2.500 on may answer in one message with SID 6. See the Actisense SDK, https://github.com/Actisense/SDK/blob/main/docs/DataFormats/Binary/bem-detail/product-info.md.
+ *
+ * Match: SID == Part 5 of 5<br>
+ *
+ * @category PGN_262209_ActisenseProductInfoSerialNumber
+ */
+export interface PGN_262209_ActisenseProductInfoSerialNumberInterface extends PGNInterface {
+  fields: PGN_262209_ActisenseProductInfoSerialNumberFields
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfoSerialNumber
+ */
+export interface PGN_262209_ActisenseProductInfoSerialNumberFields {
+  sid?: N2K_Number | string
+  modelId?: N2K_Number
+  serialId?: N2K_Number
+  errorId?: N2K_Number
+  serialNumber?: N2K_StringFix
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfoSerialNumber
+ */
+export const PGN_262209_ActisenseProductInfoSerialNumberMatchFields = {
+  sid: "Part 5 of 5",
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfoSerialNumber
+ */
+export interface PGN_262209_ActisenseProductInfoSerialNumberCreateArgs {
+  modelId?: N2K_Number
+  serialId?: N2K_Number
+  errorId?: N2K_Number
+  serialNumber?: N2K_StringFix
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfoSerialNumber
+ */
+export class PGN_262209_ActisenseProductInfoSerialNumber extends PGN implements PGN_262209_ActisenseProductInfoSerialNumberInterface {
+  fields: PGN_262209_ActisenseProductInfoSerialNumberFields
+
+  constructor(fields: PGN_262209_ActisenseProductInfoSerialNumberCreateArgs, dst: number = 255) {
+    super({
+      pgn: 262209,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_262209_ActisenseProductInfoSerialNumberMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_262209_ActisenseProductInfoSerialNumberMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('actisenseProductInfoSerialNumber')!
+  }
+}
+pgnIdToCreator['actisenseProductInfoSerialNumber'] = (fields:any, dst:number) => new PGN_262209_ActisenseProductInfoSerialNumber(fields, dst)
+
+
+/**
+ * PGN: 262209
+ *
+ * Description: Actisense: Product info
+ *
+ * Explanation: BEM 41H, an Actisense gateway's answer to Get Product Info. Older firmware, including the NGT-1 and NGW-1, answers in five parts numbered by the SID; firmware from v2.500 on may answer in one message with SID 6. See the Actisense SDK, https://github.com/Actisense/SDK/blob/main/docs/DataFormats/Binary/bem-detail/product-info.md.
+ *
+ * Match: SID == Single message<br>
+ *
+ * @category PGN_262209_ActisenseProductInfo
+ */
+export interface PGN_262209_ActisenseProductInfoInterface extends PGNInterface {
+  fields: PGN_262209_ActisenseProductInfoFields
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfo
+ */
+export interface PGN_262209_ActisenseProductInfoFields {
+  sid?: N2K_Number | string
+  modelId?: N2K_Number
+  serialId?: N2K_Number
+  errorId?: N2K_Number
+  structureVariant?: N2K_Number
+  nmea2000Version?: N2K_Number
+  productCode?: N2K_Number
+  modelIdString?: N2K_StringFix
+  softwareVersion?: N2K_StringFix
+  hardwareVersion?: N2K_StringFix
+  serialNumber?: N2K_StringFix
+  certificationLevel?: enums.CertificationLevel | number
+  loadEquivalency?: N2K_Number
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfo
+ */
+export const PGN_262209_ActisenseProductInfoMatchFields = {
+  sid: "Single message",
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfo
+ */
+export interface PGN_262209_ActisenseProductInfoCreateArgs {
+  modelId?: N2K_Number
+  serialId?: N2K_Number
+  errorId?: N2K_Number
+  structureVariant?: N2K_Number
+  nmea2000Version?: N2K_Number
+  productCode?: N2K_Number
+  modelIdString?: N2K_StringFix
+  softwareVersion?: N2K_StringFix
+  hardwareVersion?: N2K_StringFix
+  serialNumber?: N2K_StringFix
+  certificationLevel?: enums.CertificationLevel | number
+  loadEquivalency?: N2K_Number
+}
+
+/**
+ * @category PGN_262209_ActisenseProductInfo
+ */
+export class PGN_262209_ActisenseProductInfo extends PGN implements PGN_262209_ActisenseProductInfoInterface {
+  fields: PGN_262209_ActisenseProductInfoFields
+
+  constructor(fields: PGN_262209_ActisenseProductInfoCreateArgs, dst: number = 255) {
+    super({
+      pgn: 262209,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_262209_ActisenseProductInfoMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_262209_ActisenseProductInfoMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('actisenseProductInfo')!
+  }
+}
+pgnIdToCreator['actisenseProductInfo'] = (fields:any, dst:number) => new PGN_262209_ActisenseProductInfo(fields, dst)
+
+
+/**
+ * PGN: 262384
+ *
+ * Description: Actisense: Startup status
+ *
+ * @category PGN_262384
+ */
+export interface PGN_262384Interface extends PGNInterface {
+  fields: PGN_262384Fields
+}
+
+/**
+ * @category PGN_262384
+ */
+export interface PGN_262384Fields {
+  sid?: N2K_Number
+  modelId?: N2K_Number
+  serialId?: N2K_Number
+  errorId?: N2K_Number
+  firmwareVersion?: N2K_Number
+  resetStatus?: N2K_Binary
+}
+
+/**
+ * @category PGN_262384
+ */
+export class PGN_262384 extends PGN implements PGN_262384Interface {
+  fields: PGN_262384Fields
+
+  constructor(fields: PGN_262384Fields, dst: number = 255) {
+    super({
+      pgn: 262384,
+      prio: 3,
+      dst
+    })
+    this.fields = fields
+  }
+
+  getDefinition(): Definition {
+    return getPGNWithId('actisenseStartupStatus')!
+  }
+}
+pgnIdToCreator['actisenseStartupStatus'] = (fields:any, dst:number) => new PGN_262384(fields, dst)
+
+
+/**
+ * PGN: 262385
+ *
+ * Description: Actisense: Error report
+ *
+ * Explanation: BEM F1H, sent unsolicited by an Actisense gateway that hits an error; the Error ID names it. The error data that follows the Structure Variant depends on that variant and is not decoded. See the Actisense SDK, https://github.com/Actisense/SDK/blob/main/docs/DataFormats/Binary/bem-detail/error-report.md.
+ *
+ * @category PGN_262385
+ */
+export interface PGN_262385Interface extends PGNInterface {
+  fields: PGN_262385Fields
+}
+
+/**
+ * @category PGN_262385
+ */
+export interface PGN_262385Fields {
+  sid?: N2K_Number
+  modelId?: N2K_Number
+  serialId?: N2K_Number
+  errorId?: N2K_Number
+  dataSize?: N2K_Number
+  structureVariant?: N2K_Number
+}
+
+/**
+ * @category PGN_262385
+ */
+export class PGN_262385 extends PGN implements PGN_262385Interface {
+  fields: PGN_262385Fields
+
+  constructor(fields: PGN_262385Fields, dst: number = 255) {
+    super({
+      pgn: 262385,
+      prio: 3,
+      dst
+    })
+    this.fields = fields
+  }
+
+  getDefinition(): Definition {
+    return getPGNWithId('actisenseErrorReport')!
+  }
+}
+pgnIdToCreator['actisenseErrorReport'] = (fields:any, dst:number) => new PGN_262385(fields, dst)
+
+
+/**
+ * PGN: 262386
+ *
+ * Description: Actisense: System status
+ *
+ * @category PGN_262386
+ */
+export interface PGN_262386Interface extends PGNInterface {
+  fields: PGN_262386Fields
+}
+
+/**
+ * @category PGN_262386
+ */
+export interface PGN_262386Fields {
+  sid?: N2K_Number
+  modelId?: N2K_Number
+  serialId?: N2K_Number
+  errorId?: N2K_Number
+  indiChannelCount?: N2K_Number
+  ch1RxBandwidth?: N2K_Number
+  ch1RxLoad?: N2K_Number
+  ch1RxFiltered?: N2K_Number
+  ch1RxDropped?: N2K_Number
+  ch1TxBandwidth?: N2K_Number
+  ch1TxLoad?: N2K_Number
+  ch2RxBandwidth?: N2K_Number
+  ch2RxLoad?: N2K_Number
+  ch2RxFiltered?: N2K_Number
+  ch2RxDropped?: N2K_Number
+  ch2TxBandwidth?: N2K_Number
+  ch2TxLoad?: N2K_Number
+  uniChannelCount?: N2K_Number
+  ch1Bandwidth?: N2K_Number
+  ch1Deleted?: N2K_Number
+  ch1Bufferloading?: N2K_Number
+  ch1Pointerloading?: N2K_Number
+  ch2Bandwidth?: N2K_Number
+  ch2Deleted?: N2K_Number
+  ch2Bufferloading?: N2K_Number
+  ch2Pointerloading?: N2K_Number
+}
+
+/**
+ * @category PGN_262386
+ */
+export class PGN_262386 extends PGN implements PGN_262386Interface {
+  fields: PGN_262386Fields
+
+  constructor(fields: PGN_262386Fields, dst: number = 255) {
+    super({
+      pgn: 262386,
+      prio: 3,
+      dst
+    })
+    this.fields = fields
+  }
+
+  getDefinition(): Definition {
+    return getPGNWithId('actisenseSystemStatus')!
+  }
+}
+pgnIdToCreator['actisenseSystemStatus'] = (fields:any, dst:number) => new PGN_262386(fields, dst)
+
+
+/**
+ * PGN: 262388
+ *
+ * Description: Actisense: Negative Ack
+ *
+ * Explanation: BEM F4H, sent by an Actisense gateway when it cannot carry out a command; the Error ID says why. See the Actisense SDK, https://github.com/Actisense/SDK/blob/main/docs/DataFormats/Binary/bem-detail/negative-ack.md.
+ *
+ * @category PGN_262388
+ */
+export interface PGN_262388Interface extends PGNInterface {
+  fields: PGN_262388Fields
+}
+
+/**
+ * @category PGN_262388
+ */
+export interface PGN_262388Fields {
+  sid?: N2K_Number
+  modelId?: N2K_Number
+  serialId?: N2K_Number
+  errorId?: N2K_Number
+  uniqueCommandId?: N2K_Number
+}
+
+/**
+ * @category PGN_262388
+ */
+export class PGN_262388 extends PGN implements PGN_262388Interface {
+  fields: PGN_262388Fields
+
+  constructor(fields: PGN_262388Fields, dst: number = 255) {
+    super({
+      pgn: 262388,
+      prio: 3,
+      dst
+    })
+    this.fields = fields
+  }
+
+  getDefinition(): Definition {
+    return getPGNWithId('actisenseNegativeAck')!
+  }
+}
+pgnIdToCreator['actisenseNegativeAck'] = (fields:any, dst:number) => new PGN_262388(fields, dst)
+
+
+/**
+ * PGN: 262400
+ *
+ * Description: NMEA 2000 gateway: network status
+ *
+ * @category PGN_262400
+ */
+export interface PGN_262400Interface extends PGNInterface {
+  fields: PGN_262400Fields
+}
+
+/**
+ * @category PGN_262400
+ */
+export interface PGN_262400Fields {
+  canNetworkLoad?: N2K_Number
+  errors?: N2K_Number
+  deviceCount?: N2K_Number
+  uptime?: N2K_Duration
+  gatewayAddress?: N2K_Number
+  rejectedTxRequests?: N2K_Number
+}
+
+/**
+ * @category PGN_262400
+ */
+export class PGN_262400 extends PGN implements PGN_262400Interface {
+  fields: PGN_262400Fields
+
+  constructor(fields: PGN_262400Fields, dst: number = 255) {
+    super({
+      pgn: 262400,
+      prio: 3,
+      dst
+    })
+    this.fields = fields
+  }
+
+  getDefinition(): Definition {
+    return getPGNWithId('nmea2000GatewayNetworkStatus')!
+  }
+}
+pgnIdToCreator['nmea2000GatewayNetworkStatus'] = (fields:any, dst:number) => new PGN_262400(fields, dst)
+
+
+/**
+ * PGN: 262656
+ *
+ * Description: CANboat: Startup
+ *
+ * @category PGN_262656
+ */
+export interface PGN_262656Interface extends PGNInterface {
+  fields: PGN_262656Fields
+}
+
+/**
+ * @category PGN_262656
+ */
+export interface PGN_262656Fields {
+  version?: N2K_Number
+  source?: N2K_StringFix
+  device?: N2K_StringFix
+}
+
+/**
+ * @category PGN_262656
+ */
+export class PGN_262656 extends PGN implements PGN_262656Interface {
+  fields: PGN_262656Fields
+
+  constructor(fields: PGN_262656Fields, dst: number = 255) {
+    super({
+      pgn: 262656,
+      prio: 3,
+      dst
+    })
+    this.fields = fields
+  }
+
+  getDefinition(): Definition {
+    return getPGNWithId('canboatStartup')!
+  }
+}
+pgnIdToCreator['canboatStartup'] = (fields:any, dst:number) => new PGN_262656(fields, dst)
+
+
+/**
+ * PGN: 262657
+ *
+ * Description: CANboat: NMEA 0183 filter
+ *
+ * Explanation: Control channel for the NMEA 0183 sentence filter. Carried only on the server's dedicated bidirectional filter port, never on the CAN bus - it is a CANBOAT_BEM pseudo-PGN, like the rest of the 0x40000+ range.
+ *
+ * @category PGN_262657
+ */
+export interface PGN_262657Interface extends PGNInterface {
+  fields: PGN_262657Fields
+}
+
+/**
+ * @category PGN_262657
+ */
+export interface PGN_262657Fields {
+  function?: N2K_Number
+  source?: N2K_Address
+  sentence?: N2K_StringFix
+  muted?: N2K_Number
+  reserved?: number
+}
+
+/**
+ * @category PGN_262657
+ */
+export class PGN_262657 extends PGN implements PGN_262657Interface {
+  fields: PGN_262657Fields
+
+  constructor(fields: PGN_262657Fields, dst: number = 255) {
+    super({
+      pgn: 262657,
+      prio: 3,
+      dst
+    })
+    this.fields = fields
+  }
+
+  getDefinition(): Definition {
+    return getPGNWithId('canboatNmea0183Filter')!
+  }
+}
+pgnIdToCreator['canboatNmea0183Filter'] = (fields:any, dst:number) => new PGN_262657(fields, dst)
+
+
+/**
+ * PGN: 262658
+ *
+ * Description: CANboat: PGN transmission-interval override
+ *
+ * Explanation: Control channel for per-device transmission-interval overrides. A CANBOAT_BEM pseudo-PGN (0x40000+), exchanged between a server and its clients rather than on the CAN bus.
+ *
+ * @category PGN_262658
+ */
+export interface PGN_262658Interface extends PGNInterface {
+  fields: PGN_262658Fields
+}
+
+/**
+ * @category PGN_262658
+ */
+export interface PGN_262658Fields {
+  function?: N2K_Number
+  source?: N2K_Address
+  pgn?: N2K_Pgn
+  intervalMs?: N2K_Number
+  manufacturerCode?: N2K_Number
+  industryCode?: N2K_Number
+}
+
+/**
+ * @category PGN_262658
+ */
+export class PGN_262658 extends PGN implements PGN_262658Interface {
+  fields: PGN_262658Fields
+
+  constructor(fields: PGN_262658Fields, dst: number = 255) {
+    super({
+      pgn: 262658,
+      prio: 3,
+      dst
+    })
+    this.fields = fields
+  }
+
+  getDefinition(): Definition {
+    return getPGNWithId('canboatPgnOverride')!
+  }
+}
+pgnIdToCreator['canboatPgnOverride'] = (fields:any, dst:number) => new PGN_262658(fields, dst)
 
 

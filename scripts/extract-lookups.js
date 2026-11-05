@@ -14,6 +14,7 @@ const canboat = JSON.parse(fs.readFileSync(canboatPath, 'utf-8'))
 
 const lookups = {
   LookupEnumerations: canboat.LookupEnumerations,
+  LookupIndirectEnumerations: canboat.LookupIndirectEnumerations,
   LookupBitEnumerations: canboat.LookupBitEnumerations,
   LookupFieldTypeEnumerations: canboat.LookupFieldTypeEnumerations
 }

@@ -16,7 +16,12 @@
  */
 
 import canboat from '../canboat-lookups.json'
-import { Enumeration, BitEnumeration, FieldTypeEnumeration } from './definition'
+import {
+  Enumeration,
+  BitEnumeration,
+  FieldTypeEnumeration,
+  IndirectEnumeration
+} from './definition'
 
 let enumByName: Map<string, Enumeration> | undefined
 let bitEnumByName: Map<string, BitEnumeration> | undefined
@@ -106,6 +111,72 @@ export const getEnumerationName = (
       return ev.Name
     }
   }
+}
+
+/**
+ * Retrieves the list of indirect enumerations from the canboat library: the
+ * lookups whose name depends on another field's value, such as
+ * `DEVICE_FUNCTION`, which names a device function per device class.
+ *
+ * @returns {IndirectEnumeration[]} An array of indirect enumeration objects.
+ * @category PGN Definition Access
+ */
+export const getIndirectEnumerations = (): IndirectEnumeration[] => {
+  return canboat.LookupIndirectEnumerations
+}
+
+/**
+ * Retrieves an indirect enumeration object by its name.
+ *
+ * @param enumName - The name of the indirect enumeration to search for.
+ * @returns The matching `IndirectEnumeration` object if found; otherwise, `undefined`.
+ * @category PGN Definition Access
+ */
+export const getIndirectEnumeration = (
+  enumName: string
+): IndirectEnumeration | undefined => {
+  return getIndirectEnumerations().find((e) => e.Name === enumName)
+}
+
+/**
+ * Retrieves the name an indirect enumeration gives a value.
+ *
+ * @param enumName - The name of the indirect enumeration.
+ * @param value1 - The value of the field the definition's
+ *   `LookupIndirectEnumerationFieldOrder` names (the device class, say).
+ * @param value2 - The value of the field itself (the device function).
+ * @returns The name if found; otherwise, `undefined`.
+ * @category PGN Definition Access
+ */
+export const getIndirectEnumerationName = (
+  enumName: string,
+  value1: number,
+  value2: number
+): string | undefined => {
+  return getIndirectEnumeration(enumName)?.EnumValues.find(
+    (v) => v.Value1 === value1 && v.Value2 === value2
+  )?.Name
+}
+
+/**
+ * Retrieves the value an indirect enumeration gives a name, under the given
+ * value of the field it depends on.
+ *
+ * @param enumName - The name of the indirect enumeration.
+ * @param value1 - The value of the field the definition's
+ *   `LookupIndirectEnumerationFieldOrder` names.
+ * @param name - The name to look up.
+ * @returns The value if found; otherwise, `undefined`.
+ * @category PGN Definition Access
+ */
+export const getIndirectEnumerationValue = (
+  enumName: string,
+  value1: number,
+  name: string
+): number | undefined => {
+  return getIndirectEnumeration(enumName)?.EnumValues.find(
+    (v) => v.Value1 === value1 && v.Name === name
+  )?.Value2
 }
 
 /**

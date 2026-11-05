@@ -152,6 +152,26 @@ export interface BitEnumeration extends EnumBase {
 }
 
 /**
+ * One name of an indirect lookup: the name of `Value2`, when the field the
+ * definition's `LookupIndirectEnumerationFieldOrder` names holds `Value1`.
+ *
+ * @category PGN Definitions
+ */
+export type IndirectEnumValue = {
+  Name: string
+  Value1: number
+  Value2: number
+}
+
+/**
+ * @category PGN Definitions
+ */
+export interface IndirectEnumeration extends EnumBase {
+  MaxValue: number
+  EnumValues: IndirectEnumValue[]
+}
+
+/**
  * @category PGN Definitions
  */
 export type EnumFieldTypeValue = {

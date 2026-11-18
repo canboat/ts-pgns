@@ -282,6 +282,9 @@ export type Field = {
  * @property RepeatingFieldSet2Size - Optional size of the second repeating field set.
  * @property RepeatingFieldSet2StartField - Optional start index for the second repeating field set.
  * @property RepeatingFieldSet2CountField - Optional count field for the second repeating field set.
+ * @property RepeatingFieldSet2Parent - When 1, the second set is nested in the first: its fields lie inside the
+ * first set's fields and it repeats within each record of the first set, so each `list` record holds a `list2`.
+ * When absent, the second set follows the first.
  * @property Fields - Array of field definitions for the PGN.
  * @category PGN Definitions
  */
@@ -307,5 +310,6 @@ export type Definition = {
   RepeatingFieldSet2Size?: number
   RepeatingFieldSet2StartField?: number
   RepeatingFieldSet2CountField?: number
+  RepeatingFieldSet2Parent?: number
   Fields: Field[]
 }

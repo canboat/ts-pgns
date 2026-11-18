@@ -524,24 +524,28 @@ export function generatePgnHeaderEntry(definition: Definition): string {
         explanationLines.push(currentLine.trim())
       }
 
-      lines.push(`     .explanation = "${explanationLines.join('" \\n"')}"`)
+      lines.push(`     .explanation = "${explanationLines.join('" \\n"')}",`)
     } else {
-      lines.push(`     .explanation = "${explanation}"`)
+      lines.push(`     .explanation = "${explanation}",`)
     }
   }
 
-  // Repeating field information
-  if (definition.RepeatingFieldSet1Size) {
-    lines.push(`     .repeatingField1 = ${definition.RepeatingFieldSet1Size},`)
+  // Repeating field information: repeatingCount is how many fields repeat,
+  // repeatingField the field that holds the repeat count (255 = none)
+  for (const set of [1, 2] as const) {
+    const size = definition[`RepeatingFieldSet${set}Size`]
+    if (size) {
+      const countField = definition[`RepeatingFieldSet${set}CountField`]
+      lines.push(`     .repeatingCount${set} = ${size},`)
+      lines.push(
+        `     .repeatingStart${set} = ${definition[`RepeatingFieldSet${set}StartField`]},`
+      )
+      lines.push(`     .repeatingField${set} = ${countField ?? 255},`)
+    }
   }
-  if (definition.RepeatingFieldSet1CountField) {
+  if (definition.RepeatingFieldSet2Parent) {
     lines.push(
-      `     .repeatingCount1 = ${definition.RepeatingFieldSet1CountField},`
-    )
-  }
-  if (definition.RepeatingFieldSet1StartField) {
-    lines.push(
-      `     .repeatingStart1 = ${definition.RepeatingFieldSet1StartField}`
+      `     .repeatingParent2 = ${definition.RepeatingFieldSet2Parent},`
     )
   }
 

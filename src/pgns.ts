@@ -1021,7 +1021,7 @@ pgnIdToCreator['carlingBreakerCommand'] = (fields:any, dst:number) => new PGN_61
  *
  * Description: Simnet: Keep Alive
  *
- * Explanation: Addressed keep-alive a display sends to a device - for example a wireless masthead wind sensor - to keep it from entering NMEA 2000 sleep while its data is in use. The display renews it periodically and re-sends it when it boots. Usually only the request form is seen (empty Session/Status); the reply carries a status.
+ * Explanation: Addressed keep-alive a display sends to a device - for example a wireless masthead wind sensor - to keep it from entering NMEA 2000 sleep while its data is in use. The display renews it periodically and re-sends it when it boots. Usually only the request form is seen (empty Session/Status); the reply carries a status. A B&G wind sensor (WS310, WS320) also answers it with a PGN 130845 Key Value Reply of key 3, its mast head unit offset.
  *
  * Match: Manufacturer Code == Simrad<br>
  * Match: Industry Code == Marine Industry<br>
@@ -3832,7 +3832,7 @@ export interface PGN_65284_BepMarineCzoneCircuitStatusFields {
   industryCode?: enums.IndustryCode | number
   dipswitch?: N2K_Number
   type?: N2K_Number
-  bitmap?: N2K_Binary
+  bitmap?: enums.CzoneCircuitBitmap[]
 }
 
 /**
@@ -3850,7 +3850,7 @@ export interface PGN_65284_BepMarineCzoneCircuitStatusCreateArgs {
   reserved?: number
   dipswitch?: N2K_Number
   type?: N2K_Number
-  bitmap?: N2K_Binary
+  bitmap?: enums.CzoneCircuitBitmap[]
 }
 
 /**
@@ -4680,7 +4680,7 @@ export interface PGN_65288_SeatalkAlarmFields {
   alarmStatus?: enums.SeatalkAlarmStatus | number
   alarmId?: enums.SeatalkAlarmId | number
   alarmGroup?: enums.SeatalkAlarmGroup | number
-  alarmPriority?: N2K_Binary
+  alarmPriority?: N2K_Number
 }
 
 /**
@@ -4700,7 +4700,7 @@ export interface PGN_65288_SeatalkAlarmCreateArgs {
   alarmStatus?: enums.SeatalkAlarmStatus | number
   alarmId?: enums.SeatalkAlarmId | number
   alarmGroup?: enums.SeatalkAlarmGroup | number
-  alarmPriority?: N2K_Binary
+  alarmPriority?: N2K_Number
 }
 
 /**
@@ -6345,7 +6345,7 @@ export interface PGN_65301_BepMarineCzone65301Fields {
   field1?: N2K_Number
   field2?: N2K_Number
   field3?: N2K_Number
-  statusBitmap?: N2K_Binary
+  statusBitmap?: enums.CzoneStatusBitmap[]
 }
 
 /**
@@ -6364,7 +6364,7 @@ export interface PGN_65301_BepMarineCzone65301CreateArgs {
   field1?: N2K_Number
   field2?: N2K_Number
   field3?: N2K_Number
-  statusBitmap?: N2K_Binary
+  statusBitmap?: enums.CzoneStatusBitmap[]
 }
 
 /**
@@ -9511,7 +9511,7 @@ export interface PGN_65379_SeatalkPilotModeFields {
   reserved?: number
   industryCode?: enums.IndustryCode | number
   pilotMode?: enums.SeatalkPilotMode16 | number
-  subMode?: N2K_Binary
+  subMode?: N2K_Number
   pilotModeData?: N2K_Binary
   reserved7?: number
 }
@@ -9530,7 +9530,7 @@ export const PGN_65379_SeatalkPilotModeMatchFields = {
 export interface PGN_65379_SeatalkPilotModeCreateArgs {
   reserved?: number
   pilotMode?: enums.SeatalkPilotMode16 | number
-  subMode?: N2K_Binary
+  subMode?: N2K_Number
   pilotModeData?: N2K_Binary
   reserved7?: number
 }
@@ -12356,7 +12356,7 @@ export interface PGN_126720_Seatalk1PilotModeFields {
   unknown1?: N2K_Binary
   pilotMode?: enums.SeatalkPilotMode | number
   subMode?: N2K_Number
-  pilotModeData?: N2K_Binary
+  pilotModeData?: N2K_Number
   unknown2?: N2K_Binary
 }
 
@@ -12379,7 +12379,7 @@ export interface PGN_126720_Seatalk1PilotModeCreateArgs {
   unknown1?: N2K_Binary
   pilotMode?: enums.SeatalkPilotMode | number
   subMode?: N2K_Number
-  pilotModeData?: N2K_Binary
+  pilotModeData?: N2K_Number
   unknown2?: N2K_Binary
 }
 
@@ -19372,7 +19372,7 @@ export interface PGN_128776Fields {
   anchorDockingControl?: enums.OffOn | number
   speedControlType?: enums.SpeedType | number
   reserved?: number
-  speedControl?: N2K_Binary
+  speedControl?: N2K_Number
   powerEnable?: enums.OffOn | number
   mechanicalLock?: enums.OffOn | number
   deckAndAnchorWash?: enums.OffOn | number
@@ -28006,6 +28006,7 @@ export interface PGN_130818_FurunoSensorSetupFields {
   _3AxisOffset?: N2K_Number
   airPressureOffset?: N2K_Number
   airTemperatureOffset?: N2K_Number
+  spare16?: number
 }
 
 /**
@@ -28033,6 +28034,7 @@ export interface PGN_130818_FurunoSensorSetupCreateArgs {
   _3AxisOffset?: N2K_Number
   airPressureOffset?: N2K_Number
   airTemperatureOffset?: N2K_Number
+  spare16?: number
 }
 
 /**
@@ -28901,6 +28903,7 @@ export interface PGN_130820_FusionVersionsFields {
   swVersionMajor?: N2K_Number
   swVersionMinor?: N2K_Number
   buildNumber?: N2K_Number
+  spare10?: number
 }
 
 /**
@@ -28922,6 +28925,7 @@ export interface PGN_130820_FusionVersionsCreateArgs {
   swVersionMajor?: N2K_Number
   swVersionMinor?: N2K_Number
   buildNumber?: N2K_Number
+  spare10?: number
 }
 
 /**
@@ -30116,6 +30120,7 @@ export interface PGN_130820_FusionTrackPositionFields {
   messageId: enums.FusionStatusMessageId | number
   sourceId: N2K_Number
   progress?: N2K_Duration
+  spare7?: number
 }
 
 /**
@@ -30134,6 +30139,7 @@ export interface PGN_130820_FusionTrackPositionCreateArgs {
   reserved?: number
   sourceId: N2K_Number
   progress?: N2K_Duration
+  spare7?: number
 }
 
 /**
@@ -33503,24 +33509,25 @@ pgnIdToCreator['navicoUdbDatabaseShortReport5'] = (fields:any, dst:number) => ne
 /**
  * PGN: 130822
  *
- * Description: Navico: UDB Database, Object Dump
+ * Description: Navico: UDB Database, Settings Dump
  *
- * Explanation: Verbose dump (Command 6) of a source-selection object: it carries the same Value and Token as the Command 1 report for the object, followed by a list of every data type the object covers and the selected source for each. Each record is a length, a constant class byte, a data-type id and the selected source's value.
+ * Explanation: Object Dump (Command 6) of Section 10, Item 1: the settings object that the Command 3 Configuration Set updates one record at a time. A B&G H5000 CPU broadcasts it about once a minute. The records carry no id: record n holds Source Setting Id n (NAVICO_SOURCE_SETTING_ID), so records 17 to 22 are the wind and boat speed sources (a count, or a source's 64-bit NMEA 2000 NAME) and record 24 is the true wind direction damping. On an H5000 the other records hold boat settings, mostly as 32-bit floats; by value, record 0 matches the GPS offset from the center line, 1 the GPS to bow distance, 3 the leeway coefficient, 7 the mast height, 13 the boat length and 14 the boat speed calibration distance.
  *
  * Match: Manufacturer Code == Navico<br>
  * Match: Industry Code == Marine Industry<br>
  * Match: Command == Object Dump<br>
+ * Match: Section == 10<br>
  *
- * @category PGN_130822_NavicoUdbDatabaseObjectDump
+ * @category PGN_130822_NavicoUdbDatabaseSettingsDump
  */
-export interface PGN_130822_NavicoUdbDatabaseObjectDumpInterface extends PGNInterface {
-  fields: PGN_130822_NavicoUdbDatabaseObjectDumpFields
+export interface PGN_130822_NavicoUdbDatabaseSettingsDumpInterface extends PGNInterface {
+  fields: PGN_130822_NavicoUdbDatabaseSettingsDumpFields
 }
 
 /**
- * @category PGN_130822_NavicoUdbDatabaseObjectDump
+ * @category PGN_130822_NavicoUdbDatabaseSettingsDump
  */
-export interface PGN_130822_NavicoUdbDatabaseObjectDumpFields {
+export interface PGN_130822_NavicoUdbDatabaseSettingsDumpFields {
   manufacturerCode?: enums.ManufacturerCode | number
   reserved?: number
   industryCode?: enums.IndustryCode | number
@@ -33528,72 +33535,72 @@ export interface PGN_130822_NavicoUdbDatabaseObjectDumpFields {
   command: N2K_Number | string
   reserved6?: number
   address?: N2K_Number
-  section?: N2K_Number
+  section: N2K_Number | string
   item?: N2K_Number
   objectValue?: N2K_Number
   sub?: N2K_Binary
   token?: N2K_Number
   list: {
+    flag?: N2K_Number
+    reserved15?: number
     length?: N2K_DynamicFieldLength
-    class?: N2K_Number
-    dataType?: enums.NavicoDataType | number
     value?: N2K_DynamicFieldValue
   }[]
 }
 
 /**
- * @category PGN_130822_NavicoUdbDatabaseObjectDump
+ * @category PGN_130822_NavicoUdbDatabaseSettingsDump
  */
-export const PGN_130822_NavicoUdbDatabaseObjectDumpMatchFields = {
+export const PGN_130822_NavicoUdbDatabaseSettingsDumpMatchFields = {
   manufacturerCode: enums.ManufacturerCode.Navico,
   industryCode: enums.IndustryCode.MarineIndustry,
   command: "Object Dump",
+  section: 10,
 }
 
 /**
- * @category PGN_130822_NavicoUdbDatabaseObjectDump
+ * @category PGN_130822_NavicoUdbDatabaseSettingsDump
  */
-export interface PGN_130822_NavicoUdbDatabaseObjectDumpCreateArgs {
+export interface PGN_130822_NavicoUdbDatabaseSettingsDumpCreateArgs {
   reserved?: number
   marker?: N2K_Number
   reserved6?: number
   address?: N2K_Number
-  section?: N2K_Number
   item?: N2K_Number
   objectValue?: N2K_Number
   sub?: N2K_Binary
   token?: N2K_Number
   list: {
+    flag?: N2K_Number
+    reserved15?: number
     length?: N2K_DynamicFieldLength
-    class?: N2K_Number
-    dataType?: enums.NavicoDataType | number
     value?: N2K_DynamicFieldValue
   }[]
 }
 
 /**
- * @category PGN_130822_NavicoUdbDatabaseObjectDump
+ * @category PGN_130822_NavicoUdbDatabaseSettingsDump
  */
-export class PGN_130822_NavicoUdbDatabaseObjectDump extends PGN implements PGN_130822_NavicoUdbDatabaseObjectDumpInterface {
-  fields: PGN_130822_NavicoUdbDatabaseObjectDumpFields
+export class PGN_130822_NavicoUdbDatabaseSettingsDump extends PGN implements PGN_130822_NavicoUdbDatabaseSettingsDumpInterface {
+  fields: PGN_130822_NavicoUdbDatabaseSettingsDumpFields
 
-  constructor(fields: PGN_130822_NavicoUdbDatabaseObjectDumpCreateArgs, dst: number = 255) {
+  constructor(fields: PGN_130822_NavicoUdbDatabaseSettingsDumpCreateArgs, dst: number = 255) {
     super({
       pgn: 130822,
       prio: 3,
       dst
     })
-    this.fields = { ...PGN_130822_NavicoUdbDatabaseObjectDumpMatchFields, ...fields }
+    this.fields = { ...PGN_130822_NavicoUdbDatabaseSettingsDumpMatchFields, ...fields }
   }
 
   static isMatch(pgn:PGN) {
-    return isMatch(pgn, PGN_130822_NavicoUdbDatabaseObjectDumpMatchFields)
+    return isMatch(pgn, PGN_130822_NavicoUdbDatabaseSettingsDumpMatchFields)
   }
   getDefinition(): Definition {
-    return getPGNWithId('navicoUdbDatabaseObjectDump')!
+    return getPGNWithId('navicoUdbDatabaseSettingsDump')!
   }
 }
-pgnIdToCreator['navicoUdbDatabaseObjectDump'] = (fields:any, dst:number) => new PGN_130822_NavicoUdbDatabaseObjectDump(fields, dst)
+pgnIdToCreator['navicoUdbDatabaseSettingsDump'] = (fields:any, dst:number) => new PGN_130822_NavicoUdbDatabaseSettingsDump(fields, dst)
 
 
 /**
@@ -33875,6 +33882,105 @@ pgnIdToCreator['bepMarineProprietaryPgn130822'] = (fields:any, dst:number) => ne
 /**
  * PGN: 130822
  *
+ * Description: Navico: UDB Database, Table Dump
+ *
+ * Explanation: Object Dump (Command 6) of Section 11, which holds tables of 32-bit floats; a B&G H5000 CPU broadcasts Sections 11 to 15 and 18 about once a minute. After the Token come one or more tables until the data runs out, each a 16-bit count followed by that many records of a length byte (4) and a 32-bit float. Sections 11 to 14 and 18 hold tables of 7 values, which look like wind and boat speed correction tables; Section 15 holds tables of 22 values, and the H5000 cuts its dump off at the 223-byte Fast Packet maximum.
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Command == Object Dump<br>
+ * Match: Section == 11<br>
+ *
+ * @category PGN_130822_NavicoUdbDatabaseTableDump11
+ */
+export interface PGN_130822_NavicoUdbDatabaseTableDump11Interface extends PGNInterface {
+  fields: PGN_130822_NavicoUdbDatabaseTableDump11Fields
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump11
+ */
+export interface PGN_130822_NavicoUdbDatabaseTableDump11Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  marker?: N2K_Number
+  command: N2K_Number | string
+  reserved6?: number
+  address?: N2K_Number
+  section: N2K_Number | string
+  item?: N2K_Number
+  objectValue?: N2K_Number
+  sub?: N2K_Binary
+  token?: N2K_Number
+  list: {
+    count?: N2K_Number
+    list2: {
+      length?: N2K_Number
+      value?: N2K_Float
+    }[]
+  }[]
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump11
+ */
+export const PGN_130822_NavicoUdbDatabaseTableDump11MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  command: "Object Dump",
+  section: 11,
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump11
+ */
+export interface PGN_130822_NavicoUdbDatabaseTableDump11CreateArgs {
+  reserved?: number
+  marker?: N2K_Number
+  reserved6?: number
+  address?: N2K_Number
+  item?: N2K_Number
+  objectValue?: N2K_Number
+  sub?: N2K_Binary
+  token?: N2K_Number
+  list: {
+    count?: N2K_Number
+    list2: {
+      length?: N2K_Number
+      value?: N2K_Float
+    }[]
+  }[]
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump11
+ */
+export class PGN_130822_NavicoUdbDatabaseTableDump11 extends PGN implements PGN_130822_NavicoUdbDatabaseTableDump11Interface {
+  fields: PGN_130822_NavicoUdbDatabaseTableDump11Fields
+
+  constructor(fields: PGN_130822_NavicoUdbDatabaseTableDump11CreateArgs, dst: number = 255) {
+    super({
+      pgn: 130822,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130822_NavicoUdbDatabaseTableDump11MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130822_NavicoUdbDatabaseTableDump11MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoUdbDatabaseTableDump11')!
+  }
+}
+pgnIdToCreator['navicoUdbDatabaseTableDump11'] = (fields:any, dst:number) => new PGN_130822_NavicoUdbDatabaseTableDump11(fields, dst)
+
+
+/**
+ * PGN: 130822
+ *
  * Description: Mercury: Engine Telemetry, Low Speed
  *
  * Explanation: Low-speed engine telemetry broadcast by Mercury engine gateways. Carries the malfunction-indicator (check-engine) state, intake-air and exhaust-gas temperatures (raw, Mercury-specific scaling), a 'GPL' fraction (raw / 128) and an engine run-state code. This is a flat fixed record, unrelated to the Navico and BEP variants of this PGN number; the manufacturer code in the first two bytes is the only disambiguator. Observed on live engine networks.
@@ -33947,6 +34053,597 @@ export class PGN_130822_MercuryEngineTelemetryLowSpeed extends PGN implements PG
   }
 }
 pgnIdToCreator['mercuryEngineTelemetryLowSpeed'] = (fields:any, dst:number) => new PGN_130822_MercuryEngineTelemetryLowSpeed(fields, dst)
+
+
+/**
+ * PGN: 130822
+ *
+ * Description: Navico: UDB Database, Table Dump
+ *
+ * Explanation: Object Dump (Command 6) of Section 12, which holds tables of 32-bit floats; a B&G H5000 CPU broadcasts Sections 11 to 15 and 18 about once a minute. After the Token come one or more tables until the data runs out, each a 16-bit count followed by that many records of a length byte (4) and a 32-bit float. Sections 11 to 14 and 18 hold tables of 7 values, which look like wind and boat speed correction tables; Section 15 holds tables of 22 values, and the H5000 cuts its dump off at the 223-byte Fast Packet maximum.
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Command == Object Dump<br>
+ * Match: Section == 12<br>
+ *
+ * @category PGN_130822_NavicoUdbDatabaseTableDump12
+ */
+export interface PGN_130822_NavicoUdbDatabaseTableDump12Interface extends PGNInterface {
+  fields: PGN_130822_NavicoUdbDatabaseTableDump12Fields
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump12
+ */
+export interface PGN_130822_NavicoUdbDatabaseTableDump12Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  marker?: N2K_Number
+  command: N2K_Number | string
+  reserved6?: number
+  address?: N2K_Number
+  section: N2K_Number | string
+  item?: N2K_Number
+  objectValue?: N2K_Number
+  sub?: N2K_Binary
+  token?: N2K_Number
+  list: {
+    count?: N2K_Number
+    list2: {
+      length?: N2K_Number
+      value?: N2K_Float
+    }[]
+  }[]
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump12
+ */
+export const PGN_130822_NavicoUdbDatabaseTableDump12MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  command: "Object Dump",
+  section: 12,
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump12
+ */
+export interface PGN_130822_NavicoUdbDatabaseTableDump12CreateArgs {
+  reserved?: number
+  marker?: N2K_Number
+  reserved6?: number
+  address?: N2K_Number
+  item?: N2K_Number
+  objectValue?: N2K_Number
+  sub?: N2K_Binary
+  token?: N2K_Number
+  list: {
+    count?: N2K_Number
+    list2: {
+      length?: N2K_Number
+      value?: N2K_Float
+    }[]
+  }[]
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump12
+ */
+export class PGN_130822_NavicoUdbDatabaseTableDump12 extends PGN implements PGN_130822_NavicoUdbDatabaseTableDump12Interface {
+  fields: PGN_130822_NavicoUdbDatabaseTableDump12Fields
+
+  constructor(fields: PGN_130822_NavicoUdbDatabaseTableDump12CreateArgs, dst: number = 255) {
+    super({
+      pgn: 130822,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130822_NavicoUdbDatabaseTableDump12MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130822_NavicoUdbDatabaseTableDump12MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoUdbDatabaseTableDump12')!
+  }
+}
+pgnIdToCreator['navicoUdbDatabaseTableDump12'] = (fields:any, dst:number) => new PGN_130822_NavicoUdbDatabaseTableDump12(fields, dst)
+
+
+/**
+ * PGN: 130822
+ *
+ * Description: Navico: UDB Database, Table Dump
+ *
+ * Explanation: Object Dump (Command 6) of Section 13, which holds tables of 32-bit floats; a B&G H5000 CPU broadcasts Sections 11 to 15 and 18 about once a minute. After the Token come one or more tables until the data runs out, each a 16-bit count followed by that many records of a length byte (4) and a 32-bit float. Sections 11 to 14 and 18 hold tables of 7 values, which look like wind and boat speed correction tables; Section 15 holds tables of 22 values, and the H5000 cuts its dump off at the 223-byte Fast Packet maximum.
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Command == Object Dump<br>
+ * Match: Section == 13<br>
+ *
+ * @category PGN_130822_NavicoUdbDatabaseTableDump13
+ */
+export interface PGN_130822_NavicoUdbDatabaseTableDump13Interface extends PGNInterface {
+  fields: PGN_130822_NavicoUdbDatabaseTableDump13Fields
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump13
+ */
+export interface PGN_130822_NavicoUdbDatabaseTableDump13Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  marker?: N2K_Number
+  command: N2K_Number | string
+  reserved6?: number
+  address?: N2K_Number
+  section: N2K_Number | string
+  item?: N2K_Number
+  objectValue?: N2K_Number
+  sub?: N2K_Binary
+  token?: N2K_Number
+  list: {
+    count?: N2K_Number
+    list2: {
+      length?: N2K_Number
+      value?: N2K_Float
+    }[]
+  }[]
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump13
+ */
+export const PGN_130822_NavicoUdbDatabaseTableDump13MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  command: "Object Dump",
+  section: 13,
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump13
+ */
+export interface PGN_130822_NavicoUdbDatabaseTableDump13CreateArgs {
+  reserved?: number
+  marker?: N2K_Number
+  reserved6?: number
+  address?: N2K_Number
+  item?: N2K_Number
+  objectValue?: N2K_Number
+  sub?: N2K_Binary
+  token?: N2K_Number
+  list: {
+    count?: N2K_Number
+    list2: {
+      length?: N2K_Number
+      value?: N2K_Float
+    }[]
+  }[]
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump13
+ */
+export class PGN_130822_NavicoUdbDatabaseTableDump13 extends PGN implements PGN_130822_NavicoUdbDatabaseTableDump13Interface {
+  fields: PGN_130822_NavicoUdbDatabaseTableDump13Fields
+
+  constructor(fields: PGN_130822_NavicoUdbDatabaseTableDump13CreateArgs, dst: number = 255) {
+    super({
+      pgn: 130822,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130822_NavicoUdbDatabaseTableDump13MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130822_NavicoUdbDatabaseTableDump13MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoUdbDatabaseTableDump13')!
+  }
+}
+pgnIdToCreator['navicoUdbDatabaseTableDump13'] = (fields:any, dst:number) => new PGN_130822_NavicoUdbDatabaseTableDump13(fields, dst)
+
+
+/**
+ * PGN: 130822
+ *
+ * Description: Navico: UDB Database, Table Dump
+ *
+ * Explanation: Object Dump (Command 6) of Section 14, which holds tables of 32-bit floats; a B&G H5000 CPU broadcasts Sections 11 to 15 and 18 about once a minute. After the Token come one or more tables until the data runs out, each a 16-bit count followed by that many records of a length byte (4) and a 32-bit float. Sections 11 to 14 and 18 hold tables of 7 values, which look like wind and boat speed correction tables; Section 15 holds tables of 22 values, and the H5000 cuts its dump off at the 223-byte Fast Packet maximum.
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Command == Object Dump<br>
+ * Match: Section == 14<br>
+ *
+ * @category PGN_130822_NavicoUdbDatabaseTableDump14
+ */
+export interface PGN_130822_NavicoUdbDatabaseTableDump14Interface extends PGNInterface {
+  fields: PGN_130822_NavicoUdbDatabaseTableDump14Fields
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump14
+ */
+export interface PGN_130822_NavicoUdbDatabaseTableDump14Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  marker?: N2K_Number
+  command: N2K_Number | string
+  reserved6?: number
+  address?: N2K_Number
+  section: N2K_Number | string
+  item?: N2K_Number
+  objectValue?: N2K_Number
+  sub?: N2K_Binary
+  token?: N2K_Number
+  list: {
+    count?: N2K_Number
+    list2: {
+      length?: N2K_Number
+      value?: N2K_Float
+    }[]
+  }[]
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump14
+ */
+export const PGN_130822_NavicoUdbDatabaseTableDump14MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  command: "Object Dump",
+  section: 14,
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump14
+ */
+export interface PGN_130822_NavicoUdbDatabaseTableDump14CreateArgs {
+  reserved?: number
+  marker?: N2K_Number
+  reserved6?: number
+  address?: N2K_Number
+  item?: N2K_Number
+  objectValue?: N2K_Number
+  sub?: N2K_Binary
+  token?: N2K_Number
+  list: {
+    count?: N2K_Number
+    list2: {
+      length?: N2K_Number
+      value?: N2K_Float
+    }[]
+  }[]
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump14
+ */
+export class PGN_130822_NavicoUdbDatabaseTableDump14 extends PGN implements PGN_130822_NavicoUdbDatabaseTableDump14Interface {
+  fields: PGN_130822_NavicoUdbDatabaseTableDump14Fields
+
+  constructor(fields: PGN_130822_NavicoUdbDatabaseTableDump14CreateArgs, dst: number = 255) {
+    super({
+      pgn: 130822,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130822_NavicoUdbDatabaseTableDump14MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130822_NavicoUdbDatabaseTableDump14MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoUdbDatabaseTableDump14')!
+  }
+}
+pgnIdToCreator['navicoUdbDatabaseTableDump14'] = (fields:any, dst:number) => new PGN_130822_NavicoUdbDatabaseTableDump14(fields, dst)
+
+
+/**
+ * PGN: 130822
+ *
+ * Description: Navico: UDB Database, Table Dump
+ *
+ * Explanation: Object Dump (Command 6) of Section 15, which holds tables of 32-bit floats; a B&G H5000 CPU broadcasts Sections 11 to 15 and 18 about once a minute. After the Token come one or more tables until the data runs out, each a 16-bit count followed by that many records of a length byte (4) and a 32-bit float. Sections 11 to 14 and 18 hold tables of 7 values, which look like wind and boat speed correction tables; Section 15 holds tables of 22 values, and the H5000 cuts its dump off at the 223-byte Fast Packet maximum.
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Command == Object Dump<br>
+ * Match: Section == 15<br>
+ *
+ * @category PGN_130822_NavicoUdbDatabaseTableDump15
+ */
+export interface PGN_130822_NavicoUdbDatabaseTableDump15Interface extends PGNInterface {
+  fields: PGN_130822_NavicoUdbDatabaseTableDump15Fields
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump15
+ */
+export interface PGN_130822_NavicoUdbDatabaseTableDump15Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  marker?: N2K_Number
+  command: N2K_Number | string
+  reserved6?: number
+  address?: N2K_Number
+  section: N2K_Number | string
+  item?: N2K_Number
+  objectValue?: N2K_Number
+  sub?: N2K_Binary
+  token?: N2K_Number
+  list: {
+    count?: N2K_Number
+    list2: {
+      length?: N2K_Number
+      value?: N2K_Float
+    }[]
+  }[]
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump15
+ */
+export const PGN_130822_NavicoUdbDatabaseTableDump15MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  command: "Object Dump",
+  section: 15,
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump15
+ */
+export interface PGN_130822_NavicoUdbDatabaseTableDump15CreateArgs {
+  reserved?: number
+  marker?: N2K_Number
+  reserved6?: number
+  address?: N2K_Number
+  item?: N2K_Number
+  objectValue?: N2K_Number
+  sub?: N2K_Binary
+  token?: N2K_Number
+  list: {
+    count?: N2K_Number
+    list2: {
+      length?: N2K_Number
+      value?: N2K_Float
+    }[]
+  }[]
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump15
+ */
+export class PGN_130822_NavicoUdbDatabaseTableDump15 extends PGN implements PGN_130822_NavicoUdbDatabaseTableDump15Interface {
+  fields: PGN_130822_NavicoUdbDatabaseTableDump15Fields
+
+  constructor(fields: PGN_130822_NavicoUdbDatabaseTableDump15CreateArgs, dst: number = 255) {
+    super({
+      pgn: 130822,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130822_NavicoUdbDatabaseTableDump15MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130822_NavicoUdbDatabaseTableDump15MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoUdbDatabaseTableDump15')!
+  }
+}
+pgnIdToCreator['navicoUdbDatabaseTableDump15'] = (fields:any, dst:number) => new PGN_130822_NavicoUdbDatabaseTableDump15(fields, dst)
+
+
+/**
+ * PGN: 130822
+ *
+ * Description: Navico: UDB Database, Table Dump
+ *
+ * Explanation: Object Dump (Command 6) of Section 18, which holds tables of 32-bit floats; a B&G H5000 CPU broadcasts Sections 11 to 15 and 18 about once a minute. After the Token come one or more tables until the data runs out, each a 16-bit count followed by that many records of a length byte (4) and a 32-bit float. Sections 11 to 14 and 18 hold tables of 7 values, which look like wind and boat speed correction tables; Section 15 holds tables of 22 values, and the H5000 cuts its dump off at the 223-byte Fast Packet maximum.
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Command == Object Dump<br>
+ * Match: Section == 18<br>
+ *
+ * @category PGN_130822_NavicoUdbDatabaseTableDump18
+ */
+export interface PGN_130822_NavicoUdbDatabaseTableDump18Interface extends PGNInterface {
+  fields: PGN_130822_NavicoUdbDatabaseTableDump18Fields
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump18
+ */
+export interface PGN_130822_NavicoUdbDatabaseTableDump18Fields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  marker?: N2K_Number
+  command: N2K_Number | string
+  reserved6?: number
+  address?: N2K_Number
+  section: N2K_Number | string
+  item?: N2K_Number
+  objectValue?: N2K_Number
+  sub?: N2K_Binary
+  token?: N2K_Number
+  list: {
+    count?: N2K_Number
+    list2: {
+      length?: N2K_Number
+      value?: N2K_Float
+    }[]
+  }[]
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump18
+ */
+export const PGN_130822_NavicoUdbDatabaseTableDump18MatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  command: "Object Dump",
+  section: 18,
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump18
+ */
+export interface PGN_130822_NavicoUdbDatabaseTableDump18CreateArgs {
+  reserved?: number
+  marker?: N2K_Number
+  reserved6?: number
+  address?: N2K_Number
+  item?: N2K_Number
+  objectValue?: N2K_Number
+  sub?: N2K_Binary
+  token?: N2K_Number
+  list: {
+    count?: N2K_Number
+    list2: {
+      length?: N2K_Number
+      value?: N2K_Float
+    }[]
+  }[]
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseTableDump18
+ */
+export class PGN_130822_NavicoUdbDatabaseTableDump18 extends PGN implements PGN_130822_NavicoUdbDatabaseTableDump18Interface {
+  fields: PGN_130822_NavicoUdbDatabaseTableDump18Fields
+
+  constructor(fields: PGN_130822_NavicoUdbDatabaseTableDump18CreateArgs, dst: number = 255) {
+    super({
+      pgn: 130822,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130822_NavicoUdbDatabaseTableDump18MatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130822_NavicoUdbDatabaseTableDump18MatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoUdbDatabaseTableDump18')!
+  }
+}
+pgnIdToCreator['navicoUdbDatabaseTableDump18'] = (fields:any, dst:number) => new PGN_130822_NavicoUdbDatabaseTableDump18(fields, dst)
+
+
+/**
+ * PGN: 130822
+ *
+ * Description: Navico: UDB Database, Object Dump
+ *
+ * Explanation: Verbose dump (Command 6) of a source-selection object: it carries the same Value and Token as the Command 1 report for the object, followed by a list of every data type the object covers and the selected source for each. Each record is a length, a constant class byte, a data-type id and the selected source's value.
+ *
+ * Match: Manufacturer Code == Navico<br>
+ * Match: Industry Code == Marine Industry<br>
+ * Match: Command == Object Dump<br>
+ *
+ * @category PGN_130822_NavicoUdbDatabaseObjectDump
+ */
+export interface PGN_130822_NavicoUdbDatabaseObjectDumpInterface extends PGNInterface {
+  fields: PGN_130822_NavicoUdbDatabaseObjectDumpFields
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseObjectDump
+ */
+export interface PGN_130822_NavicoUdbDatabaseObjectDumpFields {
+  manufacturerCode?: enums.ManufacturerCode | number
+  reserved?: number
+  industryCode?: enums.IndustryCode | number
+  marker?: N2K_Number
+  command: N2K_Number | string
+  reserved6?: number
+  address?: N2K_Number
+  section?: N2K_Number
+  item?: N2K_Number
+  objectValue?: N2K_Number
+  sub?: N2K_Binary
+  token?: N2K_Number
+  list: {
+    length?: N2K_DynamicFieldLength
+    class?: N2K_Number
+    dataType?: enums.NavicoDataType | number
+    value?: N2K_DynamicFieldValue
+  }[]
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseObjectDump
+ */
+export const PGN_130822_NavicoUdbDatabaseObjectDumpMatchFields = {
+  manufacturerCode: enums.ManufacturerCode.Navico,
+  industryCode: enums.IndustryCode.MarineIndustry,
+  command: "Object Dump",
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseObjectDump
+ */
+export interface PGN_130822_NavicoUdbDatabaseObjectDumpCreateArgs {
+  reserved?: number
+  marker?: N2K_Number
+  reserved6?: number
+  address?: N2K_Number
+  section?: N2K_Number
+  item?: N2K_Number
+  objectValue?: N2K_Number
+  sub?: N2K_Binary
+  token?: N2K_Number
+  list: {
+    length?: N2K_DynamicFieldLength
+    class?: N2K_Number
+    dataType?: enums.NavicoDataType | number
+    value?: N2K_DynamicFieldValue
+  }[]
+}
+
+/**
+ * @category PGN_130822_NavicoUdbDatabaseObjectDump
+ */
+export class PGN_130822_NavicoUdbDatabaseObjectDump extends PGN implements PGN_130822_NavicoUdbDatabaseObjectDumpInterface {
+  fields: PGN_130822_NavicoUdbDatabaseObjectDumpFields
+
+  constructor(fields: PGN_130822_NavicoUdbDatabaseObjectDumpCreateArgs, dst: number = 255) {
+    super({
+      pgn: 130822,
+      prio: 3,
+      dst
+    })
+    this.fields = { ...PGN_130822_NavicoUdbDatabaseObjectDumpMatchFields, ...fields }
+  }
+
+  static isMatch(pgn:PGN) {
+    return isMatch(pgn, PGN_130822_NavicoUdbDatabaseObjectDumpMatchFields)
+  }
+  getDefinition(): Definition {
+    return getPGNWithId('navicoUdbDatabaseObjectDump')!
+  }
+}
+pgnIdToCreator['navicoUdbDatabaseObjectDump'] = (fields:any, dst:number) => new PGN_130822_NavicoUdbDatabaseObjectDump(fields, dst)
 
 
 /**
@@ -35604,9 +36301,9 @@ export interface PGN_130829_MercuryEngineStatusFields {
   industryCode?: enums.IndustryCode | number
   reserved4?: number
   fieldA?: N2K_Binary
-  subHelm?: N2K_Binary
-  helm?: N2K_Binary
-  capabilities?: N2K_Binary
+  subHelm?: N2K_Number
+  helm?: N2K_Number
+  capabilities?: enums.MercuryEngineCapability[]
 }
 
 /**
@@ -35624,9 +36321,9 @@ export interface PGN_130829_MercuryEngineStatusCreateArgs {
   reserved?: number
   reserved4?: number
   fieldA?: N2K_Binary
-  subHelm?: N2K_Binary
-  helm?: N2K_Binary
-  capabilities?: N2K_Binary
+  subHelm?: N2K_Number
+  helm?: N2K_Number
+  capabilities?: enums.MercuryEngineCapability[]
 }
 
 /**
@@ -42226,6 +42923,7 @@ export interface PGN_262386Fields {
   ch2Deleted?: N2K_Number
   ch2Bufferloading?: N2K_Number
   ch2Pointerloading?: N2K_Number
+  spare27?: number
 }
 
 /**

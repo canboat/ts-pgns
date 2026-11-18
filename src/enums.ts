@@ -1372,6 +1372,7 @@ export enum CzoneAlarmType {
   ShuntMismatch = 'Shunt mismatch',
   CoolingFanError = 'Cooling Fan Error',
   MastershuntFuseBlown = 'Mastershunt Fuse Blown',
+  HighTemperature51 = 'High Temperature (51)',
   OverPressure = 'Over Pressure',
   LowPressure = 'Low Pressure',
   RapidDeflation = 'Rapid Deflation',
@@ -1437,7 +1438,7 @@ export const CzoneAlarmTypeValues: {[key: string]: number} = {
   [CzoneAlarmType.ShuntMismatch]: 0x30,
   [CzoneAlarmType.CoolingFanError]: 0x31,
   [CzoneAlarmType.MastershuntFuseBlown]: 0x32,
-  HighTemperature2: 0x33,
+  [CzoneAlarmType.HighTemperature51]: 0x33,
   [CzoneAlarmType.OverPressure]: 0x34,
   [CzoneAlarmType.LowPressure]: 0x35,
   [CzoneAlarmType.RapidDeflation]: 0x36,
@@ -6641,6 +6642,7 @@ export enum Seatalk1Command {
   GpsAndDgpsInfo = 'GPS and DGPS Info',
   UnknownMeaning = 'Unknown meaning',
   AlarmOnoffForGuard = 'Alarm ON/OFF for Guard',
+  AlarmOnoffForGuard171 = 'Alarm ON/OFF for Guard (171)',
 }
 
 /**
@@ -6705,7 +6707,7 @@ export const Seatalk1CommandValues: {[key: string]: number} = {
   [Seatalk1Command.GpsAndDgpsInfo]: 0xa5,
   [Seatalk1Command.UnknownMeaning]: 0xa7,
   [Seatalk1Command.AlarmOnoffForGuard]: 0xa8,
-  AlarmOnoffForGuard2: 0xab,
+  [Seatalk1Command.AlarmOnoffForGuard171]: 0xab,
 }
 
 /**
@@ -7001,6 +7003,7 @@ export enum SeatalkCommand {
   CruiseSpeed = 'Cruise Speed',
   PowerSteerMode = 'Power Steer Mode',
   WindType = 'Wind Type',
+  AutoTurn17 = 'Auto Turn (17)',
   CalibrationLock = 'Calibration Lock',
   GybeInhibit = 'Gybe Inhibit',
   CompassOffset = 'Compass Offset',
@@ -7032,7 +7035,7 @@ export const SeatalkCommandValues: {[key: string]: number} = {
   [SeatalkCommand.CruiseSpeed]: 0x8,
   [SeatalkCommand.PowerSteerMode]: 0xb,
   [SeatalkCommand.WindType]: 0xf,
-  AutoTurn2: 0x11,
+  [SeatalkCommand.AutoTurn17]: 0x11,
   [SeatalkCommand.CalibrationLock]: 0x12,
   [SeatalkCommand.GybeInhibit]: 0x14,
   [SeatalkCommand.CompassOffset]: 0x15,
@@ -7564,6 +7567,7 @@ export enum SimnetAlarmId {
   CZoneImportant = 'CZone important',
   CZoneStandard = 'CZone standard',
   CZoneWarning = 'CZone warning',
+  TrueWindShift124 = 'True wind shift (124)',
   EvcComError = 'EVC Com Error',
   EvcOverride = 'EVC override',
   HighDriveTemperature = 'High drive temperature',
@@ -7623,6 +7627,7 @@ export enum SimnetAlarmId {
   ForwardRange = 'Forward range',
   AlarmSourceMissing = 'Alarm source missing',
   External = 'External',
+  EvcComError247 = 'EVC Com Error (247)',
   WindSensorBatteryLow = 'Wind sensor battery low',
   GasolineLow = 'Gasoline low',
   GasolineHigh = 'Gasoline high',
@@ -7750,7 +7755,7 @@ export const SimnetAlarmIdValues: {[key: string]: number} = {
   [SimnetAlarmId.CZoneImportant]: 0x79,
   [SimnetAlarmId.CZoneStandard]: 0x7a,
   [SimnetAlarmId.CZoneWarning]: 0x7b,
-  TrueWindShift2: 0x7c,
+  [SimnetAlarmId.TrueWindShift124]: 0x7c,
   [SimnetAlarmId.EvcComError]: 0x7d,
   [SimnetAlarmId.EvcOverride]: 0x7e,
   [SimnetAlarmId.HighDriveTemperature]: 0x7f,
@@ -7810,7 +7815,7 @@ export const SimnetAlarmIdValues: {[key: string]: number} = {
   [SimnetAlarmId.ForwardRange]: 0xb7,
   [SimnetAlarmId.AlarmSourceMissing]: 0xf5,
   [SimnetAlarmId.External]: 0xf6,
-  EvcComError2: 0xf7,
+  [SimnetAlarmId.EvcComError247]: 0xf7,
   [SimnetAlarmId.WindSensorBatteryLow]: 0xf8,
   [SimnetAlarmId.GasolineLow]: 0x10a,
   [SimnetAlarmId.GasolineHigh]: 0x10b,
@@ -9583,6 +9588,18 @@ export enum FusionSettingValue {
 /**
  * @category Enumerations
  */
+export enum CzoneCircuitBitmap {
+}
+
+/**
+ * @category Enumerations
+ */
+export enum CzoneStatusBitmap {
+}
+
+/**
+ * @category Enumerations
+ */
 export enum DisabledSatellites {
   DisableSv1 = 'Disable SV #1',
   DisableSv2 = 'Disable SV #2',
@@ -9815,6 +9832,14 @@ export enum FusionSystemCapabilityBitfield {
   SourceDisable = 'Source Disable',
   SourceRename = 'Source Rename',
   InternalDabModule = 'Internal DAB Module',
+}
+
+/**
+ * @category Enumerations
+ */
+export enum MercuryEngineCapability {
+  Beacon = 'Beacon',
+  CruiseControl = 'Cruise Control',
 }
 
 /**

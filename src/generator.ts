@@ -312,6 +312,38 @@ export abstract class PGN implements PGNInterface {
     return `${fixIdentifier(field.Id, '_')}${required}: ${type}`
   }
 
+  // Set 1 is `list`. Set 2 is `list2`: inside each `list` record when it is
+  // nested in set 1 (RepeatingFieldSet2Parent), else beside `list`.
+  function outputLists(pgn: Definition) {
+    const nested = pgn.RepeatingFieldSet2Parent === 1
+    const start2 = pgn.RepeatingFieldSet2StartField! - 1
+    if (pgn.RepeatingFieldSet1Size !== undefined) {
+      console.log(`  list: {`)
+      for (let i = 0; i < pgn.RepeatingFieldSet1Size; i++) {
+        const idx = i + pgn.RepeatingFieldSet1StartField! - 1
+        if (
+          nested &&
+          idx >= start2 &&
+          idx < start2 + pgn.RepeatingFieldSet2Size!
+        ) {
+          continue
+        }
+        console.log(`    ${getFieldString(pgn.Fields[idx])}`)
+      }
+      if (nested) {
+        console.log(`    list2: {`)
+        for (let i = 0; i < pgn.RepeatingFieldSet2Size!; i++) {
+          console.log(`      ${getFieldString(pgn.Fields[start2 + i])}`)
+        }
+        console.log('    }[]')
+      }
+      console.log('  }[]')
+    }
+    if (pgn.RepeatingFieldSet2Size !== undefined && !nested) {
+      console.log(`  list2: any[]`)
+    }
+  }
+
   function outputPGN(pgn: Definition) {
     const hasMatchFields = pgn.Fields.find((f) => f.Match !== undefined)
     let typeNameNoPGN = `${pgn.PGN}`
@@ -379,17 +411,7 @@ export abstract class PGN implements PGNInterface {
         }
         console.log(`  ${getFieldString(field)}`)
       })
-      if (pgn.RepeatingFieldSet1Size !== undefined) {
-        console.log(`  list: {`)
-        for (let i = 0; i < pgn.RepeatingFieldSet1Size; i++) {
-          const field = pgn.Fields[i + pgn.RepeatingFieldSet1StartField! - 1]
-          console.log(`    ${getFieldString(field)}`)
-        }
-        console.log('  }[]')
-      }
-      if (pgn.RepeatingFieldSet2Size !== undefined) {
-        console.log(`  list2: any[]`)
-      }
+      outputLists(pgn)
     }
     outputFields()
     console.log('}\n')
@@ -451,17 +473,7 @@ export abstract class PGN implements PGNInterface {
           console.log(`  ${getFieldString(field)}`)
         }
       })
-      if (pgn.RepeatingFieldSet1Size !== undefined) {
-        console.log(`  list: {`)
-        for (let i = 0; i < pgn.RepeatingFieldSet1Size; i++) {
-          const field = pgn.Fields[i + pgn.RepeatingFieldSet1StartField! - 1]
-          console.log(`    ${getFieldString(field)}`)
-        }
-        console.log('  }[]')
-      }
-      if (pgn.RepeatingFieldSet2Size !== undefined) {
-        console.log(`  list2: any[]`)
-      }
+      outputLists(pgn)
       console.log('}\n')
     }
 

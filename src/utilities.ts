@@ -207,6 +207,16 @@ export const isMatch = (pgn: any, matchFields: any) => {
   })
 }
 
+// The fields of a set 2 that is nested in set 1 (RepeatingFieldSet2Parent):
+// they are in each list record's list2, not in the record itself.
+const nestedSet2Fields = (def: Definition): Field[] =>
+  def.RepeatingFieldSet2Parent === 1
+    ? def.Fields.slice(
+        def.RepeatingFieldSet2StartField! - 1,
+        def.RepeatingFieldSet2StartField! - 1 + def.RepeatingFieldSet2Size!
+      )
+    : []
+
 /**
  * Maps the keys of a PGN object to camelCase names based on its definition.
  *
@@ -260,9 +270,10 @@ export const mapCamelCaseKeys = (pgn: PGN) => {
     pgn.fields !== undefined ? (pgn.fields as any).list : (pgn as any).list
 
   if (repeatingSize > 0 && list !== undefined && list.length > 0) {
-    const repeating: Field[] = (def.Fields as any).slice(
-      def.Fields.length - repeatingSize
-    )
+    const set2 = nestedSet2Fields(def)
+    const repeating: Field[] = (def.Fields as any)
+      .slice(def.Fields.length - repeatingSize)
+      .filter((field: Field) => !set2.includes(field))
 
     const dest: any = pgn.fields !== undefined ? res.fields : res
 
@@ -280,6 +291,19 @@ export const mapCamelCaseKeys = (pgn: PGN) => {
           copy[field.Name] = value
         }
       })
+      if (set2.length > 0 && item.list2 !== undefined) {
+        copy.list2 = item.list2.map((record: any) => {
+          const copy2: { [key: string]: any } = {}
+          set2.forEach((field) => {
+            const value = record[field.Id]
+
+            if (value !== undefined) {
+              copy2[field.Name] = value
+            }
+          })
+          return copy2
+        })
+      }
     })
   }
   return res
@@ -326,9 +350,10 @@ export const mapNameKeysToCamelCase = (pgn: any) => {
   const list = (pgn.fields as any).list
 
   if (repeatingSize > 0 && list !== undefined && list.length > 0) {
-    const repeating: Field[] = (def.Fields as any).slice(
-      def.Fields.length - repeatingSize
-    )
+    const set2 = nestedSet2Fields(def)
+    const repeating: Field[] = (def.Fields as any)
+      .slice(def.Fields.length - repeatingSize)
+      .filter((field: Field) => !set2.includes(field))
 
     const dest: any = ((res.fields as any).list = [])
 
@@ -340,6 +365,15 @@ export const mapNameKeysToCamelCase = (pgn: any) => {
         const value = item[field.Name]
         copy[field.Id] = value
       })
+      if (set2.length > 0 && item.list2 !== undefined) {
+        copy.list2 = item.list2.map((record: any) => {
+          const copy2: { [key: string]: any } = {}
+          set2.forEach((field) => {
+            copy2[field.Id] = record[field.Name]
+          })
+          return copy2
+        })
+      }
     })
   }
   return res
